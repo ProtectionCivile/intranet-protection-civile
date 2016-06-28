@@ -56,6 +56,7 @@ if(isset($_POST['duplicate_dps'])){
 <script src="js/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/fr.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/fileinput.js" type="text/javascript"></script>
+<script src="js/validator.js" type="text/javascript"></script>
 <div class="container">
 <?php if(isset($_POST['duplicate_dps'])){?>
 <div class='alert alert-warning'><span class="glyphicon glyphicon-alert" style="font-size:2em"></span> <strong>Attention : </strong>Tous les champs ne sont pas dupliqués.<br>Vous devez vérifier tous les champs avant d'envoyer en validation.</div>
@@ -147,7 +148,7 @@ if(isset($_POST['duplicate_dps'])){
 			</div>
 			</div>
 			
-			<form class="form-horizontal" role="form" action="traitement-demande-dps.php" method="post">
+			<form class="form-horizontal" data-toggle="validator" role="form" action="traitement-demande-dps.php" method="post">
 			<input type='hidden' name='cu' value='<?php echo $cu;?>'>
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -157,43 +158,50 @@ if(isset($_POST['duplicate_dps'])){
 					<div class="form-group form-group-sm">
 						<label for="nom_organisation" class="col-sm-4 control-label">Nom de l'organisation <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom de la société, association, collectivité, etc."></span></label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="nom_organisation" name="nom_organisation" placeholder="Nom de l'organisation" value="<?php if(isset($org_array['nom'])){echo $org_array['nom'];}elseif(isset($duplicate_array['organisateur'])){echo $duplicate_array['organisateur'];}?>">
+							<input type="text" class="form-control" id="nom_organisation" name="nom_organisation" placeholder="Nom de l'organisation" value="<?php if(isset($org_array['nom'])){echo $org_array['nom'];}elseif(isset($duplicate_array['organisateur'])){echo $duplicate_array['organisateur'];}?>" required>
+                            <div class="help-block with-errors"></div>
 						</div>
 					</div>
 					<div class="form-group form-group-sm">
 						<label for="represente_par" class="col-sm-4 control-label">Représenté par <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Personne qui représente l'organisation."></span></label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="represente_par" name="represente_par" placeholder="Représentant" value="<?php if(isset($org_array['represente'])){echo $org_array['represente'];}elseif(isset($duplicate_array['representant_org'])){echo $duplicate_array['representant_org'];}?>">
+							<input type="text" class="form-control" id="represente_par" name="represente_par" placeholder="Représentant" value="<?php if(isset($org_array['represente'])){echo $org_array['represente'];}elseif(isset($duplicate_array['representant_org'])){echo $duplicate_array['representant_org'];}?>" required>
+                            <div class="help-block with-errors"></div>
 						</div>
 					</div>
 					<div class="form-group form-group-sm">
 						<label for="qualite" class="col-sm-4 control-label">Qualité <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Statut du représentant."></span></label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="qualite" name="qualite" placeholder="Qualité" value="<?php if(isset($org_array['qualite'])){echo $org_array['qualite'];}elseif(isset($duplicate_array['qualite_org'])){echo $duplicate_array['qualite_org'];}?>">
+							<input type="text" class="form-control" id="qualite" name="qualite" placeholder="Qualité" value="<?php if(isset($org_array['qualite'])){echo $org_array['qualite'];}elseif(isset($duplicate_array['qualite_org'])){echo $duplicate_array['qualite_org'];}?>" required>
+                            <div class="help-block with-errors"></div>
 						</div>
 					</div>
 					<div class="form-group form-group-sm">
 						<label for="adresse" class="col-sm-4 control-label">Adresse postale <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Adresse, code postale, ville."></span></label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="adresse" name="adresse" placeholder="Adresse" value="<?php if(isset($org_array['adresse'])){echo $org_array['adresse'];}elseif(isset($duplicate_array['adresse_org'])){echo $duplicate_array['adresse_org'];}?>">
+							<input type="text" class="form-control" id="adresse" name="adresse" placeholder="Adresse" value="<?php if(isset($org_array['adresse'])){echo $org_array['adresse'];}elseif(isset($duplicate_array['adresse_org'])){echo $duplicate_array['adresse_org'];}?>" data-minlength="6" required>
+                            <div class="help-block with-errors"></div>
 						</div>
 					</div>
 					<div class="form-group form-group-sm">
 						<label for="telephone" class="col-sm-4 control-label">Téléphone <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Format 0XXXXXXXXX"></span></label>
 						<div class="col-sm-8">
-							<input type="tel" class="form-control" id="telephone" name="telephone" placeholder="telephone" value="<?php if(isset($org_array['telephone'])){echo $org_array['telephone'];}elseif(isset($duplicate_array['tel_org'])){echo $duplicate_array['tel_org'];}?>">
+							<input type="tel" class="form-control" id="telephone" name="telephone" placeholder="telephone" value="<?php if(isset($org_array['telephone'])){echo $org_array['telephone'];}elseif(isset($duplicate_array['tel_org'])){echo $duplicate_array['tel_org'];}?>" data-minlength="10" required>
+                            <div class="help-block with-errors"></div>
 						</div>
 					</div>
 					<div class="form-group form-group-sm">
 						<label for="fax" class="col-sm-4 control-label">Fax <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Format 0XXXXXXXXX"></span></label>
 						<div class="col-sm-8">
-							<input type="tel" class="form-control" id="fax" name="fax" placeholder="Fax" value="<?php if(isset($org_array['fax'])){echo $org_array['fax'];}elseif(isset($duplicate_array['fax_org'])){echo $duplicate_array['fax_org'];}?>">
+							<input type="tel" class="form-control" id="fax" name="fax" placeholder="Fax" value="<?php if(isset($org_array['fax'])){echo $org_array['fax'];}elseif(isset($duplicate_array['fax_org'])){echo $duplicate_array['fax_org'];}?>"data-minlength="10">
+                            <div class="help-block with-errors"></div>
 						</div>
 					</div>
 					<div class="form-group form-group-sm">
 						<label for="email" class="col-sm-4 control-label">E-mail <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Adresse e-mail du représentant ou de l'organisation."></span></label>
 						<div class="col-sm-8">
-							<input type="email" class="form-control" id="email" name="email" placeholder="E-mail" value="<?php if(isset($org_array['email'])){echo $org_array['email'];}elseif(isset($duplicate_array['email_org'])){echo $duplicate_array['email_org'];}?>">
+							<input type="email" class="form-control" id="email" name="email" placeholder="E-mail" value="<?php if(isset($org_array['email'])){echo $org_array['email'];}elseif(isset($duplicate_array['email_org'])){echo $duplicate_array['email_org'];}?>" required>
+                            <div class="help-block with-errors"></div>
 						</div>
 					</div>
 					<div class="form-group form-group-sm">
@@ -215,38 +223,43 @@ if(isset($_POST['duplicate_dps'])){
 						<div class="form-group form-group-sm">
 							<label for="nom_nature" class="col-sm-4 control-label">Nom / Nature <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom/Nature de la manifestation"></span></label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" id="nom_nature" name="nom_nature" placeholder="Nom / Nature" value="<?php if(isset($duplicate_array['description_manif'])){echo $duplicate_array['description_manif'];} ?>">
+								<input type="text" class="form-control" id="nom_nature" name="nom_nature" placeholder="Nom / Nature" value="<?php if(isset($duplicate_array['description_manif'])){echo $duplicate_array['description_manif'];} ?>" required>
+                                <div class="help-block with-errors"></div>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="activite_descriptif" class="col-sm-4 control-label">Activité / Descriptif <span class="glyphicon glyphicon-info-sign" data-trigger="hover" rel="popover" data-toggle="popover" data-content="Descriptif court."></span></label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" id="activite_descriptif" name="activite_descriptif" placeholder="Activité / Descriptif" value="<?php if(isset($duplicate_array['activite'])){echo $duplicate_array['activite'];} ?>">
+								<input type="text" class="form-control" id="activite_descriptif" name="activite_descriptif" placeholder="Activité / Descriptif" value="<?php if(isset($duplicate_array['activite'])){echo $duplicate_array['activite'];} ?>" required>
+                                <div class="help-block with-errors"></div>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="lieu_precis" class="col-sm-4 control-label">Lieu précis <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Adresse la plus précise possible du lieu de l'événement."></span></label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" id="lieu_precis" name="lieu_precis" placeholder="Adresse précise du lien de l'évenement" value="<?php if(isset($duplicate_array['adresse_manif'])){echo $duplicate_array['adresse_manif'];} ?>">
+								<input type="text" class="form-control" id="lieu_precis" name="lieu_precis" placeholder="Adresse précise du lien de l'évenement" value="<?php if(isset($duplicate_array['adresse_manif'])){echo $duplicate_array['adresse_manif'];} ?>" required>
+                                <div class="help-block with-errors"></div>
 							</div>
 						</div>
 						<div class="form-group form-group-sm form-inline row">
 							<label for="date_debut" class="col-sm-4 control-label">Date et heure du début</label>
 							<div class="col-sm-6">
 								<div class='input-group date' id='date_debut' name="date_debut">
-								<input type='text' class="form-control" id='date_debut' name="date_debut"/>
+								<input type='text' class="form-control" id='date_debut' name="date_debut" value=""/ required>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 									</span>
 								</div>
+                                <div class="help-block with-errors"></div>
 							</div>
 							<div class="col-sm-2">
 								<div class='input-group date' id='heure_debut' name="heure_debut">
-								<input type='text' class="form-control" id='heure_debut' name="heure_debut"/>
+								<input type='text' class="form-control" id='heure_debut' name="heure_debut" required/>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 									</span>
 								</div>
+                                <div class="help-block with-errors"></div>
 							</div>
 							<script type="text/javascript">
 							$(function () {
@@ -255,7 +268,7 @@ if(isset($_POST['duplicate_dps'])){
 									format: 'YYYY-MM-DD',
 									showClear:true,
 									showClose:true,
-									toolbarPlacement: 'bottom'
+									toolbarPlacement: 'bottom',
 					
 								});
 							});
@@ -277,19 +290,21 @@ if(isset($_POST['duplicate_dps'])){
 							<label for="date_fin" class="col-sm-4 control-label">Date et heure de fin</label>
 							<div class="col-sm-6">
 								<div class='input-group date' id='date_fin' name="date_fin">
-								<input type='text' class="form-control" id='date_fin' name="date_fin"/>
+								<input type='text' class="form-control" id='date_fin' name="date_fin" required/>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 									</span>
 								</div>
+                                <div class="help-block with-errors"></div>
 							</div>
 							<div class="col-sm-2">
 								<div class='input-group date' id='heure_fin' name="heure_fin">
-								<input type='text' class="form-control" id='heure_fin' name="heure_fin"/>
+								<input type='text' class="form-control" id='heure_fin' name="heure_fin" required/>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 									</span>
 								</div>
+                                <div class="help-block with-errors"></div>
 							</div>
 							<script type="text/javascript">
 							$(function () {
@@ -319,17 +334,19 @@ if(isset($_POST['duplicate_dps'])){
 						<div class="form-group form-group-sm">
 							<label for="departement" class="col-sm-4 control-label">Département où se situe la manifestation <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Exemple : 92"></span></label>
 							<div class="col-sm-8">
-								<input type="number" class="form-control" id="departement" name="departement" placeholder="Département" value="<?php if(isset($duplicate_array['dept'])){echo $duplicate_array['dept'];} ?>">
+								<input type="number" class="form-control" id="departement" name="departement" placeholder="Département" value="<?php if(isset($duplicate_array['dept'])){echo $duplicate_array['dept'];} ?>" required>
+                                <div class="help-block with-errors"></div>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="prix" class="col-sm-4 control-label">Prix <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Tarif facturé au client."></span></label>
 							<div class="col-sm-8">
 								<div class="input-group">
-									<input type="number" class="form-control" id="prix" name="prix" placeholder="Prix" value="<?php if(isset($duplicate_array['prix'])){echo $duplicate_array['prix'];} ?>">
+									<input type="number" class="form-control" id="prix" name="prix" placeholder="Prix" value="<?php if(isset($duplicate_array['prix'])){echo $duplicate_array['prix'];} ?>" required>
 									<div class="input-group-addon">euros
 									</div>
 								</div>
+                                <div class="help-block with-errors"></div>
 							</div>
 						</div>
 					</div>
@@ -342,53 +359,68 @@ if(isset($_POST['duplicate_dps'])){
 						<div class="form-group form-group-sm">
 							<label for="spectateurs" class="col-sm-4 control-label">Nombre de spectateurs <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chiffres uniquement."></span></label>
 							<div class="col-sm-8">
-								<input type="number" class="form-control" id="spectateurs" name="spectateurs" placeholder="Spectateurs">
+								<input type="number" class="form-control risp" id="spectateurs" name="spectateurs" placeholder="Spectateurs" value="0" required>
+                                <div class="help-block with-errors"></div>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="participants" class="col-sm-4 control-label">Nombre de participants <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chiffres uniquement."></span></label>
 							<div class="col-sm-8">
-								<input type="number" class="form-control" id="participants" name="participants" placeholder="Participants">
+								<input type="number" class="form-control risp" id="participants" name="participants" placeholder="Participants" value="0" required>
+                                <div class="help-block with-errors"></div>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="activite" class="col-sm-4 control-label">Activité du rassemblement </label>
 							<div class="col-sm-8">
-								<select class="form-control" id="activite" name="activite">
+								<select class="form-control risi" id="activite" name="activite" required>
 									<option value="1">Public assis (spectacle, réunion, restauration, etc.)</option>
 									<option value="2">Public debout (Exposition, foire, salon, exposition, etc.)</option>
 									<option value="3">Public debout actif (Spectacle avec public statique, fête foraine, etc.)</option>
 									<option value="4">Public debout à risque (public dynamique, danse, féria, carnaval, etc.)</option>
 								</select>
+                                <div class="help-block with-errors"></div>
 								<span class="help-block">Niveau de risque (P2)</span>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="environnement" class="col-sm-4 control-label">Environnement et accessibilité</label>
 							<div class="col-sm-8">
-								<select class="form-control" id="environnement" name="environnement">
+								<select class="form-control risi" id="environnement" name="environnement" required>
 									<option value="1">Faible (Structure permanente, voies publiques, etc.)</option>
 									<option value="2">Modéré (Gradins, tribunes, mois de 2 hectares, etc.)</option>
 									<option value="3">Moyen (Entre 2 et 5 hectares, autres conditions, etc.)</option>
 									<option value="4">Elevé (Brancardage > 600m, pas d'accès VPSP, etc.)</option>
 								</select>
+                                <div class="help-block with-errors"></div>
 								<span class="help-block">Caractéristiques de l'environnement et accessibilité du site (E1)</span>
+                                <div id="e1"></div>
+                                
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="delai" class="col-sm-4 control-label">Délai d'intervention des secours publics</label>
 							<div class="col-sm-8">
-								<select class="form-control" id="delai" name="delai">
+								<select class="form-control risi" id="delai" name="delai" required>
 									<option value="1">Faible (Moins de 10 minutes)</option>
 									<option value="2">Modéré (Entre 10 et 20 minutes)</option>
 									<option value="3">Moyen (Entre 20 et 30 minutes)</option>
 									<option value="4">Elevé (Plus de 30 minutes)</option>
 								</select>
+                                <div class="help-block with-errors"></div>
 								<span class="help-block">Délai d'intervention (E2)</span>
 							</div>
 						</div>
 						<textarea class="form-control" rows="4" id="commentaire_ris" name="commentaire_ris" placeholder="Indiquer ici tout commentaire(s) concernant le RIS"></textarea>
 						<span class="help-block">Commentaires concernant le RIS</span>
+                        
+                        <div class="alert " id="resultatris" role="alert">
+                            <h4>Grille d'évaluation des risques</h4>
+                            <span id="typeposte"></span><br>
+                            <span id="nbsec"></span><br>
+                            <span id="grosris"></span><br>                            
+                        </div>
+                        
 					</div>
 				</div>
 				
@@ -401,19 +433,21 @@ if(isset($_POST['duplicate_dps'])){
 							<label for="date_debut_poste" class="col-sm-4 control-label">Date et heure du début de poste</label>
 							<div class="col-sm-6">
 								<div class='input-group date' id='date_debut_poste' name="date_debut_poste">
-								<input type='text' class="form-control" id='date_debut_poste' name="date_debut_poste"/>
+								<input type='text' class="form-control" id='date_debut_poste' name="date_debut_poste" value="" required/>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 									</span>
 								</div>
+                                <div class="help-block with-errors"></div>
 							</div>
 							<div class="col-sm-2">
 								<div class='input-group date' id='heure_debut_poste' name="heure_debut_poste">
-								<input type='text' class="form-control" id='heure_debut_poste' name="heure_debut_poste"/>
+								<input type='text' class="form-control" id='heure_debut_poste' name="heure_debut_poste" required/>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 									</span>
 								</div>
+                                <div class="help-block with-errors"></div>
 							</div>
 							<script type="text/javascript">
 							$(function () {
@@ -422,7 +456,7 @@ if(isset($_POST['duplicate_dps'])){
 									format: 'YYYY-MM-DD',
 									showClear:true,
 									showClose:true,
-									toolbarPlacement: 'bottom'
+									toolbarPlacement: 'bottom',
 					
 								});
 							});
@@ -444,19 +478,21 @@ if(isset($_POST['duplicate_dps'])){
 							<label for="date_fin_poste" class="col-sm-4 control-label">Date et heure de fin de poste</label>
 							<div class="col-sm-6">
 								<div class='input-group date' id='date_fin_poste' name="date_fin_poste">
-								<input type='text' class="form-control" id='date_fin_poste' name="date_fin_poste"/>
+								<input type='text' class="form-control" id='date_fin_poste' name="date_fin_poste" required/>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 									</span>
 								</div>
+                                <div class="help-block with-errors"></div>
 							</div>
 							<div class="col-sm-2">
 								<div class='input-group date' id='heure_fin_poste' name="heure_fin_poste">
-								<input type='text' class="form-control" id='heure_fin_poste' name="heure_fin_poste"/>
+								<input type='text' class="form-control" id='heure_fin_poste' name="heure_fin_poste" required/>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 									</span>
 								</div>
+                                <div class="help-block with-errors"></div>
 							</div>
 							<script type="text/javascript">
 							$(function () {
@@ -489,19 +525,23 @@ if(isset($_POST['duplicate_dps'])){
 								<div class="form-group form-group-sm">
 									<label for="nb_ce" class="col-sm-4 control-label">Chef(s) d'équipe</label>
 									<div class="col-sm-2">
-										<input type="number" class="form-control" id="nb_ce" name="nb_ce" placeholder="00">
+										<input type="number" class="form-control" id="nb_ce" name="nb_ce" placeholder="00" required>
+                                        <div class="help-block with-errors"></div>
 									</div>
 									<label for="nb-pse2" class="col-sm-4 control-label">PSE2</label>
 									<div class="col-sm-2">
-										<input type="number" class="form-control" id="nb_pse2" name="nb_pse2" placeholder="00">
+										<input type="number" class="form-control" id="nb_pse2" name="nb_pse2" placeholder="00" required>
+                                        <div class="help-block with-errors"></div>
 									</div>
 									<label for="nb_pse1" class="col-sm-4 control-label">PSE1</label>
 									<div class="col-sm-2">
-										<input type="number" class="form-control" id="nb_pse1" name="nb_pse1" placeholder="00">
+										<input type="number" class="form-control" id="nb_pse1" name="nb_pse1" placeholder="00" required>
+                                        <div class="help-block with-errors"></div>
 									</div>
 									<label for="nb_psc1" class="col-sm-4 control-label">PSC1</label>
 									<div class="col-sm-2">
-										<input type="number" class="form-control" id="nb_psc1" name="nb_psc1" placeholder="00">
+										<input type="number" class="form-control" id="nb_psc1" name="nb_psc1" placeholder="00" required>
+                                        <div class="help-block with-errors"></div>
 									</div>
 								</div>
 							</div>
@@ -509,11 +549,13 @@ if(isset($_POST['duplicate_dps'])){
 								<div class="form-group form-group-sm">
 									<label for="vpsp_transport" class="col-sm-4 control-label">VPSP transport</label>
 									<div class="col-sm-2">
-										<input type="number" class="form-control" id="vpsp_transport" name="vpsp_transport" placeholder="00">
+										<input type="number" class="form-control" id="vpsp_transport" name="vpsp_transport" placeholder="00" required>
+                                        <div class="help-block with-errors"></div>
 									</div>
 									<label for="vpsp_soin" class="col-sm-4 control-label">VPSP soin</label>
 									<div class="col-sm-2">
-										<input type="number" class="form-control" id="vpsp_soin" name="vpsp_soin" placeholder="00">
+										<input type="number" class="form-control" id="vpsp_soin" name="vpsp_soin" placeholder="00" required>
+                                        <div class="help-block with-errors"></div>
 									</div>
 									<label for="vl" class="col-sm-4 control-label">Véhicule Léger</label>
 									<div class="col-sm-2">
@@ -577,7 +619,7 @@ if(isset($_POST['duplicate_dps'])){
 									<div class="col-sm-2">
 										<select class="form-control" id="samu" name="samu">
 											<option value="0">Ni informé, ni présent</option>
-											<option value="1">Informé, non présent</option>
+											<option value="1" selected>Informé, non présent</option>
 											<option value="2">Informé et présent</option>
 										</select>
 									</div>
@@ -628,6 +670,124 @@ if(isset($_POST['duplicate_dps'])){
 	$(function () {
 		$('[data-toggle="popover"]').popover()
 	})
+</script>
+<script type="text/javascript">
+var $date_debut = $("#date_debut");
+
+$("#date_debut_poste").keyup(function() {
+    $date_debut.val( this.value );
+});
+</script>
+<script type="text/javascript">
+							var i;
+							var p2 = "0,25";
+							var e1 = "0,25";
+							var e2 = "0,25";
+                            function displayVals() {
+								p2 = $("#activite").val();
+								e1 = $( "#environnement" ).val();
+								e2 = $( "#delai" ).val();
+								if (e1 == "1"){e1 = "25";}else if(e1 == "2"){e1 = "30";}else if(e1 == "3"){e1 = "35";}else{e1 = "40";}
+								if (e2 == "1"){e2 = "25";}else if(e2 == "2"){e2 = "30";}else if(e2 == "3"){e2 = "35";}else{e2 = "40";}
+								if (p2 == "1"){p2 = "25";}else if(p2 == "2"){p2 = "30";}else if(p2 == "3"){p2 = "35";}else{p2 = "40";}
+							if(e1 && e2 && p2 != "0"){
+								i = parseInt(p2,10) + parseInt(e1,10) + parseInt(e2,10);
+								i = i/100;
+								console.log("i = "+ i );
+							}
+							}
+							$( ".risi" ).change( displayVals );
+							displayVals();
+							
+							var valuep11;
+							var valuep12;
+							var p1;
+							p1 =0;
+							var p;
+							$( "#spectateurs" )
+							.keyup(function() {
+								valuep11 = $( this ).val();
+								console.log( valuep11 );
+							})
+							.keyup();
+							$( "#participants" )
+							.keyup(function() {
+								valuep12 = $( this ).val();
+								console.log( valuep12 );
+							})
+							.keyup();
+							
+							$( ".risp")
+							.keyup(function() {
+							p1 = parseInt(valuep11, 10) + parseInt(valuep12, 10);
+							$( "#p1" ).text( "P1 = "+p1 );
+							if(p1 <= 100000){
+								p = p1;
+							}else{
+								p = 100000 +(parseInt(p1) - 100000)/2;
+								p = Math.ceil(p);
+							}
+							console.log( "P = "+p );
+							})
+							.keyup();
+							
+							$( ".risp" )
+							.keyup(function() {
+								calculris();
+							})
+							.keyup();
+							$( ".risi" ).change(function() {
+								calculris();
+							});
+							$( ".risp" ).change(function() {
+								calculris();
+							});
+							
+							function calculris(){
+								var ristotal;
+								var ris;
+								ris = 0;
+								ristotal = 0;
+								if(p != 0){ristotal = i*(p/1000);}
+								if(ristotal != 0 && (ristotal*1000) <= 1125){
+									ris = 2;
+								}else if((ristotal*1000) > 1,125 && ristotal <= 4){
+									ris = 4;
+								}else if(ristotal > 4){
+									ris = Math.ceil(ristotal);
+									if(ris&1){
+										ris = ris +1;
+									}
+								}
+  								console.log( "RIS = "+ristotal );
+								var typedeposte;
+								$( "#nbsec" ).text( "Nombre de secouristes = "+ris );
+								
+							if(ris == 0){
+									$('#resultatris').addClass('hidden');
+							}else if(ris != 0 && ris <=2){
+								typedeposte = "PAPS";
+								$('#resultatris').addClass('alert-info');
+								$('#resultatris').removeClass('alert-warning');
+								$('#grosris').addClass('hidden');
+							}else if(ris >=4 && ris <=12){
+								typedeposte = "DPS-PE";
+								$('#resultatris').addClass('alert-info');
+								$('#resultatris').removeClass('alert-warning');
+								$('#grosris').addClass('hidden');
+							}else if(ris > 12 && ris <=36){
+								typedeposte = "DPS-ME";
+								$('#resultatris').addClass('alert-warning');
+								$('#grosris').removeClass('hidden');
+								$("#grosris").text("Attention, votre classification de poste implique un contact avec la DDO");
+							}else if(ris >36){
+								typedeposte = "DPS-GE";
+								$('#resultatris').addClass('alert-warning');
+								$('#grosris').removeClass('hidden');
+								$("#grosris").text("Attention, votre classification de poste implique un contact avec la DDO");
+							}
+							$( "#typeposte" ).text("Type de poste proposé : "+typedeposte);
+						}
 </script>
 </body>
 </html>
