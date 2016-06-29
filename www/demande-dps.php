@@ -241,7 +241,7 @@ if(isset($_POST['duplicate_dps'])){
                                 <div class="help-block with-errors"></div>
 							</div>
 						</div>
-						<div class="form-group form-group-sm form-inline row">
+						<div class="form-group form-group-sm form-inline row datetimestart">
 							<label for="date_debut" class="col-sm-4 control-label">Date et heure du début</label>
 							<div class="col-sm-6">
 								<div class='input-group date' id='date_debut' name="date_debut">
@@ -359,14 +359,14 @@ if(isset($_POST['duplicate_dps'])){
 						<div class="form-group form-group-sm">
 							<label for="spectateurs" class="col-sm-4 control-label">Nombre de spectateurs <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chiffres uniquement."></span></label>
 							<div class="col-sm-8">
-								<input type="number" class="form-control risp" id="spectateurs" name="spectateurs" placeholder="Spectateurs" value="0" required>
+								<input type="number" class="form-control risp" id="spectateurs" name="spectateurs" placeholder="Spectateurs" required>
                                 <div class="help-block with-errors"></div>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="participants" class="col-sm-4 control-label">Nombre de participants <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chiffres uniquement."></span></label>
 							<div class="col-sm-8">
-								<input type="number" class="form-control risp" id="participants" name="participants" placeholder="Participants" value="0" required>
+								<input type="number" class="form-control risp" id="participants" name="participants" placeholder="Participants" required>
                                 <div class="help-block with-errors"></div>
 							</div>
 						</div>
@@ -416,9 +416,9 @@ if(isset($_POST['duplicate_dps'])){
                         
                         <div class="alert " id="resultatris" role="alert">
                             <h4>Grille d'évaluation des risques</h4>
-                            <span id="typeposte"></span><br>
-                            <span id="nbsec"></span><br>
-                            <span id="grosris"></span><br>                            
+                            <p>Classification du type de poste : <strong><span id="typeposte"></span></strong><br>
+                            Nombre de secouristes : <strong><span id="nbsec"></span></strong></p>
+                            <p id="grosris"><strong><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Attention !</strong> Ce type de poste impose un contact avec la DDO.</p>                           
                         </div>
                         
 					</div>
@@ -670,15 +670,6 @@ if(isset($_POST['duplicate_dps'])){
 	$(function () {
 		$('[data-toggle="popover"]').popover()
 	})
-</script>
-<script type="text/javascript">
-var $date_debut = $("#date_debut");
-
-$("#date_debut_poste").keyup(function() {
-    $date_debut.val( this.value );
-});
-</script>
-<script type="text/javascript">
 							var i;
 							var p2 = "0,25";
 							var e1 = "0,25";
@@ -693,7 +684,7 @@ $("#date_debut_poste").keyup(function() {
 							if(e1 && e2 && p2 != "0"){
 								i = parseInt(p2,10) + parseInt(e1,10) + parseInt(e2,10);
 								i = i/100;
-								console.log("i = "+ i );
+								//console.log("i = "+ i );
 							}
 							}
 							$( ".risi" ).change( displayVals );
@@ -707,13 +698,13 @@ $("#date_debut_poste").keyup(function() {
 							$( "#spectateurs" )
 							.keyup(function() {
 								valuep11 = $( this ).val();
-								console.log( valuep11 );
+								//console.log( valuep11 );
 							})
 							.keyup();
 							$( "#participants" )
 							.keyup(function() {
 								valuep12 = $( this ).val();
-								console.log( valuep12 );
+								//console.log( valuep12 );
 							})
 							.keyup();
 							
@@ -727,7 +718,7 @@ $("#date_debut_poste").keyup(function() {
 								p = 100000 +(parseInt(p1) - 100000)/2;
 								p = Math.ceil(p);
 							}
-							console.log( "P = "+p );
+							//console.log( "P = "+p );
 							})
 							.keyup();
 							
@@ -759,9 +750,9 @@ $("#date_debut_poste").keyup(function() {
 										ris = ris +1;
 									}
 								}
-  								console.log( "RIS = "+ristotal );
+  								//console.log( "RIS = "+ristotal );
 								var typedeposte;
-								$( "#nbsec" ).text( "Nombre de secouristes = "+ris );
+								$( "#nbsec" ).text(ris );
 								
 							if(ris == 0){
 									$('#resultatris').addClass('hidden');
@@ -770,23 +761,25 @@ $("#date_debut_poste").keyup(function() {
 								$('#resultatris').addClass('alert-info');
 								$('#resultatris').removeClass('alert-warning');
 								$('#grosris').addClass('hidden');
+								$('#resultatris').removeClass('hidden');
 							}else if(ris >=4 && ris <=12){
 								typedeposte = "DPS-PE";
 								$('#resultatris').addClass('alert-info');
 								$('#resultatris').removeClass('alert-warning');
 								$('#grosris').addClass('hidden');
+								$('#resultatris').removeClass('hidden');
 							}else if(ris > 12 && ris <=36){
 								typedeposte = "DPS-ME";
 								$('#resultatris').addClass('alert-warning');
 								$('#grosris').removeClass('hidden');
-								$("#grosris").text("Attention, votre classification de poste implique un contact avec la DDO");
+								$('#resultatris').removeClass('hidden');
 							}else if(ris >36){
 								typedeposte = "DPS-GE";
 								$('#resultatris').addClass('alert-warning');
 								$('#grosris').removeClass('hidden');
-								$("#grosris").text("Attention, votre classification de poste implique un contact avec la DDO");
+								$('#resultatris').removeClass('hidden');
 							}
-							$( "#typeposte" ).text("Type de poste proposé : "+typedeposte);
+							$( "#typeposte" ).text(typedeposte);
 						}
 </script>
 </body>
