@@ -61,11 +61,10 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 <script src="js/fileinput.min.js" type="text/javascript"></script>
 <script src="js/fileinput_locale_fr.js" type="text/javascript"></script>
 <script src="js/bootstrap.file-input.js" type="text/javascript"></script>
+<script src="js/validator.js" type="text/javascript"></script>
 <div class="container">
 		<?php if ($_SESSION['privilege'] == "admin") {?>
-			<h2>Formulaire : Demande de DPS</h2>
-			<h3>Demande : <?php echo $cu; ?></h3>
-			
+			<h2>Edition de la demande de DPS <span class="bg-info"><?php echo $cu; ?></span></h2>
 			<?php
 			if($_SESSION['commune'] == "0"){
 			?>
@@ -277,7 +276,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 							</script>
 			</div>
 			
-			<form class="form-horizontal" role="form" action="traitement-demande-dps.php" method="post">
+			<form class="form-horizontal" data-toggle="validator" role="form" action="traitement-demande-dps.php" method="post">
 			<input type='hidden' name='update_id' value='<?php echo $dps['id'];?>'>
 				<div class="panel panel-default">
 					<div class="panel-heading">
@@ -287,25 +286,25 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 					<div class="form-group form-group-sm">
 						<label for="nom_organisation" class="col-sm-4 control-label">Nom de l'organisation <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom de la société, association, collectivité, etc."></span></label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="nom_organisation" name="nom_organisation" placeholder="Nom de l'organisation" value="<?php echo $dps['organisateur']; ?>">
+							<input type="text" class="form-control" id="nom_organisation" name="nom_organisation" placeholder="Nom de l'organisation" value="<?php echo $dps['organisateur']; ?>" required>
 						</div>
 					</div>
 					<div class="form-group form-group-sm">
 						<label for="represente_par" class="col-sm-4 control-label">Représenté par <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Personne qui représente l'organisation."></span></label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="represente_par" name="represente_par" placeholder="Représentant" value="<?php echo $dps['representant_org']; ?>">
+							<input type="text" class="form-control" id="represente_par" name="represente_par" placeholder="Représentant" value="<?php echo $dps['representant_org']; ?>"required>
 						</div>
 					</div>
 					<div class="form-group form-group-sm">
 						<label for="qualite" class="col-sm-4 control-label">Qualité <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Statut du représentant."></span></label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="qualite" name="qualite" placeholder="Qualité" value="<?php echo $dps['qualite_org'];?>">
+							<input type="text" class="form-control" id="qualite" name="qualite" placeholder="Qualité" value="<?php echo $dps['qualite_org'];?>"required>
 						</div>
 					</div>
 					<div class="form-group form-group-sm">
 						<label for="adresse" class="col-sm-4 control-label">Adresse postale <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Adresse, code postale, ville."></span></label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="adresse" name="adresse" placeholder="Adresse" value="<?php echo $dps['adresse_org'];?>">
+							<input type="text" class="form-control" id="adresse" name="adresse" placeholder="Adresse" value="<?php echo $dps['adresse_org'];?>"required>
 						</div>
 					</div>
 					<div class="form-group form-group-sm">
@@ -345,26 +344,26 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 						<div class="form-group form-group-sm">
 							<label for="nom_nature" class="col-sm-4 control-label">Nom / Nature <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Nom/Nature de la manifestation"></span></label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" id="nom_nature" name="nom_nature" placeholder="Nom / Nature" value="<?php echo $dps['description_manif'];?>">
+								<input type="text" class="form-control" id="nom_nature" name="nom_nature" placeholder="Nom / Nature" value="<?php echo $dps['description_manif'];?>"required>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="activite_descriptif" class="col-sm-4 control-label">Activité / Descriptif <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Descriptif court."></span></label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" id="activite_descriptif" name="activite_descriptif" placeholder="Activité / Descriptif" value="<?php echo $dps['activite'];?>">
+								<input type="text" class="form-control" id="activite_descriptif" name="activite_descriptif" placeholder="Activité / Descriptif" value="<?php echo $dps['activite'];?>"required>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="lieu_precis" class="col-sm-4 control-label">Lieu précis <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Adresse la plus précise possible du lieu de l'événement."></span></label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" id="lieu_precis" name="lieu_precis" placeholder="Adresse précise du lien de l'évenement" value="<?php echo $dps['adresse_manif'];?>">
+								<input type="text" class="form-control" id="lieu_precis" name="lieu_precis" placeholder="Adresse précise du lien de l'évenement" value="<?php echo $dps['adresse_manif'];?>"required>
 							</div>
 						</div>
 						<div class="form-group form-group-sm form-inline row">
 							<label for="date_debut" class="col-sm-4 control-label">Date et heure du début</label>
 							<div class="col-sm-6">
 								<div class='input-group date' id='date_debut' name="date_debut">
-								<input type='text' class="form-control" id='date_debut' name="date_debut"/>
+								<input type='text' class="form-control" id='date_debut' name="date_debut"required>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 									</span>
@@ -372,7 +371,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 							</div>
 							<div class="col-sm-2">
 								<div class='input-group date' id='heure_debut' name="heure_debut">
-								<input type='text' class="form-control" id='heure_debut' name="heure_debut"/>
+								<input type='text' class="form-control" id='heure_debut' name="heure_debut"required>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 									</span>
@@ -415,7 +414,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 							<label for="date_debut" class="col-sm-4 control-label">Date et heure de fin de poste</label>
 							<div class="col-sm-6">
 								<div class='input-group date' id='date_fin' name="date_fin">
-								<input type='text' class="form-control" id='date_fin' name="date_fin"/>
+								<input type='text' class="form-control" id='date_fin' name="date_fin" required>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 									</span>
@@ -423,7 +422,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 							</div>
 							<div class="col-sm-2">
 								<div class='input-group date' id='heure_fin' name="heure_fin">
-								<input type='text' class="form-control" id='heure_fin' name="heure_fin"/>
+								<input type='text' class="form-control" id='heure_fin' name="heure_fin" required>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 									</span>
@@ -467,14 +466,14 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 						<div class="form-group form-group-sm">
 							<label for="departement" class="col-sm-4 control-label">Département où se situe la manifestation <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Exemple : 92"></span></label>
 							<div class="col-sm-8">
-								<input type="number" class="form-control" id="departement" name="departement" placeholder="Département" value="<?php echo $dps['dept'];?>">
+								<input type="number" class="form-control" id="departement" name="departement" placeholder="Département" value="<?php echo $dps['dept'];?>"required>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="prix" class="col-sm-4 control-label">Prix <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Tarif facturé au client."></span></label>
 							<div class="col-sm-8">
 								<div class="input-group">
-									<input type="number" class="form-control" id="prix" name="prix" placeholder="Prix" value="<?php echo $dps['prix'];?>">
+									<input type="number" class="form-control" id="prix" name="prix" placeholder="Prix" value="<?php echo $dps['prix'];?>"required>
 									<div class="input-group-addon">euros
 									</div>
 								</div>
@@ -490,19 +489,19 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 						<div class="form-group form-group-sm">
 							<label for="spectateurs" class="col-sm-4 control-label">Nombre de spectateurs <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Chiffres uniquement."></span></label>
 							<div class="col-sm-8">
-								<input type="number" class="form-control" id="spectateurs" name="spectateurs" placeholder="Spectateurs" value="<?php echo $dps['p1_spec'];?>">
+								<input type="number" class="form-control risp" id="spectateurs" name="spectateurs" placeholder="Spectateurs" value="<?php if($dps['p1_spec'] == null){echo '0';}else{echo $dps['p1_spec'];};?>"required>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="participants" class="col-sm-4 control-label">Nombre de participants <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Chiffres uniquement."></span></label>
 							<div class="col-sm-8">
-								<input type="number" class="form-control" id="participants" name="participants" placeholder="Participants" value="<?php echo $dps['p1_part'];?>">
+								<input type="number" class="form-control risp" id="participants" name="participants" placeholder="Participants" value="<?php if($dps['p1_part'] == null){echo '0';}else{echo $dps['p1_part'];};?>"required>
 							</div>
 						</div>
 						<div class="form-group form-group-sm">
 							<label for="activite" class="col-sm-4 control-label">Activité du rassemblement </label>
 							<div class="col-sm-8">
-								<select class="form-control" id="activite" name="activite">
+								<select class="form-control risi" id="activite" name="activite">
 									<option value="1" <?php if($dps['p2'] == "1"){ echo "selected";}?>>Public assis (spectacle, réunion, restauration, etc.)</option>
 									<option value="2" <?php if($dps['p2'] == "2"){ echo "selected";}?>>Public debout (Exposition, foire, salon, exposition, etc.)</option>
 									<option value="3" <?php if($dps['p2'] == "3"){ echo "selected";}?>>Public debout actif (Spectacle avec public statique, fête foraine, etc.)</option>
@@ -514,7 +513,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 						<div class="form-group form-group-sm">
 							<label for="environnement" class="col-sm-4 control-label">Environnement et accessibilité</label>
 							<div class="col-sm-8">
-								<select class="form-control" id="environnement" name="environnement">
+								<select class="form-control risi" id="environnement" name="environnement">
 									<option value="1" <?php if($dps['e1'] == "1"){ echo "selected";}?>>Faible (Structure permanente, voies publiques, etc.)</option>
 									<option value="2" <?php if($dps['e1'] == "2"){ echo "selected";}?>>Modéré (Gradins, tribunes, mois de 2 hectares, etc.)</option>
 									<option value="3" <?php if($dps['e1'] == "3"){ echo "selected";}?>>Moyen (Entre 2 et 5 hectares, autres conditions, etc.)</option>
@@ -526,7 +525,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 						<div class="form-group form-group-sm">
 							<label for="delai" class="col-sm-4 control-label">Délai d'intervention des secours publics</label>
 							<div class="col-sm-8">
-								<select class="form-control" id="delai" name="delai">
+								<select class="form-control risi" id="delai" name="delai">
 									<option value="1" <?php if($dps['e2'] == "1"){ echo "selected";}?>>Faible (Moins de 10 minutes)</option>
 									<option value="2" <?php if($dps['e2'] == "2"){ echo "selected";}?>>Modéré (Entre 10 et 20 minutes)</option>
 									<option value="3" <?php if($dps['e2'] == "3"){ echo "selected";}?>>Moyen (Entre 20 et 30 minutes)</option>
@@ -537,6 +536,12 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 						</div>
 						<textarea class="form-control" rows="4" id="commentaire_ris" name="commentaire_ris" placeholder="Indiquer ici tout commentaire(s) concernant le RIS"><?php echo $dps['comment_ris'];?></textarea>
 						<span class="help-block">Commentaires concernant le RIS</span>
+                        <div class="alert " id="resultatris" role="alert">
+                            <h4>Grille d'évaluation des risques</h4>
+                            <p>Classification du type de poste : <strong><span id="typeposte"></span></strong><br>
+                            Nombre de secouristes : <strong><span id="nbsec"></span></strong></p>
+                            <p id="grosris"><strong><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Attention !</strong> Ce type de poste impose un contact avec la DDO.</p>                           
+                       </div>
 					</div>
 				</div>
 				
@@ -549,7 +554,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 							<label for="date_debut_poste" class="col-sm-4 control-label">Date et heure du début de poste</label>
 							<div class="col-sm-6">
 								<div class='input-group date' id='date_debut_poste' name="date_debut_poste">
-								<input type='text' class="form-control" id='date_debut_poste' name="date_debut_poste"/>
+								<input type='text' class="form-control" id='date_debut_poste' name="date_debut_poste"required>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 									</span>
@@ -557,7 +562,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 							</div>
 							<div class="col-sm-2">
 								<div class='input-group date' id='heure_debut_poste' name="heure_debut_poste">
-								<input type='text' class="form-control" id='heure_debut_poste' name="heure_debut_poste"/>
+								<input type='text' class="form-control" id='heure_debut_poste' name="heure_debut_poste"required>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 									</span>
@@ -600,7 +605,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 							<label for="date_debut_poste" class="col-sm-4 control-label">Date et heure de fin de poste</label>
 							<div class="col-sm-6">
 								<div class='input-group date' id='date_fin_poste' name="date_fin_poste">
-								<input type='text' class="form-control" id='date_fin_poste' name="date_fin_poste"/>
+								<input type='text' class="form-control" id='date_fin_poste' name="date_fin_poste"required>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 									</span>
@@ -608,7 +613,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 							</div>
 							<div class="col-sm-2">
 								<div class='input-group date' id='heure_fin_poste' name="heure_fin_poste">
-								<input type='text' class="form-control" id='heure_fin_poste' name="heure_fin_poste"/>
+								<input type='text' class="form-control" id='heure_fin_poste' name="heure_fin_poste"required>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 									</span>
@@ -774,7 +779,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 				echo "<input type='hidden' name='num_cu' value='".$dps['num_cu']."'>";
 ?>
 				
-				
+				<!-- ATTENTION - LA VALIDATION NE FONCTIONNE PAS SUR ENVOYER : REVOIR FONCTIONNEMENT FORMULAIRE GLOBAL-->
 				<div class="form-group">
 					<div class="col-sm-4">
 						<button type="submit" class="btn btn-warning">Mettre à jour</button>
@@ -911,7 +916,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 
 		}
 	</script>
-	<script>
+	<script type="text/javascript">
 jQuery.fx.off = true
 $("#changeconv").click(function() {
 	$("#rowconvention").removeAttr('hidden')
@@ -922,6 +927,121 @@ $("#changerisk").click(function() {
 $("#changedem").click(function() {
 	$("#rowdemande").removeAttr('hidden')
 	$("#changedemande").toggle("hidden")});
+	
+								var i;
+							var p2 = "0,25";
+							var e1 = "0,25";
+							var e2 = "0,25";
+                            function displayVals() {
+								p2 = $("#activite").val();
+								e1 = $( "#environnement" ).val();
+								e2 = $( "#delai" ).val();
+								if (e1 == "1"){e1 = "25";}else if(e1 == "2"){e1 = "30";}else if(e1 == "3"){e1 = "35";}else{e1 = "40";}
+								if (e2 == "1"){e2 = "25";}else if(e2 == "2"){e2 = "30";}else if(e2 == "3"){e2 = "35";}else{e2 = "40";}
+								if (p2 == "1"){p2 = "25";}else if(p2 == "2"){p2 = "30";}else if(p2 == "3"){p2 = "35";}else{p2 = "40";}
+							if(e1 && e2 && p2 != "0"){
+								i = parseInt(p2,10) + parseInt(e1,10) + parseInt(e2,10);
+								i = i/100;
+								//console.log("i = "+ i );
+							}
+							}
+							$( ".risi" ).change( displayVals );
+							displayVals();
+							
+							var valuep11;
+							var valuep12;
+							var p1;
+							p1 =0;
+							var p;
+							$( "#spectateurs" )
+							.keyup(function() {
+								valuep11 = $( this ).val();
+								//console.log( valuep11 );
+							})
+							.keyup();
+							$( "#participants" )
+							.keyup(function() {
+								valuep12 = $( this ).val();
+								//console.log( valuep12 );
+							})
+							.keyup();
+							
+							$( ".risp")
+							.keyup(function() {
+							p1 = parseInt(valuep11, 10) + parseInt(valuep12, 10);
+							$( "#p1" ).text( "P1 = "+p1 );
+							if(p1 <= 100000){
+								p = p1;
+							}else{
+								p = 100000 +(parseInt(p1) - 100000)/2;
+								p = Math.ceil(p);
+							}
+							//console.log( "P = "+p );
+							})
+							.keyup();
+							
+							$( ".risp" )
+							.keyup(function() {
+								calculris();
+							})
+							.keyup();
+							$( ".risi" ).change(function() {
+								calculris();
+							});
+							$( ".risp" ).change(function() {
+								calculris();
+							});
+							
+							function calculris(){
+								var ristotal;
+								var ris;
+								ris = 0;
+								ristotal = 0;
+								if(p != 0){ristotal = i*(p/1000);}
+								if(ristotal != 0 && (ristotal*1000) <= 1125){
+									ris = 2;
+								}else if((ristotal*1000) > 1,125 && ristotal <= 4){
+									ris = 4;
+								}else if(ristotal > 4){
+									ris = Math.ceil(ristotal);
+									if(ris&1){
+										ris = ris +1;
+									}
+								}
+  								//console.log( "RIS = "+ristotal );
+								var typedeposte;
+								$( "#nbsec" ).text(ris );
+								
+							if(ris == 0){
+									$('#resultatris').addClass('hidden');
+							}else if(ris != 0 && ris <=2){
+								typedeposte = "PAPS";
+								$('#resultatris').addClass('alert-info');
+								$('#resultatris').removeClass('alert-warning');
+								$('#grosris').addClass('hidden');
+								$('#resultatris').removeClass('hidden');
+							}else if(ris >=4 && ris <=12){
+								typedeposte = "DPS-PE";
+								$('#resultatris').addClass('alert-info');
+								$('#resultatris').removeClass('alert-warning');
+								$('#grosris').addClass('hidden');
+								$('#resultatris').removeClass('hidden');
+							}else if(ris > 12 && ris <=36){
+								typedeposte = "DPS-ME";
+								$('#resultatris').addClass('alert-warning');
+								$('#grosris').removeClass('hidden');
+								$('#resultatris').removeClass('hidden');
+							}else if(ris >36){
+								typedeposte = "DPS-GE";
+								$('#resultatris').addClass('alert-warning');
+								$('#grosris').removeClass('hidden');
+								$('#resultatris').removeClass('hidden');
+							}
+							$( "#typeposte" ).text(typedeposte);
+						}
+	
+	
+	
 	
 	</script>
 <?php include 'footer.php'; ?>
