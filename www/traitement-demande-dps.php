@@ -40,7 +40,7 @@ if(isset($_POST['refus'])){
 $id = $_POST['refus'];
 $motif_refus = $_POST['motif_refus'];
 $administration = $_POST['commentaire_refus'];
-$date_empty = null;
+$date_empty = "0000-00-00";
 $query_update = "UPDATE demande_dps SET valid_demande_rt='$date_empty', motif_annul='$motif_refus', administration='$administration', etat_demande_dps='2' WHERE id='$id'";
 mysqli_query($link, $query_update);
 header("Location: list-dps.php");}
