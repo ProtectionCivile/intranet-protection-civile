@@ -796,7 +796,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 			
 			
 			
-<!-- Modal -->
+<!-- Modal refus -->
 <div class="modal fade" id="ModalRefus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
