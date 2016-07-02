@@ -55,18 +55,18 @@ $settings_array = mysqli_fetch_array($query_result);
 			<li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administration <span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-				<li><a href="membres.php">Ajouter un utilisateur</a></li>
-				<li><a href="liste-membres.php">Liste des utilisateurs</a></li>
-        <li><a href="user-view.php">Gestion des utilisateurs</a></li>
-				<li><a href="liste-commune.php">Liste des communes</a></li>
-				<li><a href="liste-settings.php">Liste des paramètres</a></li>
-				<li><a href="liste-settings_mail.php">Liste des paramètres mail</a></li>
-					<li class="divider"></li>
-					<li class="dropdown-header">Sécurité</li>
-				<li><a href="role.php">Gestion des rôles (OLD)</a></li>
-        <li><a href="role-view.php">Gestion des rôles</a></li>
-        <li><a href="permission-view.php">Gestion des permissions</a></li>
-        <li><a href="view-all-users-with-roles.php">Audit des rôles d'utilisateurs</a></li>
+                <li class="dropdown-header">Réglages communs</li>
+                <li><a href="user-view.php">Gestion des utilisateurs</a></li>
+        				<li><a href="liste-commune.php">Liste des communes</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Paramètres</li>
+        				<li><a href="liste-settings.php">Liste des paramètres</a></li>
+        				<li><a href="liste-settings_mail.php">Liste des paramètres mail</a></li>
+        				<li class="divider"></li>
+        				<li class="dropdown-header">Sécurité</li>
+                <li><a href="role-view.php">Gestion des rôles</a></li>
+                <li><a href="permission-view.php">Gestion des permissions</a></li>
+                <li><a href="view-all-users-with-roles.php">Audit des rôles d'utilisateurs</a></li>
               </ul>
             </li>
 <?php }?>
