@@ -87,7 +87,7 @@ echo "<div class='alert alert-success'><strong>Réussi</strong> : ".$succes."</d
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<button type="submit" class="btn btn-warning" id="submit">Envoyer</button>
-						<a class="btn btn-default" role="button" href="liste-settings.php">Retour</a>
+						<a class="btn btn-default" role="button" href="liste-settings_mail.php">Retour</a>
 				    </div>
 				</div>
 			</div>
