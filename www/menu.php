@@ -40,16 +40,14 @@
               </ul>
             </li>
 			<li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Adminsitration <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-				<li><a href="membres.php">Ajouter un utilisateur</a></li>
-				<li><a href="liste-membres.php">Liste des utilisateurs</a></li>
-				<li><a href="liste-commune.php">Liste des communes</a></li>
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Adminsitration <span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
+				  <li><a href="liste-commune.php">Liste des communes</a></li>
 					<li class="divider"></li>
 					<li class="dropdown-header">Super Admin</li>
-				<li><a href="role.php">Gestion des rôles</a></li>
-              </ul>
-            </li>
+				  <li><a href="role.php">Gestion des rôles</a></li>
+        </ul>
+      </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
 		  <li class="dropdown">
