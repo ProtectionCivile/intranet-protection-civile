@@ -22,7 +22,7 @@
 				'X-Mailer: PHP/' . phpversion();
 				
 				foreach($_POST['lists'] as $mailinglistName){
-					$subject=$cmd." ".$mailinglistName."@".$domainName." ".$mailAccount;
+					$subject=$cmd." ".$mailinglistName." ".$mailAccount;
 					$res = mail($to, $subject, $message, $headers);
 					if ($res) {
 						$nbSuccess++;
