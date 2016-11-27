@@ -37,20 +37,20 @@
 		<!-- Update mailing list : Operation status indicator -->
 		<?php include 'functions/operation-status-indicator.php'; ?>
 
-		<h2>Modifier une liste de diffusion</h2>
+		<h2>Gestion des abonnements aux listes de diffusion</h2>
 
 
-		<!-- Update mailing list : display form -->
+		<!-- Add subscriber to mailing list : display form -->
 		<div class="panel panel-info">
 			<div class="panel-heading">
-				<h3 class="panel-title">Ajouter un compte mail à des listes</h3>
+				<h3 class="panel-title">Abonner un compte mail</h3>
 			</div>
 			<div class="panel-body">
 				<form class="form-horizontal" id="updatemailinglistForm" action='' role="form" method='post' accept-charset='utf-8'>
 					<input type="hidden" name="addUser">
 					<label for="mailAccount" class="col-sm-4 control-label">Nom du compte mail</label>
 					<div class="input-group col-sm-4">
-						<input type="text" class="form-control" id="mailAccount" name="mailAccount" aria-describedby="inputError2Status" placeholder="martin.smith">
+						<input type="text" class="form-control" id="mailAccount" name="mailAccount" placeholder="ex: martin.smith">
 						<div class="input-group-addon">@protectioncivile92.org</div>
 					</div>
 
@@ -159,10 +159,35 @@
 						</label>
 					</div>
 					
-					
+					<br />
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-8">
-							<button type="submit" class="btn btn-warning" id='submitAddUserForm'>Confirmer !</button>
+							<button type="submit" class="btn btn-warning" id='submitAddUserForm'>Abonner</button>
+					   </div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+
+		<!-- Remove subscriber from mailing lists : display form -->
+		<div class="panel panel-info">
+			<div class="panel-heading">
+				<h3 class="panel-title">Désabonner un compte mail de toutes les listes</h3>
+			</div>
+			<p>Attention l'utilisateur sera retiré de <strong>toutes</strong> les listes de diffusion. A utiliser avec précaution</p>
+			<div class="panel-body">
+				<form class="form-horizontal" id="updatemailinglistForm" action='' role="form" method='post' accept-charset='utf-8'>
+					<input type="hidden" name="delUser">
+					<label for="mailAccount" class="col-sm-4 control-label">Nom du compte mail</label>
+					<div class="input-group col-sm-4">
+						<input type="text" class="form-control" id="mailAccount" name="mailAccount" placeholder="ex: martin.smith">
+						<div class="input-group-addon">@protectioncivile92.org</div>
+					</div>
+					<br />
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-8">
+							<button type="submit" class="btn btn-danger" id='submitAddUserForm'>Retirer de toutes les listes !</button>
 					   </div>
 					</div>
 				</form>
@@ -174,35 +199,5 @@
 
 <?php include 'footer.php'; ?>
 
-<script>
-
-$('#updatemailinglistForm').validate({
-        rules: {
-            inputUserLastName: {
-                minlength: 2,
-                maxlength: 30,
-                required: true
-            },
-		},
-		
-        highlight: function(element) {
-            $(element).closest('.form-group').addClass('has-error');
-			$('#submit').addClass('disabled');
-        },
-        unhighlight: function(element) {
-            $(element).closest('.form-group').removeClass('has-error');
-			$('#submit').removeClass('disabled');
-        },
-        errorElement: 'span',
-        errorClass: 'help-block',
-        errorPlacement: function(error, element) {
-            if(element.parent('.input-group').length) {
-                error.insertAfter(element.parent());
-            } else {
-                error.insertAfter(element);
-            }
-        }
-    });
-</script>
 </body>
 </html>
