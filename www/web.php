@@ -2,6 +2,7 @@
 
 // On charges les librairies principales (logger, etc...)
 include __DIR__.'/lib/logger.php';
+include __DIR__.'/lib/conf.php';
 
 // On active le logger
 lib\logger\logger_register();
