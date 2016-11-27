@@ -77,6 +77,8 @@ VALUES (1, 1, UNIX_TIMESTAMP()),
 INSERT INTO `rbac_roles` (`Title`, `Description`, `Directory`, `Assignable`, `Phone`, `Mail`, `Callsign`, `Affiliation`)
 VALUES ('Administrateur', 'root', FALSE,FALSE,'','','',NULL),
  ('Président', 'Président Départemental', TRUE, TRUE, '06123456789', 'president@protectioncivile92.org', 'AUTORITE 92', 0),
+ ('Secrétaire', 'Secrétaire Général', TRUE, TRUE, '0676457981', 'secretaire-general@protectioncivile92.org', 'SECRETAIRE 92', 0),
+ ('Trésorier', 'Trésorier', TRUE, TRUE, '0676457981', 'tresorier@protectioncivile92.org', 'TRESORIER 92', 0),
  ('DDO', 'Directeur Départemental des Opérations', TRUE, TRUE, '06123456789', 'directeur-operations@protectioncivile92.org', 'OPE 92', 0),
  ('DLO Courbevoie', 'Directeur Local des Opérations', TRUE, TRUE, '0674728980', 'operationnel-courbevoie@protectioncivile92.org', 'OPE Courbevoie', 13);
 
