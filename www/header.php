@@ -1,4 +1,9 @@
 <?php
+require_once ('PhpRbac/src/PhpRbac/Rbac.php');
+use PhpRbac\Rbac;
+$rbac = new Rbac();
+$userID = 7;
+
 $query = "SELECT valid_demande_rt, valid_demande_dps, annee_poste FROM demande_dps WHERE valid_demande_rt NOT LIKE '0000-00-00' AND valid_demande_dps LIKE '0000-00-00'";
 $number_dps = mysqli_query($link, $query);
 $row_cnt = mysqli_num_rows($number_dps);
@@ -29,7 +34,7 @@ $settings_array = mysqli_fetch_array($query_result);
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Operationnel <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li class="dropdown-header">Direction départementale</li>
-						<li><a href="list-dps.php?filter=en-attente">A traîter <span class="badge"><?php echo $row_cnt;?></span></a></li>
+						<li><a href="list-dps.php?filter=en-attente">A traiter <span class="badge"><?php echo $row_cnt;?></span></a></li>
 						<li class="divider"></li>
 						<li class="dropdown-header">Gestion des DPS</li>
 						<li><a href="list-dps.php?commune=<?php echo $_SESSION["commune"]; ?>">Liste des DPS de l'Antenne</a></li>
@@ -53,9 +58,12 @@ $settings_array = mysqli_fetch_array($query_result);
 				</li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Informatique <span class="caret"></span></a>
+					
 					<ul class="dropdown-menu" role="menu">
 						<li class="dropdown-header">Informatique</li>
+						<?php if ($rbac->check("admin-mailinglist-manage", $userID)) {?>
 						<li><a href="mailinglist-manage.php">Listes de diffusion</a></li>
+						<?php } ?>
 					</ul>
 				</li>
 
