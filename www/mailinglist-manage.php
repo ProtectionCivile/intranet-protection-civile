@@ -2,6 +2,9 @@
 	include 'securite.php';
 	require_once('connexion.php');
 	include 'functions/str.php';
+	require_once ('PhpRbac/src/PhpRbac/Rbac.php');
+	use PhpRbac\Rbac;
+	$rbac = new Rbac();
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +28,11 @@
 	<li class="active">Gestion des listes de diffusion</li>
 </ol>
 
+	<!-- Authentication -->
+	<?php 
+	 $userID = 7; // TODO TO BE CHANGED
+	$rbac->enforce("admin-mailinglist-manage", $userID); 
+	?>
 
 
 	<!-- Update mailing list : Controller -->
