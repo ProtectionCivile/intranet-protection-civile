@@ -1,0 +1,4 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+RewriteRule ^([a-z/-]+).php$ web.php
