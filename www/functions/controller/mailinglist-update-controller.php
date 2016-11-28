@@ -1,5 +1,5 @@
 <?php
-	$rbac->enforce("admin-mailinglist-manage", $userID); 
+	$rbac->enforce("admin-mailinglist-manage", $currentUserID); 
 
 	if($_POST['mailAccount'] == "" && (isset($_POST['delUser']) || isset($_POST['addUser']) )){
 		$genericError = "Impossible de faire un opération sur une liste de diffusion avec un compte mail inconnu";

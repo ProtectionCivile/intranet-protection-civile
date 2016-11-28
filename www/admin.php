@@ -12,7 +12,7 @@ include 'securite.php';
 </head>
 <body>
 <?php
-include 'header.php';
+include ('components/header.php');
 if ($_SESSION['privilege'] == "admin") {
 	
 $login = $_post['prenom'].'.'.$_post['nom'];
@@ -182,7 +182,7 @@ do {
     <p align="center"><span class="Style6">Script par <a href="http://www.borrat.net">DB</a></span><br />
 	Mise &agrave; jour php5 + cryptage sha1 par aventurier19</p>
 <?php } ?>
-<?php include 'footer.php';
+<?php include ('components/footer.php');
 if ($_SESSION['privilege'] == "user") { ?>
 	Page interdite. <?php }?>
 </body>
