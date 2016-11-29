@@ -1,4 +1,6 @@
 <?php
+	require_once('functions/str.php');
+	
 	if (isset($_POST['addUser'])){
 		$lastName = str_replace("'","", $_POST['inputUserLastName']);
 		$lastNameDB = strtolower(str_replace(" ","-", $lastName));

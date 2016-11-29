@@ -1,4 +1,5 @@
 <?php
+	require_once('functions/str.php');
 
 	if (empty($commonError)){
 
