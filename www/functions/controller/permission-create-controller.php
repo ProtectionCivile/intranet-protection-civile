@@ -7,6 +7,10 @@
 			$genericError = "Le titre de la permission est obligatoire";
 			$createErrorTitle = "Le titre de la permission est obligatoire";
 		}
+		if($description == ""){
+			$genericError = "La description de la permission est obligatoire";
+			$createErrorDesc = "La description de la permission est obligatoire";
+		}
 		else {
 			$check_query = "SELECT ID FROM rbac_permissions WHERE Title='$title'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
 			$verif = mysqli_query($link, $check_query);
