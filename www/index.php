@@ -18,9 +18,20 @@ if (isset($_GET['notallowed'])){
 ?>
 
 <div class="container">
-	<p>Bonjour <?php echo $currentUserFirstName; ?> ,
-	Bienvenue dans votre espace sécurisé.</p>
+	<center><img src='img/logo.png'/></center>
 
+	<p>Bonjour <strong><?php echo $currentUserFirstName; ?></strong>, bienvenue dans votre espace sécurisé.</p>
+	<p>Vous pouvez sélectionner une action en vous aidant du menu ci-dessus.</p>
+	<p>Seules les opérations accessibles à votre niveau d'accréditation sont visibles; Si vous constatez une erreur, merci de nous en informer par mail : <a href='mailto:directeur-adj-informatique@protectioncivile92.org'>directeur-adj-informatique@protectioncivile92.org</a></p>
+	
+	Vous avez les rôles suivants : 
+	<?php
+		$roles = $rbac->Users->allRoles($currentUserID);
+		foreach ($roles as &$role) {
+		    echo "<li>".$role['Description']."</li>";
+		}
+	?>
+	<br />
 	<?php if ($rbac->check("admin-users-update", $currentUserID)) { ?>
 		<strong>En tant que gérant des utilisateurs vous pouvez effectuer les actions suivantes : </strong><br />
 		<a href="user-view.php">Gérer les utilisateurs</a><br />
@@ -31,7 +42,7 @@ if (isset($_GET['notallowed'])){
 		<strong>En tant que gestionnaire des listes de diffusion, vous pouvez effectuer les actions suivantes</strong> <br />
 		<a href="mailinglist-manage.php">Gérer les listes de diffusion</a><br />
 	<?php } ?>
-
+	<br />
 	<p align="left"><a href="logout.php"><strong>Déconnexion</strong></a></p>
 </div>
 
