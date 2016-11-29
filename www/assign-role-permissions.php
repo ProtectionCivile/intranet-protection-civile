@@ -132,12 +132,12 @@
 							
 							if ($rbac->Roles->hasPermission($roleID, $permissionID)) {
 								?>
-								<button type="button" class="btn btn-default btn-xs active" title="<?php echo $permissionDescription;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionTitle;?></button>
+								<button type="button" class="btn btn-default btn-xs active" title="<?php echo $permissionTitle;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionDescription." (".$permissionTitle.")";?></button>
 								<?php
 							}
 							else {
 								?>
-								<button type="button" class="btn btn-default btn-xs" title="<?php echo $permissionDescription;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionTitle;?></button>
+								<button type="button" class="btn btn-default btn-xs" title="<?php echo $permissionTitle;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionDescription." (".$permissionTitle.")";?></button>
 								<?php
 							}
 
