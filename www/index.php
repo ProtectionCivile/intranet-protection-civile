@@ -18,11 +18,13 @@ if (isset($_GET['notallowed'])){
 ?>
 
 <div class="container">
-	<center><img src='img/logo.png'/></center>
 
-	<p>Bonjour <strong><?php echo $currentUserFirstName; ?></strong>, bienvenue dans votre espace sécurisé.</p>
-	<p>Vous pouvez sélectionner une action en vous aidant du menu ci-dessus.</p>
-	<p>Seules les opérations accessibles à votre niveau d'accréditation sont visibles; Si vous constatez une erreur, merci de nous en informer par mail : <a href='mailto:directeur-adj-informatique@protectioncivile92.org'>directeur-adj-informatique@protectioncivile92.org</a></p>
+	<p class="bg-success">Bonjour <strong><?php echo $currentUserFirstName; ?></strong>, bienvenue dans votre espace sécurisé</p>
+	
+	<center><img class="img-responsive" src='img/logo.png'/></center>
+	<h2 class="text-center">Protection Civile des Hauts-de-Seine</h2>
+
+	<p>Vous pouvez sélectionner une action en vous aidant du menu ci-dessus. Seules les opérations accessibles à votre niveau d'accréditation sont visibles; Si vous constatez une erreur, merci de nous en informer par mail : <a href='mailto:directeur-adj-informatique@protectioncivile92.org'>directeur-adj-informatique@protectioncivile92.org</a></p>
 	
 	Vous avez les rôles suivants : 
 	<?php
