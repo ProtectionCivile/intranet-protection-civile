@@ -59,12 +59,13 @@
 					<div class="panel-heading">Permissions</div>
 					<div class="panel-body">
 						<?php 
-							$query = "SELECT P.ID, P.Title FROM rbac_rolepermissions AS RP INNER JOIN rbac_permissions AS P ON RP.PermissionId=P.ID WHERE RP.RoleId='$roleID' ORDER BY P.Title" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+							$query = "SELECT P.ID, P.Title, P.Description FROM rbac_rolepermissions AS RP INNER JOIN rbac_permissions AS P ON RP.PermissionId=P.ID WHERE RP.RoleId='$roleID' ORDER BY P.Title" or die("Erreur lors de la consultation" . mysqli_error($link)); 
 							$permissions = mysqli_query($link, $query);
 							while($permission = mysqli_fetch_array($permissions)) { 
 								$permissionID=$permission["ID"];
 								$permissionTitle=$permission["Title"];
-								echo $permissionTitle.", ";
+								$permissionDesc=$permission["Description"];
+								echo $permissionDesc." (".$permissionTitle.")<br />";
 							}
 						?>
 					</div>
@@ -81,7 +82,7 @@
 								$userID=$row["ID"];
 								$userFirstName=$row["first_name"];
 								$userLastName=$row["last_name"];
-								echo $userFirstName." ".$userLastName.", ";
+								echo $userFirstName." ".$userLastName."<br />";
 							}
 						?>
 					</div>
