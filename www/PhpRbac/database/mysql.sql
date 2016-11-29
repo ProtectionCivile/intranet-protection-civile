@@ -51,24 +51,8 @@ CREATE TABLE IF NOT EXISTS `rbac_userroles` (
  */
 
 INSERT INTO `rbac_permissions` (`Title`, `Description`)
-VALUES ('admin-roles-view', 'Voir les rôles'),
- ('admin-roles-update', 'Modifier les rôles'),
- ('admin-permissions-view', 'Voir les permissions'),
- ('admin-permissions-update', 'Modifier les permissions'),
- ('admin-asssign-permissions-to-roles', 'Assigner les permissions'),
- ('ope-dps-create-own', 'Créer un DPS sur sa commune'),
- ('ope-dps-view-own', 'Voir les DPS de sa commune'),
- ('ope-dps-create-all', 'Créer un DPS sur toute commune'),
- ('ope-dps-view-all', 'Voir les DPS de toutes les communes'),
- ('ope-dps-validate-local', 'Valider une demande de DPS pour sa commune'),
- ('ope-dps-validate-ddo-to-pref', 'Envoyer une demande de DPS à la Préfecture'),
- ('admin-users-view', 'Voir les membres'),
- ('admin-users-update', 'Modifier les membres'),
- ('admin-mailinglist-manage', 'Gestion des listes de diffusion'),
- ('admin-commune-view', 'Voir les communes'),
- ('admin-commune-update', 'Modifier les communes'),
- ('directory-view', 'Voir annuaire'),
- ('directory-update', 'Modifier annuaire');
+VALUES ('useless', 'Sans utilité'),
+ (;
 
 
 INSERT INTO `rbac_rolepermissions` (`RoleID`, `PermissionID`, `AssignmentDate`)
