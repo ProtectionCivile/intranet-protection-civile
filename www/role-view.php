@@ -41,13 +41,16 @@
 					<th>ID</th>
 					<th>Titre</th>
 					<th>Description</th>
-					<th>Utilisation</th>
-					<th>Modifier</th>
-					<th>Permissions</th>
-					<th>Supprimer</th>
+					<th>Tél</th>
+					<th>Mail</th>
+					<th>Affiliation</th>
+					<th>Ind. Radio</th>
+					<th>Assignable</th>
+					<th>Annuaire</th>
+					<th colspan='4'>Opérations</th>
 				</tr>
 				<?php 
-				$query = "SELECT ID, Title, Description FROM rbac_roles ORDER by ID ASC";
+				$query = "SELECT * FROM rbac_roles ORDER by ID ASC";
 				$roles = mysqli_query($link, $query);
 				while($role = mysqli_fetch_array($roles)) { ?>
 					<tr>
@@ -55,36 +58,68 @@
 							<?php echo $role["ID"]; ?>
 						</td>
 						<td>
-							<?php echo $role["Title"]."<br />(".$rbac->Roles->getPath($role["ID"]).")";?>
+							<span title='.<?php echo $rbac->Roles->getPath($role["ID"]); ?>.'><?php echo $role["Title"];?></span>
 						</td>
 						<td>
 							<?php echo $role["Description"]; ?>
 						</td>
 						<td>
+							<?php echo $role["Phone"]; ?>
+						</td>
+						<td>
+							<?php echo $role["Mail"]; ?>
+						</td>
+						<td>
+							<?php 
+							$qc = "SELECT nom FROM commune WHERE numero='".$role["Affiliation"]."'";
+							$qcr = mysqli_query($link, $qc);
+							$c = mysqli_fetch_assoc($qcr);
+							echo $c['nom'];
+							?>
+						</td>
+						<td>
+							<?php echo $role["Callsign"]; ?>
+						</td>
+						<td align="center">
+							
+							<?php if($role["Assignable"]) { ?>
+								<span class='glyphicon glyphicon-ok' />
+							<?php } else { ?>
+								<span class='glyphicon glyphicon-remove' />
+							<?php } ?>
+						</td>
+						<td align="center">
+							<?php if($role["Directory"]) { ?>
+								<span class='glyphicon glyphicon-ok' />
+							<?php } else { ?>
+								<span class='glyphicon glyphicon-remove' />
+							<?php } ?>
+						</td>
+						<td>
 							<form action='role-usage.php' method='post' accept-charset='utf-8'>
 								<input type='hidden' name='roleID' value=<?php echo "'".$role['ID']."'"; ?> >
-								<button type='submit' class='btn btn-default'>Voir utilisation</button>
+								<button type='submit' class='btn btn-default glyphicon glyphicon-zoom-in' title="Voir utilisation"></button>
 							</form>
 						</td>
 						<td>
 							<form action='role-edit.php' method='post' accept-charset='utf-8'>
 								<input type='hidden' name='roleID' value=<?php echo "'".$role['ID']."'"; ?> >
-								<button type='submit' class='btn btn-warning'>Modifier</button>
+								<button type='submit' class='btn btn-warning glyphicon glyphicon-pencil' title="Modifier"></button>
 							</form>
 						</td>
 						<td>
 							<form action='assign-role-permissions.php' method='post' accept-charset='utf-8'>
 								<input type='hidden' name='roleID' value=<?php echo "'".$role['ID']."'"; ?> >
-								<button type='submit' class='btn btn-warning'>Permissions</button>
+								<button type='submit' class='btn btn-warning glyphicon glyphicon-check' title="Permissions"></button>
 							</form>
 						</td>
 						<td>
 							<form action='' method='post' accept-charset='utf-8'>
 								<input type='hidden' name='delRole' value=<?php echo "'".$role['ID']."'"; ?> >
 								<?php if (in_array($role['Title'], $undeletableRoles)) { ?>
-									<button type='submit' class='btn btn-danger' disabled='disabled'>Supprimer</button>
+									<button type='submit' class='btn btn-danger glyphicon glyphicon-trash' title="Supprimer" disabled='disabled'></button>
 								<?php } else { ?>
-									<button type='submit' class='btn btn-danger' onclick='return(confirm("Etes-vous sûr de vouloir supprimer le rôle?"));'>Supprimer</button>
+									<button type='submit' class='btn btn-danger glyphicon glyphicon-trash' title="Supprimer" onclick='return(confirm("Etes-vous sûr de vouloir supprimer le rôle?"));'></button>
 								<?php }?>
 							</form>
 						</td>
