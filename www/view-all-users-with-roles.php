@@ -18,12 +18,9 @@
 	<li class="active">Audit des rôles</li>
 </ol>
 
-<!-- Common -->
-<?php 
-	// {
-?>
 
-
+<!-- Authentication -->
+<?php $rbac->enforce("admin-users-view", $currentUserID); ?>
 	
 <!-- Page content container -->
 <div class="container">
