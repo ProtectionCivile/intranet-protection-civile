@@ -585,7 +585,7 @@ $rbac->Roles->assign('CM-CODEP', 'admin-communes-view');
 $rbac->Roles->assign('CM-CODEP', 'directory-view');
 
 
-$rbac->Users->assign('DDT-I', $_SESSION["ID"]);
+$rbac->Users->assign('root', $_SESSION["ID"]);
 /////////////////////////////////////////////////
 // END OF INSTALLATION SCRIPT
 /////////////////////////////////////////////////
