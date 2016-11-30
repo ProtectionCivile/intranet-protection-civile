@@ -47,7 +47,7 @@
 					<div class="panel-heading">Utilisateurs</div>
 					<div class="panel-body">
 						<?php 
-							$query = "SELECT U.id_user, U.nom, U.prenom FROM rbac_rolepermissions AS RP INNER JOIN membres AS U ON RP.PermissionId=U.id_user WHERE R.ID='$roleID' ORDER BY U.nom" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+							$query = "SELECT U.id_user, U.nom, U.prenom FROM rbac_rolepermissions AS RP INNER JOIN users AS U ON RP.PermissionId=U.id_user WHERE R.ID='$roleID' ORDER BY U.nom" or die("Erreur lors de la consultation" . mysqli_error($link)); 
 							$users = mysqli_query($link, $query);
 							while($user = mysqli_fetch_array($users)) { 
 								$userID=$permission["id_user"];
