@@ -1,6 +1,6 @@
 <?php
 	
-	$undeletableRoles=array("Admin");
+	$undeletableRoles=array("Admin", "DDT-I", "Secrétaire");
 
 	if (isset($_POST['delRole'])){
 		$id = str_replace("'","", $_POST['delRole']);
@@ -16,7 +16,7 @@
 				$genericError = "Le rôle en question n'existe pas";
 			}
 			else {
-				$roleTitle = $rbac->Roles->getTitle($id);
+				$roleTitle = utf8_encode($rbac->Roles->getTitle($id));
 				if (in_array($roleTitle, $undeletableRoles)) { 
 					$genericError = "Il est interdit de supprimer le rôle '".$roleTitle."'";
 				}

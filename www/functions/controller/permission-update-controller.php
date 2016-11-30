@@ -3,13 +3,13 @@
 		$title=$_POST['inputPermissionTitle'];
 	}
 	else {
-		$title=$rbac->Permissions->getTitle($permissionID);
+		$title=utf8_encode($rbac->Permissions->getTitle($permissionID));
 	}
 	if (isset($_POST['inputPermissionDescription'])) {
 		$description=$_POST['inputPermissionDescription'];
 	}
 	else {
-		$description=$rbac->Permissions->getDescription($permissionID);
+		$description=utf8_encode($rbac->Permissions->getDescription($permissionID));
 	}
 	if (isset($_POST['updatePermission'])) {	
 		$check_query = "SELECT ID FROM rbac_permissions WHERE Title='$title'" or die("Erreur lors de la consultation" . mysqli_error($link)); 

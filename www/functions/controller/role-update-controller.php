@@ -3,13 +3,13 @@
 		$title=$_POST['inputRoleTitle'];
 	}
 	else {
-		$title=$rbac->Roles->getTitle($roleID);
+		$title=utf8_encode($rbac->Roles->getTitle($roleID));
 	}
 	if (isset($_POST['inputRoleDescription'])) {
 		$description=$_POST['inputRoleDescription'];
 	}
 	else {
-		$description=$rbac->Roles->getDescription($roleID);
+		$description=utf8_encode($rbac->Roles->getDescription($roleID));
 	}
 	
 	if (isset($_POST['updateRole'])) {	
@@ -64,7 +64,7 @@
 				$exec = mysqli_query($link, $check_query);
 			}
 			if (isset($_POST['inputRoleTitle'])) {
-				$check_query = "UPDATE rbac_roles SET `Titre`='".$title."' WHERE ID=".$roleID or die("Erreur lors de la consultation" . mysqli_error($link)); 
+				$check_query = "UPDATE rbac_roles SET `Title`='".$title."' WHERE ID=".$roleID or die("Erreur lors de la consultation" . mysqli_error($link)); 
 				$exec = mysqli_query($link, $check_query);
 			}
 			if (isset($_POST['inputRoleDescription'])) {
