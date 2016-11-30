@@ -121,7 +121,7 @@
 					<div class="col-sm-8">
 						<select class="form-control" id="inputUserSection" name="inputUserSection">
 							<?php							
-								$reqliste = "SELECT ID, name FROM sections" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+								$reqliste = "SELECT number, name FROM sections" or die("Erreur lors de la consultation" . mysqli_error($link)); 
 								$sections = mysqli_query($link, $reqliste);
 								while($section = mysqli_fetch_array($sections)) {
 									echo "<option value='".$section["number"]."'>".$section["name"]."</option>";

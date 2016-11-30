@@ -74,10 +74,10 @@
 						</td>
 						<td>
 							<?php 
-							$qc = "SELECT nom FROM commune WHERE numero='".$role["Affiliation"]."'";
+							$qc = "SELECT name FROM sections WHERE number='".$role["Affiliation"]."'";
 							$qcr = mysqli_query($link, $qc);
 							$c = mysqli_fetch_assoc($qcr);
-							echo $c['nom'];
+							echo $c['name'];
 							?>
 						</td>
 						<td>
