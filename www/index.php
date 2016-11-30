@@ -1,7 +1,7 @@
 <?php require_once('functions/session/security.php'); ?>
 <html>
 <head>
- 	<title>Accueil</title>
+	<title>Accueil</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +30,10 @@ if (isset($_GET['notallowed'])){
 	<?php
 		$roles = $rbac->Users->allRoles($currentUserID);
 		foreach ($roles as &$role) {
-		    echo "<li>".$role['Description']."</li>";
+			$query = "SELECT nom FROM commune WHERE numero='".$role['Affiliation']."'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+			$cities = mysqli_query($link, $query);
+			$city = mysqli_fetch_array($cities);
+			echo "<li>".utf8_encode($role['Description'])." (".$city['nom'].")</li>";
 		}
 	?>
 	<br />

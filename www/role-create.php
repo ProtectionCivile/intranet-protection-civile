@@ -20,6 +20,9 @@
 </ol>
 
 
+<!-- Authentication -->
+<?php $rbac->enforce("admin-roles-update", $currentUserID); ?>
+
 
 <!-- Create a new role : Controller -->
 <?php include 'functions/controller/role-create-controller.php'; ?>
@@ -29,7 +32,7 @@
 <div class="container">
 
 	<!-- Update role : Operation status indicator -->
-	<?php include 'functions/operation-status-indicator.php'; ?>
+	<?php include 'components/operation-status-indicator.php'; ?>
 
 	<h2>Gestion des roles</h2>
 

@@ -115,7 +115,7 @@
 				<h3 class="panel-title">Permissions associées au rôle</h3>
 			</div>
 			<div class="panel-body">
-				<form id="permrole" class="form-horizontal" action='assign-role-permissions.php' method='post' accept-charset='utf-8'>
+				<form id="permrole" class="form-horizontal" action='role-assign-permissions.php' method='post' accept-charset='utf-8'>
 					<input type="hidden" name="roleID" value="<?php echo $roleID;?>">
 					<input type="hidden" name="permissionID" id="permissionID" value="undefined">
 				
@@ -132,12 +132,12 @@
 							
 							if ($rbac->Roles->hasPermission($roleID, $permissionID)) {
 								?>
-								<button type="button" class="btn btn-default btn-xs active" title="<?php echo $permissionTitle;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionDescription." (".$permissionTitle.")";?></button>
+								<button type="button" class="btn btn-default btn-xs active" title="<?php echo $permissionTitle;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionDescription;?></button>
 								<?php
 							}
 							else {
 								?>
-								<button type="button" class="btn btn-default btn-xs" title="<?php echo $permissionTitle;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionDescription." (".$permissionTitle.")";?></button>
+								<button type="button" class="btn btn-default btn-xs" title="<?php echo $permissionTitle;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionDescription;?></button>
 								<?php
 							}
 

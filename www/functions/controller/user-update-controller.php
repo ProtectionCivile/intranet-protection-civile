@@ -1,6 +1,10 @@
 <?php
 	require_once('functions/str.php');
 
+	//Authentication 
+	$rbac->enforce("admin-users-update", $currentUserID);
+
+
 	if (empty($commonError)){
 
 		if (isset($_POST['inputUserLastName'])) {

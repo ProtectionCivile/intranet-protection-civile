@@ -20,6 +20,9 @@
 
 
 
+<!-- Authentication -->
+<?php $rbac->enforce("admin-permissions-update", $currentUserID); ?>
+
 
 <!-- Create a new permission by title : Controller -->
 <?php include 'functions/controller/permission-create-controller.php'; ?>
@@ -29,7 +32,7 @@
 <div class="container">
 
 	<!-- Update permission : Operation status indicator -->
-	<?php include 'functions/operation-status-indicator.php'; ?>
+	<?php include 'components/operation-status-indicator.php'; ?>
 
 
 	

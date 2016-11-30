@@ -77,8 +77,8 @@ $settings_array = mysqli_fetch_array($query_result);
 						if ($rbac->check("admin-settings-view", $currentUserID)) {
 							?> <li class="divider" /> <?php
 							?> <li class="dropdown-header">Paramètres</li> <?php
-							?> <li><a href="liste-settings.php">Liste des paramètres</a></li> <?php
-							?> <li><a href="liste-settings_mail.php">Liste des paramètres mail</a></li> <?php
+							?> <li><a href="settings-view.php">Liste des paramètres</a></li> <?php
+							?> <li><a href="mailsettings-view.php">Liste des paramètres mail</a></li> <?php
 						} 
 
 						if ($rbac->check("admin-roles-view", $currentUserID) || $rbac->check("admin-permissions-view", $currentUserID)) {

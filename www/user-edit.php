@@ -22,6 +22,11 @@
 </ol>
 
 
+
+<!-- Authentication -->
+<?php $rbac->enforce("admin-users-update", $currentUserID); ?>
+
+
 <!-- Common -->
 <?php include 'functions/controller/user-common.php'; ?>
 
@@ -31,7 +36,7 @@
 
 
 	<!-- Update user : Controller -->
-	<?php include 'functions/controller/user-update-controller.php'; ?>
+	<?php include 'components/controller/user-update-controller.php'; ?>
 
 
 	<!-- Page content container -->

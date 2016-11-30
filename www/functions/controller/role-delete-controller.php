@@ -1,5 +1,6 @@
 <?php
 	
+
 	$undeletableRoles=array("Admin", "DDT-I", "Secrétaire");
 
 	if (isset($_POST['delRole'])){

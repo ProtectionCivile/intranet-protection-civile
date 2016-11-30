@@ -18,6 +18,10 @@
 </ol>
 
 
+<!-- Authentication -->
+<?php $rbac->enforce("admin-permissions-view", $currentUserID); ?>
+
+
 <!-- Delete a permission : Controller -->
 <?php include 'functions/controller/permission-delete-controller.php'; ?>
 
@@ -26,7 +30,7 @@
 <div class="container">
 
 	<!-- Update permission : Operation status indicator -->
-	<?php include 'functions/operation-status-indicator.php'; ?>
+	<?php include 'components/operation-status-indicator.php'; ?>
 
 	
 	<h2>Gestion des permissions</h2>
@@ -43,9 +47,7 @@
 					<th>ID</th>
 					<th>Titre</th>
 					<th>Description</th>
-					<th>Utilisation</th>
-					<th>Modifier</th>
-					<th>Supprimer</th>
+					<th colspan='3'>Opérations</th>
 				</tr>
 				<?php 
 				$query = "SELECT ID, Title, Description FROM rbac_permissions ORDER by ID ASC";
@@ -56,7 +58,7 @@
 							<?php echo $permission["ID"]; ?>
 						</td>
 						<td>
-							<?php echo $permission["Title"]."<br />(".$rbac->Permissions->getPath($permission["ID"]).")";?>
+							<?php echo $permission["Title"]."<br />(".utf8_encode($rbac->Permissions->getPath($permission["ID"])).")";?>
 						</td>
 						<td>
 							<?php echo $permission["Description"]; ?>
@@ -64,30 +66,36 @@
 						<td>
 							<form action='permission-view-usage.php' method='post' accept-charset='utf-8'>
 								<input type='hidden' name='permissionID' value=<?php echo "'".$permission['ID']."'"; ?> >
-								<button type='submit' class='btn btn-default'>Voir utilisation</button>
+								<button type='submit' class='btn btn-default glyphicon glyphicon-eye-open' title="Voir utilisation"></button>
 							</form>
 						</td>
 						<td>
-							<form action='permission-edit.php' method='post' accept-charset='utf-8'>
-								<input type='hidden' name='permissionID' value=<?php echo "'".$permission['ID']."'"; ?> >
-								<button type='submit' class='btn btn-warning'>Modifier</button>
-							</form>
+							<?php if ($rbac->check("admin-permissions-update", $currentUserID)) { ?>
+									<form action='permission-edit.php' method='post' accept-charset='utf-8'>
+									<input type='hidden' name='permissionID' value=<?php echo "'".$permission['ID']."'"; ?> >
+									<button type='submit' class='btn btn-warning glyphicon glyphicon-pencil' title="Modifier"></button>
+								</form>
+							<?php } ?>
 						</td>
 						<td>
-							<form action='' method='post' accept-charset='utf-8'>
-								<input type='hidden' name='delPermission' value=<?php echo "'".$permission['ID']."'"; ?> >
-								<?php if (in_array($permission['Title'], $undeletablePermissions)) { ?>
-									<button type='submit' class='btn btn-danger' disabled='disabled'>Supprimer</button>
-								<?php } else { ?>
-									<button type='submit' class='btn btn-danger' onclick='return(confirm("Etes-vous sûr de vouloir supprimer la permission ainsi que toutes ses subordonnées?"));'>Supprimer</button>
-								<?php }?>
-							</form>
+							<?php if ($rbac->check("admin-permissions-update", $currentUserID)) { ?>
+								<form action='' method='post' accept-charset='utf-8'>
+									<input type='hidden' name='delPermission' value=<?php echo "'".$permission['ID']."'"; ?> >
+									<?php if (in_array($permission['Title'], $undeletablePermissions)) { ?>
+										<button type='submit' class='btn btn-danger glyphicon glyphicon-trash' title="Supprimer" disabled='disabled' onclick='return(confirm("Etes-vous sûr de vouloir supprimer la permission ainsi que toutes ses subordonnées?"));'></button>
+									<?php } else { ?>
+										<button type='submit' class='btn btn-danger glyphicon glyphicon-trash' title="Supprimer" onclick='return(confirm("Etes-vous sûr de vouloir supprimer la permission ainsi que toutes ses subordonnées?"));'></button>
+									<?php }?>
+								</form>
+							<?php } ?>
 						</td>
 					</tr>
 				<?php } ?>
 			</table>
 		</div>
-		<div class="panel-footer"><a class="btn btn-default" role="button" href="permission-create.php">Ajouter une permission</a></div>
+		<?php if ($rbac->check("admin-permissions-update", $currentUserID)) { ?>
+			<div class="panel-footer"><a class="btn btn-default" role="button" href="permission-create.php">Ajouter une permission</a></div>
+		<?php } ?>
 	</div>		
 
 </div>

@@ -1,4 +1,8 @@
 <?php
+	
+	//Authentication 
+	$rbac->enforce("admin-roles-update", $currentUserID);
+
 	if (isset($_POST['inputRoleTitle'])) {
 		$title=$_POST['inputRoleTitle'];
 	}

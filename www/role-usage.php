@@ -18,6 +18,11 @@
 	<li class="active">Utilisation</li>
 </ol>
 
+
+<!-- Authentication -->
+<?php $rbac->enforce("admin-roles-view", $currentUserID); ?>
+
+
 <!-- Common -->
 <?php 
 	$roleID = str_replace("'","", $_POST['roleID']);

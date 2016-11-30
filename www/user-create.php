@@ -22,6 +22,9 @@
 </ol>
 
 
+<!-- Authentication -->
+<?php $rbac->enforce("admin-users-update", $currentUserID); ?>
+
 
 <!-- Create a new user : Controller -->
 <?php include 'functions/controller/user-create-controller.php'; ?>
@@ -31,7 +34,7 @@
 <div class="container">
 
 	<!-- Update user : Operation status indicator -->
-	<?php include 'functions/operation-status-indicator.php'; ?>
+	<?php include 'components/operation-status-indicator.php'; ?>
 
 	<h2>Gestion des utilisateurs</h2>
 

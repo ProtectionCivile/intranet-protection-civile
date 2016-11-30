@@ -1,4 +1,7 @@
 <?php
+	//Authentication 
+	$rbac->enforce("admin-permissions-update", $currentUserID);
+
 	if (isset($_POST['inputPermissionTitle'])) {
 		$title=$_POST['inputPermissionTitle'];
 	}
@@ -26,7 +29,7 @@
 			$updateErrorTitle = "Il est interdit de mettre à jour la permission '".$title."'";
 		}
 		else {
-			$perm_id = $rbac->Permissions->edit($permissionID, $title, $description);
+			$perm_id = $rbac->Permissions->edit($permissionID, utf8_decode($title), utf8_decode($description));
 			if (!$perm_id){
 				$genericError = "Echec de la mise à jour (ID=".$permissionID.")";
 			}

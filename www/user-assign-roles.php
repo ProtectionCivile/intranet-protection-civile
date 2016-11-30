@@ -84,7 +84,7 @@
 				<h3 class="panel-title">Rôles associés à l'utilisateur</h3>
 			</div>
 			<div class="panel-body">
-				<form id="roleuser" class="form-horizontal" action='assign-role-users.php' method='post' accept-charset='utf-8'>
+				<form id="roleuser" class="form-horizontal" action='user-assign-roles.php' method='post' accept-charset='utf-8'>
 					<input type="hidden" name="userID" value="<?php echo $userID;?>">
 					<input type="hidden" name="roleID" id="roleID" value="undefined">
 				

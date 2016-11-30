@@ -18,6 +18,12 @@
 	<li class="active">Utilisation</li>
 </ol>
 
+
+
+<!-- Authentication -->
+<?php $rbac->enforce("admin-permissions-view", $currentUserID); ?>
+
+
 <!-- Common -->
 <?php 
 	$permissionID = str_replace("'","", $_POST['permissionID']);

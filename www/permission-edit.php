@@ -19,6 +19,11 @@
 </ol>
 
 
+
+<!-- Authentication -->
+<?php $rbac->enforce("admin-permissions-update", $currentUserID); ?>
+
+
 <!-- Common -->
 <?php include 'functions/controller/permission-common.php'; ?>
 
@@ -35,7 +40,7 @@
 		
 
 		<!-- Update permission : Operation status indicator -->
-		<?php include 'functions/operation-status-indicator.php'; ?>
+		<?php include 'components/operation-status-indicator.php'; ?>
 
 		<h2>Modifier la permission '<?php echo $permissionTitle ?>'</h2>
 

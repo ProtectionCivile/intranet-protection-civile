@@ -18,6 +18,11 @@
 	<li class="active">Modification</li>
 </ol>
 
+
+<!-- Authentication -->
+<?php $rbac->enforce("admin-roles-update", $currentUserID); ?>
+
+
 <!-- Common -->
 <?php include 'functions/controller/role-common.php'; ?>
 
@@ -33,7 +38,7 @@
 	<div class="container">
 
 		<!-- Update role : Operation status indicator -->
-		<?php include 'functions/operation-status-indicator.php'; ?>
+		<?php include 'components/operation-status-indicator.php'; ?>
 
 
 		<h2>Modifier le rôle '<?php echo $roleTitle ?>'</h2>
@@ -48,10 +53,6 @@
 				<form class="form-horizontal" action='' method='post' accept-charset='utf-8'>
 					<input type="hidden" name="updateRole">
 					<input type="hidden" name="roleID" value="<?php echo $roleID;?>">
-
-					<?php
-					
-					?>
 				
 					<?php if (!empty($updateErrorTitle)){ ?>
 						<div class="form-group has-error has-feedback">
