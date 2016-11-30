@@ -1,4 +1,8 @@
 <?php
+	
+	//Authentication 
+	$rbac->enforce("admin-roles-update", $currentUserID);
+
 	if (isset($_POST['addRole'])){
 		$title = str_replace("'","", $_POST['inputRoleTitle']);
 		$description = str_replace("'","", $_POST['inputRoleDescription']);
@@ -16,7 +20,7 @@
 				$createErrorTitle = "Un rôle du même titre existe déjà";
 			}
 			else {
-				$perm_id = $rbac->Roles->add($title, $description);
+				$perm_id = $rbac->Roles->add(utf8_decode($title), utf8_decode($description));
 				if (!isset($perm_id) || $perm_id==-1){
 					$genericError = "Echec de la création (ID=".$perm_id.")";
 				}

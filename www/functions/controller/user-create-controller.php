@@ -1,4 +1,9 @@
 <?php
+	require_once('functions/str.php');
+	
+	//Authentication 
+	$rbac->enforce("admin-users-update", $currentUserID);
+
 	if (isset($_POST['addUser'])){
 		$lastName = str_replace("'","", $_POST['inputUserLastName']);
 		$lastNameDB = strtolower(str_replace(" ","-", $lastName));

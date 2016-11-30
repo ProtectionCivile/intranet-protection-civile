@@ -16,7 +16,7 @@
 				$genericError = "La permission en question n'existe pas";
 			}
 			else {
-				$permissionTitle = $rbac->Permissions->getTitle($id);
+				$permissionTitle = utf8_encode($rbac->Permissions->getTitle($id));
 				if (in_array($permissionTitle, $undeletablePermissions)) { 
 					$genericError = "Il est interdit de supprimer la permission '".$permissionTitle."'";
 				}

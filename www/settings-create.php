@@ -1,11 +1,28 @@
-<?php
-include 'securite.php';
-require_once('connexion.php');
-include 'functions/str.php';
-include 'functions/settings_queries.php';
-if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{ ?>
+<?php require_once('functions/session/security.php'); ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajout d'un paramètre</title>
+	<meta http-equiv="Content-Type" content="text/html">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+</head>
+<body>
+
+<?php 
+include('components/header.php'); 
+require_once('functions/settings_queries.php');
+require_once('functions/str.php');
+?>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
 
 <?php
+
+
+// Authentication
+$rbac->enforce("admin-settings-update", $currentUserID);
+
 // script de traitement
 
 if(isset($_POST['name'], $_POST['value'])){
@@ -29,18 +46,7 @@ if(isset($_POST['name'], $_POST['value'])){
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Ajout d'un paramètre</title>
-	<meta http-equiv="Content-Type" content="text/html";>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-</head>
-<body>
-<?php include 'header.php'; ?>
-<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+
 <div class="container">
 <?php
 if (!empty($erreur)){
@@ -73,13 +79,13 @@ echo "<div class='alert alert-success'><strong>Réussi</strong> : ".$succes."</d
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<button type="submit" class="btn btn-warning" id="submit">Envoyer</button>
-						<a class="btn btn-default" role="button" href="liste-settings.php">Retour</a>
+						<a class="btn btn-default" role="button" href="settings-view.php">Retour</a>
 				    </div>
 				</div>
 			</div>
 		</form>
 </div>
-<?php } include 'footer.php'; ?>
+<?php include 'footer.php'; ?>
 <script>
 
 $('#ajoutparametre').validate({

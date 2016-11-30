@@ -1,11 +1,19 @@
 <!-- Create a new permission by title : Controller -->
 <?php
+	
+	//Authentication 
+	$rbac->enforce("admin-permissions-update", $currentUserID);
+
 	if (isset($_POST['addPermission'])){
 		$title = str_replace("'","", $_POST['inputPermissionTitle']);
 		$description = str_replace("'","", $_POST['inputPermissionDescription']);
 		if($title == ""){
 			$genericError = "Le titre de la permission est obligatoire";
 			$createErrorTitle = "Le titre de la permission est obligatoire";
+		}
+		if($description == ""){
+			$genericError = "La description de la permission est obligatoire";
+			$createErrorDesc = "La description de la permission est obligatoire";
 		}
 		else {
 			$check_query = "SELECT ID FROM rbac_permissions WHERE Title='$title'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
@@ -17,7 +25,7 @@
 				$createErrorTitle = "Une permission du même titre existe déjà";
 			}
 			else {
-				$perm_id = $rbac->Permissions->add($title, $description);
+				$perm_id = $rbac->Permissions->add(utf8_decode($title), utf8_decode($description);
 				if (!isset($perm_id) || $perm_id==-1){
 					$genericError = "Echec de la création (ID=".$perm_id.")";
 				}
@@ -33,8 +41,8 @@
 <!-- Create a new permission by path : Controller -->
 <?php
 	if (isset($_POST['addPermissionPath'])){
-		$path = str_replace("'","", $_POST['inputPermissionPath']);
-		$descriptions = str_replace("'","", $_POST['inputPermissionDescriptions']);
+		$path = str_replace("'","", utf8_decode($_POST['inputPermissionPath']));
+		$descriptions = str_replace("'","", utf8_decode($_POST['inputPermissionDescriptions']);
 		if($path == ""){
 			$genericError = "Le titre de la permission est obligatoire";
 			$createErrorTitle = "Le titre de la permission est obligatoire";

@@ -1,15 +1,18 @@
 <?php
+	//Authentication 
+	$rbac->enforce("admin-permissions-update", $currentUserID);
+
 	if (isset($_POST['inputPermissionTitle'])) {
 		$title=$_POST['inputPermissionTitle'];
 	}
 	else {
-		$title=$rbac->Permissions->getTitle($permissionID);
+		$title=utf8_encode($rbac->Permissions->getTitle($permissionID));
 	}
 	if (isset($_POST['inputPermissionDescription'])) {
 		$description=$_POST['inputPermissionDescription'];
 	}
 	else {
-		$description=$rbac->Permissions->getDescription($permissionID);
+		$description=utf8_encode($rbac->Permissions->getDescription($permissionID));
 	}
 	if (isset($_POST['updatePermission'])) {	
 		$check_query = "SELECT ID FROM rbac_permissions WHERE Title='$title'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
@@ -26,7 +29,7 @@
 			$updateErrorTitle = "Il est interdit de mettre à jour la permission '".$title."'";
 		}
 		else {
-			$perm_id = $rbac->Permissions->edit($permissionID, $title, $description);
+			$perm_id = $rbac->Permissions->edit($permissionID, utf8_decode($title), utf8_decode($description));
 			if (!$perm_id){
 				$genericError = "Echec de la mise à jour (ID=".$permissionID.")";
 			}

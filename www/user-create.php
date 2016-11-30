@@ -1,9 +1,4 @@
-<?php
-	include 'securite.php';
-	require_once('connexion.php');
-	include 'functions/str.php';
-?>
-
+<?php require_once('functions/session/security.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +8,10 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
 </head>
-
 <body>
+<?php include('components/header.php'); ?>
 
-<?php include 'header.php'; ?>
+
 <script src="js/jquery.validate.min.js" type="text/javascript"></script>
 
 <ol class="breadcrumb">
@@ -27,6 +22,9 @@
 </ol>
 
 
+<!-- Authentication -->
+<?php $rbac->enforce("admin-users-update", $currentUserID); ?>
+
 
 <!-- Create a new user : Controller -->
 <?php include 'functions/controller/user-create-controller.php'; ?>
@@ -36,7 +34,7 @@
 <div class="container">
 
 	<!-- Update user : Operation status indicator -->
-	<?php include 'functions/operation-status-indicator.php'; ?>
+	<?php include 'components/operation-status-indicator.php'; ?>
 
 	<h2>Gestion des utilisateurs</h2>
 
@@ -150,7 +148,7 @@
 
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include('components/footer.php'); ?>
 
 <script>
 

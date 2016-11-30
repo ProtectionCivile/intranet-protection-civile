@@ -26,3 +26,10 @@ Modules apache :
 1. git clone https://github.com/ProtectionCivile/intranet-protection-civile.git
 2. Aller sur http://localhost/index.php
 
+3. Récupérer la BDD
+4. Installer PHPRbac (si ce n'est pas fait) en exécutant le script PhpRbac/database/MySql.sql dans PhpMyAdmin
+5. Installer les permissions et roles par défaut en :
+5a. se connectant à l'appli avec un compte d'admin
+5b. exécutant le script install/first_install.php?confirm
+
+
