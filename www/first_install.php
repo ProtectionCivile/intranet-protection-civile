@@ -534,7 +534,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 "); 
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.32.98.XX.XX', 
+	`Phone`='06.32.98.91.06', 
 	`Mail`='directeur-actions-sociales@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Acso 92',
@@ -558,7 +558,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 "); 
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.32.98.XX.XX', 
+	`Phone`='06.74.95.31.59', 
 	`Mail`='directeur-technique@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Tech 92',
@@ -570,7 +570,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 "); 
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+	`Phone`='06.74.95.31.62', 
 	`Mail`='directeur-adj-transmissions@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Tech 92 Alpha',
@@ -606,7 +606,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 "); 
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+	`Phone`='06.76.45.79.78', 
 	`Mail`='directeur-formations@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='For 92',
@@ -618,7 +618,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 "); 
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+	`Phone`='06.76.45.79.78', 
 	`Mail`='formation-ars@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -630,7 +630,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 "); 
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+	`Phone`='06.76.45.79.78', 
 	`Mail`='',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -642,7 +642,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 "); 
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+	`Phone`='06.76.45.79.78', 
 	`Mail`='formation-ceps@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -654,7 +654,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 "); 
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+	`Phone`='06.76.45.79.78', 
 	`Mail`='formation-conducteur@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -934,7 +934,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.66', 
-	`Mail`='permanence-bureau@protectioncivile92.org',
+	`Mail`='permanence-bureau@protectioncivile92.org', /////////////////////////
 	`Affiliation`='0',
 	`Callsign`='MICRO 92',
 	`Directory`='1',
@@ -2466,7 +2466,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 ");
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.73.49.32.44', 
+	`Phone`='', 
 	`Mail`='operationnel-adj-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='Opé Gennevilliers Alpha',
@@ -2502,7 +2502,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 ");
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+	`Phone`='06.73.49.32.44', 
 	`Mail`='formation-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='For Gennevilliers',
