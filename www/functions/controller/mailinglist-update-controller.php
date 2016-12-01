@@ -2,8 +2,8 @@
 	//Authentication 
 	$rbac->enforce("admin-mailinglist-manage", $currentUserID); 
 
-	if($_POST['mailAccount'] == "" && (isset($_POST['delUser']) || isset($_POST['addUser']) )){
-		$genericError = "Impossible de faire un opération sur une liste de diffusion avec un compte mail inconnu";
+	if($_POST['mailAccount'] == "" && ((isset($_POST['delUser']) || isset($_POST['addUser'])) )){
+		$genericError = "Entrez un compte mail valide svp !";
 	}
 	else {
 		$domainName="@protectioncivile92.org";
@@ -20,26 +20,31 @@
 			$nbErrors=0;
 			$nbSuccess=0;
 			$cmd="QUIET ADD";
-			foreach($_POST['lists'] as $mailinglistName){
-				$subject=$cmd." ".$mailinglistName." ".$mailAccount;
-				$res = mail($to, $subject, $message, $headers);
-				if ($res) {
-					$nbSuccess++;
-				}
-				else {
-					$nbErrors++;
-				}
+			if (count($_POST['lists']) == 0) {
+				$genericError = "Sélectionnez au-moins une liste de diffusion !";
 			}
-
-			// Display result
-			if ($nbErrors==0) {
-    			$genericSuccess = "Le compte mail '".$mailAccount."' a été abonné à ".$nbSuccess." liste(s) de diffusion";
-    		}
-    		else {
-				$genericError = "Le compte mail '".$mailAccount."' a été abonné à ".$nbSuccess." liste(s) de diffusion et ".$nbErrors." sont en erreur";
+			else {
+				foreach($_POST['lists'] as $mailinglistName){
+					$subject=$cmd." ".$mailinglistName." ".$mailAccount;
+					$res = mail($to, $subject, $message, $headers);
+					if ($res) {
+						$nbSuccess++;
+					}
+					else {
+						$nbErrors++;
+					}
+				}
+				
+				// Display result
+				if ($nbErrors==0) {
+	    			$genericSuccess = "Le compte mail '".$mailAccount."' a été abonné à ".$nbSuccess." liste(s) de diffusion";
+	    		}
+	    		else {
+					$genericError = "Le compte mail '".$mailAccount."' a été abonné à ".$nbSuccess." liste(s) de diffusion et ".$nbErrors." sont en erreur";
+				}
 			}
 		}
-		if (isset($_POST['delUser'])){
+		elseif (isset($_POST['delUser'])){
 			$cmd="QUIET DEL";
 			$mailinglistName="*";
 			$subject=$cmd." ".$mailinglistName." ".$mailAccount;
