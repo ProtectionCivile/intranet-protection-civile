@@ -45,7 +45,7 @@ if (isset($_GET['notallowed'])){
 
 	<?php if ($rbac->check("admin-mailinglist-manage", $currentUserID)) { ?>
 		<strong>En tant que gestionnaire des listes de diffusion, vous pouvez effectuer les actions suivantes</strong> <br />
-		<a href="mailinglist-manage.php">Gérer les listes de diffusion</a><br />
+		<a href="mailinglist-add.php">Gérer les listes de diffusion</a><br />
 	<?php } ?>
 	<br />
 	<p align="left"><a href="logout.php"><strong>Déconnexion</strong></a></p>
