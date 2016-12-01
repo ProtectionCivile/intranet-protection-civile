@@ -25,44 +25,62 @@
 <!-- Page content container -->
 <div class="container">
 
-	<h2>Audit des rôles</h2>
-
-
 	<?php 
-	$query = "SELECT ID, Title FROM rbac_roles" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-	$roles = mysqli_query($link, $query);
-	while($role = mysqli_fetch_array($roles)) { 
-		$roleID=$role["ID"];
-		$roleTitle=$role["Title"];
-		?>
-		<!-- Role usage : Container -->
-		<div class="panel panel-info">
-			<div class="panel-heading">
-				<h3 class="panel-title"><?php echo $roleTitle ?></h3>
-			</div>
-			<div class="panel-body">
+	$query = "SELECT ID, name, number FROM sections WHERE attached_section=number" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+	$cities = mysqli_query($link, $query);
+	while($city = mysqli_fetch_array($cities)) { 
+		echo "<a href='view-all-users-with-roles.php?city=".$city['number']."'>".$city['name']."</a>, ";
+	}
 
-				<!-- Role usage : See users with role -->
-				<div class="panel panel-default">
-					<div class="panel-heading">Utilisateurs</div>
-					<div class="panel-body">
-						<?php 
-							$query = "SELECT U.id_user, U.nom, U.prenom FROM rbac_rolepermissions AS RP INNER JOIN users AS U ON RP.PermissionId=U.id_user WHERE R.ID='$roleID' ORDER BY U.nom" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-							$users = mysqli_query($link, $query);
-							while($user = mysqli_fetch_array($users)) { 
-								$userID=$permission["id_user"];
-								$userFirstName=$permission["prenom"];
-								$userLastName=$permission["nom"];
-								echo $prenom." ".$nom.", ";
-							}
-						?>
+	if (!isset($_GET['city'])) {
+		?>  
+		<br />
+		<div class='alert alert-info' role='alert'>
+  			Sélectionner une commune dans la liste
+		</div>
+		<?php
+	}
+	else {
+		$city=$_GET['city'];
+		?>
+	
+		<h2>Audit des rôles</h2>
+
+		<?php 
+		$query = "SELECT ID, Title FROM rbac_roles WHERE Affiliation=".$city or die("Erreur lors de la consultation" . mysqli_error($link)); 
+		$roles = mysqli_query($link, $query);
+		while($role = mysqli_fetch_array($roles)) { 
+			$roleID=$role["ID"];
+			$roleTitle=$role["Title"];
+			?>
+			<!-- Role usage : Container -->
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title"><?php echo $roleTitle ?></h3>
+				</div>
+				<div class="panel-body">
+
+					<!-- Role usage : See users with role -->
+					<div class="panel panel-default">
+						<div class="panel-heading">Utilisateurs</div>
+						<div class="panel-body">
+							<?php 
+								$query = "SELECT U.first_name, U.last_name FROM users AS U INNER JOIN rbac_userroles AS UR on U.ID=UR.UserID WHERE UR.RoleID=".$roleID." ORDER BY U.last_name" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+								$users = mysqli_query($link, $query);
+								while($user = mysqli_fetch_array($users)) { 
+									$userFirstName=$user["first_name"];
+									$userLastName=$user["last_name"];
+									echo $userFirstName." ".$userLastName.", ";
+								}
+							?>
+						</div>
 					</div>
+
 				</div>
 
 			</div>
-
-		</div>
-		<?php
+			<?php
+		}
 	}
 	?>
 	

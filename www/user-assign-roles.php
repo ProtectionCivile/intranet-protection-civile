@@ -26,54 +26,25 @@
 </script>
 
 
+<!-- Authentication -->
+<?php $rbac->enforce("admin-asssign-roles-to-users", $currentUserID); ?>
+
 <!-- Common -->
 <?php include 'functions/controller/user-common.php'; ?>
 
 <?php 
 	if(empty($commonError)) {
-?>
-
+	?>
 
 	<!-- Update a user's roles : Controller -->
-	<?php
-		if (isset($_POST['roleID'])){
-			$roleID = str_replace("'","", $_POST['roleID']);
-			if($roleID == ""){
-				$genericError = "Impossible de mettre à jour un rôle inconnu";
-			}
-			else{
-				$check_query = "SELECT ID FROM rbac_roles WHERE ID='$roleID'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-				$verif = mysqli_query($link, $check_query);
-				$row_verif = mysqli_fetch_assoc($verif);
-				$role = mysqli_num_rows($verif);		
-				if (!$role){
-					$genericError = "Le rôle en question n'existe pas";
-				}
-				else {
-					$roleTitle=$rbac->Roles->getTitle($roleID);
-					if ($rbac->Users->hasRole($roleTitle, $userID)) {
-						$isDone = $rbac->Users->unassign($roleTitle, $userID);
-					}
-					else {
-						$isDone = $rbac->Users->assign($roleTitle, $userID);
-					}
-					if (!$isDone){
-						$genericError = "Echec de la mise à jour ('".$roleTitle."')";
-					}
-					else {
-						$genericSucces = "Rôle mis à jour avec la permission '".$roleTitle."'";	
-					}
-				}
-			}
-		}
-	?>
+	<?php include 'functions/controller/user-assign-roles-controller.php'; ?>
 
 	<!-- Page content container -->
 	<div class="container">
 		
 
 		<!-- Update user's roles : Operation status indicator -->
-		<?php include 'functions/operation-status-indicator.php'; ?>
+		<?php include 'components/operation-status-indicator.php'; ?>
 
 		<h2>Modifier les rôles de '<?php echo $userFirstName." ".$userLastName ?>'</h2>
 
@@ -92,27 +63,41 @@
 					<br /> <br />
 
 					<?php 
-						$query = "SELECT ID, Title, Description FROM rbac_roles ORDER by Title ASC";
-						$roles = mysqli_query($link, $query);
-						while($role = mysqli_fetch_array($roles)) { 
-							$roleID=$role["ID"];
-							$roleTitle=$role["Title"];
-							$roleDescription=$role["Description"];
-							
-							if ($rbac->Users->hasRole($roleID, $userID)) {
-								?>
-								<button type="button" class="btn btn-default btn-xs active" title="<?php echo $roleDescription;?>" onClick="send(<?php echo $roleID;?>)"><?php echo $roleTitle;?></button>
-								<?php
-							}
-							else {
-								?>
-								<button type="button" class="btn btn-default btn-xs" title="<?php echo $roleDescription;?>" onClick="send(<?php echo $roleID;?>)"><?php echo $roleTitle;?></button>
-								<?php
-							}
+					$queryC = "SELECT name, number FROM sections WHERE attached_section=number" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+					$cities = mysqli_query($link, $queryC);
+					?>
 
-						} ?>
-						<br /> <br />
-
+					<table class='table table-bordered table-hover table-condensed'>
+						<thead>
+							<th><center>Commune</center></th>
+							<th><center>Rôles de l'utilisateur</center></th>
+						</thead>
+						<tbody>
+							<?php while($city = mysqli_fetch_array($cities)) { 
+								$queryR="SELECT ID, Description, Title FROM rbac_roles WHERE Affiliation='".$city['number']."'" ;
+								$roles = mysqli_query($link, $queryR);
+								?>
+								<tr>
+									<td class="active"><?php echo $city['name']; ?></td>
+									<td>
+										<?php
+										while($role = mysqli_fetch_array($roles)) { 
+											$roleID=$role["ID"];
+											$roleTitle=$role["Title"];
+											$roleDescription=$role["Description"];
+											if ($rbac->Users->hasRole($roleID, $userID)) {
+												?><button type="button" class="btn btn-default btn-xs active" title="<?php echo $roleTitle;?>" onClick="send(<?php echo $roleID;?>)"><?php echo $roleDescription;?></button><?php
+											}
+											else {
+												?><button type="button" class="btn btn-default btn-xs" title="<?php echo $roleTitle;?>" onClick="send(<?php echo $roleID;?>)"><?php echo $roleDescription;?></button><?php
+											}
+										}
+										?>
+									</td>
+								</tr>
+							<?php } ?>
+						</tbody>
+					</table>
 
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-8">
