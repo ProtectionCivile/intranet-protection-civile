@@ -26,7 +26,7 @@
 <div class="container">
 
 	<?php 
-	$query = "SELECT ID, name, number FROM sections WHERE attached_section=number" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+	$query = "SELECT name, number FROM sections WHERE attached_section=number" or die("Erreur lors de la consultation" . mysqli_error($link)); 
 	$cities = mysqli_query($link, $query);
 	while($city = mysqli_fetch_array($cities)) { 
 		echo "<a href='view-all-users-with-roles.php?city=".$city['number']."'>".$city['name']."</a>, ";
@@ -35,23 +35,29 @@
 	if (!isset($_GET['city'])) {
 		?>  
 		<br />
+		<br />
 		<div class='alert alert-info' role='alert'>
   			Sélectionner une commune dans la liste
 		</div>
 		<?php
 	}
 	else {
-		$city=$_GET['city'];
+		$cityID=$_GET['city'];
+		$query = "SELECT name FROM sections WHERE number=".$cityID or die("Erreur lors de la consultation" . mysqli_error($link)); 
+		$cities = mysqli_query($link, $query);
+		$city = mysqli_fetch_assoc($cities);
+		$cityName=$city['name'];
+		
 		?>
 	
-		<h2>Audit des rôles</h2>
+		<h2>Audit des rôles pour <?php echo $cityName ?></h2>
 
 		<?php 
-		$query = "SELECT ID, Title FROM rbac_roles WHERE Affiliation=".$city or die("Erreur lors de la consultation" . mysqli_error($link)); 
+		$query = "SELECT ID, Description FROM rbac_roles WHERE Assignable = '1' AND Affiliation=".$cityID or die("Erreur lors de la consultation" . mysqli_error($link)); 
 		$roles = mysqli_query($link, $query);
 		while($role = mysqli_fetch_array($roles)) { 
 			$roleID=$role["ID"];
-			$roleTitle=$role["Title"];
+			$roleTitle=$role["Description"];
 			?>
 			<!-- Role usage : Container -->
 			<div class="panel panel-info">
@@ -65,7 +71,7 @@
 						<div class="panel-heading">Utilisateurs</div>
 						<div class="panel-body">
 							<?php 
-								$query = "SELECT U.first_name, U.last_name FROM users AS U INNER JOIN rbac_userroles AS UR on U.ID=UR.UserID WHERE UR.RoleID=".$roleID." ORDER BY U.last_name" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+								$query = "SELECT U.first_name, U.last_name FROM users AS U JOIN rbac_userroles AS UR on U.ID=UR.UserID WHERE AND UR.RoleID=".$roleID." ORDER BY U.last_name" or die("Erreur lors de la consultation" . mysqli_error($link)); 
 								$users = mysqli_query($link, $query);
 								while($user = mysqli_fetch_array($users)) { 
 									$userFirstName=$user["first_name"];
