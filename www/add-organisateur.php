@@ -1,8 +1,4 @@
-<?php
-include 'securite.php';
-require_once('connexion.php');
-if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{ 
-?>
+<?php require_once('functions/session/security.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +8,8 @@ if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{
 	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
 </head>
 <body>
-<?php include 'header.php'; ?>
+<?php include('components/header.php'); ?>
+
 <div class="container">
 			<h2>Ajout d'un organisateur</h2>
 			
@@ -95,7 +92,7 @@ if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{
 			</form>
 			
 	</div>
-	<?php } include 'footer.php'; ?>
+	<?php include 'footer.php'; ?>
 	</body>
 <script type="text/javascript">
     $(function () {

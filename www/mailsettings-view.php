@@ -1,24 +1,25 @@
 <?php
-include('securite.php');
-require_once('connexion.php');
-include 'functions/settings_queries.php';
+require_once('functions/session/security.php'); 
+require_once('functions/settings_mail_queries.php');
+require_once('functions/str.php');
+require_once('components/header.php');
+
+// Authentication
+$rbac->enforce("admin-settings-view", $currentUserID);
 
 
 if (isset($_POST['suppr'])){
-		if(delete_settings($link, $_POST['suppr'])){
-			$succes = "Paramètre supprimé avec succès";	
+		if(delete_settings_mail($link, $_POST['suppr'])){
+			$succes = "Paramètre mail supprimé avec succès";	
 		}
 }
-if ($_SESSION['privilege'] !== "admin") {
-	header("Location: accueil.php");
-}
-else{
+if ($rbac->check("admin-settings-view", $currentUserID)) {
 	$page = 1;
 	if(isset($_GET['page'])){
 		$page = intval($_GET['page']);
 	}
-	$settingsCount = count_settings($link);
-	$settings = select_settings($link, $page);
+	$settingsCount = count_settings_mail($link);
+	$settings = select_settings_mail($link, $page);
 	$pages = ceil($settingsCount/50);
 }
 
@@ -28,7 +29,7 @@ else{
 	<!DOCTYPE html>
 	<html>
 	<head>
-		<title>Liste des Paramètres</title>
+		<title>Liste des Paramètres Mail</title>
 		<meta http-equiv="Content-Type" content="text/html">
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
@@ -46,27 +47,35 @@ else{
 ?>
 		<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">Liste des Paramètres</h3>
+			<h3 class="panel-title">Liste des Paramètres Mail</h3>
 		</div>
 		<div class="panel-body">
 		<?php if($settingsCount ===0): ?>
-			<div> aucun paramètre enregistré </div>
+			<div> aucun paramètre mail enregistré </div>
 		<?php else: ?>
 		<div class="table-responsive" style="vertical-align: middle;">
 		<table class="table table-bordered table-condensed">
 			<tr>
 				<th>Nom</th>
 				<th>Valeur</th>
-				<th>Modifier</th>
-				<th>Supprimer</th>
+				<th colspan='2'>Opérations</th>
 			</tr>
 			<?php foreach ($settings as $setting):?>
 			<tr class='info'>
 				<td><?php echo $setting['setting_name'] ?></td>
 				<td><?php echo $setting['setting_value'] ?></td>
-				<td><a href="modif-settings.php?id=<?php echo $setting['ID'] ?>" class='btn btn-warning'>Modifier</a></td>
 				<td>
-					<form action="" method="post" accept-charset="utf-8"><input name="suppr" value="<?php echo $setting['ID'] ?>" type="hidden"><button type="submit" class="btn btn-danger">Supprimer</button></form>
+					<?php if ($rbac->check("admin-settings-update", $currentUserID)) { ?>
+						<a href="mailsettings-edit.php?id=<?php echo $setting['ID'] ?>" class='btn btn-warning glyphicon glyphicon-pencil' title="Modifier"></a>
+					<?php }?>
+				</td>
+				<td>
+					<?php if ($rbac->check("admin-settings-update", $currentUserID)) { ?>
+						<form action="" method="post" accept-charset="utf-8">
+							<input name="suppr" value="<?php echo $setting['ID'] ?>" type="hidden">
+							<button type="submit" class="btn btn-danger glyphicon glyphicon-trash" title="Supprimer"></button>
+						</form>
+					<?php }?>
 				</td>
 			</tr>	
 			<?php endforeach;  ?>	
@@ -79,7 +88,9 @@ else{
 		</div>
 	<?php endif; ?>
 	</div>
-	<div class="panel-footer"><a class="btn btn-default" role="button" href="settings.php">Ajouter un paramètre</a></div>
+		<?php if ($rbac->check("admin-settings-update", $currentUserID)) { ?>
+			<div class="panel-footer"><a class="btn btn-default" role="button" href="mailsettings-create.php">Ajouter un paramètre</a></div>
+		<?php }?>
 	</div>
 	</div>
 	

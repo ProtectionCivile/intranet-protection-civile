@@ -1,7 +1,7 @@
+<?php require_once('functions/session/security.php'); ?>
+<?php include('components/header.php'); ?>
 <?php
-include 'securite.php';
-require_once('connexion.php');
-if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{ 
+
 
 if(isset($_POST["insert"])){
 $commune = $_POST["commune"];
@@ -163,7 +163,7 @@ $email = $organisateur["email"];
 				<input type="hidden" name="id" value="<?php echo $id;?>">
 				</div>
 			</form>
-	<?php } include 'footer.php'; ?>
+	<?php include 'footer.php'; ?>
 </div>
 	</body>
 <script type="text/javascript">

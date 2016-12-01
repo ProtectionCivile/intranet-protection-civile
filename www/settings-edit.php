@@ -1,11 +1,28 @@
-<?php
-include 'securite.php';
-require_once('connexion.php');
-include 'functions/str.php';
-include 'functions/settings_mail_queries.php';
-if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{ ?>
+<?php require_once('functions/session/security.php'); ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Modification d'un paramètre</title>
+	<meta http-equiv="Content-Type" content="text/html">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+</head>
+<body>
 
+	<?php
+include('components/header.php'); 
+require_once('functions/settings_queries.php');
+require_once('functions/str.php');
+
+?>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
 <?php
+
+
+// Authentication
+$rbac->enforce("admin-settings-update", $currentUserID);
+
 // script de traitement
 
 if(isset($_POST['name'], $_POST['value'])){
@@ -19,20 +36,20 @@ if(isset($_POST['name'], $_POST['value'])){
 	}
 
 	if(is_null($erreur)){
-		if(update_settings_mail($link, $_GET['id'], $_POST['name'], $_POST['value'])){
+		if(update_settings($link, $_GET['id'], $_POST['name'], $_POST['value'])){
 			$succes = "Paramètre modifié avec succès";	
 		}
 		
 	}
 
-	$setting = load_setting_mail($link, $_GET['id']);
+	$setting = load_setting($link, $_GET['id']);
 	if(is_null($setting)){
 		$erreur = "Paramètre inconnu";
 	}
 
 }
 elseif(isset($_GET['id'])){
-	$setting = load_setting_mail($link, $_GET['id']);
+	$setting = load_setting($link, $_GET['id']);
 	if(is_null($setting)){
 		$erreur = "Paramètre inconnu";
 	}
@@ -43,18 +60,7 @@ else{
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Modification d'un paramètre mail</title>
-	<meta http-equiv="Content-Type" content="text/html";>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-</head>
-<body>
-<?php include 'header.php'; ?>
-<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+
 <div class="container">
 <?php
 if (!empty($erreur)){
@@ -64,7 +70,7 @@ echo "<div class='alert alert-success'><strong>Réussi</strong> : ".$succes."</d
 }else{}
 ?>
 
-		<h2>Modification d'un paramètre mail</h2>
+		<h2>Modification d'un paramètre</h2>
 		<h4><?php if(isset($_GET['add']) && ($_GET['add'] == "ok")) { ?>Paramètre modifié avec succès. <?php } ?></h4>
 		<form class="form-horizontal" id="ajoutparametre" role="form" action="" name="add" method="post" autocomplete="off">
 			<div class="panel panel-default">
@@ -87,13 +93,13 @@ echo "<div class='alert alert-success'><strong>Réussi</strong> : ".$succes."</d
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<button type="submit" class="btn btn-warning" id="submit">Envoyer</button>
-						<a class="btn btn-default" role="button" href="liste-settings.php">Retour</a>
+						<a class="btn btn-default" role="button" href="settings-view.php">Retour</a>
 				    </div>
 				</div>
 			</div>
 		</form>
 </div>
-<?php } include 'footer.php'; ?>
+<?php include 'footer.php'; ?>
 <script>
 
 $('#modifparametre').validate({

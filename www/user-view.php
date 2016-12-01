@@ -1,9 +1,4 @@
-<?php
-	include 'securite.php';
-	require_once('connexion.php');
-	include 'functions/str.php';
-?>
-
+<?php require_once('functions/session/security.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,17 +8,19 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
 </head>
-
 <body>
+<?php include('components/header.php'); ?>
 
-<?php include 'header.php'; ?>
-<script src="js/jquery.validate.min.js" type="text/javascript"></script>
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
 	<li><a href="#">Administration</a></li>
 	<li class="active">Gestion des utilisateurs</li>
 </ol>
+
+
+<!-- Authentication -->
+<?php $rbac->enforce("admin-users-view", $currentUserID); ?>
 
 
 <!-- Delete a user : Controller -->
@@ -34,7 +31,7 @@
 <div class="container">
 
 	<!-- Update user : Operation status indicator -->
-	<?php include 'functions/operation-status-indicator.php'; ?>
+	<?php include 'components/operation-status-indicator.php'; ?>
 
 	<h2>Gestion des utilisateurs</h2>
 
@@ -75,33 +72,41 @@
 							<?php echo $user["section_name"]; ?>
 						</td>
 						<td>
-							<form action='assign-role-users.php' method='post' accept-charset='utf-8'>
-								<input type='hidden' name='userID' value=<?php echo "'".$user['ID']."'"; ?> >
-								<button type='submit' class='btn btn-warning'>Rôles</button>
-							</form>
+							<?php if ($rbac->check("admin-asssign-roles-to-users", $currentUserID)) { ?>
+								<form action='user-assign-roles.php' method='post' accept-charset='utf-8'>
+									<input type='hidden' name='userID' value=<?php echo "'".$user['ID']."'"; ?> >
+									<button type='submit' class='btn btn-warning glyphicon glyphicon-check' title='Voir / Affecter des rôles'></button>
+								</form>
+							<?php }?>
 						</td>
 						<td>
-							<form action='user-edit.php' method='post' accept-charset='utf-8'>
-								<input type='hidden' name='userID' value=<?php echo "'".$user['ID']."'"; ?> >
-								<button type='submit' class='btn btn-warning'>Modifier</button>
-							</form>
+							<?php if ($rbac->check("admin-users-update", $currentUserID)) { ?>
+								<form action='user-edit.php' method='post' accept-charset='utf-8'>
+									<input type='hidden' name='userID' value=<?php echo "'".$user['ID']."'"; ?> >
+									<button type='submit' class='btn btn-warning glyphicon glyphicon-pencil' title="Modifier"></button>
+								</form>
+							<?php }?>
 						</td>
-						<td>								
-						<form action='' method='post' accept-charset='utf-8'>
-							<input type='hidden' name='delUser' value=<?php echo "'".$user['ID']."'"; ?> >
-							<button type='submit' class='btn btn-danger' onclick='return(confirm("Etes-vous sûr de vouloir supprimer cet utilisateur?"));'>Supprimer</button>
-						</form>
+						<td>	
+							<?php if ($rbac->check("admin-users-update", $currentUserID)) { ?>							
+								<form action='' method='post' accept-charset='utf-8'>
+									<input type='hidden' name='delUser' value=<?php echo "'".$user['ID']."'"; ?> >
+									<button type='submit' class='btn btn-danger glyphicon glyphicon-trash' title="Supprimer" onclick='return(confirm("Etes-vous sûr de vouloir supprimer cet utilisateur?"));'></button>
+								</form>
+							<?php }?>
 						</td>
 					</tr>
 				<?php } ?>
 			</table>
 		</div>
-		<div class="panel-footer"><a class="btn btn-default" role="button" href="user-create.php">Ajouter un utilisateur</a></div>
+		<?php if ($rbac->check("admin-users-update", $currentUserID)) { ?>
+			<div class="panel-footer"><a class="btn btn-default" role="button" href="user-create.php">Ajouter un utilisateur</a></div>
+		<?php }?>
 	</div>
 
 </div>
 
-<?php include 'footer.php'; ?>
+<?php include('components/footer.php'); ?>
 
 </body>
 </html>

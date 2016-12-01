@@ -1,11 +1,4 @@
-<?php
-	include 'securite.php';
-	require_once('connexion.php');
-	require_once ('PhpRbac/src/PhpRbac/Rbac.php');
-	use PhpRbac\Rbac;
-	$rbac = new Rbac();
-?>
-
+<?php require_once('functions/session/security.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +7,8 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
 </head>
-
 <body>
-
-<?php include 'header.php'; ?>
+<?php include('components/header.php'); ?>
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
@@ -124,7 +115,7 @@
 				<h3 class="panel-title">Permissions associées au rôle</h3>
 			</div>
 			<div class="panel-body">
-				<form id="permrole" class="form-horizontal" action='assign-role-permissions.php' method='post' accept-charset='utf-8'>
+				<form id="permrole" class="form-horizontal" action='role-assign-permissions.php' method='post' accept-charset='utf-8'>
 					<input type="hidden" name="roleID" value="<?php echo $roleID;?>">
 					<input type="hidden" name="permissionID" id="permissionID" value="undefined">
 				
@@ -141,12 +132,12 @@
 							
 							if ($rbac->Roles->hasPermission($roleID, $permissionID)) {
 								?>
-								<button type="button" class="btn btn-default btn-xs active" title="<?php echo $permissionDescription;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionTitle;?></button>
+								<button type="button" class="btn btn-default btn-xs active" title="<?php echo $permissionTitle;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionDescription;?></button>
 								<?php
 							}
 							else {
 								?>
-								<button type="button" class="btn btn-default btn-xs" title="<?php echo $permissionDescription;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionTitle;?></button>
+								<button type="button" class="btn btn-default btn-xs" title="<?php echo $permissionTitle;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionDescription;?></button>
 								<?php
 							}
 
@@ -170,6 +161,6 @@
 ?>
 
 
-<?php include 'footer.php'; ?>
+<?php include('components/footer.php'); ?>
 </body>
 </html>

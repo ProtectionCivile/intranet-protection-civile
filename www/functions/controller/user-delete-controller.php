@@ -1,4 +1,6 @@
 <?php
+	
+
 	if (isset($_POST['delUser'])){
 		$delID = str_replace("'","", $_POST['delUser']);
 		if($delID == ""){
@@ -7,17 +9,25 @@
 		else{
 			$check_query = "SELECT ID, login FROM users WHERE ID='$delID'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
 			$verif = mysqli_query($link, $check_query);
-			$row_verif = mysqli_fetch_assoc($verif);
-			$delUser = mysqli_num_rows($verif);		
+			$delUser = mysqli_fetch_assoc($verif);
 			if (!$delUser){
 				$genericError = "L'utilisateur en question n'existe pas";
 			}
 			else {
-				$delLogin = $delUser['last_name'];
+				$delLogin = $delUser['login'];
 				$delete_user = "DELETE FROM users WHERE ID='$delID'";
         		$result = mysqli_query($link, $delete_user) or die(mysql_error());
+
+        		// Then unassign all its roles
+        		$allUserRoles="";
+        		$roles = $rbac->Users->allRoles($delID);
+				foreach ($roles as &$role) {
+					$allUserRoles = $allUserRoles.utf8_encode($role['Description']).", ";
+					$rbac->Users->unassign($role['ID'], $delID);
+				}
+        		$perm_id = $rbac->Roles->remove($id, true);
         		if ($result) {
-        			$genericSuccess = "Utilisateur correctement supprimé (".$delLogin.")";
+        			$genericSuccess = "Utilisateur correctement supprimé (".$delLogin.") et ses rôles aussi (".$allUserRoles.")";
         		}
         		else {
 					$genericError = "Echec de la suppression (".$delLogin.")";
