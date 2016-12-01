@@ -1,5 +1,4 @@
 <?php
-	
 
 	if (isset($_POST['delUser'])){
 		$delID = str_replace("'","", $_POST['delUser']);

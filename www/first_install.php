@@ -4845,7 +4845,7 @@ $rbac->Roles->assign(utf8_decode('DLT-L Véhic Villeneuve'), utf8_decode('direct
 /////////////////////////////////////////////////
 // GOD MODE FOR THE USER INSTALLING THIS SCRIPT
 /////////////////////////////////////////////////
-$rbac->Users->assign('root', $_SESSION["ID"]);
+$rbac->Users->assign('Admin', $_SESSION["ID"]);
 
 
 

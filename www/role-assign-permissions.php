@@ -26,87 +26,27 @@
 </script>
 
 
-<!-- Common -->
-<?php 
-	$roleID = str_replace("'","", $_POST['roleID']);
-	if($roleID == ""){
-		$roleUpdateError = "Aucun rôle défini";
-	}
-	else {
-		$check_query = "SELECT ID FROM rbac_roles WHERE ID='$roleID'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-		$verif = mysqli_query($link, $check_query);
-		$row_verif = mysqli_fetch_assoc($verif);
-		$role = mysqli_num_rows($verif);		
-		if (!$role){
-			$roleUpdateError = "Le rôle en question n'existe pas";
-		}
-	}
-	if(!empty($roleUpdateError)) {
-		echo "<div class='alert alert-danger'><strong>Erreur</strong> : ".$roleUpdateError."</div>";
-	}
-	else {
-		$roleTitle=$rbac->Roles->getTitle($roleID);
-?>
+<!-- Authentication -->
+<?php $rbac->enforce("admin-asssign-permissions-to-roles", $currentUserID); ?>
 
+<!-- Common -->
+<?php include 'functions/controller/role-common.php'; ?>
+
+<?php 
+if(empty($commonError)) {
+	?>
 
 	<!-- Update a role's permissions : Controller -->
-	<?php
-		if (isset($_POST['permissionID'])){
-			$permissionID = str_replace("'","", $_POST['permissionID']);
-			if($permissionID == ""){
-				$genericUpdateError = "Impossible de mettre à jour une permission inconnue";
-			}
-			else{
-				$check_query = "SELECT ID FROM rbac_permissions WHERE ID='$permissionID'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-				$verif = mysqli_query($link, $check_query);
-				$row_verif = mysqli_fetch_assoc($verif);
-				$permission = mysqli_num_rows($verif);		
-				if (!$permission){
-					$genericUpdateError = "La permission en question n'existe pas";
-				}
-				else {
-					$permissionTitle=$rbac->Permissions->getTitle($permissionID);
-					$check_query = "SELECT ID FROM rbac_roles WHERE ID='$roleID'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-					$verif = mysqli_query($link, $check_query);
-					$row_verif = mysqli_fetch_assoc($verif);
-					$role = mysqli_num_rows($verif);		
-					if (!$role){
-						$genericUpdateError = "Le rôle en question n'existe pas";
-					}
-					else {
-						if ($rbac->Roles->hasPermission($roleID, $permissionID)) {
-							$isDone = $rbac->Roles->unassign($roleTitle, $permissionTitle);
-						}
-						else {
-							$isDone = $rbac->Roles->assign($roleTitle, $permissionTitle);
-						}
-						if (!$isDone){
-							$genericUpdateError = "Echec de la mise à jour ('".$permissionTitle."')";
-						}
-						else {
-							$genericUpdateSuccess = "Rôle mis à jour avec la permission '".$permissionTitle."'";	
-						}
-					}
-				}
-			}
-		}
-	?>
+	<?php include 'functions/controller/role-assign-permissions-controller.php'; ?>
 
 	<!-- Page content container -->
 	<div class="container">
 		
 
 		<!-- Update role's permissions : Operation status indicator -->
-		<?php
-			if (!empty($genericUpdateError)){
-				echo "<div class='alert alert-danger'><strong>Erreur</strong> : ".$genericUpdateError."</div>";
-			} elseif (!empty($genericUpdateSuccess)){
-				echo "<div class='alert alert-success'><strong>Effectué</strong> : ".$genericUpdateSuccess."</div>";
-			}
-			
-		?>
+		<?php include 'components/operation-status-indicator.php'; ?>
 
-		<h2>Modifier les permissions du rôle '<?php echo $roleTitle ?>'</h2>
+		<h2>Modifier les permissions du rôle '<?php echo $roleDescription ?>'</h2>
 
 
 		<!-- Update a role's permissions : display form -->

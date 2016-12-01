@@ -53,6 +53,7 @@
 					<thead>
 						<th><center>Type</center></th>
 						<th><center>Ajouter aux liste de diffusion (plusieurs choix possibles)</center></th>
+					</thead>
 					<tbody>
 						<tr>
 							<td class="active">
