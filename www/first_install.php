@@ -74,19 +74,28 @@ $rbac->Roles->add(utf8_decode('DDT-T'), utf8_decode('Directeur Départemental Te
 $rbac->Roles->add(utf8_decode('DDT-L'), utf8_decode('Directeur Départemental Technique adjoint aux moyens logistiques'));
 $rbac->Roles->add(utf8_decode('DDT-I'), utf8_decode('Directeur Départemental Technique adjoint aux moyens informatiques'));
 $rbac->Roles->add(utf8_decode('DDF'), utf8_decode('Directeur Départemental des Formations'));
+$rbac->Roles->add(utf8_decode('MED'), utf8_decode('Médecin Référent'));
+$rbac->Roles->add(utf8_decode('SECRETARIAT'), utf8_decode('Secrétariat Administratif'));
+
 $rbac->Roles->add(utf8_decode('CM-FOR-ARS'), utf8_decode('Chargé de Mission responsable des formations ARS'));
 $rbac->Roles->add(utf8_decode('CM-FOR-OPR'), utf8_decode('Chargé de Mission responsable des formations OPR'));
 $rbac->Roles->add(utf8_decode('CM-FOR-CH'), utf8_decode('Chargé de Mission responsable des formations Conducteur'));
 $rbac->Roles->add(utf8_decode('CM-FOR-CE'), utf8_decode('Chargé de Mission responsable des formations CE / CP / CEPS'));
-$rbac->Roles->add(utf8_decode('V-COM'), utf8_decode('Communication'));
-$rbac->Roles->add(utf8_decode('MED'), utf8_decode('Médecin Référent'));
 $rbac->Roles->add(utf8_decode('CM-PARAMED'), utf8_decode('Chargé de Mission responsable de l\'équipe paramédicale'));
 $rbac->Roles->add(utf8_decode('CM-CODEP'), utf8_decode('Chargé de Mission responsable des CODEP et Exercices'));
 
+$rbac->Roles->add(utf8_decode('V-COM'), utf8_decode('Communication'));
+$rbac->Roles->add(utf8_decode('V-OPE'), utf8_decode('Opérationnel'));
+$rbac->Roles->add(utf8_decode('V-FOR'), utf8_decode('Formation'));
+$rbac->Roles->add(utf8_decode('V-TECH'), utf8_decode('Technique'));
+$rbac->Roles->add(utf8_decode('V-BUREAU'), utf8_decode('Bureau Départemental'));
+$rbac->Roles->add(utf8_decode('V-CD'), utf8_decode('Conseil Départemental'));
+$rbac->Roles->add(utf8_decode('V-RECRUTEMENT'), utf8_decode('Recrutement'));
+$rbac->Roles->add(utf8_decode('V-DEMANDE-DPS'), utf8_decode('Demande de poste de secours'));
+
 $rbac->Roles->add(utf8_decode('P-CODEP'), utf8_decode('Cadre Opérationnel Départemental de Permanence'));
 $rbac->Roles->add(utf8_decode('P-MICRO'), utf8_decode('Permanence Transmissions'));
-$rbac->Roles->add(utf8_decode('P-RAVI'), utf8_decode('Permanence Logistique'));
-$rbac->Roles->add(utf8_decode('P-BUREAU'), utf8_decode('Permanence Bureau Départemental'));
+$rbac->Roles->add(utf8_decode('P-TRANSF'), utf8_decode('Permanence de transfert opérationnel'));
 
 $rbac->Roles->add(utf8_decode('C-LOG'), utf8_decode('Pôle Logistique'));
 $rbac->Roles->add(utf8_decode('C-TRANS'), utf8_decode('Pôle Transmissions'));
@@ -101,11 +110,6 @@ $rbac->Roles->add(utf8_decode('D-DLAS'), utf8_decode('Liste de diffusion Actions
 $rbac->Roles->add(utf8_decode('D-DLT'), utf8_decode('Liste de diffusion Technique Logistique'));
 $rbac->Roles->add(utf8_decode('D-DLT-T'), utf8_decode('Liste de diffusion Technique Transmissions'));
 $rbac->Roles->add(utf8_decode('D-DLC'), utf8_decode('Liste de diffusion Communication'));
-
-$rbac->Roles->add(utf8_decode('V-BUREAU'), utf8_decode('Bureau Départemental'));
-$rbac->Roles->add(utf8_decode('V-CD'), utf8_decode('Conseil Départemental'));
-$rbac->Roles->add(utf8_decode('V-RECRUTEMENT'), utf8_decode('Recrutement'));
-$rbac->Roles->add(utf8_decode('V-DEMANDE-DPS'), utf8_decode('Demande de poste de secours'));
 
 $rbac->Roles->add(utf8_decode('Président Asnières'), utf8_decode('Président délégué'));
 $rbac->Roles->add(utf8_decode('Secrétaire Asnières'), utf8_decode('Secrétaire'));
@@ -385,6 +389,7 @@ $exec = mysqli_query($link, $query);
 
 
 
+
 /////////////////////////////////////////////////
 // ADD ALL MISSING INFORMATION ABOUT ROLES
 /////////////////////////////////////////////////
@@ -400,6 +405,10 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Admin'
 "); 
 
+
+///////////////////////////////////////////////
+// ROLES DEPARTEMENTAUX
+///////////////////////////////////////////////
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.72', 
@@ -618,6 +627,34 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 "); 
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='', 
+	`Mail`='medica92@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='Medica 92',
+	`Directory`='1',
+	`Assignable`='1',
+	`Hierarchy`='1',
+	`Tags`='Médical'
+	WHERE `Title`='MED' 
+");
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='', 
+	`Mail`='secretariat@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='',
+	`Directory`='1',
+	`Assignable`='1',
+	`Hierarchy`='2',
+	`Tags`='Divers|Opérationnel'
+	WHERE `Title`='SECRETARIAT' 
+"); 
+
+///////////////////////////////////////////////
+// CHARGÉS DE MISSION
+///////////////////////////////////////////////
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.76.45.79.78', 
 	`Mail`='formation-ars@protectioncivile92.org',
 	`Affiliation`='0',
@@ -667,30 +704,6 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
-	`Mail`='communication@protectioncivile92.org',
-	`Affiliation`='0',
-	`Callsign`='',
-	`Directory`='1',
-	`Assignable`='0',
-	`Hierarchy`='2',
-	`Tags`='Communication'
-	WHERE `Title`='V-COM' 
-"); 
-
-mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
-	`Mail`='medica92@protectioncivile92.org',
-	`Affiliation`='0',
-	`Callsign`='Medica 92',
-	`Directory`='1',
-	`Assignable`='1',
-	`Hierarchy`='1',
-	`Tags`='Médical'
-	WHERE `Title`='MED' 
-"); 
-
-mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
 	`Mail`='paramedical@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Paramed 92',
@@ -713,6 +726,188 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='CM-CODEP' 
 "); 
 
+///////////////////////////////////////////////
+// PÔLES / COMMISSIONS
+///////////////////////////////////////////////
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='', 
+	`Mail`='pole-logistique@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='',
+	`Directory`='1',
+	`Assignable`='0',
+	`Hierarchy`='21',
+	`Tags`='Commission|Technique'
+	WHERE `Title`='C-LOG' 
+"); 
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='', 
+	`Mail`='pole-transmissions@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='',
+	`Directory`='1',
+	`Assignable`='0',
+	`Hierarchy`='22',
+	`Tags`='Commission|Technique'
+	WHERE `Title`='C-TRANS' 
+"); 
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='', 
+	`Mail`='pole-informatique@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='',
+	`Directory`='1',
+	`Assignable`='0',
+	`Hierarchy`='23',
+	`Tags`='Commission|Technique'
+	WHERE `Title`='C-INFO' 
+"); 
+
+///////////////////////////////////////////////
+// DIVERS
+///////////////////////////////////////////////
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='', 
+	`Mail`='bureau@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='',
+	`Directory`='1',
+	`Assignable`='0',
+	`Hierarchy`='11',
+	`Tags`='Divers|Bureau'
+	WHERE `Title`='V-BUREAU' 
+"); 
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='', 
+	`Mail`='conseil-departemental@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='',
+	`Directory`='1',
+	`Assignable`='0',
+	`Hierarchy`='12',
+	`Tags`='Divers|Bureau'
+	WHERE `Title`='V-CD' 
+"); 
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='', 
+	`Mail`='recrutement@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='',
+	`Directory`='1',
+	`Assignable`='0',
+	`Hierarchy`='12',
+	`Tags`='Divers'
+	WHERE `Title`='V-RECRUTEMENT' 
+"); 
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='', 
+	`Mail`='demande-dps@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='',
+	`Directory`='1',
+	`Assignable`='0',
+	`Hierarchy`='15',
+	`Tags`='Divers|Opérationnel'
+	WHERE `Title`='V-DEMANDE-DPS' 
+"); 
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='', 
+	`Mail`='communication@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='',
+	`Directory`='1',
+	`Assignable`='0',
+	`Hierarchy`='2',
+	`Tags`='Communication'
+	WHERE `Title`='V-COM' 
+");
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='', 
+	`Mail`='operationnel@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='',
+	`Directory`='1',
+	`Assignable`='0',
+	`Hierarchy`='3',
+	`Tags`='Opérationnel'
+	WHERE `Title`='V-OPE' 
+");
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='', 
+	`Mail`='formation@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='',
+	`Directory`='1',
+	`Assignable`='0',
+	`Hierarchy`='4',
+	`Tags`='Formation'
+	WHERE `Title`='V-FOR' 
+"); 
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='', 
+	`Mail`='technique@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='',
+	`Directory`='1',
+	`Assignable`='0',
+	`Hierarchy`='5',
+	`Tags`='Technique'
+	WHERE `Title`='V-TECH' 
+"); 
+
+///////////////////////////////////////////////
+// PERMANENCES
+///////////////////////////////////////////////
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='07 51 60 75 18', 
+	`Mail`='permanence-bureau@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='',
+	`Directory`='1',
+	`Assignable`='0',
+	`Hierarchy`='5',
+	`Tags`='Permanence|Opérationnel'
+	WHERE `Title`='P-TRANSF' 
+"); 
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='06.74.95.31.70', 
+	`Mail`='permanence-operationnel@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='VISU 92',
+	`Directory`='1',
+	`Assignable`='0',
+	`Hierarchy`='6',
+	`Tags`='Permanence|Opérationnel'
+	WHERE `Title`='P-CODEP' 
+"); 
+
+mysqli_query($link, "UPDATE `rbac_roles` SET 
+	`Phone`='06.74.95.31.66', 
+	`Mail`='permanence-transmissions@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='MICRO 92',
+	`Directory`='1',
+	`Assignable`='0',
+	`Hierarchy`='7',
+	`Tags`='Permanence|Opérationnel'
+	WHERE `Title`='P-MICRO' 
+"); 
+
+///////////////////////////////////////////////
+// LISTES DE DIFFUSION
+///////////////////////////////////////////////
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
@@ -822,140 +1017,9 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='D-DLC' 
 "); 
 
-
-mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
-	`Mail`='pole-logistique@protectioncivile92.org',
-	`Affiliation`='0',
-	`Callsign`='',
-	`Directory`='1',
-	`Assignable`='0',
-	`Hierarchy`='21',
-	`Tags`='Commission|Technique'
-	WHERE `Title`='C-LOG' 
-"); 
-
-mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
-	`Mail`='pole-transmissions@protectioncivile92.org',
-	`Affiliation`='0',
-	`Callsign`='',
-	`Directory`='1',
-	`Assignable`='0',
-	`Hierarchy`='22',
-	`Tags`='Commission|Technique'
-	WHERE `Title`='C-TRANS' 
-"); 
-
-mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
-	`Mail`='pole-informatique@protectioncivile92.org',
-	`Affiliation`='0',
-	`Callsign`='',
-	`Directory`='1',
-	`Assignable`='0',
-	`Hierarchy`='23',
-	`Tags`='Commission|Technique'
-	WHERE `Title`='C-INFO' 
-"); 
-
-
-mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
-	`Mail`='bureau@protectioncivile92.org',
-	`Affiliation`='0',
-	`Callsign`='',
-	`Directory`='1',
-	`Assignable`='0',
-	`Hierarchy`='11',
-	`Tags`='Divers|Bureau'
-	WHERE `Title`='V-BUREAU' 
-"); 
-
-mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
-	`Mail`='conseil-departemental@protectioncivile92.org',
-	`Affiliation`='0',
-	`Callsign`='',
-	`Directory`='1',
-	`Assignable`='0',
-	`Hierarchy`='12',
-	`Tags`='Divers|Bureau'
-	WHERE `Title`='V-CD' 
-"); 
-
-mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
-	`Mail`='recrutement@protectioncivile92.org',
-	`Affiliation`='0',
-	`Callsign`='',
-	`Directory`='1',
-	`Assignable`='0',
-	`Hierarchy`='12',
-	`Tags`='Divers'
-	WHERE `Title`='V-RECRUTEMENT' 
-"); 
-
-mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
-	`Mail`='demande-dps@protectioncivile92.org',
-	`Affiliation`='0',
-	`Callsign`='',
-	`Directory`='1',
-	`Assignable`='0',
-	`Hierarchy`='15',
-	`Tags`='Divers|Opérationnel'
-	WHERE `Title`='V-DEMANDE-DPS' 
-"); 
-
-mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
-	`Mail`='permanence-bureau@protectioncivile92.org',
-	`Affiliation`='0',
-	`Callsign`='',
-	`Directory`='1',
-	`Assignable`='0',
-	`Hierarchy`='5',
-	`Tags`='Permanence|Bureau'
-	WHERE `Title`='P-BUREAU' 
-"); 
-
-mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.74.95.31.70', 
-	`Mail`='permanence-operationnel@protectioncivile92.org',
-	`Affiliation`='0',
-	`Callsign`='VISU 92',
-	`Directory`='1',
-	`Assignable`='0',
-	`Hierarchy`='6',
-	`Tags`='Permanence|Opérationnel'
-	WHERE `Title`='P-CODEP' 
-"); 
-
-mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.74.95.31.66', 
-	`Mail`='permanence-bureau@protectioncivile92.org', /////////////////////////
-	`Affiliation`='0',
-	`Callsign`='MICRO 92',
-	`Directory`='1',
-	`Assignable`='0',
-	`Hierarchy`='7',
-	`Tags`='Permanence|Opérationnel'
-	WHERE `Title`='P-MICRO' 
-"); 
-
-mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.74.95.31.59', 
-	`Mail`='permanence-logistique@protectioncivile92.org',
-	`Affiliation`='0',
-	`Callsign`='RAVI 92',
-	`Directory`='1',
-	`Assignable`='0',
-	`Hierarchy`='8',
-	`Tags`='Permanence|Opérationnel'
-	WHERE `Title`='P-RAVI' 
-"); 
-
+///////////////////////////////////////////////
+// ROLES DES ANTENNES
+///////////////////////////////////////////////
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.50.84.22.89', 
