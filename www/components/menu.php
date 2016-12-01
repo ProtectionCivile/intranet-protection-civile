@@ -34,7 +34,7 @@ $settings_array = mysqli_fetch_array($query_result);
 						<li><a href="list-dps.php?filter=en-attente">A traiter <span class="badge"><?php echo $row_cnt;?></span></a></li>
 						<li class="divider"></li>
 						<li class="dropdown-header">Gestion des DPS</li>
-						<li><a href="list-dps.php?commune=<?php echo $_SESSION["commune"]; ?>">Liste des DPS de l'Antenne</a></li>
+						<li><a href="list-dps.php?commune=<?php echo $currentUserSection; ?>">Liste des DPS de l'Antenne</a></li>
 						<li><a href="list-dps.php">Liste de tous les DPS</a></li>
 						<li class="divider"></li>
 						<li><a href="demande-dps.php">Demande de DPS</a></li>
