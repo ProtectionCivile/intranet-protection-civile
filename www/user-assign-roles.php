@@ -74,7 +74,7 @@
 						</thead>
 						<tbody>
 							<?php while($city = mysqli_fetch_array($cities)) { 
-								$queryR="SELECT ID, Description, Title FROM rbac_roles WHERE Affiliation='".$city['number']."'" ;
+								$queryR="SELECT ID, Description, Title FROM rbac_roles WHERE Assignable='1' AND Affiliation='".$city['number']."'" ;
 								$roles = mysqli_query($link, $queryR);
 								?>
 								<tr>
