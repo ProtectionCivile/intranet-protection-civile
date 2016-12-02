@@ -31,11 +31,11 @@ $settings_array = mysqli_fetch_array($query_result);
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Operationnel <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li class="dropdown-header">Direction départementale</li>
-						<li><a href="list-dps.php?filter=en-attente">A traiter <span class="badge"><?php echo $row_cnt;?></span></a></li>
+						<li><a href="dps-view.php?filter=en-attente">A traiter <span class="badge"><?php echo $row_cnt;?></span></a></li>
 						<li class="divider"></li>
 						<li class="dropdown-header">Gestion des DPS</li>
-						<li><a href="list-dps.php?commune=<?php echo $currentUserSection; ?>">Liste des DPS de l'Antenne</a></li>
-						<li><a href="list-dps.php">Liste de tous les DPS</a></li>
+						<li><a href="dps-view.php?commune=<?php echo $currentUserSection; ?>">Liste des DPS de l'Antenne</a></li>
+						<li><a href="dps-view.php">Liste de tous les DPS</a></li>
 						<li class="divider"></li>
 						<li><a href="demande-dps.php">Demande de DPS</a></li>
 						<li class="divider"></li>
