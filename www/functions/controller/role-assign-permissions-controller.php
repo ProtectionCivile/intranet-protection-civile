@@ -24,10 +24,10 @@
 				}
 				else {
 					if ($rbac->Roles->hasPermission($roleID, $permissionID)) {
-						$isDone = $rbac->Roles->unassign(utf8_decode($roleTitle), utf8_decode($permissionTitle);
+						$isDone = $rbac->Roles->unassign(utf8_decode($roleTitle), utf8_decode($permissionTitle));
 					}
 					else {
-						$isDone = $rbac->Roles->assign(utf8_decode($roleTitle), utf8_decode($permissionTitle);
+						$isDone = $rbac->Roles->assign(utf8_decode($roleTitle), utf8_decode($permissionTitle));
 					}
 					if (!$isDone){
 						$genericError = "Echec de la mise à jour ('".$permissionTitle."')";
