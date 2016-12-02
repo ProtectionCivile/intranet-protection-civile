@@ -12,15 +12,20 @@ $settings_array = mysqli_fetch_array($query_result);
 
 
 <div class="navbar navbar-default navbar-static-top " role="navigation">
+	
+
 	<div class="container">
 		<div class="navbar-header">
+			<a class="navbar-brand" href="#">
+				<!-- <img alt="Brand" class="img-responsive" src='img/logo.png'> -->
+			</a>
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="home.php"><?php echo $settings_array['setting_value'];?></a>
+			<a class="navbar-brand" href="index.php"><?php echo $settings_array['setting_value'];?></a>
 		</div>
 
 		<div class="navbar-collapse collapse">
@@ -34,8 +39,12 @@ $settings_array = mysqli_fetch_array($query_result);
 						<li><a href="dps-view.php?filter=en-attente">A traiter <span class="badge"><?php echo $row_cnt;?></span></a></li>
 						<li class="divider"></li>
 						<li class="dropdown-header">Gestion des DPS</li>
-						<li><a href="dps-view.php?commune=<?php echo $currentUserSection; ?>">Liste des DPS de l'Antenne</a></li>
-						<li><a href="dps-view.php">Liste de tous les DPS</a></li>
+						<?php if ($rbac->check("ope-dps-view-own", $currentUserID)) {?> 
+							<li><a href="dps-view.php?city">Liste des DPS de l'Antenne</a></li>
+						<?php } ?>
+						<?php if ($rbac->check("ope-dps-view-all", $currentUserID)) {?> 
+							<li><a href="dps-view.php">Liste de tous les DPS</a></li>
+						<?php } ?>
 						<li class="divider"></li>
 						<li><a href="demande-dps.php">Demande de DPS</a></li>
 						<li class="divider"></li>

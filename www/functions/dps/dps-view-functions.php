@@ -14,9 +14,8 @@
 		}
 	}
 
-
-function compute_dps_department($dpt) {
-	if($dpt != "92") {
+	function compute_dps_department($dpt) {
+		if($dpt != "92") {
 			return "<strong>".$dpt."</strong>";
 		}
 		else {
@@ -24,8 +23,8 @@ function compute_dps_department($dpt) {
 		}
 	}
 
-function compute_dps_status($refus, $validation_ec, $validation, $dateValid) {
-	if($refus == true) {
+	function compute_dps_status($refus, $validation_ec, $validation, $dateValid) {
+		if($refus == true) {
 			return "Refusé";
 		}
 		elseif($validation_ec == true) {
