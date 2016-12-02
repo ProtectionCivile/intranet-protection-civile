@@ -46,7 +46,7 @@ $rbac->Permissions->addPath(utf8_decode('/ope-clients-update-all/ope-clients-vie
 $rbac->Permissions->addPath(utf8_decode('/treso-dps-view-all/treso-dps-view-own'), array(utf8_decode('Voir toute la trésorerie'), utf8_decode('Voir sa trésorerie')));
 $rbac->Permissions->addPath(utf8_decode('/directory-update/directory-view'), array(utf8_decode('Modifier annuaire'), utf8_decode('Voir annuaire')));
 $rbac->Permissions->addPath(utf8_decode('/admin-mailinglist-manage'), array(utf8_decode('Gestion des listes de diffusion')));
-$rbac->Permissions->addPath(utf8_decode('/admin-communes-update/admin-communes-view'), array(utf8_decode('Modifier les communes'), utf8_decode('Voir les communes')));
+$rbac->Permissions->addPath(utf8_decode('/admin-sections-update/admin-sections-view'), array(utf8_decode('Modifier les sections'), utf8_decode('Voir les sections')));
 // Trésorerie ?
 // Factures ?
 
@@ -391,7 +391,7 @@ $exec = mysqli_query($link, $query);
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='0',
 	`Assignable`='1',
@@ -404,7 +404,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.72', 
 	`Mail`='president@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Autorité 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -416,7 +416,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='vice-president-1@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Autorité 92 Alpha',
 	`Directory`='1',
 	`Assignable`='1',
@@ -428,7 +428,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='vice-president-2@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Autorité 92 Bravo',
 	`Directory`='1',
 	`Assignable`='1',
@@ -440,7 +440,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.76.45.79.81', 
 	`Mail`='secretaire-general@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Autorité 92 Delta',
 	`Directory`='1',
 	`Assignable`='1',
@@ -452,7 +452,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='secretaire-general-adj@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -464,7 +464,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.77.46.47.13',
 	`Mail`='tresorier@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -476,7 +476,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='tresorier-adj@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -488,7 +488,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.75', 
 	`Mail`='directeur-operations@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Opé 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -500,7 +500,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.65', 
 	`Mail`='directeur-adj-operations@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Opé 92 Alpha',
 	`Directory`='1',
 	`Assignable`='1',
@@ -512,7 +512,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.73', 
 	`Mail`='directeur-adj-reseau-secours@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Opé 92 Bravo',
 	`Directory`='1',
 	`Assignable`='1',
@@ -524,7 +524,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='directeur-adj-dispositif@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Opé 92 Charlie',
 	`Directory`='1',
 	`Assignable`='1',
@@ -536,7 +536,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.32.98.XX.XX', 
 	`Mail`='directeur-actions-sociales@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Acso 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -548,7 +548,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.89.17.80.43', 
 	`Mail`='directeur-communication@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='COM 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -560,7 +560,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.32.98.XX.XX', 
 	`Mail`='directeur-technique@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Tech 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -572,7 +572,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='directeur-adj-transmissions@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Tech 92 Alpha',
 	`Directory`='1',
 	`Assignable`='1',
@@ -584,7 +584,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.57', 
 	`Mail`='directeur-adj-logistique@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Tech 92 Bravo',
 	`Directory`='1',
 	`Assignable`='1',
@@ -596,7 +596,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='directeur-adj-informatique@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Tech 92 Charlie',
 	`Directory`='1',
 	`Assignable`='1',
@@ -608,7 +608,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='directeur-formations@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='For 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -620,7 +620,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='formation-ars@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -632,7 +632,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -644,7 +644,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='formation-ceps@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -656,7 +656,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='formation-conducteur@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -668,7 +668,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='communication@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -680,7 +680,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='medica92@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Medica 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -692,7 +692,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='paramedical@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='Paramed 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -704,7 +704,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='directeur-adj-cadre-permanence@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -717,7 +717,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-president@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -729,7 +729,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-secretaire@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -741,7 +741,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-tresorier@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -753,7 +753,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-operationnel@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -765,7 +765,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-formation@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -777,7 +777,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-actions-sociales@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -789,7 +789,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-logistique@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -801,7 +801,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-transmissions@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -813,7 +813,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-communication@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -826,7 +826,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='pole-logistique@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -838,7 +838,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='pole-transmissions@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -850,7 +850,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='pole-informatique@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -863,7 +863,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='bureau@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -875,7 +875,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='conseil-departemental@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -887,7 +887,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='recrutement@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -899,7 +899,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='demande-dps@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -911,7 +911,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='permanence-bureau@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -923,7 +923,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.70', 
 	`Mail`='permanence-operationnel@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='VISU 92',
 	`Directory`='1',
 	`Assignable`='0',
@@ -935,7 +935,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.66', 
 	`Mail`='permanence-bureau@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='MICRO 92',
 	`Directory`='1',
 	`Assignable`='0',
@@ -947,7 +947,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.59', 
 	`Mail`='permanence-logistique@protectioncivile92.org',
-	`Affiliation`='0',
+	`Affiliation`='99',
 	`Callsign`='RAVI 92',
 	`Directory`='1',
 	`Assignable`='0',
@@ -3878,7 +3878,7 @@ $rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('admin-asssign-roles-to-u
 $rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('ope-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('treso-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('ope-clients-update-all'));
-$rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('admin-communes-update'));
+$rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('admin-sections-update'));
 $rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('directory-update'));
 $rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('admin-mailinglist-manage'));
 $rbac->Roles->assign(utf8_decode('Président'), utf8_decode('admin-settings-view'));
@@ -3888,7 +3888,7 @@ $rbac->Roles->assign(utf8_decode('Président'), utf8_decode('admin-asssign-roles
 $rbac->Roles->assign(utf8_decode('Président'), utf8_decode('ope-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Président'), utf8_decode('treso-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Président'), utf8_decode('ope-clients-view-all'));
-$rbac->Roles->assign(utf8_decode('Président'), utf8_decode('admin-communes-update'));
+$rbac->Roles->assign(utf8_decode('Président'), utf8_decode('admin-sections-update'));
 $rbac->Roles->assign(utf8_decode('Président'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Vice-Président-1'), utf8_decode('admin-settings-view'));
 $rbac->Roles->assign(utf8_decode('Vice-Président-1'), utf8_decode('admin-roles-view'));
@@ -3897,7 +3897,7 @@ $rbac->Roles->assign(utf8_decode('Vice-Président-1'), utf8_decode('admin-asssig
 $rbac->Roles->assign(utf8_decode('Vice-Président-1'), utf8_decode('ope-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Vice-Président-1'), utf8_decode('treso-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Vice-Président-1'), utf8_decode('ope-clients-view-all'));
-$rbac->Roles->assign(utf8_decode('Vice-Président-1'), utf8_decode('admin-communes-update'));
+$rbac->Roles->assign(utf8_decode('Vice-Président-1'), utf8_decode('admin-sections-update'));
 $rbac->Roles->assign(utf8_decode('Vice-Président-1'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Vice-Président-2'), utf8_decode('admin-settings-view'));
 $rbac->Roles->assign(utf8_decode('Vice-Président-2'), utf8_decode('admin-roles-view'));
@@ -3906,7 +3906,7 @@ $rbac->Roles->assign(utf8_decode('Vice-Président-2'), utf8_decode('admin-asssig
 $rbac->Roles->assign(utf8_decode('Vice-Président-2'), utf8_decode('ope-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Vice-Président-2'), utf8_decode('treso-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Vice-Président-2'), utf8_decode('ope-clients-view-all'));
-$rbac->Roles->assign(utf8_decode('Vice-Président-2'), utf8_decode('admin-communes-update'));
+$rbac->Roles->assign(utf8_decode('Vice-Président-2'), utf8_decode('admin-sections-update'));
 $rbac->Roles->assign(utf8_decode('Vice-Président-2'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire'), utf8_decode('admin-settings-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire'), utf8_decode('admin-roles-update'));
@@ -3915,7 +3915,7 @@ $rbac->Roles->assign(utf8_decode('Secrétaire'), utf8_decode('admin-asssign-role
 $rbac->Roles->assign(utf8_decode('Secrétaire'), utf8_decode('ope-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Secrétaire'), utf8_decode('treso-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Secrétaire'), utf8_decode('ope-clients-update-all'));
-$rbac->Roles->assign(utf8_decode('Secrétaire'), utf8_decode('admin-communes-update'));
+$rbac->Roles->assign(utf8_decode('Secrétaire'), utf8_decode('admin-sections-update'));
 $rbac->Roles->assign(utf8_decode('Secrétaire'), utf8_decode('directory-update'));
 $rbac->Roles->assign(utf8_decode('Secrétaire'), utf8_decode('admin-mailinglist-manage'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Adjoint'), utf8_decode('admin-settings-view'));
@@ -3925,17 +3925,17 @@ $rbac->Roles->assign(utf8_decode('Secrétaire Adjoint'), utf8_decode('admin-asss
 $rbac->Roles->assign(utf8_decode('Secrétaire Adjoint'), utf8_decode('ope-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Adjoint'), utf8_decode('treso-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Adjoint'), utf8_decode('ope-clients-update-all'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Adjoint'), utf8_decode('admin-communes-update'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Adjoint'), utf8_decode('admin-sections-update'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Adjoint'), utf8_decode('directory-update'));
 $rbac->Roles->assign(utf8_decode('Trésorier'), utf8_decode('ope-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Trésorier'), utf8_decode('treso-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Trésorier'), utf8_decode('ope-clients-view-all'));
-$rbac->Roles->assign(utf8_decode('Trésorier'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Adjoint'), utf8_decode('ope-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Trésorier Adjoint'), utf8_decode('treso-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Trésorier Adjoint'), utf8_decode('ope-clients-view-all'));
-$rbac->Roles->assign(utf8_decode('Trésorier Adjoint'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Adjoint'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Adjoint'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DDO'), utf8_decode('admin-settings-view'));
 $rbac->Roles->assign(utf8_decode('DDO'), utf8_decode('admin-roles-view'));
@@ -3943,38 +3943,38 @@ $rbac->Roles->assign(utf8_decode('DDO'), utf8_decode('admin-permissions-view'));
 $rbac->Roles->assign(utf8_decode('DDO'), utf8_decode('ope-dps-validate-ddo-to-pref'));
 $rbac->Roles->assign(utf8_decode('DDO'), utf8_decode('treso-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('DDO'), utf8_decode('ope-clients-update-all'));
-$rbac->Roles->assign(utf8_decode('DDO'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DDO'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DDO'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DDO-A'), utf8_decode('admin-roles-view'));
 $rbac->Roles->assign(utf8_decode('DDO-A'), utf8_decode('admin-permissions-view'));
 $rbac->Roles->assign(utf8_decode('DDO-A'), utf8_decode('ope-dps-validate-ddo-to-pref'));
 $rbac->Roles->assign(utf8_decode('DDO-A'), utf8_decode('treso-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('DDO-A'), utf8_decode('ope-clients-update-all'));
-$rbac->Roles->assign(utf8_decode('DDO-A'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DDO-A'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DDO-A'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DDO-B'), utf8_decode('ope-dps-view-all'));
-$rbac->Roles->assign(utf8_decode('DDO-B'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DDO-B'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DDO-B'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DDO-C'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DDO-C'), utf8_decode('ope-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('DDO-C'), utf8_decode('treso-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('DDO-C'), utf8_decode('ope-clients-update-own'));
-$rbac->Roles->assign(utf8_decode('DDO-C'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DDO-C'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DDO-C'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DDASS'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DDASS'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DDASS'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DDC'), utf8_decode('ope-dps-view-all'));
-$rbac->Roles->assign(utf8_decode('DDC'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DDC'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DDC'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DDT'), utf8_decode('admin-settings-view'));
 $rbac->Roles->assign(utf8_decode('DDT'), utf8_decode('admin-roles-view'));
 $rbac->Roles->assign(utf8_decode('DDT'), utf8_decode('admin-permissions-view'));
 $rbac->Roles->assign(utf8_decode('DDT'), utf8_decode('admin-users-view'));
-$rbac->Roles->assign(utf8_decode('DDT'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DDT'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DDT'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DDT-T'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DDT-T'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DDT-T'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DDT-L'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DDT-L'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DDT-L'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DDT-I'), utf8_decode('admin-settings-update'));
 $rbac->Roles->assign(utf8_decode('DDT-I'), utf8_decode('admin-roles-update'));
@@ -3983,860 +3983,860 @@ $rbac->Roles->assign(utf8_decode('DDT-I'), utf8_decode('admin-asssign-roles-to-u
 $rbac->Roles->assign(utf8_decode('DDT-I'), utf8_decode('ope-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('DDT-I'), utf8_decode('treso-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('DDT-I'), utf8_decode('ope-clients-update-all'));
-$rbac->Roles->assign(utf8_decode('DDT-I'), utf8_decode('admin-communes-update'));
+$rbac->Roles->assign(utf8_decode('DDT-I'), utf8_decode('admin-sections-update'));
 $rbac->Roles->assign(utf8_decode('DDT-I'), utf8_decode('directory-update'));
 $rbac->Roles->assign(utf8_decode('DDT-I'), utf8_decode('admin-mailinglist-manage'));
 $rbac->Roles->assign(utf8_decode('DDF'), utf8_decode('admin-roles-view'));
 $rbac->Roles->assign(utf8_decode('DDF'), utf8_decode('admin-permissions-view'));
-$rbac->Roles->assign(utf8_decode('DDF'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DDF'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DDF'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('CM-FOR-ARS'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('CM-FOR-ARS'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('CM-FOR-ARS'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('CM-FOR-OPR'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('CM-FOR-OPR'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('CM-FOR-OPR'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('CM-FOR-CH'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('CM-FOR-CH'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('CM-FOR-CH'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('CM-FOR-CE'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('CM-FOR-CE'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('CM-FOR-CE'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('MED'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('MED'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('MED'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('CM-PARAMED'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('CM-PARAMED'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('CM-PARAMED'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('CM-CODEP'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('CM-CODEP'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('CM-CODEP'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Asnières'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Asnières'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Asnières'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Asnières'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Asnières'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Asnières'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Asnières'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Asnières'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Asnières'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Asnières'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Asnières'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Asnières'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Asnières'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Asnières'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Asnières'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Asnières'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Asnières'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Asnières'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Asnières'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Asnières'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Asnières'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Asnières'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Asnières'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Asnières'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Asnières'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Asnières'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Asnières'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Asnières'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Asnières'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Asnières'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Asnières'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Asnières'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Asnières'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Asnières'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Asnières'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Asnières'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Asnières'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Asnières'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Boulogne'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Boulogne'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Boulogne'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Boulogne'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Boulogne'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Boulogne'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Boulogne'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Boulogne'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Boulogne'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Boulogne'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Boulogne'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Boulogne'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Boulogne'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Boulogne'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Boulogne'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Boulogne'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Boulogne'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Boulogne'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Boulogne'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Boulogne'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Boulogne'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Boulogne'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Boulogne'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Boulogne'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Boulogne'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Boulogne'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Boulogne'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Boulogne'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Boulogne'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Boulogne'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Boulogne'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Boulogne'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Boulogne'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Boulogne'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Boulogne'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Boulogne'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Boulogne'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Boulogne'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Bourg-la-Reine'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Bourg-la-Reine'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Bourg-la-Reine'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Bourg-la-Reine'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Bourg-la-Reine'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Bourg-la-Reine'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Bourg-la-Reine'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Bourg-la-Reine'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Bourg-la-Reine'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Bourg-la-Reine'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Bourg-la-Reine'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Bourg-la-Reine'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Bourg-la-Reine'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Bourg-la-Reine'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Bourg-la-Reine'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Bourg-la-Reine'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Bourg-la-Reine'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Bourg-la-Reine'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Bourg-la-Reine'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Bourg-la-Reine'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Bourg-la-Reine'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Bourg-la-Reine'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Bourg-la-Reine'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Bourg-la-Reine'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Bourg-la-Reine'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Bourg-la-Reine'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Bourg-la-Reine'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Bourg-la-Reine'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Bourg-la-Reine'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Bourg-la-Reine'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Bourg-la-Reine'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Bourg-la-Reine'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Bourg-la-Reine'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Bourg-la-Reine'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Bourg-la-Reine'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Bourg-la-Reine'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Bourg-la-Reine'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Bourg-la-Reine'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Clamart'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Clamart'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Clamart'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Clamart'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Clamart'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Clamart'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Clamart'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Clamart'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Clamart'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Clamart'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Clamart'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Clamart'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Clamart'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Clamart'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Clamart'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Clamart'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Clamart'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Clamart'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Clamart'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Clamart'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Clamart'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Clamart'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Clamart'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Clamart'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Clamart'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Clamart'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Clamart'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Clamart'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Clamart'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Clamart'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Clamart'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Clamart'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Clamart'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Clamart'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Clamart'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Clamart'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Clamart'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Clamart'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Clichy'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Clichy'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Clichy'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Clichy'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Clichy'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Clichy'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Clichy'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Clichy'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Clichy'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Clichy'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Clichy'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Clichy'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Clichy'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Clichy'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Clichy'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Clichy'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Clichy'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Clichy'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Clichy'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Clichy'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Clichy'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Clichy'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Clichy'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Clichy'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Clichy'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Clichy'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Clichy'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Clichy'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Clichy'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Clichy'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Clichy'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Clichy'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Clichy'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Clichy'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Clichy'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Clichy'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Clichy'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Clichy'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Colombes'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Colombes'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Colombes'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Colombes'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Colombes'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Colombes'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Colombes'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Colombes'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Colombes'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Colombes'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Colombes'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Colombes'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Colombes'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Colombes'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Colombes'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Colombes'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Colombes'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Colombes'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Colombes'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Colombes'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Colombes'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Colombes'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Colombes'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Colombes'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Colombes'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Colombes'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Colombes'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Colombes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Colombes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Colombes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Colombes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Colombes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Colombes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Colombes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Colombes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Colombes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Colombes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Colombes'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Courbevoie'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Courbevoie'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Courbevoie'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Courbevoie'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Courbevoie'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Courbevoie'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Courbevoie'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Courbevoie'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Courbevoie'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Courbevoie'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Courbevoie'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Courbevoie'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Courbevoie'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Courbevoie'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Courbevoie'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Courbevoie'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Courbevoie'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Courbevoie'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Courbevoie'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Courbevoie'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Courbevoie'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Courbevoie'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Courbevoie'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Courbevoie'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Courbevoie'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Courbevoie'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Courbevoie'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Courbevoie'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Courbevoie'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Courbevoie'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Courbevoie'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-C Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-C Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-C Courbevoie'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Courbevoie'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Courbevoie'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Courbevoie'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Courbevoie'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Courbevoie'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Courbevoie'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Courbevoie'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Garches'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Garches'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Garches'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Garches'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Garches'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Garches'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Garches'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Garches'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Garches'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Garches'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Garches'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Garches'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Garches'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Garches'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Garches'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Garches'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Garches'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Garches'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Garches'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Garches'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Garches'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Garches'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Garches'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Garches'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Garches'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Garches'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Garches'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Garches'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Garches'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Garches'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Garches'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Garches'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Garches'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Garches'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Garches'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Garches'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Garches'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Garches'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Gennevilliers'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Gennevilliers'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Gennevilliers'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Gennevilliers'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Gennevilliers'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Gennevilliers'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Gennevilliers'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Gennevilliers'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Gennevilliers'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Gennevilliers'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Gennevilliers'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Gennevilliers'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Gennevilliers'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Gennevilliers'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Gennevilliers'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Gennevilliers'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Gennevilliers'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Gennevilliers'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Gennevilliers'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Gennevilliers'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Gennevilliers'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Gennevilliers'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Gennevilliers'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Gennevilliers'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Gennevilliers'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Gennevilliers'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Gennevilliers'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Gennevilliers'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Gennevilliers'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Gennevilliers'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Gennevilliers'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Gennevilliers'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Gennevilliers'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Gennevilliers'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Gennevilliers'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Gennevilliers'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Gennevilliers'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Gennevilliers'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Levallois'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Levallois'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Levallois'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Levallois'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Levallois'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Levallois'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Levallois'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Levallois'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Levallois'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Levallois'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Levallois'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Levallois'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Levallois'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Levallois'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Levallois'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Levallois'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Levallois'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Levallois'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Levallois'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Levallois'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Levallois'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Levallois'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Levallois'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Levallois'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Levallois'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Levallois'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Levallois'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Levallois'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Levallois'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Levallois'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Levallois'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Levallois'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Levallois'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Levallois'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Levallois'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Levallois'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Levallois'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Levallois'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Montrouge'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Montrouge'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Montrouge'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Montrouge'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Montrouge'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Montrouge'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Montrouge'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Montrouge'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Montrouge'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Montrouge'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Montrouge'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Montrouge'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Montrouge'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Montrouge'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Montrouge'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Montrouge'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Montrouge'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Montrouge'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Montrouge'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Montrouge'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Montrouge'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Montrouge'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Montrouge'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Montrouge'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Montrouge'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Montrouge'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Montrouge'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Montrouge'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Montrouge'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Montrouge'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Montrouge'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Montrouge'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Montrouge'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Montrouge'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Montrouge'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Montrouge'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Montrouge'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Montrouge'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Nanterre'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Nanterre'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Nanterre'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Nanterre'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Nanterre'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Nanterre'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Nanterre'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Nanterre'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Nanterre'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Nanterre'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Nanterre'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Nanterre'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Nanterre'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Nanterre'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Nanterre'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Nanterre'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Nanterre'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Nanterre'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Nanterre'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Nanterre'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Nanterre'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Nanterre'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Nanterre'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Nanterre'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Nanterre'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Nanterre'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Nanterre'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Nanterre'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Nanterre'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Nanterre'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Nanterre'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Nanterre'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Nanterre'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Nanterre'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Nanterre'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Nanterre'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Nanterre'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Nanterre'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Rueil'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Rueil'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Rueil'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Rueil'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Rueil'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Rueil'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Rueil'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Rueil'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Rueil'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Rueil'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Rueil'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Rueil'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Rueil'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Rueil'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Rueil'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Rueil'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Rueil'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Rueil'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Rueil'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Rueil'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Rueil'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Rueil'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Rueil'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Rueil'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Rueil'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Rueil'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Rueil'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Rueil'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Rueil'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Rueil'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Rueil'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Rueil'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Rueil'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Rueil'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Rueil'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Rueil'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Rueil'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Rueil'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Suresnes'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Suresnes'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Suresnes'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Suresnes'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Suresnes'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Suresnes'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Suresnes'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Suresnes'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Suresnes'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Suresnes'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Suresnes'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Suresnes'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Suresnes'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Suresnes'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Suresnes'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Suresnes'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Suresnes'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Suresnes'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Suresnes'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Suresnes'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Suresnes'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Suresnes'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Suresnes'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Suresnes'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Suresnes'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Suresnes'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Suresnes'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Suresnes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Suresnes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Suresnes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Suresnes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Suresnes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Suresnes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Suresnes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Suresnes'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Suresnes'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Suresnes'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Suresnes'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Vanves'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Vanves'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Vanves'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Vanves'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Vanves'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Vanves'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Vanves'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Vanves'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Vanves'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Vanves'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Vanves'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Vanves'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Vanves'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Vanves'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Vanves'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Vanves'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Vanves'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Vanves'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Vanves'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Vanves'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Vanves'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Vanves'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Vanves'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Vanves'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Vanves'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Vanves'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Vanves'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Vanves'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Vanves'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Vanves'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Vanves'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Vanves'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Vanves'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Vanves'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Vanves'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Vanves'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Vanves'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Vanves'), utf8_decode('directory-view'));
 
 $rbac->Roles->assign(utf8_decode('Président Villeneuve'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('Président Villeneuve'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Président Villeneuve'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Président Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Président Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Président Villeneuve'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Villeneuve'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Villeneuve'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Villeneuve'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Secrétaire Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Secrétaire Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Secrétaire Villeneuve'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Villeneuve'), utf8_decode('ope-dps-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Villeneuve'), utf8_decode('ope-clients-view-own'));
 $rbac->Roles->assign(utf8_decode('Trésorier Villeneuve'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('Trésorier Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('Trésorier Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('Trésorier Villeneuve'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO Villeneuve'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO Villeneuve'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO Villeneuve'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO Villeneuve'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Villeneuve'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-A Villeneuve'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-A Villeneuve'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-A Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-A Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-A Villeneuve'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Villeneuve'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-B Villeneuve'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-B Villeneuve'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-B Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-B Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-B Villeneuve'), utf8_decode('directory-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Villeneuve'), utf8_decode('ope-dps-validate-local'));
 $rbac->Roles->assign(utf8_decode('DLO-C Villeneuve'), utf8_decode('ope-clients-update-own'));
 $rbac->Roles->assign(utf8_decode('DLO-C Villeneuve'), utf8_decode('treso-dps-view-own'));
-$rbac->Roles->assign(utf8_decode('DLO-C Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLO-C Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLO-C Villeneuve'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF Villeneuve'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-A Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-A Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-A Villeneuve'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLF-B Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLF-B Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLF-B Villeneuve'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLAS Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLAS Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLAS Villeneuve'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLC Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLC Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLC Villeneuve'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT Villeneuve'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Matér Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Matér Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Matér Villeneuve'), utf8_decode('directory-view'));
-$rbac->Roles->assign(utf8_decode('DLT-L Véhic Villeneuve'), utf8_decode('admin-communes-view'));
+$rbac->Roles->assign(utf8_decode('DLT-L Véhic Villeneuve'), utf8_decode('admin-sections-view'));
 $rbac->Roles->assign(utf8_decode('DLT-L Véhic Villeneuve'), utf8_decode('directory-view'));
 
 
