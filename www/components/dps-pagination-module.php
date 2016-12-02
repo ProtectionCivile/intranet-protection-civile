@@ -21,7 +21,7 @@
 				}
 				?>
 				<li>
-					<a href='dps-view.php<?php echo $pageget; ?>'><?php echo $i; ?></a>
+					<a href='dps-list-view.php<?php echo $pageget; ?>'><?php echo $i; ?></a>
 				</li>
 				<?php
 			}
