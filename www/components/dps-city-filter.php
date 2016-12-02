@@ -1,5 +1,5 @@
 <?php if ($rbac->check("ope-dps-view-all", $currentUserID)) { ?>
-	<ul class="nav nav-pills nav-justified">
+	<ul class="nav nav-pills">
 		<?php $activeOrNot = isset($city) ? "" : "class='active'"; ?>
 		<li role="presentation" <?php echo $activeOrNot;?> ><a href="dps-list-view.php">TOUS</a></li>
 		<?php 
