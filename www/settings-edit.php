@@ -1,11 +1,28 @@
-<?php
-include 'securite.php';
-require_once('connexion.php');
-include 'functions/str.php';
-include 'functions/settings_mail_queries.php';
-if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{ ?>
+<?php require_once('functions/session/security.php'); ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Modification d'un paramètre</title>
+	<meta http-equiv="Content-Type" content="text/html">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+</head>
+<body>
 
+	<?php
+include('components/header.php'); 
+require_once('functions/settings_queries.php');
+require_once('functions/str.php');
+
+?>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
 <?php
+
+
+// Authentication
+$rbac->enforce("admin-settings-update", $currentUserID);
+
 // script de traitement
 
 if(isset($_POST['name'], $_POST['value'])){
@@ -13,34 +30,37 @@ if(isset($_POST['name'], $_POST['value'])){
 	$erreur = null;
 	if(empty($_POST['name'])){
 		$erreur = "Erreur champ nom vide";
-	}elseif(verif_settings_mail($link, $_POST['name'])){
-		$erreur = "Erreur nom ".$_POST['name']." déjà utilisé";
 	}
 	if (empty($_POST['value'])) {
 		$erreur = "Erreur champ valeur vide";
 	}
 
 	if(is_null($erreur)){
-		if(insert_settings_mail($link, $_POST['name'], $_POST['value'])){
-			$succes = "Paramètre mail modifié avec succès";	
+		if(update_settings($link, $_GET['id'], $_POST['name'], $_POST['value'])){
+			$succes = "Paramètre modifié avec succès";	
 		}
-	}	
+		
+	}
+
+	$setting = load_setting($link, $_GET['id']);
+	if(is_null($setting)){
+		$erreur = "Paramètre inconnu";
+	}
+
+}
+elseif(isset($_GET['id'])){
+	$setting = load_setting($link, $_GET['id']);
+	if(is_null($setting)){
+		$erreur = "Paramètre inconnu";
+	}
+}
+else{
+	$erreur = "Paramètre inconnu";
 }
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Ajout d'un paramètre mail</title>
-	<meta http-equiv="Content-Type" content="text/html";>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-</head>
-<body>
-<?php include 'header.php'; ?>
-<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+
 <div class="container">
 <?php
 if (!empty($erreur)){
@@ -50,8 +70,8 @@ echo "<div class='alert alert-success'><strong>Réussi</strong> : ".$succes."</d
 }else{}
 ?>
 
-		<h2>Ajout d'un paramètre</h2>
-		<h4><?php if(isset($_GET['add']) && ($_GET['add'] == "ok")) { ?>Paramètre ajouté avec succès. <?php } ?></h4>
+		<h2>Modification d'un paramètre</h2>
+		<h4><?php if(isset($_GET['add']) && ($_GET['add'] == "ok")) { ?>Paramètre modifié avec succès. <?php } ?></h4>
 		<form class="form-horizontal" id="ajoutparametre" role="form" action="" name="add" method="post" autocomplete="off">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -61,37 +81,37 @@ echo "<div class='alert alert-success'><strong>Réussi</strong> : ".$succes."</d
 				<div class="form-group form-group-sm">
 					<label for="name" class="col-sm-4 control-label">Nom du paramètre</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="name" name="name" placeholder="Nom du paramètre">
+						<input type="text" class="form-control" id="name" name="name" value="<?php echo $setting['setting_name'] ?>" placeholder="Nom du paramètre">
 					</div>
 				</div>
 				<div class="form-group form-group-sm">
 					<label for="value" class="col-sm-4 control-label">Valeur du paramètre</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="value" name="value" placeholder="Valeur du paramètre">
+						<input type="text" class="form-control" id="value" name="value" value="<?php echo $setting['setting_value'] ?>" placeholder="Valeur du paramètre">
 					</div>
 				</div>			
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<button type="submit" class="btn btn-warning" id="submit">Envoyer</button>
-						<a class="btn btn-default" role="button" href="liste-settings_mail.php">Retour</a>
+						<a class="btn btn-default" role="button" href="settings-view.php">Retour</a>
 				    </div>
 				</div>
 			</div>
 		</form>
 </div>
-<?php } include 'footer.php'; ?>
+<?php include 'footer.php'; ?>
 <script>
 
-$('#ajoutparametre').validate({
+$('#modifparametre').validate({
         rules: {
             name: {
-                minlength: 2,
+                minlength: 3,
                 maxlength: 20,
                 required: true
             },
             value: {
                 minlength: 3,
-                maxlength: 50,
+                maxlength: 20,
                 required: true
             }
         },

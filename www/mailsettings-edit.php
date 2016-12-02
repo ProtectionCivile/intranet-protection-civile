@@ -1,11 +1,12 @@
 <?php
-include 'securite.php';
-require_once('connexion.php');
-include 'functions/str.php';
-include 'functions/settings_mail_queries.php';
-if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{ ?>
+require_once('functions/session/security.php'); 
+require_once('functions/settings_mail_queries.php');
+require_once('functions/str.php');
+require_once('components/header.php');
 
-<?php
+// Authentication
+$rbac->enforce("admin-settings-update", $currentUserID);
+
 // script de traitement
 
 if(isset($_POST['name'], $_POST['value'])){
@@ -87,13 +88,13 @@ echo "<div class='alert alert-success'><strong>Réussi</strong> : ".$succes."</d
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<button type="submit" class="btn btn-warning" id="submit">Envoyer</button>
-						<a class="btn btn-default" role="button" href="liste-settings_mail.php">Retour</a>
+						<a class="btn btn-default" role="button" href="mailsettings-view.php">Retour</a>
 				    </div>
 				</div>
 			</div>
 		</form>
 </div>
-<?php } include 'footer.php'; ?>
+<?php include 'footer.php'; ?>
 <script>
 
 $('#modifparametre').validate({

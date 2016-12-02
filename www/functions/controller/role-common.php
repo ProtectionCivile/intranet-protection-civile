@@ -18,6 +18,7 @@
 		echo "<div class='alert alert-danger'><strong>Erreur</strong> : ".$commonError."</div>";
 	}
 	else {
-		$roleTitle=$rbac->Roles->getTitle($roleID);
+		$roleTitle=utf8_encode($rbac->Roles->getTitle($roleID));
+		$roleDescription=utf8_encode($rbac->Roles->getDescription($roleID));
 	}
 ?>

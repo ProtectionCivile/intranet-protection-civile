@@ -1,5 +1,9 @@
 <?php
 include 'securite.php';
+require_once ('PhpRbac/src/PhpRbac/Rbac.php');
+use PhpRbac\Rbac;
+$rbac = new Rbac();
+
 require_once('connexion.php');
 if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{ ?>
 	<!DOCTYPE html>
@@ -13,6 +17,30 @@ if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{
 	</head>
 	<body>
 	<?php include 'header.php'; ?>
+
+
+	<!-- ##########   CODE A SUPPRIMER ############ -->
+	<?php 
+		$exampleUserID = 7;
+		$hasViewDpsPermission=$rbac->check("view-dps", $exampleUserID);
+		$hasEditDpsPermission=$rbac->check("edit-dps", $exampleUserID);
+		
+		if ($hasViewDpsPermission) {
+			echo "<center>Brice en a une petite (mais il a le droit de voir les DPS)</center><br />";
+		}
+		else {
+			echo "<center>Pas le droit de voir les DPS</center><br />";
+		}
+		if ($hasEditDpsPermission) {
+			echo "<center>Brice peut éditer les DPS</center><br /><br />";
+		}
+		else {
+			echo "<center>Pas le droit d'éditer un DPS</center><br /><br />";
+		}
+	?>
+	<!-- ##########   CODE A SUPPRIMER ############ -->
+
+
 	<div class="container">
 		<div class="panel panel-default">
 		<div class="panel-heading">

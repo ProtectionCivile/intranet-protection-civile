@@ -1,4 +1,9 @@
 <?php
+	require_once('functions/str.php');
+	
+	//Authentication 
+	$rbac->enforce("admin-users-update", $currentUserID);
+
 	if (isset($_POST['addUser'])){
 		$lastName = str_replace("'","", $_POST['inputUserLastName']);
 		$lastNameDB = strtolower(str_replace(" ","-", $lastName));
@@ -37,7 +42,7 @@
 				$genericError = "Un utilisateur avec la même adresse mail existe déjà (".$mail.")";
 			}
 			else {
-				$add_user = "INSERT INTO users(pass, last_name, first_name, phone, mail, attached_section) VALUES ('$passDB', '$lastNameDB', '$firstNameDB', '$phone', '$mail', '$section')" or die("Impossible d'ajouter l'utilisateur dans la base de données" . mysqli_error($link));
+				$add_user = "INSERT INTO users(pass, last_name, first_name, phone, mail, attached_section, login) VALUES ('$passDB', '$lastNameDB', '$firstNameDB', '$phone', '$mail', '$section', '$login')" or die("Impossible d'ajouter l'utilisateur dans la base de données" . mysqli_error($link));
 				mysqli_query($link, $add_user);
 				$genericSuccess = "Membre créé avec succès (".$mail.")";
 			}

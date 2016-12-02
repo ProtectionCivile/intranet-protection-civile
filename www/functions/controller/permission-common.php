@@ -18,6 +18,6 @@
 		echo "<div class='alert alert-danger'><strong>Erreur</strong> : ".$commonError."</div>";
 	}
 	else {
-		$permissionTitle=$rbac->Permissions->getTitle($permissionID);
+		$permissionTitle=utf8_encode($rbac->Permissions->getTitle($permissionID));
 	}
 ?>

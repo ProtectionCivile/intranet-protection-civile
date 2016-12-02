@@ -1,9 +1,4 @@
-<?php
-	include 'securite.php';
-	require_once('connexion.php');
-	include 'functions/str.php';
-?>
-
+<?php require_once('functions/session/security.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,10 +8,10 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
 </head>
-
 <body>
+<?php include('components/header.php'); ?>
 
-<?php include 'header.php'; ?>
+
 <script src="js/jquery.validate.min.js" type="text/javascript"></script>
 
 <ol class="breadcrumb">
@@ -25,6 +20,11 @@
 	<li><a href="/user-view.php">Gestion des utilisateurs</a></li>
 	<li class="active">Modification</li>
 </ol>
+
+
+
+<!-- Authentication -->
+<?php $rbac->enforce("admin-users-update", $currentUserID); ?>
 
 
 <!-- Common -->
@@ -43,7 +43,7 @@
 	<div class="container">
 
 		<!-- Update user : Operation status indicator -->
-		<?php include 'functions/operation-status-indicator.php'; ?>
+		<?php include 'components/operation-status-indicator.php'; ?>
 
 		<h2>Modifier l'utilisateur '<?php echo $firstName." ".$lastName ?>'</h2>
 
@@ -131,10 +131,18 @@
 						<div class="col-sm-8">
 							<select class="form-control" id="inputUserSection" name="inputUserSection">
 								<?php							
-									$reqliste = "SELECT ID, name FROM sections" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+									$reqliste = "SELECT `number`, name FROM sections" or die("Erreur lors de la consultation" . mysqli_error($link)); 
 									$sections = mysqli_query($link, $reqliste);
-									while($section = mysqli_fetch_array($sections)) {
-										echo "<option value='".$section["ID"]."'>".$section["name"]."</option>";
+
+									while($sectionX = mysqli_fetch_array($sections)) {
+										echo $userSection;
+										if ($sectionX['number'] == $section){
+											echo "<option value='".$sectionX["number"]."' selected>".$sectionX["name"]."</option>";
+										}
+										else {
+											echo "<option value='".$sectionX["number"]."'>".$sectionX["name"]."</option>";
+										}
+										
 									}							
 								?>
 							</select>
@@ -147,7 +155,7 @@
 								<a class="btn btn-default" href="user-view.php" role="button">Annuler - Retour à la liste</a>
 							<?php } ?>
 							<button type="submit" class="btn btn-warning" id='submitAddUserForm'>Mettre à jour</button>
-							<?php if (isset($_POST['addUser']) && !empty($genericSuccess)) { ?>
+							<?php if (isset($_POST['updateUser']) && !empty($genericSuccess)) { ?>
 								<a class="btn btn-default" href="user-view.php" role="button">J'ai terminé ! Retour à la liste</a>
 							<?php } ?>
 					   </div>
@@ -162,7 +170,7 @@
 	}
 ?>
 
-<?php include 'footer.php'; ?>
+<?php include('components/footer.php'); ?>
 
 <script>
 

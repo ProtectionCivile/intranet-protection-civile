@@ -1,11 +1,12 @@
 <?php
-include 'securite.php';
-require_once('connexion.php');
-include 'functions/str.php';
-include 'functions/settings_queries.php';
-if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{ ?>
+require_once('functions/session/security.php'); 
+require_once('functions/settings_mail_queries.php');
+require_once('functions/str.php');
+require_once('components/header.php');
 
-<?php
+// Authentication
+$rbac->enforce("admin-settings-update", $currentUserID);
+
 // script de traitement
 
 if(isset($_POST['name'], $_POST['value'])){
@@ -13,7 +14,7 @@ if(isset($_POST['name'], $_POST['value'])){
 	$erreur = null;
 	if(empty($_POST['name'])){
 		$erreur = "Erreur champ nom vide";
-	}elseif(verif_settings($link, $_POST['name'])){
+	}elseif(verif_settings_mail($link, $_POST['name'])){
 		$erreur = "Erreur nom ".$_POST['name']." déjà utilisé";
 	}
 	if (empty($_POST['value'])) {
@@ -21,8 +22,8 @@ if(isset($_POST['name'], $_POST['value'])){
 	}
 
 	if(is_null($erreur)){
-		if(insert_settings($link, $_POST['name'], $_POST['value'])){
-			$succes = "Paramètre modifié avec succès";	
+		if(insert_settings_mail($link, $_POST['name'], $_POST['value'])){
+			$succes = "Paramètre mail modifié avec succès";	
 		}
 	}	
 }
@@ -32,7 +33,7 @@ if(isset($_POST['name'], $_POST['value'])){
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Ajout d'un paramètre</title>
+	<title>Ajout d'un paramètre mail</title>
 	<meta http-equiv="Content-Type" content="text/html";>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
@@ -73,25 +74,25 @@ echo "<div class='alert alert-success'><strong>Réussi</strong> : ".$succes."</d
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<button type="submit" class="btn btn-warning" id="submit">Envoyer</button>
-						<a class="btn btn-default" role="button" href="liste-settings.php">Retour</a>
+						<a class="btn btn-default" role="button" href="mailsettings-view.php">Retour</a>
 				    </div>
 				</div>
 			</div>
 		</form>
 </div>
-<?php } include 'footer.php'; ?>
+<?php include 'footer.php'; ?>
 <script>
 
 $('#ajoutparametre').validate({
         rules: {
             name: {
-                minlength: 3,
+                minlength: 2,
                 maxlength: 20,
                 required: true
             },
             value: {
                 minlength: 3,
-                maxlength: 20,
+                maxlength: 50,
                 required: true
             }
         },

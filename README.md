@@ -7,3 +7,29 @@ Cet intranet permet :
 - Modifier une commune (préalablement définie en base de donnée)
 - Voir toutes les demandes de Dispositif Prévisionnel de secours
 - Créer un Dispositif Prévisionnel de secours
+
+
+#### Prérequis
+
+Runtime applicatif : PHP 5.3 ou ultérieur
+
+Serveur web : Apache 2.2 / 2.4
+
+Base de données : Mysql 5.x ou mariadb 
+
+Modules apache : 
+
+- mod_rewrite
+
+#### Installation
+
+1. git clone https://github.com/ProtectionCivile/intranet-protection-civile.git
+2. Aller sur http://localhost/index.php
+
+3. Récupérer la BDD
+4. Installer PHPRbac (si ce n'est pas fait) en exécutant le script PhpRbac/database/MySql.sql dans PhpMyAdmin
+5. Installer les permissions et roles par défaut en :
+5a. se connectant à l'appli avec un compte d'admin
+5b. exécutant le script install/first_install.php?confirm
+
+

@@ -1,11 +1,4 @@
-<?php
-	include 'securite.php';
-	require_once('connexion.php');
-	require_once ('PhpRbac/src/PhpRbac/Rbac.php');
-	use PhpRbac\Rbac;
-	$rbac = new Rbac();
-?>
-
+<?php require_once('functions/session/security.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +7,9 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
 </head>
-
 <body>
+<?php include('components/header.php'); ?>
 
-<?php include 'header.php'; ?>
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
@@ -25,6 +17,11 @@
 	<li><a href="/role-view.php">Gestion des rôles</a></li>
 	<li class="active">Utilisation</li>
 </ol>
+
+
+<!-- Authentication -->
+<?php $rbac->enforce("admin-roles-view", $currentUserID); ?>
+
 
 <!-- Common -->
 <?php 
@@ -67,12 +64,13 @@
 					<div class="panel-heading">Permissions</div>
 					<div class="panel-body">
 						<?php 
-							$query = "SELECT P.ID, P.Title FROM rbac_rolepermissions AS RP INNER JOIN rbac_permissions AS P ON RP.PermissionId=P.ID WHERE RP.RoleId='$roleID' ORDER BY P.Title" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+							$query = "SELECT P.ID, P.Title, P.Description FROM rbac_rolepermissions AS RP INNER JOIN rbac_permissions AS P ON RP.PermissionId=P.ID WHERE RP.RoleId='$roleID' ORDER BY P.Title" or die("Erreur lors de la consultation" . mysqli_error($link)); 
 							$permissions = mysqli_query($link, $query);
 							while($permission = mysqli_fetch_array($permissions)) { 
 								$permissionID=$permission["ID"];
 								$permissionTitle=$permission["Title"];
-								echo $permissionTitle.", ";
+								$permissionDesc=$permission["Description"];
+								echo $permissionDesc." (".$permissionTitle.")<br />";
 							}
 						?>
 					</div>
@@ -89,7 +87,7 @@
 								$userID=$row["ID"];
 								$userFirstName=$row["first_name"];
 								$userLastName=$row["last_name"];
-								echo $userFirstName." ".$userLastName.", ";
+								echo $userFirstName." ".$userLastName."<br />";
 							}
 						?>
 					</div>
@@ -105,6 +103,6 @@
 	}
 ?>
 
-<?php include 'footer.php'; ?>
+<?php include('components/footer.php'); ?>
 </body>
 </html>

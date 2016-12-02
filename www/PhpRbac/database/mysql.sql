@@ -12,14 +12,14 @@ CREATE TABLE IF NOT EXISTS `rbac_permissions` (
   KEY `Title` (`Title`),
   KEY `Lft` (`Lft`),
   KEY `Rght` (`Rght`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci AUTO_INCREMENT=1;
 
 CREATE TABLE IF NOT EXISTS `rbac_rolepermissions` (
   `RoleID` int(11) NOT NULL,
   `PermissionID` int(11) NOT NULL,
   `AssignmentDate` int(11) NOT NULL,
   PRIMARY KEY  (`RoleID`,`PermissionID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE IF NOT EXISTS `rbac_roles` (
   `ID` int(11) NOT NULL auto_increment,
@@ -31,14 +31,14 @@ CREATE TABLE IF NOT EXISTS `rbac_roles` (
   KEY `Title` (`Title`),
   KEY `Lft` (`Lft`),
   KEY `Rght` (`Rght`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE IF NOT EXISTS `rbac_userroles` (
   `UserID` int(11) NOT NULL,
   `RoleID` int(11) NOT NULL,
   `AssignmentDate` int(11) NOT NULL,
   PRIMARY KEY  (`UserID`,`RoleID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 /*
  * Insert Initial Table Data
