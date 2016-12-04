@@ -14,7 +14,7 @@
 		</button>
 		<h1 class="panel-title">Filtres</h1>
 	</div>
-	<div id='panel-filters' class="panel-body" aria-expanded='true'>
+	<div class="panel-body" aria-expanded='true'>
 		
 		<div class='panel-filters in' aria-expanded='true'>
 			<p>
