@@ -33,6 +33,15 @@
 	<!-- Update user : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
+	<?php $base_url="user-view.php"; ?>
+
+	<!-- Beginning of the filter's parent module -->
+	<?php include_once('components/filter/filter-users-module.php'); ?>
+
+	<?php require_once('components/filter/filter-users-interpretor.php'); ?>
+
+	<?php require_once('components/filter/parts/paging-interpretor.php'); ?>
+
 	<h2>Gestion des utilisateurs</h2>
 
 
@@ -52,8 +61,7 @@
 					<th colspan='3'>Actions</th>
 				</tr>
 				<?php 
-				$query = "SELECT U.ID, U.last_name, U.first_name, U.phone, U.mail, S.name AS section_name FROM `users` AS U INNER JOIN sections AS S ON `U`.`attached_section` = `S`.`number` ORDER by U.last_name ASC";
-				$users = mysqli_query($link, $query);
+				$users = mysqli_query($link, $sqlQuery);
 				while($user = mysqli_fetch_array($users)) { ?>
 					<tr>
 						<td>
@@ -103,6 +111,9 @@
 			<div class="panel-footer"><a class="btn btn-default" role="button" href="user-create.php">Ajouter un utilisateur</a></div>
 		<?php }?>
 	</div>
+
+	<!-- Page's pagination module -->
+	<?php require_once('components/filter/parts/filter-paging-display.php'); ?>
 
 </div>
 
