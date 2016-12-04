@@ -36,7 +36,7 @@ $settings_array = mysqli_fetch_array($query_result);
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Operationnel <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li class="dropdown-header">Direction départementale</li>
-						<li><a href="dps-view.php?filter=en-attente">A traiter <span class="badge"><?php echo $row_cnt;?></span></a></li>
+						<li><a href="dps-list-view.php?atraiter">A traiter <span class="badge"><?php echo $row_cnt;?></span></a></li>
 						<li class="divider"></li>
 						<li class="dropdown-header">Gestion des DPS</li>
 						<?php if ($rbac->check("ope-dps-view-own", $currentUserID)) {?> 
@@ -106,7 +106,7 @@ $settings_array = mysqli_fetch_array($query_result);
 
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo $currentUserFirstName;?> <?php echo $currentUserLastName;?> <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo ucwords($currentUserFirstName);?> <?php echo strtoupper($currentUserLastName);?> <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li class="disabled"><a href="modifier-mdp.php">Modifier son mot de passe</a></li>
 						<li><a href="logout.php">Déconnexion</a></li>

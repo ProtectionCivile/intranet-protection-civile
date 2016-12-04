@@ -22,19 +22,4 @@
 			return $dpt;
 		}
 	}
-
-	function compute_dps_status($refus, $validation_ec, $validation, $dateValid) {
-		if($refus == true) {
-			return "Refusé";
-		}
-		elseif($validation_ec == true) {
-			return "En attente";
-		}
-		elseif($validation_ec == false && $validation == true) {
-			return $dateValid;
-		}
-		else {
-			return "Non envoyé";
-		}
-	}
 ?>

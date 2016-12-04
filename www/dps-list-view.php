@@ -28,19 +28,21 @@
 <!-- Page content container -->
 <div class="container">
 
-	<!-- Filter on the city holding the DPS -->
-	<?php include_once('components/dps-city-filter.php'); ?>
-	
-	<br />
 
-	<!-- Filter on the DPS' status -->
-	<?php include_once('components/dps-status-filter.php'); ?>
+
+	<?php $base_url="dps-list-view.php"; ?>
+
+	<!-- Beginning of the filter's parent module -->
+	<?php include_once('components/filter/filter-dps-list-module.php'); ?>
+
+	<?php require_once('components/filter/filter-dps-interpretor.php'); ?>
+
+	<?php require_once('components/filter/parts/paging-interpretor.php'); ?>
 	
-	<br />
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">Liste des Dispositifs Prévisionnels de Secours</h3>
+			<h3 class="panel-title">Liste des Dispositifs Prévisionnels de Secours (<?php echo $nb_elements; ?> DPS trouvés)</h3>
 		</div>
 		<div class="panel-body">
 			<div class="table-responsive" style="vertical-align: middle;">
@@ -56,36 +58,31 @@
 					</thead>
 					<tbody>
 						<?php
-						$dpsperpage = 50;
-
-						require('functions/dps/get_all_visible_dps_query.php');
-						$listedps_result = mysqli_query($link, $listedps_query);
-
-						while($listedps = mysqli_fetch_array($listedps_result)){
-							require('functions/dps/choose-between-dps-type.php'); 
+						while($dps = mysqli_fetch_assoc($sqlQuery_query)){
+							require('functions/dps/choose-between-dps-type.php');
 							?>
-							<tr <?php echo $trClass;?> >
+							<tr class='<?php echo $trClass;?>' >
 								<td>
-									<?php echo $listedps["dps_debut_poste"]; ?>
+									<?php echo $dps["dps_debut_poste"]; ?>
 								</td>
 								<td>
-									<?php echo $listedps["cu_complet"]; ?>
+									<?php echo $dps["cu_complet"]; ?>
 								</td>
 								<td>
-									<?php echo compute_dps_department($listedps["dept"]); ?>
+									<?php echo compute_dps_department($dps["dept"]); ?>
 								</td>
 								<td>
-									<?php echo compute_dps_type($listedps["type_dps"]); ?>
+									<?php echo compute_dps_type($dps["type_dps"]); ?>
 								</td>
 								<td>
-									<?php echo $listedps["description_manif"]; ?>
+									<?php echo $dps["description_manif"]; ?>
 								</td>
 								<td>
-									<?php echo compute_dps_status($refus, $validation_ec, $validation, $listedps["valid_demande_dps"]); ?>
+									<?php echo $etat; ?>
 								</td>
 								<td>
 									<form role='form' action='<?php echo $urlform; ?>' method='post'>
-										<input type='hidden' name='id' value='<?php echo $listedps["id"]; ?>'>
+										<input type='hidden' name='id' value='<?php echo $dps["id"]; ?>'>
 										<button type='submit' class='<?php echo $buttonclass; ?>'></button>
 									</form>
 								</td>
@@ -93,13 +90,13 @@
 						<?php } ?>
 					</tbody>
 				</table>
-				
-				<!-- Page's pagination module -->
-				<?php include_once('components/dps-pagination-module.php'); ?>
-				
 			</div>
 		</div>
 	</div>
+
+	<!-- Page's pagination module -->
+	<?php require_once('components/filter/parts/filter-paging-display.php'); ?>
+
 </div>
 <?php require ('components/footer.php'); ?>
 </body>

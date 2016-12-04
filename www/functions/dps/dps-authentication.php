@@ -3,7 +3,6 @@
 		if (empty($_GET['city']) ) {
 			// User comes from its section's link
 			$rbac->enforce("ope-dps-view-own", $currentUserID);
-			$city=$currentUserSection; 
 		}
 		else {
 			// User wants to view a specific city (maybe its own)
@@ -12,12 +11,10 @@
 				if (!$rbac->check("ope-dps-view-all", $currentUserID)) {
 					$rbac->enforce("ope-dps-view-own", $currentUserID);
 				}
-				$city=$currentUserSection; 
 			}
 			else {
 				// User wants to view another city's DPS
 				$rbac->enforce("ope-dps-view-all", $currentUserID);
-				$city=$_GET['city'];
 			}
 		}
 	}
