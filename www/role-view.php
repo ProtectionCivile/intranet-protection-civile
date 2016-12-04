@@ -30,6 +30,15 @@
 	<!-- Update role : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
+	<?php $base_url="role-view.php"; ?>
+
+	<!-- Beginning of the filter's parent module -->
+	<?php include_once('components/filter/filter-roles-module.php'); ?>
+
+	<?php require_once('components/filter/filter-roles-interpretor.php'); ?>
+
+	<?php require_once('components/filter/parts/paging-interpretor.php'); ?>
+
 	<h2>Gestion des roles</h2>
 
 
@@ -53,8 +62,7 @@
 					<th colspan='4'>Opérations</th>
 				</tr>
 				<?php 
-				$query = "SELECT * FROM rbac_roles ORDER by ID ASC";
-				$roles = mysqli_query($link, $query);
+				$roles = mysqli_query($link, $sqlQuery);
 				while($role = mysqli_fetch_array($roles)) { ?>
 					<tr>
 						<td>
@@ -140,6 +148,9 @@
 			<div class="panel-footer"><a class="btn btn-default" role="button" href="role-create.php">Ajouter un rôle</a></div>
 		<?php }?>
 	</div>
+
+	<!-- Page's pagination module -->
+	<?php require_once('components/filter/parts/filter-paging-display.php'); ?>
 
 </div>
 
