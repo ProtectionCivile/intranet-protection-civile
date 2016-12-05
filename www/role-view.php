@@ -121,7 +121,7 @@
 							<?php } ?>
 						</td>
 						<td>
-							<?php if ($rbac->check("admin-asssign-permissions-to-roles", $currentUserID)) { ?>
+							<?php if ($rbac->check("admin-roles-asssign-permissions", $currentUserID)) { ?>
 								<form action='role-assign-permissions.php' method='post' accept-charset='utf-8'>
 									<input type='hidden' name='roleID' value=<?php echo "'".$role['ID']."'"; ?> >
 									<button type='submit' class='btn btn-warning glyphicon glyphicon-check' title="Voir / Affecter des permissions"></button>

@@ -80,7 +80,7 @@
 							<?php echo $user["section_name"]; ?>
 						</td>
 						<td>
-							<?php if ($rbac->check("admin-asssign-roles-to-users", $currentUserID)) { ?>
+							<?php if ($rbac->check("admin-users-asssign-roles", $currentUserID)) { ?>
 								<form action='user-assign-roles.php' method='post' accept-charset='utf-8'>
 									<input type='hidden' name='userID' value=<?php echo "'".$user['ID']."'"; ?> >
 									<button type='submit' class='btn btn-warning glyphicon glyphicon-check' title='Voir / Affecter des rôles'></button>

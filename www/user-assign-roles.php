@@ -27,7 +27,7 @@
 
 
 <!-- Authentication -->
-<?php $rbac->enforce("admin-asssign-roles-to-users", $currentUserID); ?>
+<?php $rbac->enforce("admin-users-asssign-roles", $currentUserID); ?>
 
 <!-- Common -->
 <?php include 'functions/controller/user-common.php'; ?>

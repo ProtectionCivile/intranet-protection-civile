@@ -80,10 +80,10 @@ $settings_array = mysqli_fetch_array($query_result);
 					<a href="#" class="dropdown-toggle glyphicon glyphicon-cog" data-toggle="dropdown"><span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<?php 
-						if ($rbac->check("admin-users-view", $currentUserID) || $rbac->check("admin-communes-view", $currentUserID)) { 
+						if ($rbac->check("admin-users-view", $currentUserID) || $rbac->check("admin-sections-view", $currentUserID)) { 
 							?> <li class="dropdown-header">Réglages communs</li> <?php
 							if ($rbac->check("admin-users-view", $currentUserID)) {?> <li><a href="user-view.php">Gestion des utilisateurs</a></li> <?php }
-							if ($rbac->check("admin-communes-view", $currentUserID)) {?> <li><a href="liste-commune.php">Liste des communes</a></li> <?php }
+							if ($rbac->check("admin-sections-view", $currentUserID)) {?> <li><a href="liste-commune.php">Liste des communes</a></li> <?php }
 						}
 
 						if ($rbac->check("admin-settings-view", $currentUserID)) {
