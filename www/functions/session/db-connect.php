@@ -3,7 +3,6 @@ $hostname_dbprotect = "localhost";
 $username_dbprotect = "root";
 $password_dbprotect = "root";
 $database_dbprotect = "ADPC"; 
-$tablename_dbprotect= "users";    // nom de la table utilisée
 
 
 $tablename_users = "users";

@@ -68,8 +68,8 @@ $settings_array = mysqli_fetch_array($query_result);
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">Informatique <span class="caret"></span></a>
 
 					<ul class="dropdown-menu" role="menu">
-						<li class="dropdown-header">Listes de diffusion</li> 
 						<?php if ($rbac->check("admin-mailinglist-manage", $currentUserID)) {?> 
+							<li class="dropdown-header">Listes de diffusion</li> 
 							<li><a href="mailinglist-add.php">Abonnement</a></li>
 							<li><a href="mailinglist-delete.php">Désabonnement</a></li>
 						<?php } ?>
