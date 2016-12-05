@@ -2,7 +2,7 @@
 	$permissionID = str_replace("'","", $_POST['permissionID']);
 
 	if($permissionID == ""){
-		$commonError = "Aucune permission définie";
+		$genericError = "Aucune permission définie";
 	}
 	else {
 		$check_query = "SELECT ID FROM rbac_permissions WHERE ID='$permissionID'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
@@ -10,14 +10,11 @@
 		$row_verif = mysqli_fetch_assoc($verif);
 		$permission = mysqli_num_rows($verif);		
 		if (!$permission){
-			$commonError = "La permission en question n'existe pas";
+			$genericError = "La permission en question n'existe pas";
 		}
 	}
 	
-	if(!empty($commonError)) {
-		echo "<div class='alert alert-danger'><strong>Erreur</strong> : ".$commonError."</div>";
-	}
-	else {
+	if(empty($genericError)) {
 		$permissionTitle=utf8_encode($rbac->Permissions->getTitle($permissionID));
 	}
 ?>

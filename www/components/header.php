@@ -7,6 +7,8 @@ $rbac = new Rbac();
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+
 
 
 <?php require_once('functions/session/currentuser-parameters.php'); ?>
