@@ -35,9 +35,9 @@
 	<!-- Beginning of the filter's parent module -->
 	<?php include_once('components/filter/filter-dps-list-module.php'); ?>
 
-	<?php require_once('components/filter/filter-dps-list-interpretor.php'); ?>
+	<?php require_once('components/filter/filter-dps-list-query-builder.php'); ?>
 
-	<?php require_once('components/filter/parts/paging-interpretor.php'); ?>
+	<?php require_once('components/filter/parts/paging-query-modifier.php'); ?>
 	
 
 	<div class="panel panel-default">

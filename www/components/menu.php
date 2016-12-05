@@ -1,9 +1,9 @@
 <?php 
-$query = "SELECT valid_demande_rt, valid_demande_dps, annee_poste FROM demande_dps WHERE valid_demande_rt NOT LIKE '0000-00-00' AND valid_demande_dps LIKE '0000-00-00'";
+$query = "SELECT valid_demande_rt, valid_demande_dps, annee_poste FROM $tablename_dps WHERE valid_demande_rt NOT LIKE '0000-00-00' AND valid_demande_dps LIKE '0000-00-00'";
 $number_dps = mysqli_query($link, $query);
 $row_cnt = mysqli_num_rows($number_dps);
 
-$query = "SELECT * FROM settings WHERE setting_name='name'";
+$query = "SELECT * FROM $tablename_settings_general WHERE name='application-header-name'";
 $query_result = mysqli_query($link, $query);
 $settings_array = mysqli_fetch_array($query_result);
 
@@ -25,7 +25,7 @@ $settings_array = mysqli_fetch_array($query_result);
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.php"><?php echo $settings_array['setting_value'];?></a>
+			<a class="navbar-brand" href="index.php"><?php echo $settings_array['value'];?></a>
 		</div>
 
 		<div class="navbar-collapse collapse">
@@ -48,7 +48,7 @@ $settings_array = mysqli_fetch_array($query_result);
 						<li class="divider"></li>
 						<li><a href="demande-dps.php">Demande de DPS</a></li>
 						<li class="divider"></li>
-						<li class="dropdown-header">Réglages oppérationnels</li>
+						<li class="dropdown-header">Réglages opérationnels</li>
 						<li><a href="list-organisateur.php">Liste des organisateurs</a></li>
 						<li><a href="add-organisateur.php">Ajouter un organisateur</a></li>
 					</ul>
@@ -89,8 +89,8 @@ $settings_array = mysqli_fetch_array($query_result);
 						if ($rbac->check("admin-settings-view", $currentUserID)) {
 							?> <li class="divider" /> <?php
 							?> <li class="dropdown-header">Paramètres</li> <?php
-							?> <li><a href="settings-view.php">Liste des paramètres</a></li> <?php
-							?> <li><a href="mailsettings-view.php">Liste des paramètres mail</a></li> <?php
+							?> <li><a href="setting-view.php">Liste des paramètres</a></li> <?php
+							?> <li><a href="mailsetting-view.php">Liste des paramètres mail</a></li> <?php
 						} 
 
 						if ($rbac->check("admin-roles-view", $currentUserID) || $rbac->check("admin-permissions-view", $currentUserID)) {

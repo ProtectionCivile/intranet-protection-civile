@@ -3,10 +3,7 @@
 <html>
 <head>
 	<title>Gestion des utilisateurs</title>
-	<meta http-equiv="Content-Type" content="text/html">
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
 <?php include('components/header.php'); ?>
@@ -38,9 +35,9 @@
 	<!-- Beginning of the filter's parent module -->
 	<?php include_once('components/filter/filter-users-module.php'); ?>
 
-	<?php require_once('components/filter/filter-users-interpretor.php'); ?>
+	<?php require_once('components/filter/filter-users-query-builder.php'); ?>
 
-	<?php require_once('components/filter/parts/paging-interpretor.php'); ?>
+	<?php require_once('components/filter/parts/paging-query-modifier.php'); ?>
 
 	<h2>Gestion des utilisateurs</h2>
 

@@ -25,6 +25,53 @@ if(!isset($_GET["confirm"])){
 
 echo ("Démarrage : ".date("H:i:s"));
 
+
+/////////////////////////////////////////////////
+// SQL TABLES
+/////////////////////////////////////////////////
+mysqli_query($link, "CREATE TABLE `".$tablename_settings_general."` ( 
+	`ID` INT(12) NOT NULL AUTO_INCREMENT , 
+	`name` VARCHAR(128) NULL , 
+	`value` VARCHAR(400) NULL , 
+	PRIMARY KEY (`ID`)
+	) ENGINE = InnoDB; 
+");
+
+mysqli_query($link, "CREATE TABLE `".$tablename_settings_mail."` ( 
+	`ID` INT(12) NOT NULL AUTO_INCREMENT , 
+	`name` VARCHAR(128) NULL , 
+	`value` VARCHAR(400) NULL , 
+	PRIMARY KEY (`ID`)
+	) ENGINE = InnoDB; 
+");
+
+mysqli_query($link, "CREATE TABLE `".$tablename_users."` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `login` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `pass` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `last_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `first_name` tinytext CHARACTER SET utf8,
+  `phone` tinytext CHARACTER SET utf8,
+  `mail` varchar(80) CHARACTER SET utf8 DEFAULT NULL,
+  `attached_section` tinyint(4) DEFAULT NULL,
+  `eprotec` varchar(10) COLLATE utf8_general_ci DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+");
+
+mysqli_query($link, "ALTER TABLE `ADPC`.`".$tablename_roles."` 
+	ADD `Phone` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Description`,
+	ADD `Mail` VARCHAR(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Phone`,
+	ADD `Affiliation` INT(10) NULL AFTER `Mail`,
+	ADD `Callsign` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Affiliation`,
+	ADD `Directory` INT(2) NULL AFTER `Callsign`,
+	ADD `Assignable` INT(2) NULL AFTER `Directory`,
+	ADD `Hierarchy` INT(10) NULL AFTER `Assignable`,
+	ADD `Tags` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Hierarchy`
+"); 
+
+
+
 /////////////////////////////////////////////////
 // RESET THE PHPRBAC SYSTEM
 /////////////////////////////////////////////////
@@ -364,24 +411,6 @@ $rbac->Roles->add(utf8_decode('DLT Villeneuve'), utf8_decode('Directeur Local Te
 $rbac->Roles->add(utf8_decode('DLT-L Matér Villeneuve'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
 $rbac->Roles->add(utf8_decode('DLT-L Véhic Villeneuve'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-
-
-
-
-/////////////////////////////////////////////////
-// ADD EXTRA COLUMNS TO ROLES TABLE
-/////////////////////////////////////////////////
-$query = "ALTER TABLE `rbac_roles` 
-	ADD `Phone` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Description`,
-	ADD `Mail` VARCHAR(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Phone`,
-	ADD `Affiliation` INT(10) NULL AFTER `Mail`,
-	ADD `Callsign` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Affiliation`,
-	ADD `Directory` INT(2) NULL AFTER `Callsign`,
-	ADD `Assignable` INT(2) NULL AFTER `Directory`,
-	ADD `Hierarchy` INT(10) NULL AFTER `Assignable`,
-	ADD `Tags` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Hierarchy`
-"; 
-$exec = mysqli_query($link, $query);
 
 
 

@@ -35,9 +35,9 @@
 	<!-- Beginning of the filter's parent module -->
 	<?php include_once('components/filter/filter-roles-module.php'); ?>
 
-	<?php require_once('components/filter/filter-roles-interpretor.php'); ?>
+	<?php require_once('components/filter/filter-roles-query-builder.php'); ?>
 
-	<?php require_once('components/filter/parts/paging-interpretor.php'); ?>
+	<?php require_once('components/filter/parts/paging-query-modifier.php'); ?>
 
 	<h2>Gestion des roles</h2>
 
