@@ -2,7 +2,7 @@
 	$sqlQuery = "SELECT * FROM rbac_roles ";
 
 
-	if (!empty($city)) {
+	if (!empty($city) || $city == "0") {
 		$addWhereClause = true;
 		$whereCity = "Affiliation='".$city."'";
 	}

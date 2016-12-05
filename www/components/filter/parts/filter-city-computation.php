@@ -1,6 +1,6 @@
 <?php
 	if(isset($_POST['formcity'])){
-		if (empty($_POST['formcity']) ) {
+		if (empty($_POST['formcity']) && $_POST['formcity'] != "0" ) {
 			$city=$currentUserSection; 
 		}
 		else {

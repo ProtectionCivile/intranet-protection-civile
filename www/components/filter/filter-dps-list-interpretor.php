@@ -4,7 +4,7 @@
 	$addWhereClause = false;
 
 
-	if (!empty($city)) {
+	if (!empty($city) || $city == "0" ) {
 		$addWhereClause = true;
 		$whereCity = "commune_ris='".$city."'";
 	}

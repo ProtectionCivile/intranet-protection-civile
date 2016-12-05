@@ -391,7 +391,7 @@ $exec = mysqli_query($link, $query);
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='0',
 	`Assignable`='1',
@@ -404,7 +404,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.72', 
 	`Mail`='president@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Autorité 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -416,7 +416,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='vice-president-1@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Autorité 92 Alpha',
 	`Directory`='1',
 	`Assignable`='1',
@@ -428,7 +428,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='vice-president-2@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Autorité 92 Bravo',
 	`Directory`='1',
 	`Assignable`='1',
@@ -440,7 +440,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.76.45.79.81', 
 	`Mail`='secretaire-general@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Autorité 92 Delta',
 	`Directory`='1',
 	`Assignable`='1',
@@ -452,7 +452,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='secretaire-general-adj@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -464,7 +464,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.77.46.47.13',
 	`Mail`='tresorier@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -476,7 +476,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='tresorier-adj@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -488,7 +488,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.75', 
 	`Mail`='directeur-operations@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Opé 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -500,7 +500,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.65', 
 	`Mail`='directeur-adj-operations@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Opé 92 Alpha',
 	`Directory`='1',
 	`Assignable`='1',
@@ -512,7 +512,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.73', 
 	`Mail`='directeur-adj-reseau-secours@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Opé 92 Bravo',
 	`Directory`='1',
 	`Assignable`='1',
@@ -524,7 +524,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='directeur-adj-dispositif@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Opé 92 Charlie',
 	`Directory`='1',
 	`Assignable`='1',
@@ -536,7 +536,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.32.98.XX.XX', 
 	`Mail`='directeur-actions-sociales@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Acso 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -548,7 +548,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.89.17.80.43', 
 	`Mail`='directeur-communication@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='COM 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -560,7 +560,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.32.98.XX.XX', 
 	`Mail`='directeur-technique@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Tech 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -572,7 +572,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='directeur-adj-transmissions@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Tech 92 Alpha',
 	`Directory`='1',
 	`Assignable`='1',
@@ -584,7 +584,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.57', 
 	`Mail`='directeur-adj-logistique@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Tech 92 Bravo',
 	`Directory`='1',
 	`Assignable`='1',
@@ -596,7 +596,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='directeur-adj-informatique@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Tech 92 Charlie',
 	`Directory`='1',
 	`Assignable`='1',
@@ -608,7 +608,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='directeur-formations@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='For 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -620,7 +620,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='formation-ars@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -632,7 +632,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -644,7 +644,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='formation-ceps@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -656,7 +656,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='formation-conducteur@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -668,7 +668,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='communication@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -680,7 +680,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='medica92@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Medica 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -692,7 +692,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='paramedical@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='Paramed 92',
 	`Directory`='1',
 	`Assignable`='1',
@@ -704,7 +704,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='directeur-adj-cadre-permanence@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
@@ -717,7 +717,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-president@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -729,7 +729,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-secretaire@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -741,7 +741,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-tresorier@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -753,7 +753,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-operationnel@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -765,7 +765,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-formation@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -777,7 +777,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-actions-sociales@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -789,7 +789,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-logistique@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -801,7 +801,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-transmissions@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -813,7 +813,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='antennes-communication@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -826,7 +826,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='pole-logistique@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -838,7 +838,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='pole-transmissions@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -850,7 +850,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='pole-informatique@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -863,7 +863,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='bureau@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -875,7 +875,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='conseil-departemental@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -887,7 +887,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='recrutement@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -899,7 +899,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='demande-dps@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -911,7 +911,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='', 
 	`Mail`='permanence-bureau@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
@@ -923,7 +923,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.70', 
 	`Mail`='permanence-operationnel@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='VISU 92',
 	`Directory`='1',
 	`Assignable`='0',
@@ -935,7 +935,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.66', 
 	`Mail`='permanence-bureau@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='MICRO 92',
 	`Directory`='1',
 	`Assignable`='0',
@@ -947,7 +947,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 mysqli_query($link, "UPDATE `rbac_roles` SET 
 	`Phone`='06.74.95.31.59', 
 	`Mail`='permanence-logistique@protectioncivile92.org',
-	`Affiliation`='99',
+	`Affiliation`='0',
 	`Callsign`='RAVI 92',
 	`Directory`='1',
 	`Assignable`='0',
