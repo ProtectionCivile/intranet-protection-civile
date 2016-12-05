@@ -5,23 +5,27 @@
 	$rbac->enforce("admin-users-update", $currentUserID);
 
 	if (isset($_POST['addUser'])){
+		$login = str_replace("'","", $_POST['inputUserLogin']);
 		$lastName = str_replace("'","", $_POST['inputUserLastName']);
 		$lastNameDB = strtolower(str_replace(" ","-", $lastName));
 		$firstName = str_replace("'","", $_POST['inputUserFirstName']);
 		$firstNameDB = strtolower(str_replace(" ","-", $firstName));
-		$login = suppr_accents($firstNameDB.".".$lastNameDB);
 		$pass1 = str_replace("'","", $_POST['inputUserPassword1']);
 		$pass2 = str_replace("'","", $_POST['inputUserPassword2']);
 		$passDB = sha1($pass1);
 		$phone = str_replace("'","", $_POST['inputUserPhone']);
-		$mail = $login."@protectioncivile92.org";
+		$mail = suppr_accents($firstNameDB.".".$lastNameDB)."@protectioncivile92.org";
 		$section = str_replace("'","", $_POST['inputUserSection']);
 
+		if($login == ""){
+			$genericError = "Le matricule e-Protec est obligatoire";
+			$createErrorLogin = "Le matricule e-Protec est obligatoire";
+		}
 		if($lastName == ""){
 			$genericError = "Le nom de famille est obligatoire";
 			$createErrorLastName = "Le nom de famille est obligatoire";
 		}
-		if($lastName == ""){
+		if($firstName == ""){
 			$genericError = "Le prénom est obligatoire";
 			$createErrorFirstName = "Le prénom est obligatoire";
 		}

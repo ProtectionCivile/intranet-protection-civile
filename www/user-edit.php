@@ -90,6 +90,24 @@
 							</div>
 						</div>
 					<?php } ?>
+
+					<?php if (!empty($createErrorLogin)){ ?>
+						<div class="form-group form-group-sm has-error has-feedback">
+							<label for="inputUserLogin" class="col-sm-4 control-label">Matricule e-Protec</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="inputUserLogin" name="inputUserLogin" aria-describedby="inputError2Status" placeholder="ex: 49594" value="<?php echo $login; ?>">
+								<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+								<span id="inputError2Status" class="sr-only">(error)</span>
+							</div>
+						</div>
+					<?php } else { ?>
+						<div class="form-group form-group-sm">
+							<label for="inputUserLogin" class="col-sm-4 control-label">Matricule e-Protec</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="inputUserLogin" name="inputUserLogin" placeholder="ex: 49594" value="<?php echo $login; ?>">
+							</div>
+						</div>
+					<?php } ?>
 					
 					<?php if (!empty($createErrorPassword)){ ?>
 						<div class="form-group form-group-sm has-error has-feedback">
@@ -181,6 +199,11 @@ $('#editUserForm').validate({
             inputUserFirstName: {
                 minlength: 2,
                 maxlength: 30,
+                required: true
+            },
+            inputUserLogin: {
+                minlength: 2,
+                maxlength: 7,
                 required: true
             },
             inputUserPhone: {

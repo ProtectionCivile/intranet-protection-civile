@@ -52,6 +52,7 @@
 				<tr>
 					<th>Nom</th>
 					<th>Prénom</th>
+					<th>Matricule</th>
 					<th>Téléphone</th>
 					<th>Mail</th>
 					<th>Section</th>
@@ -66,6 +67,9 @@
 						</td>
 						<td>
 							<?php echo ucfirst($user["first_name"]); ?>
+						</td>
+						<td>
+							<?php echo $user["login"]; ?>
 						</td>
 						<td>
 							<?php echo $user["phone"]; ?>

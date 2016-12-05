@@ -5,8 +5,14 @@
 	$rbac->enforce("admin-users-update", $currentUserID);
 
 
-	if (empty($commonError)){
+	if (empty($genericError)){
 
+		if (isset($_POST['inputUserLogin'])) {
+			$login=strtolower(str_replace("'","", $_POST['inputUserLogin']));
+		}
+		else {
+			$login=$user["login"];
+		}
 		if (isset($_POST['inputUserLastName'])) {
 			$lastName=strtolower(str_replace("'","", $_POST['inputUserLastName']));
 			$lastNameDB = strtolower(str_replace(" ","-", $lastName));
@@ -33,19 +39,18 @@
 		else {
 			$section=$user["attached_section"];
 		}
-		if (isset($_POST['inputUserPassword1'])) {
+		if (isset($_POST['inputUserPassword1']) && $_POST['inputUserPassword1'] != "") {
 			$password=sha1(str_replace("'","", $_POST['inputUserPassword1']));
 		}
 		else {
 			$password=$user["pass"];
 		}
 
-		$login = suppr_accents($firstNameDB.".".$lastNameDB);
-		$mail = $login."@protectioncivile92.org";
+		$mail = suppr_accents($firstNameDB.".".$lastNameDB)."@protectioncivile92.org";
 		
 
 		if (isset($_POST['updateUser'])) {		
-			$sql = "UPDATE users SET last_name='$lastName', first_name='$firstName', phone='$phone', pass='$password', login='$login', mail='$mail', attached_section='$section' WHERE ID='$userID'";
+			$sql = "UPDATE users SET login='$login', last_name='$lastName', first_name='$firstName', phone='$phone', pass='$password', login='$login', mail='$mail', attached_section='$section' WHERE ID='$userID'";
 			if ($link->query($sql) === TRUE) {
 			    $genericSuccess = "Utilisateur mis à jour (".$lastName." ".$firstName.")";
 			} else {
