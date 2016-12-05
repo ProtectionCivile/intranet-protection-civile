@@ -3,19 +3,13 @@
 <html>
 <head>
 	<title>Gestion des sections</title>
-	<meta http-equiv='Content-Type' content='text/html'>
-	<meta charset='UTF-8'>
-	<link rel='stylesheet' href='css/bootstrap.min.css' type='text/css' media='all' title='no title' charset='utf-8'>
-	<meta name='viewport' content='width=device-width, initial-scale=1.0 user-scalable=no'>
-
-
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script type="text/javascript" src='js/jquery.validate.min.js' ></script>
-	<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
 <?php include('components/header.php'); ?>
 
+
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
 
 <ol class='breadcrumb'>
 	<li><a href='/'>Home</a></li>
@@ -46,34 +40,35 @@
 
 	<h2>Modifier la section '<?php echo $name ?>'</h2>
 
+
 	<!-- Update user : display form -->
 	<div class='panel panel-info'>
 		<div class='panel-heading'>
 			<h3 class='panel-title'>Modifier la commune de <strong><?php echo $nom; ?> - Antenne N°<?php echo $number;?></strong></h3>
 		</div>
 		<div class='panel-body'>
-			<form class='form-horizontal' id='editForm' action='' role='form' method='post' accept-charset='utf-8'>
+			<form class='form-horizontal validation-required' id='editForm' action='' role='form' method='post' accept-charset='utf-8'>
 				<input type='hidden' name='update'>
 				<input type='hidden' name='ID' type='text' value='<?php echo $id;?>'>
 
 				<div class='form-group form-group-sm'>
 					<label for='name' class='col-sm-4 control-label'>Nom</label>
 					<div class='col-sm-8'>
-						<input type='text' class='form-control' id='name' name='name' value='<?php echo $name; ?>'>
+						<input type='text' class='form-control' id='name' name='name' minlength='3' maxlength='50' required='true' value='<?php echo $name; ?>'>
 					</div>
 				</div>
 
 				<div class='form-group form-group-sm'>
 					<label for='number' class='col-sm-4 control-label'>Numéro interne</label>
 					<div class='col-sm-8'>
-						<input type='text' class='form-control' id='number' name='number' value='<?php echo $number; ?>'>
+						<input type='text' class='form-control' id='number' name='number' minlength='1' maxlength='2' number='true' required='true' value='<?php echo $number; ?>'>
 					</div>
 				</div>
 
 				<div class='form-group form-group-sm'>
 					<label for='shortname' class='col-sm-4 control-label'>Nom court</label>
 					<div class='col-sm-8'>
-						<input type='text' class='form-control' id='shortname' name='shortname' value='<?php echo $shortname; ?>'>
+						<input type='text' class='form-control' id='shortname' name='shortname' minlength='3' maxlength='3' required='true' value='<?php echo $shortname; ?>'>
 					</div>
 				</div>
 
@@ -87,35 +82,35 @@
 				<div class='form-group form-group-sm'>
 					<label for='zipcode' class='col-sm-4 control-label'>Code postal</label>
 					<div class='col-sm-8'>
-						<input type='text' class='form-control' id='zipcode' name='zipcode' value='<?php echo $zipcode; ?>'>
+						<input type='text' class='form-control' id='zipcode' name='zipcode' minlength='5' maxlength='5' number='true' value='<?php echo $zipcode; ?>'>
 					</div>
 				</div>
 
 				<div class='form-group form-group-sm'>
 					<label for='city' class='col-sm-4 control-label'>Ville</label>
 					<div class='col-sm-8'>
-						<input type='text' class='form-control' id='city' name='city' value='<?php echo $city; ?>'>
+						<input type='text' class='form-control' id='city' name='city' minlength='3' maxlength='40' value='<?php echo $city; ?>'>
 					</div>
 				</div>
 
 				<div class='form-group form-group-sm'>
 					<label for='phone' class='col-sm-4 control-label'>Téléphone de contact</label>
 					<div class='col-sm-8'>
-						<input type='text' class='form-control' id='phone' name='phone' minlength='2' maxlength='5' required value='<?php echo $phone; ?>'>
+						<input type='text' class='form-control' id='phone' name='phone' minlength='10' maxlength='10' required='true' number='true' value='<?php echo $phone; ?>'>
 					</div>
 				</div>
 
 				<div class='form-group form-group-sm'>
 					<label for='mail' class='col-sm-4 control-label'>Adresse mail de contact</label>
 					<div class='col-sm-8'>
-						<input type='text' class='form-control' id='mail' name='mail' value='<?php echo $mail; ?>'>
+						<input type='text' class='form-control' id='mail' name='mail' minlength='3' maxlength='40' email='true' required='true' value='<?php echo $mail; ?>'>
 					</div>
 				</div>
 
 				<div class='form-group form-group-sm'>
 					<label for='website' class='col-sm-4 control-label'>Site internet</label>
 					<div class='col-sm-8'>
-						<input type='text' class='form-control' id='website' name='website' value='<?php echo $website; ?>'>
+						<input type='text' class='form-control' id='website' name='website' minlength='1' maxlength='40' url='true' required='true' value='<?php echo $website; ?>'>
 					</div>
 				</div>
 
@@ -147,7 +142,7 @@
 						<?php if (empty($genericSuccess)){ ?>
 							<a class='btn btn-default' href='section-view.php' role='button'>Annuler - Retour à la liste</a>
 						<?php } ?>
-						<button type='submit' class='btn btn-warning' id='submitAddUserForm'>Mettre à jour</button>
+						<button type='submit' class='btn btn-warning' id='submit'>Mettre à jour</button>
 						<?php if (isset($_POST['update']) && !empty($genericSuccess)) { ?>
 							<a class='btn btn-default' href='section-view.php' role='button'>J'ai terminé ! Retour à la liste</a>
 						<?php } ?>
@@ -157,57 +152,14 @@
 		</div>
 	</div>
 </div>
-<?php include 'footer.php'; ?>
 
-<script type='text/javascript' >
+<?php include ('components/footer.php'); ?>
 
-$('#editForm').validate({
-        rules: {
-            name: {
-                minlength: 2,
-                maxlength: 30,
-                required: true
-            }
-		},
-		
-        highlight: function(element) {
-            $(element).closest('.form-group').addClass('has-error');
-			$('#submit').addClass('disabled');
-        },
-        unhighlight: function(element) {
-            $(element).closest('.form-group').removeClass('has-error');
-			$('#submit').removeClass('disabled');
-        },
-        errorElement: 'span',
-        errorClass: 'help-block',
-        errorPlacement: function(error, element) {
-            if(element.parent('.input-group').length) {
-                error.insertAfter(element.parent());
-            } else {
-                error.insertAfter(element);
-            }
-        }
-    });
-jQuery.extend(jQuery.validator.messages, {
-  required: "Ce champ est requis",
-  remote: "Une erreur est présente",
-  email: "votre message",
-  url: "votre message",
-  date: "votre message",
-  dateISO: "Une erreur de date est présente",
-  number: "votre message",
-  digits: "votre message",
-  creditcard: "Une erreur est présente",
-  equalTo: "Les deux valeurs doivent être identiques",
-  accept: "Une erreur est présente",
-  maxlength: jQuery.validator.format("Doit contenir moins de {0} caractères."),
-  minlength: jQuery.validator.format("Doit contenir plus de {0} caractères."),
-  rangelength: jQuery.validator.format("Doit contenir entre {0} et {1} caractères."),
-  range: jQuery.validator.format("votre message  entre {0} et {1}."),
-  max: jQuery.validator.format("votre message  inférieur ou égal à {0}."),
-  min: jQuery.validator.format("votre message  supérieur ou égal à {0}.")
-});
+<script text='text/javascript'>
+	$('#editForm').validate();
 </script>
+
+
 
 </body>
 </html>
