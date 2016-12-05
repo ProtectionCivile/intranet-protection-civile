@@ -17,14 +17,11 @@
 </ol>
 
 
-
 <!-- Authentication -->
 <?php $rbac->enforce("admin-permissions-update", $currentUserID); ?>
 
-
 <!-- Create a new permission by title : Controller -->
 <?php include 'functions/controller/permission-create-controller.php'; ?>
-
 
 <!-- Page content container -->
 <div class="container">
@@ -48,26 +45,26 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Au niveau racine</div>
 				<div class="panel-body">
-					<form class="form-inline" action='' method='post' accept-charset='utf-8'>
+					<form class="form-inline" action='' id='auto-validation-form' method='post' accept-charset='utf-8'>
 						<input type="hidden" id="wish" name="addPermission">
 
 						<?php if (!empty($createErrorTitle)){ ?>
 							<div class="form-group has-error has-feedback">
 								<label for="inputPermissionTitle" class="control-label">Titre</label>
-								<input type="text" class="form-control" id="inputPermissionTitle" name="inputPermissionTitle" aria-describedby="inputError2Status" placeholder="ex: Visualiser DPS" value="<?php echo $title;?>">
+								<input type="text" class="form-control" id="inputPermissionTitle" name="inputPermissionTitle" aria-describedby="inputError2Status" placeholder="ex: Visualiser DPS" minlength='3' maxlength='120' required='true' value="<?php echo $title;?>">
 								<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
 								<span id="inputError2Status" class="sr-only">(error)</span>
 							</div>
 						<?php } else { ?>
 							<div class="form-group">
 								<label for="inputPermissionTitle" class="control-label">Titre</label>
-								<input type="text" class="form-control" id="inputPermissionTitle" name="inputPermissionTitle" aria-describedby="inputError2Status" placeholder="ex: Visualiser DPS">
+								<input type="text" class="form-control" id="inputPermissionTitle" name="inputPermissionTitle" aria-describedby="inputError2Status" minlength='3' maxlength='120' required='true' placeholder="ex: Visualiser DPS">
 							</div>
 						<?php } ?>
 
 						<div class="form-group">
 							<label for="inputPermissionDescription" class="control-label">Description</label>
-							<input type="text" class="form-control" id="inputPermissionDescription" name="inputPermissionDescription" placeholder="Description ?"
+							<input type="text" class="form-control" id="inputPermissionDescription" name="inputPermissionDescription" placeholder="Description ?" minlength='3' maxlength='120' required='true' 
 								<?php
 									if (isset($_POST['addPermission']) && isset($_POST['genericError'])) {
 										echo "value='$description'";
@@ -129,5 +126,11 @@
 
 
 <?php include('components/footer.php'); ?>
+
+<script text='text/javascript'>
+	$('#auto-validation-form').validate();
+</script>
+
 </body>
 </html>
+

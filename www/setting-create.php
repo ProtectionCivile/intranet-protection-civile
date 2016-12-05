@@ -9,8 +9,6 @@
 <?php include('components/header.php'); ?>
 
 
-<script src="js/jquery.validate.min.js" type="text/javascript"></script>
-
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
 	<li><a href="#">Administration</a></li>
@@ -22,10 +20,8 @@
 <!-- Authentication -->
 <?php $rbac->enforce("admin-settings-update", $currentUserID); ?>
 
-
 <!-- Create a new setting : Controller -->
 <?php include 'functions/controller/setting-create-controller.php'; ?>
-
 
 <!-- Page content container -->
 <div class="container">
@@ -37,7 +33,7 @@
 
 
 	<!-- Create a setting : display form -->
-	<form class="form-horizontal" id="ajoutparametre" role="form" action="" name="add" method="post" autocomplete="off">
+	<form class="form-horizontal" id="auto-validation-form" role="form" action="" name="add" method="post" autocomplete="off">
 		<input type="hidden" id="wish" name="addSetting" />
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -49,7 +45,7 @@
 					<div class="form-group form-group-sm has-error has-feedback">
 						<label for="name" class="col-sm-4 control-label">Nom du paramètre</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="name" name="name" aria-describedby="inputError2Status" placeholder="ex: mail-generique-adpc" value="<?php if (!empty($genericError)) {echo $name;} ?>">
+							<input type="text" class="form-control" id="name" name="name" aria-describedby="inputError2Status" placeholder="ex: mail-generique-adpc" minlength='3' maxlength='120' required='true' value="<?php if (!empty($genericError)) {echo $name;} ?>">
 							<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
 							<span id="inputError2Status" class="sr-only">(error)</span>
 						</div>	
@@ -58,7 +54,7 @@
 					<div class="form-group form-group-sm">
 						<label for="name" class="col-sm-4 control-label">Nom du paramètre</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="name" name="name" placeholder="ex: mail-generique-adpc" value="<?php if (!empty($genericError)) {echo $name;} ?>">
+							<input type="text" class="form-control" id="name" name="name" placeholder="ex: mail-generique-adpc" minlength='3' maxlength='120' required='true' value="<?php if (!empty($genericError)) {echo $name;} ?>">
 						</div>
 					</div>
 				<?php } ?>
@@ -66,7 +62,7 @@
 				<div class="form-group form-group-sm">
 					<label for="value" class="col-sm-4 control-label">Valeur du paramètre</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="value" name="value" placeholder="Valeur du paramètre">
+						<input type="text" class="form-control" id="value" name="value" minlength='3' maxlength='400' required='false' placeholder="Valeur du paramètre">
 					</div>
 				</div>			
 				<div class="form-group">
@@ -85,59 +81,10 @@
 </div>
 
 <?php include('components/footer.php'); ?>
-<script>
 
-$('#ajoutparametre').validate({
-        rules: {
-            name: {
-                minlength: 3,
-                maxlength: 120,
-                required: true
-            },
-            value: {
-                minlength: 0,
-                maxlength: 400,
-                required: false
-            }
-        },
-		
-        highlight: function(element) {
-            $(element).closest('.form-group').addClass('has-error');
-			$('#submit').addClass('disabled');
-        },
-        unhighlight: function(element) {
-            $(element).closest('.form-group').removeClass('has-error');
-			$('#submit').removeClass('disabled');
-        },
-        errorElement: 'span',
-        errorClass: 'help-block',
-        errorPlacement: function(error, element) {
-            if(element.parent('.input-group').length) {
-                error.insertAfter(element.parent());
-            } else {
-                error.insertAfter(element);
-            }
-        }
-    });
-jQuery.extend(jQuery.validator.messages, {
-  required: "Ce champ est requis",
-  remote: "Une erreur est présente",
-  email: "votre message",
-  url: "votre message",
-  date: "votre message",
-  dateISO: "Une erreur de date est présente",
-  number: "votre message",
-  digits: "votre message",
-  creditcard: "Une erreur est présente",
-  equalTo: "Les deux valeurs doivent être identiques",
-  accept: "Une erreur est présente",
-  maxlength: jQuery.validator.format("Doit contenir moins de {0} caractères."),
-  minlength: jQuery.validator.format("Doit contenir plus de {0} caractères."),
-  rangelength: jQuery.validator.format("Doit contenir entre {0} et {1} caractères."),
-  range: jQuery.validator.format("votre message  entre {0} et {1}."),
-  max: jQuery.validator.format("votre message  inférieur ou égal à {0}."),
-  min: jQuery.validator.format("votre message  supérieur ou égal à {0}.")
-});
+<script text='text/javascript'>
+	$('#auto-validation-form').validate();
 </script>
+
 </body>
 </html>

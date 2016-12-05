@@ -9,8 +9,6 @@
 <?php include('components/header.php'); ?>
 
 
-<script src="js/jquery.validate.min.js" type="text/javascript"></script>
-
 <ol class='breadcrumb'>
 	<li><a href='/'>Home</a></li>
 	<li><a href='#'>Administration</a></li>
@@ -47,7 +45,7 @@
 			<h3 class='panel-title'>Modifier la commune de <strong><?php echo $nom; ?> - Antenne N°<?php echo $number;?></strong></h3>
 		</div>
 		<div class='panel-body'>
-			<form class='form-horizontal validation-required' id='editForm' action='' role='form' method='post' accept-charset='utf-8'>
+			<form class='form-horizontal' id='auto-validation-form' action='' role='form' method='post' accept-charset='utf-8'>
 				<input type='hidden' name='update'>
 				<input type='hidden' name='ID' type='text' value='<?php echo $id;?>'>
 
@@ -61,7 +59,7 @@
 				<div class='form-group form-group-sm'>
 					<label for='number' class='col-sm-4 control-label'>Numéro interne</label>
 					<div class='col-sm-8'>
-						<input type='text' class='form-control' id='number' name='number' minlength='1' maxlength='2' number='true' required='true' value='<?php echo $number; ?>'>
+						<input type='text' class='form-control' id='number' name='number' minlength='1' maxlength='2' digits='true' required='true' value='<?php echo $number; ?>'>
 					</div>
 				</div>
 
@@ -82,7 +80,7 @@
 				<div class='form-group form-group-sm'>
 					<label for='zipcode' class='col-sm-4 control-label'>Code postal</label>
 					<div class='col-sm-8'>
-						<input type='text' class='form-control' id='zipcode' name='zipcode' minlength='5' maxlength='5' number='true' value='<?php echo $zipcode; ?>'>
+						<input type='text' class='form-control' id='zipcode' name='zipcode' minlength='5' maxlength='5' digits='true' value='<?php echo $zipcode; ?>'>
 					</div>
 				</div>
 
@@ -96,7 +94,7 @@
 				<div class='form-group form-group-sm'>
 					<label for='phone' class='col-sm-4 control-label'>Téléphone de contact</label>
 					<div class='col-sm-8'>
-						<input type='text' class='form-control' id='phone' name='phone' minlength='10' maxlength='10' required='true' number='true' value='<?php echo $phone; ?>'>
+						<input type='text' class='form-control' id='phone' name='phone' minlength='10' maxlength='10' required='true' digits='true' value='<?php echo $phone; ?>'>
 					</div>
 				</div>
 
@@ -153,13 +151,11 @@
 	</div>
 </div>
 
-<?php include ('components/footer.php'); ?>
+<?php include('components/footer.php'); ?>
 
 <script text='text/javascript'>
-	$('#editForm').validate();
+	$('#auto-validation-form').validate();
 </script>
-
-
 
 </body>
 </html>

@@ -9,15 +9,12 @@
 <?php include('components/header.php'); ?>
 
 
-<script src="js/jquery.validate.min.js" type="text/javascript"></script>
-
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
 	<li><a href="#">Administration</a></li>
 	<li><a href="/user-view.php">Gestion des utilisateurs</a></li>
 	<li class="active">Modification</li>
 </ol>
-
 
 
 <!-- Authentication -->
@@ -47,7 +44,7 @@
 			<h3 class="panel-title">Informations à mettre à jour</h3>
 		</div>
 		<div class="panel-body">
-			<form class="form-horizontal" id="editUserForm" action='' role="form" method='post' accept-charset='utf-8'>
+			<form class="form-horizontal" id="auto-validation-form" action='' role="form" method='post' accept-charset='utf-8'>
 				<input type="hidden" name="updateUser">
 				<input type="hidden" name="userID" value="<?php echo $userID;?>">
 
@@ -55,7 +52,7 @@
 					<div class="form-group form-group-sm has-error has-feedback">
 						<label for="inputUserLastName" class="col-sm-4 control-label">Nom</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputUserLastName" name="inputUserLastName" aria-describedby="inputError2Status" placeholder="ex: Dupond" value="<?php echo ucfirst($lastName); ?>">
+							<input type="text" class="form-control" id="inputUserLastName" name="inputUserLastName" aria-describedby="inputError2Status" placeholder="ex: Dupond" minlength='2' maxlength='20' required='true' value="<?php echo ucfirst($lastName); ?>">
 							<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
 							<span id="inputError2Status" class="sr-only">(error)</span>
 						</div>	
@@ -64,7 +61,7 @@
 					<div class="form-group form-group-sm">
 						<label for="inputUserLastName" class="col-sm-4 control-label">Nom</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputUserLastName" name="inputUserLastName" aria-describedby="inputError2Status" placeholder="ex: Dupond" value="<?php echo ucfirst($lastName); ?>">
+							<input type="text" class="form-control" id="inputUserLastName" name="inputUserLastName" aria-describedby="inputError2Status" placeholder="ex: Dupond" minlength='2' maxlength='20' required='true' value="<?php echo ucfirst($lastName); ?>">
 						</div>
 					</div>
 				<?php } ?>
@@ -73,7 +70,7 @@
 					<div class="form-group form-group-sm has-error has-feedback">
 						<label for="inputUserFirstName" class="col-sm-4 control-label">Prénom</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputUserFirstName" name="inputUserFirstName" aria-describedby="inputError2Status" placeholder="ex: Jean" value="<?php echo ucfirst($firstName); ?>">
+							<input type="text" class="form-control" id="inputUserFirstName" name="inputUserFirstName" aria-describedby="inputError2Status" placeholder="ex: Jean" minlength='2' maxlength='20' required='true' value="<?php echo ucfirst($firstName); ?>">
 							<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
 							<span id="inputError2Status" class="sr-only">(error)</span>
 						</div>
@@ -82,7 +79,7 @@
 					<div class="form-group form-group-sm">
 						<label for="inputUserFirstName" class="col-sm-4 control-label">Prénom</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputUserFirstName" name="inputUserFirstName" aria-describedby="inputError2Status" placeholder="ex: Jean" value="<?php echo ucfirst($firstName); ?>">
+							<input type="text" class="form-control" id="inputUserFirstName" name="inputUserFirstName" aria-describedby="inputError2Status" placeholder="ex: Jean" minlength='2' maxlength='20' required='true' value="<?php echo ucfirst($firstName); ?>">
 						</div>
 					</div>
 				<?php } ?>
@@ -91,7 +88,7 @@
 					<div class="form-group form-group-sm has-error has-feedback">
 						<label for="inputUserLogin" class="col-sm-4 control-label">Matricule e-Protec</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputUserLogin" name="inputUserLogin" aria-describedby="inputError2Status" placeholder="ex: 49594" value="<?php echo $login; ?>">
+							<input type="text" class="form-control" id="inputUserLogin" name="inputUserLogin" aria-describedby="inputError2Status" placeholder="ex: 49594" minlength='4' maxlength='8' required='true' digits='true' value="<?php echo $login; ?>">
 							<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
 							<span id="inputError2Status" class="sr-only">(error)</span>
 						</div>
@@ -100,7 +97,7 @@
 					<div class="form-group form-group-sm">
 						<label for="inputUserLogin" class="col-sm-4 control-label">Matricule e-Protec</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputUserLogin" name="inputUserLogin" placeholder="ex: 49594" value="<?php echo $login; ?>">
+							<input type="text" class="form-control" id="inputUserLogin" name="inputUserLogin" placeholder="ex: 49594" minlength='4' maxlength='8' required='true' digits='true' value="<?php echo $login; ?>">
 						</div>
 					</div>
 				<?php } ?>
@@ -109,7 +106,7 @@
 					<div class="form-group form-group-sm has-error has-feedback">
 						<label for="inputUserPassword1" class="col-sm-4 control-label">Mot de passe</label>
 						<div class="col-sm-8">
-							<input type="password" class="form-control" id="inputUserPassword1" name="inputUserPassword1" aria-describedby="inputError2Status">
+							<input type="password" class="form-control" id="inputUserPassword1" name="inputUserPassword1" minlength='6' maxlength='20' required='false' aria-describedby="inputError2Status">
 							<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
 							<span id="inputError2Status" class="sr-only">(error)</span>
 						</div>
@@ -118,7 +115,7 @@
 					<div class="form-group form-group-sm">
 						<label for="inputUserPassword1" class="col-sm-4 control-label">Mot de passe</label>
 						<div class="col-sm-8">
-							<input type="password" class="form-control" id="inputUserPassword1" name="inputUserPassword1" aria-describedby="inputError2Status">
+							<input type="password" class="form-control" id="inputUserPassword1" name="inputUserPassword1" minlength='6' maxlength='20' required='false' aria-describedby="inputError2Status">
 						</div>
 					</div>
 				<?php } ?>
@@ -126,14 +123,14 @@
 				<div class="form-group form-group-sm">
 					<label for="inputUserPassword2" class="col-sm-4 control-label">Confirmation du mot de passe</label>
 					<div class="col-sm-8">
-						<input type="password" class="form-control" id="inputUserPassword2" name="inputUserPassword2" aria-describedby="inputError2Status">
+						<input type="password" class="form-control" id="inputUserPassword2" name="inputUserPassword2" minlength='6' maxlength='20' required='false' equalTo='#inputUserPassword1' aria-describedby="inputError2Status">
 					</div>
 				</div>
 				
 				<div class="form-group form-group-sm">
 					<label for="inputUserPhone" class="col-sm-4 control-label">Téléphone</label>
 					<div class="col-sm-8">
-						<input type="phone" class="form-control" id="inputUserPhone" name="inputUserPhone" aria-describedby="inputError2Status" value="<?php echo $phone; ?>">
+						<input type="phone" class="form-control" id="inputUserPhone" name="inputUserPhone" aria-describedby="inputError2Status" minlength='10' maxlength='10' required='false' digits='true' value="<?php echo $phone; ?>">
 					</div>
 				</div>
 
@@ -179,8 +176,9 @@
 
 <?php include('components/footer.php'); ?>
 
-<script>
-	$('#editUserForm').validate();
+<script text='text/javascript'>
+	$('#auto-validation-form').validate();
 </script>
+
 </body>
 </html>
