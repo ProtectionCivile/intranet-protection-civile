@@ -12,7 +12,7 @@
 		$firstNameDB = strtolower(str_replace(" ","-", $firstName));
 		$pass1 = str_replace("'","", $_POST['inputUserPassword1']);
 		$pass2 = str_replace("'","", $_POST['inputUserPassword2']);
-		$passDB = sha1($pass1);
+		$passDB = password_hash($passwordFromPost, PASSWORD_BCRYPT, ['cost' => 9,]);
 		$phone = str_replace("'","", $_POST['inputUserPhone']);
 		$mail = suppr_accents($firstNameDB.".".$lastNameDB)."@protectioncivile92.org";
 		$section = str_replace("'","", $_POST['inputUserSection']);

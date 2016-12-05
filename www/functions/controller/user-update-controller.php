@@ -40,7 +40,7 @@
 			$section=$user["attached_section"];
 		}
 		if (isset($_POST['inputUserPassword1']) && $_POST['inputUserPassword1'] != "") {
-			$password=sha1(str_replace("'","", $_POST['inputUserPassword1']));
+			$password = password_hash($_POST['inputUserPassword1'], PASSWORD_BCRYPT, ['cost' => 9,]);
 		}
 		else {
 			$password=$user["pass"];

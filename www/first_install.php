@@ -48,7 +48,7 @@ mysqli_query($link, "CREATE TABLE `$tablename_settings_mail` (
 mysqli_query($link, "CREATE TABLE `$tablename_users` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `login` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `pass` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `pass` varchar(80) CHARACTER SET utf8 DEFAULT NULL,
   `last_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `first_name` tinytext CHARACTER SET utf8,
   `phone` tinytext CHARACTER SET utf8,
