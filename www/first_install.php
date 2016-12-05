@@ -29,7 +29,7 @@ echo ("Démarrage : ".date("H:i:s"));
 /////////////////////////////////////////////////
 // SQL TABLES
 /////////////////////////////////////////////////
-mysqli_query($link, "CREATE TABLE `".$tablename_settings_general."` ( 
+mysqli_query($link, "CREATE TABLE `$tablename_settings_general` ( 
 	`ID` INT(12) NOT NULL AUTO_INCREMENT , 
 	`name` VARCHAR(128) NULL , 
 	`value` VARCHAR(400) NULL , 
@@ -37,7 +37,7 @@ mysqli_query($link, "CREATE TABLE `".$tablename_settings_general."` (
 	) ENGINE = InnoDB; 
 ");
 
-mysqli_query($link, "CREATE TABLE `".$tablename_settings_mail."` ( 
+mysqli_query($link, "CREATE TABLE `$tablename_settings_mail` ( 
 	`ID` INT(12) NOT NULL AUTO_INCREMENT , 
 	`name` VARCHAR(128) NULL , 
 	`value` VARCHAR(400) NULL , 
@@ -45,7 +45,7 @@ mysqli_query($link, "CREATE TABLE `".$tablename_settings_mail."` (
 	) ENGINE = InnoDB; 
 ");
 
-mysqli_query($link, "CREATE TABLE `".$tablename_users."` (
+mysqli_query($link, "CREATE TABLE `$tablename_users` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `login` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `pass` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
@@ -59,7 +59,7 @@ mysqli_query($link, "CREATE TABLE `".$tablename_users."` (
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 ");
 
-mysqli_query($link, "ALTER TABLE `ADPC`.`".$tablename_roles."` 
+mysqli_query($link, "ALTER TABLE `ADPC`.`$tablename_roles` 
 	ADD `Phone` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Description`,
 	ADD `Mail` VARCHAR(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Phone`,
 	ADD `Affiliation` INT(10) NULL AFTER `Mail`,
@@ -68,6 +68,19 @@ mysqli_query($link, "ALTER TABLE `ADPC`.`".$tablename_roles."`
 	ADD `Assignable` INT(2) NULL AFTER `Directory`,
 	ADD `Hierarchy` INT(10) NULL AFTER `Assignable`,
 	ADD `Tags` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Hierarchy`
+"); 
+
+
+
+
+
+/////////////////////////////////////////////////
+// TABLES SAMPLE DATA
+/////////////////////////////////////////////////
+mysqli_query($link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
+	'application-header-name', 
+	'Extranet PC92'
+	)
 "); 
 
 
