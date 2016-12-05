@@ -46,7 +46,7 @@
 				<br />
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
-						<button type="submit" class="btn btn-danger" id='submitAddUserForm'>Retirer de toutes les listes !</button>
+						<button type="submit" class="btn btn-danger" id='submitAddUserForm' onclick='return(confirm("Etes-vous sûr de vouloir le retirer de TOUTES les listes de diffusion?"));'>Retirer de toutes les listes !</button>
 				   </div>
 				</div>
 			</form>
