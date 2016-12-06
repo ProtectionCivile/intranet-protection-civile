@@ -3,10 +3,8 @@
 <html>
 <head>
 	<title>Liste des DPS</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8";>
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
-	</head>
+	<?php require_once('components/common-html-head-parameters.php'); ?>
+</head>
 <body>
 <?php require_once('components/header.php'); ?>
 <?php require_once('functions/dps/dps-view-functions.php'); ?>
@@ -22,7 +20,7 @@
 
 
 <!-- Authentication -->
-<?php require_once('functions/dps/dps-authentication.php'); ?>
+<?php require_once('functions/dps/dps-list-authentication.php'); ?>
 
 
 <!-- Page content container -->
@@ -59,7 +57,7 @@
 					<tbody>
 						<?php
 						while($dps = mysqli_fetch_assoc($sqlQuery_query)){
-							require('functions/dps/choose-between-dps-type.php');
+							require('functions/dps/compute-dps-status.php');
 							?>
 							<tr class='<?php echo $trClass;?>' >
 								<td>
@@ -78,11 +76,12 @@
 									<?php echo $dps["description_manif"]; ?>
 								</td>
 								<td>
-									<?php echo $etat; ?>
+									<?php echo $dps_display_status; ?>
 								</td>
 								<td>
 									<form role='form' action='<?php echo $urlform; ?>' method='post'>
 										<input type='hidden' name='id' value='<?php echo $dps["id"]; ?>'>
+										<input type='hidden' name='name' value='<?php echo $dps["cu_complet"]; ?>'>
 										<button type='submit' class='<?php echo $buttonclass; ?>'></button>
 									</form>
 								</td>
