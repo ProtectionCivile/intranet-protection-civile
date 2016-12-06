@@ -34,7 +34,7 @@
 
 <!-- Page content container -->
 <div class="container">
-	<h2><center>Dispositif Prévisionnel de Secours : <?php echo $dps['cu_complet'];?></center></h2>
+	<h2><center><?php echo $dps['cu_complet'];?></center></h2>
 
 
 	<!-- Accès spécial DDO -->
