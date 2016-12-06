@@ -19,5 +19,6 @@
 	}
 	else {
 		$roleTitle=utf8_encode($rbac->Roles->getTitle($roleID));
+		$roleDescription=utf8_encode($rbac->Roles->getDescription($roleID));
 	}
 ?>

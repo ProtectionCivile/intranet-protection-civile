@@ -5,7 +5,7 @@
 		$commonError = "Aucun utilisateur défini";
 	}
 	else {
-		$check_query = "SELECT ID, last_name, first_name, mail, phone, pass FROM users WHERE ID='$userID'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+		$check_query = "SELECT ID, last_name, first_name, mail, phone, attached_section, pass FROM users WHERE ID='$userID'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
 		$verif = mysqli_query($link, $check_query);
 		$user = mysqli_fetch_assoc($verif);
 	 	$userCount = mysqli_num_rows($verif);		
@@ -20,6 +20,7 @@
 	else {
 		$userFirstName=$user["first_name"];
 		$userLastName=$user["last_name"];
+		$usersection=$user["attached_section"];
 	}
 		
 ?>

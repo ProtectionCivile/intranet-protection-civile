@@ -30,10 +30,10 @@ if (isset($_GET['notallowed'])){
 	<?php
 		$roles = $rbac->Users->allRoles($currentUserID);
 		foreach ($roles as &$role) {
-			$query = "SELECT nom FROM commune WHERE numero='".$role['Affiliation']."'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+			$query = "SELECT name FROM sections WHERE number='".$role['Affiliation']."'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
 			$cities = mysqli_query($link, $query);
 			$city = mysqli_fetch_array($cities);
-			echo "<li>".utf8_encode($role['Description'])." (".$city['nom'].")</li>";
+			echo "<li>".utf8_encode($role['Description'])." (".$city['name'].")</li>";
 		}
 	?>
 	<br />
@@ -45,7 +45,7 @@ if (isset($_GET['notallowed'])){
 
 	<?php if ($rbac->check("admin-mailinglist-manage", $currentUserID)) { ?>
 		<strong>En tant que gestionnaire des listes de diffusion, vous pouvez effectuer les actions suivantes</strong> <br />
-		<a href="mailinglist-manage.php">Gérer les listes de diffusion</a><br />
+		<a href="mailinglist-add.php">Gérer les listes de diffusion</a><br />
 	<?php } ?>
 	<br />
 	<p align="left"><a href="logout.php"><strong>Déconnexion</strong></a></p>

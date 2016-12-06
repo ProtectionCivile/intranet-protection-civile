@@ -36,14 +36,14 @@
 
 
 	<!-- Update user : Controller -->
-	<?php include 'components/controller/user-update-controller.php'; ?>
+	<?php include 'functions/controller/user-update-controller.php'; ?>
 
 
 	<!-- Page content container -->
 	<div class="container">
 
 		<!-- Update user : Operation status indicator -->
-		<?php include 'functions/operation-status-indicator.php'; ?>
+		<?php include 'components/operation-status-indicator.php'; ?>
 
 		<h2>Modifier l'utilisateur '<?php echo $firstName." ".$lastName ?>'</h2>
 
@@ -131,10 +131,18 @@
 						<div class="col-sm-8">
 							<select class="form-control" id="inputUserSection" name="inputUserSection">
 								<?php							
-									$reqliste = "SELECT ID, name FROM sections" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+									$reqliste = "SELECT `number`, name FROM sections" or die("Erreur lors de la consultation" . mysqli_error($link)); 
 									$sections = mysqli_query($link, $reqliste);
-									while($section = mysqli_fetch_array($sections)) {
-										echo "<option value='".$section["ID"]."'>".$section["name"]."</option>";
+
+									while($sectionX = mysqli_fetch_array($sections)) {
+										echo $userSection;
+										if ($sectionX['number'] == $section){
+											echo "<option value='".$sectionX["number"]."' selected>".$sectionX["name"]."</option>";
+										}
+										else {
+											echo "<option value='".$sectionX["number"]."'>".$sectionX["name"]."</option>";
+										}
+										
 									}							
 								?>
 							</select>
@@ -147,7 +155,7 @@
 								<a class="btn btn-default" href="user-view.php" role="button">Annuler - Retour à la liste</a>
 							<?php } ?>
 							<button type="submit" class="btn btn-warning" id='submitAddUserForm'>Mettre à jour</button>
-							<?php if (isset($_POST['addUser']) && !empty($genericSuccess)) { ?>
+							<?php if (isset($_POST['updateUser']) && !empty($genericSuccess)) { ?>
 								<a class="btn btn-default" href="user-view.php" role="button">J'ai terminé ! Retour à la liste</a>
 							<?php } ?>
 					   </div>
