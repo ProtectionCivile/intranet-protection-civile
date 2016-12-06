@@ -1,6 +1,6 @@
 <?php
 
-	$sqlQuery="SELECT id, dps_debut_poste, cu_complet, dept, type_dps, description_manif, commune_ris, valid_demande_rt, valid_demande_dps, etat_demande_dps, annul_poste FROM demande_dps";
+	$sqlQuery="SELECT id, dps_debut_poste, cu_complet, dept, type_dps, description_manif, commune_ris, valid_demande_rt, valid_demande_dps, etat_demande_dps, annul_poste FROM $tablename_dps";
 	$addWhereClause = false;
 
 

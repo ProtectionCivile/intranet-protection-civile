@@ -9,7 +9,7 @@
 			$genericError = "Impossible de supprimer un rôle inconnu";
 		}
 		else{
-			$check_query = "SELECT ID, Title FROM rbac_roles WHERE ID='$id'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+			$check_query = "SELECT ID, Title FROM $tablename_roles WHERE ID='$id'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
 			$verif = mysqli_query($link, $check_query);
 			$row_verif = mysqli_fetch_assoc($verif);
 			$role = mysqli_num_rows($verif);		

@@ -5,7 +5,7 @@
 		$genericError = "Aucune permission définie";
 	}
 	else {
-		$check_query = "SELECT ID FROM rbac_permissions WHERE ID='$permissionID'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
+		$check_query = "SELECT ID FROM $tablename_permissions WHERE ID='$permissionID'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
 		$verif = mysqli_query($link, $check_query);
 		$row_verif = mysqli_fetch_assoc($verif);
 		$permission = mysqli_num_rows($verif);		

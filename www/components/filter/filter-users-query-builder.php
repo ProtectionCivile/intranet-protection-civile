@@ -1,5 +1,5 @@
 <?php
-	$sqlQuery = "SELECT U.ID, U.login, U.last_name, U.first_name, U.phone, U.mail, S.name AS section_name FROM `users` AS U INNER JOIN sections AS S ON `U`.`attached_section` = `S`.`number`";
+	$sqlQuery = "SELECT U.ID, U.login, U.last_name, U.first_name, U.phone, U.mail, S.name AS section_name FROM `$tablename_users` AS U INNER JOIN sections AS S ON `U`.`attached_section` = `S`.`number`";
 				
 
 	if (!empty($city) || $city == "0") {

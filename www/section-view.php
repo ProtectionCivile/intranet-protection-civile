@@ -86,7 +86,7 @@
 								<?php 
 								if (!$isAttachedToItself){
 									$attached_section = $section["attached_section"];
-									$sql = "SELECT shortname FROM sections WHERE number='$attached_section' ORDER BY number";
+									$sql = "SELECT shortname FROM $tablename_sections WHERE number='$attached_section' ORDER BY number";
 									$query = mysqli_query($link, $sql);
 									$rattach = mysqli_fetch_array($query);
 
