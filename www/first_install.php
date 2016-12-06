@@ -1426,7 +1426,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+	`Phone`='06.32.98.91.70', 
 	`Mail`='president-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='Autorité Bourg-la-Reine',
@@ -1462,7 +1462,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 ");
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+	`Phone`='06.07.10.27.26', 
 	`Mail`='operationnel-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='Opé Bourg-la-Reine',
@@ -1510,7 +1510,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 ");
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+	`Phone`='06.95.04.99.78', 
 	`Mail`='formation-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='For Bourg-la-Reine',
@@ -1534,7 +1534,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 ");
 
 mysqli_query($link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+	`Phone`='06.79.56.00.98', 
 	`Mail`='formation-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='For Bourg-la-Reine Bravo',
