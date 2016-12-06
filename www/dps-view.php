@@ -35,6 +35,38 @@
 <!-- Page content container -->
 <div class="container">
 	<h2><center>Dispositif Prévisionnel de Secours : <?php echo $dps['cu_complet'];?></center></h2>
+
+
+	<!-- Accès spécial DDO -->
+	<?php if ($rbac->check("ope-dps-validate-ddo-to-pref", $currentUserID)) {?> 
+		<div class="panel panel-danger">
+			<div class="panel-heading">
+				<h3 class="panel-title">Accès spécial DDO</h3>
+			</div>
+			<div class="panel-body">
+				<div class="form-group">
+					
+					<form class="form-horizontal" role="form" action="edit-dps.php" method="post">
+						<input type='hidden' name='id' value='<?php echo $dps['id'];?>' />
+						<div class="col-sm-3 col-md-3">
+							<button type="submit" class="btn btn-info">Modifier le DPS</button>
+						</div>
+					</form>
+					<div class="col-sm-3 col-md-3">
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalRefus" <?php if($dps['valid_demande_rt'] ==0){echo "disabled";}?>>Refuser le DPS</button>
+					</div>
+					<div class="col-sm-3 col-md-3">
+						<button type="submit" class="btn btn-success" data-toggle="modal" data-target="#ModalAccept">Valider le DPS</button>
+					</div>
+					<div class="col-sm-3 col-md-3">
+						<button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#ModalWait">Mettre en attente</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php } ?>
+
+	<br />
 	
 	<!-- Module to compute DPS status -->
 	<?php require_once('functions/dps/compute-dps-status.php'); ?>
@@ -67,42 +99,11 @@
 		<div class='alert alert-warning'>
 			<span class="glyphicon glyphicon-time" style="font-size:2em"></span>
 			<strong>Validation DDO effectuée, attente validation Préfecture ou département concerné</strong> (validation antenne du <?php echo date("d-m-Y", strtotime($dps['valid_demande_dps']));?>)
-		</div> <?php 
-	}
-	
+		</div> 
+	<?php } ?>
 
 
-	if ($rbac->check("ope-dps-validate-ddo-to-pref", $currentUserID)) {?> 
-		?>
-		<div class="panel panel-warning">
-			<div class="panel-heading">
-				<h3 class="panel-title">Accès spécial DDO</h3>
-			</div>
-			<div class="panel-body">
-				<div class="form-group">
-					
-					<form class="form-horizontal" role="form" action="edit-dps.php" method="post">
-						<input type='hidden' name='id' value='<?php echo $dps['id'];?>' />
-						<div class="col-sm-3">
-							<button type="submit" class="btn btn-warning">Modifier le DPS</button>
-						</div>
-					</form>
-					<div class="col-sm-3">
-						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#ModalRefus" <?php if($dps['valid_demande_rt'] ==0){echo "disabled";}?>>Refuser</button>
-					</div>
-					<div class="col-sm-3">
-						<button type="submit" class="btn btn-info" data-toggle="modal" data-target="#ModalWait">Mettre en attente d'une autre ADPC</button>
-					</div>
-					<div class="col-sm-3">
-						<button type="submit" class="btn btn-success" data-toggle="modal" data-target="#ModalAccept">Valider</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	<?php }?>
-
-
-
+	<br />
 
 			
 	<div class="panel panel-primary">
@@ -471,7 +472,7 @@
 							<div class="col-sm-3">
 								<p>Local</p>
 							</div>
-							<div class="col-sm-2">
+							<div class="col-sm-1">
 								<p class="bg-info"><?php if($dps['local'] =="0"){echo "Oui";}else{ echo "non";}?></p>
 							</div>
 						</div>
