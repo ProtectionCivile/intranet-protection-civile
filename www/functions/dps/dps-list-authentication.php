@@ -11,6 +11,9 @@
 				if (!$rbac->check("ope-dps-view-all", $currentUserID)) {
 					$rbac->enforce("ope-dps-view-own", $currentUserID);
 				}
+				else {
+					$rbac->enforce("ope-dps-view-all", $currentUserID);
+				}
 			}
 			else {
 				// User wants to view another city's DPS
