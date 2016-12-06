@@ -930,9 +930,9 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 	$("#changedemande").toggle("hidden")});
 </script>
 
-<?php require_once('functions/dps/dps-compute-ris-js.php'); ?>
+<script src='js/dps-compute-ris.js' type='text/javascript'></script>
 
-<?php include 'footer.php'; ?>
+<?php require_once('components/footer.php'); ?>
 </body>
 </html>
 

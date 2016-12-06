@@ -662,17 +662,11 @@ if(isset($_POST['duplicate_dps'])){
 		<?php }if ($_SESSION['privilege'] == "user") { ?>
   		<strong>En tant qu'utilisateur simple vous ne pouvez pas effectuer d'actions</strong> <?php }?>
 </div>
-<?php include 'footer.php'; ?>
-<script type="text/javascript">
-    $(function () {
-        $("[rel='tooltip']").tooltip();
-    });
-	$(function () {
-		$('[data-toggle="popover"]').popover()
-	})
-</script>
 
-<?php require_once('functions/dps/dps-compute-ris-js.php'); ?>
+
+<script src='js/dps-compute-ris.js' type='text/javascript'></script>
+
+<?php require_once('components/footer.php'); ?>
 </body>
 </html>
 <?php }?>
