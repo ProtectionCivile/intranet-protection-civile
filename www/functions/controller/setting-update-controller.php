@@ -19,7 +19,7 @@
 		}
 		
 		if (isset($_POST['update'])) {		
-			$verif_query = "SELECT * FROM ".$tablename_settings_general." WHERE name='$name'"; 
+			$verif_query = "SELECT * FROM $tablename_settings_general WHERE name='$name'"; 
 			$verif = mysqli_query($link, $verif_query);
 			if(!$verif){
 				trigger_error("Erreur lors de la consultation" . mysqli_error($link));
@@ -29,7 +29,7 @@
 			// 	$genericError = "Ce paramètre '".$name."' existe déjà";
 			// }
 			// else {
-				$query = mysqli_prepare($link, "UPDATE ".$tablename_settings_general." SET name=?, value=? WHERE ID=?");
+				$query = mysqli_prepare($link, "UPDATE $tablename_settings_general SET name=?, value=? WHERE ID=?");
 				mysqli_stmt_bind_param($query, "ssi", $name, $value, $id);
 				if(!mysqli_stmt_execute($query)){
 					$genericError = "Impossible de mettre à jour le paramètre '".$name."'";

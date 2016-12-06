@@ -1,5 +1,5 @@
 <?php
-	$sqlQuery = "SELECT * FROM rbac_roles ";
+	$sqlQuery = "SELECT * FROM $tablename_roles ";
 
 
 	if (!empty($city) || $city == "0") {

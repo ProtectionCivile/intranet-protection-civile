@@ -48,7 +48,7 @@
 					<th colspan='3'>Opérations</th>
 				</tr>
 				<?php 
-				$query = "SELECT ID, Title, Description FROM rbac_permissions ORDER by ID ASC";
+				$query = "SELECT ID, Title, Description FROM $tablename_permissions ORDER by ID ASC";
 				$permissions = mysqli_query($link, $query);
 				while($permission = mysqli_fetch_array($permissions)) { ?>
 					<tr>

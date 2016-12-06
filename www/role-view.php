@@ -80,7 +80,7 @@
 						</td>
 						<td>
 							<?php 
-							$qc = "SELECT name FROM sections WHERE number='".$role["Affiliation"]."'";
+							$qc = "SELECT name FROM $tablename_sections WHERE number='".$role["Affiliation"]."'";
 							$qcr = mysqli_query($link, $qc);
 							$c = mysqli_fetch_assoc($qcr);
 							echo $c['name'];

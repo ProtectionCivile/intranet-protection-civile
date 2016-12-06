@@ -61,7 +61,7 @@ if(empty($commonError)) {
 					<br /> <br />
 					<ul>
 					<?php 
-					$query = "SELECT ID, Title, Description FROM rbac_permissions ORDER by Title ASC";
+					$query = "SELECT ID, Title, Description FROM $tablename_permissions ORDER by Title ASC";
 					$permissions = mysqli_query($link, $query);
 					while($permission = mysqli_fetch_array($permissions)) { 
 						$permissionID=$permission["ID"];
