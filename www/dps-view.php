@@ -1,4 +1,37 @@
-<?php
+<?php require_once('functions/session/security.php'); ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Liste des DPS</title>
+	<?php require_once('components/common-html-head-parameters.php'); ?>
+</head>
+<body>
+<?php require_once('components/header.php'); ?>
+<?php require_once('functions/dps/dps-view-functions.php'); ?>
+<?php require_once('functions/modals.php'); ?>
+
+
+<ol class="breadcrumb">
+	<li><a href="/">Home</a></li>
+	<li><a href="#">Opérationnel</a></li>
+	<li><a href="#">Dispositifs de secours</a></li>
+	<li class="active">Visualisation</li>
+</ol>
+
+
+
+<!-- Authentication -->
+<?php require_once('functions/dps/dps-authentication.php'); ?>
+
+
+<!-- Page content container -->
+<div class="container">
+
+
+
+
+
+	<?php
 include 'securite.php';
 require_once('connexion.php');
 if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{ 
@@ -499,7 +532,8 @@ if($dps['etat_demande_dps'] == "1"){?>
 <!-- Modal -->
 
 		<?php
-	include 'functions/modals.php';
-		} include 'footer.php'; ?>
-	</body>
-	</html>
+	?>
+</div>
+<?php require ('components/footer.php'); ?>
+</body>
+</html>
