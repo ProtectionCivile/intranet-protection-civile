@@ -100,6 +100,7 @@ $rbac->Permissions->addPath(utf8_decode('/admin-permissions-update/admin-permiss
 $rbac->Permissions->addPath(utf8_decode('/admin-roles-asssign-permissions/admin-roles-update/admin-roles-view'), array(utf8_decode('Assigner des permissions aux rôles'), utf8_decode('Modifier les rôles'), utf8_decode('Voir les rôles')));
 $rbac->Permissions->addPath(utf8_decode('/admin-users-asssign-roles/admin-users-update/admin-users-view'), array(utf8_decode('Assigner des rôles aux utilisateurs'), utf8_decode('Modifier les utilisateurs'), utf8_decode('Voir les utilisateurs')));
 $rbac->Permissions->addPath(utf8_decode('/ope-dps-validate-local/ope-dps-create-own/ope-dps-view-own'), array(utf8_decode('Valider une demande de DPS pour sa commune'), utf8_decode('Créer un DPS sur sa commune'), utf8_decode('Voir les DPS de sa commune')));
+$rbac->Permissions->addPath(utf8_decode('/ope-dps-validate-dept/ope-dps-create-dept/ope-dps-view-dept'), array(utf8_decode('Valider une demande de DPS pour le département'), utf8_decode('Créer un DPS sur le département'), utf8_decode('Voir les DPS départementaux')));
 $rbac->Permissions->addPath(utf8_decode('/ope-dps-validate-ddo-to-pref/ope-dps-create-all/ope-dps-view-all'), array(utf8_decode('Envoyer une demande de DPS à la Préfecture'), utf8_decode('Créer un DPS sur toute commune'), utf8_decode('Voir les DPS de toutes les communes')));
 $rbac->Permissions->addPath(utf8_decode('/ope-clients-update-own/ope-clients-view-own'), array(utf8_decode('Voir ses clients'), utf8_decode('Modifier ses clients')));
 $rbac->Permissions->addPath(utf8_decode('/ope-clients-update-all/ope-clients-view-all'), array(utf8_decode('Voir tous les clients'), utf8_decode('Modifier tous les clients')));
@@ -3980,6 +3981,7 @@ mysqli_query($link, "UPDATE `rbac_roles` SET
 $rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('admin-settings-update'));
 $rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('admin-roles-asssign-permissions'));
 $rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('admin-users-asssign-roles'));
+$rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('admin-permissions-update'));
 $rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('ope-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('treso-dps-view-all'));
 $rbac->Roles->assign(utf8_decode('Admin'), utf8_decode('ope-clients-update-all'));
