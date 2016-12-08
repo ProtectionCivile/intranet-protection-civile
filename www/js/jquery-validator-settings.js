@@ -38,7 +38,7 @@ jQuery.validator.setDefaults({
 	  equalTo: "Les deux valeurs doivent être identiques",
 	  accept: "Une erreur est présente",
 	  maxlength: jQuery.validator.format("Doit contenir moins de {0} caractères."),
-	  minlength: jQuery.validator.format("Doit contenir plus de {0} caractères."),
+	  minlength: jQuery.validator.format("Doit contenir au-moins {0} caractères."),
 	  rangelength: jQuery.validator.format("Doit contenir entre {0} et {1} caractères."),
 	  range: jQuery.validator.format("Doit être entre {0} et {1}."),
 	  max: jQuery.validator.format("Doit être inférieur ou égal à {0}."),

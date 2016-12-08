@@ -267,7 +267,7 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</div>
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='date_debut-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<div class="col-sm-3">
@@ -276,7 +276,7 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 								</div>
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='heure_debut-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<script type="text/javascript">
@@ -311,16 +311,16 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</div>
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='date_fin-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<div class="col-sm-3">
-								<div class='input-group date' id='heure_fin' name="heure_fin" required='true' aria-describedby="heure_fin-error" >
-									<input type='text' class="form-control" id='heure_fin' name="heure_fin" />
+								<div class='input-group date' id='heure_fin' name="heure_fin" >
+									<input type='text' class="form-control" id='heure_fin' name="heure_fin" required='true' aria-describedby="heure_fin-error"/>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 								</div>
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='heure_fin-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<script type="text/javascript">
@@ -357,7 +357,7 @@
 							</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="departement" name="departement" aria-describedby="departement-error" minlength='2' maxlength='3' required='true' digits='true' placeholder="92" value="<?php if(isset($duplicate_array['dept'])){echo $duplicate_array['dept'];} ?>" >
-								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='departement-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 							</div>
 						</div>
@@ -373,7 +373,7 @@
 									<input type="number" class="form-control" id="prix" name="prix" aria-describedby="prix-error" minlength='1' required='true' number='true' placeholder="Prix" value="<?php if(isset($duplicate_array['prix'])){echo $duplicate_array['prix'];} ?>" >
 									<div class="input-group-addon glyphicon glyphicon-euro"></div>
 								</div>
-								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='prix-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 							</div>
 						</div>
@@ -395,7 +395,7 @@
 							</label>
 							<div class="col-sm-8">
 								<input type="number" class="form-control risp" id="spectateurs" name="spectateurs" aria-describedby="spectateurs-error" required='true' digits='true' placeholder="Spectateurs" >
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='spectateurs-error' class="help-block" aria-hidden="true"></span>
 							</div>
 						</div>
@@ -407,7 +407,7 @@
 							</label>
 							<div class="col-sm-8">
 								<input type="number" class="form-control risp" id="participants" name="participants" aria-describedby="participants-error" required='true' digits='true' placeholder="Participants" >
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='participants-error' class="help-block" aria-hidden="true"></span>
 							</div>
 						</div>
@@ -498,7 +498,7 @@
 								<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 							</div>
-							<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+							<span class="form-control-feedback" aria-hidden="true"></span>
 							<span id='date_debut_poste-error' class="help-block" aria-hidden="true"></span>
 						</div>
 						<div class="col-sm-3">
@@ -508,7 +508,7 @@
 								<span class="input-group-addon">
 								<span class="glyphicon glyphicon-time"></span>
 							</div>
-							<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+							<span class="form-control-feedback" aria-hidden="true"></span>
 							<span id='heure_debut_poste-error' class="help-block" aria-hidden="true"></span>
 						</div>
 						<script type="text/javascript">
@@ -545,7 +545,7 @@
 							<span class="input-group-addon">
 							<span class="glyphicon glyphicon-calendar"></span>
 						</div>
-						<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+						<span class="form-control-feedback" aria-hidden="true"></span>
 						<span id='date_fin_poste-error' class="help-block" aria-hidden="true"></span>
 					</div>
 					<div class="col-sm-3">
@@ -555,7 +555,7 @@
 							<span class="input-group-addon">
 							<span class="glyphicon glyphicon-time"></span>
 						</div>
-						<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+						<span class="form-control-feedback" aria-hidden="true"></span>
 						<span id='heure_fin_poste-error' class="help-block" aria-hidden="true"></span>
 					</div>
 					<script type="text/javascript">
@@ -589,31 +589,30 @@
 					<div class="panel-heading">Nombre de secouristes / Moyens logistiques <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></div>
 					<div class="panel-body">
 
-						<?php $feedback = compute_server_feedback($email_error);?>
-						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+						<div class="form-group form-group-sm has-feedback">
 							<label for="nb_ce" class="col-sm-4 control-label">Chef d'équipe</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="nb_ce" name="nb_ce" aria-describedby="nb_ce-error" required='true' digits='true' placeholder="00" >
-								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='nb_ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span id='nb_ce-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<label for="nb-pse2" class="col-sm-3 control-label">PSE-2</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="nb_pse2" name="nb_pse2" aria-describedby="nb_pse2-error" required='true' digits='true' placeholder="00" >
-								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='nb_pse2-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span id='nb_pse2-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<label for="nb_pse1" class="col-sm-4 control-label">PSE-1</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="nb_pse1" name="nb_pse1" aria-describedby="nb_pse1-error" required='true' digits='true' placeholder="00" >
-								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='nb_pse1-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span id='nb_pse1-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<label for="nb_psc1" class="col-sm-3 control-label">Stagiaire PSC-1</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="nb_psc1" name="nb_psc1" aria-describedby="nb_psc1-error" required='true' digits='true' placeholder="00" >
-								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='nb_psc1-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span id='nb_psc1-error' class="help-block" aria-hidden="true"></span>
 							</div>
 						</div>
 					</div>
@@ -623,25 +622,25 @@
 							<label for="vpsp_transport" class="col-sm-4 control-label">VPSP Transport (évacuation)</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="vpsp_transport" name="vpsp_transport" aria-describedby="vpsp_transport-error" min='0' required='true' digits='true' placeholder="00" >
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='vpsp_transport-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<label for="vpsp_soin" class="col-sm-3 control-label">VPSP fixe (poste de soins)</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="vpsp_soin" name="vpsp_soin" aria-describedby="vpsp_soin-error" min='0' required='true' digits='true' placeholder="00" >
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='vpsp_soin-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<label for="vl" class="col-sm-4 control-label">VL / VTU / Goliath...</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="vl" name="vl" aria-describedby="vl-error" min='0' required='true' digits='true' placeholder="00">
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='vl-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<label for="tente" class="col-sm-3 control-label">Tente(s)</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="tente" name="tente" aria-describedby="tente-error" min='0' required='true' digits='true' placeholder="00">
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='tente-error' class="help-block" aria-hidden="true"></span>
 							</div>
 						</div>
@@ -674,7 +673,7 @@
 							<label for="medecin_asso" class="col-sm-4 control-label">Nombre de médecins associatifs</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="medecin_asso" name="medecin_asso" aria-describedby="medecin_asso-error" min='0' required='true' digits='true' placeholder="00">
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='medecin_asso-error' class="help-block" aria-hidden="true"></span>
 							</div>
 						</div>
@@ -683,13 +682,13 @@
 							<label for="medecin_autre" class="col-sm-4 control-label">Nombre de médecins extérieurs (préciser)</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="medecin_autre" name="medecin_autre" aria-describedby="medecin_autre-error" min='0' required='true' digits='true' placeholder="00">
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='medecin_autre-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<label for="medecin_appartenance" class="col-sm-2 control-label">Appartenance</label>
 							<div class="col-sm-4">
 								<input type="text" class="form-control" id="medecin_appartenance" name="medecin_appartenance" aria-describedby="medecin_appartenance-error" placeholder="Appartenance">
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='medecin_appartenance-error' class="help-block" aria-hidden="true"></span>
 							</div>
 						</div>
@@ -700,7 +699,7 @@
 							<label for="infirmier_asso" class="col-sm-4 control-label">Nombre d'infirmiers associatifs</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="infirmier_asso" name="infirmier_asso" aria-describedby="infirmier_asso-error" min='0' required='true' digits='true' placeholder="00">
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='infirmier_asso-error' class="help-block" aria-hidden="true"></span>
 							</div>
 						</div>
@@ -709,7 +708,7 @@
 							<label for="infirmier_autre" class="col-sm-4 control-label">Nombre d'infirmiers extérieurs (préciser)</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="infirmier_autre" name="infirmier_autre" aria-describedby="infirmier_autre-error" min='0' required='true' digits='true' placeholder="00">
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='infirmier_autre-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<label for="infirmier_appartenance" class="col-sm-2 control-label">Appartenance</label>
