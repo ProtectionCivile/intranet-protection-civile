@@ -1,11 +1,13 @@
 jQuery.validator.setDefaults({
 	    highlight: function(element) {
-	        $(element).closest('.form-group').addClass('has-error');
+	        $(element).closest('.form-group').addClass('has-error').removeClass('has-success');
+	        $(element).closest('.form-group').find('.form-control-feedback').addClass('glyphicon-remove').removeClass('glyphicon-ok');
 			$('#submit').addClass('disabled');
 	    },
 
 	    unhighlight: function(element) {
-	        $(element).closest('.form-group').removeClass('has-error');
+	        $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+	        $(element).closest('.form-group').find('.form-control-feedback').addClass('glyphicon-ok').removeClass('glyphicon-remove');
 			$('#submit').removeClass('disabled');
 	    },
 
@@ -20,6 +22,7 @@ jQuery.validator.setDefaults({
 	            error.insertAfter(element);
 	        }
 	    }
+
 	});
 
 	jQuery.extend(jQuery.validator.messages, {

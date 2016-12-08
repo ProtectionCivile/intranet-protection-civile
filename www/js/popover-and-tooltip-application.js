@@ -1,6 +1,7 @@
 $(function () {
     $("[rel='tooltip']").tooltip();
 });
+
 $(function () {
-	$('[data-toggle="popover"]').popover()
-})
+	$('[data-toggle="popover"]').popover();
+});

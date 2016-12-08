@@ -66,41 +66,24 @@
 					</div>
 				<?php } ?>
 				
-				<?php if (!empty($createErrorFirstName)){ ?>
-					<div class="form-group form-group-sm has-error has-feedback">
-						<label for="inputUserFirstName" class="col-sm-4 control-label">Prénom</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputUserFirstName" name="inputUserFirstName" aria-describedby="inputError2Status" placeholder="ex: Jean" minlength='2' maxlength='20' required='true' value="<?php echo ucfirst($firstName); ?>">
-							<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-							<span id="inputError2Status" class="sr-only">(error)</span>
-						</div>
+				
+				<div class="form-group form-group-sm has-feedback <?php if(!empty($createErrorLogin)){echo "has-error";}?>">
+					<label for="inputUserFirstName" class="col-sm-4 control-label">Prénom</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="inputUserFirstName" name="inputUserFirstName" aria-describedby="inputUserLogin-error" placeholder="ex: Jean" minlength='2' maxlength='20' required='true' value="<?php echo ucfirst($firstName); ?>">
+						<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+						<span id='inputUserLogin-error' class="help-block" aria-hidden="true"><?php if(!empty($createErrorFirstName)){echo $createErrorFirstName;}?></span>
 					</div>
-				<?php } else { ?>
-					<div class="form-group form-group-sm">
-						<label for="inputUserFirstName" class="col-sm-4 control-label">Prénom</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputUserFirstName" name="inputUserFirstName" aria-describedby="inputError2Status" placeholder="ex: Jean" minlength='2' maxlength='20' required='true' value="<?php echo ucfirst($firstName); ?>">
-						</div>
-					</div>
-				<?php } ?>
+				</div>
 
-				<?php if (!empty($createErrorLogin)){ ?>
-					<div class="form-group form-group-sm has-error has-feedback">
-						<label for="inputUserLogin" class="col-sm-4 control-label">Matricule e-Protec</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputUserLogin" name="inputUserLogin" aria-describedby="inputError2Status" placeholder="ex: 49594" minlength='4' maxlength='8' required='true' digits='true' value="<?php echo $login; ?>">
-							<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-							<span id="inputError2Status" class="sr-only">(error)</span>
-						</div>
+				<div class="form-group form-group-sm has-feedback <?php if(!empty($createErrorLogin)){echo "has-error";}?>">
+					<label for="inputUserLogin" class="col-sm-4 control-label">Matricule e-Protec</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="inputUserLogin" name="inputUserLogin" aria-describedby="inputUserLogin-error" placeholder="ex: 49594" minlength='4' maxlength='8' required='true' digits='true' value="<?php echo $login; ?>">
+						<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+						<span id='inputUserLogin-error' class="help-block" aria-hidden="true"><?php if(!empty($createErrorLogin)){echo $createErrorLogin;}?></span>
 					</div>
-				<?php } else { ?>
-					<div class="form-group form-group-sm">
-						<label for="inputUserLogin" class="col-sm-4 control-label">Matricule e-Protec</label>
-						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputUserLogin" name="inputUserLogin" placeholder="ex: 49594" minlength='4' maxlength='8' required='true' digits='true' value="<?php echo $login; ?>">
-						</div>
-					</div>
-				<?php } ?>
+				</div>
 				
 				<?php if (!empty($createErrorPassword)){ ?>
 					<div class="form-group form-group-sm has-error has-feedback">
