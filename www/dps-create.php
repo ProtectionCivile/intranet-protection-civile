@@ -26,7 +26,7 @@
 <?php //require_once('functions/dps/dps-create-authentication.php'); ?>
 
 <!-- Create a new DPS : Controller -->
-<?php //require_once('functions/controller/dps-create-controller.php'); ?>
+<?php require_once('functions/controller/dps-create-controller.php'); ?>
 
 <!-- Page content container -->
 <div class="container">
@@ -38,55 +38,35 @@
 
 
 
-	<?php
-	$dept = "92";
-	$year = date("y");
-	$query_code = "SELECT shortname FROM $tablename_sections WHERE number=$city";
-	$code_result = mysqli_query($link, $query_code);
-	$code_array = mysqli_fetch_array($code_result);
-	$code_commune = $code_array['shortname'];
-	mysqli_free_result($code_result);
-	$query_cu = "SELECT num_cu FROM $tablename_dps WHERE annee_poste=$year AND commune_ris=$city ORDER BY id DESC LIMIT 1";
-	$cu_result = mysqli_query($link, $query_cu);
-	$cu_array = mysqli_fetch_array($cu_result);
-	$num_cu = $cu_array['num_cu'];
-	$num_cu = $num_cu + 1;
-	if($num_cu < 10){
-		$num_cu = "00".$num_cu;
-	}elseif($num_cu < 100){
-		$num_cu = "0".$num_cu;
-	}
-	$cu = $dept."-".$year."-".$code_commune."-".$num_cu;
 	
 
+	<h3><center><?php echo $cu; ?></center></h3>
 
 
-
-	if(isset($_POST['duplicate_dps'])){?>
+	<!-- Notice after DPS duplication -->
+	<?php if(isset($_POST['duplicate_dps'])){?>
 		<div class='alert alert-warning'>
 			<span class="glyphicon glyphicon-alert" style="font-size:2em"></span> 
 			<strong>Attention : </strong>Tous les champs ne sont pas dupliqués.	Vous devez vérifier tous les champs avant d'envoyer en validation.
 		</div>
 	<?php }?>
-		
-
-	<h3><center><?php echo $cu; ?></center></h3>
 	
 
 
-	<!-- Accès spécial DDO : préselect section -->
+	<!-- Panel Accès spécial DDO : préselect section -->
 	<?php require_once('components/dps/dps-create-ddo-access-select-section.php'); ?>
 
 
-	<!-- Aide à la création de DPS -->
+	<!-- Panel d'aide à la création de DPS -->
 	<?php require_once('components/dps/dps-preselect-client-or-duplicate.php'); ?>
 
 
 	
-	
-	
-	<form class="form-horizontal" id='auto-validation-form' name='auto-validation-form' data-toggle="validator" role="form" action="traitement-demande-dps.php" method="post">
+	<form class="form-horizontal" id='auto-validation-form' name='auto-validation-form' data-toggle="validator" role="form" action="" method="post">
 		<input type='hidden' name='cu' value='<?php echo $cu;?>' />
+		<input type='hidden' name='year' value='<?php echo $year;?>' />
+		<input type='hidden' name='code_commune' value='<?php echo $city;?>'/>
+		<input type='hidden' name='num_cu' value='<?php echo $num_cu;?>'/>
 
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -203,7 +183,6 @@
 				</div>
 			</div>
 		</div>
-
 
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -586,7 +565,7 @@
 			</div>
 			</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">Nombre de secouristes / Moyens logistiques <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></div>
+					<div class="panel-heading">Nombre de secouristes / Moyens logistiques fournis par la PC (??????)<span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></div>
 					<div class="panel-body">
 
 						<div class="form-group form-group-sm has-feedback">
@@ -648,7 +627,7 @@
 					<div class="panel-body">
 
 						<div class="form-group form-group-sm">
-							<label for="local" class="col-sm-4 control-label">Local</label>
+							<label for="local" class="col-sm-4 control-label">Local fourni par l'organisateur</label>
 							<div class="col-sm-8">
 								<select class="form-control" id="local" name="local">
 									<option value="false">Non</option>
@@ -672,7 +651,7 @@
 						<div class="form-group form-group-sm has-feedback">
 							<label for="medecin_asso" class="col-sm-4 control-label">Nombre de médecins associatifs</label>
 							<div class="col-sm-2">
-								<input type="number" class="form-control" id="medecin_asso" name="medecin_asso" aria-describedby="medecin_asso-error" min='0' required='true' digits='true' placeholder="00">
+								<input type="number" class="form-control" id="medecin_asso" name="medecin_asso" aria-describedby="medecin_asso-error" min='0' digits='true' placeholder="00">
 								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='medecin_asso-error' class="help-block" aria-hidden="true"></span>
 							</div>
@@ -681,7 +660,7 @@
 						<div class="form-group form-group-sm has-feedback">
 							<label for="medecin_autre" class="col-sm-4 control-label">Nombre de médecins extérieurs (préciser)</label>
 							<div class="col-sm-2">
-								<input type="number" class="form-control" id="medecin_autre" name="medecin_autre" aria-describedby="medecin_autre-error" min='0' required='true' digits='true' placeholder="00">
+								<input type="number" class="form-control" id="medecin_autre" name="medecin_autre" aria-describedby="medecin_autre-error" min='0' digits='true' placeholder="00">
 								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='medecin_autre-error' class="help-block" aria-hidden="true"></span>
 							</div>
@@ -698,7 +677,7 @@
 						<div class="form-group form-group-sm has-feedback">
 							<label for="infirmier_asso" class="col-sm-4 control-label">Nombre d'infirmiers associatifs</label>
 							<div class="col-sm-2">
-								<input type="number" class="form-control" id="infirmier_asso" name="infirmier_asso" aria-describedby="infirmier_asso-error" min='0' required='true' digits='true' placeholder="00">
+								<input type="number" class="form-control" id="infirmier_asso" name="infirmier_asso" aria-describedby="infirmier_asso-error" min='0' digits='true' placeholder="00">
 								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='infirmier_asso-error' class="help-block" aria-hidden="true"></span>
 							</div>
@@ -707,7 +686,7 @@
 						<div class="form-group form-group-sm has-feedback">
 							<label for="infirmier_autre" class="col-sm-4 control-label">Nombre d'infirmiers extérieurs (préciser)</label>
 							<div class="col-sm-2">
-								<input type="number" class="form-control" id="infirmier_autre" name="infirmier_autre" aria-describedby="infirmier_autre-error" min='0' required='true' digits='true' placeholder="00">
+								<input type="number" class="form-control" id="infirmier_autre" name="infirmier_autre" aria-describedby="infirmier_autre-error" min='0' digits='true' placeholder="00">
 								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='infirmier_autre-error' class="help-block" aria-hidden="true"></span>
 							</div>
@@ -751,21 +730,14 @@
 				</div>
 			</div>
 		</div>
-<?php
-		echo "<input type='hidden' name='year' value='".$year."'>";
-		echo "<input type='hidden' name='code_commune' value='".$city."'>";
-		echo "<input type='hidden' name='num_cu' value='".$num_cu."'>";
-?>
-		
-		
+				
 		<div class="form-group">
 			<div class="col-sm-offset-4 col-sm-8 ">
 				<button type="submit" class="btn btn-warning">Envoyer <span class="glyphicon glyphicon-send"></span></button>
 			</div>
 		</div>
 	</form>
-			
-			
+					
 </div>
 
 

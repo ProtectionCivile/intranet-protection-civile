@@ -14,6 +14,7 @@
 					<select class="form-control" name="org_id" id="org_id">
 						<?php
 						$sql = "SELECT * FROM $tablename_clients WHERE city=$city ORDER BY ref ASC";
+						var_dump($sql);
 						$query = mysqli_query($link, $sql);
 						while($org = mysqli_fetch_array($query)){
 							if($org_id == $org['id']){

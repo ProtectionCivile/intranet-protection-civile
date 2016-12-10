@@ -410,7 +410,7 @@
 						<li class="list-group-item">
 						<div class="row">
 							<div class="col-sm-3">
-								<p>Chef d'équipe</p>
+								<p>Chef du poste de secours</p>
 							</div>
 							<div class="col-sm-1">
 								<p class="bg-info"><?php echo $dps['cei'];?></p>

@@ -1,7 +1,5 @@
-<?php
-include 'securite.php';
-require_once('connexion.php');
-
+<?php require_once('functions/session/security.php'); ?>
+<?php include('components/header.php');
 
 if(isset($_POST['id'])){
 $id = $_POST['id'];
@@ -53,7 +51,6 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 	<link href="css/bootstrap-datetimepicker.min.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<?php include 'header.php'; ?>
 <script type="text/javascript" src="js/moment.js"></script>
 <script src="js/moment-with-locales.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8"></script>
@@ -63,7 +60,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 <script src="js/bootstrap.file-input.js" type="text/javascript"></script>
 <script src="js/validator.js" type="text/javascript"></script>
 <div class="container">
-		<?php if ($_SESSION['privilege'] == "admin") {?>
+		<?php if (1) {?>
 			<h2>Edition de la demande de DPS <span class="bg-info"><?php echo $cu; ?></span></h2>
 			<?php
 			if($_SESSION['commune'] == "0"){

@@ -3,15 +3,15 @@ include 'securite.php';
 require_once('connexion.php');
 if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{
 
-if(isset($_POST['cu'])){
-$cu = $_POST['cu'];
-include 'functions/var_traitement.php';
-$today = date("Y-m-d");
-$query_insert = "INSERT INTO demande_dps(num_cu, cu_complet, annee_poste, commune_ris, type_dps, dps_debut, dps_fin, dps_debut_poste, dps_fin_poste, heure_debut, heure_fin, heure_debut_poste, heure_fin_poste, dept, prix, description_manif, activite, adresse_manif, organisateur, representant_org, qualite_org, adresse_org, tel_org, fax_org, email_org, dossier_pref, p1_part, p1_spec, p2, e1, e2, date_creation, comment_ris, justif_poste, cei, PSE2, PSE1, PSC1, vpsp, vpsp_soin, vl, tente, local, moyen_supp, med_asso, med_autre, medecin, inf_asso, inf_autre, infirmier, samu, pompier) VALUES ('$num_cu', '$cu', '$year', '$code_commune', '$type_dps','$date_debut', '$date_fin', '$date_debut_poste', '$date_fin_poste', '$heure_debut', '$heure_fin', '$heure_debut_poste', '$heure_fin_poste', '$dept', '$prix' ,'$nom_nature', '$activite_descriptif', '$lieu_precis', '$nom_organisation', '$represente_par', '$qualite', '$adresse', '$telephone', '$fax', '$email', '$deja_pref', '$p1_part', '$p1_spec', '$p2', '$e1', '$e2', '$today', '$commentaire_ris', '$justificatif', '$nb_ce', '$nb_pse2' , '$nb_pse1', '$nb_psc1', '$vpsp_transport', '$vpsp_soin', '$vl', '$tente', '$local', '$supplement', '$medecin_asso', '$medecin_autre', '$medecin_appartenance', '$infirmier_asso', '$infirmier_autre', '$infirmier_appartenance', '$samu', '$bspp_sdis')" or die("Impossible d'ajouter l'utilisateur dans la base de donn&eacute;e" . mysqli_error($link));
-//var_dump($query_insert);
-mysqli_query($link, $query_insert);
-$_SESSION['dps-creation'] = $cu;
-header("Location: edit-dps.php");}
+// if(isset($_POST['cu'])){
+// $cu = $_POST['cu'];
+// include 'functions/var_traitement.php';
+// $today = date("Y-m-d");
+// $query_insert = "INSERT INTO demande_dps(num_cu, cu_complet, annee_poste, commune_ris, type_dps, dps_debut, dps_fin, dps_debut_poste, dps_fin_poste, heure_debut, heure_fin, heure_debut_poste, heure_fin_poste, dept, prix, description_manif, activite, adresse_manif, organisateur, representant_org, qualite_org, adresse_org, tel_org, fax_org, email_org, dossier_pref, p1_part, p1_spec, p2, e1, e2, date_creation, comment_ris, justif_poste, cei, PSE2, PSE1, PSC1, vpsp, vpsp_soin, vl, tente, local, moyen_supp, med_asso, med_autre, medecin, inf_asso, inf_autre, infirmier, samu, pompier) VALUES ('$num_cu', '$cu', '$year', '$code_commune', '$type_dps','$date_debut', '$date_fin', '$date_debut_poste', '$date_fin_poste', '$heure_debut', '$heure_fin', '$heure_debut_poste', '$heure_fin_poste', '$dept', '$prix' ,'$nom_nature', '$activite_descriptif', '$lieu_precis', '$nom_organisation', '$represente_par', '$qualite', '$adresse', '$telephone', '$fax', '$email', '$deja_pref', '$p1_part', '$p1_spec', '$p2', '$e1', '$e2', '$today', '$commentaire_ris', '$justificatif', '$nb_ce', '$nb_pse2' , '$nb_pse1', '$nb_psc1', '$vpsp_transport', '$vpsp_soin', '$vl', '$tente', '$local', '$supplement', '$medecin_asso', '$medecin_autre', '$medecin_appartenance', '$infirmier_asso', '$infirmier_autre', '$infirmier_appartenance', '$samu', '$bspp_sdis')" or die("Impossible d'ajouter l'utilisateur dans la base de donn&eacute;e" . mysqli_error($link));
+// //var_dump($query_insert);
+// mysqli_query($link, $query_insert);
+// $_SESSION['dps-creation'] = $cu;
+// header("Location: edit-dps.php");}
 
 if(isset($_POST['update_id'])){
 $id = $_POST['update_id'];
