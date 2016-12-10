@@ -1,7 +1,5 @@
-<?php
-include 'securite.php';
-require_once('connexion.php');
-
+<?php require_once('functions/session/security.php'); ?>
+<?php include('components/header.php');
 
 if(isset($_POST['id'])){
 $id = $_POST['id'];
@@ -53,7 +51,6 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 	<link href="css/bootstrap-datetimepicker.min.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<?php include 'header.php'; ?>
 <script type="text/javascript" src="js/moment.js"></script>
 <script src="js/moment-with-locales.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/bootstrap-datetimepicker.min.js" type="text/javascript" charset="utf-8"></script>
@@ -63,7 +60,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 <script src="js/bootstrap.file-input.js" type="text/javascript"></script>
 <script src="js/validator.js" type="text/javascript"></script>
 <div class="container">
-		<?php if ($_SESSION['privilege'] == "admin") {?>
+		<?php if (1) {?>
 			<h2>Edition de la demande de DPS <span class="bg-info"><?php echo $cu; ?></span></h2>
 			<?php
 			if($_SESSION['commune'] == "0"){
@@ -827,224 +824,28 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 		<?php }if ($_SESSION['privilege'] == "user") { ?>
   		<strong>En tant qu'utilisateur simple vous ne pouvez pas effectuer d'actions</strong> <?php }?>
 </div>
-<script type="text/javascript">
-    $(function () {
-        $("[rel='tooltip']").tooltip();
-    });
-	$(function () {
-		$('[data-toggle="popover"]').popover()
-	})
-</script>
+
 <script>
-		$('.upload-all').click(function(){
-			//submit all form
-			$('form').submit();
-		});
-
-		$('.cancel-all').click(function(){
-			//submit all form
-			$('form .cancel').click();
-		});
-
-		$(document).on('submit','.upload1',function(e){
-			e.preventDefault();
-			$form = $(this);
-			uploadImage($form);
-
-		});
 		
-		$(document).on('submit','.upload2',function(e){
-			e.preventDefault();
-			$form = $(this);
-			uploadImage($form);
-		});
-		$(document).on('submit','.upload3',function(e){
-			e.preventDefault();
-			$form = $(this);
-			uploadImage($form);
-		});
-		$(document).on('submit','.upload4',function(e){
-			e.preventDefault();
-			$form = $(this);
-			uploadImage($form);
-		});
+</script>
 
-		function uploadImage($form){
-			$form.find('.progress-bar').removeClass('progress-bar-success')
-										.removeClass('progress-bar-danger');
-
-			var formdata = new FormData($form[0]); //formelement
-			var request = new XMLHttpRequest();
-
-			//progress event...
-			request.upload.addEventListener('progress',function(e){
-				var percent = Math.round(e.loaded/e.total * 100);
-				$form.find('.progress-bar').width(percent+'%').html(percent+'%');
-			});
-
-			//progress completed load event
-			request.addEventListener('load',function(e){
-				$form.find('.progress-bar').addClass('progress-bar-success').html('Veuillez patienter...');
-				//$form.find('.progress').removeClass('progress-striped');
-				
-				
-				
-			});
-
-			request.onreadystatechange = function(){
-				if(request.readyState == 4 && request.status == 200){
-					$form.find('.progress').removeClass('progress-striped');
-					$form.find('.progress-bar').html('Transfert Terminé !');
-					window.setTimeout(function(){location.reload()},2000);
-					
-				}
-			}
-			request.open('POST', 'functions/dps-documents-upload.php', true);
-			request.send(formdata);
-			
-			
-			
-
-			$form.on('click','.cancel',function(){
-				request.abort();
-
-				$form.find('.progress-bar')
-					.addClass('progress-bar-danger')
-					.removeClass('progress-bar-success')
-					.html('upload aborted...');
-			});
-
-		}
-	</script>
-	<script type="text/javascript">
-jQuery.fx.off = true
-$("#changeconv").click(function() {
+<script type="text/javascript">
+	jQuery.fx.off = true
+	$("#changeconv").click(function() {
 	$("#rowconvention").removeAttr('hidden')
 	$("#changeconvention").toggle("hidden")});
-$("#changerisk").click(function() {
+	$("#changerisk").click(function() {
 	$("#rowrisque").removeAttr('hidden')
 	$("#changerisque").toggle("hidden")});
-$("#changedem").click(function() {
+	$("#changedem").click(function() {
 	$("#rowdemande").removeAttr('hidden')
 	$("#changedemande").toggle("hidden")});
-	
-								var i;
-							var p2 = "0,25";
-							var e1 = "0,25";
-							var e2 = "0,25";
-                            function displayVals() {
-								p2 = $("#activite").val();
-								e1 = $( "#environnement" ).val();
-								e2 = $( "#delai" ).val();
-								if (e1 == "1"){e1 = "25";}else if(e1 == "2"){e1 = "30";}else if(e1 == "3"){e1 = "35";}else{e1 = "40";}
-								if (e2 == "1"){e2 = "25";}else if(e2 == "2"){e2 = "30";}else if(e2 == "3"){e2 = "35";}else{e2 = "40";}
-								if (p2 == "1"){p2 = "25";}else if(p2 == "2"){p2 = "30";}else if(p2 == "3"){p2 = "35";}else{p2 = "40";}
-							if(e1 && e2 && p2 != "0"){
-								i = parseInt(p2,10) + parseInt(e1,10) + parseInt(e2,10);
-								i = i/100;
-								//console.log("i = "+ i );
-							}
-							}
-							$( ".risi" ).change( displayVals );
-							displayVals();
-							
-							var valuep11;
-							var valuep12;
-							var p1;
-							p1 =0;
-							var p;
-							$( "#spectateurs" )
-							.keyup(function() {
-								valuep11 = $( this ).val();
-								//console.log( valuep11 );
-							})
-							.keyup();
-							$( "#participants" )
-							.keyup(function() {
-								valuep12 = $( this ).val();
-								//console.log( valuep12 );
-							})
-							.keyup();
-							
-							$( ".risp")
-							.keyup(function() {
-							p1 = parseInt(valuep11, 10) + parseInt(valuep12, 10);
-							$( "#p1" ).text( "P1 = "+p1 );
-							if(p1 <= 100000){
-								p = p1;
-							}else{
-								p = 100000 +(parseInt(p1) - 100000)/2;
-								p = Math.ceil(p);
-							}
-							//console.log( "P = "+p );
-							})
-							.keyup();
-							
-							$( ".risp" )
-							.keyup(function() {
-								calculris();
-							})
-							.keyup();
-							$( ".risi" ).change(function() {
-								calculris();
-							});
-							$( ".risp" ).change(function() {
-								calculris();
-							});
-							
-							function calculris(){
-								var ristotal;
-								var ris;
-								ris = 0;
-								ristotal = 0;
-								if(p != 0){ristotal = i*(p/1000);}
-								if(ristotal != 0 && (ristotal*1000) <= 1125){
-									ris = 2;
-								}else if((ristotal*1000) > 1,125 && ristotal <= 4){
-									ris = 4;
-								}else if(ristotal > 4){
-									ris = Math.ceil(ristotal);
-									if(ris&1){
-										ris = ris +1;
-									}
-								}
-  								//console.log( "RIS = "+ristotal );
-								var typedeposte;
-								$( "#nbsec" ).text(ris );
-								
-							if(ris == 0){
-									$('#resultatris').addClass('hidden');
-							}else if(ris != 0 && ris <=2){
-								typedeposte = "PAPS";
-								$('#resultatris').addClass('alert-info');
-								$('#resultatris').removeClass('alert-warning');
-								$('#grosris').addClass('hidden');
-								$('#resultatris').removeClass('hidden');
-							}else if(ris >=4 && ris <=12){
-								typedeposte = "DPS-PE";
-								$('#resultatris').addClass('alert-info');
-								$('#resultatris').removeClass('alert-warning');
-								$('#grosris').addClass('hidden');
-								$('#resultatris').removeClass('hidden');
-							}else if(ris > 12 && ris <=36){
-								typedeposte = "DPS-ME";
-								$('#resultatris').addClass('alert-warning');
-								$('#grosris').removeClass('hidden');
-								$('#resultatris').removeClass('hidden');
-							}else if(ris >36){
-								typedeposte = "DPS-GE";
-								$('#resultatris').addClass('alert-warning');
-								$('#grosris').removeClass('hidden');
-								$('#resultatris').removeClass('hidden');
-							}
-							$( "#typeposte" ).text(typedeposte);
-						}
-	
-	
-	
-	
-	</script>
-<?php include 'footer.php'; ?>
+</script>
+
+<script src='js/dps-compute-ris.js' type='text/javascript'></script>
+<script src='js/dps-doc-upload.js' type='text/javascript'></script>
+
+<?php require_once('components/footer.php'); ?>
 </body>
 </html>
 

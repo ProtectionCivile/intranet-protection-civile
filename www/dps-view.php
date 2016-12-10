@@ -29,12 +29,12 @@
 ?>
 
 <!-- Authentication -->
-<?php require_once('functions/dps/dps-authentication.php'); ?>
+<?php require_once('functions/dps/dps-view-authentication.php'); ?>
 
 
 <!-- Page content container -->
 <div class="container">
-	<h2><center>Dispositif Prévisionnel de Secours : <?php echo $dps['cu_complet'];?></center></h2>
+	<h2><center><?php echo $dps['cu_complet'];?></center></h2>
 
 
 	<!-- Accès spécial DDO -->
@@ -206,7 +206,7 @@
 			<button type="button" class="close" aria-label='Close' data-toggle="collapse" data-target="#manif-panel-filter" aria-expanded='true' aria-controls="manif-panel-filter">
 				<span aria-hidden="true" >Montrer/Cacher</span>
 			</button>
-			<h3 class="panel-title">La Manifestation</h3>
+			<h3 class="panel-title">Évènement</h3>
 		</div>
 		<div id='manif-panel-filter' class="panel-body in">
 			<div class="panel panel-default">
@@ -295,7 +295,7 @@
 			
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h3 class="panel-title">Dimensionnement du poste</h3>
+					<h3 class="panel-title">Évaluation du risque</h3>
 				</div>
 				<ul class="list-group">
 					<li class="list-group-item">
@@ -410,7 +410,7 @@
 						<li class="list-group-item">
 						<div class="row">
 							<div class="col-sm-3">
-								<p>Chef(s) d'équipe</p>
+								<p>Chef du poste de secours</p>
 							</div>
 							<div class="col-sm-1">
 								<p class="bg-info"><?php echo $dps['cei'];?></p>
@@ -506,7 +506,7 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-3">
-								<p>Médecins autres (préciser)</p>
+								<p>Médecins extérieurs</p>
 							</div>
 							<div class="col-sm-1">
 								<p class="bg-info"><?php echo $dps['med_autre'];?></p>
@@ -531,7 +531,7 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-3">
-								<p>Infirmiers autres (préciser)</p>
+								<p>Infirmiers extérieurs</p>
 							</div>
 							<div class="col-sm-1">
 								<p class="bg-info"><?php echo $dps['inf_autre'];?></p>

@@ -3,7 +3,7 @@
 		<div class='col-md-1 col-sm-2 row'>
 			<label for='date_debut' >Période</label>
 		</div>
-		<div class=" col-md-4 col-sm-4">
+		<div class=" col-md-3 col-sm-3">
 			<div class='input-group date' id='date_debut' name="date_debut">
 				<input type='text' class='form-control form-inline' id='inputdatebegin'  onKeyPress='if (event.keyCode == 13) {save_dates();}' name='inputdatebegin' placeholder="01-01-2015" value='<?php echo $datebegin;?>' />
 				<span class="input-group-addon">
@@ -12,7 +12,7 @@
 			</div>
 	        <div class="help-block with-errors"></div>
 		</div>
-		<div class="col-md-4 col-sm-4">
+		<div class="col-md-3 col-sm-3">
 			<div class='input-group date' id='date_fin' name="date_fin">
 				<input type='text' class='form-control form-inline' id='inputdateend' onKeyPress='if (event.keyCode == 13) {save_dates();}' name='inputdateend' placeholder="12-11-2016" value='<?php echo $dateend;?>' />
 				<span class="input-group-addon">
@@ -21,8 +21,8 @@
 			</div>
 	        <div class="help-block with-errors"></div>
 		</div>
-		<div class="col-md-3 col-sm-2">
-			<button class='btn btn-primary btn-sm glyphicon glyphicon-filter date-filter'></button>
+		<div class="col-md-3 col-sm-3">
+			<button class='btn btn-primary btn-sm date-filter'>Appliquer la période</button>
 		</div>
 	</div>
 </div>

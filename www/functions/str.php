@@ -22,4 +22,9 @@ function suppr_accents($str, $encoding='utf-8')
  
     return $str;
 }
+
+function isNullOrEmpty($str)
+{
+    return (isset($str) || $str == "");
+}
 ?>

@@ -42,7 +42,7 @@
 	<!-- Update user : display form -->
 	<div class='panel panel-info'>
 		<div class='panel-heading'>
-			<h3 class='panel-title'>Modifier la commune de <strong><?php echo $nom; ?> - Antenne N°<?php echo $number;?></strong></h3>
+			<h3 class='panel-title'>Modifier la commune de <strong><?php echo $name; ?> - Antenne N°<?php echo $number;?></strong></h3>
 		</div>
 		<div class='panel-body'>
 			<form class='form-horizontal' id='auto-validation-form' action='' role='form' method='post' accept-charset='utf-8'>
@@ -121,7 +121,6 @@
 								$sections = mysqli_query($link, $reqliste);
 
 								while($sectionX = mysqli_fetch_array($sections)) {
-									echo $userSection;
 									if ($sectionX['number'] == $attached_section){
 										echo "<option value='".$sectionX['number']."' selected>".$sectionX['name']."</option>";
 									}

@@ -46,7 +46,12 @@ $settings_array = mysqli_fetch_array($query_result);
 							<li><a href="dps-list-view.php">Liste de tous les DPS</a></li>
 						<?php } ?>
 						<li class="divider"></li>
-						<li><a href="demande-dps.php">Demande de DPS</a></li>
+						<?php if ($rbac->check("ope-dps-create-own", $currentUserID) || $rbac->check("ope-dps-create-all", $currentUserID)) {?> 
+							<li><a href="dps-create.php?city">Créer un DPS local</a></li>
+						<?php } ?>
+						<?php if ($rbac->check("ope-dps-create-dept", $currentUserID) || $rbac->check("ope-dps-create-all", $currentUserID)) {?> 
+							<li><a href="dps-create.php?dept">Créer un DPS départemental</a></li>
+						<?php } ?>
 						<li class="divider"></li>
 						<li class="dropdown-header">Réglages opérationnels</li>
 						<li><a href="list-organisateur.php">Liste des organisateurs</a></li>

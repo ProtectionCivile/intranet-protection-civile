@@ -2,10 +2,10 @@
 	//Authentication 
 	$rbac->enforce("admin-mailinglist-manage", $currentUserID); 
 
-	if($_POST['mailAccount'] == "" && ((isset($_POST['delUser']) || isset($_POST['addUser'])) )){
+	if(isNullOrEmpty($_POST['mailAccount']) && ((isset($_POST['delUser']) || isset($_POST['addUser'])) )){
 		$genericError = "Entrez un compte mail valide svp !";
 	}
-	else {
+	elseif(isset($_POST['delUser']) || isset($_POST['addUser']) ) {
 		$domainName="@protectioncivile92.org";
 		$mailAccount = str_replace("'","", $_POST['mailAccount']).$domainName;
 		$from="webmaster".$domainName;
