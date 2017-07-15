@@ -78,7 +78,7 @@ function CloseTag($tag)
 
 function SetStyle($tag, $enable)
 {
-	// Modifie le style et sélectionne la police correspondante
+	// Modifie le style et sï¿½lectionne la police correspondante
 	$this->$tag += ($enable ? 1 : -1);
 	$style = '';
 	foreach(array('B', 'I', 'U') as $s)
@@ -100,23 +100,23 @@ function PutLink($URL, $txt)
 }
 }
 
-$html = 'Vous pouvez maintenant imprimer facilement du texte mélangeant différents styles : <b>gras</b>,
-<i>italique</i>, <u>souligné</u>, ou <b><i><u>tous à la fois</u></i></b> !<br><br>Vous pouvez aussi
-insérer des liens sous forme textuelle, comme <a href="http://www.fpdf.org">www.fpdf.org</a>, ou bien
+$html = 'Vous pouvez maintenant imprimer facilement du texte mï¿½langeant diffï¿½rents styles : <b>gras</b>,
+<i>italique</i>, <u>soulignï¿½</u>, ou <b><i><u>tous ï¿½ la fois</u></i></b> !<br><br>Vous pouvez aussi
+insï¿½rer des liens sous forme textuelle, comme <a href="http://www.fpdf.org">www.fpdf.org</a>, ou bien
 sous forme d\'image : cliquez sur le logo.';
 
 $pdf = new PDF();
-// Première page
+// Premiï¿½re page
 $pdf->AddPage();
 $pdf->SetFont('Arial','',20);
-$pdf->Write(5,'Pour découvrir les nouveautés de ce tutoriel, cliquez ');
+$pdf->Write(5,'Pour dï¿½couvrir les nouveautï¿½s de ce tutoriel, cliquez ');
 $pdf->SetFont('','U');
-$link = $pdf->AddLink();
-$pdf->Write(5,'ici',$link);
+$db_link = $pdf->AddLink();
+$pdf->Write(5,'ici',$db_link);
 $pdf->SetFont('');
 // Seconde page
 $pdf->AddPage();
-$pdf->SetLink($link);
+$pdf->SetLink($db_link);
 $pdf->Image('logo.png',10,12,30,0,'','http://www.fpdf.org');
 $pdf->SetLeftMargin(45);
 $pdf->SetFontSize(14);

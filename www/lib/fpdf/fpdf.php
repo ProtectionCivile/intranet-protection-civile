@@ -53,7 +53,7 @@ var $ColorFlag;          // indicates whether fill and text colors are different
 var $ws;                 // word spacing
 var $images;             // array of used images
 var $PageLinks;          // array of links in pages
-var $links;              // array of internal links
+var $db_links;              // array of internal links
 var $AutoPageBreak;      // automatic page breaking
 var $PageBreakTrigger;   // threshold used to trigger page breaks
 var $InHeader;           // flag set when processing header
@@ -563,20 +563,20 @@ function AddLink()
 	return $n;
 }
 
-function SetLink($link, $y=0, $page=-1)
+function SetLink($db_link, $y=0, $page=-1)
 {
 	// Set destination of internal link
 	if($y==-1)
 		$y = $this->y;
 	if($page==-1)
 		$page = $this->page;
-	$this->links[$link] = array($page, $y);
+	$this->links[$db_link] = array($page, $y);
 }
 
-function Link($x, $y, $w, $h, $link)
+function Link($x, $y, $w, $h, $db_link)
 {
 	// Put a link on the page
-	$this->PageLinks[$this->page][] = array($x*$this->k, $this->hPt-$y*$this->k, $w*$this->k, $h*$this->k, $link);
+	$this->PageLinks[$this->page][] = array($x*$this->k, $this->hPt-$y*$this->k, $w*$this->k, $h*$this->k, $db_link);
 }
 
 function Text($x, $y, $txt)
@@ -596,7 +596,7 @@ function AcceptPageBreak()
 	return $this->AutoPageBreak;
 }
 
-function Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link='')
+function Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $db_link='')
 {
 	// Output a cell
 	$k = $this->k;
@@ -658,8 +658,8 @@ function Cell($w, $h=0, $txt='', $border=0, $ln=0, $align='', $fill=false, $link
 			$s .= ' '.$this->_dounderline($this->x+$dx,$this->y+.5*$h+.3*$this->FontSize,$txt);
 		if($this->ColorFlag)
 			$s .= ' Q';
-		if($link)
-			$this->Link($this->x+$dx,$this->y+.5*$h-.5*$this->FontSize,$this->GetStringWidth($txt),$this->FontSize,$link);
+		if($db_link)
+			$this->Link($this->x+$dx,$this->y+.5*$h-.5*$this->FontSize,$this->GetStringWidth($txt),$this->FontSize,$db_link);
 	}
 	if($s)
 		$this->_out($s);
@@ -788,7 +788,7 @@ function MultiCell($w, $h, $txt, $border=0, $align='J', $fill=false)
 	$this->x = $this->lMargin;
 }
 
-function Write($h, $txt, $link='')
+function Write($h, $txt, $db_link='')
 {
 	// Output text in flowing mode
 	$cw = &$this->CurrentFont['cw'];
@@ -808,7 +808,7 @@ function Write($h, $txt, $link='')
 		if($c=="\n")
 		{
 			// Explicit line break
-			$this->Cell($w,$h,substr($s,$j,$i-$j),0,2,'',0,$link);
+			$this->Cell($w,$h,substr($s,$j,$i-$j),0,2,'',0,$db_link);
 			$i++;
 			$sep = -1;
 			$j = $i;
@@ -843,11 +843,11 @@ function Write($h, $txt, $link='')
 				}
 				if($i==$j)
 					$i++;
-				$this->Cell($w,$h,substr($s,$j,$i-$j),0,2,'',0,$link);
+				$this->Cell($w,$h,substr($s,$j,$i-$j),0,2,'',0,$db_link);
 			}
 			else
 			{
-				$this->Cell($w,$h,substr($s,$j,$sep-$j),0,2,'',0,$link);
+				$this->Cell($w,$h,substr($s,$j,$sep-$j),0,2,'',0,$db_link);
 				$i = $sep+1;
 			}
 			$sep = -1;
@@ -866,7 +866,7 @@ function Write($h, $txt, $link='')
 	}
 	// Last chunk
 	if($i!=$j)
-		$this->Cell($l/1000*$this->FontSize,$h,substr($s,$j),0,0,'',0,$link);
+		$this->Cell($l/1000*$this->FontSize,$h,substr($s,$j),0,0,'',0,$db_link);
 }
 
 function Ln($h=null)
@@ -879,7 +879,7 @@ function Ln($h=null)
 		$this->y += $h;
 }
 
-function Image($file, $x=null, $y=null, $w=0, $h=0, $type='', $link='')
+function Image($file, $x=null, $y=null, $w=0, $h=0, $type='', $db_link='')
 {
 	// Put an image on the page
 	if(!isset($this->images[$file]))
@@ -938,8 +938,8 @@ function Image($file, $x=null, $y=null, $w=0, $h=0, $type='', $link='')
 	if($x===null)
 		$x = $this->x;
 	$this->_out(sprintf('q %.2F 0 0 %.2F %.2F %.2F cm /I%d Do Q',$w*$this->k,$h*$this->k,$x*$this->k,($this->h-($y+$h))*$this->k,$info['i']));
-	if($link)
-		$this->Link($x,$y,$w,$h,$link);
+	if($db_link)
+		$this->Link($x,$y,$w,$h,$db_link);
 }
 
 function GetX()
