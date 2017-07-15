@@ -25,6 +25,9 @@
 <!-- Authentication -->
 <?php //require_once('functions/dps/dps-create-authentication.php'); ?>
 
+<!-- DPS duplication or client insertion : interpretor -->
+	<?php require_once('components/dps/dps-preselect-client-or-duplicate-computation.php'); ?>
+
 <!-- Create a new DPS : Controller -->
 <?php require_once('functions/controller/dps-create-controller.php'); ?>
 
@@ -35,11 +38,6 @@
 	<?php require_once('components/operation-status-indicator.php'); ?>
 
 	<h2><center>Création d'un Dispositif Prévisionnel de Secours</center></h2>
-
-
-
-	
-
 	<h3><center><?php echo $cu; ?></center></h3>
 
 
@@ -58,7 +56,7 @@
 
 
 	<!-- Panel d'aide à la création de DPS -->
-	<?php require_once('components/dps/dps-preselect-client-or-duplicate.php'); ?>
+	<?php require_once('components/dps/dps-preselect-client-or-duplicate-module.php'); ?>
 
 
 	
@@ -84,7 +82,7 @@
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom de la société, association, collectivité, etc." />
 					</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="nom_organisation" name="nom_organisation" aria-describedby="nom-organisation-error" placeholder="Nom de l'organisation" minlength='8' required='true' value="<?php if(isset($org_array['nom'])){echo $org_array['nom'];}elseif(isset($duplicate_array['organisateur'])){echo $duplicate_array['organisateur'];}?>" >
+						<input type="text" class="form-control" id="nom_organisation" name="nom_organisation" aria-describedby="nom-organisation-error" placeholder="Nom de l'organisation" minlength='8' required='true' value="<?php echo $nom_organisation;?>" >
 						<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
 						<span id='nom-organisation-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 					</div>
@@ -97,7 +95,7 @@
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Personne qui représente l'organisation."></span>
 					</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="represente_par" name="represente_par" aria-describedby="represente_par-error" placeholder="Représentant" minlength='4' required='true' value="<?php if(isset($org_array['represente'])){echo $org_array['represente'];}elseif(isset($duplicate_array['representant_org'])){echo $duplicate_array['representant_org'];}?>" >
+						<input type="text" class="form-control" id="represente_par" name="represente_par" aria-describedby="represente_par-error" placeholder="Représentant" minlength='4' required='true' value="<?php echo $represente_par;?>" >
 						<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
 						<span id='represente_par-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 					</div>
@@ -110,7 +108,7 @@
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Statut du représentant."></span>
 					</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="qualite" name="qualite" aria-describedby="qualite-error" placeholder="Qualité" minlength='4' required='true' value="<?php if(isset($org_array['qualite'])){echo $org_array['qualite'];}elseif(isset($duplicate_array['qualite_org'])){echo $duplicate_array['qualite_org'];}?>" >
+						<input type="text" class="form-control" id="qualite" name="qualite" aria-describedby="qualite-error" placeholder="Qualité" minlength='4' required='true' value="<?php echo $qualite;?>" >
 						<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
 						<span id='qualite-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 					</div>
@@ -123,7 +121,7 @@
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Adresse, code postale, ville."></span>
 					</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="adresse" name="adresse" aria-describedby="adresse-error" placeholder="Adresse" minlength='4' required='true' value="<?php if(isset($org_array['adresse'])){echo $org_array['adresse'];}elseif(isset($duplicate_array['adresse_org'])){echo $duplicate_array['adresse_org'];}?>" data-minlength="6" >
+						<input type="text" class="form-control" id="adresse" name="adresse" aria-describedby="adresse-error" placeholder="Adresse" minlength='20' required='true' value="<?php echo $adresse;?>" data-minlength="6" >
 						<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
 						<span id='adresse-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 					</div>
@@ -136,7 +134,7 @@
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Format 0XXXXXXXXX"></span>
 					</label>
 					<div class="col-sm-8">
-						<input type="tel" class="form-control" id="telephone" name="telephone" aria-describedby="telephone-error" placeholder="telephone" minlength='10' maxlength='10' required='true' digits='true' value="<?php if(isset($org_array['telephone'])){echo $org_array['telephone'];}elseif(isset($duplicate_array['tel_org'])){echo $duplicate_array['tel_org'];}?>" data-minlength="10" >
+						<input type="tel" class="form-control" id="telephone" name="telephone" aria-describedby="telephone-error" placeholder="telephone" minlength='10' maxlength='10' required='true' digits='true' value="<?php echo $telephone;?>" data-minlength="10" >
 						<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
 						<span id='telephone-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 					</div>
@@ -149,7 +147,7 @@
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Format 0XXXXXXXXX"></span>
 					</label>
 					<div class="col-sm-8">
-						<input type="tel" class="form-control" id="fax" name="fax" aria-describedby="fax-error" placeholder="Fax" minlength='10' maxlength='10' digits='true' value="<?php if(isset($org_array['fax'])){echo $org_array['fax'];}elseif(isset($duplicate_array['fax_org'])){echo $duplicate_array['fax_org'];}?>"data-minlength="10">
+						<input type="tel" class="form-control" id="fax" name="fax" aria-describedby="fax-error" placeholder="Fax" minlength='10' maxlength='10' digits='true' value="<?php echo $fax;?>"data-minlength="10">
 						<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
 						<span id='fax-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 					</div>
@@ -463,46 +461,93 @@
 			<div id='dps-panel-filter' aria-expanded='true' class="panel-body in">
 				
 				<div class="panel panel-default">
-				<div class="panel-heading">
-					<h3 class="panel-title">Horaires de mise en place du dispositif</h3>
-				</div>
-				<div class="panel-body">
+					<div class="panel-heading">
+						<h3 class="panel-title">Horaires de mise en place du dispositif</h3>
+					</div>
+					<div class="panel-body">
 
+						<div class="form-group form-group-sm form-inline row">
+							<label for="date_debut_poste" class="col-sm-4 control-label">Date et heure du début de poste</label>
+							<div class="col-sm-3">
+
+								<div class='input-group date' id='date_debut_poste' name="date_debut_poste">
+									<input type='text' class="form-control" id='date_debut_poste' name="date_debut_poste" required='true' aria-describedby="date_debut_poste-error" value="" />
+									<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+								</div>
+								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span id='date_debut_poste-error' class="help-block" aria-hidden="true"></span>
+							</div>
+							<div class="col-sm-3">
+
+								<div class='input-group date' id='heure_debut_poste' name="heure_debut_poste" aria-describedby="heure_debut_poste-error" >
+									<input type='text' class="form-control" id='heure_debut_poste' required='true' name="heure_debut_poste" />
+									<span class="input-group-addon">
+									<span class="glyphicon glyphicon-time"></span>
+								</div>
+								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span id='heure_debut_poste-error' class="help-block" aria-hidden="true"></span>
+							</div>
+							<script type="text/javascript">
+								$(function () {
+									$('#date_debut_poste').datetimepicker({
+										locale: 'fr',
+										format: 'DD-MM-YYYY',
+										showClear:true,
+										showClose:true,
+										toolbarPlacement: 'bottom',
+						
+									});
+								});
+								$(function () {
+									$('#heure_debut_poste').datetimepicker({
+										locale: 'fr',
+										format: 'HH:mm',
+										showClear:true,
+										showClose:true,
+										toolbarPlacement: 'bottom',
+										useCurrent:false,
+										stepping:'5'
+						
+									});
+								});
+							</script>
+						</div>
 					<div class="form-group form-group-sm form-inline row">
-						<label for="date_debut_poste" class="col-sm-4 control-label">Date et heure du début de poste</label>
+						<label for="date_fin_poste" class="col-sm-4 control-label">Date et heure de fin de poste</label>
 						<div class="col-sm-3">
 
-							<div class='input-group date' id='date_debut_poste' name="date_debut_poste">
-								<input type='text' class="form-control" id='date_debut_poste' name="date_debut_poste" required='true' aria-describedby="date_debut_poste-error" value="" />
+							<div class='input-group date' id='date_fin_poste' name="date_fin_poste" aria-describedby="date_fin_poste-error" >
+								<input type='text' class="form-control" id='date_fin_poste' required='true' name="date_fin_poste" />
 								<span class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 							</div>
 							<span class="form-control-feedback" aria-hidden="true"></span>
-							<span id='date_debut_poste-error' class="help-block" aria-hidden="true"></span>
+							<span id='date_fin_poste-error' class="help-block" aria-hidden="true"></span>
 						</div>
 						<div class="col-sm-3">
 
-							<div class='input-group date' id='heure_debut_poste' name="heure_debut_poste" aria-describedby="heure_debut_poste-error" >
-								<input type='text' class="form-control" id='heure_debut_poste' required='true' name="heure_debut_poste" />
+							<div class='input-group date' id='heure_fin_poste' name="heure_fin_poste">
+								<input type='text' class="form-control" id='heure_fin_poste' required='true' name="heure_fin_poste" aria-describedby="heure_fin_poste-error" />
 								<span class="input-group-addon">
 								<span class="glyphicon glyphicon-time"></span>
 							</div>
 							<span class="form-control-feedback" aria-hidden="true"></span>
-							<span id='heure_debut_poste-error' class="help-block" aria-hidden="true"></span>
+							<span id='heure_fin_poste-error' class="help-block" aria-hidden="true"></span>
 						</div>
 						<script type="text/javascript">
 							$(function () {
-								$('#date_debut_poste').datetimepicker({
+								$('#date_fin_poste').datetimepicker({
 									locale: 'fr',
 									format: 'DD-MM-YYYY',
 									showClear:true,
 									showClose:true,
-									toolbarPlacement: 'bottom',
+									toolbarPlacement: 'bottom'
 					
 								});
 							});
 							$(function () {
-								$('#heure_debut_poste').datetimepicker({
+								$('#heure_fin_poste').datetimepicker({
 									locale: 'fr',
 									format: 'HH:mm',
 									showClear:true,
@@ -515,57 +560,10 @@
 							});
 						</script>
 					</div>
-				<div class="form-group form-group-sm form-inline row">
-					<label for="date_fin_poste" class="col-sm-4 control-label">Date et heure de fin de poste</label>
-					<div class="col-sm-3">
-
-						<div class='input-group date' id='date_fin_poste' name="date_fin_poste" aria-describedby="date_fin_poste-error" >
-							<input type='text' class="form-control" id='date_fin_poste' required='true' name="date_fin_poste" />
-							<span class="input-group-addon">
-							<span class="glyphicon glyphicon-calendar"></span>
-						</div>
-						<span class="form-control-feedback" aria-hidden="true"></span>
-						<span id='date_fin_poste-error' class="help-block" aria-hidden="true"></span>
-					</div>
-					<div class="col-sm-3">
-
-						<div class='input-group date' id='heure_fin_poste' name="heure_fin_poste">
-							<input type='text' class="form-control" id='heure_fin_poste' required='true' name="heure_fin_poste" aria-describedby="heure_fin_poste-error" />
-							<span class="input-group-addon">
-							<span class="glyphicon glyphicon-time"></span>
-						</div>
-						<span class="form-control-feedback" aria-hidden="true"></span>
-						<span id='heure_fin_poste-error' class="help-block" aria-hidden="true"></span>
-					</div>
-					<script type="text/javascript">
-						$(function () {
-							$('#date_fin_poste').datetimepicker({
-								locale: 'fr',
-								format: 'DD-MM-YYYY',
-								showClear:true,
-								showClose:true,
-								toolbarPlacement: 'bottom'
-				
-							});
-						});
-						$(function () {
-							$('#heure_fin_poste').datetimepicker({
-								locale: 'fr',
-								format: 'HH:mm',
-								showClear:true,
-								showClose:true,
-								toolbarPlacement: 'bottom',
-								useCurrent:false,
-								stepping:'5'
-				
-							});
-						});
-					</script>
 				</div>
 			</div>
-			</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">Nombre de secouristes / Moyens logistiques fournis par la PC (??????)<span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></div>
+					<div class="panel-heading">Moyens fournis par la Protection Civile<span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></div>
 					<div class="panel-body">
 
 						<div class="form-group form-group-sm has-feedback">
@@ -616,7 +614,7 @@
 								<span class="form-control-feedback" aria-hidden="true"></span>
 								<span id='vl-error' class="help-block" aria-hidden="true"></span>
 							</div>
-							<label for="tente" class="col-sm-3 control-label">Tente(s)</label>
+							<label for="tente" class="col-sm-3 control-label">Tente (Protec)</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="tente" name="tente" aria-describedby="tente-error" min='0' required='true' digits='true' placeholder="00">
 								<span class="form-control-feedback" aria-hidden="true"></span>
@@ -627,16 +625,6 @@
 					<div class="panel-body">
 
 						<div class="form-group form-group-sm">
-							<label for="local" class="col-sm-4 control-label">Local fourni par l'organisateur</label>
-							<div class="col-sm-8">
-								<select class="form-control" id="local" name="local">
-									<option value="false">Non</option>
-									<option value="true">Oui</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="form-group form-group-sm">
 							<label for="supplement" class="col-sm-4 control-label">Moyens humains / logistiques supplémentaires</label>
 							<div class="col-sm-8">
 								<input type="text" class="form-control" id="supplement" name="supplement" placeholder="entrer ici tout moyen supplémentaire">
@@ -645,11 +633,41 @@
 					</div>
 				</div>
 				<div class="panel panel-default">
+					<div class="panel-heading">Moyens fournis par l'organisateur<span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></div>
+					<div class="panel-body">
+
+						<div class="form-group form-group-sm">
+							<label for="local" class="col-sm-4 control-label">Local infirmerie</label>
+							<div class="col-sm-2">
+								<select class="form-control" id="local" name="local">
+									<option value="false">Non</option>
+									<option value="true">Oui</option>
+								</select>
+							</div>
+							<!-- <label for="tente_orga" class="col-sm-3 control-label">Tente (orga)</label>
+							<div class="col-sm-2">
+								<select class="form-control" id="tente_orga" name="tente_orga">
+									<option value="false">Non</option>
+									<option value="true">Oui</option>
+								</select>
+							</div> -->
+						</div>
+
+						<div class="form-group form-group-sm">
+							<label for="supplement" class="col-sm-4 control-label">Autre</label>
+							<div class="col-sm-8">
+								<input type="text" class="form-control" id="supplement" name="supplement" placeholder="entrer ici tout moyen supplémentaire fourni par l'organisateur">
+							</div>
+						</div>
+
+					</div>
+				</div>	
+				<div class="panel panel-default">
 					<div class="panel-heading">Moyens médicaux / structures</div>
 					<div class="panel-body">
 
 						<div class="form-group form-group-sm has-feedback">
-							<label for="medecin_asso" class="col-sm-4 control-label">Nombre de médecins associatifs</label>
+							<label for="medecin_asso" class="col-sm-4 control-label">Nombre de médecins PC</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="medecin_asso" name="medecin_asso" aria-describedby="medecin_asso-error" min='0' digits='true' placeholder="00">
 								<span class="form-control-feedback" aria-hidden="true"></span>
@@ -675,7 +693,7 @@
 					<div class="panel-body">
 
 						<div class="form-group form-group-sm has-feedback">
-							<label for="infirmier_asso" class="col-sm-4 control-label">Nombre d'infirmiers associatifs</label>
+							<label for="infirmier_asso" class="col-sm-4 control-label">Nombre d'infirmiers PC</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="infirmier_asso" name="infirmier_asso" aria-describedby="infirmier_asso-error" min='0' digits='true' placeholder="00">
 								<span class="form-control-feedback" aria-hidden="true"></span>

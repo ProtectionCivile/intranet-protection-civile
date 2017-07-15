@@ -15,7 +15,7 @@
 						<?php
 						$sql = "SELECT * FROM $tablename_clients WHERE city=$city ORDER BY ref ASC";
 						var_dump($sql);
-						$query = mysqli_query($link, $sql);
+						$query = mysqli_query($db_link, $sql);
 						while($org = mysqli_fetch_array($query)){
 							if($org_id == $org['id']){
 								echo "<option value='".$org["id"]."' selected>".$org["ref"]."</option>";
@@ -42,7 +42,7 @@
 						echo $city;
 						$sql = "SELECT id, cu_complet, description_manif FROM $tablename_dps WHERE commune_ris=$city ORDER BY id DESC LIMIT 50";
 						echo $sql;
-						$query = mysqli_query($link, $sql);
+						$query = mysqli_query($db_link, $sql);
 						while($listecu = mysqli_fetch_array($query)){
 							echo "<option value='".$listecu["id"]."'>".$listecu["cu_complet"]." - ".$listecu["description_manif"]."</option>";
 						}
@@ -56,22 +56,3 @@
 		</form>
 	</div>
 </div>
-
-<?php 
-	
-	$org_id="";
-	if(isset($_POST['org_id'])){
-		$org_id = $_POST['org_id'];
-		$sql = "SELECT * FROM $tablename_clients WHERE id=$org_id";
-		$query = mysqli_query($link, $sql);
-		$org_array = mysqli_fetch_array($query);
-	}
-
-	$duplicate_dps="";
-	if(isset($_POST['duplicate_dps'])){
-		$duplicate_dps_id = $_POST['duplicate_dps'];
-		$sql = "SELECT * FROM $tablename_dps WHERE id=$duplicate_dps_id";
-		$query = mysqli_query($link, $sql);
-		$duplicate_array = mysqli_fetch_array($query);
-	}
-?>

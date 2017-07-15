@@ -5,33 +5,97 @@
 	$num_cu = $_POST['num_cu'];
 	$code_commune = $_POST['code_commune'];
 
-	$nom_organisation = $_POST['nom_organisation'];
-	$nom_organisation = mysqli_real_escape_string($link, $nom_organisation);
-	$represente_par = $_POST['represente_par'];
-	$represente_par = mysqli_real_escape_string($link, $represente_par);
-	$qualite = $_POST['qualite'];
-	$qualite = mysqli_real_escape_string($link, $qualite);
-	$adresse = $_POST['adresse'];
-	$adresse = mysqli_real_escape_string($link, $adresse);
-	$telephone = $_POST['telephone'];
-	$fax = $_POST['fax'];
+	// Organisateur
+	if (isset($duplicated_dps_array['organisateur'])) { $nom_organisation = $duplicated_dps_array['organisateur']; } 
+	elseif (isset($client_array['name'])) { $nom_organisation = $client_array['name']; }
+	elseif (isset($_POST['nom_organisation'])) { $nom_organisation = $_POST['nom_organisation']; }
+	else { $nom_organisation = $dps['organisateur']; }
+
+	if (isset($duplicated_dps_array['representant_org'])) { $represente_par = $duplicated_dps_array['representant_org']; } 
+	elseif (isset($client_array['represent'])) { $represente_par = $client_array['represent']; }
+	elseif (isset($_POST['represente_par'])) { $represente_par = $_POST['represente_par']; }
+	else { $represente_par = $dps['representant_org']; }
+
+	if (isset($duplicated_dps_array['qualite_org'])) { $qualite = $duplicated_dps_array['qualite_org']; } 
+	elseif (isset($client_array['title'])) { $qualite = $client_array['title']; }
+	elseif (isset($_POST['qualite'])) { $qualite = $_POST['qualite']; }
+	else { $qualite = $dps['qualite_org']; }
+
+	if (isset($duplicated_dps_array['adresse_org'])) { $adresse = $duplicated_dps_array['adresse_org']; } 
+	elseif (isset($client_array['address'])) { $adresse = $client_array['address']; }
+	elseif (isset($_POST['adresse'])) { $adresse = $_POST['adresse']; }
+	else { $adresse = $dps['adresse_org']; }
+
+	if (isset($duplicated_dps_array['tel_org'])) { $telephone = $duplicated_dps_array['tel_org']; } 
+	elseif (isset($client_array['phone'])) { $telephone = $client_array['phone']; }
+	elseif (isset($_POST['telephone'])) { $telephone = $_POST['telephone']; }
+	else { $telephone = $dps['tel_org']; }
+
+	if (isset($duplicated_dps_array['fax_org'])) { $fax = $duplicated_dps_array['fax_org']; } 
+	elseif (isset($client_array['fax'])) { $fax = $client_array['fax']; }
+	elseif (isset($_POST['fax'])) { $fax = $_POST['fax']; }
+	else { $fax = $dps['fax_org']; }
+
 	$email = $_POST['email'];
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+
 	$deja_pref = $_POST['deja_pref'];
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
 
 	$nom_nature = $_POST['nom_nature'];
-	$nom_nature = mysqli_real_escape_string($link, $nom_nature);
+	$nom_nature = mysqli_real_escape_string($db_link, $nom_nature);
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+	
 	$activite_descriptif = $_POST['activite_descriptif'];
-	$activite_descriptif = mysqli_real_escape_string($link, $activite_descriptif);
+	$activite_descriptif = mysqli_real_escape_string($db_link, $activite_descriptif);
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+	
 	$lieu_precis = $_POST['lieu_precis'];
-	$lieu_precis = mysqli_real_escape_string($link, $lieu_precis);
+	$lieu_precis = mysqli_real_escape_string($db_link, $lieu_precis);
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+	
 
 	$date_debut = $_POST['date_debut'];
 	$heure_debut = $_POST['heure_debut'];
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+	
 	$date_fin = $_POST['date_fin'];
 	$heure_fin = $_POST['heure_fin'];
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+	
 
 	$departement = $_POST['departement'];
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+	
 	$prix = $_POST['prix'];
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+	
+
+
 
 	$spectateurs = $_POST['spectateurs'];
 	$participants = $_POST['participants'];
@@ -39,7 +103,7 @@
 	$environnement = $_POST['environnement'];
 	$delai = $_POST['delai'];
 	$commentaire_ris = $_POST['commentaire_ris'];
-	$commentaire_ris = mysqli_real_escape_string($link, $commentaire_ris);
+	$commentaire_ris = mysqli_real_escape_string($db_link, $commentaire_ris);
 
 	$p1_spec = $spectateurs;
 	$p1_part = $participants;
@@ -72,17 +136,17 @@
 	$tente = $_POST['tente'];
 	$local = $_POST['local'];
 	$supplement = $_POST['supplement'];
-	$supplement = mysqli_real_escape_string($link, $supplement);
+	$supplement = mysqli_real_escape_string($db_link, $supplement);
 	$medecin_asso = $_POST['medecin_asso'];
 	$medecin_autre = $_POST['medecin_autre'];
 	$medecin_appartenance = $_POST['medecin_appartenance'];
-	$medecin_appartenance = mysqli_real_escape_string($link, $medecin_appartenance);
+	$medecin_appartenance = mysqli_real_escape_string($db_link, $medecin_appartenance);
 	$infirmier_asso = $_POST['infirmier_asso'];
 	$infirmier_autre = $_POST['infirmier_autre'];
 	$infirmier_appartenance = $_POST['infirmier_appartenance'];
-	$infirmier_appartenance = mysqli_real_escape_string($link, $infirmier_appartenance);
+	$infirmier_appartenance = mysqli_real_escape_string($db_link, $infirmier_appartenance);
 	$samu = $_POST['samu'];
 	$bspp_sdis = $_POST['bspp_sdis'];
 	$justificatif = $_POST['justificatif'];
-	$justificatif = mysqli_real_escape_string($link, $justificatif);
+	$justificatif = mysqli_real_escape_string($db_link, $justificatif);
 ?>
