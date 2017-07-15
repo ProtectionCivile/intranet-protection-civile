@@ -42,7 +42,7 @@
 	<h2>Gestion des paramètres</h2>
 
 	<?php 
-		$settings = mysqli_query($link, $sqlQuery);
+		$settings = mysqli_query($db_link, $sqlQuery);
 	?>
 	<div class="panel panel-default">
 		<div class="panel-heading">

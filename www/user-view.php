@@ -59,7 +59,7 @@
 					<th colspan='3'>Actions</th>
 				</tr>
 				<?php 
-				$users = mysqli_query($link, $sqlQuery);
+				$users = mysqli_query($db_link, $sqlQuery);
 				while($user = mysqli_fetch_array($users)) { ?>
 					<tr>
 						<td>

@@ -8,8 +8,8 @@
 			$genericError = "Impossible de supprimer une permission inconnue";
 		}
 		else{
-			$check_query = "SELECT ID, Title FROM $tablename_permissions WHERE ID='$id'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-			$verif = mysqli_query($link, $check_query);
+			$check_query = "SELECT ID, Title FROM $tablename_permissions WHERE ID='$id'" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+			$verif = mysqli_query($db_link, $check_query);
 			$row_verif = mysqli_fetch_assoc($verif);
 			$permission = mysqli_num_rows($verif);		
 			if (!$permission){

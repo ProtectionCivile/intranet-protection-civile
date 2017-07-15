@@ -115,7 +115,7 @@
 						<label for="inputRoleAffiliation" class="col-sm-4 control-label">Rattachement</label>
 						<div class="col-sm-8 radio"><?php
 							$query = "SELECT numero, nom FROM commune";
-							$query_result = mysqli_query($link, $query);
+							$query_result = mysqli_query($db_link, $query);
 							while($data = mysqli_fetch_array($query_result)){ ?>
 								<label>
 									<input type="radio" name="inputRoleAffiliation" value="<?php echo $data['numero'];?>" <?php if ($r['Affiliation']==$data['numero']) echo "checked"; ?> />

@@ -122,8 +122,8 @@
 					<div class="col-sm-8">
 						<select class="form-control" id="inputUserSection" name="inputUserSection">
 							<?php							
-								$reqliste = "SELECT `number`, name FROM sections" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-								$sections = mysqli_query($link, $reqliste);
+								$reqliste = "SELECT `number`, name FROM sections" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+								$sections = mysqli_query($db_link, $reqliste);
 
 								while($sectionX = mysqli_fetch_array($sections)) {
 									echo $userSection;

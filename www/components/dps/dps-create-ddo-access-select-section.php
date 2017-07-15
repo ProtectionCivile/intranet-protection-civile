@@ -16,7 +16,7 @@
 						<select class="form-control" name="city" id="comune_dps">
 							<?php
 							$sql = "SELECT number, name FROM $tablename_sections";
-							$query = mysqli_query($link, $sql);
+							$query = mysqli_query($db_link, $sql);
 							while($listecommune = mysqli_fetch_array($query)){
 								if($listecommune["number"] == $city){
 									echo "<option value='".$listecommune["number"]."' selected>".$listecommune["name"]."</option>";

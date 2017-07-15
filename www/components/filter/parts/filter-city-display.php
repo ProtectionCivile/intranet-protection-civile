@@ -10,8 +10,8 @@
 				<button class='btn btn-primary btn-sm city-filter <?php echo $activeOrNot;?>' data-filter='*' >TOUTES</button>
 				
 				<?php 
-				$query = "SELECT name, shortname, `number` FROM sections WHERE attached_section=number" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-				$villes = mysqli_query($link, $query);
+				$query = "SELECT name, shortname, `number` FROM sections WHERE attached_section=number" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+				$villes = mysqli_query($db_link, $query);
 				while($ville = mysqli_fetch_array($villes)) { 
 					$activeOrNot = "";
 					if ($city == $ville['number']) {

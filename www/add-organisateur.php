@@ -24,8 +24,8 @@
 						<div class="col-sm-8">
 							<select class="form-control" id="commune" name="commune">
 								<?php							
-								$reqliste = "SELECT numero_commune,nom_commune FROM rat_com" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-								$liste = mysqli_query($link, $reqliste);
+								$reqliste = "SELECT numero_commune,nom_commune FROM rat_com" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+								$liste = mysqli_query($db_link, $reqliste);
 								while($listecommune = mysqli_fetch_array($liste)) {
 								echo "<option value='".$listecommune["numero_commune"]."'>".$listecommune["nom_commune"]."</option>";
 								}							

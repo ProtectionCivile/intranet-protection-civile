@@ -49,7 +49,7 @@
 				</tr>
 				<?php 
 				$query = "SELECT ID, Title, Description FROM $tablename_permissions ORDER by ID ASC";
-				$permissions = mysqli_query($link, $query);
+				$permissions = mysqli_query($db_link, $query);
 				while($permission = mysqli_fetch_array($permissions)) { ?>
 					<tr>
 						<td>

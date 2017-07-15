@@ -15,9 +15,9 @@ $fax = $_POST["fax"];
 $email = $_POST["email"];
 $query = "INSERT INTO organisateurs (commune,ref,nom,represente,qualite,adresse,telephone,fax,email)
 VALUES (\"$commune\",\"$ref_interne\",\"$nom_organisation\",\"$represente_par\",\"$qualite\",\"$adresse\",\"$telephone\",\"$fax\",\"$email\")";
-mysqli_query($link,$query);
+mysqli_query($db_link,$query);
 $query = "SELECT * FROM organisateurs WHERE ref=\"$ref_interne\"";
-$result = mysqli_query($link,$query);
+$result = mysqli_query($db_link,$query);
 $organisateur = mysqli_fetch_array($result);
 $success_insert = "Organisateur ajouté avec succès";
 }elseif(isset($_POST["update"])){
@@ -33,16 +33,16 @@ $telephone = $_POST["telephone"];
 $fax = $_POST["fax"];
 $email = $_POST["email"];
 $query = "UPDATE organisateurs SET commune=\"$commune\",ref=\"$ref_interne\",nom=\"$nom_organisation\",represente=\"$represente_par\",qualite=\"$qualite\",adresse=\"$adresse\",telephone=\"$telephone\",fax=\"$fax\",email=\"$email\" WHERE id=\"$id\"";
-mysqli_query($link,$query);
+mysqli_query($db_link,$query);
 $query = "SELECT * FROM organisateurs WHERE id=\"$id\"";
-$result = mysqli_query($link,$query);
+$result = mysqli_query($db_link,$query);
 $organisateur = mysqli_fetch_array($result);
 $success_update = "Organisateur mis à jour avec succès";
 }else{
 	
 $id = $_POST["id"];
 $query = "SELECT * FROM organisateurs WHERE id=\"$id\"";
-$result = mysqli_query($link,$query);
+$result = mysqli_query($db_link,$query);
 $organisateur = mysqli_fetch_array($result);
 }
 
@@ -94,7 +94,7 @@ $email = $organisateur["email"];
 							<select class="form-control" id="commune" name="commune">
 								<?php
 								$listecommune_query = "SELECT numero_commune, nom_commune FROM rat_com";
-								$listecommune_result = mysqli_query($link, $listecommune_query);
+								$listecommune_result = mysqli_query($db_link, $listecommune_query);
 								while($listecommune = mysqli_fetch_array($listecommune_result)){
 								if($listecommune["numero_commune"] == $commune){
 								echo "<option value='".$listecommune["numero_commune"]."' selected>".$listecommune["nom_commune"]."</option>";

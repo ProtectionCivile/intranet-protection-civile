@@ -117,8 +117,8 @@
 					<div class='col-sm-8'>
 						<select class='form-control' id='attached_section' name='attached_section'>
 							<?php							
-								$reqliste = "SELECT `number`, name FROM sections ORDER BY number" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-								$sections = mysqli_query($link, $reqliste);
+								$reqliste = "SELECT `number`, name FROM sections ORDER BY number" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+								$sections = mysqli_query($db_link, $reqliste);
 
 								while($sectionX = mysqli_fetch_array($sections)) {
 									if ($sectionX['number'] == $attached_section){

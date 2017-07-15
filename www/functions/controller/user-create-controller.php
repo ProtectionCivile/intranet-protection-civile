@@ -38,16 +38,16 @@
 			$createErrorPassword = "Les deux mots de passe ne concordent pas";
 		}
 		if (empty($genericError)){
-			$check_query = "SELECT ID FROM $tablename_users WHERE mail='$mail'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-			$verif = mysqli_query($link, $check_query);
+			$check_query = "SELECT ID FROM $tablename_users WHERE mail='$mail'" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+			$verif = mysqli_query($db_link, $check_query);
 			$row_verif = mysqli_fetch_assoc($verif);
 			$user = mysqli_num_rows($verif);		
 			if ($user){
 				$genericError = "Un utilisateur avec la même adresse mail existe déjà (".$mail.")";
 			}
 			else {
-				$add_user = "INSERT INTO $tablename_users (pass, last_name, first_name, phone, mail, attached_section, login) VALUES ('$passDB', '$lastNameDB', '$firstNameDB', '$phone', '$mail', '$section', '$login')" or die("Impossible d'ajouter l'utilisateur dans la base de données" . mysqli_error($link));
-				mysqli_query($link, $add_user);
+				$add_user = "INSERT INTO $tablename_users (pass, last_name, first_name, phone, mail, attached_section, login) VALUES ('$passDB', '$lastNameDB', '$firstNameDB', '$phone', '$mail', '$section', '$login')" or die("Impossible d'ajouter l'utilisateur dans la base de données" . mysqli_error($db_link));
+				mysqli_query($db_link, $add_user);
 				$genericSuccess = "Membre créé avec succès (".$mail.")";
 			}
 		}

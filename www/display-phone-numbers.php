@@ -24,7 +24,7 @@ if (isset($_GET['notallowed'])){
 	<center>
 		<?php
 		$queryC="SELECT numero, nom FROM commune WHERE rat_commune=numero";
-		$cities = mysqli_query($link, $queryC);
+		$cities = mysqli_query($db_link, $queryC);
 		?>
 
 		<table class="table table-bordered table-responsive table-condensed">
@@ -37,7 +37,7 @@ if (isset($_GET['notallowed'])){
 				<?php while($city = mysqli_fetch_array($cities)) { 
 					$reset=0;
 					$queryR="SELECT Description, Phone FROM rbac_roles WHERE Affiliation='".$city['numero']."'" ;
-					$roles = mysqli_query($link, $queryR);
+					$roles = mysqli_query($db_link, $queryR);
 					$count=mysqli_num_rows($roles);
 					while($role = mysqli_fetch_array($roles)) { 
 						echo "<tr>";

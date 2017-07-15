@@ -1,6 +1,6 @@
 <?php
 
-	$sqlQuery_query = mysqli_query($link, $sqlQuery);
+	$sqlQuery_query = mysqli_query($db_link, $sqlQuery);
 	$nb_elements = mysqli_num_rows($sqlQuery_query);
 
 	$nb_pages=ceil($nb_elements/$nb_elements_per_page);
@@ -28,7 +28,7 @@
 		$sqlQuery = $sqlQuery." ".$limit;
 	}
 
-	$sqlQuery_query = mysqli_query($link, $sqlQuery);
+	$sqlQuery_query = mysqli_query($db_link, $sqlQuery);
 	
 	//echo "<small>".$sqlQuery."</small>";
 

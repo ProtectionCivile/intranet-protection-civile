@@ -61,8 +61,8 @@
 					<br /> <br />
 
 					<?php 
-					$queryC = "SELECT name, number FROM sections WHERE attached_section=number" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-					$cities = mysqli_query($link, $queryC);
+					$queryC = "SELECT name, number FROM sections WHERE attached_section=number" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+					$cities = mysqli_query($db_link, $queryC);
 					?>
 
 					<table class='table table-bordered table-hover table-condensed'>
@@ -73,7 +73,7 @@
 						<tbody>
 							<?php while($city = mysqli_fetch_array($cities)) { 
 								$queryR="SELECT ID, Description, Title FROM rbac_roles WHERE Assignable='1' AND Affiliation='".$city['number']."'" ;
-								$roles = mysqli_query($link, $queryR);
+								$roles = mysqli_query($db_link, $queryR);
 								?>
 								<tr>
 									<td class="active"><?php echo $city['name']; ?></td>

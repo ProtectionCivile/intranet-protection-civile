@@ -52,7 +52,7 @@
 					<tbody>
 						<?php
 						$query = "SELECT shortname,name,`number`,attached_section,address,zip_code,city,phone,mail FROM sections ORDER BY number";
-						$section_result = mysqli_query($link, $query);
+						$section_result = mysqli_query($db_link, $query);
 						while($section = mysqli_fetch_array($section_result)){
 							$isAttachedToItself = ($section["number"] == $section["attached_section"]);
 							$trclass = "";
@@ -87,7 +87,7 @@
 								if (!$isAttachedToItself){
 									$attached_section = $section["attached_section"];
 									$sql = "SELECT shortname FROM $tablename_sections WHERE number='$attached_section' ORDER BY number";
-									$query = mysqli_query($link, $sql);
+									$query = mysqli_query($db_link, $sql);
 									$rattach = mysqli_fetch_array($query);
 
 									echo "<td>";

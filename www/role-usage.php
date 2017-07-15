@@ -28,8 +28,8 @@
 		$roleUpdateError = "Aucun rôle défini";
 	}
 	else {
-		$check_query = "SELECT ID FROM $tablename_roles WHERE ID='$roleID'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-		$verif = mysqli_query($link, $check_query);
+		$check_query = "SELECT ID FROM $tablename_roles WHERE ID='$roleID'" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+		$verif = mysqli_query($db_link, $check_query);
 		$row_verif = mysqli_fetch_assoc($verif);
 		$role = mysqli_num_rows($verif);		
 		if (!$role){
@@ -62,8 +62,8 @@
 					<div class="panel-heading">Permissions</div>
 					<div class="panel-body">
 						<?php 
-							$query = "SELECT P.ID, P.Title, P.Description FROM rbac_rolepermissions AS RP INNER JOIN rbac_permissions AS P ON RP.PermissionId=P.ID WHERE RP.RoleId='$roleID' ORDER BY P.Title" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-							$permissions = mysqli_query($link, $query);
+							$query = "SELECT P.ID, P.Title, P.Description FROM rbac_rolepermissions AS RP INNER JOIN rbac_permissions AS P ON RP.PermissionId=P.ID WHERE RP.RoleId='$roleID' ORDER BY P.Title" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+							$permissions = mysqli_query($db_link, $query);
 							while($permission = mysqli_fetch_array($permissions)) { 
 								$permissionID=$permission["ID"];
 								$permissionTitle=$permission["Title"];
@@ -79,8 +79,8 @@
 					<div class="panel-heading">Utilisateurs</div>
 					<div class="panel-body">
 						<?php 
-							$sql = "SELECT U.ID, U.last_name, U.first_name FROM rbac_userroles AS UR INNER JOIN users AS U ON UR.UserId=U.ID WHERE UR.RoleID='$roleID' ORDER BY U.last_name" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-							$result = $link->query($sql);
+							$sql = "SELECT U.ID, U.last_name, U.first_name FROM rbac_userroles AS UR INNER JOIN users AS U ON UR.UserId=U.ID WHERE UR.RoleID='$roleID' ORDER BY U.last_name" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+							$result = $db_link->query($sql);
 							while($row = $result->fetch_assoc()) {
 								$userID=$row["ID"];
 								$userFirstName=$row["first_name"];

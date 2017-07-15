@@ -152,15 +152,15 @@
 				$local = "false";
 			}
 
-			$sql = "SELECT ID FROM $tablename_dps WHERE cu_complet='$cu_complet'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-			$verif = mysqli_query($link, $sql);
+			$sql = "SELECT ID FROM $tablename_dps WHERE cu_complet='$cu_complet'" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+			$verif = mysqli_query($db_link, $sql);
 			$how_many_dps_found = mysqli_num_rows($verif);		
 			if ($how_many_dps_found){
 				$genericError = "Un DPS avec le même certificat unique existe déjà (".$cu_complet.")";
 			}
 			else {
-				$sql = "INSERT INTO $tablename_dps (num_cu, cu_complet, annee_poste, commune_ris, type_dps, dps_debut, dps_fin, dps_debut_poste, dps_fin_poste, heure_debut, heure_fin, heure_debut_poste, heure_fin_poste, dept, prix, description_manif, activite, adresse_manif, organisateur, representant_org, qualite_org, adresse_org, tel_org, fax_org, email_org, dossier_pref, p1_part, p1_spec, p2, e1, e2, date_creation, comment_ris, justif_poste, cei, PSE2, PSE1, PSC1, vpsp, vpsp_soin, vl, tente, local, moyen_supp, med_asso, med_autre, medecin, inf_asso, inf_autre, infirmier, samu, pompier) VALUES ('$num_cu', '$cu', '$year', '$code_commune', '$type_dps','$date_debut', '$date_fin', '$date_debut_poste', '$date_fin_poste', '$heure_debut', '$heure_fin', '$heure_debut_poste', '$heure_fin_poste', '$dept', '$prix' ,'$nom_nature', '$activite_descriptif', '$lieu_precis', '$nom_organisation', '$represente_par', '$qualite', '$adresse', '$telephone', '$fax', '$email', '$deja_pref', '$p1_part', '$p1_spec', '$p2', '$e1', '$e2', '$today', '$commentaire_ris', '$justificatif', '$nb_ce', '$nb_pse2' , '$nb_pse1', '$nb_psc1', '$vpsp_transport', '$vpsp_soin', '$vl', '$tente', '$local', '$supplement', '$medecin_asso', '$medecin_autre', '$medecin_appartenance', '$infirmier_asso', '$infirmier_autre', '$infirmier_appartenance', '$samu', '$bspp_sdis')" or die("Impossible d'ajouter l'utilisateur dans la base de donn&eacute;e" . mysqli_error($link));
-				mysqli_query($link, $sql);
+				$sql = "INSERT INTO $tablename_dps (num_cu, cu_complet, annee_poste, commune_ris, type_dps, dps_debut, dps_fin, dps_debut_poste, dps_fin_poste, heure_debut, heure_fin, heure_debut_poste, heure_fin_poste, dept, prix, description_manif, activite, adresse_manif, organisateur, representant_org, qualite_org, adresse_org, tel_org, fax_org, email_org, dossier_pref, p1_part, p1_spec, p2, e1, e2, date_creation, comment_ris, justif_poste, cei, PSE2, PSE1, PSC1, vpsp, vpsp_soin, vl, tente, local, moyen_supp, med_asso, med_autre, medecin, inf_asso, inf_autre, infirmier, samu, pompier) VALUES ('$num_cu', '$cu', '$year', '$code_commune', '$type_dps','$date_debut', '$date_fin', '$date_debut_poste', '$date_fin_poste', '$heure_debut', '$heure_fin', '$heure_debut_poste', '$heure_fin_poste', '$dept', '$prix', '".mysqli_real_escape_string($db_link, $nom_nature)."', '".mysqli_real_escape_string($db_link, $activite_descriptif)."', '".mysqli_real_escape_string($db_link, $lieu_precis)."', '".mysqli_real_escape_string($db_link, $nom_organisation)."', '".mysqli_real_escape_string($db_link, $represente_par)."', '".mysqli_real_escape_string($db_link, $qualite)."', '".mysqli_real_escape_string($db_link, $adresse)."', '$telephone', '$fax', '$email', '$deja_pref', '$p1_part', '$p1_spec', '$p2', '$e1', '$e2', '$today', '".mysqli_real_escape_string($db_link, $commentaire_ris)."', '".mysqli_real_escape_string($db_link, $justificatif)."', '$nb_ce', '$nb_pse2' , '$nb_pse1', '$nb_psc1', '$vpsp_transport', '$vpsp_soin', '$vl', '$tente', '$local', '".mysqli_real_escape_string($db_link, $supplement)."', '$medecin_asso', '$medecin_autre', '".mysqli_real_escape_string($db_link, $medecin_appartenance)."', '$infirmier_asso', '$infirmier_autre', '".mysqli_real_escape_string($db_link, $infirmier_appartenance)."', '$samu', '$bspp_sdis')" or die("Impossible d'ajouter le DPS dans la base de donn&eacute;e" . mysqli_error($db_link));
+				mysqli_query($db_link, $sql);
 				header("Location: dps-list-view.php");				
 			}
 		}
@@ -173,21 +173,21 @@
 	$dept = "92";
 	$year = date("y");
 	$query_code = "SELECT shortname FROM $tablename_sections WHERE number=$city";
-	$code_result = mysqli_query($link, $query_code);
+	$code_result = mysqli_query($db_link, $query_code);
 	$code_array = mysqli_fetch_array($code_result);
 	$code_commune = $code_array['shortname'];
 	mysqli_free_result($code_result);
 	$query_cu = "SELECT num_cu FROM $tablename_dps WHERE annee_poste=$year AND commune_ris=$city ORDER BY id DESC LIMIT 1";
-	$cu_result = mysqli_query($link, $query_cu);
+	$cu_result = mysqli_query($db_link, $query_cu);
 	$cu_array = mysqli_fetch_array($cu_result);
 	$num_cu = $cu_array['num_cu'];
 	$num_cu = $num_cu + 1;
 	if($num_cu < 10){
 		$num_cu = "00".$num_cu;
-	}elseif($num_cu < 100){
+	}
+	elseif($num_cu < 100){
 		$num_cu = "0".$num_cu;
 	}
 	$cu = $dept."-".$year."-".$code_commune."-".$num_cu;
-	
-
+?>
 	

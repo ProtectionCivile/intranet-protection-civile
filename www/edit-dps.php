@@ -4,19 +4,19 @@
 if(isset($_POST['id'])){
 $id = $_POST['id'];
 $query = "SELECT * FROM demande_dps WHERE id = '$id'";
-$dps_result = mysqli_query($link, $query);
+$dps_result = mysqli_query($db_link, $query);
 $dps = mysqli_fetch_array($dps_result);
 $cu = $dps['cu_complet'];
 }elseif(isset($_SESSION['dps-creation'])){
 $cu = $_SESSION['dps-creation'];
 $query = "SELECT * FROM demande_dps WHERE cu_complet = '$cu'";
-$dps_result = mysqli_query($link, $query);
+$dps_result = mysqli_query($db_link, $query);
 $dps = mysqli_fetch_array($dps_result);
 unset($_SESSION['dps-creation']);
 }elseif(isset($_SESSION['dps-update'])){
 $id = $_SESSION['dps-update'];
 $query = "SELECT * FROM demande_dps WHERE id = '$id'";
-$dps_result = mysqli_query($link, $query);
+$dps_result = mysqli_query($db_link, $query);
 $dps = mysqli_fetch_array($dps_result);
 $cu = $dps['cu_complet'];
 unset($_SESSION['dps-update']);
@@ -26,7 +26,7 @@ $pathy = $dps['annee_poste'];
 $pathyear = "20".$pathy;
 $pathcode_commune = $dps['commune_ris'];
 $pathquery = "SELECT nomcode,numero FROM commune WHERE numero=$pathcode_commune";
-$pathcommune_result = mysqli_query($link, $pathquery);
+$pathcommune_result = mysqli_query($db_link, $pathquery);
 $pathcommune_array = mysqli_fetch_array($pathcommune_result);
 $pathantenne = $pathcommune_array["nomcode"];
 $pathnum_cu = $dps['num_cu'];

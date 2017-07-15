@@ -23,7 +23,7 @@
 	if(isset($_POST['id'])){
 		$id = $_POST['id'];
 		$sql = "SELECT * FROM $tablename_dps WHERE id = $id";
-		$query = mysqli_query($link, $sql);
+		$query = mysqli_query($db_link, $sql);
 		$dps = mysqli_fetch_array($query);
 	}
 ?>

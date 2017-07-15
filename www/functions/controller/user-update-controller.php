@@ -51,10 +51,10 @@
 
 		if (isset($_POST['updateUser'])) {		
 			$sql = "UPDATE $tablename_users SET login='$login', last_name='$lastName', first_name='$firstName', phone='$phone', pass='$password', login='$login', mail='$mail', attached_section='$section' WHERE ID='$userID'";
-			if ($link->query($sql) === TRUE) {
+			if ($db_link->query($sql) === TRUE) {
 			    $genericSuccess = "Utilisateur mis à jour (".$lastName." ".$firstName.")";
 			} else {
-			    $genericError = "Utilisateur non mis à jour: " . $link->error;
+			    $genericError = "Utilisateur non mis à jour: " . $db_link->error;
 			}
 		}
 	}

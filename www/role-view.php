@@ -60,7 +60,7 @@
 					<th colspan='4'>Opérations</th>
 				</tr>
 				<?php 
-				$roles = mysqli_query($link, $sqlQuery);
+				$roles = mysqli_query($db_link, $sqlQuery);
 				while($role = mysqli_fetch_array($roles)) { ?>
 					<tr>
 						<td>
@@ -81,7 +81,7 @@
 						<td>
 							<?php 
 							$qc = "SELECT name FROM $tablename_sections WHERE number='".$role["Affiliation"]."'";
-							$qcr = mysqli_query($link, $qc);
+							$qcr = mysqli_query($db_link, $qc);
 							$c = mysqli_fetch_assoc($qcr);
 							echo $c['name'];
 							?>

@@ -20,20 +20,20 @@
 		
 		if (isset($_POST['update'])) {		
 			$verif_query = "SELECT * FROM $tablename_settings_mail WHERE name='$name'"; 
-			$verif = mysqli_query($link, $verif_query);
+			$verif = mysqli_query($db_link, $verif_query);
 			if(!$verif){
-				trigger_error("Erreur lors de la consultation" . mysqli_error($link));
+				trigger_error("Erreur lors de la consultation" . mysqli_error($db_link));
 			}
 			$setting = mysqli_num_rows($verif);
 			// if ($setting) {
 			// 	$genericError = "Ce paramètre '".$name."' existe déjà";
 			// }
 			// else {
-				$query = mysqli_prepare($link, "UPDATE $tablename_settings_mail SET name=?, value=? WHERE ID=?");
+				$query = mysqli_prepare($db_link, "UPDATE $tablename_settings_mail SET name=?, value=? WHERE ID=?");
 				mysqli_stmt_bind_param($query, "ssi", $name, $value, $id);
 				if(!mysqli_stmt_execute($query)){
 					$genericError = "Impossible de mettre à jour le paramètre '".$name."'";
-					trigger_error($genericError . mysqli_error($link));
+					trigger_error($genericError . mysqli_error($db_link));
 				}
 				else {
 					$genericSuccess = "Paramètre modifié avec succès (".$name.")";

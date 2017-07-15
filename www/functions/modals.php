@@ -2,7 +2,7 @@
 $dept = $dps['dept'];
 $email = "";
 $query = "SELECT setting_value FROM settings_mail WHERE setting_name LIKE '%92%'";
-$email_result = mysqli_query($link, $query);
+$email_result = mysqli_query($db_link, $query);
 //$email_array = mysqli_fetch_array($email_result);
 //$email = $email_array['setting_value'];
 while ($row = mysqli_fetch_assoc($email_result)) {
