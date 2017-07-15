@@ -44,11 +44,11 @@
 	<!-- Notice after DPS duplication -->
 	<?php if(isset($_POST['duplicate_dps'])){?>
 		<div class='alert alert-warning'>
-			<span class="glyphicon glyphicon-alert" style="font-size:2em"></span> 
+			<span class="glyphicon glyphicon-alert" style="font-size:2em"></span>
 			<strong>Attention : </strong>Tous les champs ne sont pas dupliqués.	Vous devez vérifier tous les champs avant d'envoyer en validation.
 		</div>
 	<?php }?>
-	
+
 
 
 	<!-- Panel Accès spécial DDO : préselect section -->
@@ -59,7 +59,7 @@
 	<?php require_once('components/dps/dps-preselect-client-or-duplicate-module.php'); ?>
 
 
-	
+
 	<form class="form-horizontal" id='auto-validation-form' name='auto-validation-form' data-toggle="validator" role="form" action="" method="post">
 		<input type='hidden' name='cu' value='<?php echo $cu;?>' />
 		<input type='hidden' name='year' value='<?php echo $year;?>' />
@@ -78,7 +78,7 @@
 				<?php $feedback = compute_server_feedback($nom_organisation_error);?>
 				<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
 					<label for="nom_organisation" class="col-sm-4 control-label">
-						Nom de l'organisation 
+						Nom de l'organisation
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom de la société, association, collectivité, etc." />
 					</label>
 					<div class="col-sm-8">
@@ -91,7 +91,7 @@
 				<?php $feedback = compute_server_feedback($represente_par_error);?>
 				<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
 					<label for="represente_par" class="col-sm-4 control-label">
-						Représenté par 
+						Représenté par
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Personne qui représente l'organisation."></span>
 					</label>
 					<div class="col-sm-8">
@@ -104,7 +104,7 @@
 				<?php $feedback = compute_server_feedback($qualite_error);?>
 				<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
 					<label for="qualite" class="col-sm-4 control-label">
-						Qualité 
+						Qualité
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Statut du représentant."></span>
 					</label>
 					<div class="col-sm-8">
@@ -117,7 +117,7 @@
 				<?php $feedback = compute_server_feedback($adresse_error);?>
 				<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
 					<label for="adresse" class="col-sm-4 control-label">
-						Adresse postale 
+						Adresse postale
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Adresse, code postale, ville."></span>
 					</label>
 					<div class="col-sm-8">
@@ -130,7 +130,7 @@
 				<?php $feedback = compute_server_feedback($telephone_error);?>
 				<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
 					<label for="telephone" class="col-sm-4 control-label">
-						Téléphone 
+						Téléphone
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Format 0XXXXXXXXX"></span>
 					</label>
 					<div class="col-sm-8">
@@ -143,7 +143,7 @@
 				<?php $feedback = compute_server_feedback($fax_error);?>
 				<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
 					<label for="fax" class="col-sm-4 control-label">
-						Fax 
+						Fax
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Format 0XXXXXXXXX"></span>
 					</label>
 					<div class="col-sm-8">
@@ -156,7 +156,7 @@
 				<?php $feedback = compute_server_feedback($email_error);?>
 				<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
 					<label for="email" class="col-sm-4 control-label">
-						E-mail 
+						E-mail
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Adresse e-mail du représentant ou de l'organisation."></span>
 					</label>
 					<div class="col-sm-8">
@@ -200,7 +200,7 @@
 						<?php $feedback = compute_server_feedback($nom_nature_error);?>
 						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
 							<label for="nom_nature" class="col-sm-4 control-label">
-								Nom / Nature 
+								Nom / Nature
 								<span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom/Nature de la manifestation"></span>
 							</label>
 							<div class="col-sm-8">
@@ -213,7 +213,7 @@
 						<?php $feedback = compute_server_feedback($activite_descriptif_error);?>
 						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
 							<label for="activite_descriptif" class="col-sm-4 control-label">
-								Activité / Descriptif 
+								Activité / Descriptif
 								<span class="glyphicon glyphicon-info-sign" data-trigger="hover" rel="popover" data-toggle="popover" data-content="Descriptif court."></span>
 							</label>
 							<div class="col-sm-8">
@@ -308,7 +308,7 @@
 										showClear:true,
 										showClose:true,
 										toolbarPlacement: 'bottom'
-						
+
 									});
 								});
 								$(function () {
@@ -320,7 +320,7 @@
 										toolbarPlacement: 'bottom',
 										useCurrent:false,
 										stepping:'5'
-						
+
 									});
 								});
 							</script>
@@ -329,7 +329,7 @@
 						<?php $feedback = compute_server_feedback($departement_error);?>
 						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
 							<label for="departement" class="col-sm-4 control-label">
-								Département où se situe la manifestation 
+								Département où se situe la manifestation
 								<span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Exemple : 92"></span>
 							</label>
 							<div class="col-sm-2">
@@ -342,7 +342,7 @@
 						<?php $feedback = compute_server_feedback($prix_error);?>
 						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
 							<label for="prix" class="col-sm-4 control-label">
-								Prix 
+								Prix
 								<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Tarif facturé au client."></span>
 							</label>
 							<div class="col-sm-2">
@@ -359,7 +359,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">
-							Évaluation du risque 
+							Évaluation du risque
 							<span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet le calcul de la grille des risques."></span>
 						</h3>
 					</div>
@@ -367,7 +367,7 @@
 
 						<div class="form-group form-group-sm has-feedback">
 							<label for="spectateurs" class="col-sm-4 control-label">
-								Nombre de spectateurs 
+								Nombre de spectateurs
 								<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chiffres uniquement."></span>
 							</label>
 							<div class="col-sm-8">
@@ -379,7 +379,7 @@
 
 						<div class="form-group form-group-sm has-feedback">
 							<label for="participants" class="col-sm-4 control-label">
-								Nombre de participants 
+								Nombre de participants
 								<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chiffres uniquement."></span>
 							</label>
 							<div class="col-sm-8">
@@ -435,7 +435,7 @@
 						<label for="delai">Commentaires concernant le RIS</label>
 						<textarea class="form-control" rows="4" id="commentaire_ris" name="commentaire_ris" placeholder="Indiquer ici tout commentaire(s) concernant le RIS"></textarea>
 						<span class="help-block"></span>
-						
+
 						<div class="alert " id="resultatris" role="alert">
 							<h4>Grille d'évaluation des risques</h4>
 							<p>Classification du type de poste : <strong><span id="typeposte"></span></strong><br>
@@ -443,14 +443,14 @@
 							<p id="grosris">
 								<span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
 								<strong> Attention !</strong> Ce type de poste impose un contact avec la DDO.
-							</p>                           
+							</p>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<button type="button" class="close" aria-label='Close' data-toggle="collapse" data-target="#dps-panel-filter" aria-controls="dps-panel-filter">
@@ -459,7 +459,7 @@
 				<h3 class="panel-title">Dispositif Prévisionnel de Secours mis en place</h3>
 			</div>
 			<div id='dps-panel-filter' aria-expanded='true' class="panel-body in">
-				
+
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Horaires de mise en place du dispositif</h3>
@@ -496,7 +496,7 @@
 										showClear:true,
 										showClose:true,
 										toolbarPlacement: 'bottom',
-						
+
 									});
 								});
 								$(function () {
@@ -508,7 +508,7 @@
 										toolbarPlacement: 'bottom',
 										useCurrent:false,
 										stepping:'5'
-						
+
 									});
 								});
 							</script>
@@ -543,7 +543,7 @@
 									showClear:true,
 									showClose:true,
 									toolbarPlacement: 'bottom'
-					
+
 								});
 							});
 							$(function () {
@@ -555,7 +555,7 @@
 									toolbarPlacement: 'bottom',
 									useCurrent:false,
 									stepping:'5'
-					
+
 								});
 							});
 						</script>
@@ -563,7 +563,7 @@
 				</div>
 			</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">Moyens fournis par la Protection Civile<span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></div>
+					<div class="panel-heading">Moyens fournis par la Protection Civile <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></div>
 					<div class="panel-body">
 
 						<div class="form-group form-group-sm has-feedback">
@@ -633,7 +633,7 @@
 					</div>
 				</div>
 				<div class="panel panel-default">
-					<div class="panel-heading">Moyens fournis par l'organisateur<span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></div>
+					<div class="panel-heading">Moyens fournis par l'organisateur <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></div>
 					<div class="panel-body">
 
 						<div class="form-group form-group-sm">
@@ -644,13 +644,13 @@
 									<option value="true">Oui</option>
 								</select>
 							</div>
-							<!-- <label for="tente_orga" class="col-sm-3 control-label">Tente (orga)</label>
+							<label for="tente_orga" class="col-sm-3 control-label">Tente</label>
 							<div class="col-sm-2">
 								<select class="form-control" id="tente_orga" name="tente_orga">
 									<option value="false">Non</option>
 									<option value="true">Oui</option>
 								</select>
-							</div> -->
+							</div>
 						</div>
 
 						<div class="form-group form-group-sm">
@@ -661,7 +661,7 @@
 						</div>
 
 					</div>
-				</div>	
+				</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">Moyens médicaux / structures</div>
 					<div class="panel-body">
@@ -737,7 +737,7 @@
 						</div>
 					</div>
 				</div>
-			
+
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Justificatif du dispositif mis en place</h3>
@@ -748,14 +748,14 @@
 				</div>
 			</div>
 		</div>
-				
+
 		<div class="form-group">
 			<div class="col-sm-offset-4 col-sm-8 ">
 				<button type="submit" class="btn btn-warning">Envoyer <span class="glyphicon glyphicon-send"></span></button>
 			</div>
 		</div>
 	</form>
-					
+
 </div>
 
 

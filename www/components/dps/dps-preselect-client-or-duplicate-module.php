@@ -28,7 +28,7 @@
 					</select>
 				</div>
 				<div class="btn-group col-sm-4" role="group">
-					<button type="submit" class="btn btn-warning">Selectionner</button>
+					<button type="submit" class="btn btn-warning">Pré-remplir l'orga</button>
 				</div>
 			</div>
 		</form>
@@ -50,7 +50,7 @@
 					</select>
 				</div>
 				<div class="btn-group col-sm-4" role="group">
-					<button type="submit" class="btn btn-warning">Selectionner</button>
+					<button type="submit" class="btn btn-warning">Pré-remplir avec ce DPS</button>
 				</div>
 			</div>
 		</form>
