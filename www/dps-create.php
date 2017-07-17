@@ -230,7 +230,7 @@
 								<span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Adresse la plus précise possible du lieu de l'événement."></span>
 							</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" id="lieu_precis" name="lieu_precis" aria-describedby="lieu_precis-error" minlength='20' required='true' placeholder="Adresse précise du lien de l'évenement" value="<?php if(isset($duplicate_array['adresse_manif'])){echo $duplicate_array['adresse_manif'];} ?>" >
+								<input type="text" class="form-control" id="lieu_precis" name="lieu_precis" aria-describedby="lieu_precis-error" minlength='10' required='true' placeholder="Adresse précise du lien de l'évenement" value="<?php if(isset($duplicate_array['adresse_manif'])){echo $duplicate_array['adresse_manif'];} ?>" >
 								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
 								<span id='lieu_precis-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 							</div>
@@ -368,7 +368,7 @@
 						<div class="form-group form-group-sm has-feedback">
 							<label for="spectateurs" class="col-sm-4 control-label">
 								Nombre de spectateurs
-								<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chiffres uniquement."></span>
+								<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chiffres uniquement"></span>
 							</label>
 							<div class="col-sm-8">
 								<input type="number" class="form-control risp" id="spectateurs" name="spectateurs" aria-describedby="spectateurs-error" required='true' digits='true' placeholder="Spectateurs" >
@@ -566,30 +566,38 @@
 					<div class="panel-heading">Moyens fournis par la Protection Civile <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></div>
 					<div class="panel-body">
 
-						<div class="form-group form-group-sm has-feedback">
+						<div class="form-group form-group-sm">
 							<label for="nb_ce" class="col-sm-4 control-label">Chef d'équipe</label>
 							<div class="col-sm-2">
-								<input type="number" class="form-control" id="nb_ce" name="nb_ce" aria-describedby="nb_ce-error" required='true' digits='true' placeholder="00" >
-								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='nb_ce-error' class="help-block" aria-hidden="true"></span>
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="number" class="form-control" id="nb_ce" name="nb_ce" aria-describedby="nb_ce-error" required='true' digits='true' placeholder="00" >
+									<span class="form-control-feedback" aria-hidden="true"></span>
+									<span id='nb_ce-error' class="help-block" aria-hidden="true"></span>
+								</div>
 							</div>
 							<label for="nb-pse2" class="col-sm-3 control-label">PSE-2</label>
 							<div class="col-sm-2">
-								<input type="number" class="form-control" id="nb_pse2" name="nb_pse2" aria-describedby="nb_pse2-error" required='true' digits='true' placeholder="00" >
-								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='nb_pse2-error' class="help-block" aria-hidden="true"></span>
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="number" class="form-control" id="nb_pse2" name="nb_pse2" aria-describedby="nb_pse2-error" required='true' digits='true' placeholder="00" >
+									<span class="form-control-feedback" aria-hidden="true"></span>
+									<span id='nb_pse2-error' class="help-block" aria-hidden="true"></span>
+								</div>
 							</div>
 							<label for="nb_pse1" class="col-sm-4 control-label">PSE-1</label>
 							<div class="col-sm-2">
-								<input type="number" class="form-control" id="nb_pse1" name="nb_pse1" aria-describedby="nb_pse1-error" required='true' digits='true' placeholder="00" >
-								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='nb_pse1-error' class="help-block" aria-hidden="true"></span>
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="number" class="form-control" id="nb_pse1" name="nb_pse1" aria-describedby="nb_pse1-error" required='true' digits='true' placeholder="00" >
+									<span class="form-control-feedback" aria-hidden="true"></span>
+									<span id='nb_pse1-error' class="help-block" aria-hidden="true"></span>
+								</div>
 							</div>
 							<label for="nb_psc1" class="col-sm-3 control-label">Stagiaire PSC-1</label>
 							<div class="col-sm-2">
-								<input type="number" class="form-control" id="nb_psc1" name="nb_psc1" aria-describedby="nb_psc1-error" required='true' digits='true' placeholder="00" >
-								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='nb_psc1-error' class="help-block" aria-hidden="true"></span>
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="number" class="form-control" id="nb_psc1" name="nb_psc1" aria-describedby="nb_psc1-error" required='true' digits='true' placeholder="00" >
+									<span class="form-control-feedback" aria-hidden="true"></span>
+									<span id='nb_psc1-error' class="help-block" aria-hidden="true"></span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -598,27 +606,35 @@
 						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
 							<label for="vpsp_transport" class="col-sm-4 control-label">VPSP Transport (évacuation)</label>
 							<div class="col-sm-2">
-								<input type="number" class="form-control" id="vpsp_transport" name="vpsp_transport" aria-describedby="vpsp_transport-error" min='0' required='true' digits='true' placeholder="00" >
-								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='vpsp_transport-error' class="help-block" aria-hidden="true"></span>
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="number" class="form-control" id="vpsp_transport" name="vpsp_transport" aria-describedby="vpsp_transport-error" min='0' required='true' digits='true' placeholder="00" >
+									<span class="form-control-feedback" aria-hidden="true"></span>
+									<span id='vpsp_transport-error' class="help-block" aria-hidden="true"></span>
+								</div>
 							</div>
 							<label for="vpsp_soin" class="col-sm-3 control-label">VPSP fixe (poste de soins)</label>
 							<div class="col-sm-2">
-								<input type="number" class="form-control" id="vpsp_soin" name="vpsp_soin" aria-describedby="vpsp_soin-error" min='0' required='true' digits='true' placeholder="00" >
-								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='vpsp_soin-error' class="help-block" aria-hidden="true"></span>
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="number" class="form-control" id="vpsp_soin" name="vpsp_soin" aria-describedby="vpsp_soin-error" min='0' required='true' digits='true' placeholder="00" >
+									<span class="form-control-feedback" aria-hidden="true"></span>
+									<span id='vpsp_soin-error' class="help-block" aria-hidden="true"></span>
+								</div>
 							</div>
 							<label for="vl" class="col-sm-4 control-label">VL / VTU / Goliath...</label>
 							<div class="col-sm-2">
-								<input type="number" class="form-control" id="vl" name="vl" aria-describedby="vl-error" min='0' required='true' digits='true' placeholder="00">
-								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='vl-error' class="help-block" aria-hidden="true"></span>
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="number" class="form-control" id="vl" name="vl" aria-describedby="vl-error" min='0' required='true' digits='true' placeholder="00">
+									<span class="form-control-feedback" aria-hidden="true"></span>
+									<span id='vl-error' class="help-block" aria-hidden="true"></span>
+								</div>
 							</div>
 							<label for="tente" class="col-sm-3 control-label">Tente (Protec)</label>
 							<div class="col-sm-2">
-								<input type="number" class="form-control" id="tente" name="tente" aria-describedby="tente-error" min='0' required='true' digits='true' placeholder="00">
-								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='tente-error' class="help-block" aria-hidden="true"></span>
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="number" class="form-control" id="tente" name="tente" aria-describedby="tente-error" min='0' required='true' digits='true' placeholder="00">
+									<span class="form-control-feedback" aria-hidden="true"></span>
+									<span id='tente-error' class="help-block" aria-hidden="true"></span>
+								</div>
 							</div>
 						</div>
 					</div>

@@ -61,7 +61,7 @@ header("Location: list-dps.php");}
   </div>
 </div>
 <p>Traitement en cours, veuillez patienter...</p>
-<p>Si vous voyez pendant plus de 15 secondes cette barre de chargement, merci de contacter la DDTI.</p>
+<p>Si vous voyez pendant plus de 15 secondes cette barre de chargement, merci de contacter la DDT-I (pole-informatique@protectioncivile92.org).</p>
 <?php }
 include 'footer.php'; ?>
 </body>
