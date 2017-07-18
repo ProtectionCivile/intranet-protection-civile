@@ -101,16 +101,16 @@
 					</div>
 				</div>
 
-				<?php $feedback = compute_server_feedback($qualite_error);?>
+				<?php $feedback = compute_server_feedback($client_title_error);?>
 				<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-					<label for="qualite" class="col-sm-4 control-label">
+					<label for="client_title" class="col-sm-4 control-label">
 						Qualité
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Statut du représentant."></span>
 					</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="qualite" name="qualite" aria-describedby="qualite-error" placeholder="Qualité" minlength='4' required='true' value="<?php echo $qualite;?>" >
+						<input type="text" class="form-control" id="client_title" name="client_title" aria-describedby="client-title-error" placeholder="Qualité" minlength='4' required='true' value="<?php echo $client_title;?>" >
 						<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-						<span id='qualite-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+						<span id='client-title-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 					</div>
 				</div>
 

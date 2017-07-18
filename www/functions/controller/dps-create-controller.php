@@ -10,9 +10,13 @@
 			$genericError = "Le nom de l'organisateur est obligatoire";
 			$client_name_error = $genericError;
 		}
-		elseif(isNullOrEmpty($client_reprensent)){
+		if(isNullOrEmpty($client_reprensent)){
 			$genericError = "Le représentant légal de la structure est obligatoire";
 			$client_reprensent_error = $genericError;
+		}
+		if(isNullOrEmpty($client_title)){
+			$genericError = "La fonction du représentant légal est obligatoire";
+			$client_title_error = $genericError;
 		}
 		elseif(isNullOrEmpty($year)){
 			$genericError = "L'année est obligatoire";
@@ -66,10 +70,6 @@
 		elseif(isNullOrEmpty($prix)){
 			$genericError = "Le prix de la prestation est obligatoire";
 			$prix_error = $genericError;
-		}
-		elseif(isNullOrEmpty($qualite)){
-			$genericError = "La fonction du représentant légal est obligatoire";
-			$qualite_error = $genericError;
 		}
 		elseif(isNullOrEmpty($adresse)){
 			$genericError = "L'adresse de la structure organisatrice est obligatoire";
