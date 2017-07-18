@@ -88,16 +88,16 @@
 					</div>
 				</div>
 
-				<?php $feedback = compute_server_feedback($represente_par_error);?>
+				<?php $feedback = compute_server_feedback($client_reprensent_error);?>
 				<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-					<label for="represente_par" class="col-sm-4 control-label">
+					<label for="client_reprensent" class="col-sm-4 control-label">
 						Représenté par
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Personne qui représente l'organisation."></span>
 					</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="represente_par" name="represente_par" aria-describedby="represente_par-error" placeholder="Représentant" minlength='4' required='true' value="<?php echo $represente_par;?>" >
+						<input type="text" class="form-control" id="client_reprensent" name="client_reprensent" aria-describedby="client-reprensent-error" placeholder="Représentant" minlength='4' required='true' value="<?php echo $client_reprensent;?>" >
 						<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-						<span id='represente_par-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+						<span id='client-reprensent-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 					</div>
 				</div>
 

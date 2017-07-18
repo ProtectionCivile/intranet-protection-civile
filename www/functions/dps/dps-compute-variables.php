@@ -11,10 +11,10 @@
 	elseif (isset($_POST['client_name'])) { $client_name = $_POST['client_name']; }
 	else { $client_name = $dps['client_name']; }
 
-	if (isset($duplicated_dps_array['representant_org'])) { $organisateur_represente_par = $duplicated_dps_array['representant_org']; }
-	elseif (isset($client_array['represent'])) { $organisateur_represente_par = $client_array['represent']; }
-	elseif (isset($_POST['represente_par'])) { $organisateur_represente_par = $_POST['represente_par']; }
-	else { $organisateur_represente_par = $dps['representant_org']; }
+	if (isset($duplicated_dps_array['$client_reprensent'])) { $client_reprensent = $duplicated_dps_array['$client_reprensent']; }
+	elseif (isset($client_array['represent'])) { $client_reprensent = $client_array['represent']; }
+	elseif (isset($_POST['$client_reprensent'])) { $client_reprensent = $_POST['$client_reprensent']; }
+	else { $client_reprensent = $dps['$client_reprensent']; }
 
 	if (isset($duplicated_dps_array['qualite_org'])) { $organisateur_qualite = $duplicated_dps_array['qualite_org']; }
 	elseif (isset($client_array['title'])) { $organisateur_qualite = $client_array['title']; }
