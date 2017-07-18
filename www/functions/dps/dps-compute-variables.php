@@ -6,95 +6,97 @@
 	$code_commune = $_POST['code_commune'];
 
 	// Organisateur
-	if (isset($duplicated_dps_array['organisateur'])) { $nom_organisation = $duplicated_dps_array['organisateur']; } 
-	elseif (isset($client_array['name'])) { $nom_organisation = $client_array['name']; }
-	elseif (isset($_POST['nom_organisation'])) { $nom_organisation = $_POST['nom_organisation']; }
-	else { $nom_organisation = $dps['organisateur']; }
+	if (isset($duplicated_dps_array['client_name'])) { $client_name = $duplicated_dps_array['client_name']; }
+	elseif (isset($client_array['name'])) { $client_name = $client_array['name']; }
+	elseif (isset($_POST['client_name'])) { $client_name = $_POST['client_name']; }
+	else { $client_name = $dps['client_name']; }
 
-	if (isset($duplicated_dps_array['representant_org'])) { $represente_par = $duplicated_dps_array['representant_org']; } 
-	elseif (isset($client_array['represent'])) { $represente_par = $client_array['represent']; }
-	elseif (isset($_POST['represente_par'])) { $represente_par = $_POST['represente_par']; }
-	else { $represente_par = $dps['representant_org']; }
+	if (isset($duplicated_dps_array['representant_org'])) { $organisateur_represente_par = $duplicated_dps_array['representant_org']; }
+	elseif (isset($client_array['represent'])) { $organisateur_represente_par = $client_array['represent']; }
+	elseif (isset($_POST['represente_par'])) { $organisateur_represente_par = $_POST['represente_par']; }
+	else { $organisateur_represente_par = $dps['representant_org']; }
 
-	if (isset($duplicated_dps_array['qualite_org'])) { $qualite = $duplicated_dps_array['qualite_org']; } 
-	elseif (isset($client_array['title'])) { $qualite = $client_array['title']; }
-	elseif (isset($_POST['qualite'])) { $qualite = $_POST['qualite']; }
-	else { $qualite = $dps['qualite_org']; }
+	if (isset($duplicated_dps_array['qualite_org'])) { $organisateur_qualite = $duplicated_dps_array['qualite_org']; }
+	elseif (isset($client_array['title'])) { $organisateur_qualite = $client_array['title']; }
+	elseif (isset($_POST['qualite'])) { $organisateur_qualite = $_POST['qualite']; }
+	else { $organisateur_qualite = $dps['qualite_org']; }
 
-	if (isset($duplicated_dps_array['adresse_org'])) { $adresse = $duplicated_dps_array['adresse_org']; } 
-	elseif (isset($client_array['address'])) { $adresse = $client_array['address']; }
-	elseif (isset($_POST['adresse'])) { $adresse = $_POST['adresse']; }
-	else { $adresse = $dps['adresse_org']; }
+	if (isset($duplicated_dps_array['adresse_org'])) { $organisateur_adresse = $duplicated_dps_array['adresse_org']; }
+	elseif (isset($client_array['address'])) { $organisateur_adresse = $client_array['address']; }
+	elseif (isset($_POST['adresse'])) { $organisateur_adresse = $_POST['adresse']; }
+	else { $organisateur_adresse = $dps['adresse_org']; }
 
-	if (isset($duplicated_dps_array['tel_org'])) { $telephone = $duplicated_dps_array['tel_org']; } 
-	elseif (isset($client_array['phone'])) { $telephone = $client_array['phone']; }
-	elseif (isset($_POST['telephone'])) { $telephone = $_POST['telephone']; }
-	else { $telephone = $dps['tel_org']; }
+	if (isset($duplicated_dps_array['tel_org'])) { $organisateur_telephone = $duplicated_dps_array['tel_org']; }
+	elseif (isset($client_array['phone'])) { $organisateur_telephone = $client_array['phone']; }
+	elseif (isset($_POST['telephone'])) { $organisateur_telephone = $_POST['telephone']; }
+	else { $organisateur_telephone = $dps['tel_org']; }
 
-	if (isset($duplicated_dps_array['fax_org'])) { $fax = $duplicated_dps_array['fax_org']; } 
-	elseif (isset($client_array['fax'])) { $fax = $client_array['fax']; }
-	elseif (isset($_POST['fax'])) { $fax = $_POST['fax']; }
-	else { $fax = $dps['fax_org']; }
+	if (isset($duplicated_dps_array['fax_org'])) { $organisateur_fax = $duplicated_dps_array['fax_org']; }
+	elseif (isset($client_array['fax'])) { $organisateur_fax = $client_array['fax']; }
+	elseif (isset($_POST['fax'])) { $organisateur_fax = $_POST['fax']; }
+	else { $organisateur_fax = $dps['fax_org']; }
 
 	$email = $_POST['email'];
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
-	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $organisateur_email = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($client_array['DANSCLIENT'])) { $organisateur_email = $client_array['DANSCLIENT']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $organisateur_email = $_POST['DANSFORMULAIREPOST']; }
+	else { $organisateur_email = $dps['DANSTABLEDPS']; }
 
 	$deja_pref = $_POST['deja_pref'];
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
-	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $organisateur_dossier_prefecture = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($client_array['DANSCLIENT'])) { $organisateur_dossier_prefecture = $client_array['DANSCLIENT']; }
+	elseif (isset($_POST['deja_pref'])) { $organisateur_dossier_prefecture = $_POST['deja_pref']; }
+	else { $organisateur_dossier_prefecture = $dps['DANSTABLEDPS']; }
 
 	$nom_nature = $_POST['nom_nature'];
 	$nom_nature = mysqli_real_escape_string($db_link, $nom_nature);
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
 	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
 	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
 	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-	
+
 	$activite_descriptif = $_POST['activite_descriptif'];
 	$activite_descriptif = mysqli_real_escape_string($db_link, $activite_descriptif);
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
 	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
 	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
 	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-	
+
 	$lieu_precis = $_POST['lieu_precis'];
 	$lieu_precis = mysqli_real_escape_string($db_link, $lieu_precis);
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
 	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
 	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
 	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-	
+
 
 	$date_debut = $_POST['date_debut'];
 	$heure_debut = $_POST['heure_debut'];
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
 	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
 	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
 	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-	
+
 	$date_fin = $_POST['date_fin'];
 	$heure_fin = $_POST['heure_fin'];
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
 	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
 	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-	
+
 
 	$departement = $_POST['departement'];
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
 	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
 	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-	
-	$prix = $_POST['prix'];
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; } 
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-	
 
+	$prix = $_POST['prix'];
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+
+// C'est ici qu'il faut faire les modifications !!
+// Quitte à renommer les variables pour qu'elles soient plus lisibles dans la page de DPS
+// renommer $dps en $existingDps
 
 
 	$spectateurs = $_POST['spectateurs'];

@@ -75,16 +75,16 @@
 			</div>
 
 			<div id='orga-panel-filter' aria-expanded='true' class="panel-body in">
-				<?php $feedback = compute_server_feedback($nom_organisation_error);?>
+				<?php $feedback = compute_server_feedback($client_name_error);?>
 				<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-					<label for="nom_organisation" class="col-sm-4 control-label">
+					<label for="client_name" class="col-sm-4 control-label">
 						Nom de l'organisation
 						<span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom de la société, association, collectivité, etc." />
 					</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="nom_organisation" name="nom_organisation" aria-describedby="nom-organisation-error" placeholder="Nom de l'organisation" minlength='8' required='true' value="<?php echo $nom_organisation;?>" >
+						<input type="text" class="form-control" id="client_name" name="client_name" aria-describedby="client-name-error" placeholder="Nom de l'organisation" minlength='8' required='true' value="<?php echo $client_name;?>" >
 						<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-						<span id='nom-organisation-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+						<span id='client-name-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 					</div>
 				</div>
 
