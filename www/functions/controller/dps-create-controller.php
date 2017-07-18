@@ -2,6 +2,10 @@
 
 <?php
 
+// TODO Revoir le fonctionnement général : peut etre que le message générique peut etre simplifié, et que le message specifique plus détaillé.
+// Par exemple, pour l'email si y'en a pas ça nedoit pas etre considéré comme une erreur...
+
+
 	if (isset($_POST['cu'])){
 		$cu = $_POST['cu'];
 		$today = date("Y-m-d");
@@ -18,6 +22,32 @@
 			$genericError = "La fonction du représentant légal est obligatoire";
 			$client_title_error = $genericError;
 		}
+		if(isNullOrEmpty($client_address)){
+			$genericError = "L'adresse de la structure organisatrice est obligatoire";
+			$client_address_error = $genericError;
+		}
+		if(isNullOrEmpty($client_phone)){
+			$genericError = "Le téléphone de l'organisateur est obligatoire";
+			$client_phone_error = $genericError;
+		}
+		if(isNullOrEmpty($client_fax)){
+			//C'est pas grave
+			//$genericError = "Le fax de l'organisateur est obligatoire";
+			//$client_fax_error = "";
+		}
+		if(isNullOrEmpty($client_email)){
+			$genericError = "L'adresse mail de l'organisateur est obligatoire";
+			$client_email_error = $genericError;
+		}
+
+
+
+
+		if(isNullOrEmpty($event_pref_secu)){
+			$event_pref_secu = "false";
+		}
+
+
 		elseif(isNullOrEmpty($year)){
 			$genericError = "L'année est obligatoire";
 		}
@@ -70,22 +100,6 @@
 		elseif(isNullOrEmpty($prix)){
 			$genericError = "Le prix de la prestation est obligatoire";
 			$prix_error = $genericError;
-		}
-		elseif(isNullOrEmpty($adresse)){
-			$genericError = "L'adresse de la structure organisatrice est obligatoire";
-			$adresse_error = $genericError;
-		}
-		elseif(isNullOrEmpty($telephone)){
-			$genericError = "Le téléphone de l'organisateur est obligatoire";
-			$telephone_error = $genericError;
-		}
-		// elseif(isNullOrEmpty($fax)){
-		// 	$genericError = "Le fax de l'organisateur est obligatoire";
-		// 	$fax_error = $genericError;
-		// }
-		elseif(isNullOrEmpty($email)){
-			$genericError = "L'adresse mail de l'organisateur est obligatoire";
-			$email_error = $genericError;
 		}
 		elseif(isNullOrEmpty($p1_part)){
 			$genericError = "Le nombre de participants est obligatoire pour le calcul du RIS";
@@ -144,9 +158,6 @@
 			}
 			if(isNullOrEmpty($bspp_sdis)){
 				$bspp_sdis = "0";
-			}
-			if(isNullOrEmpty($deja_pref)){
-				$deja_pref = "false";
 			}
 			if(isNullOrEmpty($local)){
 				$local = "false";

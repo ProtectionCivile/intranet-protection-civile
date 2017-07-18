@@ -21,32 +21,34 @@
 	elseif (isset($_POST['client_title'])) { $client_title = $_POST['client_title']; }
 	else { $client_title = $dps['client_title']; }
 
-	if (isset($duplicated_dps_array['adresse_org'])) { $organisateur_adresse = $duplicated_dps_array['adresse_org']; }
-	elseif (isset($client_array['address'])) { $organisateur_adresse = $client_array['address']; }
-	elseif (isset($_POST['adresse'])) { $organisateur_adresse = $_POST['adresse']; }
-	else { $organisateur_adresse = $dps['adresse_org']; }
+	if (isset($duplicated_dps_array['client_address'])) { $client_address = $duplicated_dps_array['client_address']; }
+	elseif (isset($client_array['address'])) { $client_address = $client_array['address']; }
+	elseif (isset($_POST['client_address'])) { $client_address = $_POST['client_address']; }
+	else { $client_address = $dps['client_address']; }
 
-	if (isset($duplicated_dps_array['tel_org'])) { $organisateur_telephone = $duplicated_dps_array['tel_org']; }
-	elseif (isset($client_array['phone'])) { $organisateur_telephone = $client_array['phone']; }
-	elseif (isset($_POST['telephone'])) { $organisateur_telephone = $_POST['telephone']; }
-	else { $organisateur_telephone = $dps['tel_org']; }
+	if (isset($duplicated_dps_array['client_phone'])) { $client_phone = $duplicated_dps_array['client_phone']; }
+	elseif (isset($client_array['phone'])) { $client_phone = $client_array['phone']; }
+	elseif (isset($_POST['client_phone'])) { $client_phone = $_POST['client_phone']; }
+	else { $client_phone = $dps['client_phone']; }
 
-	if (isset($duplicated_dps_array['fax_org'])) { $organisateur_fax = $duplicated_dps_array['fax_org']; }
-	elseif (isset($client_array['fax'])) { $organisateur_fax = $client_array['fax']; }
-	elseif (isset($_POST['fax'])) { $organisateur_fax = $_POST['fax']; }
-	else { $organisateur_fax = $dps['fax_org']; }
+	if (isset($duplicated_dps_array['client_fax'])) { $client_fax = $duplicated_dps_array['client_fax']; }
+	elseif (isset($client_array['fax'])) { $client_fax = $client_array['client_fax']; }
+	elseif (isset($_POST['fax'])) { $client_fax = $_POST['client_fax']; }
+	else { $client_fax = $dps['client_fax']; }
 
-	$email = $_POST['email'];
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $organisateur_email = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($client_array['DANSCLIENT'])) { $organisateur_email = $client_array['DANSCLIENT']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $organisateur_email = $_POST['DANSFORMULAIREPOST']; }
-	else { $organisateur_email = $dps['DANSTABLEDPS']; }
+	if (isset($duplicated_dps_array['client_email'])) { $client_email = $duplicated_dps_array['client_email']; }
+	elseif (isset($client_array['mail'])) { $client_email = $client_array['mail']; }
+	elseif (isset($_POST['client_email'])) { $client_email = $_POST['client_email']; }
+	else { $client_email = $dps['client_email']; }
 
-	$deja_pref = $_POST['deja_pref'];
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $organisateur_dossier_prefecture = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($client_array['DANSCLIENT'])) { $organisateur_dossier_prefecture = $client_array['DANSCLIENT']; }
-	elseif (isset($_POST['deja_pref'])) { $organisateur_dossier_prefecture = $_POST['deja_pref']; }
-	else { $organisateur_dossier_prefecture = $dps['DANSTABLEDPS']; }
+
+
+	if (isset($duplicated_dps_array['event_pref_secu'])) { $event_pref_secu = $duplicated_dps_array['event_pref_secu']; }
+	elseif (isset($_POST['event_pref_secu'])) { $event_pref_secu = $_POST['event_pref_secu']; }
+	else { $event_pref_secu = $dps['event_pref_secu']; }
+
+
+
 
 	$nom_nature = $_POST['nom_nature'];
 	$nom_nature = mysqli_real_escape_string($db_link, $nom_nature);
