@@ -45,7 +45,7 @@
 	<?php if(isset($_POST['duplicate_dps'])){?>
 		<div class='alert alert-warning'>
 			<span class="glyphicon glyphicon-alert" style="font-size:2em"></span>
-			<strong>Attention : </strong>Tous les champs ne sont pas dupliqués.	Vous devez vérifier tous les champs avant d'envoyer en validation.
+			<strong> Attention : </strong>Tous les champs ne sont pas dupliqués.	Vous devez vérifier tous les champs avant d'envoyer en validation.
 		</div>
 	<?php }?>
 
@@ -179,6 +179,7 @@
 			</div>
 
 			<div id='manif-panel-filter' class="panel-body in">
+
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Nature de la manifestation</h3>
@@ -344,8 +345,6 @@
 					</div>
 				</div>
 
-
-
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">
@@ -445,6 +444,7 @@
 
 					</div>
 				</div>
+
 			</div>
 		</div>
 
@@ -455,6 +455,7 @@
 				</button>
 				<h3 class="panel-title">Dispositif Prévisionnel de Secours mis en place</h3>
 			</div>
+
 			<div id='dps-panel-filter' aria-expanded='true' class="panel-body in">
 
 				<div class="panel panel-default">
@@ -554,8 +555,11 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="panel panel-default">
-					<div class="panel-heading">Moyens fournis par la Protection Civile <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></div>
+					<div class="panel-heading">
+						<h3 class="panel-title">Moyens fournis par la Protection Civile <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></h3>
+					</div>
 					<div class="panel-body">
 
 						<div class="form-group form-group-sm">
@@ -650,7 +654,6 @@
 						</div>
 					</div>
 					<div class="panel-body">
-
 						<div class="form-group form-group-sm">
 							<label for="supplement" class="col-sm-4 control-label">Moyens humains / logistiques supplémentaires</label>
 							<div class="col-sm-8">
@@ -659,8 +662,11 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="panel panel-default">
-					<div class="panel-heading">Moyens fournis par l'organisateur <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></div>
+					<div class="panel-heading">
+						<h3 class="panel-title">Moyens fournis par l'organisateur <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></h3>
+					</div>
 					<div class="panel-body">
 
 						<div class="form-group form-group-sm">
@@ -689,8 +695,11 @@
 
 					</div>
 				</div>
+
 				<div class="panel panel-default">
-					<div class="panel-heading">Moyens médicaux / structures</div>
+					<div class="panel-heading">
+						<h3 class="panel-title">Moyens médicaux / structures</h3>
+					</div>
 					<div class="panel-body">
 
 
