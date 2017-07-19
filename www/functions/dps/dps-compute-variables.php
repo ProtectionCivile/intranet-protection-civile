@@ -109,6 +109,26 @@
 	else { $ris_comment = $dps['ris_comment']; }
 
 
+	// Horaires du dispositif
+	if (isset($duplicated_dps_array['dps_begin_date'])) { $dps_begin_date = $duplicated_dps_array['dps_begin_date']; }
+	elseif (isset($_POST['dps_begin_date'])) { $dps_begin_date = $_POST['dps_begin_date']; }
+	else { $dps_begin_date = $dps['dps_begin_date']; }
+
+	if (isset($duplicated_dps_array['dps_begin_time'])) { $dps_begin_time = $duplicated_dps_array['dps_begin_time']; }
+	elseif (isset($_POST['dps_begin_time'])) { $dps_begin_time = $_POST['dps_begin_time']; }
+	else { $dps_begin_time = $dps['dps_begin_time']; }
+
+	if (isset($duplicated_dps_array['dps_begin_date'])) { $dps_begin_date = $duplicated_dps_array['dps_begin_date']; }
+	elseif (isset($_POST['dps_begin_date'])) { $dps_begin_date = $_POST['dps_begin_date']; }
+	else { $dps_begin_date = $dps['dps_begin_date']; }
+
+	if (isset($duplicated_dps_array['dps_end_time'])) { $dps_end_time = $duplicated_dps_array['dps_end_time']; }
+	elseif (isset($_POST['dps_end_time'])) { $dps_end_time = $_POST['dps_end_time']; }
+	else { $dps_end_time = $dps['dps_end_time']; }
+
+
+
+
 
 
 	

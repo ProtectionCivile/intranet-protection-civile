@@ -104,6 +104,27 @@ $missingValues = 0;
 		}
 
 
+		if(isNullOrEmpty($dps_begin_date)){
+			$missingValues++;
+			$dps_begin_date_error = "La date de mise en place du poste de secours est obligatoire";
+		}
+		if(isNullOrEmpty($dps_begin_time)){
+			$missingValues++;
+			$dps_begin_time_error = "L'heure de mise en place du poste de secours est obligatoire";
+		}
+		if(isNullOrEmpty($dps_end_date)){
+			$missingValues++;
+			$dps_end_date_error = "La date de levée du dispositif de secours est obligatoire";
+		}
+		if(isNullOrEmpty($dps_end_time)){
+			$missingValues++;
+			$dps_end_time_error = "L'heure de levée du dispositif de secours est obligatoire";
+		}
+
+
+
+
+
 
 		if(isNullOrEmpty($VARIABLE)){
 			$missingValues++;
