@@ -43,7 +43,6 @@
 
 
 
-
 	// Evenement
 	////////////////////////////////////////////////////////////////////////$nom_nature = mysqli_real_escape_string($db_link, $nom_nature); // TODO A mettre lors de la création de requete SQL
 
@@ -84,6 +83,84 @@
 	else { $event_pref_secu = $dps['event_pref_secu']; }
 
 
+	// RIS
+	if (isset($duplicated_dps_array['ris_p1_public'])) { $ris_p1_public = $duplicated_dps_array['ris_p1_public']; }
+	elseif (isset($_POST['ris_p1_public'])) { $ris_p1_public = $_POST['ris_p1_public']; }
+	else { $ris_p1_public = $dps['ris_p1_public']; }
+
+	if (isset($duplicated_dps_array['ris_p1_actors'])) { $ris_p1_actors = $duplicated_dps_array['ris_p1_actors']; }
+	elseif (isset($_POST['ris_p1_actors'])) { $ris_p1_actors = $_POST['ris_p1_actors']; }
+	else { $ris_p1_actors = $dps['ris_p1_actors']; }
+
+	if (isset($duplicated_dps_array['ris_p2'])) { $ris_p2 = $duplicated_dps_array['ris_p2']; }
+	elseif (isset($_POST['ris_p2'])) { $ris_p2 = $_POST['ris_p2']; }
+	else { $ris_p2 = $dps['ris_p2']; }
+
+	if (isset($duplicated_dps_array['ris_e1'])) { $ris_e1 = $duplicated_dps_array['ris_e1']; }
+	elseif (isset($_POST['ris_e1'])) { $ris_e1 = $_POST['ris_e1']; }
+	else { $ris_e1 = $dps['ris_e1']; }
+
+	if (isset($duplicated_dps_array['ris_e2'])) { $ris_e2 = $duplicated_dps_array['ris_e2']; }
+	elseif (isset($_POST['ris_e2'])) { $ris_e2 = $_POST['ris_e2']; }
+	else { $ris_e2 = $dps['ris_e2']; }
+
+	if (isset($duplicated_dps_array['ris_comment'])) { $ris_comment = $duplicated_dps_array['ris_comment']; }
+	elseif (isset($_POST['ris_comment'])) { $ris_comment = $_POST['ris_comment']; }
+	else { $ris_comment = $dps['ris_comment']; }
+
+
+
+
+	
+
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+
+	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
+	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+
 
 
 
@@ -108,6 +185,9 @@
 	$delai = $_POST['delai'];
 	$commentaire_ris = $_POST['commentaire_ris'];
 	$commentaire_ris = mysqli_real_escape_string($db_link, $commentaire_ris);
+
+
+// TODO Externaliser le calcul du RIS dans une méthode
 
 	$p1_spec = $spectateurs;
 	$p1_part = $participants;

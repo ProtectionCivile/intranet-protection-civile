@@ -5,75 +5,129 @@
 // TODO Revoir le fonctionnement général : peut etre que le message générique peut etre simplifié, et que le message specifique plus détaillé.
 // Par exemple, pour l'email si y'en a pas ça nedoit pas etre considéré comme une erreur...
 
+$missingValues = 0;
 
 	if (isset($_POST['cu'])){
 		$cu = $_POST['cu'];
 		$today = date("Y-m-d");
 
 		if(isNullOrEmpty($client_name)){
-			$genericError = "Le nom de l'organisateur est obligatoire";
-			$client_name_error = $genericError;
+			$missingValues++;
+			$client_name_error = "Le nom de l'organisateur est obligatoire";
 		}
 		if(isNullOrEmpty($client_reprensent)){
-			$genericError = "Le représentant légal de la structure est obligatoire";
-			$client_reprensent_error = $genericError;
+			$missingValues++;
+			$client_reprensent_error = "Le représentant légal de la structure est obligatoire";
 		}
 		if(isNullOrEmpty($client_title)){
-			$genericError = "La fonction du représentant légal est obligatoire";
-			$client_title_error = $genericError;
+			$missingValues++;
+			$client_title_error = "La fonction du représentant légal est obligatoire";
 		}
 		if(isNullOrEmpty($client_address)){
-			$genericError = "L'adresse de la structure organisatrice est obligatoire";
-			$client_address_error = $genericError;
+			$missingValues++;
+			$client_address_error = "L'adresse de la structure organisatrice est obligatoire";
 		}
 		if(isNullOrEmpty($client_phone)){
-			$genericError = "Le téléphone de l'organisateur est obligatoire";
-			$client_phone_error = $genericError;
+			$missingValues++;
+			$client_phone_error = "Le téléphone de l'organisateur est obligatoire";
 		}
 		if(isNullOrEmpty($client_fax)){
 			//C'est pas grave
 		}
 		if(isNullOrEmpty($client_email)){
-			$genericError = "L'adresse mail de l'organisateur est obligatoire";
-			$client_email_error = $genericError;
+			$missingValues++;
+			$client_email_error = "L'adresse mail de l'organisateur est obligatoire";
 		}
 
 
 
 		if(isNullOrEmpty($event_name)){
-			$genericError = "Le nom de l'évènement est obligatoire";
-			$event_name_error = $genericError;
+			$missingValues++;
+			$event_name_error = "Le nom de l'évènement est obligatoire";
 		}
 		if(isNullOrEmpty($event_description)){
-			$genericError = "Le descriptif de l'activité du rassemblement est obligatoire";
-			$event_description_error = $genericError;
+			$missingValues++;
+			$event_description_error = "Le descriptif de l'activité du rassemblement est obligatoire";
 		}
 		if(isNullOrEmpty($event_address)){
-			$genericError = "L'adresse exacte de la manifestation est obligatoire";
-			$event_address_error = $genericError;
+			$missingValues++;
+			$event_address_error = "L'adresse exacte de la manifestation est obligatoire";
 		}
 		if(isNullOrEmpty($event_department)){
-			$genericError = "Le département de la manifestation est obligatoire";
-			$event_department_error = $genericError;
+			$missingValues++;
+			$event_department_error = "Le département de la manifestation est obligatoire";
 		}
 		if(isNullOrEmpty($event_begin_date)){
-			$genericError = "La date de début de manifestation est obligatoire";
-			$event_begin_date_error = $genericError;
+			$missingValues++;
+			$event_begin_date_error = "La date de début de manifestation est obligatoire";
 		}
 		if(isNullOrEmpty($event_begin_time)){
-			$genericError = "L'heure de début de manifestation est obligatoire";
-			$event_begin_time_error = $genericError;
+			$missingValues++;
+			$event_begin_time_error = "L'heure de début de manifestation est obligatoire";
 		}
 		if(isNullOrEmpty($event_end_date)){
-			$genericError = "La date de fin de manifestation est obligatoire";
-			$event_end_date_error = $genericError;
+			$missingValues++;
+			$event_end_date_error = "La date de fin de manifestation est obligatoire";
 		}
 		if(isNullOrEmpty($event_end_time)){
-			$genericError = "L'heure de fin de manifestation est obligatoire";
-			$event_end_time_error = $genericError;
+			$missingValues++;
+			$event_end_time_error = "L'heure de fin de manifestation est obligatoire";
 		}
 		if(isNullOrEmpty($event_pref_secu)){
 			$event_pref_secu = "false";
+		}
+
+
+		if(isNullOrEmpty($ris_p1_public)){
+			$missingValues++;
+			$ris_p1_public_error = "Le nombre de spectateurs est obligatoire pour le calcul du RIS";
+		}
+		if(isNullOrEmpty($ris_p1_actors)){
+			$missingValues++;
+			$ris_p1_actors_error = "Le nombre de participants est obligatoire pour le calcul du RIS";
+		}
+		if(isNullOrEmpty($ris_p2)){
+			$missingValues++;
+			$ris_p2_error = "La typologie du public est obligatoire pour le calcul du RIS";
+		}
+		if(isNullOrEmpty($ris_e1)){
+			$missingValues++;
+			$ris_e1_error = "Les risques environnementaux sont obligatoires pour le calcul du RIS";
+		}
+		if(isNullOrEmpty($ris_e2)){
+			$missingValues++;
+			$ris_e2_error = "Le délai d'intervention des secours publics est obligatoire pour le calcul du RIS";
+		}
+		if(isNullOrEmpty($ris_comment)){
+			$missingValues++;
+			//$ris_comment_error = "Pas d'erreur";
+		}
+
+
+
+		if(isNullOrEmpty($VARIABLE)){
+			$missingValues++;
+			$VARIBALE_error = "L'heure de fin de manifestation est obligatoire";
+		}
+		if(isNullOrEmpty($VARIABLE)){
+			$missingValues++;
+			$VARIBALE_error = "L'heure de fin de manifestation est obligatoire";
+		}
+		if(isNullOrEmpty($VARIABLE)){
+			$missingValues++;
+			$VARIBALE_error = "L'heure de fin de manifestation est obligatoire";
+		}
+		if(isNullOrEmpty($VARIABLE)){
+			$missingValues++;
+			$VARIBALE_error = "L'heure de fin de manifestation est obligatoire";
+		}
+		if(isNullOrEmpty($VARIABLE)){
+			$missingValues++;
+			$VARIBALE_error = "L'heure de fin de manifestation est obligatoire";
+		}
+		if(isNullOrEmpty($VARIABLE)){
+			$missingValues++;
+			$VARIBALE_error = "L'heure de fin de manifestation est obligatoire";
 		}
 
 
@@ -105,21 +159,8 @@
 			$genericError = "Le prix de la prestation est obligatoire";
 			$dps_price_error = $genericError;
 		}
-		elseif(isNullOrEmpty($p1_part)){
-			$genericError = "Le nombre de participants est obligatoire pour le calcul du RIS";
-		}
-		elseif(isNullOrEmpty($p1_spec)){
-			$genericError = "Le nombre de spectateurs est obligatoire pour le calcul du RIS";
-		}
-		elseif(isNullOrEmpty($p2)){
-			$genericError = "La typologie du public est obligatoire pour le calcul du RIS";
-		}
-		elseif(isNullOrEmpty($e1)){
-			$genericError = "Les risques environnementaux sont obligatoires pour le calcul du RIS";
-		}
-		elseif(isNullOrEmpty($e2)){
-			$genericError = "Le délai d'intervention des secours publics est obligatoire pour le calcul du RIS";
-		}
+
+
 		else {
 			if(isNullOrEmpty($nb_ce)){
 				$nb_ce = "0";
@@ -165,6 +206,11 @@
 			}
 			if(isNullOrEmpty($local)){
 				$local = "false";
+			}
+
+
+			if ($missingValues > 0 ) {
+				$genericError += 'Il y a '.$missingValues.' champs non-renseignés';
 			}
 
 			$sql = "SELECT ID FROM $tablename_dps WHERE cu_complet='$cu_complet'" or die("Erreur lors de la consultation" . mysqli_error($db_link));

@@ -232,7 +232,7 @@
 							</label>
 							<div class="col-sm-2">
 								<input type="number" class="form-control" id="event_department" name="event_department" aria-describedby="event-department-error" minlength='2' maxlength='3' required='true' digits='true' placeholder="92" value="<?php echo $event_department; ?>" data-minlength="10" >
-								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
 								<span id='event-department-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 							</div>
 						</div>
@@ -328,9 +328,6 @@
 						</div>
 
 
-
-
-
 						<div class="form-group form-group-sm">
 							<label for="event_pref_secu" class="col-sm-4 control-label">
 								Dossier déjà déposé en préfecture ?
@@ -358,75 +355,82 @@
 					</div>
 					<div class="panel-body">
 
-						<div class="form-group form-group-sm has-feedback">
-							<label for="spectateurs" class="col-sm-4 control-label">
+						<?php $feedback = compute_server_feedback($ris_p1_public_error);?>
+						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+							<label for="ris_p1_public" class="col-sm-4 control-label">
 								Nombre de spectateurs
 								<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chiffres uniquement"></span>
 							</label>
 							<div class="col-sm-8">
-								<input type="number" class="form-control risp" id="spectateurs" name="spectateurs" aria-describedby="spectateurs-error" required='true' digits='true' placeholder="Spectateurs" >
-								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='spectateurs-error' class="help-block" aria-hidden="true"></span>
+								<input type="number" class="form-control risp" id="ris_p1_public" name="ris_p1_public" aria-describedby="ris-p1-public-error" required='true' digits='true' placeholder="Spectateurs" value="<?php echo $ris_p1_public; ?>" >
+								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+								<span id='ris-p1-public-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 							</div>
 						</div>
 
-						<div class="form-group form-group-sm has-feedback">
-							<label for="participants" class="col-sm-4 control-label">
+						<?php $feedback = compute_server_feedback($ris_p1_actors_error);?>
+						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+							<label for="ris_p1_actors" class="col-sm-4 control-label">
 								Nombre de participants
 								<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chiffres uniquement."></span>
 							</label>
 							<div class="col-sm-8">
-								<input type="number" class="form-control risp" id="participants" name="participants" aria-describedby="participants-error" required='true' digits='true' placeholder="Participants" >
-								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='participants-error' class="help-block" aria-hidden="true"></span>
+								<input type="number" class="form-control risp" id="ris_p1_actors" name="ris_p1_actors" aria-describedby="ris-p1-actors-error" required='true' digits='true' placeholder="Participants" value="<?php echo $ris_p1_actors; ?>" >
+								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+								<span id='ris-p1-actors-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 							</div>
 						</div>
 
-						<div class="form-group form-group-sm has-feedback">
-							<label for="activite" class="col-sm-4 control-label">Activité du rassemblement </label>
+						<?php $feedback = compute_server_feedback($ris_p2_error);?>
+						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+							<label for="ris_p2" class="col-sm-4 control-label">Activité du rassemblement </label>
 							<div class="col-sm-8">
-								<select class="form-control risi" id="activite" name="activite" aria-describedby="activite-error" >
-									<option value="1">Public assis (spectacle, réunion, restauration, etc.)</option>
-									<option value="2">Public debout (Exposition, foire, salon, exposition, etc.)</option>
-									<option value="3">Public debout actif (Spectacle avec public statique, fête foraine, etc.)</option>
-									<option value="4">Public debout à risque (public dynamique, danse, féria, carnaval, etc.)</option>
+								<select class="form-control risi" id="ris_p2" name="ris_p2" aria-describedby="ris-p2-error" >
+									<option value="1" <?php if ($ris_p2 == '1') {echo 'selected';}?>>Public assis (spectacle, réunion, restauration, etc.)</option>
+									<option value="2" <?php if ($ris_p2 == '2') {echo 'selected';}?>>Public debout (Exposition, foire, salon, exposition, etc.)</option>
+									<option value="3" <?php if ($ris_p2 == '3') {echo 'selected';}?>>Public debout actif (Spectacle avec public statique, fête foraine, etc.)</option>
+									<option value="4" <?php if ($ris_p2 == '4') {echo 'selected';}?>>Public debout à risque (public dynamique, danse, féria, carnaval, etc.)</option>
 								</select>
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
-								<span id='activite-error' class="help-block" aria-hidden="true">Niveau de risque (P2)</span>
+								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+								<span id='ris-p2-error' class="help-block" aria-hidden="true">Niveau de risque (P2)</span>
 							</div>
 						</div>
 
-						<div class="form-group form-group-sm has-feedback">
-							<label for="environnement" class="col-sm-4 control-label">Environnement et accessibilité</label>
+						<?php $feedback = compute_server_feedback($ris_e1_error);?>
+						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+							<label for="ris_e1" class="col-sm-4 control-label">Environnement et accessibilité</label>
 							<div class="col-sm-8">
-								<select class="form-control risi" id="environnement" name="environnement" aria-describedby="environnement-error" >
-									<option value="1">Faible (Structure permanente, voies publiques, etc.)</option>
-									<option value="2">Modéré (Gradins, tribunes, mois de 2 hectares, etc.)</option>
-									<option value="3">Moyen (Entre 2 et 5 hectares, autres conditions, etc.)</option>
-									<option value="4">Elevé (Brancardage > 600m, pas d'accès VPSP, etc.)</option>
+								<select class="form-control risi" id="ris_e1" name="ris_e1" aria-describedby="ris-e1-error" >
+									<option value="1" <?php if ($ris_e1 == '1') {echo 'selected';}?>>Faible (Structure permanente, voies publiques, etc.)</option>
+									<option value="2" <?php if ($ris_e1 == '2') {echo 'selected';}?>>Modéré (Gradins, tribunes, mois de 2 hectares, etc.)</option>
+									<option value="3" <?php if ($ris_e1 == '3') {echo 'selected';}?>>Moyen (Entre 2 et 5 hectares, autres conditions, etc.)</option>
+									<option value="4" <?php if ($ris_e1 == '4') {echo 'selected';}?>>Elevé (Brancardage > 600m, pas d'accès VPSP, etc.)</option>
 								</select>
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
-								<span id='environnement-error' class="help-block" aria-hidden="true">Caractéristiques de l'environnement et accessibilité du site (E1)</span>
+								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+								<span id='ris-e1-error' class="help-block" aria-hidden="true">Caractéristiques de l'environnement et accessibilité du site (E1)</span>
 								<div id="e1"></div>
 							</div>
 						</div>
 
-						<div class="form-group form-group-sm has-feedback">
-							<label for="delai" class="col-sm-4 control-label">Délai d'intervention des secours publics</label>
+						<?php $feedback = compute_server_feedback($ris_e2_error);?>
+						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+							<label for="ris_e2" class="col-sm-4 control-label">Délai d'intervention des secours publics</label>
 							<div class="col-sm-8">
-								<select class="form-control risi" id="delai" name="delai" aria-describedby="delai-error" >
-									<option value="1">Faible (Moins de 10 minutes)</option>
-									<option value="2">Modéré (Entre 10 et 20 minutes)</option>
-									<option value="3">Moyen (Entre 20 et 30 minutes)</option>
-									<option value="4">Elevé (Plus de 30 minutes)</option>
+								<select class="form-control risi" id="ris_e2" name="ris_e2" aria-describedby="ris-e2-error" >
+									<option value="1" <?php if ($ris_e2 == '1') {echo 'selected';}?>>Faible (Moins de 10 minutes)</option>
+									<option value="2" <?php if ($ris_e2 == '2') {echo 'selected';}?>>Modéré (Entre 10 et 20 minutes)</option>
+									<option value="3" <?php if ($ris_e2 == '3') {echo 'selected';}?>>Moyen (Entre 20 et 30 minutes)</option>
+									<option value="4" <?php if ($ris_e2 == '4') {echo 'selected';}?>>Elevé (Plus de 30 minutes)</option>
 								</select>
 								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='delai-error' class="help-block" aria-hidden="true">Délai d'intervention (E2)</span>
+								<span id='ris-e2-error' class="help-block" aria-hidden="true">Délai d'intervention (E2)</span>
 							</div>
 						</div>
 
+
+						<?php $feedback = compute_server_feedback($event_department_error);?>
 						<label for="delai">Commentaires concernant le RIS</label>
-						<textarea class="form-control" rows="4" id="commentaire_ris" name="commentaire_ris" placeholder="Indiquer ici tout commentaire(s) concernant le RIS"></textarea>
+						<textarea class="form-control" rows="4" id="commentaire_ris" name="commentaire_ris" placeholder="Indiquer ici tout commentaire(s) concernant le RIS"value="<?php echo $event_department; ?>" ></textarea>
 						<span class="help-block"></span>
 
 						<div class="alert " id="resultatris" role="alert">
