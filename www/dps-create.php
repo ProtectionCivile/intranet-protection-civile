@@ -554,7 +554,6 @@
 						</div>
 					</div>
 				</div>
-			</div>
 				<div class="panel panel-default">
 					<div class="panel-heading">Moyens fournis par la Protection Civile <span class="glyphicon glyphicon-info-sign" rel="tooltip" data-toggle="tooltip" title="Permet la comparaison avec la grille des risques."></span></div>
 					<div class="panel-body">
@@ -579,9 +578,9 @@
 							<label for="nb_pse1" class="col-sm-4 control-label">PSE-1</label>
 							<div class="col-sm-2">
 								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-									<input type="number" class="form-control" id="nb_pse1" name="nb_pse1" aria-describedby="nb_pse1-error" required='true' digits='true' placeholder="00" >
+									<input type="number" class="form-control" id="nb_pse1" name="nb_pse1" aria-describedby="nb-pse1-error" required='true' digits='true' placeholder="00" >
 									<span class="form-control-feedback" aria-hidden="true"></span>
-									<span id='nb_pse1-error' class="help-block" aria-hidden="true"></span>
+									<span id='nb-pse1-error' class="help-block" aria-hidden="true"></span>
 								</div>
 							</div>
 							<label for="nb_psc1" class="col-sm-3 control-label">Stagiaire PSC-1</label>
@@ -772,6 +771,7 @@
 						<textarea class="form-control" rows="5" id="justificatif" name="justificatif" placeholder="Indiquer tout justificatif sur les moyens, structures, etc. ou toute information utile pour la bonne gestion administrative du poste."></textarea>
 					</div>
 				</div>
+
 			</div>
 		</div>
 
