@@ -185,29 +185,29 @@
 					</div>
 					<div class="panel-body">
 
-						<?php $feedback = compute_server_feedback($nom_nature_error);?>
+						<?php $feedback = compute_server_feedback($event_name_error);?>
 						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-							<label for="nom_nature" class="col-sm-4 control-label">
+							<label for="event_name" class="col-sm-4 control-label">
 								Nom / Nature
 								<span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom/Nature de la manifestation"></span>
 							</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" id="nom_nature" name="nom_nature" aria-describedby="nom_nature-error" minlength='5' required='true' placeholder="Nom / Nature" value="<?php if(isset($duplicate_array['description_manif'])){echo $duplicate_array['description_manif'];} ?>" >
+								<input type="text" class="form-control" id="event_name" name="event_name" aria-describedby="event-name-error" minlength='5' required='true' placeholder="Nom / Nature" value="<?php echo $event_name; ?>" data-minlength="10" >
 								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='nom_nature-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								<span id='event-name-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 							</div>
 						</div>
 
-						<?php $feedback = compute_server_feedback($activite_descriptif_error);?>
+						<?php $feedback = compute_server_feedback($event_description_error);?>
 						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-							<label for="activite_descriptif" class="col-sm-4 control-label">
+							<label for="event_description" class="col-sm-4 control-label">
 								Activité / Descriptif
 								<span class="glyphicon glyphicon-info-sign" data-trigger="hover" rel="popover" data-toggle="popover" data-content="Descriptif court."></span>
 							</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" id="activite_descriptif" name="activite_descriptif" aria-describedby="activite_descriptif-error" minlength='5' required='true' placeholder="Activité / Descriptif" value="<?php if(isset($duplicate_array['activite'])){echo $duplicate_array['activite'];} ?>" >
+								<input type="text" class="form-control" id="event_description" name="event_description" aria-describedby="event-description-error" minlength='5' required='true' placeholder="Activité / Descriptif" value="<?php echo $event_description; ?>" data-minlength="10" >
 								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='activite_descriptif-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								<span id='event-description-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 							</div>
 						</div>
 
@@ -218,35 +218,48 @@
 								<span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Adresse la plus précise possible du lieu de l'événement."></span>
 							</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" id="lieu_precis" name="lieu_precis" aria-describedby="lieu_precis-error" minlength='10' required='true' placeholder="Adresse précise du lien de l'évenement" value="<?php if(isset($duplicate_array['adresse_manif'])){echo $duplicate_array['adresse_manif'];} ?>" >
+								<input type="text" class="form-control" id="lieu_precis" name="lieu_precis" aria-describedby="lieu_precis-error" minlength='10' required='true' placeholder="Adresse précise du lien de l'évenement" value="<?php echo $event_address; ?>" data-minlength="10" >
 								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
 								<span id='lieu_precis-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+							</div>
+						</div>
+
+						<?php $feedback = compute_server_feedback($event_department_error);?>
+						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+							<label for="event_department" class="col-sm-4 control-label">
+								Département où se situe la manifestation
+								<span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Exemple : 92"></span>
+							</label>
+							<div class="col-sm-2">
+								<input type="number" class="form-control" id="event_department" name="event_department" aria-describedby="event-department-error" minlength='2' maxlength='3' required='true' digits='true' placeholder="92" value="<?php echo $event_department; ?>" data-minlength="10" >
+								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span id='event-department-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 							</div>
 						</div>
 
 						<div class="form-group form-group-sm form-inline row datetimestart">
 							<label for="date_debut" class="col-sm-4 control-label">Date et heure du début de l'évènement</label>
 							<div class="col-sm-3">
-								<div class='input-group date' id='date_debut' name="date_debut">
-									<input type='text' class="form-control" id='date_debut' name="date_debut" aria-describedby="date_debut-error" required='true' value=""/ >
+								<div class='input-group date' id='event_begin_date_div' name="event_begin_date_div">
+									<input type='text' class="form-control" id='event_begin_date' name="event_begin_date" aria-describedby="event-begin-date-error" required='true' value="<?php echo $event_begin_date; ?>" / >
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</div>
 								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='date_debut-error' class="help-block" aria-hidden="true"></span>
+								<span id='event-begin-date-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<div class="col-sm-3">
-								<div class='input-group date' id='heure_debut' name="heure_debut">
-									<input type='text' class="form-control" id='heure_debut' name="heure_debut" required='true' aria-describedby="heure_debut-error"/>
+								<div class='input-group date' id='event_begin_time_div' name="event_begin_time_div">
+									<input type='text' class="form-control" id='event_begin_time' name="event_begin_time" required='true' aria-describedby="event-begin-time-error" value="<?php echo $event_begin_time; ?>" />
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 								</div>
 								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='heure_debut-error' class="help-block" aria-hidden="true"></span>
+								<span id='event-begin-time-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<script type="text/javascript">
 								$(function () {
-									$('#date_debut').datetimepicker({
+									$('#event_begin_date_div').datetimepicker({
 										locale: 'fr',
 										format: 'DD-MM-YYYY',
 										showClear:true,
@@ -255,14 +268,14 @@
 									});
 								});
 								$(function () {
-									$('#heure_debut').datetimepicker({
+									$('#event_begin_time_div').datetimepicker({
 										locale: 'fr',
 										format: 'HH:mm',
 										showClear:true,
 										showClose:true,
 										toolbarPlacement: 'bottom',
 										useCurrent:false,
-										stepping:'5'
+										stepping:'15'
 									});
 								});
 							</script>
@@ -271,26 +284,26 @@
 						<div class="form-group form-group-sm form-inline row">
 							<label for="date_fin" class="col-sm-4 control-label">Date et heure de fin de l'évènement</label>
 							<div class="col-sm-3">
-								<div class='input-group date' id='date_fin' name="date_fin">
-									<input type='text' class="form-control" id='date_fin' name="date_fin" required='true' aria-describedby="date_fin-error"/>
+								<div class='input-group date' id='event_end_date_div' name="event_end_date_div">
+									<input type='text' class="form-control" id='event_end_date' name="event_end_date" required='true' aria-describedby="event-end-date-error" value="<?php echo $event_end_date; ?>" />
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</div>
 								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='date_fin-error' class="help-block" aria-hidden="true"></span>
+								<span id='event-end-date-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<div class="col-sm-3">
-								<div class='input-group date' id='heure_fin' name="heure_fin" >
-									<input type='text' class="form-control" id='heure_fin' name="heure_fin" required='true' aria-describedby="heure_fin-error"/>
+								<div class='input-group date' id='event_end_time_div' name="event_end_time_div" >
+									<input type='text' class="form-control" id='event_end_time' name="event_end_time" required='true' aria-describedby="event-end-time-error" value="<?php echo $event_end_time; ?>"/>
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 								</div>
 								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='heure_fin-error' class="help-block" aria-hidden="true"></span>
+								<span id='event-end-time-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<script type="text/javascript">
 								$(function () {
-									$('#date_fin').datetimepicker({
+									$('#event_end_date_div').datetimepicker({
 										locale: 'fr',
 										format: 'DD-MM-YYYY',
 										showClear:true,
@@ -300,54 +313,29 @@
 									});
 								});
 								$(function () {
-									$('#heure_fin').datetimepicker({
+									$('#event_end_time_div').datetimepicker({
 										locale: 'fr',
 										format: 'HH:mm',
 										showClear:true,
 										showClose:true,
 										toolbarPlacement: 'bottom',
 										useCurrent:false,
-										stepping:'5'
+										stepping:'15'
 
 									});
 								});
 							</script>
 						</div>
 
-						<?php $feedback = compute_server_feedback($departement_error);?>
-						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-							<label for="departement" class="col-sm-4 control-label">
-								Département où se situe la manifestation
-								<span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Exemple : 92"></span>
-							</label>
-							<div class="col-sm-2">
-								<input type="number" class="form-control" id="departement" name="departement" aria-describedby="departement-error" minlength='2' maxlength='3' required='true' digits='true' placeholder="92" value="<?php if(isset($duplicate_array['dept'])){echo $duplicate_array['dept'];} ?>" >
-								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='departement-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
-							</div>
-						</div>
 
-						<?php $feedback = compute_server_feedback($prix_error);?>
-						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-							<label for="prix" class="col-sm-4 control-label">
-								Prix
-								<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Tarif facturé au client."></span>
-							</label>
-							<div class="col-sm-2">
-								<div class="input-group">
-									<input type="number" class="form-control" id="prix" name="prix" aria-describedby="prix-error" minlength='1' required='true' number='true' placeholder="Prix" value="<?php if(isset($duplicate_array['prix'])){echo $duplicate_array['prix'];} ?>" >
-									<div class="input-group-addon glyphicon glyphicon-euro"></div>
-								</div>
-								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='prix-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
-							</div>
-						</div>
+
+
 
 						<div class="form-group form-group-sm">
 							<label for="event_pref_secu" class="col-sm-4 control-label">
 								Dossier déjà déposé en préfecture ?
 							</label>
-							<div class="col-sm-8">
+							<div class="col-sm-2">
 								<select class="form-control" name="event_pref_secu" id="event_pref_secu" aria-describedby="event-pref-secu-error" >
 									<option value="false">Non</option>
 									<option value="true" <?php if ($event_pref_secu) {echo 'selected';}?> >Oui</option>
@@ -764,6 +752,23 @@
 						<h3 class="panel-title">Justificatif du dispositif mis en place</h3>
 					</div>
 					<div class="panel-body">
+
+						<?php $feedback = compute_server_feedback($dps_price_error);?>
+						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+							<label for="dps_price" class="col-sm-4 control-label">
+								Prix
+								<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Tarif facturé au client."></span>
+							</label>
+							<div class="col-sm-2">
+								<div class="input-group">
+									<input type="number" class="form-control" id="dps_price" name="dps_price" aria-describedby="dps-price-error" minlength='1' required='true' number='true' placeholder="Prix" value="<?php echo $dps_price; ?>" data-minlength="1" >
+									<div class="input-group-addon glyphicon glyphicon-euro"></div>
+								</div>
+								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span id='dps-price-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+							</div>
+						</div>
+
 						<textarea class="form-control" rows="5" id="justificatif" name="justificatif" placeholder="Indiquer tout justificatif sur les moyens, structures, etc. ou toute information utile pour la bonne gestion administrative du poste."></textarea>
 					</div>
 				</div>

@@ -43,6 +43,42 @@
 
 
 
+
+	// Evenement
+	////////////////////////////////////////////////////////////////////////$nom_nature = mysqli_real_escape_string($db_link, $nom_nature); // TODO A mettre lors de la création de requete SQL
+
+	if (isset($duplicated_dps_array['event_name'])) { $event_name = $duplicated_dps_array['event_name']; }
+	elseif (isset($_POST['event_name'])) { $event_name = $_POST['event_name']; }
+	else { $event_name = $dps['event_name']; }
+
+	if (isset($duplicated_dps_array['event_description'])) { $event_description = $duplicated_dps_array['event_description']; }
+	elseif (isset($_POST['event_description'])) { $event_description = $_POST['event_description']; }
+	else { $event_description = $dps['event_description']; }
+
+	if (isset($duplicated_dps_array['event_address'])) { $event_address = $duplicated_dps_array['event_address']; }
+	elseif (isset($_POST['event_address'])) { $event_address = $_POST['event_address']; }
+	else { $event_address = $dps['event_address']; }
+
+	if (isset($duplicated_dps_array['event_department'])) { $event_department = $duplicated_dps_array['event_department']; }
+	elseif (isset($_POST['event_department'])) { $event_department = $_POST['event_department']; }
+	else { $event_department = $dps['event_department']; }
+
+	if (isset($duplicated_dps_array['event_begin_date'])) { $event_begin_date = $duplicated_dps_array['event_begin_date']; }
+	elseif (isset($_POST['event_begin_date'])) { $event_begin_date = $_POST['event_begin_date']; }
+	else { $event_begin_date = $dps['event_begin_date']; }
+
+	if (isset($duplicated_dps_array['event_begin_time'])) { $event_begin_time = $duplicated_dps_array['event_begin_time']; }
+	elseif (isset($_POST['event_begin_time'])) { $event_begin_time = $_POST['event_begin_time']; }
+	else { $event_begin_time = $dps['event_begin_time']; }
+
+	if (isset($duplicated_dps_array['event_begin_date'])) { $event_begin_date = $duplicated_dps_array['event_begin_date']; }
+	elseif (isset($_POST['event_begin_date'])) { $event_begin_date = $_POST['event_begin_date']; }
+	else { $event_begin_date = $dps['event_begin_date']; }
+
+	if (isset($duplicated_dps_array['event_end_time'])) { $event_end_time = $duplicated_dps_array['event_end_time']; }
+	elseif (isset($_POST['event_end_time'])) { $event_end_time = $_POST['event_end_time']; }
+	else { $event_end_time = $dps['event_end_time']; }
+
 	if (isset($duplicated_dps_array['event_pref_secu'])) { $event_pref_secu = $duplicated_dps_array['event_pref_secu']; }
 	elseif (isset($_POST['event_pref_secu'])) { $event_pref_secu = $_POST['event_pref_secu']; }
 	else { $event_pref_secu = $dps['event_pref_secu']; }
@@ -50,51 +86,15 @@
 
 
 
-	$nom_nature = $_POST['nom_nature'];
-	$nom_nature = mysqli_real_escape_string($db_link, $nom_nature);
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-
-	$activite_descriptif = $_POST['activite_descriptif'];
-	$activite_descriptif = mysqli_real_escape_string($db_link, $activite_descriptif);
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-
-	$lieu_precis = $_POST['lieu_precis'];
-	$lieu_precis = mysqli_real_escape_string($db_link, $lieu_precis);
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
 
 
-	$date_debut = $_POST['date_debut'];
-	$heure_debut = $_POST['heure_debut'];
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($client_array['DANSCLIENT'])) { $VARIABLE = $client_array['DANSCLIENT']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
 
-	$date_fin = $_POST['date_fin'];
-	$heure_fin = $_POST['heure_fin'];
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+	$prix = $_POST['dps_price'];
+	if (isset($duplicated_dps_array['dps_price'])) { $dps_price = $duplicated_dps_array['dps_price']; }
+	elseif (isset($_POST['dps_price'])) { $dps_price = $_POST['dps_price']; }
+	else { $dps_price = $dps['dps_price']; }
 
 
-	$departement = $_POST['departement'];
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-
-	$prix = $_POST['prix'];
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
 
 // C'est ici qu'il faut faire les modifications !!
 // Quitte à renommer les variables pour qu'elles soient plus lisibles dans la page de DPS

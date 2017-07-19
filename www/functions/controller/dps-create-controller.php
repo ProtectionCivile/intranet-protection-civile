@@ -32,8 +32,6 @@
 		}
 		if(isNullOrEmpty($client_fax)){
 			//C'est pas grave
-			//$genericError = "Le fax de l'organisateur est obligatoire";
-			//$client_fax_error = "";
 		}
 		if(isNullOrEmpty($client_email)){
 			$genericError = "L'adresse mail de l'organisateur est obligatoire";
@@ -42,7 +40,38 @@
 
 
 
-
+		if(isNullOrEmpty($event_name)){
+			$genericError = "Le nom de l'évènement est obligatoire";
+			$event_name_error = $genericError;
+		}
+		if(isNullOrEmpty($event_description)){
+			$genericError = "Le descriptif de l'activité du rassemblement est obligatoire";
+			$event_description_error = $genericError;
+		}
+		if(isNullOrEmpty($event_address)){
+			$genericError = "L'adresse exacte de la manifestation est obligatoire";
+			$event_address_error = $genericError;
+		}
+		if(isNullOrEmpty($event_department)){
+			$genericError = "Le département de la manifestation est obligatoire";
+			$event_department_error = $genericError;
+		}
+		if(isNullOrEmpty($event_begin_date)){
+			$genericError = "La date de début de manifestation est obligatoire";
+			$event_begin_date_error = $genericError;
+		}
+		if(isNullOrEmpty($event_begin_time)){
+			$genericError = "L'heure de début de manifestation est obligatoire";
+			$event_begin_time_error = $genericError;
+		}
+		if(isNullOrEmpty($event_end_date)){
+			$genericError = "La date de fin de manifestation est obligatoire";
+			$event_end_date_error = $genericError;
+		}
+		if(isNullOrEmpty($event_end_time)){
+			$genericError = "L'heure de fin de manifestation est obligatoire";
+			$event_end_time_error = $genericError;
+		}
 		if(isNullOrEmpty($event_pref_secu)){
 			$event_pref_secu = "false";
 		}
@@ -57,49 +86,24 @@
 		elseif(isNullOrEmpty($type_dps)){
 			$genericError = "le type de DPS est obligatoire";
 		}
-		elseif(isNullOrEmpty($dps_debut)){
-			$genericError = "La date de début de manifestation est obligatoire";
-		}
-		elseif(isNullOrEmpty($dps_fin)){
-			$genericError = "La date de fin de manifestation est obligatoire";
-		}
+
 		elseif(isNullOrEmpty($dps_debut_poste)){
 			$genericError = "La date de début de poste est obligatoire";
 		}
 		elseif(isNullOrEmpty($dps_fin_poste)){
 			$genericError = "La date de fin de poste est obligatoire";
 		}
-		elseif(isNullOrEmpty($heure_debut)){
-			$genericError = "L'heure de début de manifestation est obligatoire";
-		}
-		elseif(isNullOrEmpty($heure_fin)){
-			$genericError = "L'heure de fin de manifestation est obligatoire";
-		}
+
 		elseif(isNullOrEmpty($dps_debut_poste)){
 			$genericError = "L'heure de début de poste est obligatoire";
 		}
 		elseif(isNullOrEmpty($heure_fin_poste)){
 			$genericError = "L'heure de fin de poste est obligatoire";
 		}
-		elseif(isNullOrEmpty($activite_descriptif)){
-			$genericError = "Le descriptif de l'activité du rassemblement est obligatoire";
-			$activite_descriptif_error = $genericError;
-		}
-		elseif(isNullOrEmpty($lieu_precis)){
-			$genericError = "L'adresse exacte de la manifestation est obligatoire";
-			$lieu_precis_error = $genericError;
-		}
-		elseif(isNullOrEmpty($nom_nature)){
-			$genericError = "Le nom du poste est obligatoire";
-			$nom_nature_error = $genericError;
-		}
-		elseif(isNullOrEmpty($dept)){
-			$genericError = "Le département de la manifestation est obligatoire";
-			$dept_error = $genericError;
-		}
-		elseif(isNullOrEmpty($prix)){
+
+		elseif(isNullOrEmpty($dps_price)){
 			$genericError = "Le prix de la prestation est obligatoire";
-			$prix_error = $genericError;
+			$dps_price_error = $genericError;
 		}
 		elseif(isNullOrEmpty($p1_part)){
 			$genericError = "Le nombre de participants est obligatoire pour le calcul du RIS";
