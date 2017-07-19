@@ -253,7 +253,8 @@
 								<div class='input-group date' id='event_begin_time_div' name="event_begin_time_div">
 									<input type='text' class="form-control" id='event_begin_time' name="event_begin_time" required='true' aria-describedby="event-begin-time-error" value="<?php echo $event_begin_time; ?>" />
 									<span class="input-group-addon">
-									<span class="glyphicon glyphicon-time"></span>
+										<span class="glyphicon glyphicon-time"></span>
+									</span>
 								</div>
 								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='event-begin-time-error' class="help-block" aria-hidden="true"></span>
@@ -297,7 +298,8 @@
 								<div class='input-group date' id='event_end_time_div' name="event_end_time_div" >
 									<input type='text' class="form-control" id='event_end_time' name="event_end_time" required='true' aria-describedby="event-end-time-error" value="<?php echo $event_end_time; ?>"/>
 									<span class="input-group-addon">
-									<span class="glyphicon glyphicon-time"></span>
+										<span class="glyphicon glyphicon-time"></span>
+									</span>
 								</div>
 								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='event-end-time-error' class="help-block" aria-hidden="true"></span>
@@ -479,7 +481,8 @@
 								<div class='input-group date' id='dps_begin_time_div' name="dps_begin_time_div">
 									<input type='text' class="form-control" id='dps_begin_time' name="dps_begin_time" required='true' aria-describedby="dps-begin-time-error" value="<?php echo $dps_begin_time; ?>" />
 									<span class="input-group-addon">
-									<span class="glyphicon glyphicon-time"></span>
+										<span class="glyphicon glyphicon-time"></span>
+									</span>
 								</div>
 								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='dps-begin-time-error' class="help-block" aria-hidden="true"></span>
@@ -523,9 +526,10 @@
 								<div class='input-group date' id='dps_end_time_div' name="dps_end_time_div" >
 									<input type='text' class="form-control" id='dps_end_time' name="dps_end_time" required='true' aria-describedby="dps-end-time-error" value="<?php echo $dps_end_time; ?>"/>
 									<span class="input-group-addon">
-									<span class="glyphicon glyphicon-time"></span>
-								</div>
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+										<span class="glyphicon glyphicon-time"></span>
+									</span>
+							</div>
+							<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='dps-end-time-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<script type="text/javascript">
