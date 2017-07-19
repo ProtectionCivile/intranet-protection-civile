@@ -246,7 +246,7 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</div>
-								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='event-begin-date-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<div class="col-sm-3">
@@ -255,7 +255,7 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 								</div>
-								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='event-begin-time-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<script type="text/javascript">
@@ -290,7 +290,7 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</div>
-								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='event-end-date-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<div class="col-sm-3">
@@ -299,7 +299,7 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 								</div>
-								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='event-end-time-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<script type="text/javascript">
@@ -472,7 +472,7 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</div>
-								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='dps-begin-date-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<div class="col-sm-3">
@@ -481,7 +481,7 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 								</div>
-								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='dps-begin-time-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<script type="text/javascript">
@@ -516,7 +516,7 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</div>
-								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='dps-end-date-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<div class="col-sm-3">
@@ -525,7 +525,7 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-time"></span>
 								</div>
-								<span class="form-control-feedback" aria-hidden="true"></span>
+								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='dps-end-time-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<script type="text/javascript">
@@ -563,12 +563,13 @@
 					<div class="panel-body">
 
 						<div class="form-group form-group-sm">
+							<?php $feedback = compute_server_feedback($client_email_error);?>
 							<label for="nb_ce" class="col-sm-4 control-label">Chef d'équipe</label>
 							<div class="col-sm-2">
 								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-									<input type="number" class="form-control" id="nb_ce" name="nb_ce" aria-describedby="nb_ce-error" required='true' digits='true' placeholder="00" >
-									<span class="form-control-feedback" aria-hidden="true"></span>
-									<span id='nb_ce-error' class="help-block" aria-hidden="true"></span>
+									<input type="number" class="form-control" id="nb_ce" name="nb_ce" aria-describedby="nb-ce-error" required='true' digits='true' placeholder="00" >
+									<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+									<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 								</div>
 							</div>
 							<label for="nb-pse2" class="col-sm-3 control-label">PSE-2</label>
