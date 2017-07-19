@@ -500,7 +500,7 @@
 										showClose:true,
 										toolbarPlacement: 'bottom',
 										useCurrent:false,
-										stepping:'5'
+										stepping:'15'
 
 									});
 								});
@@ -547,7 +547,7 @@
 									showClose:true,
 									toolbarPlacement: 'bottom',
 									useCurrent:false,
-									stepping:'5'
+									stepping:'15'
 
 								});
 							});
@@ -595,7 +595,6 @@
 						</div>
 					</div>
 					<div class="panel-body">
-
 						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
 							<label for="vpsp_transport" class="col-sm-4 control-label">VPSP Transport (évacuation)</label>
 							<div class="col-sm-2">
@@ -627,6 +626,26 @@
 									<input type="number" class="form-control" id="tente" name="tente" aria-describedby="tente-error" min='0' required='true' digits='true' placeholder="00">
 									<span class="form-control-feedback" aria-hidden="true"></span>
 									<span id='tente-error' class="help-block" aria-hidden="true"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-body">
+						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+							<label for="medecin_asso" class="col-sm-4 control-label">Nombre de médecins Protec</label>
+							<div class="col-sm-2">
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="number" class="form-control" id="medecin_asso" name="medecin_asso" aria-describedby="medecin_asso-error" min='0' digits='true' placeholder="00">
+									<span class="form-control-feedback" aria-hidden="true"></span>
+									<span id='medecin_asso-error' class="help-block" aria-hidden="true"></span>
+								</div>
+							</div>
+							<label for="infirmier_asso" class="col-sm-3 control-label">Nombre d'infirmiers Protec</label>
+							<div class="col-sm-2">
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="number" class="form-control" id="infirmier_asso" name="infirmier_asso" aria-describedby="infirmier_asso-error" min='0' digits='true' placeholder="00">
+									<span class="form-control-feedback" aria-hidden="true"></span>
+									<span id='infirmier_asso-error' class="help-block" aria-hidden="true"></span>
 								</div>
 							</div>
 						</div>
@@ -675,14 +694,7 @@
 					<div class="panel-heading">Moyens médicaux / structures</div>
 					<div class="panel-body">
 
-						<div class="form-group form-group-sm has-feedback">
-							<label for="medecin_asso" class="col-sm-4 control-label">Nombre de médecins PC</label>
-							<div class="col-sm-2">
-								<input type="number" class="form-control" id="medecin_asso" name="medecin_asso" aria-describedby="medecin_asso-error" min='0' digits='true' placeholder="00">
-								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='medecin_asso-error' class="help-block" aria-hidden="true"></span>
-							</div>
-						</div>
+
 
 						<div class="form-group form-group-sm has-feedback">
 							<label for="medecin_autre" class="col-sm-4 control-label">Nombre de médecins extérieurs (préciser)</label>
@@ -698,18 +710,6 @@
 								<span id='medecin_appartenance-error' class="help-block" aria-hidden="true"></span>
 							</div>
 						</div>
-					</div>
-					<div class="panel-body">
-
-						<div class="form-group form-group-sm has-feedback">
-							<label for="infirmier_asso" class="col-sm-4 control-label">Nombre d'infirmiers PC</label>
-							<div class="col-sm-2">
-								<input type="number" class="form-control" id="infirmier_asso" name="infirmier_asso" aria-describedby="infirmier_asso-error" min='0' digits='true' placeholder="00">
-								<span class="form-control-feedback" aria-hidden="true"></span>
-								<span id='infirmier_asso-error' class="help-block" aria-hidden="true"></span>
-							</div>
-						</div>
-
 						<div class="form-group form-group-sm has-feedback">
 							<label for="infirmier_autre" class="col-sm-4 control-label">Nombre d'infirmiers extérieurs (préciser)</label>
 							<div class="col-sm-2">
