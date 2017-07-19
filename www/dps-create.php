@@ -350,7 +350,7 @@
 							<div class="col-sm-8">
 								<select class="form-control" name="event_pref_secu" id="event_pref_secu" aria-describedby="event-pref-secu-error" >
 									<option value="false">Non</option>
-									<option value="true" <?php if ($event_pref_secu) {echo 'selected'};?> >Oui</option>
+									<option value="true" <?php if ($event_pref_secu) {echo 'selected';}?> >Oui</option>
 								</select>
 								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='event-pref-secu-error' class="help-block" aria-hidden="true"></span>
@@ -360,7 +360,7 @@
 				</div>
 
 
-				
+
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">
