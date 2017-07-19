@@ -72,7 +72,7 @@
 								<div class="checkbox checkbox-inline">
 									<label>
 										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-boulogne-issy">
-										Boulogne Issy
+										Boulogne-Issy
 									</label>
 								</div>
 								<div class="checkbox checkbox-inline">
