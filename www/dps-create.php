@@ -246,7 +246,6 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</div>
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='event-begin-date-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<div class="col-sm-3">
@@ -256,7 +255,6 @@
 										<span class="glyphicon glyphicon-time"></span>
 									</span>
 								</div>
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='event-begin-time-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<script type="text/javascript">
@@ -291,7 +289,6 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</div>
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='event-end-date-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<div class="col-sm-3">
@@ -301,7 +298,6 @@
 										<span class="glyphicon glyphicon-time"></span>
 									</span>
 								</div>
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='event-end-time-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<script type="text/javascript">
@@ -366,7 +362,7 @@
 								<span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chiffres uniquement"></span>
 							</label>
 							<div class="col-sm-8">
-								<input type="number" class="form-control risp" id="ris_p1_public" name="ris_p1_public" aria-describedby="ris-p1-public-error" required='true' digits='true' placeholder="Spectateurs" value="<?php echo $ris_p1_public; ?>" >
+								<input type="digits" class="form-control risp" id="ris_p1_public" name="ris_p1_public" aria-describedby="ris-p1-public-error" required='true' digits='true' placeholder="Spectateurs" value="<?php echo $ris_p1_public; ?>" >
 								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
 								<span id='ris-p1-public-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 							</div>
@@ -477,7 +473,6 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</div>
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='dps-begin-date-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<div class="col-sm-3">
@@ -487,7 +482,6 @@
 										<span class="glyphicon glyphicon-time"></span>
 									</span>
 								</div>
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='dps-begin-time-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<script type="text/javascript">
@@ -522,7 +516,6 @@
 									<span class="input-group-addon">
 									<span class="glyphicon glyphicon-calendar"></span>
 								</div>
-								<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
 								<span id='dps-end-date-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<div class="col-sm-3">
@@ -531,8 +524,7 @@
 									<span class="input-group-addon">
 										<span class="glyphicon glyphicon-time"></span>
 									</span>
-							</div>
-							<span class="form-control-feedback glyphicon" aria-hidden="true"></span>
+								</div>
 								<span id='dps-end-time-error' class="help-block" aria-hidden="true"></span>
 							</div>
 							<script type="text/javascript">
@@ -677,15 +669,19 @@
 							</div>
 						</div>
 					</div>
+
 					<div class="panel-body">
 
-						<?php $feedback = compute_server_feedback($dps_other_matos_asso_error);?>
-						<label for="dps_other_matos_asso" class="col-sm-4 control-label">Moyens humains / logistiques supplémentaires</label>
-						<div class="col-sm-8">
-							<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-								<input type="text" class="form-control" id="dps_other_matos_asso" name="dps_other_matos_asso" aria-describedby="dps-other-matos-asso_error" placeholder="entrer ici tout moyen supplémentaire" value="<?php echo $dps_other_matos_asso; ?>" />
-								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='dps-other-matos-asso-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+						<div class="form-group form-group-sm">
+
+							<?php $feedback = compute_server_feedback($dps_other_matos_asso_error);?>
+							<label for="dps_other_matos_asso" class="col-sm-4 control-label">Moyens humains / logistiques supplémentaires</label>
+							<div class="col-sm-7">
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="text" class="form-control" id="dps_other_matos_asso" name="dps_other_matos_asso" aria-describedby="dps-other-matos-asso_error" placeholder="entrer ici tout moyen supplémentaire" value="<?php echo $dps_other_matos_asso; ?>" />
+									<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+									<span id='dps-other-matos-asso-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -727,13 +723,16 @@
 
 						</div>
 
-						<?php $feedback = compute_server_feedback($client_email_error);?>
-						<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-							<label for="supplement" class="col-sm-4 control-label">Autre</label>
-							<div class="col-sm-8">
-								<input type="text" class="form-control" id="supplement" name="supplement" aria-describedby="zzz-error" placeholder="entrer ici tout moyen supplémentaire fourni par l'organisateur" value="<?php echo $aaaaaaaaaaaa; ?>" >
-								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='zzz-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+						<div class="form-group form-group-sm">
+
+							<?php $feedback = compute_server_feedback($client_email_error);?>
+							<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+								<label for="supplement" class="col-sm-4 control-label">Autre</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="supplement" name="supplement" aria-describedby="zzz-error" placeholder="entrer ici tout moyen supplémentaire fourni par l'organisateur" value="<?php echo $aaaaaaaaaaaa; ?>" >
+									<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+									<span id='zzz-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -745,49 +744,50 @@
 						<h3 class="panel-title">Moyens médicaux / structures</h3>
 					</div>
 					<div class="panel-body">
+						<div class="form-group form-group-sm">
 
-						<?php $feedback = compute_server_feedback($client_email_error);?>
-						<label for="medecin_autre" class="col-sm-4 control-label">Nombre de médecins extérieurs (préciser)</label>
-						<div class="col-sm-2">
-							<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-								<input type="number" class="form-control" id="medecin_autre" name="medecin_autre" aria-describedby="medecin_autre-error" min='0' digits='true' placeholder="00" value="<?php echo $aaaaaaaaaaaa; ?>" >
-								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+							<?php $feedback = compute_server_feedback($client_email_error);?>
+							<label for="medecin_autre" class="col-sm-4 control-label">Nombre de médecins extérieurs (préciser)</label>
+							<div class="col-sm-2">
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="number" class="form-control" id="medecin_autre" name="medecin_autre" aria-describedby="medecin_autre-error" min='0' digits='true' placeholder="00" value="<?php echo $aaaaaaaaaaaa; ?>" >
+									<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+									<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								</div>
+							</div>
+
+							<?php $feedback = compute_server_feedback($client_email_error);?>
+							<label for="medecin_appartenance" class="col-sm-2 control-label">Appartenance</label>
+							<div class="col-sm-3">
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="text" class="form-control" id="medecin_appartenance" name="medecin_appartenance" aria-describedby="medecin_appartenance-error" placeholder="Appartenance" value="<?php echo $aaaaaaaaaaaa; ?>" >
+									<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+									<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								</div>
+							</div>
+
+							<?php $feedback = compute_server_feedback($client_email_error);?>
+							<label for="infirmier_autre" class="col-sm-4 control-label">Nombre d'infirmiers extérieurs (préciser)</label>
+							<div class="col-sm-2">
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="number" class="form-control" id="infirmier_autre" name="infirmier_autre" aria-describedby="infirmier_autre-error" min='0' digits='true' placeholder="00" value="<?php echo $aaaaaaaaaaaa; ?>" >
+									<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+									<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								</div>
+							</div>
+
+							<?php $feedback = compute_server_feedback($client_email_error);?>
+							<label for="infirmier_appartenance" class="col-sm-2 control-label">Appartenance</label>
+							<div class="col-sm-3">
+								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+									<input type="text" class="form-control" id="infirmier_appartenance" name="infirmier_appartenance" aria-describedby="infirmier_appartenance-error" placeholder="Appartenance" value="<?php echo $aaaaaaaaaaaa; ?>" >
+									<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+									<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								</div>
 							</div>
 						</div>
-
-						<?php $feedback = compute_server_feedback($client_email_error);?>
-						<label for="medecin_appartenance" class="col-sm-2 control-label">Appartenance</label>
-						<div class="col-sm-4">
-							<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-								<input type="text" class="form-control" id="medecin_appartenance" name="medecin_appartenance" aria-describedby="medecin_appartenance-error" placeholder="Appartenance" value="<?php echo $aaaaaaaaaaaa; ?>" >
-								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
-							</div>
-						</div>
-
-						<?php $feedback = compute_server_feedback($client_email_error);?>
-						<label for="infirmier_autre" class="col-sm-4 control-label">Nombre d'infirmiers extérieurs (préciser)</label>
-						<div class="col-sm-2">
-							<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-								<input type="number" class="form-control" id="infirmier_autre" name="infirmier_autre" aria-describedby="infirmier_autre-error" min='0' digits='true' placeholder="00" value="<?php echo $aaaaaaaaaaaa; ?>" >
-								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
-							</div>
-						</div>
-
-						<?php $feedback = compute_server_feedback($client_email_error);?>
-						<label for="infirmier_appartenance" class="col-sm-2 control-label">Appartenance</label>
-						<div class="col-sm-4">
-							<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-								<input type="text" class="form-control" id="infirmier_appartenance" name="infirmier_appartenance" aria-describedby="infirmier_appartenance-error" placeholder="Appartenance" value="<?php echo $aaaaaaaaaaaa; ?>" >
-								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
-							</div>
-						</div>
-
 					</div>
-					<div class="panel-body">
+					<div class="form-group form-group-sm">
 
 						<?php $feedback = compute_server_feedback($client_email_error);?>
 						<label for="samu" class="col-sm-4 control-label">SAMU</label>
@@ -817,6 +817,7 @@
 							</div>
 						</div>
 					</div>
+
 				</div>
 
 				<div class="panel panel-default">
@@ -836,7 +837,6 @@
 									<input type="number" class="form-control" id="dps_price" name="dps_price" aria-describedby="dps-price-error" minlength='1' required='true' number='true' placeholder="Prix" value="<?php echo $dps_price; ?>" data-minlength="1" >
 									<div class="input-group-addon glyphicon glyphicon-euro"></div>
 								</div>
-								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
 								<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 							</div>
 						</div>
