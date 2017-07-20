@@ -23,7 +23,7 @@
 <?php require_once('components/dps/dps-compute-city.php'); ?>
 
 <!-- Authentication -->
-<?php //require_once('functions/dps/dps-create-authentication.php'); ?>
+<?php require_once('functions/dps/dps-create-authentication.php'); ?>
 
 <!-- DPS duplication or client insertion : interpretor -->
 <?php require_once('components/dps/dps-preselect-client-or-duplicate-computation.php'); ?>
