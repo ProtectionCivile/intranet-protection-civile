@@ -176,17 +176,14 @@ $missingValues = 0;
 
 
 
-		if(isNullOrEmpty($VARIABLE)){
-			$missingValues++;
-			$VARIBALE_error = "L'heure de fin de manifestation est obligatoire";
+		if(isNullOrEmpty($clientmatos_infirmerie)){
+			$clientmatos_infirmerie = "false";
 		}
-		if(isNullOrEmpty($VARIABLE)){
-			$missingValues++;
-			$VARIBALE_error = "L'heure de fin de manifestation est obligatoire";
+		if(isNullOrEmpty($clientmatos_tente)){
+			$clientmatos_tente = "false";
 		}
-		if(isNullOrEmpty($VARIABLE)){
-			$missingValues++;
-			$VARIBALE_error = "L'heure de fin de manifestation est obligatoire";
+		if(isNullOrEmpty($clientmatos_other)){
+			// Nothing
 		}
 		if(isNullOrEmpty($VARIABLE)){
 			$missingValues++;

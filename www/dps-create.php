@@ -695,29 +695,29 @@
 
 						<div class="form-group form-group-sm">
 
-							<?php $feedback = compute_server_feedback($client_email_error);?>
+							<?php $feedback = compute_server_feedback($clientmatos_infirmerie_error);?>
 							<div class="has-feedback <?php echo $feedback[0];?>">
-								<label for="local" class="col-sm-4 control-label">Local infirmerie</label>
+								<label for="clientmatos_infirmerie" class="col-sm-4 control-label">Local infirmerie</label>
 								<div class="col-sm-2">
-									<select class="form-control" id="local" name="local">
-										<option value="false">Non</option>
-										<option value="true">Oui</option>
+									<select class="form-control" id="clientmatos_infirmerie" name="clientmatos_infirmerie" aria-describedby="clientmatos-infirmerie-error">
+										<option value="false" <?php if ($clientmatos_infirmerie == 'false') {echo 'selected';}?>>Non</option>
+										<option value="true" <?php if ($clientmatos_infirmerie == 'true') {echo 'selected';}?>>Oui</option>
 									</select>
 									<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-									<span id='ris-p1-actors-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+									<span id='clientmatos-infirmerie-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 								</div>
 							</div>
 
-							<?php $feedback = compute_server_feedback($client_email_error);?>
+							<?php $feedback = compute_server_feedback($clientmatos_tente_error);?>
 							<div class="has-feedback <?php echo $feedback[0];?>">
-								<label for="tente_orga" class="col-sm-3 control-label">Tente</label>
+								<label for="clientmatos_tente" class="col-sm-3 control-label">Tente</label>
 								<div class="col-sm-2">
-									<select class="form-control" id="tente_orga" name="tente_orga">
-										<option value="false">Non</option>
-										<option value="true">Oui</option>
+									<select class="form-control" id="clientmatos_tente" name="clientmatos_tente" aria-describedby="clientmatos-tente-error">
+										<option value="false" <?php if ($clientmatos_tente == 'false') {echo 'selected';}?>>Non</option>
+										<option value="true" <?php if ($clientmatos_tente == 'true') {echo 'selected';}?>>Oui</option>
 									</select>
 									<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-									<span id='ris-p1-actors-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+									<span id='clientmatos-tente-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 								</div>
 							</div>
 
@@ -725,13 +725,13 @@
 
 						<div class="form-group form-group-sm">
 
-							<?php $feedback = compute_server_feedback($client_email_error);?>
+							<?php $feedback = compute_server_feedback($clientmatos_other_error);?>
 							<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-								<label for="supplement" class="col-sm-4 control-label">Autre</label>
+								<label for="clientmatos_other" class="col-sm-4 control-label">Autre</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" id="supplement" name="supplement" aria-describedby="zzz-error" placeholder="entrer ici tout moyen supplémentaire fourni par l'organisateur" value="<?php echo $aaaaaaaaaaaa; ?>" >
+									<input type="text" class="form-control" id="clientmatos_other" name="clientmatos_other" aria-describedby="clientmatos-other-error" placeholder="entrer ici tout moyen supplémentaire fourni par l'organisateur" value="<?php echo $clientmatos_other; ?>" >
 									<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-									<span id='zzz-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+									<span id='clientmatos-other-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 								</div>
 							</div>
 						</div>

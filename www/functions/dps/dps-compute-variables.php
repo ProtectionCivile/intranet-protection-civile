@@ -172,21 +172,20 @@
 	elseif (isset($_POST['dps_other_matos_asso'])) { $dps_other_matos_asso = $_POST['dps_other_matos_asso']; }
 	else { $dps_other_matos_asso = $dps['dps_other_matos_asso']; }
 
+	if (isset($duplicated_dps_array['clientmatos_infirmerie'])) { $clientmatos_infirmerie = $duplicated_dps_array['clientmatos_infirmerie']; }
+	elseif (isset($_POST['clientmatos_infirmerie'])) { $clientmatos_infirmerie = $_POST['clientmatos_infirmerie']; }
+	else { $clientmatos_infirmerie = $dps['clientmatos_infirmerie']; }
+
+	if (isset($duplicated_dps_array['clientmatos_tente'])) { $clientmatos_tente = $duplicated_dps_array['clientmatos_tente']; }
+	elseif (isset($_POST['clientmatos_tente'])) { $clientmatos_tente = $_POST['clientmatos_tente']; }
+	else { $clientmatos_tente = $dps['clientmatos_tente']; }
+
+	if (isset($duplicated_dps_array['clientmatos_other'])) { $clientmatos_other = $duplicated_dps_array['clientmatos_other']; }
+	elseif (isset($_POST['clientmatos_other'])) { $clientmatos_other = $_POST['clientmatos_other']; }
+	else { $clientmatos_other = $dps['clientmatos_other']; }
 
 
 
-
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
 
 	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
 	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
