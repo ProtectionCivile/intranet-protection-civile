@@ -746,74 +746,74 @@
 					<div class="panel-body">
 						<div class="form-group form-group-sm">
 
-							<?php $feedback = compute_server_feedback($client_email_error);?>
-							<label for="medecin_autre" class="col-sm-4 control-label">Nombre de médecins extérieurs (préciser)</label>
+							<?php $feedback = compute_server_feedback($medicalext_nb_med_error);?>
+							<label for="medicalext_nb_med" class="col-sm-4 control-label">Nombre de médecins extérieurs (préciser)</label>
 							<div class="col-sm-2">
 								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-									<input type="number" class="form-control" id="medecin_autre" name="medecin_autre" aria-describedby="medecin_autre-error" min='0' digits='true' placeholder="00" value="<?php echo $aaaaaaaaaaaa; ?>" >
+									<input type="number" class="form-control" id="medicalext_nb_med" name="medicalext_nb_med" aria-describedby="medicalext-nb-med-error" min='0' digits='true' placeholder="00" value="<?php echo $medicalext_nb_med; ?>" >
 									<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-									<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+									<span id='medicalext-nb-med-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 								</div>
 							</div>
 
-							<?php $feedback = compute_server_feedback($client_email_error);?>
-							<label for="medecin_appartenance" class="col-sm-2 control-label">Appartenance</label>
+							<?php $feedback = compute_server_feedback($medicalext_med_company_error);?>
+							<label for="medicalext_med_company" class="col-sm-2 control-label">Appartenance</label>
 							<div class="col-sm-3">
 								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-									<input type="text" class="form-control" id="medecin_appartenance" name="medecin_appartenance" aria-describedby="medecin_appartenance-error" placeholder="Appartenance" value="<?php echo $aaaaaaaaaaaa; ?>" >
+									<input type="text" class="form-control" id="medicalext_med_company" name="medicalext_med_company" aria-describedby="medicalext-med-company-error" placeholder="Appartenance" value="<?php echo $medicalext_med_company; ?>" >
 									<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-									<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+									<span id='medicalext-med-company-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 								</div>
 							</div>
 
-							<?php $feedback = compute_server_feedback($client_email_error);?>
-							<label for="infirmier_autre" class="col-sm-4 control-label">Nombre d'infirmiers extérieurs (préciser)</label>
+							<?php $feedback = compute_server_feedback($medicalext_nb_inf_error);?>
+							<label for="medicalext_nb_inf" class="col-sm-4 control-label">Nombre d'infirmiers extérieurs (préciser)</label>
 							<div class="col-sm-2">
 								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-									<input type="number" class="form-control" id="infirmier_autre" name="infirmier_autre" aria-describedby="infirmier_autre-error" min='0' digits='true' placeholder="00" value="<?php echo $aaaaaaaaaaaa; ?>" >
+									<input type="number" class="form-control" id="medicalext_nb_inf" name="medicalext_nb_inf" aria-describedby="medicalext-nb-inf-error" min='0' digits='true' placeholder="00" value="<?php echo $medicalext_nb_inf; ?>" >
 									<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-									<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+									<span id='medicalext-nb-inf-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 								</div>
 							</div>
 
-							<?php $feedback = compute_server_feedback($client_email_error);?>
-							<label for="infirmier_appartenance" class="col-sm-2 control-label">Appartenance</label>
+							<?php $feedback = compute_server_feedback($medicalext_inf_company);?>
+							<label for="medicalext_inf_company" class="col-sm-2 control-label">Appartenance</label>
 							<div class="col-sm-3">
 								<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-									<input type="text" class="form-control" id="infirmier_appartenance" name="infirmier_appartenance" aria-describedby="infirmier_appartenance-error" placeholder="Appartenance" value="<?php echo $aaaaaaaaaaaa; ?>" >
+									<input type="text" class="form-control" id="medicalext_inf_company" name="medicalext_inf_company" aria-describedby="medicalext-inf-company-error" placeholder="Appartenance" value="<?php echo $medicalext_inf_company; ?>" >
 									<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-									<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+									<span id='medicalext-inf-company-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div class="form-group form-group-sm">
 
-						<?php $feedback = compute_server_feedback($client_email_error);?>
+						<?php $feedback = compute_server_feedback($samu);?>
 						<label for="samu" class="col-sm-4 control-label">SAMU</label>
 						<div class="col-sm-2">
 							<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-								<select class="form-control" id="samu" name="samu">
-									<option value="0">Ni informé, ni présent</option>
-									<option value="1" selected>Informé, non présent</option>
-									<option value="2">Informé et présent</option>
+								<select class="form-control" id="samu" name="samu" aria-describedby="samu-error">
+									<option value="0" <?php if ($samu == '0') {echo 'selected';}?>>Ni informé, ni présent</option>
+									<option value="1" <?php if ($samu == '1' || $samu == '') {echo 'selected';}?>>Informé, non présent</option>
+									<option value="2" <?php if ($samu == '2') {echo 'selected';}?>>Informé et présent</option>
 								</select>
 								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='ris-p1-actors-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								<span id='samu-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 							</div>
 						</div>
 
-						<?php $feedback = compute_server_feedback($client_email_error);?>
-						<label for="bspp_sdis" class="col-sm-2 control-label">SDIS / BSPP</label>
+						<?php $feedback = compute_server_feedback($bspp_error);?>
+						<label for="bspp" class="col-sm-2 control-label">SDIS / BSPP</label>
 						<div class="col-sm-2">
 							<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-								<select class="form-control" id="bspp_sdis" name="bspp_sdis">
-									<option value="0">Ni informé, ni présent</option>
-									<option value="1">Informé, non présent</option>
-									<option value="2">Informé et présent</option>
+								<select class="form-control" id="bspp" name="bspp" aria-describedby="bspp-error">
+									<option value="0" <?php if ($bspp == '0') {echo 'selected';}?>>Ni informé, ni présent</option>
+									<option value="1" <?php if ($bspp == '1') {echo 'selected';}?>>Informé, non présent</option>
+									<option value="2" <?php if ($bspp == '2') {echo 'selected';}?>>Informé et présent</option>
 								</select>
 								<span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-								<span id='ris-p1-actors-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								<span id='bspp-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 							</div>
 						</div>
 					</div>
@@ -837,11 +837,11 @@
 									<input type="number" class="form-control" id="dps_price" name="dps_price" aria-describedby="dps-price-error" minlength='1' required='true' number='true' placeholder="Prix" value="<?php echo $dps_price; ?>" data-minlength="1" >
 									<div class="input-group-addon glyphicon glyphicon-euro"></div>
 								</div>
-								<span id='nb-ce-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+								<span id='dps-price-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 							</div>
 						</div>
 
-						<textarea class="form-control" rows="5" id="justificatif" name="justificatif" placeholder="Indiquer tout justificatif sur les moyens, structures, etc. ou toute information utile pour la bonne gestion administrative du poste." value="<?php echo $aaaaaaaaaaaa; ?>" ></textarea>
+						<textarea class="form-control" rows="5" id="dps_justif" name="dps_justif" placeholder="Indiquer tout justificatif sur les moyens, structures, etc. ou toute information utile pour la bonne gestion administrative du poste." value="<?php echo $dps_justif; ?>" ></textarea>
 					</div>
 				</div>
 

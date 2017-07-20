@@ -184,46 +184,40 @@
 	elseif (isset($_POST['clientmatos_other'])) { $clientmatos_other = $_POST['clientmatos_other']; }
 	else { $clientmatos_other = $dps['clientmatos_other']; }
 
+	if (isset($duplicated_dps_array['medicalext_nb_med'])) { $medicalext_nb_med = $duplicated_dps_array['medicalext_nb_med']; }
+	elseif (isset($_POST['medicalext_nb_med'])) { $medicalext_nb_med = $_POST['medicalext_nb_med']; }
+	else { $medicalext_nb_med = $dps['medicalext_nb_med']; }
 
+	if (isset($duplicated_dps_array['medicalext_med_company'])) { $medicalext_med_company = $duplicated_dps_array['medicalext_med_company']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $medicalext_med_company = $_POST['medicalext_med_company']; }
+	else { $medicalext_med_company = $dps['medicalext_med_company']; }
 
+	if (isset($duplicated_dps_array['medicalext_nb_inf'])) { $medicalext_nb_inf = $duplicated_dps_array['medicalext_nb_inf']; }
+	elseif (isset($_POST['medicalext_nb_inf'])) { $medicalext_nb_inf = $_POST['medicalext_nb_inf']; }
+	else { $medicalext_nb_inf = $dps['medicalext_nb_inf']; }
 
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+	if (isset($duplicated_dps_array['medicalext_inf_company'])) { $medicalext_inf_company = $duplicated_dps_array['medicalext_inf_company']; }
+	elseif (isset($_POST['medicalext_inf_company'])) { $medicalext_inf_company = $_POST['medicalext_inf_company']; }
+	else { $medicalext_inf_company = $dps['medicalext_inf_company']; }
 
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+	if (isset($duplicated_dps_array['samu'])) { $samu = $duplicated_dps_array['samu']; }
+	elseif (isset($_POST['samu'])) { $samu = $_POST['samu']; }
+	else { $samu = $dps['samu']; }
 
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
+	if (isset($duplicated_dps_array['bspp'])) { $bspp = $duplicated_dps_array['bspp']; }
+	elseif (isset($_POST['bspp'])) { $bspp = $_POST['bspp']; }
+	else { $bspp = $dps['bspp']; }
 
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-
-
-
-
-	$prix = $_POST['dps_price'];
 	if (isset($duplicated_dps_array['dps_price'])) { $dps_price = $duplicated_dps_array['dps_price']; }
 	elseif (isset($_POST['dps_price'])) { $dps_price = $_POST['dps_price']; }
 	else { $dps_price = $dps['dps_price']; }
 
+	if (isset($duplicated_dps_array['dps_justif'])) { $dps_justif = $duplicated_dps_array['dps_justif']; }
+	elseif (isset($_POST['dps_justif'])) { $dps_justif = $_POST['dps_justif']; }
+	else { $dps_justif = $dps['dps_justif']; }
 
 
-// C'est ici qu'il faut faire les modifications !!
-// Quitte à renommer les variables pour qu'elles soient plus lisibles dans la page de DPS
-// renommer $dps en $existingDps
+// TODO Renommer $dps en $existingDps
 
 
 	$spectateurs = $_POST['spectateurs'];
