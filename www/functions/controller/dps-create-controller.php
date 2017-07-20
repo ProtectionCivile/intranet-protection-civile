@@ -122,6 +122,56 @@ $missingValues = 0;
 		}
 
 
+		if(isNullOrEmpty($dps_nb_ce)){
+			$missingValues++;
+			// $dps_nb_ce = "0";
+			$dps_nb_ce_error = "Merci d'indiquer le nombre de CE / CP...";
+		}
+		if(isNullOrEmpty($dps_nb_pse2)){
+			$missingValues++;
+			// $nb_pse2 = "0";
+			$dps_nb_pse2_error = "Merci d'indiquer le nombre de PSE-2";
+		}
+		if(isNullOrEmpty($dps_nb_pse1)){
+			$missingValues++;
+			// $nb_pse1 = "0";
+			$dps_nb_pse1_error = "Merci d'indiquer le nombre de PSE-1";
+		}
+		if(isNullOrEmpty($dps_nb_psc1)){
+		 	$dps_nb_psc1 = "0";
+		}
+		if(isNullOrEmpty($dps_nb_vpsp_transp)){
+			$missingValues++;
+			// $vpsp_transport = "0";
+			$dps_nb_vpsp_transp_error = "Merci d'indiquer le nombre de VPSP assurant les évacuations";
+		}
+		if(isNullOrEmpty($dps_nb_vpsp_soin)){
+			$missingValues++;
+			// $vpsp_soin = "0";
+			$dps_nb_vpsp_soin_error = "Merci d'indiquer le nombre de VPSP en poste de soins";
+		}
+		if(isNullOrEmpty($dps_nb_vtu)){
+			$missingValues++;
+			// $vl = "0";
+			$dps_nb_vtu_error = "Merci d'indiquer le nombre d'autres véhicules prévus";
+		}
+		if(isNullOrEmpty($dps_nb_tente)){
+			$missingValues++;
+			// $tente = "0";
+			$dps_nb_tente_error = "Merci d'indiquer le nombre de tentes";
+		}
+		if(isNullOrEmpty($dps_nb_med_asso)){
+			$dps_nb_med_asso = "0";
+		}
+		if(isNullOrEmpty($dps_nb_inf_asso)){
+			$dps_nb_inf_asso = "0";
+		}
+		if(isNullOrEmpty($dps_other_matos_asso)){
+			// Nothing
+		}
+		if(isNullOrEmpty($dps_nb_med_asso)){
+			// Nothing
+		}
 
 
 
@@ -162,19 +212,8 @@ $missingValues = 0;
 			$genericError = "le type de DPS est obligatoire";
 		}
 
-		elseif(isNullOrEmpty($dps_debut_poste)){
-			$genericError = "La date de début de poste est obligatoire";
-		}
-		elseif(isNullOrEmpty($dps_fin_poste)){
-			$genericError = "La date de fin de poste est obligatoire";
-		}
 
-		elseif(isNullOrEmpty($dps_debut_poste)){
-			$genericError = "L'heure de début de poste est obligatoire";
-		}
-		elseif(isNullOrEmpty($heure_fin_poste)){
-			$genericError = "L'heure de fin de poste est obligatoire";
-		}
+
 
 		elseif(isNullOrEmpty($dps_price)){
 			$genericError = "Le prix de la prestation est obligatoire";
@@ -183,39 +222,11 @@ $missingValues = 0;
 
 
 		else {
-			if(isNullOrEmpty($nb_ce)){
-				$nb_ce = "0";
-			}
-			if(isNullOrEmpty($nb_pse2)){
-				$nb_pse2 = "0";
-			}
-			if(isNullOrEmpty($nb_pse1)){
-				$nb_pse1 = "0";
-			}
-			if(isNullOrEmpty($nb_psc1)){
-				$nb_psc1 = "0";
-			}
-			if(isNullOrEmpty($vpsp_transport)){
-				$vpsp_transport = "0";
-			}
-			if(isNullOrEmpty($vpsp_soin)){
-				$vpsp_soin = "0";
-			}
-			if(isNullOrEmpty($vl)){
-				$vl = "0";
-			}
-			if(isNullOrEmpty($tente)){
-				$tente = "0";
-			}
-			if(isNullOrEmpty($medecin_asso)){
-				$medecin_asso = "0";
-			}
+
 			if(isNullOrEmpty($medecin_autre)){
 				$medecin_autre = "0";
 			}
-			if(isNullOrEmpty($infirmier_asso)){
-				$infirmier_asso = "0";
-			}
+
 			if(isNullOrEmpty($infirmier_autre)){
 				$infirmier_autre = "0";
 			}

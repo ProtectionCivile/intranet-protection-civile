@@ -127,11 +127,54 @@
 	else { $dps_end_time = $dps['dps_end_time']; }
 
 
+	// DPS
+	if (isset($duplicated_dps_array['dps_nb_ce'])) { $dps_nb_ce = $duplicated_dps_array['dps_nb_ce']; }
+	elseif (isset($_POST['dps_nb_ce'])) { $dps_nb_ceE = $_POST['dps_nb_ce']; }
+	else { $dps_nb_ce = $dps['dps_nb_ce']; }
+
+	if (isset($duplicated_dps_array['dps_nb_pse2'])) { $dps_nb_pse2 = $duplicated_dps_array['dps_nb_pse2']; }
+	elseif (isset($_POST['dps_nb_pse2'])) { $dps_nb_pse2 = $_POST['dps_nb_pse2']; }
+	else { $dps_nb_pse2 = $dps['dps_nb_pse2']; }
+
+	if (isset($duplicated_dps_array['dps_nb_pse1'])) { $dps_nb_pse1 = $duplicated_dps_array['dps_nb_pse1']; }
+	elseif (isset($_POST['dps_nb_pse1'])) { $dps_nb_pse1 = $_POST['dps_nb_pse1']; }
+	else { $dps_nb_pse1 = $dps['dps_nb_pse1']; }
+
+	if (isset($duplicated_dps_array['dps_nb_psc1'])) { $dps_nb_psc1 = $duplicated_dps_array['dps_nb_psc1']; }
+	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $dps_nb_psc1 = $_POST['dps_nb_psc1']; }
+	else { $dps_nb_psc1 = $dps['dps_nb_psc1']; }
+
+	if (isset($duplicated_dps_array['dps_nb_vpsp_transp'])) { $dps_nb_vpsp_transp = $duplicated_dps_array['dps_nb_vpsp_transp']; }
+	elseif (isset($_POST['dps_nb_vpsp_transp'])) { $dps_nb_vpsp_transp = $_POST['dps_nb_vpsp_transp']; }
+	else { $dps_nb_vpsp_transp = $dps['dps_nb_vpsp_transp']; }
+
+	if (isset($duplicated_dps_array['dps_nb_vpsp_soin'])) { $dps_nb_vpsp_soin = $duplicated_dps_array['dps_nb_vpsp_soin']; }
+	elseif (isset($_POST['dps_nb_vpsp_soin'])) { $dps_nb_vpsp_soin = $_POST['dps_nb_vpsp_soin']; }
+	else { $dps_nb_vpsp_soin = $dps['dps_nb_vpsp_soin']; }
+
+	if (isset($duplicated_dps_array['dps_nb_vtu'])) { $dps_nb_vtu = $duplicated_dps_array['dps_nb_vtu']; }
+	elseif (isset($_POST['dps_nb_vtu'])) { $dps_nb_vtu = $_POST['dps_nb_vtu']; }
+	else { $dps_nb_vtu = $dps['dps_nb_vtu']; }
+
+	if (isset($duplicated_dps_array['dps_nb_tente'])) { $dps_nb_tente = $duplicated_dps_array['dps_nb_tente']; }
+	elseif (isset($_POST['dps_nb_tente'])) { $dps_nb_tente = $_POST['dps_nb_tente']; }
+	else { $dps_nb_tente = $dps['dps_nb_tente']; }
+
+	if (isset($duplicated_dps_array['dps_nb_med_asso'])) { $dps_nb_med_asso = $duplicated_dps_array['dps_nb_med_asso']; }
+	elseif (isset($_POST['dps_nb_med_asso'])) { $dps_nb_med_asso = $_POST['dps_nb_med_asso']; }
+	else { $dps_nb_med_asso = $dps['dps_nb_med_asso']; }
+
+	if (isset($duplicated_dps_array['dps_nb_inf_asso'])) { $dps_nb_inf_asso = $duplicated_dps_array['dps_nb_inf_asso']; }
+	elseif (isset($_POST['dps_nb_inf_asso'])) { $dps_nb_inf_asso = $_POST['dps_nb_inf_asso']; }
+	else { $dps_nb_inf_asso = $dps['dps_nb_inf_asso']; }
+
+	if (isset($duplicated_dps_array['dps_other_matos_asso'])) { $dps_other_matos_asso = $duplicated_dps_array['dps_other_matos_asso']; }
+	elseif (isset($_POST['dps_other_matos_asso'])) { $dps_other_matos_asso = $_POST['dps_other_matos_asso']; }
+	else { $dps_other_matos_asso = $dps['dps_other_matos_asso']; }
 
 
 
 
-	
 
 	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
 	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
@@ -168,20 +211,6 @@
 	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
 	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
 	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-
-	if (isset($duplicated_dps_array['DANSTABLEDPS'])) { $VARIABLE = $duplicated_dps_array['DANSTABLEDPS']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $VARIABLE = $_POST['DANSFORMULAIREPOST']; }
-	else { $VARIABLE = $dps['DANSTABLEDPS']; }
-
-
 
 
 
