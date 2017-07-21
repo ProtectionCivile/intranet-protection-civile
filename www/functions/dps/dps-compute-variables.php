@@ -208,13 +208,13 @@
 	elseif (isset($_POST['bspp'])) { $bspp = $_POST['bspp']; }
 	else { $bspp = $dps['bspp']; }
 
-	if (isset($duplicated_dps_array['dps_price'])) { $dps_price = $duplicated_dps_array['dps_price']; }
-	elseif (isset($_POST['dps_price'])) { $dps_price = $_POST['dps_price']; }
-	else { $dps_price = $dps['dps_price']; }
+	if (isset($duplicated_dps_array['price'])) { $price = $duplicated_dps_array['price']; }
+	elseif (isset($_POST['price'])) { $price = $_POST['price']; }
+	else { $price = $dps['price']; }
 
-	if (isset($duplicated_dps_array['dps_justif'])) { $dps_justif = $duplicated_dps_array['dps_justif']; }
-	elseif (isset($_POST['dps_justif'])) { $dps_justif = $_POST['dps_justif']; }
-	else { $dps_justif = $dps['dps_justif']; }
+	if (isset($duplicated_dps_array['dps_justification'])) { $dps_justification = $duplicated_dps_array['dps_justification']; }
+	elseif (isset($_POST['dps_justification'])) { $dps_justification = $_POST['dps_justification']; }
+	else { $dps_justification = $dps['dps_justification']; }
 
 
 // TODO Renommer $dps en $existingDps

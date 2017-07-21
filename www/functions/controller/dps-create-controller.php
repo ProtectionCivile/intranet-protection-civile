@@ -168,9 +168,6 @@ $missingValues = 0;
 		if(isNullOrEmpty($dps_other_matos_asso)){
 			// Nothing
 		}
-		if(isNullOrEmpty($dps_nb_med_asso)){
-			// Nothing
-		}
 
 
 		if(isNullOrEmpty($clientmatos_infirmerie)){
@@ -205,15 +202,15 @@ $missingValues = 0;
 		}
 
 
-		elseif(isNullOrEmpty($dps_price)){
+		elseif(isNullOrEmpty($price)){
 			$missingValues++;
-			$dps_price_error = "Le prix de la prestation est obligatoire";
+			$price_error = "Le prix de la prestation est obligatoire";
 		}
-		if(isNullOrEmpty($dps_justif)){
+		if(isNullOrEmpty($dps_justification)){
 			// Nothing
 		}
 
-		
+
 		elseif(isNullOrEmpty($year)){
 			$genericError = "L'année est obligatoire";
 		}
