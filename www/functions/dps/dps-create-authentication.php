@@ -1,5 +1,5 @@
 <?php
-	if ($dps['section'] == $currentUserSection && !$rbac->check("ope-dps-create-all", $currentUserID)) {
+	if ($city == $currentUserSection && !$rbac->check("ope-dps-create-all", $currentUserID)) {
 		$rbac->enforce("ope-dps-create-own", $currentUserID);
 	}
 	else {

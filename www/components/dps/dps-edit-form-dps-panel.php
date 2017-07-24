@@ -15,7 +15,7 @@
       <div class="panel-body">
 
         <div class="form-group form-group-sm form-inline row datetimestart">
-          <label for="date_debut" class="col-sm-4 control-label">Date et heure de début de poste</label>
+          <label for="dps_begin_date_div" class="col-sm-4 control-label">Date et heure de début de poste</label>
           <div class="col-sm-3">
             <div class='input-group date' id='dps_begin_date_div' name="dps_begin_date_div">
               <input type='text' class="form-control" id='dps_begin_date' name="dps_begin_date" aria-describedby="dps-begin-date-error" required='true' value="<?php echo $dps_begin_date; ?>" / >
@@ -58,7 +58,7 @@
         </div>
 
         <div class="form-group form-group-sm form-inline row">
-          <label for="date_fin" class="col-sm-4 control-label">Date et heure de fin de poste</label>
+          <label for="dps_end_date_div" class="col-sm-4 control-label">Date et heure de fin de poste</label>
           <div class="col-sm-3">
             <div class='input-group date' id='dps_end_date_div' name="dps_end_date_div">
               <input type='text' class="form-control" id='dps_end_date' name="dps_end_date" required='true' aria-describedby="dps-end-date-error" value="<?php echo $dps_end_date; ?>" />
@@ -249,8 +249,8 @@
             <label for="clientmatos_infirmerie" class="col-sm-4 control-label">Local infirmerie</label>
             <div class="col-sm-2">
               <select class="form-control" id="clientmatos_infirmerie" name="clientmatos_infirmerie" aria-describedby="clientmatos-infirmerie-error">
-                <option value="false" <?php if ($clientmatos_infirmerie == 'false') {echo 'selected';}?>>Non</option>
-                <option value="true" <?php if ($clientmatos_infirmerie == 'true') {echo 'selected';}?>>Oui</option>
+                <option value="0" <?php if ($clientmatos_infirmerie == '0') {echo 'selected';}?>>Non</option>
+                <option value="1" <?php if ($clientmatos_infirmerie == '1') {echo 'selected';}?>>Oui</option>
               </select>
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='clientmatos-infirmerie-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
@@ -262,8 +262,8 @@
             <label for="clientmatos_tente" class="col-sm-3 control-label">Tente</label>
             <div class="col-sm-2">
               <select class="form-control" id="clientmatos_tente" name="clientmatos_tente" aria-describedby="clientmatos-tente-error">
-                <option value="false" <?php if ($clientmatos_tente == 'false') {echo 'selected';}?>>Non</option>
-                <option value="true" <?php if ($clientmatos_tente == 'true') {echo 'selected';}?>>Oui</option>
+                <option value="0" <?php if ($clientmatos_tente == '0') {echo 'selected';}?>>Non</option>
+                <option value="1" <?php if ($clientmatos_tente == '1') {echo 'selected';}?>>Oui</option>
               </select>
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='clientmatos-tente-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
@@ -325,7 +325,7 @@
             </div>
           </div>
 
-          <?php $feedback = compute_server_feedback($medicalext_inf_company);?>
+          <?php $feedback = compute_server_feedback($medicalext_inf_company_error);?>
           <label for="medicalext_inf_company" class="col-sm-2 control-label">Appartenance</label>
           <div class="col-sm-3">
             <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
@@ -338,13 +338,13 @@
       </div>
       <div class="form-group form-group-sm">
 
-        <?php $feedback = compute_server_feedback($samu);?>
+        <?php $feedback = compute_server_feedback($samu_error);?>
         <label for="samu" class="col-sm-4 control-label">SAMU</label>
         <div class="col-sm-2">
           <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
             <select class="form-control" id="samu" name="samu" aria-describedby="samu-error">
               <option value="0" <?php if ($samu == '0') {echo 'selected';}?>>Ni informé, ni présent</option>
-              <option value="1" <?php if ($samu == '1' || $samu == '') {echo 'selected';}?>>Informé, non présent</option>
+              <option value="1" <?php if ($samu != '1' && $samu != '2') {echo 'selected';}?>>Informé, non présent</option>
               <option value="2" <?php if ($samu == '2') {echo 'selected';}?>>Informé et présent</option>
             </select>
             <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
@@ -353,7 +353,7 @@
         </div>
 
         <?php $feedback = compute_server_feedback($bspp_error);?>
-        <label for="bspp" class="col-sm-2 control-label">SDIS / BSPP</label>
+        <label for="bspp" class="col-sm-2 control-label">SDIS / BSPP <?php echo $bspp;?></label>
         <div class="col-sm-2">
           <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
             <select class="form-control" id="bspp" name="bspp" aria-describedby="bspp-error">
@@ -390,7 +390,7 @@
           </div>
         </div>
 
-        <textarea class="form-control" rows="5" id="dps_justification" name="dps_justification" placeholder="Indiquer tout justificatif sur les moyens, structures, etc. ou toute information utile pour la bonne gestion administrative du poste." value="<?php echo $dps_justification; ?>" ></textarea>
+        <textarea class="form-control" rows="5" id="dps_justification" name="dps_justification" placeholder="Indiquer tout justificatif sur les moyens, structures, etc. ou toute information utile pour la bonne gestion administrative du poste." ><?php echo $dps_justification; ?></textarea>
       </div>
     </div>
 

@@ -1,9 +1,10 @@
 <?php
+	require_once('components/dps/dps-init-variables-module.php');
 
-	$dept = $_POST['departement'];
-	$year = $_POST['year'];
-	$num_cu = $_POST['num_cu'];
-	$code_commune = $_POST['code_commune'];
+	// $dept = $_POST['departement'];
+	// $cu_year = $_POST['cu_year'];
+	if (isset($_POST['cu_full'])) { $cu_full = $_POST['cu_full']; }
+	if (isset($_POST['section'])) { $section = $_POST['section']; }
 
 	// Organisateur
 	if (isset($duplicated_dps_array['client_name'])) { $client_name = $duplicated_dps_array['client_name']; }
@@ -11,10 +12,10 @@
 	elseif (isset($_POST['client_name'])) { $client_name = $_POST['client_name']; }
 	else { $client_name = $dps['client_name']; }
 
-	if (isset($duplicated_dps_array['$client_reprensent'])) { $client_reprensent = $duplicated_dps_array['$client_reprensent']; }
-	elseif (isset($client_array['represent'])) { $client_reprensent = $client_array['represent']; }
-	elseif (isset($_POST['$client_reprensent'])) { $client_reprensent = $_POST['$client_reprensent']; }
-	else { $client_reprensent = $dps['$client_reprensent']; }
+	if (isset($duplicated_dps_array['client_represent'])) { $client_reprensent = $duplicated_dps_array['client_represent']; }
+	elseif (isset($client_array['represent'])) { $client_represent = $client_array['represent']; }
+	elseif (isset($_POST['client_represent'])) { $client_represent = $_POST['client_represent']; }
+	else { $client_represent = $dps['client_represent']; }
 
 	if (isset($duplicated_dps_array['client_title'])) { $client_title = $duplicated_dps_array['client_title']; }
 	elseif (isset($client_array['title'])) { $client_title = $client_array['title']; }
@@ -32,8 +33,8 @@
 	else { $client_phone = $dps['client_phone']; }
 
 	if (isset($duplicated_dps_array['client_fax'])) { $client_fax = $duplicated_dps_array['client_fax']; }
-	elseif (isset($client_array['fax'])) { $client_fax = $client_array['client_fax']; }
-	elseif (isset($_POST['fax'])) { $client_fax = $_POST['client_fax']; }
+	elseif (isset($client_array['fax'])) { $client_fax = $client_array['fax']; }
+	elseif (isset($_POST['client_fax'])) { $client_fax = $_POST['client_fax']; }
 	else { $client_fax = $dps['client_fax']; }
 
 	if (isset($duplicated_dps_array['client_email'])) { $client_email = $duplicated_dps_array['client_email']; }
@@ -44,8 +45,6 @@
 
 
 	// Evenement
-	////////////////////////////////////////////////////////////////////////$nom_nature = mysqli_real_escape_string($db_link, $nom_nature); // TODO A mettre lors de la création de requete SQL
-
 	if (isset($duplicated_dps_array['event_name'])) { $event_name = $duplicated_dps_array['event_name']; }
 	elseif (isset($_POST['event_name'])) { $event_name = $_POST['event_name']; }
 	else { $event_name = $dps['event_name']; }
@@ -70,9 +69,9 @@
 	elseif (isset($_POST['event_begin_time'])) { $event_begin_time = $_POST['event_begin_time']; }
 	else { $event_begin_time = $dps['event_begin_time']; }
 
-	if (isset($duplicated_dps_array['event_begin_date'])) { $event_begin_date = $duplicated_dps_array['event_begin_date']; }
-	elseif (isset($_POST['event_begin_date'])) { $event_begin_date = $_POST['event_begin_date']; }
-	else { $event_begin_date = $dps['event_begin_date']; }
+	if (isset($duplicated_dps_array['event_end_date'])) { $event_end_date = $duplicated_dps_array['event_end_date']; }
+	elseif (isset($_POST['event_end_date'])) { $event_end_date = $_POST['event_end_date']; }
+	else { $event_end_date = $dps['event_end_date']; }
 
 	if (isset($duplicated_dps_array['event_end_time'])) { $event_end_time = $duplicated_dps_array['event_end_time']; }
 	elseif (isset($_POST['event_end_time'])) { $event_end_time = $_POST['event_end_time']; }
@@ -118,9 +117,9 @@
 	elseif (isset($_POST['dps_begin_time'])) { $dps_begin_time = $_POST['dps_begin_time']; }
 	else { $dps_begin_time = $dps['dps_begin_time']; }
 
-	if (isset($duplicated_dps_array['dps_begin_date'])) { $dps_begin_date = $duplicated_dps_array['dps_begin_date']; }
-	elseif (isset($_POST['dps_begin_date'])) { $dps_begin_date = $_POST['dps_begin_date']; }
-	else { $dps_begin_date = $dps['dps_begin_date']; }
+	if (isset($duplicated_dps_array['dps_end_date'])) { $dps_end_date = $duplicated_dps_array['dps_end_date']; }
+	elseif (isset($_POST['dps_end_date'])) { $dps_end_date = $_POST['dps_end_date']; }
+	else { $dps_end_date = $dps['dps_end_date']; }
 
 	if (isset($duplicated_dps_array['dps_end_time'])) { $dps_end_time = $duplicated_dps_array['dps_end_time']; }
 	elseif (isset($_POST['dps_end_time'])) { $dps_end_time = $_POST['dps_end_time']; }
@@ -129,7 +128,7 @@
 
 	// DPS
 	if (isset($duplicated_dps_array['dps_nb_ce'])) { $dps_nb_ce = $duplicated_dps_array['dps_nb_ce']; }
-	elseif (isset($_POST['dps_nb_ce'])) { $dps_nb_ceE = $_POST['dps_nb_ce']; }
+	elseif (isset($_POST['dps_nb_ce'])) { $dps_nb_ce = $_POST['dps_nb_ce']; }
 	else { $dps_nb_ce = $dps['dps_nb_ce']; }
 
 	if (isset($duplicated_dps_array['dps_nb_pse2'])) { $dps_nb_pse2 = $duplicated_dps_array['dps_nb_pse2']; }
@@ -141,7 +140,7 @@
 	else { $dps_nb_pse1 = $dps['dps_nb_pse1']; }
 
 	if (isset($duplicated_dps_array['dps_nb_psc1'])) { $dps_nb_psc1 = $duplicated_dps_array['dps_nb_psc1']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $dps_nb_psc1 = $_POST['dps_nb_psc1']; }
+	elseif (isset($_POST['dps_nb_psc1'])) { $dps_nb_psc1 = $_POST['dps_nb_psc1']; }
 	else { $dps_nb_psc1 = $dps['dps_nb_psc1']; }
 
 	if (isset($duplicated_dps_array['dps_nb_vpsp_transp'])) { $dps_nb_vpsp_transp = $duplicated_dps_array['dps_nb_vpsp_transp']; }
@@ -189,7 +188,7 @@
 	else { $medicalext_nb_med = $dps['medicalext_nb_med']; }
 
 	if (isset($duplicated_dps_array['medicalext_med_company'])) { $medicalext_med_company = $duplicated_dps_array['medicalext_med_company']; }
-	elseif (isset($_POST['DANSFORMULAIREPOST'])) { $medicalext_med_company = $_POST['medicalext_med_company']; }
+	elseif (isset($_POST['medicalext_med_company'])) { $medicalext_med_company = $_POST['medicalext_med_company']; }
 	else { $medicalext_med_company = $dps['medicalext_med_company']; }
 
 	if (isset($duplicated_dps_array['medicalext_nb_inf'])) { $medicalext_nb_inf = $duplicated_dps_array['medicalext_nb_inf']; }
@@ -220,59 +219,29 @@
 // TODO Renommer $dps en $existingDps
 
 
-	$spectateurs = $_POST['spectateurs'];
-	$participants = $_POST['participants'];
-	$activite = $_POST['activite'];
-	$environnement = $_POST['environnement'];
-	$delai = $_POST['delai'];
-	$commentaire_ris = $_POST['commentaire_ris'];
-	$commentaire_ris = mysqli_real_escape_string($db_link, $commentaire_ris);
+	// $spectateurs = $_POST['spectateurs'];
+	// $participants = $_POST['participants'];
+	// $activite = $_POST['activite'];
+	// $environnement = $_POST['environnement'];
+	// $delai = $_POST['delai'];
+	// $commentaire_ris = $_POST['commentaire_ris'];
+	// $commentaire_ris = mysqli_real_escape_string($db_link, $commentaire_ris);
 
 
 // TODO Externaliser le calcul du RIS dans une méthode
 
-	$p1_spec = $spectateurs;
-	$p1_part = $participants;
-	$p1 = $p1_spec + $p1_part;
-	if($activite == "1"){$p2 = 0.25;}elseif($activite == "2"){$p2 = 0.35;}elseif($activite == "3"){$p2 = 0.35;}else{$p2 = 0.40;}
-	if($environnement == "1"){$e1 = 0.25;}elseif($environnement == "2"){$e1 = 0.35;}elseif($environnement == "3"){$e1 = 0.35;}else{$e1 = 0.40;}
-	if($delai == "1"){$e2 = 0.25;}elseif($delai == "2"){$e2 = 0.35;}elseif($delai == "3"){$e2 = 0.35;}else{$e2 = 0.40;}
-	$i = $p2 + $e1 + $e2;
-	if($p1 <= 100000){$p = $p1;}else{
-	$p = 100000 + (($p1 - 100000)/2);}
-	$ris = $i * $p / 1000;
-	if($ris <= "1.125"){$type_dps = "0";}elseif($ris <= "12"){$type_dps = "1";}elseif($ris <= "36"){$type_dps = "2";}else{$type_dps = "3";}
-	$p2 = $activite;
-	$e1 = $environnement;
-	$e2 = $delai;
-
-
-	$date_debut_poste = $_POST['date_debut_poste'];
-	$heure_debut_poste = $_POST['heure_debut_poste'];
-	$date_fin_poste = $_POST['date_fin_poste'];
-	$heure_fin_poste = $_POST['heure_fin_poste'];
-
-	$nb_ce = $_POST['nb_ce'];
-	$nb_pse2 = $_POST['nb_pse2'];
-	$nb_pse1 = $_POST['nb_pse1'];
-	$nb_psc1 = $_POST['nb_psc1'];
-	$vpsp_transport = $_POST['vpsp_transport'];
-	$vpsp_soin = $_POST['vpsp_soin'];
-	$vl = $_POST['vl'];
-	$tente = $_POST['tente'];
-	$local = $_POST['local'];
-	$supplement = $_POST['supplement'];
-	$supplement = mysqli_real_escape_string($db_link, $supplement);
-	$medecin_asso = $_POST['medecin_asso'];
-	$medecin_autre = $_POST['medecin_autre'];
-	$medecin_appartenance = $_POST['medecin_appartenance'];
-	$medecin_appartenance = mysqli_real_escape_string($db_link, $medecin_appartenance);
-	$infirmier_asso = $_POST['infirmier_asso'];
-	$infirmier_autre = $_POST['infirmier_autre'];
-	$infirmier_appartenance = $_POST['infirmier_appartenance'];
-	$infirmier_appartenance = mysqli_real_escape_string($db_link, $infirmier_appartenance);
-	$samu = $_POST['samu'];
-	$bspp_sdis = $_POST['bspp_sdis'];
-	$justificatif = $_POST['justificatif'];
-	$justificatif = mysqli_real_escape_string($db_link, $justificatif);
+	// $p1_spec = $spectateurs;
+	// $p1_part = $participants;
+	// $p1 = $p1_spec + $p1_part;
+	// if($activite == "1"){$p2 = 0.25;}elseif($activite == "2"){$p2 = 0.35;}elseif($activite == "3"){$p2 = 0.35;}else{$p2 = 0.40;}
+	// if($environnement == "1"){$e1 = 0.25;}elseif($environnement == "2"){$e1 = 0.35;}elseif($environnement == "3"){$e1 = 0.35;}else{$e1 = 0.40;}
+	// if($delai == "1"){$e2 = 0.25;}elseif($delai == "2"){$e2 = 0.35;}elseif($delai == "3"){$e2 = 0.35;}else{$e2 = 0.40;}
+	// $i = $p2 + $e1 + $e2;
+	// if($p1 <= 100000){$p = $p1;}else{
+	// $p = 100000 + (($p1 - 100000)/2);}
+	// $ris = $i * $p / 1000;
+	// if($ris <= "1.125"){$type_dps = "0";}elseif($ris <= "12"){$type_dps = "1";}elseif($ris <= "36"){$type_dps = "2";}else{$type_dps = "3";}
+	// $p2 = $activite;
+	// $e1 = $environnement;
+	// $e2 = $delai;
 ?>

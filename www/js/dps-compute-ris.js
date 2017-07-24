@@ -2,10 +2,11 @@ var i;
 var p2 = "0,25";
 var e1 = "0,25";
 var e2 = "0,25";
+
 function displayVals() {
-	p2 = $("#activite").val();
-	e1 = $( "#environnement" ).val();
-	e2 = $( "#delai" ).val();
+	p2 = $("#ris_p2").val();
+	e1 = $( "#ris_e1" ).val();
+	e2 = $( "#ris_e2" ).val();
 	if (e1 == "1"){e1 = "25";}else if(e1 == "2"){e1 = "30";}else if(e1 == "3"){e1 = "35";}else{e1 = "40";}
 	if (e2 == "1"){e2 = "25";}else if(e2 == "2"){e2 = "30";}else if(e2 == "3"){e2 = "35";}else{e2 = "40";}
 	if (p2 == "1"){p2 = "25";}else if(p2 == "2"){p2 = "30";}else if(p2 == "3"){p2 = "35";}else{p2 = "40";}
@@ -15,7 +16,9 @@ function displayVals() {
 		//console.log("i = "+ i );
 	}
 }
+
 $( ".risi" ).change( displayVals );
+
 displayVals();
 
 var valuep11;
@@ -23,13 +26,13 @@ var valuep12;
 var p1;
 p1 =0;
 var p;
-$( "#spectateurs" )
+$( "#ris_p1_public" )
 .keyup(function() {
 	valuep11 = $( this ).val();
 	//console.log( valuep11 );
 })
 .keyup();
-$( "#participants" )
+$( "#ris_p1_actors" )
 .keyup(function() {
 	valuep12 = $( this ).val();
 	//console.log( valuep12 );
@@ -86,7 +89,7 @@ function calculris(){
 		//console.log( "RIS = "+ristotal );
 	var typedeposte;
 	$( "#nbsec" ).text(ris );
-		
+
 	if(ris == 0){
 			$('#resultatris').addClass('hidden');
 	}else if(ris != 0 && ris <=2){

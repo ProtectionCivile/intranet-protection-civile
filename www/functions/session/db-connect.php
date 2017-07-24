@@ -6,8 +6,9 @@ $database_dbprotect = "ADPC";
 
 
 $tablename_users = "users";
-$tablename_dps = "demande_dps";
+$tablename_dps = "dps";
 $tablename_sections = "sections";
+$tablename_clients = "clients";
 $tablename_permissions = "rbac_permissions";
 $tablename_roles = "rbac_roles";
 $tablename_rolepermissions = "rbac_rolepermissions";

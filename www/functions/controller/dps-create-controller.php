@@ -2,22 +2,21 @@
 
 <?php
 
-// TODO Revoir le fonctionnement général : peut etre que le message générique peut etre simplifié, et que le message specifique plus détaillé.
-// Par exemple, pour l'email si y'en a pas ça nedoit pas etre considéré comme une erreur...
+	$missingValues = 0;
 
-$missingValues = 0;
+	include('functions/dps/dps-compute-next-available-cu.php');
 
-	if (isset($_POST['cu'])){
-		$cu = $_POST['cu'];
+	if (isset($_POST['create'])) {
+		$cu_full = $_POST['cu_full'];
 		$today = date("Y-m-d");
 
 		if(isNullOrEmpty($client_name)){
 			$missingValues++;
 			$client_name_error = "Le nom de l'organisateur est obligatoire";
 		}
-		if(isNullOrEmpty($client_reprensent)){
+		if(isNullOrEmpty($client_represent)){
 			$missingValues++;
-			$client_reprensent_error = "Le représentant légal de la structure est obligatoire";
+			$client_represent_error = "Le représentant légal de la structure est obligatoire";
 		}
 		if(isNullOrEmpty($client_title)){
 			$missingValues++;
@@ -73,7 +72,7 @@ $missingValues = 0;
 			$event_end_time_error = "L'heure de fin de manifestation est obligatoire";
 		}
 		if(isNullOrEmpty($event_pref_secu)){
-			$event_pref_secu = "false";
+			$event_pref_secu = "0";
 		}
 
 
@@ -98,7 +97,6 @@ $missingValues = 0;
 			$ris_e2_error = "Le délai d'intervention des secours publics est obligatoire pour le calcul du RIS";
 		}
 		if(isNullOrEmpty($ris_comment)){
-			$missingValues++;
 			//$ris_comment_error = "Pas d'erreur";
 		}
 
@@ -171,10 +169,10 @@ $missingValues = 0;
 
 
 		if(isNullOrEmpty($clientmatos_infirmerie)){
-			$clientmatos_infirmerie = "false";
+			$clientmatos_infirmerie = "0";
 		}
 		if(isNullOrEmpty($clientmatos_tente)){
-			$clientmatos_tente = "false";
+			$clientmatos_tente = "0";
 		}
 		if(isNullOrEmpty($clientmatos_other)){
 			// Nothing
@@ -198,11 +196,10 @@ $missingValues = 0;
 			$samu = "1";
 		}
 		if(isNullOrEmpty($bspp)){
-			$bspp = "0";
+			$bspp = '0';
 		}
 
-
-		elseif(isNullOrEmpty($price)){
+		if(isNullOrEmpty($price)){
 			$missingValues++;
 			$price_error = "Le prix de la prestation est obligatoire";
 		}
@@ -211,56 +208,79 @@ $missingValues = 0;
 		}
 
 
-		elseif(isNullOrEmpty($year)){
+		if(isNullOrEmpty($cu_year)){
 			$genericError = "L'année est obligatoire";
 		}
-		elseif(isNullOrEmpty($code_commune)){
+		if(isNullOrEmpty($section)){
 			$genericError = "La commune est obligatoire";
 		}
-		elseif(isNullOrEmpty($type_dps)){
-			$genericError = "le type de DPS est obligatoire";
-		}
+		// if(isNullOrEmpty($dps_type)){
+		// 	$genericError = "Le type de DPS est obligatoire";
+		// }
 
 
 
 		if ($missingValues > 0 ) {
-			$genericError += 'Il y a '.$missingValues.' champs non-renseignés';
+			$genericError += '<br />Il y a '.$missingValues.' champs non-renseignés';
 		}
 
-		$sql = "SELECT ID FROM $tablename_dps WHERE cu_complet='$cu_complet'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
-		$verif = mysqli_query($db_link, $sql);
-		$how_many_dps_found = mysqli_num_rows($verif);
-		if ($how_many_dps_found){
-			$genericError = "Un DPS avec le même certificat unique existe déjà (".$cu_complet.")";
+		if (empty($genericError)){
+			// Create
+
+			$sql = "SELECT ID FROM $tablename_dps WHERE cu_full='$cu_full'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
+			$verif = mysqli_query($db_link, $sql);
+			$how_many_dps_found = mysqli_num_rows($verif);
+			if ($how_many_dps_found){
+				$genericError = "Un DPS avec le même certificat unique existe déjà (".$cu_full.")";
+			}
+			else {
+				$sql = "INSERT INTO $tablename_dps (section, cu_full, cu_year, cu_yearly_index,
+					client_name, client_represent, client_title, client_address, client_phone, client_fax, client_email,
+					event_name, event_description, event_address, event_department, event_begin_date, event_begin_time, event_end_date, event_end_time, event_pref_secu,
+					ris_p1_public, ris_p1_actors, ris_p2, ris_e1, ris_e2, ris_override, ris_comment, dps_type, dps_begin_date, dps_begin_time, dps_end_date, dps_end_time, dps_nb_ce, dps_nb_pse2, dps_nb_pse1, dps_nb_psc1, dps_nb_vpsp_transp, dps_nb_vpsp_soin, dps_nb_vtu, dps_nb_tente, dps_nb_med_asso, dps_nb_inf_asso, dps_other_matos_asso,
+					clientmatos_infirmerie, clientmatos_tente, clientmatos_other,
+					medicalext_nb_med, medicalext_med_company, medicalext_nb_inf, medicalext_inf_company, samu, bspp,
+					price, dps_justification, status, status_justification, status_creation_date) VALUES
+				('$section', '$cu_full', '$cu_year', '$cu_yearly_index',
+					'".mysqli_escape_string($db_link, $client_name)."',
+					'".mysqli_escape_string($db_link, $client_represent)."',
+					'".mysqli_escape_string($db_link, $client_title)."',
+					'".mysqli_escape_string($db_link, $client_address)."',
+					'$client_phone',
+					'$client_fax',
+					'$client_email',
+					'".mysqli_escape_string($db_link, $event_name)."',
+					'".mysqli_escape_string($db_link, $event_description)."',
+					'".mysqli_escape_string($db_link, $event_address)."',
+					'".mysqli_escape_string($db_link, $event_department)."',
+					'".formatDateFrToUs($event_begin_date)."', '".formatTimeRemoveDoubleDot($event_begin_time)."',
+					'".formatDateFrToUs($event_end_date)."', '".formatTimeRemoveDoubleDot($event_end_time)."',
+					'$event_pref_secu',
+					'$ris_p1_public', '$ris_p1_actors', '$ris_p2', '$ris_e1', '$ris_e2', '$ris_override',
+					'".mysqli_escape_string($db_link, $ris_comment)."',
+					'$dps_type',
+					'".formatDateFrToUs($dps_begin_date)."', '".formatTimeRemoveDoubleDot($dps_begin_time)."',
+					'".formatDateFrToUs($dps_end_date)."', '".formatTimeRemoveDoubleDot($dps_end_time)."',
+					'$dps_nb_ce', '$dps_nb_pse2', '$dps_nb_pse1', '$dps_nb_psc1', '$dps_nb_vpsp_transp', '$dps_nb_vpsp_soin', '$dps_nb_vtu', '$dps_nb_tente', '$dps_nb_med_asso', '$dps_nb_inf_asso',
+					'".mysqli_escape_string($db_link, $dps_other_matos_asso)."',
+					'$clientmatos_infirmerie', '$clientmatos_tente',
+					'".mysqli_escape_string($db_link, $clientmatos_other)."',
+					'$medicalext_nb_med', '".mysqli_escape_string($db_link, $medicalext_med_company)."', '$medicalext_nb_inf', '".mysqli_escape_string($db_link, $medicalext_inf_company)."',
+					'$samu', '$bspp',
+					'$price',
+					'".mysqli_escape_string($db_link, $dps_justification)."',
+					'$status',
+					'".mysqli_escape_string($db_link, $status_justification)."',
+					'$today')" or die("Impossible d'ajouter le DPS dans la base de données" . mysqli_error($db_link));
+
+
+				mysqli_query($db_link, $sql);
+				header("Location: dps-list-view.php"); // TODO Ne fonctionne pas ?
+			}
 		}
 		else {
-			$sql = "INSERT INTO $tablename_dps (num_cu, cu_complet, annee_poste, commune_ris, type_dps, dps_debut, dps_fin, dps_debut_poste, dps_fin_poste, heure_debut, heure_fin, heure_debut_poste, heure_fin_poste, dept, prix, description_manif, activite, adresse_manif, organisateur, representant_org, qualite_org, adresse_org, tel_org, fax_org, email_org, dossier_pref, p1_part, p1_spec, p2, e1, e2, date_creation, comment_ris, justif_poste, cei, PSE2, PSE1, PSC1, vpsp, vpsp_soin, vl, tente, local, moyen_supp, med_asso, med_autre, medecin, inf_asso, inf_autre, infirmier, samu, pompier) VALUES ('$num_cu', '$cu', '$year', '$code_commune', '$type_dps','$date_debut', '$date_fin', '$date_debut_poste', '$date_fin_poste', '$heure_debut', '$heure_fin', '$heure_debut_poste', '$heure_fin_poste', '$dept', '$prix', '".mysqli_real_escape_string($db_link, $nom_nature)."', '".mysqli_real_escape_string($db_link, $activite_descriptif)."', '".mysqli_real_escape_string($db_link, $lieu_precis)."', '".mysqli_real_escape_string($db_link, $nom_organisation)."', '".mysqli_real_escape_string($db_link, $represente_par)."', '".mysqli_real_escape_string($db_link, $qualite)."', '".mysqli_real_escape_string($db_link, $adresse)."', '$telephone', '$fax', '$email', '$deja_pref', '$p1_part', '$p1_spec', '$p2', '$e1', '$e2', '$today', '".mysqli_real_escape_string($db_link, $commentaire_ris)."', '".mysqli_real_escape_string($db_link, $justificatif)."', '$nb_ce', '$nb_pse2' , '$nb_pse1', '$nb_psc1', '$vpsp_transport', '$vpsp_soin', '$vl', '$tente', '$local', '".mysqli_real_escape_string($db_link, $supplement)."', '$medecin_asso', '$medecin_autre', '".mysqli_real_escape_string($db_link, $medecin_appartenance)."', '$infirmier_asso', '$infirmier_autre', '".mysqli_real_escape_string($db_link, $infirmier_appartenance)."', '$samu', '$bspp_sdis')" or die("Impossible d'ajouter le DPS dans la base de donn&eacute;e" . mysqli_error($db_link));
-			mysqli_query($db_link, $sql);
-			header("Location: dps-list-view.php");
+			echo "Tant quil y a des erreurs on ne crée pas TODO A SUPPRIMER";
 		}
-	}
+}
 
-?>
-
-
-<?php
-	$dept = "92";
-	$year = date("y");
-	$query_code = "SELECT shortname FROM $tablename_sections WHERE number=$city";
-	$code_result = mysqli_query($db_link, $query_code);
-	$code_array = mysqli_fetch_array($code_result);
-	$code_commune = $code_array['shortname'];
-	mysqli_free_result($code_result);
-	$query_cu = "SELECT num_cu FROM $tablename_dps WHERE annee_poste=$year AND commune_ris=$city ORDER BY id DESC LIMIT 1";
-	$cu_result = mysqli_query($db_link, $query_cu);
-	$cu_array = mysqli_fetch_array($cu_result);
-	$num_cu = $cu_array['num_cu'];
-	$num_cu = $num_cu + 1;
-	if($num_cu < 10){
-		$num_cu = "00".$num_cu;
-	}
-	elseif($num_cu < 100){
-		$num_cu = "0".$num_cu;
-	}
-	$cu = $dept."-".$year."-".$code_commune."-".$num_cu;
 ?>

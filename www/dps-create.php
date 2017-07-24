@@ -20,7 +20,7 @@
 
 
 <!-- Compute city calculation according to POST & GET variables (before auth)-->
-<?php require_once('components/dps/dps-compute-city.php'); ?>
+<?php require_once('functions/dps/dps-compute-city.php'); ?>
 
 <!-- Authentication -->
 <?php require_once('functions/dps/dps-create-authentication.php'); ?>
@@ -38,7 +38,7 @@
 	<?php require_once('components/operation-status-indicator.php'); ?>
 
 	<h2><center>Création d'un Dispositif Prévisionnel de Secours</center></h2>
-	<h3><center><?php echo $cu; ?></center></h3>
+	<h3><center><?php echo $cu_full; ?></center></h3>
 
 
 	<!-- Notice after DPS duplication -->
@@ -60,7 +60,7 @@
 
 
 	<!-- Formulaire de création de DPS -->
-	<?php require_once('components/dps/dps-edit-form.php'); ?>
+	<?php require_once('components/dps/dps-create-form.php'); ?>
 
 </div>
 

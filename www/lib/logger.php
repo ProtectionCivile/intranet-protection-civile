@@ -2,12 +2,12 @@
 
 namespace lib\logger;
 
-// Permet de logger (info, erreur, etc...) 
+// Permet de logger (info, erreur, etc...)
 function logger_log($type = 'error', $message)
 {
     $message = '['.date('d/m/Y H:i:s').'] ['.$type.'] '.$message;
-    
-    $fh = fopen(__DIR__.'/../logs/error.log', 'a+');  
+
+    $fh = fopen(__DIR__.'/../logs/error.log', 'a+');
     fwrite($fh, $message.PHP_EOL);
     fclose($fh);
 }
@@ -30,4 +30,3 @@ function logger_register()
     set_error_handler('lib\logger\logger_error_handler');
     set_exception_handler('lib\logger\logger_exception_handler');
 }
-

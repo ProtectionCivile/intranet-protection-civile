@@ -40,16 +40,16 @@
           </div>
         </div>
 
-        <?php $feedback = compute_server_feedback($lieu_precis_error);?>
+        <?php $feedback = compute_server_feedback($event_address_error);?>
         <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-          <label for="lieu_precis" class="col-sm-4 control-label">
+          <label for="event_address" class="col-sm-4 control-label">
             Lieu précis avec adresse exacte
             <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Adresse la plus précise possible du lieu de l'événement."></span>
           </label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="lieu_precis" name="lieu_precis" aria-describedby="lieu_precis-error" minlength='10' required='true' placeholder="Adresse précise du lien de l'évenement" value="<?php echo $event_address; ?>" data-minlength="10" >
+            <input type="text" class="form-control" id="event_address" name="event_address" aria-describedby="event-address-error" minlength='10' required='true' placeholder="Adresse précise du lien de l'évenement" value="<?php echo $event_address; ?>" data-minlength="10" >
             <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
-            <span id='lieu_precis-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+            <span id='event-address-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
           </div>
         </div>
 
@@ -67,7 +67,7 @@
         </div>
 
         <div class="form-group form-group-sm form-inline row datetimestart">
-          <label for="date_debut" class="col-sm-4 control-label">Date et heure du début de l'évènement</label>
+          <label for="event_begin_date_div" class="col-sm-4 control-label">Date et heure du début de l'évènement</label>
           <div class="col-sm-3">
             <div class='input-group date' id='event_begin_date_div' name="event_begin_date_div">
               <input type='text' class="form-control" id='event_begin_date' name="event_begin_date" aria-describedby="event-begin-date-error" required='true' value="<?php echo $event_begin_date; ?>" / >
@@ -110,7 +110,7 @@
         </div>
 
         <div class="form-group form-group-sm form-inline row">
-          <label for="date_fin" class="col-sm-4 control-label">Date et heure de fin de l'évènement</label>
+          <label for="event_end_date_div" class="col-sm-4 control-label">Date et heure de fin de l'évènement</label>
           <div class="col-sm-3">
             <div class='input-group date' id='event_end_date_div' name="event_end_date_div">
               <input type='text' class="form-control" id='event_end_date' name="event_end_date" required='true' aria-describedby="event-end-date-error" value="<?php echo $event_end_date; ?>" />
@@ -163,8 +163,8 @@
             </label>
             <div class="col-sm-2">
               <select class="form-control" name="event_pref_secu" id="event_pref_secu" aria-describedby="event-pref-secu-error" >
-                <option value="false">Non</option>
-                <option value="true" <?php if ($event_pref_secu) {echo 'selected';}?> >Oui</option>
+                <option value="0">Non</option>
+                <option value="1" <?php if ($event_pref_secu) {echo 'selected';}?> >Oui</option>
               </select>
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='event-pref-secu-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
@@ -256,11 +256,6 @@
         </div>
 
 
-        <?php $feedback = compute_server_feedback($ris_justif_error);?>
-        <label for="ris_justif">Commentaires concernant le RIS</label>
-        <textarea class="form-control" rows="4" id="ris_justif" name="ris_justif" placeholder="Indiquer ici tout commentaire(s) concernant le RIS"value="<?php echo $ris_justif; ?>" ></textarea>
-        <span class="help-block"></span>
-
         <div class="alert " id="resultatris" role="alert">
           <h4>Grille d'évaluation des risques</h4>
           <p>Classification du type de poste : <strong><span id="typeposte"></span></strong><br>
@@ -270,6 +265,11 @@
             <strong> Attention !</strong> Ce type de poste impose un contact avec la DDO.
           </p>
         </div>
+        
+        <?php $feedback = compute_server_feedback($ris_comment_error);?>
+        <label for="ris_comment">Commentaires concernant le RIS</label>
+        <textarea class="form-control" rows="4" id="ris_comment" name="ris_comment" placeholder="Indiquer ici tout commentaire(s) concernant le RIS" ><?php echo $ris_comment; ?></textarea>
+        <span class="help-block"></span>
 
       </div>
     </div>

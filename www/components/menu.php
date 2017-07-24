@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT valid_demande_rt, valid_demande_dps, annee_poste FROM $tablename_dps WHERE valid_demande_rt NOT LIKE '0000-00-00' AND valid_demande_dps LIKE '0000-00-00'";
+$query = "SELECT status_validation_dlo_date, status_validation_ddo_date, cu_year FROM $tablename_dps WHERE status_validation_dlo_date IS NOT NULL AND status_validation_ddo_date IS NOT NULL";
 $number_dps = mysqli_query($db_link, $query);
 $row_cnt = mysqli_num_rows($number_dps);
 

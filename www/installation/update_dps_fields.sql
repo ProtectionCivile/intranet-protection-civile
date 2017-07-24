@@ -1,6 +1,8 @@
 -- DUPLIQUE LA TABLE EXISTANTE
 DROP TABLE `dps`;
 CREATE TABLE `dps` AS (SELECT * FROM `demande_dps`);
+ALTER TABLE `dps` ADD PRIMARY KEY(`id`);
+ALTER TABLE `dps` CHANGE `id` `id` INT(11) NOT NULL AUTO_INCREMENT;
 
 
 -- RENOMMAGE DES CHAMPS ET CHANGEMENT DE TYPE ET NOUVELLE VALEUR PAR DÉFAUT
@@ -13,8 +15,8 @@ ALTER TABLE `dps` CHANGE `organisateur` `client_name` VARCHAR(100) CHARACTER SET
 ALTER TABLE `dps` CHANGE `representant_org` `client_represent` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `client_name`;
 ALTER TABLE `dps` CHANGE `qualite_org` `client_title` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `client_represent`;
 ALTER TABLE `dps` CHANGE `adresse_org` `client_address` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `client_title`;
-ALTER TABLE `dps` CHANGE `tel_org` `client_tel` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `client_address`;
-ALTER TABLE `dps` CHANGE `fax_org` `client_fax` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `client_tel`;
+ALTER TABLE `dps` CHANGE `tel_org` `client_phone` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `client_address`;
+ALTER TABLE `dps` CHANGE `fax_org` `client_fax` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `client_phone`;
 ALTER TABLE `dps` CHANGE `email_org` `client_email` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `client_fax`;
 
 ALTER TABLE `dps` CHANGE `description_manif` `event_name` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `client_email`;
@@ -92,7 +94,7 @@ UPDATE `dps` SET `client_name` = NULL WHERE `client_name` = '';
 UPDATE `dps` SET `client_represent` = NULL WHERE `client_represent` = '';
 UPDATE `dps` SET `client_title` = NULL WHERE `client_title` = '';
 UPDATE `dps` SET `client_address` = NULL WHERE `client_address` = '';
-UPDATE `dps` SET `client_tel` = NULL WHERE `client_tel` = '';
+UPDATE `dps` SET `client_phone` = NULL WHERE `client_phone` = '';
 UPDATE `dps` SET `client_fax` = NULL WHERE `client_fax` = '';
 UPDATE `dps` SET `client_email` = NULL WHERE `client_email` = '';
 UPDATE `dps` SET `event_name` = NULL WHERE `event_name` = '';

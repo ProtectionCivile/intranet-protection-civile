@@ -39,12 +39,10 @@
 				<div class="col-sm-4">
 					<select class="form-control" name="duplicate_dps" id="duplicate_dps">
 						<?php
-						echo $city;
-						$sql = "SELECT id, cu_complet, description_manif FROM $tablename_dps WHERE commune_ris=$city ORDER BY id DESC LIMIT 50";
-						echo $sql;
+						$sql = "SELECT id, cu_full, event_name FROM $tablename_dps WHERE section=$city ORDER BY id DESC LIMIT 100";
 						$query = mysqli_query($db_link, $sql);
 						while($listecu = mysqli_fetch_array($query)){
-							echo "<option value='".$listecu["id"]."'>".$listecu["cu_complet"]." - ".$listecu["description_manif"]."</option>";
+							echo "<option value='".$listecu["id"]."'>".$listecu["cu_full"]." - ".$listecu["event_name"]."</option>";
 						}
 						?>
 					</select>

@@ -8,7 +8,7 @@
 	elseif(isset($_GET['dept']) ){
 		$city = "0";
 	}
-	else {	
+	else {
 		$city = $currentUserSection;
 	}
 ?>
