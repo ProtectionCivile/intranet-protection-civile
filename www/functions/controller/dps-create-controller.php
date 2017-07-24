@@ -226,6 +226,7 @@
 
 		if (empty($genericError)){
 			// Create
+			$status="0";
 
 			$sql = "SELECT ID FROM $tablename_dps WHERE cu_full='$cu_full'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 			$verif = mysqli_query($db_link, $sql);
@@ -272,7 +273,6 @@
 					'$status',
 					'".mysqli_escape_string($db_link, $status_justification)."',
 					'$today')" or die("Impossible d'ajouter le DPS dans la base de données" . mysqli_error($db_link));
-
 
 				mysqli_query($db_link, $sql);
 				header("Location: dps-list-view.php"); // TODO Ne fonctionne pas ?

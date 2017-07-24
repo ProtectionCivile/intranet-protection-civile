@@ -30,6 +30,6 @@
 
 	$sqlQuery_query = mysqli_query($db_link, $sqlQuery);
 
-	echo "<small>".$sqlQuery."</small>";
+	//echo "<small>".$sqlQuery."</small>";
 
 ?>
