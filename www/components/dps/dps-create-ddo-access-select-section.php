@@ -15,7 +15,7 @@
 					<div class="col-sm-4">
 						<select class="form-control" name="city" id="comune_dps">
 							<?php
-							$sql = "SELECT number, name FROM $tablename_sections";
+							$sql = "SELECT number, name FROM $tablename_sections WHERE number=attached_section";
 							$query = mysqli_query($db_link, $sql);
 							while($listecommune = mysqli_fetch_array($query)){
 								if($listecommune["number"] == $city){
