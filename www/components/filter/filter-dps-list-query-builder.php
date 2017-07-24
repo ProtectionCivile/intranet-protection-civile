@@ -13,25 +13,25 @@
 		$addWhereClause = true;
 
 		if ($status == "canceled") {
-			$whereStatus = "status_cancel_date IS NOT NULL ";
+			$whereStatus = "status=4 ";
 		}
 		elseif ($status == "not-valid") {
-			$whereStatus = "status_cancel_date IS NULL AND status=0 AND status_validation_dlo_date IS NULL ";
+			$whereStatus = "status=0 ";
 		}
 		elseif ($status == "valid_antenne") {
-			$whereStatus = "status_cancel_date IS NULL AND status=0 AND status_validation_dlo_date IS NOT NULL AND status_validation_ddo_date IS NULL ";
+			$whereStatus = "status=1 ";
 		}
 		elseif ($status == "valid_ddo_attente") {
-			$whereStatus = "status_cancel_date IS NULL AND status=3 ";
+			$whereStatus = "status=2 ";
 		}
 		elseif ($status == "valid_pref") {
-			$whereStatus = "status_cancel_date IS NULL AND status=1 ";
+			$whereStatus = "status=3 ";
 		}
 		elseif ($status == "refused") {
-			$whereStatus = "status_cancel_date IS NULL AND (status=2 OR status=4) ";
+			$whereStatus = "status=5 ";
 		}
-		elseif ($status == "fuzzy") {
-			$whereStatus = "status_validation_dlo_date IS NOT NULL AND status_validation_ddo_date IS NULL";
+		else {
+			$whereStatus = "status IS NULL";
 		}
 	}
 

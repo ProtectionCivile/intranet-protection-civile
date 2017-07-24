@@ -31,10 +31,10 @@ ALTER TABLE `dps` CHANGE `dossier_pref` `event_pref_secu` BOOLEAN NOT NULL DEFAU
 
 ALTER TABLE `dps` CHANGE `p1_spec` `ris_p1_public` VARCHAR(7) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `event_pref_secu`;
 ALTER TABLE `dps` CHANGE `p1_part` `ris_p1_actors` VARCHAR(7) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `ris_p1_public`;
-ALTER TABLE `dps` CHANGE `p2` `ris_p2` VARCHAR(4) NOT NULL DEFAULT '4' AFTER `ris_p1_actors`;
-ALTER TABLE `dps` CHANGE `e1` `ris_e1` VARCHAR(4) NOT NULL DEFAULT '4' AFTER `ris_p2`;
-ALTER TABLE `dps` CHANGE `e2` `ris_e2` VARCHAR(4) NOT NULL DEFAULT '4' AFTER `ris_e1`;
-ALTER TABLE `dps` CHANGE `edition_ris` `ris_override` VARCHAR(1) NOT NULL DEFAULT '4' AFTER `ris_e2`;
+ALTER TABLE `dps` CHANGE `p2` `ris_p2` VARCHAR(4) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '4' AFTER `ris_p1_actors`;
+ALTER TABLE `dps` CHANGE `e1` `ris_e1` VARCHAR(4) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '4' AFTER `ris_p2`;
+ALTER TABLE `dps` CHANGE `e2` `ris_e2` VARCHAR(4) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '4' AFTER `ris_e1`;
+ALTER TABLE `dps` CHANGE `edition_ris` `ris_override` VARCHAR(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '4' AFTER `ris_e2`;
 ALTER TABLE `dps` CHANGE `comment_ris` `ris_comment` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `ris_override`;
 
 ALTER TABLE `dps` CHANGE `type_dps` `dps_type` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '3' AFTER `ris_comment`;
@@ -67,16 +67,33 @@ ALTER TABLE `dps` CHANGE `infirmier` `medicalext_inf_company` VARCHAR(50) CHARAC
 ALTER TABLE `dps` CHANGE `samu` `samu` TINYINT(1) NULL DEFAULT NULL AFTER `medicalext_inf_company`;
 ALTER TABLE `dps` CHANGE `pompier` `bspp` TINYINT(1) NULL DEFAULT NULL AFTER `samu`;
 
-ALTER TABLE `dps` CHANGE `prix` `price` VARCHAR(7) NULL DEFAULT NULL AFTER `bspp`;
+ALTER TABLE `dps` CHANGE `prix` `price` VARCHAR(7) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `bspp`;
 ALTER TABLE `dps` CHANGE `justif_poste` `dps_justification` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `price`;
 
-ALTER TABLE `dps` CHANGE `etat_demande_dps` `status` TINYINT(1) NULL DEFAULT NULL AFTER `dps_justification`;
+-- ALTER TABLE `dps` CHANGE `etat_demande_dps` `status` TINYINT(1) NULL DEFAULT NULL AFTER `dps_justification`;
+ALTER TABLE `dps` ADD `status` TINYINT(1) NULL DEFAULT NULL AFTER `dps_justification`;
 ALTER TABLE `dps` CHANGE `administration` `status_justification` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `status`;
 ALTER TABLE `dps` CHANGE `date_creation` `status_creation_date` DATE NULL DEFAULT NULL AFTER `status_justification`;
 ALTER TABLE `dps` CHANGE `annul_poste` `status_cancel_date` DATE NULL DEFAULT NULL AFTER `status_creation_date`;
 ALTER TABLE `dps` CHANGE `motif_annul` `status_cancel_reason` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `status_cancel_date`;
 ALTER TABLE `dps` CHANGE `valid_demande_rt` `status_validation_dlo_date` DATE NULL DEFAULT NULL AFTER `status_cancel_reason`;
 ALTER TABLE `dps` CHANGE `valid_demande_dps` `status_validation_ddo_date` DATE NULL DEFAULT NULL AFTER `status_validation_dlo_date`;
+
+
+-- Changement des status de dps
+-- 0 = Brouillon
+-- 1 = Validé Antenne
+-- 2 = Validé DDO / En attente Pref ou ADPC
+-- 3 = Validé Préfecture
+-- 4 = Annulé
+-- 5 = Refusé (DDO ou Préf)
+-- NULL = On ne sait pas
+UPDATE `dps` SET `status` = 0 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=0 AND `status_validation_dlo_date` IS NULL;
+UPDATE `dps` SET `status` = 1 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=0 AND `status_validation_dlo_date` IS NOT NULL AND `status_validation_ddo_date` IS NULL;
+UPDATE `dps` SET `status` = 2 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=3;
+UPDATE `dps` SET `status` = 3 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=1;
+UPDATE `dps` SET `status` = 4 WHERE `status_cancel_date` IS NOT NULL;
+UPDATE `dps` SET `status` = 5 WHERE `status_cancel_date` IS NULL AND (`etat_demande_dps`=2 OR `etat_demande_dps`=4);
 
 
 -- SUPPRESSION DES CHAMPS INUTILISÉS
@@ -87,6 +104,7 @@ ALTER TABLE `dps` DROP `soin_lsp`;
 ALTER TABLE `dps` DROP `soin_evac`;
 ALTER TABLE `dps` DROP `soin_ar`;
 ALTER TABLE `dps` DROP `soin_dcd`;
+ALTER TABLE `dps` DROP `etat_demande_dps`;
 
 
 -- POSITIONNEMENT DE NOUVELLES VALEURS PAR DÉFAUT ET VALEURS NULLES

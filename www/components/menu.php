@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT status_validation_dlo_date, status_validation_ddo_date, cu_year FROM $tablename_dps WHERE status_validation_dlo_date IS NOT NULL AND status_validation_ddo_date IS NULL";
+$query = "SELECT status_validation_dlo_date, status_validation_ddo_date, cu_year FROM $tablename_dps WHERE status=1";
 $number_dps = mysqli_query($db_link, $query);
 $row_cnt = mysqli_num_rows($number_dps);
 
