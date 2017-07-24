@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT status_validation_dlo_date, status_validation_ddo_date, cu_year FROM $tablename_dps WHERE status_validation_dlo_date IS NOT NULL AND status_validation_ddo_date IS NOT NULL";
+$query = "SELECT status_validation_dlo_date, status_validation_ddo_date, cu_year FROM $tablename_dps WHERE status_validation_dlo_date IS NOT NULL AND status_validation_ddo_date IS NULL";
 $number_dps = mysqli_query($db_link, $query);
 $row_cnt = mysqli_num_rows($number_dps);
 
@@ -7,10 +7,7 @@ $query = "SELECT * FROM $tablename_settings_general WHERE name='application-head
 $query_result = mysqli_query($db_link, $query);
 $settings_array = mysqli_fetch_array($query_result);
 
-
 ?>
-
-
 
 <div class="navbar navbar-default navbar-static-top " role="navigation">
 

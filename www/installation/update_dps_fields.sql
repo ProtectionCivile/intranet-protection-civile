@@ -117,7 +117,6 @@ UPDATE `dps` SET `dps_end_time` = NULL WHERE `dps_end_time` = '';
 UPDATE `dps` SET `status_creation_date` = NULL WHERE `status_creation_date` = '0000-00-00';
 UPDATE `dps` SET `status_validation_dlo_date` = NULL WHERE `status_validation_dlo_date` = '0000-00-00';
 UPDATE `dps` SET `status_validation_ddo_date` = NULL WHERE `status_validation_ddo_date` = '0000-00-00';
-UPDATE `dps` SET `status_cancel_date` = NULL WHERE `event_end_date` = '0000-00-00';
+UPDATE `dps` SET `status_cancel_date` = NULL WHERE `status_cancel_date` = '0000-00-00';
 UPDATE `dps` SET `status_justification` = NULL WHERE `status_justification` = '';
-UPDATE `dps` SET `status_cancel_reason` = NULL WHERE `status_cancel_reason` = '';
 UPDATE `dps` SET `status_cancel_reason` = NULL WHERE `status_cancel_reason` = '';

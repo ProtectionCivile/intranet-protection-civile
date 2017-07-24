@@ -36,7 +36,7 @@
 	<?php require_once('components/filter/filter-dps-list-query-builder.php'); ?>
 
 	<?php require_once('components/filter/parts/paging-query-modifier.php'); ?>
-	
+
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
@@ -61,19 +61,19 @@
 							?>
 							<tr class='<?php echo $trClass;?>' >
 								<td>
-									<?php echo $dps["dps_debut_poste"]; ?>
+									<?php echo $dps["dps_begin_date"]; ?>
 								</td>
 								<td>
-									<?php echo $dps["cu_complet"]; ?>
+									<?php echo $dps["cu_full"]; ?>
 								</td>
 								<td>
-									<?php echo compute_dps_department($dps["dept"]); ?>
+									<?php echo compute_dps_department($dps["event_department"]); ?>
 								</td>
 								<td>
-									<?php echo compute_dps_type($dps["type_dps"]); ?>
+									<?php echo compute_dps_type($dps["dps_type"]); ?>
 								</td>
 								<td>
-									<?php echo $dps["description_manif"]; ?>
+									<?php echo $dps["event_name"]; ?>
 								</td>
 								<td>
 									<?php echo $dps_display_status; ?>
@@ -81,7 +81,7 @@
 								<td>
 									<form role='form' action='<?php echo $urlform; ?>' method='post'>
 										<input type='hidden' name='id' value='<?php echo $dps["id"]; ?>'>
-										<input type='hidden' name='name' value='<?php echo $dps["cu_complet"]; ?>'>
+										<input type='hidden' name='name' value='<?php echo $dps["cu_full"]; ?>'>
 										<button type='submit' class='<?php echo $buttonclass; ?>'></button>
 									</form>
 								</td>

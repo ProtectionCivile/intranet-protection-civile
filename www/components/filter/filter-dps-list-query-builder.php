@@ -1,43 +1,43 @@
 <?php
 
-	$sqlQuery="SELECT id, dps_debut_poste, cu_complet, dept, type_dps, description_manif, commune_ris, valid_demande_rt, valid_demande_dps, etat_demande_dps, annul_poste FROM $tablename_dps";
+	$sqlQuery="SELECT id, dps_begin_date, cu_full, event_department, dps_type, event_name, section, status_validation_dlo_date, status_validation_ddo_date, status, status_cancel_date FROM $tablename_dps";
 	$addWhereClause = false;
 
 
 	if (!empty($city) || $city == "0" ) {
 		$addWhereClause = true;
-		$whereCity = "commune_ris='".$city."'";
+		$whereCity = "section='".$city."'";
 	}
 
 	if (!empty($status)) {
 		$addWhereClause = true;
-		
+
 		if ($status == "canceled") {
-			$whereStatus = "annul_poste <> '0000-00-00' ";
+			$whereStatus = "status_cancel_date IS NOT NULL ";
 		}
 		elseif ($status == "not-valid") {
-			$whereStatus = "annul_poste = '0000-00-00' AND etat_demande_dps='0' AND valid_demande_rt = '0000-00-00' ";
+			$whereStatus = "status_cancel_date IS NULL AND status=0 AND status_validation_dlo_date IS NULL ";
 		}
 		elseif ($status == "valid_antenne") {
-			$whereStatus = "annul_poste = '0000-00-00' AND etat_demande_dps='0' AND valid_demande_rt <> '0000-00-00' AND valid_demande_dps = '0000-00-00' ";
+			$whereStatus = "status_cancel_date IS NULL AND status=0 AND status_validation_dlo_date IS NOT NULL AND status_validation_ddo_date IS NULL ";
 		}
 		elseif ($status == "valid_ddo_attente") {
-			$whereStatus = "annul_poste = '0000-00-00' AND etat_demande_dps='3' ";
+			$whereStatus = "status_cancel_date IS NULL AND status=3 ";
 		}
 		elseif ($status == "valid_pref") {
-			$whereStatus = "annul_poste = '0000-00-00' AND etat_demande_dps='1' ";
+			$whereStatus = "status_cancel_date IS NULL AND status=1 ";
 		}
 		elseif ($status == "refused") {
-			$whereStatus = "annul_poste = '0000-00-00' AND (etat_demande_dps='2' OR etat_demande_dps='4') ";
+			$whereStatus = "status_cancel_date IS NULL AND (status=2 OR status=4) ";
 		}
 		elseif ($status == "fuzzy") {
-			$whereStatus = "valid_demande_rt <> '0000-00-00' AND valid_demande_dps = '0000-00-00'";
+			$whereStatus = "status_validation_dlo_date IS NOT NULL AND status_validation_ddo_date IS NULL";
 		}
 	}
 
 	if (!empty($datebegin) && !empty($dateend)) {
 		$addWhereClause = true;
-		$wherePeriod = "dps_debut > '".$datebeginNF->format('Y-m-d')."' AND dps_fin < '".$dateendNF->format('Y-m-d')."'";
+		$wherePeriod = "dps_begin_date > '".$datebeginNF->format('Y-m-d')."' AND dps_end_date < '".$dateendNF->format('Y-m-d')."'";
 	}
 
 
