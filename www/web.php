@@ -5,7 +5,7 @@ include __DIR__.'/lib/logger.php';
 include __DIR__.'/lib/conf.php';
 
 // On active le logger
-// lib\logger\logger_register();
+lib\logger\logger_register();
 
 // Url demandé par le client
 $uri = $_SERVER['REQUEST_URI'];
