@@ -223,6 +223,10 @@
 	elseif (isset($_POST['bspp'])) { $bspp = $_POST['bspp']; }
 	else { $bspp = $dps['bspp']; }
 
+	if (isset($duplicated_dps_array['dps_type'])) { $dps_type = $duplicated_dps_array['dps_type']; }
+	elseif (isset($_POST['dps_type'])) { $dps_type = $_POST['dps_type']; }
+	else { $dps_type = $dps['dps_type']; }
+
 	if (isset($duplicated_dps_array['price'])) { $price = $duplicated_dps_array['price']; }
 	elseif (isset($_POST['price'])) { $price = $_POST['price']; }
 	else { $price = $dps['price']; }
@@ -230,18 +234,6 @@
 	if (isset($duplicated_dps_array['dps_justification'])) { $dps_justification = $duplicated_dps_array['dps_justification']; }
 	elseif (isset($_POST['dps_justification'])) { $dps_justification = $_POST['dps_justification']; }
 	else { $dps_justification = $dps['dps_justification']; }
-
-
-// TODO Renommer $dps en $existingDps
-
-
-	// $spectateurs = $_POST['spectateurs'];
-	// $participants = $_POST['participants'];
-	// $activite = $_POST['activite'];
-	// $environnement = $_POST['environnement'];
-	// $delai = $_POST['delai'];
-	// $commentaire_ris = $_POST['commentaire_ris'];
-	// $commentaire_ris = mysqli_real_escape_string($db_link, $commentaire_ris);
 
 
 // TODO Externaliser le calcul du RIS dans une méthode

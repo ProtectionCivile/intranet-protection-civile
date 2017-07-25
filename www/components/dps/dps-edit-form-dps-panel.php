@@ -418,19 +418,41 @@
       </div>
       <div class="panel-body">
 
-        <?php $feedback = compute_server_feedback($dps_price_error);?>
-        <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-          <label for="price" class="col-sm-4 control-label">
-            Prix
-            <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Tarif facturé au client."></span>
+        <div class="form-group form-group-sm">
+
+          <?php $feedback = compute_server_feedback($dps_type_error);?>
+          <label for="dps_type" class="col-sm-4 control-label">
+            Dispositif mis en place
+            <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Type de DPS."></span>
           </label>
           <div class="col-sm-2">
-            <div class="input-group">
-              <input type="number" class="form-control" id="price" name="price" aria-describedby="price-error" minlength='1' required='true' number='true' placeholder="Prix" value="<?php echo $price; ?>" data-minlength="1" >
-              <div class="input-group-addon glyphicon glyphicon-euro"></div>
+            <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+              <select class="form-control" id="dps_type" name="dps_type" aria-describedby="dps-type-error">
+                <option value="0" <?php if ($dps_type == '0') {echo 'selected';}?>>Point d'Alerte</option>
+                <option value="1" <?php if ($dps_type == '1') {echo 'selected';}?>>DPS-PE</option>
+                <option value="2" <?php if ($dps_type == '2') {echo 'selected';}?>>DPS-ME</option>
+                <option value="3" <?php if ($dps_type == '3') {echo 'selected';}?>>DPS-GE</option>
+              </select>
+              <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+              <span id='dps-type-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
             </div>
-            <span id='price-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
           </div>
+
+          <?php $feedback = compute_server_feedback($dps_price_error);?>
+            <label for="price" class="col-sm-2 control-label">
+              Prix
+              <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Tarif facturé au client."></span>
+            </label>
+            <div class="col-sm-2">
+              <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+              <div class="input-group">
+                <input type="number" class="form-control" id="price" name="price" aria-describedby="price-error" minlength='1' required='true' number='true' placeholder="Prix" value="<?php echo $price; ?>" data-minlength="1" >
+                <div class="input-group-addon glyphicon glyphicon-euro"></div>
+              </div>
+              <span id='price-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+            </div>
+          </div>
+
         </div>
 
         <textarea class="form-control" rows="5" id="dps_justification" name="dps_justification" placeholder="Indiquer tout justificatif sur les moyens, structures, etc. ou toute information utile pour la bonne gestion administrative du poste." ><?php echo $dps_justification; ?></textarea>

@@ -244,13 +244,12 @@
 			$genericError = $genericError."La commune est obligatoire";
 		}
 
-		// TODO À décommenter :-)
-		// if(isNullOrEmpty($dps_type)){
-		// 	if (!isNullOrEmpty($genericError)){
-		// 		$genericError = $genericError.'<br />';
-		// 	}
-		// 	$genericError = $genericError."Le type de DPS est obligatoire";
-		// }
+		if(isNullOrEmpty($dps_type)){
+			if (!isNullOrEmpty($genericError)){
+				$genericError = $genericError.'<br />';
+			}
+			$genericError = $genericError."Le type de DPS est obligatoire";
+		}
 
 		if (isNullOrEmpty($genericError)){
 			// Create
