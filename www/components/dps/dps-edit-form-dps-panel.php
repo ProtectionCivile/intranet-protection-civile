@@ -142,7 +142,7 @@
           <label for="dps_nb_psc1" class="col-sm-3 control-label">Stagiaire PSC-1</label>
           <div class="col-sm-2">
             <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-              <input type="number" class="form-control" id="dps_nb_psc1" name="dps_nb_psc1" aria-describedby="dps-nb-psc1-error" required='false' digits='true' placeholder="00" value="<?php echo $dps_nb_psc1; ?>" >
+              <input type="number" class="form-control" id="dps_nb_psc1" name="dps_nb_psc1" aria-describedby="dps-nb-psc1-error" required='false' disabled='true' digits='true' placeholder="00" value="<?php echo $dps_nb_psc1; ?>" >
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='dps-nb-psc1-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
             </div>
