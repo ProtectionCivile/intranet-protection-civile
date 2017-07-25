@@ -27,6 +27,10 @@
 	$dps_nb_pse2_error = null;
 	$dps_nb_pse1_error = null;
 	$dps_nb_psc1_error = null;
+	$dps_nb_lot_a_error = null;
+	$dps_nb_lot_b_error = null;
+	$dps_nb_lot_c_error = null;
+	$dps_nb_dae_error = null;
 	$dps_nb_vpsp_transp_error = null;
 	$dps_nb_vpsp_soin_error = null;
 	$dps_nb_vtu_error = null;
@@ -43,10 +47,14 @@
 	$medicalext_inf_company_error = null;
 	$samu_error = null;
 	$bspp_error = null;
+	$dps_type_error = null;
 	$dps_price_error = null;
 	$cu_full = null;
 	$cu_yearly_index = null;
 	$dps = null;
 	$section = null;
+	$genericError = null;
+	$genericSuccess = null;
+
 
 ?>
