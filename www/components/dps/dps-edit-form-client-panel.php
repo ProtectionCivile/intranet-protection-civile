@@ -14,7 +14,7 @@
         <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom de la société, association, collectivité, etc." />
       </label>
       <div class="col-sm-8">
-        <input type="text" class="form-control" id="client_name" name="client_name" aria-describedby="client-name-error" placeholder="Nom de l'organisation" minlength='8' required='true' value="<?php echo $client_name;?>" >
+        <input type="text" class="form-control" id="client_name" name="client_name" aria-describedby="client-name-error" placeholder="Nom de l'organisation" minlength='8' required='true' value="<?php echo $client_name;?>" />
         <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
         <span id='client-name-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
       </div>
@@ -27,7 +27,7 @@
         <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Personne qui représente l'organisation."></span>
       </label>
       <div class="col-sm-8">
-        <input type="text" class="form-control" id="client_represent" name="client_represent" aria-describedby="client-represent-error" placeholder="Représentant" minlength='4' required='true' value="<?php echo $client_represent;?>" >
+        <input type="text" class="form-control" id="client_represent" name="client_represent" aria-describedby="client-represent-error" placeholder="Représentant" minlength='4' required='true' value="<?php echo $client_represent;?>" />
         <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
         <span id='client-represent-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
       </div>

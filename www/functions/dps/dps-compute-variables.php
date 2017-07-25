@@ -12,7 +12,7 @@
 	elseif (isset($_POST['client_name'])) { $client_name = $_POST['client_name']; }
 	else { $client_name = $dps['client_name']; }
 
-	if (isset($duplicated_dps_array['client_represent'])) { $client_reprensent = $duplicated_dps_array['client_represent']; }
+	if (isset($duplicated_dps_array['client_represent'])) { $client_represent = $duplicated_dps_array['client_represent']; }
 	elseif (isset($client_array['represent'])) { $client_represent = $client_array['represent']; }
 	elseif (isset($_POST['client_represent'])) { $client_represent = $_POST['client_represent']; }
 	else { $client_represent = $dps['client_represent']; }
@@ -61,17 +61,17 @@
 	elseif (isset($_POST['event_department'])) { $event_department = $_POST['event_department']; }
 	else { $event_department = $dps['event_department']; }
 
-	if (isset($duplicated_dps_array['event_begin_date'])) { $event_begin_date = $duplicated_dps_array['event_begin_date']; }
+	if (isset($duplicated_dps_array['event_begin_date'])) { $event_begin_date = formatDateUsToFr($duplicated_dps_array['event_begin_date']); }
 	elseif (isset($_POST['event_begin_date'])) { $event_begin_date = $_POST['event_begin_date']; }
-	else { $event_begin_date = $dps['event_begin_date']; }
+	else { $event_begin_date = formatDateUsToFr($dps['event_begin_date']); }
 
 	if (isset($duplicated_dps_array['event_begin_time'])) { $event_begin_time = $duplicated_dps_array['event_begin_time']; }
 	elseif (isset($_POST['event_begin_time'])) { $event_begin_time = $_POST['event_begin_time']; }
 	else { $event_begin_time = $dps['event_begin_time']; }
 
-	if (isset($duplicated_dps_array['event_end_date'])) { $event_end_date = $duplicated_dps_array['event_end_date']; }
+	if (isset($duplicated_dps_array['event_end_date'])) { $event_end_date = formatDateUsToFr($duplicated_dps_array['event_end_date']); }
 	elseif (isset($_POST['event_end_date'])) { $event_end_date = $_POST['event_end_date']; }
-	else { $event_end_date = $dps['event_end_date']; }
+	else { $event_end_date = formatDateUsToFr($dps['event_end_date']); }
 
 	if (isset($duplicated_dps_array['event_end_time'])) { $event_end_time = $duplicated_dps_array['event_end_time']; }
 	elseif (isset($_POST['event_end_time'])) { $event_end_time = $_POST['event_end_time']; }
@@ -109,17 +109,17 @@
 
 
 	// Horaires du dispositif
-	if (isset($duplicated_dps_array['dps_begin_date'])) { $dps_begin_date = $duplicated_dps_array['dps_begin_date']; }
+	if (isset($duplicated_dps_array['dps_begin_date'])) { $dps_begin_date = formatDateUsToFr($duplicated_dps_array['dps_begin_date']); }
 	elseif (isset($_POST['dps_begin_date'])) { $dps_begin_date = $_POST['dps_begin_date']; }
-	else { $dps_begin_date = $dps['dps_begin_date']; }
+	else { $dps_begin_date = formatDateUsToFr($dps['dps_begin_date']); }
 
 	if (isset($duplicated_dps_array['dps_begin_time'])) { $dps_begin_time = $duplicated_dps_array['dps_begin_time']; }
 	elseif (isset($_POST['dps_begin_time'])) { $dps_begin_time = $_POST['dps_begin_time']; }
 	else { $dps_begin_time = $dps['dps_begin_time']; }
 
-	if (isset($duplicated_dps_array['dps_end_date'])) { $dps_end_date = $duplicated_dps_array['dps_end_date']; }
+	if (isset($duplicated_dps_array['dps_end_date'])) { $dps_end_date = formatDateUsToFr($duplicated_dps_array['dps_end_date']); }
 	elseif (isset($_POST['dps_end_date'])) { $dps_end_date = $_POST['dps_end_date']; }
-	else { $dps_end_date = $dps['dps_end_date']; }
+	else { $dps_end_date = formatDateUsToFr($dps['dps_end_date']); }
 
 	if (isset($duplicated_dps_array['dps_end_time'])) { $dps_end_time = $duplicated_dps_array['dps_end_time']; }
 	elseif (isset($_POST['dps_end_time'])) { $dps_end_time = $_POST['dps_end_time']; }

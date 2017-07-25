@@ -30,16 +30,25 @@ function isNullOrEmpty($str)
 
 function formatDateFrToUs($str)
 {
+    if ($str == null) {
+      return "";
+    }
     return DateTime::createFromFormat('d-m-Y', $str)->format('Y-m-d');
 }
 
 function formatDateUsToFr($str)
 {
-    return DateTime::createFromFormat('Y-m-d', $str)->format('d-m-Y');
+  if ($str == null) {
+    return "";
+  }
+  return DateTime::createFromFormat('Y-m-d', $str)->format('d-m-Y');
 }
 
 function formatTimeRemoveDoubleDot($str)
 {
-    return DateTime::createFromFormat('H:i', $str)->format('Hi');
+  if ($str == null) {
+    return "";
+  }
+  return DateTime::createFromFormat('H:i', $str)->format('Hi');
 }
 ?>
