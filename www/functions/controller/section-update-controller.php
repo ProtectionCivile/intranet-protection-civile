@@ -1,5 +1,5 @@
 <?php
-	//Authentication 
+	//Authentication
 	$rbac->enforce("admin-sections-update", $currentUserID);
 
 	if (empty($genericError)){
@@ -66,9 +66,7 @@
 		}
 
 		if (isset($_POST['update'])) {		
-			echo "MAJ";
 			$sql = "UPDATE $tablename_sections SET name='$name', address='$address', phone='$phone', zip_code='$zipcode', website='$website', mail='$mail', attached_section='$attached_section', `number`='$number', city='$city', shortname='$shortname' WHERE number='$id'";
-			echo $sql;
 			if ($db_link->query($sql) === TRUE) {
 			    $genericSuccess = "Section mis à jour ($name)";
 			} else {
