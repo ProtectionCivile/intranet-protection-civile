@@ -274,8 +274,19 @@
 					'".mysqli_escape_string($db_link, $status_justification)."',
 					'$today')" or die("Impossible d'ajouter le DPS dans la base de données" . mysqli_error($db_link));
 
-				mysqli_query($db_link, $sql);
-				header("Location: dps-list-view.php"); // TODO Ne fonctionne pas ?
+
+				if ($db_link->query($sql) === TRUE) {
+					$sql = "SELECT id FROM $tablename_dps WHERE cu_full='$cu_full'";
+					$query = mysqli_query($db_link, $sql);
+					$found_dps = mysqli_fetch_assoc($query);
+
+					$genericSuccess = "Dispositif de Secours créé.
+					<a href='dps-edit.php?id=".$found_dps['id']."' class='btn btn-default btn-sm' title='Voir le DPS'>Voir le DPS ".$cu_full."</a>
+					<a href='dps-list-view.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>
+					<a href='dps-create.php?city=".$section."' class='btn btn-info btn-sm' title='Créer un autre DPS'>Créer un autre DPS</a>";
+				} else {
+						$genericError = "Erreur pendant la création du DPS ".$event_name." (".$cu_full.") " . $db_link->error;
+				}
 			}
 		}
 		else {
