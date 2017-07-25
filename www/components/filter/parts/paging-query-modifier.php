@@ -24,7 +24,7 @@
 		reset_currrent_page();
 	}
 
-	if ($addLimit) {
+	if (isset($addLimit) && $addLimit) {
 		$sqlQuery = $sqlQuery." ".$limit;
 	}
 
