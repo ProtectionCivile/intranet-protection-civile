@@ -236,20 +236,4 @@
 	else { $dps_justification = $dps['dps_justification']; }
 
 
-// TODO Externaliser le calcul du RIS dans une méthode
-
-	// $p1_spec = $spectateurs;
-	// $p1_part = $participants;
-	// $p1 = $p1_spec + $p1_part;
-	// if($activite == "1"){$p2 = 0.25;}elseif($activite == "2"){$p2 = 0.35;}elseif($activite == "3"){$p2 = 0.35;}else{$p2 = 0.40;}
-	// if($environnement == "1"){$e1 = 0.25;}elseif($environnement == "2"){$e1 = 0.35;}elseif($environnement == "3"){$e1 = 0.35;}else{$e1 = 0.40;}
-	// if($delai == "1"){$e2 = 0.25;}elseif($delai == "2"){$e2 = 0.35;}elseif($delai == "3"){$e2 = 0.35;}else{$e2 = 0.40;}
-	// $i = $p2 + $e1 + $e2;
-	// if($p1 <= 100000){$p = $p1;}else{
-	// $p = 100000 + (($p1 - 100000)/2);}
-	// $ris = $i * $p / 1000;
-	// if($ris <= "1.125"){$type_dps = "0";}elseif($ris <= "12"){$type_dps = "1";}elseif($ris <= "36"){$type_dps = "2";}else{$type_dps = "3";}
-	// $p2 = $activite;
-	// $e1 = $environnement;
-	// $e2 = $delai;
 ?>

@@ -1,4 +1,7 @@
-var i;
+var i=0;
+var p=0;
+var valuep11=0;
+var valuep12=0;
 var p2 = "0,25";
 var e1 = "0,25";
 var e2 = "0,25";
@@ -13,7 +16,7 @@ function displayVals() {
 	if(e1 && e2 && p2 != "0"){
 		i = parseInt(p2,10) + parseInt(e1,10) + parseInt(e2,10);
 		i = i/100;
-		//console.log("i = "+ i );
+		// console.log("i = "+ i );
 	}
 }
 
@@ -21,36 +24,40 @@ $( ".risi" ).change( displayVals );
 
 displayVals();
 
-var valuep11;
-var valuep12;
-var p1;
-p1 =0;
-var p;
+
+var p1=0;
 $( "#ris_p1_public" )
 .keyup(function() {
 	valuep11 = $( this ).val();
-	//console.log( valuep11 );
+	// console.log( "p11=" + valuep11 );
 })
 .keyup();
 $( "#ris_p1_actors" )
 .keyup(function() {
 	valuep12 = $( this ).val();
-	//console.log( valuep12 );
+	// console.log( "p12="+valuep12 );
 })
 .keyup();
 
 $( ".risp")
 .keyup(function() {
-	p1 = parseInt(valuep11, 10) + parseInt(valuep12, 10);
-	$( "#p1" ).text( "P1 = "+p1 );
-	if(p1 <= 100000){
-		p = p1;
+	p=0;
+	if (valuep11 && valuep12) {
+		p1 = parseInt(valuep11, 10) + parseInt(valuep12, 10);
+		$( "#p1" ).text( "P1 = "+p1 );
+		if(p1 <= 100000){
+			p = parseInt(p1, 10);
+		}
+		else{
+			p = parseInt(100000 +(parseInt(p1, 10) - 100000)/2, 10);
+			p = parseInt(Math.ceil(p)), 10;
+		}
 	}
-	else{
-		p = 100000 +(parseInt(p1) - 100000)/2;
-		p = Math.ceil(p);
+	else {
+		p1=0;
+		p=0;
 	}
-	//console.log( "P = "+p );
+	// console.log( "P = "+p );
 })
 .keyup();
 
@@ -69,55 +76,79 @@ $( ".risp" ).change(function() {
 function calculris(){
 	var ristotal;
 	var ris;
+	var typedeposte;
 	ris = 0;
 	ristotal = 0;
 	if(p != 0){
 		ristotal = i*(p/1000);
 	}
-	if(ristotal != 0 && (ristotal*1000) <= 1125){
+	if(ristotal == 0 ){
+		ris = 0;
+		$('#resultatris').addClass('hidden');
+	}
+	else if(ristotal > 0 && ristotal <= 0.25){
+		ris = 0;
+		typedeposte = "cf. autorité compétente";
+		$('#resultatris').addClass('alert-info');
+		$('#resultatris').removeClass('alert-warning');
+		$('#grosris').addClass('hidden');
+		$('#resultatris').removeClass('hidden');
+		$('#dps_type').val('0');
+	}
+	else if(ristotal > 0.25 && ristotal <= 1.125){
 		ris = 2;
-	}
-	else if((ristotal*1000) > 1,125 && ristotal <= 4){
-		ris = 4;
-	}
-	else if(ristotal > 4){
-		ris = Math.ceil(ristotal);
-		if(ris&1){
-			ris = ris +1;
-		}
-	}
-		//console.log( "RIS = "+ristotal );
-	var typedeposte;
-	$( "#nbsec" ).text(ris );
-
-	if(ris == 0){
-			$('#resultatris').addClass('hidden');
-	}else if(ris != 0 && ris <=2){
 		typedeposte = "PAPS";
 		$('#resultatris').addClass('alert-info');
 		$('#resultatris').removeClass('alert-warning');
 		$('#grosris').addClass('hidden');
 		$('#resultatris').removeClass('hidden');
 		$('#dps_type').val('0');
-	}else if(ris >=4 && ris <=12){
+	}
+	else if(ristotal > 1,125 && ristotal <= 4){
+		ris = 4;
 		typedeposte = "DPS-PE";
 		$('#resultatris').addClass('alert-info');
 		$('#resultatris').removeClass('alert-warning');
 		$('#grosris').addClass('hidden');
 		$('#resultatris').removeClass('hidden');
 		$('#dps_type').val('1');
-	}else if(ris > 12 && ris <=36){
+	}
+	else if(ristotal > 4 && ristotal <= 12){
+		ris = Math.ceil(ristotal);
+		if(ris&1){
+			ris = ris +1;
+		}
+		typedeposte = "DPS-PE";
+		$('#resultatris').addClass('alert-info');
+		$('#resultatris').removeClass('alert-warning');
+		$('#grosris').addClass('hidden');
+		$('#resultatris').removeClass('hidden');
+		$('#dps_type').val('1');
+	}
+	else if(ristotal > 12 && ristotal <= 36){
+		ris = Math.ceil(ristotal);
+		if(ris&1){
+			ris = ris +1;
+		}
 		typedeposte = "DPS-ME";
 		$('#resultatris').addClass('alert-warning');
 		$('#grosris').removeClass('hidden');
 		$('#resultatris').removeClass('hidden');
 		$('#dps_type').val('2');
-	}else if(ris >36){
+	}
+	else {
+		ris = Math.ceil(ristotal);
+		if(ris&1){
+			ris = ris +1;
+		}
 		typedeposte = "DPS-GE";
 		$('#resultatris').addClass('alert-warning');
 		$('#grosris').removeClass('hidden');
 		$('#resultatris').removeClass('hidden');
 		$('#dps_type').val('3');
 	}
+		//console.log( "RIS = "+ristotal );
+
+	$( "#nbsec" ).text(ris);
 	$( "#typeposte" ).text(typedeposte);
 }
