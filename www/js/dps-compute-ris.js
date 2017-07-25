@@ -98,22 +98,26 @@ function calculris(){
 		$('#resultatris').removeClass('alert-warning');
 		$('#grosris').addClass('hidden');
 		$('#resultatris').removeClass('hidden');
+		$('#dps_type').val('0');
 	}else if(ris >=4 && ris <=12){
 		typedeposte = "DPS-PE";
 		$('#resultatris').addClass('alert-info');
 		$('#resultatris').removeClass('alert-warning');
 		$('#grosris').addClass('hidden');
 		$('#resultatris').removeClass('hidden');
+		$('#dps_type').val('1');
 	}else if(ris > 12 && ris <=36){
 		typedeposte = "DPS-ME";
 		$('#resultatris').addClass('alert-warning');
 		$('#grosris').removeClass('hidden');
 		$('#resultatris').removeClass('hidden');
+		$('#dps_type').val('2');
 	}else if(ris >36){
 		typedeposte = "DPS-GE";
 		$('#resultatris').addClass('alert-warning');
 		$('#grosris').removeClass('hidden');
 		$('#resultatris').removeClass('hidden');
+		$('#dps_type').val('3');
 	}
 	$( "#typeposte" ).text(typedeposte);
 }
