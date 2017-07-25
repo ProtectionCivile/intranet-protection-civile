@@ -224,26 +224,39 @@
 		}
 
 
-		if ($missingValues > 0 ) {
-			$genericError += '<br />Il y a '.$missingValues.' champs non-renseignés';
+		if ($missingValues != "0" ) {
+			if (!isNullOrEmpty($genericError)){
+				$genericError = $genericError.'<br />';
+			}
+				$genericError = $genericError.'Il y a '.$missingValues.' champs non-renseignés';
 		}
 
 		if(isNullOrEmpty($cu_year)){
-			$genericError = "L'année est obligatoire";
+			if (!isNullOrEmpty($genericError)){
+				$genericError = $genericError.'<br />';
+			}
+			$genericError = $genericError."L'année est obligatoire";
 		}
 		if(isNullOrEmpty($section)){
-			$genericError = "La commune est obligatoire";
+			if (!isNullOrEmpty($genericError)){
+				$genericError = $genericError.'<br />';
+			}
+			$genericError = $genericError."La commune est obligatoire";
 		}
 
 		// TODO À décommenter :-)
 		// if(isNullOrEmpty($dps_type)){
-		// 	$genericError = "Le type de DPS est obligatoire";
+		// 	if (!isNullOrEmpty($genericError)){
+		// 		$genericError = $genericError.'<br />';
+		// 	}
+		// 	$genericError = $genericError."Le type de DPS est obligatoire";
 		// }
 
-		if (empty($genericError)){
+		if (isNullOrEmpty($genericError)){
 			// Create
 			$status="0";
 
+			// Ensure it does not exist
 			$sql = "SELECT ID FROM $tablename_dps WHERE cu_full='$cu_full'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 			$verif = mysqli_query($db_link, $sql);
 			$how_many_dps_found = mysqli_num_rows($verif);
