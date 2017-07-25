@@ -48,7 +48,11 @@ ALTER TABLE `dps` CHANGE `cei` `dps_nb_ce` TINYINT(1) NULL DEFAULT '0' AFTER `dp
 ALTER TABLE `dps` CHANGE `PSE2` `dps_nb_pse2` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_ce`;
 ALTER TABLE `dps` CHANGE `PSE1` `dps_nb_pse1` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_pse2`;
 ALTER TABLE `dps` CHANGE `PSC1` `dps_nb_psc1` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_pse1`;
-ALTER TABLE `dps` CHANGE `vpsp` `dps_nb_vpsp_transp` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_psc1`;
+ALTER TABLE `dps` ADD `dps_nb_lot_a` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_psc1`;
+ALTER TABLE `dps` ADD `dps_nb_lot_b` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_lot_a`;
+ALTER TABLE `dps` ADD `dps_nb_lot_c` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_lot_b`;
+ALTER TABLE `dps` ADD `dps_nb_dae` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_lot_c`;
+ALTER TABLE `dps` CHANGE `vpsp` `dps_nb_vpsp_transp` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_dae`;
 ALTER TABLE `dps` CHANGE `vpsp_soin` `dps_nb_vpsp_soin` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_vpsp_transp`;
 ALTER TABLE `dps` CHANGE `vl` `dps_nb_vtu` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_vpsp_soin`;
 ALTER TABLE `dps` CHANGE `tente` `dps_nb_tente` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_vtu`;

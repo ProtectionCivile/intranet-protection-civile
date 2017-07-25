@@ -112,7 +112,7 @@
 
         <div class="form-group form-group-sm">
           <?php $feedback = compute_server_feedback($dps_nb_ce_error);?>
-          <label for="dps_nb_ce" class="col-sm-4 control-label">Chef d'équipe</label>
+          <label for="dps_nb_ce" class="col-sm-4 control-label">Chef d'équipe / de poste</label>
           <div class="col-sm-2">
             <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
               <input type="number" class="form-control" id="dps_nb_ce" name="dps_nb_ce" aria-describedby="nb-ce-error" required='true' digits='true' placeholder="00" value="<?php echo $dps_nb_ce; ?>" >
@@ -121,7 +121,7 @@
             </div>
           </div>
           <?php $feedback = compute_server_feedback($dps_nb_pse2_error);?>
-          <label for="dps_nb_pse2" class="col-sm-3 control-label">PSE-2</label>
+          <label for="dps_nb_pse2" class="col-sm-3 control-label">Équipier secouriste PSE-2</label>
           <div class="col-sm-2">
             <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
               <input type="number" class="form-control" id="dps_nb_pse2" name="dps_nb_pse2" aria-describedby="dps-nb-pse2-error" required='true' digits='true' placeholder="00" value="<?php echo $dps_nb_pse2; ?>" >
@@ -130,7 +130,7 @@
             </div>
           </div>
           <?php $feedback = compute_server_feedback($dps_nb_pse1_error);?>
-          <label for="dps_nb_pse1" class="col-sm-4 control-label">PSE-1</label>
+          <label for="dps_nb_pse1" class="col-sm-4 control-label">Secouriste PSE-1</label>
           <div class="col-sm-2">
             <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
               <input type="number" class="form-control" id="dps_nb_pse1" name="dps_nb_pse1" aria-describedby="dps-nb-pse1-error" required='true' digits='true' placeholder="00" value="<?php echo $dps_nb_pse1; ?>" >
@@ -149,6 +149,49 @@
           </div>
         </div>
       </div>
+
+      <div class="panel-body">
+
+        <div class="form-group form-group-sm">
+          <?php $feedback = compute_server_feedback($dps_nb_lot_a_error);?>
+          <label for="dps_nb_lot_a" class="col-sm-4 control-label">Lot A</label>
+          <div class="col-sm-2">
+            <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+              <input type="number" class="form-control" id="dps_nb_lot_a" name="dps_nb_lot_a" aria-describedby="nb-lot-a-error" required='true' digits='true' placeholder="00" value="<?php echo $dps_nb_lot_a; ?>" >
+              <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+              <span id='nb-lot_a-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+            </div>
+          </div>
+          <?php $feedback = compute_server_feedback($dps_nb_lot_b_error);?>
+          <label for="dps_nb_lot_b" class="col-sm-3 control-label">Lot B</label>
+          <div class="col-sm-2">
+            <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+              <input type="number" class="form-control" id="dps_nb_lot_b" name="dps_nb_lot_b" aria-describedby="dps-nb-lot-b-error" required='true' digits='true' placeholder="00" value="<?php echo $dps_nb_lot_b; ?>" >
+              <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+              <span id='dps-nb-lot-b-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+            </div>
+          </div>
+          <?php $feedback = compute_server_feedback($dps_nb_lot_c_error);?>
+          <label for="dps_nb_lot_c" class="col-sm-4 control-label">Lot C</label>
+          <div class="col-sm-2">
+            <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+              <input type="number" class="form-control" id="dps_nb_lot_c" name="dps_nb_lot_c" aria-describedby="dps-nb-lot-c-error" required='true' digits='true' placeholder="00" value="<?php echo $dps_nb_lot_c; ?>" >
+              <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+              <span id='dps-nb-lot-c-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+            </div>
+          </div>
+          <?php $feedback = compute_server_feedback($dps_nb_dae_error);?>
+          <label for="dps_nb_dae" class="col-sm-3 control-label">DAE</label>
+          <div class="col-sm-2">
+            <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+              <input type="number" class="form-control" id="dps_nb_dae" name="dps_nb_dae" aria-describedby="dps-nb-dae-error" required='true' digits='true' placeholder="00" value="<?php echo $dps_nb_dae; ?>" >
+              <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+              <span id='dps-nb-dae-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="panel-body">
 
         <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">

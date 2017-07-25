@@ -167,6 +167,22 @@
 	elseif (isset($_POST['dps_nb_inf_asso'])) { $dps_nb_inf_asso = $_POST['dps_nb_inf_asso']; }
 	else { $dps_nb_inf_asso = $dps['dps_nb_inf_asso']; }
 
+	if (isset($duplicated_dps_array['dps_nb_lot_a'])) { $dps_nb_lot_a = $duplicated_dps_array['dps_nb_lot_a']; }
+	elseif (isset($_POST['dps_nb_lot_a'])) { $dps_nb_lot_a = $_POST['dps_nb_lot_a']; }
+	else { $dps_nb_lot_a = $dps['dps_nb_lot_a']; }
+
+	if (isset($duplicated_dps_array['dps_nb_lot_b'])) { $dps_nb_lot_b = $duplicated_dps_array['dps_nb_lot_b']; }
+	elseif (isset($_POST['dps_nb_lot_b'])) { $dps_nb_lot_b = $_POST['dps_nb_lot_b']; }
+	else { $dps_nb_lot_b = $dps['dps_nb_lot_b']; }
+
+	if (isset($duplicated_dps_array['dps_nb_lot_c'])) { $dps_nb_lot_c = $duplicated_dps_array['dps_nb_lot_c']; }
+	elseif (isset($_POST['dps_nb_lot_c'])) { $dps_nb_lot_c = $_POST['dps_nb_lot_c']; }
+	else { $dps_nb_lot_c = $dps['dps_nb_lot_c']; }
+
+	if (isset($duplicated_dps_array['dps_nb_dae'])) { $dps_nb_dae = $duplicated_dps_array['dps_nb_dae']; }
+	elseif (isset($_POST['dps_nb_dae'])) { $dps_nb_dae = $_POST['dps_nb_dae']; }
+	else { $dps_nb_dae = $dps['dps_nb_dae']; }
+
 	if (isset($duplicated_dps_array['dps_other_matos_asso'])) { $dps_other_matos_asso = $duplicated_dps_array['dps_other_matos_asso']; }
 	elseif (isset($_POST['dps_other_matos_asso'])) { $dps_other_matos_asso = $_POST['dps_other_matos_asso']; }
 	else { $dps_other_matos_asso = $dps['dps_other_matos_asso']; }

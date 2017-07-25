@@ -137,6 +137,22 @@
 		if(isNullOrEmpty($dps_nb_psc1)){
 		 	$dps_nb_psc1 = "0";
 		}
+		if(isNullOrEmpty($dps_nb_lot_a)){
+			$missingValues++;
+			$dps_nb_lot_a_error = "Merci d'indiquer le nombre de lots A";
+		}
+		if(isNullOrEmpty($dps_nb_lot_b)){
+			$missingValues++;
+			$dps_nb_lot_b_error = "Merci d'indiquer le nombre de lots B";
+		}
+		if(isNullOrEmpty($dps_nb_lot_c)){
+			$missingValues++;
+			$dps_nb_lot_c_error = "Merci d'indiquer le nombre de lots C";
+		}
+		if(isNullOrEmpty($dps_nb_dae)){
+		 $missingValues++;
+			$dps_nb_dae_error = "Merci d'indiquer le nombre de défibrillateurs";
+		}
 		if(isNullOrEmpty($dps_nb_vpsp_transp)){
 			$missingValues++;
 			// $vpsp_transport = "0";
@@ -208,21 +224,21 @@
 		}
 
 
+		if ($missingValues > 0 ) {
+			$genericError += '<br />Il y a '.$missingValues.' champs non-renseignés';
+		}
+
 		if(isNullOrEmpty($cu_year)){
 			$genericError = "L'année est obligatoire";
 		}
 		if(isNullOrEmpty($section)){
 			$genericError = "La commune est obligatoire";
 		}
+
+		// TODO À décommenter :-)
 		// if(isNullOrEmpty($dps_type)){
 		// 	$genericError = "Le type de DPS est obligatoire";
 		// }
-
-
-
-		if ($missingValues > 0 ) {
-			$genericError += '<br />Il y a '.$missingValues.' champs non-renseignés';
-		}
 
 		if (empty($genericError)){
 			// Create
@@ -238,7 +254,8 @@
 				$sql = "INSERT INTO $tablename_dps (section, cu_full, cu_year, cu_yearly_index,
 					client_name, client_represent, client_title, client_address, client_phone, client_fax, client_email,
 					event_name, event_description, event_address, event_department, event_begin_date, event_begin_time, event_end_date, event_end_time, event_pref_secu,
-					ris_p1_public, ris_p1_actors, ris_p2, ris_e1, ris_e2, ris_override, ris_comment, dps_type, dps_begin_date, dps_begin_time, dps_end_date, dps_end_time, dps_nb_ce, dps_nb_pse2, dps_nb_pse1, dps_nb_psc1, dps_nb_vpsp_transp, dps_nb_vpsp_soin, dps_nb_vtu, dps_nb_tente, dps_nb_med_asso, dps_nb_inf_asso, dps_other_matos_asso,
+					ris_p1_public, ris_p1_actors, ris_p2, ris_e1, ris_e2, ris_override, ris_comment,
+					dps_type, dps_begin_date, dps_begin_time, dps_end_date, dps_end_time, dps_nb_ce, dps_nb_pse2, dps_nb_pse1, dps_nb_psc1, dps_nb_lot_a, dps_nb_lot_b, dps_nb_lot_c, dps_nb_dae, dps_nb_vpsp_transp, dps_nb_vpsp_soin, dps_nb_vtu, dps_nb_tente, dps_nb_med_asso, dps_nb_inf_asso, dps_other_matos_asso,
 					clientmatos_infirmerie, clientmatos_tente, clientmatos_other,
 					medicalext_nb_med, medicalext_med_company, medicalext_nb_inf, medicalext_inf_company, samu, bspp,
 					price, dps_justification, status, status_justification, status_creation_date) VALUES
@@ -262,7 +279,9 @@
 					'$dps_type',
 					'".formatDateFrToUs($dps_begin_date)."', '".formatTimeRemoveDoubleDot($dps_begin_time)."',
 					'".formatDateFrToUs($dps_end_date)."', '".formatTimeRemoveDoubleDot($dps_end_time)."',
-					'$dps_nb_ce', '$dps_nb_pse2', '$dps_nb_pse1', '$dps_nb_psc1', '$dps_nb_vpsp_transp', '$dps_nb_vpsp_soin', '$dps_nb_vtu', '$dps_nb_tente', '$dps_nb_med_asso', '$dps_nb_inf_asso',
+					'$dps_nb_ce', '$dps_nb_pse2', '$dps_nb_pse1', '$dps_nb_psc1',
+					'$dps_nb_lot_a', '$dps_nb_lot_b', '$dps_nb_lot_c', '$dps_nb_dae',
+					'$dps_nb_vpsp_transp', '$dps_nb_vpsp_soin', '$dps_nb_vtu', '$dps_nb_tente', '$dps_nb_med_asso', '$dps_nb_inf_asso',
 					'".mysqli_escape_string($db_link, $dps_other_matos_asso)."',
 					'$clientmatos_infirmerie', '$clientmatos_tente',
 					'".mysqli_escape_string($db_link, $clientmatos_other)."',
