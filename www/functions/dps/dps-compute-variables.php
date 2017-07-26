@@ -1,8 +1,7 @@
 <?php
 	require_once('components/dps/dps-init-variables-module.php');
 
-	// $dept = $_POST['departement'];
-	// $cu_year = $_POST['cu_year'];
+
 	if (isset($_POST['cu_full'])) { $cu_full = $_POST['cu_full']; }
 	if (isset($_POST['section'])) { $section = $_POST['section']; }
 
@@ -234,6 +233,15 @@
 	if (isset($duplicated_dps_array['dps_justification'])) { $dps_justification = $duplicated_dps_array['dps_justification']; }
 	elseif (isset($_POST['dps_justification'])) { $dps_justification = $_POST['dps_justification']; }
 	else { $dps_justification = $dps['dps_justification']; }
+
+	if (isset($duplicated_dps_array['status'])) { $status = $duplicated_dps_array['status']; }
+	elseif (isset($_POST['status'])) { $status = $_POST['status']; }
+	else { $status = $dps['status']; }
+
+	if (isset($duplicated_dps_array['cu_year'])) { $cu_year = $duplicated_dps_array['cu_year']; }
+	elseif (isset($_POST['cu_year'])) { $cu_year = $_POST['cu_year']; }
+	else { $cu_year = $dps['cu_year']; }
+
 
 
 ?>

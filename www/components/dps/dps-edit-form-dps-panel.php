@@ -341,7 +341,7 @@
           <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
             <select class="form-control" id="samu" name="samu" aria-describedby="samu-error">
               <option value="0" <?php if ($samu == '0') {echo 'selected';}?>>Ni informé, ni présent</option>
-              <option value="1" <?php if ($samu != '1' && $samu != '2') {echo 'selected';}?>>Informé, non présent</option>
+              <option value="1" <?php if ($samu != 'O' && $samu != '2') {echo 'selected';}?>>Informé, non présent</option>
               <option value="2" <?php if ($samu == '2') {echo 'selected';}?>>Informé et présent</option>
             </select>
             <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
