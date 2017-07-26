@@ -20,11 +20,16 @@
 <!-- Compute city calculation according to POST & GET variables (before auth)-->
 <?php require_once('functions/dps/dps-compute-city.php'); ?>
 
+
 <!-- Authentication -->
 <?php require_once('functions/dps/dps-create-authentication.php'); ?>
 
 
-<!-- Create a new DPS : Controller -->
+<!-- Common -->
+<?php include ('functions/controller/dps-common.php'); ?>
+
+
+<!-- Update a DPS : Controller -->
 <?php require_once('functions/controller/dps-update-controller.php'); ?>
 
 <!-- Page content container -->
@@ -38,7 +43,7 @@
 
 
 	<!-- Formulaire de création de DPS -->
-	<?php require_once('components/dps/dps-update-form.php'); ?>
+	<?php require_once('components/dps/dps-edit-form.php'); ?>
 
 </div>
 

@@ -40,7 +40,17 @@
 
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">Liste des Dispositifs Prévisionnels de Secours (<?php echo $nb_elements; ?> DPS trouvés)</h3>
+			<h3 class="panel-title">
+				Liste des Dispositifs Prévisionnels de Secours (<?php echo $nb_elements; ?> DPS trouvés)
+				<div class='text-right'>
+						<?php if ($rbac->check("ope-dps-create-own", $currentUserID) || $rbac->check("ope-dps-create-all", $currentUserID)) {?>
+						<a href='dps-create.php?city' class='btn btn-default btn-sm'>Créer un DPS local</a>
+					<?php } ?>
+					<?php if ($rbac->check("ope-dps-create-dept", $currentUserID) || $rbac->check("ope-dps-create-all", $currentUserID)) {?>
+						<a href='dps-create.php?dept' class='btn btn-default btn-sm'>Créer un DPS dép.</a>
+					<?php } ?>
+				</div>
+			</h3>
 		</div>
 		<div class="panel-body">
 			<div class="table-responsive" style="vertical-align: middle;">
@@ -80,7 +90,7 @@
 								</td>
 								<td>
 									<form role='form' action='<?php echo $urlform; ?>' method='post'>
-										<input type='hidden' name='id' value='<?php echo $dps["id"]; ?>'>
+										<input type='hidden' name='dpsID' value='<?php echo $dps["id"]; ?>'>
 										<input type='hidden' name='name' value='<?php echo $dps["cu_full"]; ?>'>
 										<button type='submit' class='<?php echo $buttonclass; ?>'></button>
 									</form>
