@@ -15,9 +15,9 @@
       <div class="panel-body">
 
         <div class="form-group form-group-sm form-inline row datetimestart">
-          <label for="dps_begin_date_div" class="col-sm-4 control-label">Date et heure de début de poste</label>
+          <label for="dps_begin_date_picker" class="col-sm-4 control-label">Date et heure de début de poste</label>
           <div class="col-sm-3">
-            <div class='input-group date' id='dps_begin_date_div' name="dps_begin_date_div">
+            <div class='input-group date' id='dps_begin_date_picker' name="dps_begin_date_picker">
               <input type='text' class="form-control" id='dps_begin_date' name="dps_begin_date" aria-describedby="dps-begin-date-error" required='true' value="<?php echo $dps_begin_date; ?>" / >
               <span class="input-group-addon">
               <span class="glyphicon glyphicon-calendar"></span>
@@ -25,7 +25,7 @@
             <span id='dps-begin-date-error' class="help-block" aria-hidden="true"></span>
           </div>
           <div class="col-sm-3">
-            <div class='input-group date' id='dps_begin_time_div' name="dps_begin_time_div">
+            <div class='input-group date' id='dps_begin_time_picker' name="dps_begin_time_picker">
               <input type='text' class="form-control" id='dps_begin_time' name="dps_begin_time" required='true' aria-describedby="dps-begin-time-error" value="<?php echo $dps_begin_time; ?>" />
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-time"></span>
@@ -33,34 +33,12 @@
             </div>
             <span id='dps-begin-time-error' class="help-block" aria-hidden="true"></span>
           </div>
-          <script type="text/javascript">
-            $(function () {
-              $('#dps_begin_date_div').datetimepicker({
-                locale: 'fr',
-                format: 'DD-MM-YYYY',
-                showClear:true,
-                showClose:true,
-                toolbarPlacement: 'bottom',
-              });
-            });
-            $(function () {
-              $('#dps_begin_time_div').datetimepicker({
-                locale: 'fr',
-                format: 'HH:mm',
-                showClear:true,
-                showClose:true,
-                toolbarPlacement: 'bottom',
-                useCurrent:false,
-                stepping:'15'
-              });
-            });
-          </script>
         </div>
 
         <div class="form-group form-group-sm form-inline row">
-          <label for="dps_end_date_div" class="col-sm-4 control-label">Date et heure de fin de poste</label>
+          <label for="dps_end_date_picker" class="col-sm-4 control-label">Date et heure de fin de poste</label>
           <div class="col-sm-3">
-            <div class='input-group date' id='dps_end_date_div' name="dps_end_date_div">
+            <div class='input-group date' id='dps_end_date_picker' name="dps_end_date_picker">
               <input type='text' class="form-control" id='dps_end_date' name="dps_end_date" required='true' aria-describedby="dps-end-date-error" value="<?php echo $dps_end_date; ?>" />
               <span class="input-group-addon">
               <span class="glyphicon glyphicon-calendar"></span>
@@ -68,7 +46,7 @@
             <span id='dps-end-date-error' class="help-block" aria-hidden="true"></span>
           </div>
           <div class="col-sm-3">
-            <div class='input-group date' id='dps_end_time_div' name="dps_end_time_div" >
+            <div class='input-group date' id='dps_end_time_picker' name="dps_end_time_picker" >
               <input type='text' class="form-control" id='dps_end_time' name="dps_end_time" required='true' aria-describedby="dps-end-time-error" value="<?php echo $dps_end_time; ?>"/>
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-time"></span>
@@ -76,30 +54,6 @@
             </div>
             <span id='dps-end-time-error' class="help-block" aria-hidden="true"></span>
           </div>
-          <script type="text/javascript">
-            $(function () {
-              $('#dps_end_date_div').datetimepicker({
-                locale: 'fr',
-                format: 'DD-MM-YYYY',
-                showClear:true,
-                showClose:true,
-                toolbarPlacement: 'bottom'
-
-              });
-            });
-            $(function () {
-              $('#dps_end_time_div').datetimepicker({
-                locale: 'fr',
-                format: 'HH:mm',
-                showClear:true,
-                showClose:true,
-                toolbarPlacement: 'bottom',
-                useCurrent:false,
-                stepping:'15'
-
-              });
-            });
-          </script>
         </div>
       </div>
     </div>

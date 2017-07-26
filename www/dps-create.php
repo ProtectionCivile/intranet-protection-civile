@@ -64,9 +64,6 @@
 
 </div>
 
-
-<script src='js/dps-compute-ris.js' type='text/javascript'></script>
-
 <?php require_once('components/footer.php'); ?>
 
 <script text='text/javascript'>

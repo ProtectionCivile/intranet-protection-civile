@@ -67,9 +67,9 @@
         </div>
 
         <div class="form-group form-group-sm form-inline row datetimestart">
-          <label for="event_begin_date_div" class="col-sm-4 control-label">Date et heure du début de l'évènement</label>
+          <label for="event_begin_date_picker" class="col-sm-4 control-label">Date et heure du début de l'évènement</label>
           <div class="col-sm-3">
-            <div class='input-group date' id='event_begin_date_div' name="event_begin_date_div">
+            <div class='input-group date' id='event_begin_date_picker' name="event_begin_date_picker">
               <input type='text' class="form-control" id='event_begin_date' name="event_begin_date" aria-describedby="event-begin-date-error" required='true' value="<?php echo $event_begin_date; ?>" / >
               <span class="input-group-addon">
               <span class="glyphicon glyphicon-calendar"></span>
@@ -77,7 +77,7 @@
             <span id='event-begin-date-error' class="help-block" aria-hidden="true"></span>
           </div>
           <div class="col-sm-3">
-            <div class='input-group date' id='event_begin_time_div' name="event_begin_time_div">
+            <div class='input-group date' id='event_begin_time_picker' name="event_begin_time_picker">
               <input type='text' class="form-control" id='event_begin_time' name="event_begin_time" required='true' aria-describedby="event-begin-time-error" value="<?php echo $event_begin_time; ?>" />
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-time"></span>
@@ -85,34 +85,12 @@
             </div>
             <span id='event-begin-time-error' class="help-block" aria-hidden="true"></span>
           </div>
-          <script type="text/javascript">
-            $(function () {
-              $('#event_begin_date_div').datetimepicker({
-                locale: 'fr',
-                format: 'DD-MM-YYYY',
-                showClear:true,
-                showClose:true,
-                toolbarPlacement: 'bottom',
-              });
-            });
-            $(function () {
-              $('#event_begin_time_div').datetimepicker({
-                locale: 'fr',
-                format: 'HH:mm',
-                showClear:true,
-                showClose:true,
-                toolbarPlacement: 'bottom',
-                useCurrent:false,
-                stepping:'15'
-              });
-            });
-          </script>
         </div>
 
         <div class="form-group form-group-sm form-inline row">
-          <label for="event_end_date_div" class="col-sm-4 control-label">Date et heure de fin de l'évènement</label>
+          <label for="event_end_date_picker" class="col-sm-4 control-label">Date et heure de fin de l'évènement</label>
           <div class="col-sm-3">
-            <div class='input-group date' id='event_end_date_div' name="event_end_date_div">
+            <div class='input-group date' id='event_end_date_picker' name="event_end_date_picker">
               <input type='text' class="form-control" id='event_end_date' name="event_end_date" required='true' aria-describedby="event-end-date-error" value="<?php echo $event_end_date; ?>" />
               <span class="input-group-addon">
               <span class="glyphicon glyphicon-calendar"></span>
@@ -120,7 +98,7 @@
             <span id='event-end-date-error' class="help-block" aria-hidden="true"></span>
           </div>
           <div class="col-sm-3">
-            <div class='input-group date' id='event_end_time_div' name="event_end_time_div" >
+            <div class='input-group date' id='event_end_time_picker' name="event_end_time_picker" >
               <input type='text' class="form-control" id='event_end_time' name="event_end_time" required='true' aria-describedby="event-end-time-error" value="<?php echo $event_end_time; ?>"/>
               <span class="input-group-addon">
                 <span class="glyphicon glyphicon-time"></span>
@@ -128,30 +106,6 @@
             </div>
             <span id='event-end-time-error' class="help-block" aria-hidden="true"></span>
           </div>
-          <script type="text/javascript">
-            $(function () {
-              $('#event_end_date_div').datetimepicker({
-                locale: 'fr',
-                format: 'DD-MM-YYYY',
-                showClear:true,
-                showClose:true,
-                toolbarPlacement: 'bottom'
-
-              });
-            });
-            $(function () {
-              $('#event_end_time_div').datetimepicker({
-                locale: 'fr',
-                format: 'HH:mm',
-                showClear:true,
-                showClose:true,
-                toolbarPlacement: 'bottom',
-                useCurrent:false,
-                stepping:'15'
-
-              });
-            });
-          </script>
         </div>
 
 
@@ -265,7 +219,7 @@
             <strong> Attention !</strong> Ce type de poste impose un contact avec la DDO.
           </p>
         </div>
-        
+
         <?php $feedback = compute_server_feedback($ris_comment_error);?>
         <label for="ris_comment">Commentaires concernant le RIS</label>
         <textarea class="form-control" rows="4" id="ris_comment" name="ris_comment" placeholder="Indiquer ici tout commentaire(s) concernant le RIS" ><?php echo $ris_comment; ?></textarea>
