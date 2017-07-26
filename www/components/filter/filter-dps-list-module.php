@@ -15,15 +15,11 @@
 		<h1 class="panel-title">Filtres</h1>
 	</div>
 	<div class="panel-body" aria-expanded='true'>
-
+		
 		<div class='panel-filters in' aria-expanded='true'>
 			<p>
 				<!-- Filter on the city holding the DPS -->
-				<?php
-				if ($rbac->check("ope-dps-view-all", $currentUserID)) {
-					include_once('components/filter/parts/filter-city-display.php');
-				}
-				?>
+				<?php include_once('components/filter/parts/filter-city-display.php'); ?>
 			</p>
 		</div>
 
