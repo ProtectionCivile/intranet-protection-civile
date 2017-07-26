@@ -3,9 +3,7 @@
 <html>
 <head>
 	<title>Gestion des rôles</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
 <?php include('components/header.php'); ?>
@@ -30,6 +28,15 @@
 	<!-- Update role : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
+	<?php $base_url="role-view.php"; ?>
+
+	<!-- Beginning of the filter's parent module -->
+	<?php include_once('components/filter/filter-roles-module.php'); ?>
+
+	<?php require_once('components/filter/filter-roles-query-builder.php'); ?>
+
+	<?php require_once('components/filter/parts/paging-query-modifier.php'); ?>
+
 	<h2>Gestion des roles</h2>
 
 
@@ -53,8 +60,7 @@
 					<th colspan='4'>Opérations</th>
 				</tr>
 				<?php 
-				$query = "SELECT * FROM rbac_roles ORDER by ID ASC";
-				$roles = mysqli_query($link, $query);
+				$roles = mysqli_query($db_link, $sqlQuery);
 				while($role = mysqli_fetch_array($roles)) { ?>
 					<tr>
 						<td>
@@ -74,8 +80,8 @@
 						</td>
 						<td>
 							<?php 
-							$qc = "SELECT name FROM sections WHERE number='".$role["Affiliation"]."'";
-							$qcr = mysqli_query($link, $qc);
+							$qc = "SELECT name FROM $tablename_sections WHERE number='".$role["Affiliation"]."'";
+							$qcr = mysqli_query($db_link, $qc);
 							$c = mysqli_fetch_assoc($qcr);
 							echo $c['name'];
 							?>
@@ -113,7 +119,7 @@
 							<?php } ?>
 						</td>
 						<td>
-							<?php if ($rbac->check("admin-asssign-permissions-to-roles", $currentUserID)) { ?>
+							<?php if ($rbac->check("admin-roles-asssign-permissions", $currentUserID)) { ?>
 								<form action='role-assign-permissions.php' method='post' accept-charset='utf-8'>
 									<input type='hidden' name='roleID' value=<?php echo "'".$role['ID']."'"; ?> >
 									<button type='submit' class='btn btn-warning glyphicon glyphicon-check' title="Voir / Affecter des permissions"></button>
@@ -140,6 +146,9 @@
 			<div class="panel-footer"><a class="btn btn-default" role="button" href="role-create.php">Ajouter un rôle</a></div>
 		<?php }?>
 	</div>
+
+	<!-- Page's pagination module -->
+	<?php require_once('components/filter/parts/filter-paging-display.php'); ?>
 
 </div>
 

@@ -2,9 +2,7 @@
 <html>
 <head>
  	<title>Annuaire : Numéros de téléphone des communes</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
 <?php require_once('components/header.php'); ?>
@@ -26,7 +24,7 @@ if (isset($_GET['notallowed'])){
 	<center>
 		<?php
 		$queryC="SELECT numero, nom FROM commune WHERE rat_commune=numero";
-		$cities = mysqli_query($link, $queryC);
+		$cities = mysqli_query($db_link, $queryC);
 		?>
 
 		<table class="table table-bordered table-responsive table-condensed">
@@ -39,7 +37,7 @@ if (isset($_GET['notallowed'])){
 				<?php while($city = mysqli_fetch_array($cities)) { 
 					$reset=0;
 					$queryR="SELECT Description, Phone FROM rbac_roles WHERE Affiliation='".$city['numero']."'" ;
-					$roles = mysqli_query($link, $queryR);
+					$roles = mysqli_query($db_link, $queryR);
 					$count=mysqli_num_rows($roles);
 					while($role = mysqli_fetch_array($roles)) { 
 						echo "<tr>";

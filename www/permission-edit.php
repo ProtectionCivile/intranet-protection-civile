@@ -3,9 +3,7 @@
 <html>
 <head>
 	<title>Modifier une permission</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8";>
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
 <?php include('components/header.php'); ?>
@@ -19,10 +17,8 @@
 </ol>
 
 
-
 <!-- Authentication -->
 <?php $rbac->enforce("admin-permissions-update", $currentUserID); ?>
-
 
 <!-- Common -->
 <?php include 'functions/controller/permission-common.php'; ?>
@@ -51,7 +47,7 @@
 				<h3 class="panel-title">Informations à mettre à jour</h3>
 			</div>
 			<div class="panel-body">
-				<form class="form-horizontal" action='' method='post' accept-charset='utf-8'>
+				<form class="form-horizontal" action='' id='auto-validation-form' method='post' accept-charset='utf-8'>
 					<input type="hidden" name="updatePermission">
 					<input type="hidden" name="permissionID" value="<?php echo $permissionID;?>">
 
@@ -59,7 +55,7 @@
 						<div class="form-group has-error has-feedback">
 							<label for="inputPermissionTitle" class="col-sm-4 control-label">Nouveau titre</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" id="inputPermissionTitle" name="inputPermissionTitle" aria-describedby="inputError2Status" placeholder="Visualiser DPS" value="<?php echo $title;?>">
+								<input type="text" class="form-control" id="inputPermissionTitle" name="inputPermissionTitle" aria-describedby="inputError2Status" placeholder="Visualiser DPS" minlength='3' maxlength='120' required='true' value="<?php echo $title;?>">
 							</div>
 							<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
 							<span id="inputError2Status" class="sr-only">(error)</span>
@@ -68,7 +64,7 @@
 						<div class="form-group">
 							<label for="inputPermissionTitle" class="col-sm-4 control-label">Nouveau titre</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" id="inputPermissionTitle" name="inputPermissionTitle" aria-describedby="inputError2Status" placeholder="Visualiser DPS" value="<?php echo $title;?>">
+								<input type="text" class="form-control" id="inputPermissionTitle" name="inputPermissionTitle" aria-describedby="inputError2Status" placeholder="Visualiser DPS" minlength='3' maxlength='120' required='true' value="<?php echo $title;?>">
 							</div>
 						</div>
 					<?php } ?>
@@ -76,7 +72,7 @@
 					<div class="form-group">
 						<label for="inputPermissionDescription" class="col-sm-4 control-label">Nouvelle description</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputPermissionDescription" name="inputPermissionDescription" placeholder="Décrire l'utilité de la permission" value="<?php echo $description;?>">
+							<input type="text" class="form-control" id="inputPermissionDescription" name="inputPermissionDescription" placeholder="Décrire l'utilité de la permission" minlength='3' maxlength='120' required='true' value="<?php echo $description;?>">
 						</div>
 					</div>
 					<div class="form-group">
@@ -101,5 +97,10 @@
 ?>
 
 <?php include('components/footer.php'); ?>
+
+<script text='text/javascript'>
+	$('#auto-validation-form').validate();
+</script>
+
 </body>
 </html>

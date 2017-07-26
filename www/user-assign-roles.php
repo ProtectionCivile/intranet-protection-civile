@@ -3,9 +3,7 @@
 <html>
 <head>
 	<title>Affectation des rôles</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8";>
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
 <?php include('components/header.php'); ?>
@@ -27,7 +25,7 @@
 
 
 <!-- Authentication -->
-<?php $rbac->enforce("admin-asssign-roles-to-users", $currentUserID); ?>
+<?php $rbac->enforce("admin-users-asssign-roles", $currentUserID); ?>
 
 <!-- Common -->
 <?php include 'functions/controller/user-common.php'; ?>
@@ -63,8 +61,8 @@
 					<br /> <br />
 
 					<?php 
-					$queryC = "SELECT name, number FROM sections WHERE attached_section=number" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-					$cities = mysqli_query($link, $queryC);
+					$queryC = "SELECT name, number FROM sections WHERE attached_section=number" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+					$cities = mysqli_query($db_link, $queryC);
 					?>
 
 					<table class='table table-bordered table-hover table-condensed'>
@@ -75,7 +73,7 @@
 						<tbody>
 							<?php while($city = mysqli_fetch_array($cities)) { 
 								$queryR="SELECT ID, Description, Title FROM rbac_roles WHERE Assignable='1' AND Affiliation='".$city['number']."'" ;
-								$roles = mysqli_query($link, $queryR);
+								$roles = mysqli_query($db_link, $queryR);
 								?>
 								<tr>
 									<td class="active"><?php echo $city['name']; ?></td>

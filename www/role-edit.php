@@ -3,9 +3,7 @@
 <html>
 <head>
 	<title>Modifier un rôle</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8";>
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
 <?php include('components/header.php'); ?>
@@ -21,7 +19,6 @@
 
 <!-- Authentication -->
 <?php $rbac->enforce("admin-roles-update", $currentUserID); ?>
-
 
 <!-- Common -->
 <?php include 'functions/controller/role-common.php'; ?>
@@ -50,7 +47,7 @@
 				<h3 class="panel-title">Informations à mettre à jour</h3>
 			</div>
 			<div class="panel-body">
-				<form class="form-horizontal" action='' method='post' accept-charset='utf-8'>
+				<form class="form-horizontal" action='' id='auto-validation-form' method='post' accept-charset='utf-8'>
 					<input type="hidden" name="updateRole">
 					<input type="hidden" name="roleID" value="<?php echo $roleID;?>">
 				
@@ -58,7 +55,7 @@
 						<div class="form-group has-error has-feedback">
 							<label for="inputRoleTitle" class="col-sm-4 control-label">Nouveau titre</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" id="inputRoleTitle" name="inputRoleTitle" aria-describedby="inputError2Status" placeholder="Directeur Local des Opérations" value="<?php echo $title;?>" />
+								<input type="text" class="form-control" id="inputRoleTitle" name="inputRoleTitle" aria-describedby="inputError2Status" placeholder="Directeur Local des Opérations" minlength='3' maxlength='120' required='true' value="<?php echo $title;?>" />
 							</div>
 							<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
 							<span id="inputError2Status" class="sr-only">(error)</span>
@@ -67,7 +64,7 @@
 						<div class="form-group">
 							<label for="inputRoleTitle" class="col-sm-4 control-label">Nouveau titre</label>
 							<div class="col-sm-8">
-								<input type="text" class="form-control" id="inputRoleTitle" name="inputRoleTitle" aria-describedby="inputError2Status" placeholder="Directeur Local des Opérations" value="<?php echo $title;?>" />
+								<input type="text" class="form-control" id="inputRoleTitle" name="inputRoleTitle" aria-describedby="inputError2Status" placeholder="Directeur Local des Opérations" minlength='3' maxlength='120' required='true' value="<?php echo $title;?>" />
 							</div>
 						</div>
 					<?php } ?>
@@ -75,28 +72,28 @@
 					<div class="form-group">
 						<label for="inputRoleDescription" class="col-sm-4 control-label">Nouvelle description</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputRoleDescription" name="inputRoleDescription" placeholder="Décrire l'utilité du rôle" value="<?php echo $description;?>" />
+							<input type="text" class="form-control" id="inputRoleDescription" name="inputRoleDescription" placeholder="Décrire l'utilité du rôle" minlength='3' maxlength='120' required='true' value="<?php echo $description;?>" />
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="inputRolePhone" class="col-sm-4 control-label">Téléphone</label>
 						<div class="col-sm-8">
-							<input type="tel" class="form-control" id="inputRolePhone" name="inputRolePhone" value="<?php echo $r['Phone']; ?>"/>
+							<input type="tel" class="form-control" id="inputRolePhone" name="inputRolePhone" minlength='10' maxlength='10' required='false' digits='true' value="<?php echo $r['Phone']; ?>"/>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="inputRoleMail" class="col-sm-4 control-label">e-Mail</label>
 						<div class="col-sm-8">
-							<input type="email" class="form-control" id="inputRoleMail" name="inputRoleMail" value="<?php echo $r['Mail']; ?>"/>
+							<input type="email" class="form-control" id="inputRoleMail" name="inputRoleMail" minlength='3' maxlength='120' required='false' email='true' value="<?php echo $r['Mail']; ?>"/>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="inputRoleCallsign" class="col-sm-4 control-label">Indicatif radio</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="inputRoleCallsign" name="inputRoleCallsign" value="<?php echo $r['Callsign']; ?>" />
+							<input type="text" class="form-control" id="inputRoleCallsign" name="inputRoleCallsign" minlength='3' maxlength='120' required='false' value="<?php echo $r['Callsign']; ?>" />
 						</div>
 					</div>
 
@@ -118,7 +115,7 @@
 						<label for="inputRoleAffiliation" class="col-sm-4 control-label">Rattachement</label>
 						<div class="col-sm-8 radio"><?php
 							$query = "SELECT numero, nom FROM commune";
-							$query_result = mysqli_query($link, $query);
+							$query_result = mysqli_query($db_link, $query);
 							while($data = mysqli_fetch_array($query_result)){ ?>
 								<label>
 									<input type="radio" name="inputRoleAffiliation" value="<?php echo $data['numero'];?>" <?php if ($r['Affiliation']==$data['numero']) echo "checked"; ?> />
@@ -151,5 +148,10 @@
 ?>
 
 <?php include('components/footer.php'); ?>
+
+<script text='text/javascript'>
+	$('#auto-validation-form').validate();
+</script>
+
 </body>
 </html>

@@ -11,8 +11,8 @@
 			$createErrorTitle = "Le titre du rôle est obligatoire";
 		}
 		else{
-			$check_query = "SELECT ID FROM rbac_roles WHERE Title='$title'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-			$verif = mysqli_query($link, $check_query);
+			$check_query = "SELECT ID FROM $tablename_roles WHERE Title='$title'" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+			$verif = mysqli_query($db_link, $check_query);
 			$row_verif = mysqli_fetch_assoc($verif);
 			$role = mysqli_num_rows($verif);		
 			if ($role){

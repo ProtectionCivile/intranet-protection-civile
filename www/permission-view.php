@@ -3,9 +3,7 @@
 <html>
 <head>
 	<title>Gestion des permissions</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8";>
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
 <?php include('components/header.php'); ?>
@@ -50,8 +48,8 @@
 					<th colspan='3'>Opérations</th>
 				</tr>
 				<?php 
-				$query = "SELECT ID, Title, Description FROM rbac_permissions ORDER by ID ASC";
-				$permissions = mysqli_query($link, $query);
+				$query = "SELECT ID, Title, Description FROM $tablename_permissions ORDER by ID ASC";
+				$permissions = mysqli_query($db_link, $query);
 				while($permission = mysqli_fetch_array($permissions)) { ?>
 					<tr>
 						<td>

@@ -3,10 +3,7 @@
 <html>
 <head>
 	<title>Ajout d'un compte mail à des listes de diffusion</title>
-	<meta http-equiv="Content-Type" content="text/html">
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
 <?php require_once('components/header.php'); ?>
@@ -49,7 +46,7 @@
 				<br />
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
-						<button type="submit" class="btn btn-danger" id='submitAddUserForm'>Retirer de toutes les listes !</button>
+						<button type="submit" class="btn btn-danger" id='submitAddUserForm' onclick='return(confirm("Etes-vous sûr de vouloir le retirer de TOUTES les listes de diffusion?"));'>Retirer de toutes les listes !</button>
 				   </div>
 				</div>
 			</form>

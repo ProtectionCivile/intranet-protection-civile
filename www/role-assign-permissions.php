@@ -3,9 +3,7 @@
 <html>
 <head>
 	<title>Affectation des permissions</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8";>
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
 <?php include('components/header.php'); ?>
@@ -27,7 +25,7 @@
 
 
 <!-- Authentication -->
-<?php $rbac->enforce("admin-asssign-permissions-to-roles", $currentUserID); ?>
+<?php $rbac->enforce("admin-roles-asssign-permissions", $currentUserID); ?>
 
 <!-- Common -->
 <?php include 'functions/controller/role-common.php'; ?>
@@ -61,27 +59,32 @@ if(empty($commonError)) {
 				
 					Les changements se font directement en cliquant sur les boutons. 
 					<br /> <br />
-
+					<ul>
 					<?php 
-						$query = "SELECT ID, Title, Description FROM rbac_permissions ORDER by Title ASC";
-						$permissions = mysqli_query($link, $query);
-						while($permission = mysqli_fetch_array($permissions)) { 
-							$permissionID=$permission["ID"];
-							$permissionTitle=$permission["Title"];
-							$permissionDescription=$permission["Description"];
-							
-							if ($rbac->Roles->hasPermission($roleID, $permissionID)) {
-								?>
-								<button type="button" class="btn btn-default btn-xs active" title="<?php echo $permissionTitle;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionDescription;?></button>
-								<?php
-							}
-							else {
-								?>
-								<button type="button" class="btn btn-default btn-xs" title="<?php echo $permissionTitle;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionDescription;?></button>
-								<?php
-							}
+					$query = "SELECT ID, Title, Description FROM $tablename_permissions ORDER by Title ASC";
+					$permissions = mysqli_query($db_link, $query);
+					while($permission = mysqli_fetch_array($permissions)) { 
+						$permissionID=$permission["ID"];
+						$permissionTitle=$permission["Title"];
+						$permissionDescription=$permission["Description"];
+						?>
+						<li>
+						<?php
+						if ($rbac->Roles->hasPermission($roleID, $permissionID)) {
+							?>
+							<button type="button" class="btn btn-default btn-xs active" title="<?php echo $permissionTitle;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionDescription;?></button>
+							<?php
+						}
+						else {
+							?>
+							<button type="button" class="btn btn-default btn-xs" title="<?php echo $permissionTitle;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionDescription;?></button>
+							<?php
+						}
+						?>
+						</li>
 
-						} ?>
+					<?php } ?>
+					</ul>
 						<br /> <br />
 
 

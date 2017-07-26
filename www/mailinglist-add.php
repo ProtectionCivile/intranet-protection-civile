@@ -3,10 +3,7 @@
 <html>
 <head>
 	<title>Ajout d'un compte mail à des listes de diffusion</title>
-	<meta http-equiv="Content-Type" content="text/html">
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
 <?php require_once('components/header.php'); ?>
@@ -75,7 +72,7 @@
 								<div class="checkbox checkbox-inline">
 									<label>
 										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-boulogne-issy">
-										Boulogne Issy
+										Boulogne-Issy
 									</label>
 								</div>
 								<div class="checkbox checkbox-inline">

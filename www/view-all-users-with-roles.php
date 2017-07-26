@@ -3,9 +3,7 @@
 <html>
 <head>
 	<title>Voir les utilisations de rôles</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8";>
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
 <?php include('components/header.php'); ?>
@@ -26,8 +24,8 @@
 <div class="container">
 
 	<?php 
-	$query = "SELECT name, number FROM sections WHERE attached_section=number" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-	$cities = mysqli_query($link, $query);
+	$query = "SELECT name, number FROM sections WHERE attached_section=number" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+	$cities = mysqli_query($db_link, $query);
 	while($city = mysqli_fetch_array($cities)) { 
 		echo "<a href='view-all-users-with-roles.php?city=".$city['number']."'>".$city['name']."</a>, ";
 	}
@@ -43,8 +41,8 @@
 	}
 	else {
 		$cityID=$_GET['city'];
-		$query = "SELECT name FROM sections WHERE number=".$cityID or die("Erreur lors de la consultation" . mysqli_error($link)); 
-		$cities = mysqli_query($link, $query);
+		$query = "SELECT name FROM sections WHERE number=".$cityID or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+		$cities = mysqli_query($db_link, $query);
 		$city = mysqli_fetch_assoc($cities);
 		$cityName=$city['name'];
 		
@@ -53,8 +51,8 @@
 		<h2>Audit des rôles pour <?php echo $cityName ?></h2>
 
 		<?php 
-		$query = "SELECT ID, Description FROM rbac_roles WHERE Assignable = '1' AND Affiliation=".$cityID or die("Erreur lors de la consultation" . mysqli_error($link)); 
-		$roles = mysqli_query($link, $query);
+		$query = "SELECT ID, Description FROM rbac_roles WHERE Assignable = '1' AND Affiliation=".$cityID or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+		$roles = mysqli_query($db_link, $query);
 		while($role = mysqli_fetch_array($roles)) { 
 			$roleID=$role["ID"];
 			$roleTitle=$role["Description"];
@@ -71,8 +69,8 @@
 						<div class="panel-heading">Utilisateurs</div>
 						<div class="panel-body">
 							<?php 
-								$query = "SELECT U.first_name, U.last_name FROM users AS U JOIN rbac_userroles AS UR on U.ID=UR.UserID WHERE AND UR.RoleID=".$roleID." ORDER BY U.last_name" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-								$users = mysqli_query($link, $query);
+								$query = "SELECT U.first_name, U.last_name FROM users AS U JOIN rbac_userroles AS UR on U.ID=UR.UserID WHERE AND UR.RoleID=".$roleID." ORDER BY U.last_name" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+								$users = mysqli_query($db_link, $query);
 								while($user = mysqli_fetch_array($users)) { 
 									$userFirstName=$user["first_name"];
 									$userLastName=$user["last_name"];

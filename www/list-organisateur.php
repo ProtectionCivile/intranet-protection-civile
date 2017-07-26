@@ -18,7 +18,7 @@ if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{
 	if(isset($_POST["id"])){
 	$id = $_POST["id"];
 	$query = "DELETE FROM organisateurs WHERE id='$id'";
-	mysqli_query($link,$query);
+	mysqli_query($db_link,$query);
 	echo "<div class='alert alert-success' role='alert'>";
 	echo "Organisateur supprimé avec succès";
 	echo "</div>";
@@ -41,12 +41,12 @@ if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{
 			</tr>
 			<?php
 			$query = "SELECT * FROM organisateurs ORDER BY id ASC";
-			$listeorganisateurs_result = mysqli_query($link, $query);
+			$listeorganisateurs_result = mysqli_query($db_link, $query);
 			while($listeorganisateurs = mysqli_fetch_array($listeorganisateurs_result)){
 			echo "<tr><td>";
 			$num_commune = $listeorganisateurs["commune"];
 			$commune_query = "SELECT numero_commune,nom_commune FROM rat_com WHERE numero_commune=$num_commune";
-			$commune_result = mysqli_query($link, $commune_query);
+			$commune_result = mysqli_query($db_link, $commune_query);
 			$commune = mysqli_fetch_array($commune_result);
 			echo $commune["nom_commune"];
 			

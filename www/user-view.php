@@ -3,10 +3,7 @@
 <html>
 <head>
 	<title>Gestion des utilisateurs</title>
-	<meta http-equiv="Content-Type" content="text/html">
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
 <?php include('components/header.php'); ?>
@@ -33,6 +30,15 @@
 	<!-- Update user : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
+	<?php $base_url="user-view.php"; ?>
+
+	<!-- Beginning of the filter's parent module -->
+	<?php include_once('components/filter/filter-users-module.php'); ?>
+
+	<?php require_once('components/filter/filter-users-query-builder.php'); ?>
+
+	<?php require_once('components/filter/parts/paging-query-modifier.php'); ?>
+
 	<h2>Gestion des utilisateurs</h2>
 
 
@@ -46,14 +52,14 @@
 				<tr>
 					<th>Nom</th>
 					<th>Prénom</th>
+					<th>Matricule</th>
 					<th>Téléphone</th>
 					<th>Mail</th>
 					<th>Section</th>
 					<th colspan='3'>Actions</th>
 				</tr>
 				<?php 
-				$query = "SELECT U.ID, U.last_name, U.first_name, U.phone, U.mail, S.name AS section_name FROM `users` AS U INNER JOIN sections AS S ON `U`.`attached_section` = `S`.`number` ORDER by U.last_name ASC";
-				$users = mysqli_query($link, $query);
+				$users = mysqli_query($db_link, $sqlQuery);
 				while($user = mysqli_fetch_array($users)) { ?>
 					<tr>
 						<td>
@@ -61,6 +67,9 @@
 						</td>
 						<td>
 							<?php echo ucfirst($user["first_name"]); ?>
+						</td>
+						<td>
+							<?php echo $user["login"]; ?>
 						</td>
 						<td>
 							<?php echo $user["phone"]; ?>
@@ -72,7 +81,7 @@
 							<?php echo $user["section_name"]; ?>
 						</td>
 						<td>
-							<?php if ($rbac->check("admin-asssign-roles-to-users", $currentUserID)) { ?>
+							<?php if ($rbac->check("admin-users-asssign-roles", $currentUserID)) { ?>
 								<form action='user-assign-roles.php' method='post' accept-charset='utf-8'>
 									<input type='hidden' name='userID' value=<?php echo "'".$user['ID']."'"; ?> >
 									<button type='submit' class='btn btn-warning glyphicon glyphicon-check' title='Voir / Affecter des rôles'></button>
@@ -103,6 +112,9 @@
 			<div class="panel-footer"><a class="btn btn-default" role="button" href="user-create.php">Ajouter un utilisateur</a></div>
 		<?php }?>
 	</div>
+
+	<!-- Page's pagination module -->
+	<?php require_once('components/filter/parts/filter-paging-display.php'); ?>
 
 </div>
 

@@ -63,8 +63,8 @@ if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{
 			}elseif(isset($_GET['filter']) && !isset($_GET['commune'])){
 			$pagefiltered = "?filter=".$filter;}
 			
-			$reqliste = "SELECT numero_commune,nom_commune FROM rat_com" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-			$liste = mysqli_query($link, $reqliste);
+			$reqliste = "SELECT numero_commune,nom_commune FROM rat_com" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+			$liste = mysqli_query($db_link, $reqliste);
 			while($listecommune = mysqli_fetch_array($liste)) {
 			echo "<li><a href='?commune=".$listecommune["numero_commune"]."'>".$listecommune["nom_commune"]."</a></li>";}?>
 			</ul>
@@ -118,7 +118,7 @@ if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{
 		$nbquery = "SELECT id, etat_demande_dps, valid_demande_rt FROM demande_dps WHERE commune_ris = $commune";}
 		if(empty($_GET['commune']) && empty($_GET['filter'])){
 		$nbquery = "SELECT id, etat_demande_dps, valid_demande_rt FROM demande_dps";}
-		$number_dps = mysqli_query($link, $nbquery);
+		$number_dps = mysqli_query($db_link, $nbquery);
 		$row_cnt = mysqli_num_rows($number_dps);
 		$numberpages=ceil($row_cnt/$dpsperpage);
 		
@@ -145,7 +145,7 @@ if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{
 		if(!isset($_GET['commune']) && !isset($_GET['filter'])){
 		$query = "SELECT * FROM demande_dps ORDER BY id DESC LIMIT $premiereEntree, $dpsperpage";}
 		
-		$listedps_result = mysqli_query($link, $query);
+		$listedps_result = mysqli_query($db_link, $query);
 		
 		while($listedps = mysqli_fetch_array($listedps_result)){
 			if($listedps["valid_demande_rt"] == 0 && $listedps["etat_demande_dps"] == "0"){
@@ -187,7 +187,7 @@ if ($_SESSION['privilege'] != "admin") { header("Location: accueil.php"); }else{
 		echo "</td><td>";
 		$pathcode_commune = $listedps["commune_ris"];
 		$pathquery = "SELECT nom,numero FROM commune WHERE numero=$pathcode_commune";
-		$pathcommune_result = mysqli_query($link, $pathquery);
+		$pathcommune_result = mysqli_query($db_link, $pathquery);
 		$pathcommune_array = mysqli_fetch_array($pathcommune_result);
 		$pathantenne = $pathcommune_array["nom"];
 		echo $pathantenne;

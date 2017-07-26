@@ -1,9 +1,13 @@
 <?php
 $dept = $dps['dept'];
-$query = "SELECT * FROM settings_mail WHERE $dept = setting_name";
-$email_result = mysqli_query($link, $query);
-$email_array = mysqli_fetch_array($email_result);
-$email = $email_array['setting_value'];
+$email = "";
+$query = "SELECT setting_value FROM settings_mail WHERE setting_name LIKE '%92%'";
+$email_result = mysqli_query($db_link, $query);
+//$email_array = mysqli_fetch_array($email_result);
+//$email = $email_array['setting_value'];
+while ($row = mysqli_fetch_assoc($email_result)) {
+        $email .= $row["setting_value"].", ";
+    }
 
 ?>
 
@@ -44,12 +48,12 @@ $email = $email_array['setting_value'];
 			<form role="form" action="traitement-demande-dps.php" method="post">
 				<div class="form-group">
 					<label for="email_to" class="control-label">E-mail(s) :</label>
-					<input type="text" class="form-control" id="email_to" name="email_to" value='<?php echo $email;?>'>
+					<textarea type="text" class="form-control" id="email_to" name="email_to" rows="3"><?php echo $email;?></textarea>
 					<span id="helpBlock" class="help-block">Pour ajouter un destinataire, espacez chaque adresse par une virgule.</span>
 				</div>
 				<div class="form-group">
 					<label for="commentaire_accept" class="control-label">Commentaire :</label>
-					<textarea class="form-control" id="commentaire_accept" name="commentaire_accept"></textarea>
+					<textarea class="form-control" id="commentaire_accept" name="commentaire_accept" rows="5"></textarea>
 				</div>
 				<input type='hidden' name='valider' value='<?php echo $dps['id'];?>'>
 				<?php if($dept != "92"){echo"<p class='bg-primary text-center'>Attention, cet e-mail doit être validé par autre ADPC, il n'est pas envoyé au SIDPC. Ce sera le département accueillant qui devra faire la demande (si besoin est).</p>";}?>

@@ -6,16 +6,16 @@
 			$genericError = "Impossible de supprimer un utilisateur inconnu";
 		}
 		else{
-			$check_query = "SELECT ID, login FROM users WHERE ID='$delID'" or die("Erreur lors de la consultation" . mysqli_error($link)); 
-			$verif = mysqli_query($link, $check_query);
+			$check_query = "SELECT ID, login FROM $tablename_users WHERE ID='$delID'" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+			$verif = mysqli_query($db_link, $check_query);
 			$delUser = mysqli_fetch_assoc($verif);
 			if (!$delUser){
 				$genericError = "L'utilisateur en question n'existe pas";
 			}
 			else {
 				$delLogin = $delUser['login'];
-				$delete_user = "DELETE FROM users WHERE ID='$delID'";
-        		$result = mysqli_query($link, $delete_user) or die(mysql_error());
+				$delete_user = "DELETE FROM $tablename_users WHERE ID='$delID'";
+        		$result = mysqli_query($db_link, $delete_user) or die(mysqli_error());
 
         		// Then unassign all its roles
         		$allUserRoles="";
