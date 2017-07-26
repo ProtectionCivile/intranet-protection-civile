@@ -1,10 +1,6 @@
 <?php
 	// To avoid errors like 'PHP Notice:  Undefined variable' in logs
 
-	$ris_override = null;
-	$dps_type = null;
-	$status = null;
-	$status_justification = null;
 	$client_name_error = null;
 	$client_represent_error = null;
 	$client_title_error = null;
@@ -49,10 +45,7 @@
 	$bspp_error = null;
 	$dps_type_error = null;
 	$dps_price_error = null;
-	$cu_full = null;
 	$cu_yearly_index = null;
-	$dps = null;
-	$section = null;
 	$genericError = null;
 	$genericSuccess = null;
 
