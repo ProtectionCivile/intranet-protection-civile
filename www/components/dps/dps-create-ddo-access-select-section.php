@@ -23,7 +23,8 @@
 								}
 								else{
 									echo "<option value='".$listecommune["number"]."'>".$listecommune["name"]."</option>";
-							}}
+								}
+							}
 							?>
 						</select>
 					</div>
