@@ -102,6 +102,7 @@ $settings_array = mysqli_fetch_array($query_result);
 							if ($rbac->check("admin-roles-view", $currentUserID)) {?> <li><a href="role-view.php">Gestion des rôles</a></li> <?php }
 							if ($rbac->check("admin-permissions-view", $currentUserID)) {?> <li><a href="permission-view.php">Gestion des permissions</a></li> <?php }
 							if ($rbac->check("admin-roles-view", $currentUserID)) {?> <li><a href="view-all-users-with-roles.php">Audit des rôles d'utilisateurs</a></li> <?php }
+							if ($rbac->check("admin-permissions-view", $currentUserID)) {?> <li><a href="view-all-permissions-with-roles.php">Audit des permissions par rôle</a></li> <?php }
 						} ?>
 					</ul>
 				</li>
