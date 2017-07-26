@@ -59,7 +59,7 @@
 					<th>Annuaire</th>
 					<th colspan='4'>Opérations</th>
 				</tr>
-				<?php 
+				<?php
 				$roles = mysqli_query($db_link, $sqlQuery);
 				while($role = mysqli_fetch_array($roles)) { ?>
 					<tr>
@@ -79,7 +79,7 @@
 							<?php echo $role["Mail"]; ?>
 						</td>
 						<td>
-							<?php 
+							<?php
 							$qc = "SELECT name FROM $tablename_sections WHERE number='".$role["Affiliation"]."'";
 							$qcr = mysqli_query($db_link, $qc);
 							$c = mysqli_fetch_assoc($qcr);
@@ -90,7 +90,7 @@
 							<?php echo $role["Callsign"]; ?>
 						</td>
 						<td align="center">
-							
+
 							<?php if($role["Assignable"]) { ?>
 								<span class='glyphicon glyphicon-ok' />
 							<?php } else { ?>
