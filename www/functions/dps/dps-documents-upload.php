@@ -23,20 +23,37 @@
 		$filename = $cu."-DEM.pdf";
 	}
 
-	if($type == "autre") {
-		$path = dirname(__DIR__)."/documents_dps/".$year."/".$antenne."/".$num_cu."/autre/";
-		$pathtocreate = "../documents_dps/$year/$antenne/$num_cu/autre/";
-		$security = fopen("../documents_dps/$year/index.html","w");
+	if($type == "other") {
+		$pathuntilyear = dirname(__DIR__).'../../documents_dps/'.$year;
+		$pathuntilcity = $pathuntilyear.'/'.$antenne;
+		$pathtocu = $pathuntilcity.'/'.$num_cu;
+		$pathtocreate = $pathtocu.'/autre';
+		$filepath = $pathtocreate.'/'.$filename;
+		//$path = dirname(__DIR__)."/documents_dps/".$year."/".$antenne."/".$num_cu."/autre/";
+		//$pathtocreate = "../documents_dps/$year/$antenne/$num_cu/autre/";
+		$security = fopen("../../documents_dps/$year/index.html","w");
 		fclose($security);
-		$security = fopen("../documents_dps/$year/$antenne/index.html","w");
+		$security = fopen("../../documents_dps/$year/$antenne/index.html","w");
 		fclose($security);
-		$security = fopen("../documents_dps/$year/$antenne/$num_cu/index.html","w");
+		$security = fopen("../../documents_dps/$year/$antenne/$num_cu/index.html","w");
 		fclose($security);
-		$security = fopen("../documents_dps/$year/$antenne/$num_cu/autre/index.html","w");
+		$security = fopen("../../documents_dps/$year/$antenne/$num_cu/autre/index.html","w");
 		fclose($security);
-		if ( ! is_dir($path)) {
+		if ( ! is_dir($pathuntilyear)) {
+		    mkdir($pathuntilyear, 0755, true);
+		}
+		if ( ! is_dir($pathuntilcity)) {
+		    mkdir($pathuntilcity, 0755, true);
+		}
+		if ( ! is_dir($pathtocu)) {
+		    mkdir($pathtocu, 0755, true);
+		}
+		if ( ! is_dir($pathtocreate)) {
 		    mkdir($pathtocreate, 0755, true);
 		}
+		if (file_exists($filepath)) {
+        unlink($filepath);
+    }
 	}
 	else {
 		$pathuntilyear = dirname(__DIR__).'../../documents_dps/'.$year;

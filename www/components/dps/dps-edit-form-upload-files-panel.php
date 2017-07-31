@@ -12,9 +12,6 @@ $pathfiledemande = $pathfile."/".$cu_full."-DEM.pdf";
 if(file_exists($pathfileconvention)){$fileconvention = true;}else{$fileconvention = false;}
 if(file_exists($pathfilerisk)){$filerisk = true;}else{$filerisk = false;}
 if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false;}
-echo $pathfileconvention;
-echo $fileconvention;
-
 ?>
 
 <script src="js/fileinput.min.js" type="text/javascript"></script>
@@ -67,6 +64,7 @@ echo $fileconvention;
             </div>
           </div>
         </div>
+				<br />
         <?php
       }
       ?>
@@ -108,6 +106,7 @@ echo $fileconvention;
             </div>
           </div>
         </div>
+				<br />
         <?php
       }
       ?>
@@ -116,7 +115,7 @@ echo $fileconvention;
     <div>
       <div class="row" id="rowdemande" <?php if($filedemande == true){echo "hidden";} ?> >
         <form action='#' class='upload3'>
-          <input type='hidden' name='type' value='convention' />
+          <input type='hidden' name='type' value='demande' />
           <input type='hidden' name='unique_certificate_full' value='<?php echo $cu_full; ?>' />
           <input type='hidden' name='year' value='20<?php echo $cu_year; ?>' />
           <input type='hidden' name='section' value='<?php echo $pathantenne; ?>' />
@@ -149,15 +148,16 @@ echo $fileconvention;
             </div>
           </div>
         </div>
+				<br />
         <?php
       }
       ?>
     </div>
 
     <div>
-      <div class="row" id="rowdemande" <?php if($filedemande == true){echo "hidden";} ?> >
+      <div class="row" >
         <form action='#' class='upload4'>
-          <input type='hidden' name='type' value='convention' />
+          <input type='hidden' name='type' value='other' />
           <input type='hidden' name='unique_certificate_full' value='<?php echo $cu_full; ?>' />
           <input type='hidden' name='year' value='20<?php echo $cu_year; ?>' />
           <input type='hidden' name='section' value='<?php echo $pathantenne; ?>' />
@@ -179,17 +179,14 @@ echo $fileconvention;
         </form>
       </div>
 
-      <?php if($filedemande == true) { ?>
-        <div class="row" >
-          <?php
-          $pdf = glob($pathfile.'autre/*.{pdf}', GLOB_BRACE);
-          foreach($pdf as $otherfiles){
-          echo "<p><a href='$otherfiles' target='_blank'><span class='glyphicon glyphicon-file'></span> ".basename($otherfiles)."</a></p>";}
-          ?>
-        </div>
+
+      <div class="row" >
         <?php
-      }
-      ?>
+        $pdf = glob($pathfile.'autre/*.{pdf}', GLOB_BRACE);
+        foreach($pdf as $otherfiles){
+        echo "<p><a href='$otherfiles' target='_blank'><span class='glyphicon glyphicon-file'></span> ".basename($otherfiles)."</a></p>";}
+        ?>
+      </div>
     </div>
 
   </div>
