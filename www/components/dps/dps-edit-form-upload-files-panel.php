@@ -23,7 +23,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
     <button type="button" class="close" aria-label='Close' data-toggle="collapse" data-target="#files-panel-filter" aria-expanded='true' aria-controls="files-panel-filter">
       <span aria-hidden="true" >Montrer/Cacher</span>
     </button>
-    <h3 class="panel-title">Gestion des fichiers joints</h3>
+    <h3 class="panel-title">Fichiers attachés</h3>
   </div>
 
   <div id='files-panel-filter' aria-expanded='true' class="panel-body in">
@@ -71,7 +71,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
     </div>
 
     <div>
-      <div class="row" id="rowrisk" <?php if($filerisk == true){echo "hidden";} ?> >
+      <div class="row" id="rowrisque" <?php if($filerisk == true){echo "hidden";} ?> >
         <form action='#' class='upload2'>
           <input type='hidden' name='type' value='risk' />
           <input type='hidden' name='unique_certificate_full' value='<?php echo $cu_full; ?>' />
@@ -96,7 +96,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
       </div>
 
       <?php if($filerisk == true) { ?>
-        <div class="row" id="changerisk">
+        <div class="row" id="changerisque">
           <div class="form-group form-groupe-sm">
             <div class="col-sm-5">
             <a href="<?php echo $pathfilerisk ;?>" class="btn btn-success" target="_blank">Télécharger la grille d'analyse des risques <span class="glyphicon glyphicon-download-alt"></span></a>
@@ -144,7 +144,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
             <a href="<?php echo $pathfiledemande?>" class="btn btn-success" target="_blank">Télécharger la demande de l'organisateur <span class="glyphicon glyphicon-download-alt"></span></a>
             </div>
             <div class="col-sm-7">
-            <button id="changedemande" type="button" class="btn btn-danger">Envoyer une nouvelle demande <span class="glyphicon glyphicon-trash"></span></button>
+            <button id="changedem" type="button" class="btn btn-danger">Envoyer une nouvelle demande <span class="glyphicon glyphicon-trash"></span></button>
             </div>
           </div>
         </div>
