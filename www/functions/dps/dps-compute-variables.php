@@ -242,6 +242,9 @@
 	elseif (isset($_POST['cu_year'])) { $cu_year = $_POST['cu_year']; }
 	else { $cu_year = $dps['cu_year']; }
 
+	if (isset($_POST['cu_yearly_index'])) { $cu_yearly_index = $_POST['cu_yearly_index']; }
+	else { $cu_yearly_index = $dps['cu_yearly_index']; }
+
 
 
 ?>

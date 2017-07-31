@@ -89,7 +89,7 @@
 									<?php echo $dps_display_status; ?>
 								</td>
 								<td>
-									<form role='form' action='<?php echo $urlform; ?>' method='post'>
+									<form role='form' action='<?php echo $urlform.'?dpsID='.$dps["id"]; ?>' method='post'>
 										<input type='hidden' name='dpsID' value='<?php echo $dps["id"]; ?>'>
 										<input type='hidden' name='name' value='<?php echo $dps["cu_full"]; ?>'>
 										<button type='submit' class='<?php echo $buttonclass; ?>'></button>

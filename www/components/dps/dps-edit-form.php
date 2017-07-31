@@ -4,6 +4,7 @@
   <input type='hidden' name='section' value='<?php echo $city;?>'/>
   <input type='hidden' name='dpsID' value='<?php echo $dpsID;?>'/>
 
+
   <!-- Form to create or edit a DPS : client part -->
   <?php require_once('components/dps/dps-edit-form-client-panel.php'); ?>
 
