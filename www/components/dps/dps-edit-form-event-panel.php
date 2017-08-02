@@ -168,10 +168,15 @@
           <label for="ris_p2" class="col-sm-4 control-label">Activité du rassemblement </label>
           <div class="col-sm-8">
             <select class="form-control risi" id="ris_p2" name="ris_p2" aria-describedby="ris-p2-error" >
-              <option value="1" <?php if ($ris_p2 == '1') {echo 'selected';}?>>Public assis (spectacle, réunion, restauration, etc.)</option>
-              <option value="2" <?php if ($ris_p2 == '2') {echo 'selected';}?>>Public debout (Exposition, foire, salon, exposition, etc.)</option>
-              <option value="3" <?php if ($ris_p2 == '3') {echo 'selected';}?>>Public debout actif (Spectacle avec public statique, fête foraine, etc.)</option>
-              <option value="4" <?php if ($ris_p2 == '4') {echo 'selected';}?>>Public debout à risque (public dynamique, danse, féria, carnaval, etc.)</option>
+							<?php
+							include ('functions/dps/dps-query-select-parameters.php');
+							$parameters = get_select_parameters($parameters_query_result, 'ris_p2');
+							 foreach ($parameters as $key => $value) {
+								?>
+								<option value="<?php echo $value['option_value']; ?>" <?php if ($ris_p2 == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
+								<?php
+							}
+							?>
             </select>
             <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
             <span id='ris-p2-error' class="help-block" aria-hidden="true">Niveau de risque (P2)</span>
