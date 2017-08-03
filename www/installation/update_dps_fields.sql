@@ -31,13 +31,12 @@ ALTER TABLE `dps` CHANGE `dossier_pref` `event_pref_secu` BOOLEAN NOT NULL DEFAU
 
 ALTER TABLE `dps` CHANGE `p1_spec` `ris_p1_public` VARCHAR(7) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `event_pref_secu`;
 ALTER TABLE `dps` CHANGE `p1_part` `ris_p1_actors` VARCHAR(7) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `ris_p1_public`;
-ALTER TABLE `dps` CHANGE `p2` `ris_p2` VARCHAR(4) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '4' AFTER `ris_p1_actors`;
-ALTER TABLE `dps` CHANGE `e1` `ris_e1` VARCHAR(4) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '4' AFTER `ris_p2`;
-ALTER TABLE `dps` CHANGE `e2` `ris_e2` VARCHAR(4) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '4' AFTER `ris_e1`;
-ALTER TABLE `dps` CHANGE `edition_ris` `ris_override` VARCHAR(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '4' AFTER `ris_e2`;
-ALTER TABLE `dps` CHANGE `comment_ris` `ris_comment` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `ris_override`;
+ALTER TABLE `dps` CHANGE `p2` `ris_p2` TINYINT(1) NULL DEFAULT '4' AFTER `ris_p1_actors`;
+ALTER TABLE `dps` CHANGE `e1` `ris_e1` TINYINT(1) NULL DEFAULT '4' AFTER `ris_p2`;
+ALTER TABLE `dps` CHANGE `e2` `ris_e2` TINYINT(1) NULL DEFAULT '4' AFTER `ris_e1`;
+ALTER TABLE `dps` CHANGE `comment_ris` `ris_comment` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `ris_e2`;
 
-ALTER TABLE `dps` CHANGE `type_dps` `dps_type` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '3' AFTER `ris_comment`;
+ALTER TABLE `dps` CHANGE `type_dps` `dps_type` TINYINT(1) NULL DEFAULT '3' AFTER `ris_comment`;
 
 ALTER TABLE `dps` CHANGE `dps_debut_poste` `dps_begin_date` DATE NULL DEFAULT NULL AFTER `dps_type`;
 ALTER TABLE `dps` CHANGE `heure_debut_poste` `dps_begin_time` VARCHAR(4) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `dps_begin_date`;
@@ -58,11 +57,11 @@ ALTER TABLE `dps` CHANGE `vl` `dps_nb_vtu` TINYINT(1) NULL DEFAULT '0' AFTER `dp
 ALTER TABLE `dps` CHANGE `tente` `dps_nb_tente` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_vtu`;
 ALTER TABLE `dps` CHANGE `med_asso` `dps_nb_med_asso` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_tente`;
 ALTER TABLE `dps` CHANGE `inf_asso` `dps_nb_inf_asso` TINYINT(1) NULL DEFAULT '0' AFTER `dps_nb_med_asso`;
-ALTER TABLE `dps` CHANGE `moyen_supp` `dps_other_matos_asso` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `dps_nb_inf_asso`;
+ALTER TABLE `dps` CHANGE `moyen_supp` `dps_other_matos_asso` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `dps_nb_inf_asso`;
 
 ALTER TABLE `dps` CHANGE `local` `clientmatos_infirmerie` BOOLEAN NOT NULL DEFAULT '0' AFTER `dps_other_matos_asso`;
 ALTER TABLE `dps` ADD `clientmatos_tente` BOOLEAN NOT NULL DEFAULT '0' AFTER `clientmatos_infirmerie`;
-ALTER TABLE `dps` ADD `clientmatos_other` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `clientmatos_tente`;
+ALTER TABLE `dps` ADD `clientmatos_other` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `clientmatos_tente`;
 
 ALTER TABLE `dps` CHANGE `med_autre` `medicalext_nb_med` TINYINT(1) NULL DEFAULT NULL AFTER `clientmatos_other`;
 ALTER TABLE `dps` CHANGE `medecin` `medicalext_med_company` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `medicalext_nb_med`;
@@ -109,6 +108,7 @@ ALTER TABLE `dps` DROP `soin_evac`;
 ALTER TABLE `dps` DROP `soin_ar`;
 ALTER TABLE `dps` DROP `soin_dcd`;
 ALTER TABLE `dps` DROP `etat_demande_dps`;
+ALTER TABLE `dps` DROP `edition_ris`;
 
 
 -- POSITIONNEMENT DE NOUVELLES VALEURS PAR DÉFAUT ET VALEURS NULLES
@@ -142,3 +142,43 @@ UPDATE `dps` SET `status_validation_ddo_date` = NULL WHERE `status_validation_dd
 UPDATE `dps` SET `status_cancel_date` = NULL WHERE `status_cancel_date` = '0000-00-00';
 UPDATE `dps` SET `status_justification` = NULL WHERE `status_justification` = '';
 UPDATE `dps` SET `status_cancel_reason` = NULL WHERE `status_cancel_reason` = '';
+
+
+DROP TABLE `select_list_parameters`;
+CREATE TABLE `select_list_parameters` (
+	`id` INT(1) NOT NULL AUTO_INCREMENT ,
+	`category` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'category' ,
+	`option_value` TINYINT(2) NULL COMMENT 'valeur du select' ,
+	`option_text` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'human readable text' ,
+	PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci COMMENT = 'options du select';
+
+	INSERT INTO `select_list_parameters`
+	(`id`, `category`, `option_value`, `option_text`) VALUES
+	(NULL, 'bspp', '0', 'Ni informé, ni présent'),
+	(NULL, 'bspp', '1', 'Informé, non présent'),
+	(NULL, 'bspp', '2', 'Informé et présent'),
+	(NULL, 'samu', '0', 'Ni informé, ni présent'),
+	(NULL, 'samu', '1', 'Informé, non présent'),
+	(NULL, 'samu', '2', 'Informé et présent'),
+	(NULL, 'dps_type_short', '0', 'PAPS'),
+	(NULL, 'dps_type_short', '1', 'DPS-PE'),
+	(NULL, 'dps_type_short', '2', 'DPS-ME'),
+	(NULL, 'dps_type_short', '3', 'DPS-GE'),
+	(NULL, 'dps_type_detailed', '0', 'Point d\'Alerte et de Premiers Secours'),
+	(NULL, 'dps_type_detailed', '1', 'DPS de Petite Envergure'),
+	(NULL, 'dps_type_detailed', '2', 'DPS de Moyenne Envergure'),
+	(NULL, 'dps_type_detailed', '3', 'DPS de Grande Envergure'),
+	(NULL, 'ris_p2', '1', 'Public assis (spectacle, réunion, restauration, etc.)'),
+	(NULL, 'ris_p2', '2', 'Public debout (Exposition, foire, salon, exposition, etc.)'),
+	(NULL, 'ris_p2', '3', 'Public debout actif (Spectacle avec public statique, fête foraine, etc.)'),
+	(NULL, 'ris_p2', '4', 'Public debout à risque (public dynamique, danse, féria, carnaval, etc.)'),
+	(NULL, 'ris_e1', '1', 'Faible (Structure permanente, voies publiques, etc.)'),
+	(NULL, 'ris_e1', '2', 'Modéré (Gradins, tribunes, mois de 2 hectares, etc.)'),
+	(NULL, 'ris_e1', '3', 'Moyen (Entre 2 et 5 hectares, autres conditions, etc.)'),
+	(NULL, 'ris_e1', '4', 'Elevé (Brancardage > 600m, pas d\'accès VPSP, etc.)'),
+	(NULL, 'ris_e2', '1', 'Faible (Moins de 10 minutes)'),
+	(NULL, 'ris_e2', '2', 'Modéré (Entre 10 et 20 minutes)'),
+	(NULL, 'ris_e2', '3', 'Moyen (Entre 20 et 30 minutes)'),
+	(NULL, 'ris_e2', '4', 'Elevé (Plus de 30 minutes)'),
+	(NULL, 'yesno', '0', 'Non'),
+	(NULL, 'yesno', '1', 'Oui');

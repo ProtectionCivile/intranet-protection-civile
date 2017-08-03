@@ -5,6 +5,8 @@
   <input type='hidden' name='dpsID' value='<?php echo $dpsID;?>'/>
 
 
+	<?php require_once('functions/dps/dps-select-parameters-computation.php'); ?>
+
   <!-- Form to create or edit a DPS : client part -->
   <?php require_once('components/dps/dps-edit-form-client-panel.php'); ?>
 

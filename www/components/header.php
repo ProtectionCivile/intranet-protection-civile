@@ -3,6 +3,8 @@ require_once('functions/session/db-connect.php');
 require_once('PhpRbac/src/PhpRbac/Rbac.php');
 use PhpRbac\Rbac;
 $rbac = new Rbac();
+
+setlocale(LC_ALL, 'fr_FR');
 ?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

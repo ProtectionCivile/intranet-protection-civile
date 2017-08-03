@@ -117,8 +117,15 @@
             </label>
             <div class="col-sm-2">
               <select class="form-control" name="event_pref_secu" id="event_pref_secu" aria-describedby="event-pref-secu-error" >
-                <option value="0">Non</option>
-                <option value="1" <?php if ($event_pref_secu) {echo 'selected';}?> >Oui</option>
+								<?php
+								include ('functions/dps/dps-query-select-parameters.php');
+								$parameters = get_select_parameters($parameters_query_result, 'yesno');
+								 foreach ($parameters as $key => $value) {
+									?>
+									<option value="<?php echo $value['option_value']; ?>" <?php if ($event_pref_secu == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
+									<?php
+								}
+								?>
               </select>
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='event-pref-secu-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
@@ -168,10 +175,15 @@
           <label for="ris_p2" class="col-sm-4 control-label">Activité du rassemblement </label>
           <div class="col-sm-8">
             <select class="form-control risi" id="ris_p2" name="ris_p2" aria-describedby="ris-p2-error" >
-              <option value="1" <?php if ($ris_p2 == '1') {echo 'selected';}?>>Public assis (spectacle, réunion, restauration, etc.)</option>
-              <option value="2" <?php if ($ris_p2 == '2') {echo 'selected';}?>>Public debout (Exposition, foire, salon, exposition, etc.)</option>
-              <option value="3" <?php if ($ris_p2 == '3') {echo 'selected';}?>>Public debout actif (Spectacle avec public statique, fête foraine, etc.)</option>
-              <option value="4" <?php if ($ris_p2 == '4') {echo 'selected';}?>>Public debout à risque (public dynamique, danse, féria, carnaval, etc.)</option>
+							<?php
+							include ('functions/dps/dps-query-select-parameters.php');
+							$parameters = get_select_parameters($parameters_query_result, 'ris_p2');
+							 foreach ($parameters as $key => $value) {
+								?>
+								<option value="<?php echo $value['option_value']; ?>" <?php if ($ris_p2 == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
+								<?php
+							}
+							?>
             </select>
             <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
             <span id='ris-p2-error' class="help-block" aria-hidden="true">Niveau de risque (P2)</span>
@@ -183,10 +195,15 @@
           <label for="ris_e1" class="col-sm-4 control-label">Environnement et accessibilité</label>
           <div class="col-sm-8">
             <select class="form-control risi" id="ris_e1" name="ris_e1" aria-describedby="ris-e1-error" >
-              <option value="1" <?php if ($ris_e1 == '1') {echo 'selected';}?>>Faible (Structure permanente, voies publiques, etc.)</option>
-              <option value="2" <?php if ($ris_e1 == '2') {echo 'selected';}?>>Modéré (Gradins, tribunes, mois de 2 hectares, etc.)</option>
-              <option value="3" <?php if ($ris_e1 == '3') {echo 'selected';}?>>Moyen (Entre 2 et 5 hectares, autres conditions, etc.)</option>
-              <option value="4" <?php if ($ris_e1 == '4') {echo 'selected';}?>>Elevé (Brancardage > 600m, pas d'accès VPSP, etc.)</option>
+							<?php
+							include ('functions/dps/dps-query-select-parameters.php');
+							$parameters = get_select_parameters($parameters_query_result, 'ris_e1');
+							 foreach ($parameters as $key => $value) {
+								?>
+								<option value="<?php echo $value['option_value']; ?>" <?php if ($ris_e1 == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
+								<?php
+							}
+							?>
             </select>
             <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
             <span id='ris-e1-error' class="help-block" aria-hidden="true">Caractéristiques de l'environnement et accessibilité du site (E1)</span>
@@ -199,10 +216,15 @@
           <label for="ris_e2" class="col-sm-4 control-label">Délai d'intervention des secours publics</label>
           <div class="col-sm-8">
             <select class="form-control risi" id="ris_e2" name="ris_e2" aria-describedby="ris-e2-error" >
-              <option value="1" <?php if ($ris_e2 == '1') {echo 'selected';}?>>Faible (Moins de 10 minutes)</option>
-              <option value="2" <?php if ($ris_e2 == '2') {echo 'selected';}?>>Modéré (Entre 10 et 20 minutes)</option>
-              <option value="3" <?php if ($ris_e2 == '3') {echo 'selected';}?>>Moyen (Entre 20 et 30 minutes)</option>
-              <option value="4" <?php if ($ris_e2 == '4') {echo 'selected';}?>>Elevé (Plus de 30 minutes)</option>
+							<?php
+							include ('functions/dps/dps-query-select-parameters.php');
+							$parameters = get_select_parameters($parameters_query_result, 'ris_e2');
+							 foreach ($parameters as $key => $value) {
+								?>
+								<option value="<?php echo $value['option_value']; ?>" <?php if ($ris_e2 == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
+								<?php
+							}
+							?>
             </select>
             <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
             <span id='ris-e2-error' class="help-block" aria-hidden="true">Délai d'intervention (E2)</span>

@@ -2,7 +2,6 @@
 	require_once('components/dps/dps-init-variables-module.php');
 
 
-	if (isset($_POST['cu_full'])) { $cu_full = $_POST['cu_full']; }
 	if (isset($_POST['section'])) { $section = $_POST['section']; }
 
 	// Organisateur
@@ -296,6 +295,9 @@
 	if (isset($_POST['cu_yearly_index'])) { $cu_yearly_index = $_POST['cu_yearly_index']; }
 	else { $cu_yearly_index = $dps['cu_yearly_index']; }
 
+	if (isset($_POST['cu_full'])) { $cu_full = $_POST['cu_full']; }
+	elseif (isset($dps) && isset($dps['cu_full'])) { $cu_full = $dps['cu_full']; }
+	else { $cu_full = ''; }
 
 
 ?>
