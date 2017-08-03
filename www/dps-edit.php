@@ -42,6 +42,9 @@
 	<h3><center><?php echo $cu_full; ?></center></h3>
 
 
+	<!-- Form to upload files -->
+  <?php require_once('components/dps/dps-edit-form-upload-files-panel.php'); ?>
+
 	<!-- Formulaire de création de DPS -->
 	<?php require_once('components/dps/dps-edit-form.php'); ?>
 

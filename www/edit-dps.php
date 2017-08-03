@@ -145,7 +145,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 				<div class="row" id="changeconvention">
 				<div class="form-group form-groupe-sm">
 					<div class="col-sm-4">
-					<a href="<?php echo $pathfileconvention?>" class="btn btn-primary" target="_blank">Télécharger la convention <span class="glyphicon glyphicon-download-alt"></span></a>
+					<a href="<?php echo $pathfileconvention?>" class="btn btn-success" target="_blank">Télécharger la convention <span class="glyphicon glyphicon-download-alt"></span></a>
 					</div>
 					<div class="col-sm-4">
 					<button id="changeconv" type="button" class="btn btn-danger">Envoyer une nouvelle convention <span class="glyphicon glyphicon-trash"></span></button>
@@ -247,7 +247,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 						<div class="progress progress-striped active">
 							<div class="progress-bar" style="width:0%"></div>
 							<?php
-											echo "<input type='hidden' name='year' value='".$pathyear."'>";
+											echo "<input type='hidden' name='year' value='20".$pathyear."'>";
 											echo "<input type='hidden' name='antenne' value='".$pathantenne."'>";
 											echo "<input type='hidden' name='num_cu' value='".$pathnum_cu."'>";
 											echo "<input type='hidden' name='type' value='autre'>";
@@ -272,7 +272,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 								$('.file-inputs').bootstrapFileInput();
 							</script>
 			</div>
-			
+
 			<form class="form-horizontal" data-toggle="validator" role="form" action="traitement-demande-dps.php" method="post">
 			<input type='hidden' name='update_id' value='<?php echo $dps['id'];?>'>
 				<div class="panel panel-default">
@@ -436,7 +436,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 									defaultDate:'<?php $dps_fin = $dps['dps_fin'];
 									if($dps_fin == "0000-00-00"){$dps_fin = "2015-01-01";}
 									echo $dps_fin;?>'
-					
+
 								});
 							});
 							$(function () {
@@ -455,7 +455,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 									$iso_heure_fin = $h_fin.':'.$m_fin.':00';}
 									echo $dps_fin.' '.$iso_heure_fin;
 									?>'
-					
+
 								});
 							});
 							</script>
@@ -537,11 +537,11 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
                             <h4>Grille d'évaluation des risques</h4>
                             <p>Classification du type de poste : <strong><span id="typeposte"></span></strong><br>
                             Nombre de secouristes : <strong><span id="nbsec"></span></strong></p>
-                            <p id="grosris"><strong><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Attention !</strong> Ce type de poste impose un contact avec la DDO.</p>                           
+                            <p id="grosris"><strong><span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Attention !</strong> Ce type de poste impose un contact avec la DDO.</p>
                        </div>
 					</div>
 				</div>
-				
+
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Configuration du dispositif prévisionnel de secours mis en place</h3>
@@ -627,7 +627,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 									defaultDate:'<?php $dps_fin_poste = $dps['dps_fin_poste'];
 									if($dps_fin_poste == "0000-00-00"){$dps_fin_poste = "2015-01-01";}
 									echo $dps_fin_poste;?>'
-					
+
 								});
 							});
 							$(function () {
@@ -646,7 +646,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 									$iso_heure_fin_poste = $h_fin_poste.':'.$m_fin_poste.':00';}
 									echo $dps_fin_poste.' '.$iso_heure_fin_poste;
 									?>'
-					
+
 								});
 							});
 							</script>
@@ -775,7 +775,7 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 				echo "<input type='hidden' name='code_commune' value='".$dps['commune_ris']."'>";
 				echo "<input type='hidden' name='num_cu' value='".$dps['num_cu']."'>";
 ?>
-				
+
 				<!-- ATTENTION - LA VALIDATION NE FONCTIONNE PAS SUR ENVOYER : REVOIR FONCTIONNEMENT FORMULAIRE GLOBAL-->
 				<div class="form-group">
 					<div class="col-sm-4">
@@ -790,9 +790,9 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 				</div>
 			</form>
 
-			
-			
-			
+
+
+
 <!-- Modal refus -->
 <div class="modal fade" id="ModalRefus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
@@ -820,13 +820,13 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 		</div>
 	</div>
 </div>
-			
+
 		<?php }if ($_SESSION['privilege'] == "user") { ?>
   		<strong>En tant qu'utilisateur simple vous ne pouvez pas effectuer d'actions</strong> <?php }?>
 </div>
 
 <script>
-		
+
 </script>
 
 <script type="text/javascript">
@@ -848,4 +848,3 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
 <?php require_once('components/footer.php'); ?>
 </body>
 </html>
-
