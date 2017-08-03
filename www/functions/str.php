@@ -36,6 +36,14 @@ function formatDateFrToUs($str)
     return DateTime::createFromFormat('d-m-Y', $str)->format('Y-m-d');
 }
 
+function formatDateFrToReadable($str)
+{
+    if ($str == null) {
+      return "";
+    }
+    return strftime('%A %e %B %G', strtotime($str));
+}
+
 function formatDateUsToFr($str)
 {
   if ($str == null) {
@@ -50,5 +58,13 @@ function formatTimeRemoveDoubleDot($str)
     return "";
   }
   return DateTime::createFromFormat('H:i', $str)->format('Hi');
+}
+
+function formatTimeFrToReadable($str)
+{
+  if ($str == null) {
+    return "";
+  }
+  return DateTime::createFromFormat('Hi', $str)->format('H\hi');
 }
 ?>

@@ -2,7 +2,6 @@
 	require_once('components/dps/dps-init-variables-module.php');
 
 
-	if (isset($_POST['cu_full'])) { $cu_full = $_POST['cu_full']; }
 	if (isset($_POST['section'])) { $section = $_POST['section']; }
 
 	// Organisateur
@@ -292,6 +291,11 @@
 	elseif (isset($_POST['cu_year'])) { $cu_year = $_POST['cu_year']; }
 	elseif (isset($dps) && isset($dps['cu_year'])) { $cu_year = $dps['cu_year']; }
   else { $cu_year = ''; }
+
+	if (isset($_POST['cu_full'])) { $cu_full = $_POST['cu_full']; }
+	elseif (isset($dps) && isset($dps['cu_full'])) { $cu_full = $dps['cu_full']; }
+	else { $cu_full = ''; }
+
 
 
 
