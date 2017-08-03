@@ -82,7 +82,7 @@
 			}
 		}
 		else {
-			echo "Tant quil y a des erreurs on ne crée pas TODO A SUPPRIMER";
+			// There are errors, do nothing
 		}
 }
 
