@@ -246,8 +246,15 @@
             <label for="clientmatos_infirmerie" class="col-sm-4 control-label">Local infirmerie</label>
             <div class="col-sm-2">
               <select class="form-control" id="clientmatos_infirmerie" name="clientmatos_infirmerie" aria-describedby="clientmatos-infirmerie-error">
-                <option value="0" <?php if ($clientmatos_infirmerie == '0') {echo 'selected';}?>>Non</option>
-                <option value="1" <?php if ($clientmatos_infirmerie == '1') {echo 'selected';}?>>Oui</option>
+								<?php
+								include ('functions/dps/dps-query-select-parameters.php');
+								$parameters = get_select_parameters($parameters_query_result, 'yesno');
+								 foreach ($parameters as $key => $value) {
+									?>
+									<option value="<?php echo $value['option_value']; ?>" <?php if ($clientmatos_infirmerie == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
+									<?php
+								}
+								?>
               </select>
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='clientmatos-infirmerie-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
@@ -259,8 +266,15 @@
             <label for="clientmatos_tente" class="col-sm-3 control-label">Tente</label>
             <div class="col-sm-2">
               <select class="form-control" id="clientmatos_tente" name="clientmatos_tente" aria-describedby="clientmatos-tente-error">
-                <option value="0" <?php if ($clientmatos_tente == '0') {echo 'selected';}?>>Non</option>
-                <option value="1" <?php if ($clientmatos_tente == '1') {echo 'selected';}?>>Oui</option>
+								<?php
+								include ('functions/dps/dps-query-select-parameters.php');
+								$parameters = get_select_parameters($parameters_query_result, 'yesno');
+								 foreach ($parameters as $key => $value) {
+									?>
+									<option value="<?php echo $value['option_value']; ?>" <?php if ($clientmatos_tente == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
+									<?php
+								}
+								?>
               </select>
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='clientmatos-tente-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
@@ -340,23 +354,42 @@
         <div class="col-sm-2">
           <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
             <select class="form-control" id="samu" name="samu" aria-describedby="samu-error">
-              <option value="0" <?php if ($samu == '0') {echo 'selected';}?>>Ni informé, ni présent</option>
-              <option value="1" <?php if ($samu != 'O' && $samu != '2') {echo 'selected';}?>>Informé, non présent</option>
-              <option value="2" <?php if ($samu == '2') {echo 'selected';}?>>Informé et présent</option>
+							<?php
+							include ('functions/dps/dps-query-select-parameters.php');
+							$parameters = get_select_parameters($parameters_query_result, 'samu');
+							 foreach ($parameters as $key => $value) {
+								?>
+								<option value="<?php echo $value['option_value']; ?>" <?php if ($samu == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
+								<?php
+							}
+							?>
             </select>
             <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
             <span id='samu-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
           </div>
         </div>
+				<script text='javascript'>
+					$(document).ready(function() {
+						if ( ($("#samu").val() === '0') && ($(location).attr("href").indexOf("create") !== -1) ) {
+							$("#samu").val('1');
+						}
+					});
+				</script>
 
         <?php $feedback = compute_server_feedback($bspp_error);?>
         <label for="bspp" class="col-sm-2 control-label">SDIS / BSPP <?php echo $bspp;?></label>
         <div class="col-sm-2">
           <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
             <select class="form-control" id="bspp" name="bspp" aria-describedby="bspp-error">
-              <option value="0" <?php if ($bspp == '0') {echo 'selected';}?>>Ni informé, ni présent</option>
-              <option value="1" <?php if ($bspp == '1') {echo 'selected';}?>>Informé, non présent</option>
-              <option value="2" <?php if ($bspp == '2') {echo 'selected';}?>>Informé et présent</option>
+							<?php
+							include ('functions/dps/dps-query-select-parameters.php');
+							$parameters = get_select_parameters($parameters_query_result, 'bspp');
+							 foreach ($parameters as $key => $value) {
+								?>
+								<option value="<?php echo $value['option_value']; ?>" <?php if ($bspp == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
+								<?php
+							}
+							?>
             </select>
             <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
             <span id='bspp-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
@@ -382,10 +415,15 @@
           <div class="col-sm-2">
             <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
               <select class="form-control" id="dps_type" name="dps_type" aria-describedby="dps-type-error">
-                <option value="0" <?php if ($dps_type == '0') {echo 'selected';}?>>Point d'Alerte</option>
-                <option value="1" <?php if ($dps_type == '1') {echo 'selected';}?>>DPS-PE</option>
-                <option value="2" <?php if ($dps_type == '2') {echo 'selected';}?>>DPS-ME</option>
-                <option value="3" <?php if ($dps_type == '3') {echo 'selected';}?>>DPS-GE</option>
+								<?php
+								include ('functions/dps/dps-query-select-parameters.php');
+								$parameters = get_select_parameters($parameters_query_result, 'dps_type_short');
+								 foreach ($parameters as $key => $value) {
+									?>
+									<option value="<?php echo $value['option_value']; ?>" <?php if ($dps_type == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
+									<?php
+								}
+								?>
               </select>
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='dps-type-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>

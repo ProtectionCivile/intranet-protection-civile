@@ -44,13 +44,6 @@
 
 <?php require_once('functions/dps/dps-select-parameters-computation.php'); ?>
 
-<!-- Common -->
-<?php //include ('functions/controller/dps-common.php'); ?>
-
-
-<!-- Update a DPS : Controller -->
-<?php //require_once('functions/controller/dps-update-controller.php'); ?>
-
 <!-- Page content container -->
 <div class="container">
 

@@ -160,7 +160,7 @@ CREATE TABLE `select_list_parameters` (
 	(NULL, 'samu', '0', 'Ni informé, ni présent'),
 	(NULL, 'samu', '1', 'Informé, non présent'),
 	(NULL, 'samu', '2', 'Informé et présent'),
-	(NULL, 'dps_type_short', '0', 'Point d\'Alerte'),
+	(NULL, 'dps_type_short', '0', 'PAPS'),
 	(NULL, 'dps_type_short', '1', 'DPS-PE'),
 	(NULL, 'dps_type_short', '2', 'DPS-ME'),
 	(NULL, 'dps_type_short', '3', 'DPS-GE'),
