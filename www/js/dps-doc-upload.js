@@ -48,9 +48,6 @@ function uploadImage($form){
 	request.addEventListener('load',function(e){
 		$form.find('.progress-bar').addClass('progress-bar-success').html('Veuillez patienter...');
 		//$form.find('.progress').removeClass('progress-striped');
-		
-		
-		
 	});
 
 	request.onreadystatechange = function(){
@@ -58,14 +55,14 @@ function uploadImage($form){
 			$form.find('.progress').removeClass('progress-striped');
 			$form.find('.progress-bar').html('Transfert Terminé !');
 			window.setTimeout(function(){location.reload()},2000);
-			
+
 		}
 	}
-	request.open('POST', 'functions/dps-documents-upload.php', true);
+	request.open('POST', 'functions/dps/dps-documents-upload.php', true);
 	request.send(formdata);
-	
-	
-	
+
+
+
 
 	$form.on('click','.cancel',function(){
 		request.abort();
@@ -73,7 +70,7 @@ function uploadImage($form){
 		$form.find('.progress-bar')
 			.addClass('progress-bar-danger')
 			.removeClass('progress-bar-success')
-			.html('upload aborted...');
+			.html('Transfert annulé...');
 	});
 
 }

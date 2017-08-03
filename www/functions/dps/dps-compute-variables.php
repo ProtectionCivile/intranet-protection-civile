@@ -292,11 +292,12 @@
 	elseif (isset($dps) && isset($dps['cu_year'])) { $cu_year = $dps['cu_year']; }
   else { $cu_year = ''; }
 
+	if (isset($_POST['cu_yearly_index'])) { $cu_yearly_index = $_POST['cu_yearly_index']; }
+	else { $cu_yearly_index = $dps['cu_yearly_index']; }
+
 	if (isset($_POST['cu_full'])) { $cu_full = $_POST['cu_full']; }
 	elseif (isset($dps) && isset($dps['cu_full'])) { $cu_full = $dps['cu_full']; }
 	else { $cu_full = ''; }
-
-
 
 
 ?>
