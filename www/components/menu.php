@@ -38,7 +38,7 @@ $settings_array = mysqli_fetch_array($query_result);
 						<li class="divider"></li>
 						<li class="dropdown-header">Gestion des DPS</li>
 						<?php if ($rbac->check("ope-dps-view-own", $currentUserID)) {?>
-							<li><a href="dps-list-view.php?city">Liste des DPS de l'Antenne</a></li>
+							<li><a href="dps-list-view.php?city">Liste des DPS de mon Antenne</a></li>
 						<?php } ?>
 						<?php if ($rbac->check("ope-dps-view-all", $currentUserID)) {?>
 							<li><a href="dps-list-view.php">Liste de tous les DPS</a></li>
