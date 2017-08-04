@@ -11,7 +11,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li class="active">Gestion des permissions</li>
 </ol>
 
@@ -30,7 +29,7 @@
 	<!-- Update permission : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
-	
+
 	<h2>Gestion des permissions</h2>
 
 
@@ -47,7 +46,7 @@
 					<th>Description</th>
 					<th colspan='3'>Opérations</th>
 				</tr>
-				<?php 
+				<?php
 				$query = "SELECT ID, Title, Description FROM $tablename_permissions ORDER by ID ASC";
 				$permissions = mysqli_query($db_link, $query);
 				while($permission = mysqli_fetch_array($permissions)) { ?>
@@ -94,7 +93,7 @@
 		<?php if ($rbac->check("admin-permissions-update", $currentUserID)) { ?>
 			<div class="panel-footer"><a class="btn btn-default" role="button" href="permission-create.php">Ajouter une permission</a></div>
 		<?php } ?>
-	</div>		
+	</div>
 
 </div>
 

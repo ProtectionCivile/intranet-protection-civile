@@ -11,7 +11,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li><a href="/user-view.php">Gestion des utilisateurs</a></li>
 	<li class="active">Création</li>
 </ol>
@@ -40,7 +39,7 @@
 		<div class="panel-body">
 			<form class="form-horizontal" id="auto-validation-form" action='' role="form" method='post' accept-charset='utf-8'>
 				<input type="hidden" id="wish" name="addUser" />
-			
+
 
 				<?php if (!empty($createErrorLastName)){ ?>
 					<div class="form-group form-group-sm has-error has-feedback">
@@ -49,7 +48,7 @@
 							<input type="text" class="form-control" id="inputUserLastName" name="inputUserLastName" aria-describedby="inputError2Status" placeholder="ex: Dupond" minlength='2' maxlength='20' required='true' value="<?php if (!empty($genericError)) {echo $lastName;} ?>">
 							<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
 							<span id="inputError2Status" class="sr-only">(error)</span>
-						</div>	
+						</div>
 					</div>
 				<?php } else { ?>
 					<div class="form-group form-group-sm">
@@ -59,7 +58,7 @@
 						</div>
 					</div>
 				<?php } ?>
-				
+
 				<?php $feedback = compute_server_feedback($createErrorFirstName);?>
 				<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
 					<label for="inputUserFirstName" class="col-sm-4 control-label">Prénom</label>
@@ -79,7 +78,7 @@
 					<span id='inputUserLogin-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
 					</div>
 				</div>
-				
+
 				<?php if (!empty($createErrorPassword)){ ?>
 					<div class="form-group form-group-sm has-error has-feedback">
 						<label for="inputUserPassword1" class="col-sm-4 control-label">Mot de passe</label>
@@ -97,7 +96,7 @@
 						</div>
 					</div>
 				<?php } ?>
-				
+
 				<div class="form-group form-group-sm">
 					<label for="inputUserPassword2" class="col-sm-4 control-label">Confirmation du mot de passe</label>
 					<div class="col-sm-8">
@@ -110,22 +109,22 @@
 						<input type="phone" class="form-control" id="inputUserPhone" name="inputUserPhone" aria-describedby="inputError2Status" minlength='10' maxlength='10' required='false' digits='true' value="<?php if (!empty($genericError)) {echo $phone;} ?>">
 					</div>
 				</div>
-				
+
 				<div class="form-group form-group-sm">
 					<label for="inputUserSection" class="col-sm-4 control-label">Section</label>
 					<div class="col-sm-8">
 						<select class="form-control" id="inputUserSection" name="inputUserSection">
-							<?php							
-								$reqliste = "SELECT number, name FROM sections" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+							<?php
+								$reqliste = "SELECT number, name FROM sections" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 								$sections = mysqli_query($db_link, $reqliste);
 								while($section = mysqli_fetch_array($sections)) {
 									echo "<option value='".$section["number"]."'>".$section["name"]."</option>";
-								}							
+								}
 							?>
 						</select>
 					</div>
 				</div>
-				
+
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<?php if (empty($genericSuccess)){ ?>

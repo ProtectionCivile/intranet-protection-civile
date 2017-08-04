@@ -11,7 +11,6 @@
 
 <ol class='breadcrumb'>
 	<li><a href='/'>Home</a></li>
-	<li><a href='#'>Administration</a></li>
 	<li><a href='/section-view.php'>Gestion des sections</a></li>
 	<li class='active'>Modification</li>
 </ol>
@@ -116,8 +115,8 @@
 					<label for='attached_section' class='col-sm-4 control-label'>Section</label>
 					<div class='col-sm-8'>
 						<select class='form-control' id='attached_section' name='attached_section'>
-							<?php							
-								$reqliste = "SELECT `number`, name FROM sections ORDER BY number" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+							<?php
+								$reqliste = "SELECT `number`, name FROM sections ORDER BY number" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 								$sections = mysqli_query($db_link, $reqliste);
 
 								while($sectionX = mysqli_fetch_array($sections)) {
@@ -127,13 +126,13 @@
 									else {
 										echo "<option value='".$sectionX['number']."'>".$sectionX['name']."</option>";
 									}
-									
-								}							
+
+								}
 							?>
 						</select>
 					</div>
 				</div>
-					
+
 				<div class='form-group'>
 					<div class='col-sm-offset-4 col-sm-8'>
 						<?php if (empty($genericSuccess)){ ?>

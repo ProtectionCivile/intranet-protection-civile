@@ -14,7 +14,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li class="active">Gestion des sections</li>
 </ol>
 
@@ -73,17 +72,17 @@
 								<td>
 									<?php echo $section["number"];?>
 								</td>
-								<?php 
+								<?php
 								$colspan = "";
 								if ( $isAttachedToItself ) {
 									$colspan = "2";
 								}
 								?>
 								<td colspan='<?php echo $colspan;?>'>
-									<?php echo $section["name"];?> 
+									<?php echo $section["name"];?>
 								</td>
-								
-								<?php 
+
+								<?php
 								if (!$isAttachedToItself){
 									$attached_section = $section["attached_section"];
 									$sql = "SELECT shortname FROM $tablename_sections WHERE number='$attached_section' ORDER BY number";
@@ -108,7 +107,7 @@
 									<?php echo $section["phone"]; ?>
 								</td>
 								<td>
-									<?php 
+									<?php
 									if (!empty($section["mail"])) {
 										echo $section["mail"]."@protectioncivile92.org";
 									}
@@ -122,8 +121,8 @@
 										</form>
 									<?php } ?>
 								</td>
-								<td>	
-									<?php if ($rbac->check("admin-sections-update", $currentUserID)) { ?>							
+								<td>
+									<?php if ($rbac->check("admin-sections-update", $currentUserID)) { ?>
 										<form action='' method='post' accept-charset='utf-8'>
 											<input type='hidden' name='ID' value='<?php echo $section["number"]; ?>'/>
 											<button type='submit' class='btn btn-danger glyphicon glyphicon-trash' title="Supprimer" onclick='return(confirm("Etes-vous sûr de vouloir supprimer la section?"));'></button>

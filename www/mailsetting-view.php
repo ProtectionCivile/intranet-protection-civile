@@ -11,7 +11,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li class="active">Paramètres mail</li>
 </ol>
 
@@ -41,7 +40,7 @@
 
 	<h2>Gestion des paramètres</h2>
 
-	<?php 
+	<?php
 		$settings = mysqli_query($db_link, $sqlQuery);
 	?>
 	<div class="panel panel-default">
@@ -51,7 +50,7 @@
 		<div class="panel-body">
 			<?php if($nb_elements == 0) { ?>
 				<div>Aucun paramètre enregistré </div>
-			<?php } 
+			<?php }
 			else { ?>
 				<div class="table-responsive" style="vertical-align: middle;">
 					<table class="table table-bordered table-condensed">
@@ -79,8 +78,8 @@
 									</form>
 								<?php }?>
 							</td>
-						</tr>	
-						<?php endforeach;  ?>	
+						</tr>
+						<?php endforeach;  ?>
 					</table>
 				</div>
 			<?php } ?>

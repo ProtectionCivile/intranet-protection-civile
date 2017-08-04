@@ -10,7 +10,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li><a href="/user-view.php">Gestion des utilisateurs</a></li>
 	<li class="active">Attributions de rôles</li>
 </ol>
@@ -30,7 +29,7 @@
 <!-- Common -->
 <?php include 'functions/controller/user-common.php'; ?>
 
-<?php 
+<?php
 	if(empty($commonError)) {
 	?>
 
@@ -39,7 +38,7 @@
 
 	<!-- Page content container -->
 	<div class="container">
-		
+
 
 		<!-- Update user's roles : Operation status indicator -->
 		<?php include 'components/operation-status-indicator.php'; ?>
@@ -56,12 +55,12 @@
 				<form id="roleuser" class="form-horizontal" action='user-assign-roles.php' method='post' accept-charset='utf-8'>
 					<input type="hidden" name="userID" value="<?php echo $userID;?>">
 					<input type="hidden" name="roleID" id="roleID" value="undefined">
-				
-					Les changements se font directement en cliquant sur les boutons. 
+
+					Les changements se font directement en cliquant sur les boutons.
 					<br /> <br />
 
-					<?php 
-					$queryC = "SELECT name, number FROM sections WHERE attached_section=number" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+					<?php
+					$queryC = "SELECT name, number FROM sections WHERE attached_section=number" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 					$cities = mysqli_query($db_link, $queryC);
 					?>
 
@@ -71,7 +70,7 @@
 							<th><center>Rôles de l'utilisateur</center></th>
 						</thead>
 						<tbody>
-							<?php while($city = mysqli_fetch_array($cities)) { 
+							<?php while($city = mysqli_fetch_array($cities)) {
 								$queryR="SELECT ID, Description, Title FROM rbac_roles WHERE Assignable='1' AND Affiliation='".$city['number']."'" ;
 								$roles = mysqli_query($db_link, $queryR);
 								?>
@@ -79,7 +78,7 @@
 									<td class="active"><?php echo $city['name']; ?></td>
 									<td>
 										<?php
-										while($role = mysqli_fetch_array($roles)) { 
+										while($role = mysqli_fetch_array($roles)) {
 											$roleID=$role["ID"];
 											$roleTitle=$role["Title"];
 											$roleDescription=$role["Description"];

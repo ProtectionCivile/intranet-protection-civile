@@ -11,7 +11,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li><a href="/permission-view.php">Gestion des permissions</a></li>
 	<li class="active">Modification</li>
 </ol>
@@ -23,7 +22,7 @@
 <!-- Common -->
 <?php include 'functions/controller/permission-common.php'; ?>
 
-<?php 
+<?php
 	if(empty($commonError)) {
 ?>
 
@@ -33,7 +32,7 @@
 
 	<!-- Page content container -->
 	<div class="container">
-		
+
 
 		<!-- Update permission : Operation status indicator -->
 		<?php include 'components/operation-status-indicator.php'; ?>
@@ -41,7 +40,7 @@
 		<h2>Modifier la permission '<?php echo $permissionTitle ?>'</h2>
 
 
-		<!-- Update permission : display form -->			
+		<!-- Update permission : display form -->
 		<div class="panel panel-info">
 			<div class="panel-heading">
 				<h3 class="panel-title">Informations à mettre à jour</h3>
@@ -86,8 +85,8 @@
 							<?php } ?>
 					    </div>
 					</div>
-				</form>	
-			</div>	
+				</form>
+			</div>
 		</div>
 
 	</div>
