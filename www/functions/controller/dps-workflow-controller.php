@@ -11,7 +11,7 @@
 				$genericError = "Opération non permise, vous n'avez pas les droits suffisants pour modifier l'état actuel du DPS";
 			}
 			elseif (!$hasAllAttachements) {
-				$genericError = "Opération non permise, il manque des documents pour cela";
+				$genericError = "Opération non permise, il manque la convention ou la grille de risques";
 			}
 			else {
 				$sql = "UPDATE $tablename_dps SET

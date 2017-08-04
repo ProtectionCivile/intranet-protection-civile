@@ -9,8 +9,8 @@
 		<div class="panel-body">
 			<div class="form-group">
 
-				<form class="form-horizontal" role="form" action="dps-edit.php" method="post">
-					<input type='hidden' name='id' value='<?php echo $dps['id'];?>' />
+				<form class="form-horizontal" role="form" action="dps-edit.php?id=<?php echo $dps['id'];?>" method="post">
+					<!-- <input type='hidden' name='id' value='<?php echo $dps['id'];?>' /> -->
 					<div class="col-sm-3 col-md-3">
 						<button type="submit" class="btn btn-info">Modifier le DPS</button>
 					</div>
