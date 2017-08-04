@@ -2,8 +2,6 @@
 	require_once('components/dps/dps-init-variables-module.php');
 
 
-	if (isset($_POST['section'])) { $section = $_POST['section']; }
-
 	// Organisateur
 	if (isset($duplicated_dps_array['client_name'])) { $client_name = $duplicated_dps_array['client_name']; }
 	elseif (isset($client_array['name'])) { $client_name = $client_array['name']; }
@@ -299,5 +297,8 @@
 	elseif (isset($dps) && isset($dps['cu_full'])) { $cu_full = $dps['cu_full']; }
 	else { $cu_full = ''; }
 
+	if (isset($_POST['section'])) { $section = $_POST['section'];}
+	elseif (isset($dps) && isset($dps['section'])) { $section = $dps['section'];}
+	else { $section = ''; }
 
 ?>

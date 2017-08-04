@@ -71,7 +71,7 @@
 				dps_justification='".mysqli_escape_string($db_link, $dps_justification)."',
 				status='$status',
 				status_justification='".mysqli_escape_string($db_link, $status_justification)."'
-				WHERE id=$dpsID" or die("Impossible de modifier le DPS dans la base de données" . mysqli_error($db_link));
+				WHERE id=$id" or die("Impossible de modifier le DPS dans la base de données" . mysqli_error($db_link));
 
 			if ($db_link->query($sql) === TRUE) {
 				$genericSuccess = "Dispositif de Secours mis à jour.

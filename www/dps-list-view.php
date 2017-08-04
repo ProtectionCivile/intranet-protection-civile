@@ -12,12 +12,13 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Opérationnel</a></li>
-	<li><a href="#">Dispositifs de secours</a></li>
+	<li><a href="dps-list-view.php">Dispositifs de secours</a></li>
 	<li class="active">Listing</li>
 </ol>
 
 
+<!-- Compute city calculation according to POST & GET variables (before auth)-->
+<?php require_once('functions/dps/dps-compute-city.php'); ?>
 
 <!-- Authentication -->
 <?php require_once('functions/dps/dps-list-authentication.php'); ?>
@@ -63,13 +64,14 @@
 						<th>Dept</th>
 						<th>Type</th>
 						<th>Nom</th>
-						<th>Validation</th>
+						<th>Prix</th>
+						<th>Statut</th>
 						<th>Action</th>
 					</thead>
 					<tbody>
 						<?php
 						while($dps = mysqli_fetch_assoc($sqlQuery_query)){
-							require('functions/dps/compute-dps-status.php');
+							require('functions/dps/dps-compute-status.php');
 							?>
 							<tr class='<?php echo $trClass;?>' >
 								<td>
@@ -88,11 +90,14 @@
 									<?php echo $dps["event_name"]; ?>
 								</td>
 								<td>
-									<?php echo $dps_display_status; ?>
+									<?php echo $dps["price"]; ?> €
 								</td>
 								<td>
-									<form role='form' action='<?php echo $urlform.'?dpsID='.$dps["id"]; ?>' method='post'>
-										<input type='hidden' name='dpsID' value='<?php echo $dps["id"]; ?>'>
+									<?php echo $dps_display_status; ?>
+								</td>
+								<td class='text-center'>
+									<form role='form' action='<?php echo $urlform.'?id='.$dps["id"]; ?>' method='post'>
+										<input type='hidden' name='id' value='<?php echo $dps["id"]; ?>'>
 										<input type='hidden' name='name' value='<?php echo $dps["cu_full"]; ?>'>
 										<button type='submit' class='<?php echo $buttonclass; ?>'></button>
 									</form>

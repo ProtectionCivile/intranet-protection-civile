@@ -1,12 +1,17 @@
 <?php
 
-	$sqlQuery="SELECT id, dps_begin_date, cu_full, event_department, dps_type, event_name, section, status_validation_dlo_date, status_validation_ddo_date, status, status_cancel_date FROM $tablename_dps";
+	$sqlQuery="SELECT id, dps_begin_date, cu_full, event_department, dps_type, event_name, section, status, price FROM $tablename_dps";
 	$addWhereClause = false;
 
 
 	if (!empty($city) || $city == "0" ) {
 		$addWhereClause = true;
-		$whereCity = "section='".$city."'";
+		if ($city == "*") {
+			$whereCity = "section='".$currentUserSection."'";
+		}
+		else {
+			$whereCity = "section='".$city."'";
+		}
 	}
 
 	if (!empty($status)) {
