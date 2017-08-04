@@ -182,3 +182,9 @@ CREATE TABLE `select_list_parameters` (
 	(NULL, 'ris_e2', '4', 'Elevé (Plus de 30 minutes)'),
 	(NULL, 'yesno', '0', 'Non'),
 	(NULL, 'yesno', '1', 'Oui');
+
+
+// section
+
+
+// Client
