@@ -13,7 +13,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Opérationnel</a></li>
 	<li><a href="dps-list-view.php">Dispositifs de secours</a></li>
 	<li class="active">Création</li>
 </ol>
