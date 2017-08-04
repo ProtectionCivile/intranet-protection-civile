@@ -1,28 +1,21 @@
 <?php require_once('functions/dps/dps-compute-status.php'); ?>
 
+<?php require_once('functions/dps/dps-workflow-authorization.php'); ?>
+
 <?php
 if($dps_status == "draft"){ ?>
 	<div class='alert alert-warning'>
 		<form class="form-horizontal" role="form" action="dps-view.php" method="post">
 			<span class="glyphicon glyphicon-time" style="font-size:2em"></span>
-			<strong>DPS non validé par l'antenne</strong>
+			<strong>DPS non validé par l'antenne</strong>. Ne pas oublier la convention et la grille des risques pour le valider
 			<?php
-			if (
-					(	$dps_status == 'draft') && (
-					( $dps['section'] == $currentUserSection && $rbac->check("ope-dps-validate-local", $currentUserID) ) ||
-					( $dps['section'] == '0' && $rbac->check("ope-dps-validate-dept", $currentUserID) ) ||
-					( $rbac->check("ope-dps-validate-ddo-to-pref", $currentUserID) )
-					)
-				) {
-							// echo '1='.$dps_status.'<br />';
-							// echo '2='.$dps['section'].'<br />';
-							// echo '3='.$currentUserSection.'<br />';
-							// echo '4='.$rbac->check("ope-dps-validate-local", $currentUserID).'<br />';
-					?>
-						<input type='hidden' name='workflow_action' value='validation_antenne'>
-						<input type='hidden' name='id' value='<?php echo $dps['id'];?>'>
-						<button type="submit" class="btn btn-success">Envoyer en validation <span class="glyphicon glyphicon-thumbs-up"></button>
-					<?php
+			if ($canValidateLocal && $hasAllAttachements) {
+				?>
+				<input type='hidden' name='workflow_action' value='validation_antenne'>
+				<input type='hidden' name='id' value='<?php echo $dps['id'];?>'>
+				&nbsp;
+				<button type="submit" class="btn btn-success btn-sm">Envoyer en validation <span class="glyphicon glyphicon-thumbs-up"></button>
+				<?php
 				}
 			?>
 			<br />

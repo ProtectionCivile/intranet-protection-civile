@@ -1,18 +1,5 @@
-<?php
-$pathyear = "20".$cu_year;
-$pathquery = "SELECT shortname, number FROM $tablename_sections WHERE number=$city";
-$pathcommune_result = mysqli_query($db_link, $pathquery);
-$pathcommune_array = mysqli_fetch_array($pathcommune_result);
-$pathantenne = $pathcommune_array["shortname"];
+<?php require_once('functions/dps/dps-find-documents.php'); ?>
 
-$pathfile = "documents_dps/".$pathyear."/".$pathantenne."/".$cu_yearly_index."/";
-$pathfileconvention = $pathfile.$cu_full."-CONV.pdf";
-$pathfilerisk = $pathfile."/".$cu_full."-RISK.pdf";
-$pathfiledemande = $pathfile."/".$cu_full."-DEM.pdf";
-if(file_exists($pathfileconvention)){$fileconvention = true;}else{$fileconvention = false;}
-if(file_exists($pathfilerisk)){$filerisk = true;}else{$filerisk = false;}
-if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false;}
-?>
 
 <script src="js/fileinput.min.js" type="text/javascript"></script>
 <script src="js/fileinput_locale_fr.js" type="text/javascript"></script>

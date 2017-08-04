@@ -1,12 +1,4 @@
-<?php
-$pathyear = "20".$cu_year;
-$pathquery = "SELECT shortname, number FROM $tablename_sections WHERE number=$section";
-$pathcommune_result = mysqli_query($db_link, $pathquery);
-$pathcommune_array = mysqli_fetch_array($pathcommune_result);
-$pathantenne = $pathcommune_array["shortname"];
-
-$pathfile = "documents_dps/".$pathyear."/".$pathantenne."/".$cu_yearly_index."/";
-?>
+<?php require_once('functions/dps/dps-find-documents.php'); ?>
 
 
 <div class="panel panel-info">
