@@ -22,5 +22,4 @@
 	if(empty($genericError)) {
 		$cu_full=$dps["cu_full"];
 	}
-
 ?>

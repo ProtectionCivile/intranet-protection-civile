@@ -46,8 +46,6 @@
 	$dps_type_error = null;
 	$dps_price_error = null;
 	$cu_yearly_index = null;
-	$genericError = null;
-	$genericSuccess = null;
 
 
 ?>

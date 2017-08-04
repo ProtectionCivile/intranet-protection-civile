@@ -39,14 +39,18 @@
 	<!-- Update : Operation status indicator -->
 	<?php require_once('components/operation-status-indicator.php'); ?>
 
-	<!-- Affichage de statut de DPS -->
-	<?php require_once('components/dps/dps-workflow-display-status-module.php'); ?>
+	<?php if (empty($genericError)) { ?>
 
-	<!-- Form to upload files -->
-  <?php require_once('components/dps/dps-files-upload-panel.php'); ?>
+		<!-- Affichage de statut de DPS -->
+		<?php require_once('components/dps/dps-workflow-display-status-module.php'); ?>
 
-	<!-- Formulaire de création de DPS -->
-	<?php require_once('components/dps/dps-edit-form.php'); ?>
+		<!-- Form to upload files -->
+	  <?php require_once('components/dps/dps-files-upload-panel.php'); ?>
+
+		<!-- Formulaire de création de DPS -->
+		<?php require_once('components/dps/dps-edit-form.php'); ?>
+
+	<?php } ?>
 
 </div>
 

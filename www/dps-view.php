@@ -41,17 +41,20 @@
 	<!-- Update : Operation status indicator -->
 	<?php require_once('components/operation-status-indicator.php'); ?>
 
-	<!-- Affichage de statut de DPS -->
-	<?php require_once('components/dps/dps-workflow-display-status-module.php'); ?>
+	<?php if (empty($genericError)) { ?>
 
-	<!-- Formulaire de modification de statut du DPS -->
-	<?php require_once('components/dps/dps-workflow-update-status-module.php'); ?>
+		<!-- Affichage de statut de DPS -->
+		<?php require_once('components/dps/dps-workflow-display-status-module.php'); ?>
 
-	<!-- Form to view files -->
-  <?php require_once('components/dps/dps-files-view-panel.php'); ?>
+		<!-- Formulaire de modification de statut du DPS -->
+		<?php require_once('components/dps/dps-workflow-update-status-module.php'); ?>
 
-	<!-- Formulaire de création de DPS -->
-	<?php require_once('components/dps/dps-view-form.php'); ?>
+		<!-- Form to view files -->
+	  <?php require_once('components/dps/dps-files-view-panel.php'); ?>
+
+		<!-- Formulaire de création de DPS -->
+		<?php require_once('components/dps/dps-view-form.php'); ?>
+		<?php } ?>
 
 </div>
 
