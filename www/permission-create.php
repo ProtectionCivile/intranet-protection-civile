@@ -11,7 +11,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li><a href="/permission-view.php">Gestion des permissions</a></li>
 	<li class="active">Création</li>
 </ol>
@@ -30,7 +29,7 @@
 	<?php include 'components/operation-status-indicator.php'; ?>
 
 
-	
+
 	<h2>Gestion des permissions</h2>
 
 
@@ -40,7 +39,7 @@
 			<h3 class="panel-title">Création d'une permission</h3>
 		</div>
 		<div class="panel-body">
-			
+
 			<!-- Create a permission by title : display form -->
 			<div class="panel panel-default">
 				<div class="panel-heading">Au niveau racine</div>
@@ -64,7 +63,7 @@
 
 						<div class="form-group">
 							<label for="inputPermissionDescription" class="control-label">Description</label>
-							<input type="text" class="form-control" id="inputPermissionDescription" name="inputPermissionDescription" placeholder="Description ?" minlength='3' maxlength='120' required='true' 
+							<input type="text" class="form-control" id="inputPermissionDescription" name="inputPermissionDescription" placeholder="Description ?" minlength='3' maxlength='120' required='true'
 								<?php
 									if (isset($_POST['addPermission']) && isset($_POST['genericError'])) {
 										echo "value='$description'";
@@ -133,4 +132,3 @@
 
 </body>
 </html>
-

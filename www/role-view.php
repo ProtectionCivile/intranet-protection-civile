@@ -11,7 +11,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li class="active">Gestion des rôles</li>
 </ol>
 

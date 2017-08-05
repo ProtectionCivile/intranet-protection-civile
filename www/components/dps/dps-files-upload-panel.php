@@ -1,18 +1,5 @@
-<?php
-$pathyear = "20".$cu_year;
-$pathquery = "SELECT shortname, number FROM $tablename_sections WHERE number=$city";
-$pathcommune_result = mysqli_query($db_link, $pathquery);
-$pathcommune_array = mysqli_fetch_array($pathcommune_result);
-$pathantenne = $pathcommune_array["shortname"];
+<?php require_once('functions/dps/dps-find-documents.php'); ?>
 
-$pathfile = "documents_dps/".$pathyear."/".$pathantenne."/".$cu_yearly_index."/";
-$pathfileconvention = $pathfile.$cu_full."-CONV.pdf";
-$pathfilerisk = $pathfile."/".$cu_full."-RISK.pdf";
-$pathfiledemande = $pathfile."/".$cu_full."-DEM.pdf";
-if(file_exists($pathfileconvention)){$fileconvention = true;}else{$fileconvention = false;}
-if(file_exists($pathfilerisk)){$filerisk = true;}else{$filerisk = false;}
-if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false;}
-?>
 
 <script src="js/fileinput.min.js" type="text/javascript"></script>
 <script src="js/fileinput_locale_fr.js" type="text/javascript"></script>
@@ -57,10 +44,10 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
         <div class="row" id="changeconvention">
           <div class="form-group form-groupe-sm">
             <div class="col-sm-5">
-            <a href="<?php echo $pathfileconvention; ?>" class="btn btn-success" target="_blank">Télécharger la convention <span class="glyphicon glyphicon-download-alt"></span></a>
+            	<a href="<?php echo $pathfileconvention; ?>" class="btn btn-sm btn-success" target="_blank">Télécharger la convention <span class="glyphicon glyphicon-download-alt"></span></a>
             </div>
-            <div class="col-sm-7">
-            <button id="changeconv" type="button" class="btn btn-danger">Envoyer une nouvelle convention <span class="glyphicon glyphicon-trash"></span></button>
+            <div class="col-sm-4">
+            	<button id="changeconv" type="button" class="btn btn-sm btn-danger">Envoyer une nouvelle convention <span class="glyphicon glyphicon-trash"></span></button>
             </div>
           </div>
         </div>
@@ -99,10 +86,10 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
         <div class="row" id="changerisque">
           <div class="form-group form-groupe-sm">
             <div class="col-sm-5">
-            <a href="<?php echo $pathfilerisk ;?>" class="btn btn-success" target="_blank">Télécharger la grille d'analyse des risques <span class="glyphicon glyphicon-download-alt"></span></a>
+            	<a href="<?php echo $pathfilerisk ;?>" class="btn btn-sm btn-success" target="_blank">Télécharger la grille d'analyse des risques <span class="glyphicon glyphicon-download-alt"></span></a>
             </div>
-            <div class="col-sm-7">
-            <button id="changerisk" type="button" class="btn btn-danger">Envoyer une nouvelle grille <span class="glyphicon glyphicon-trash"></span></button>
+            <div class="col-sm-4">
+            	<button id="changerisk" type="button" class="btn btn-sm btn-danger">Envoyer une nouvelle grille <span class="glyphicon glyphicon-trash"></span></button>
             </div>
           </div>
         </div>
@@ -141,10 +128,10 @@ if(file_exists($pathfiledemande)){$filedemande = true;}else{$filedemande = false
         <div class="row" id="changedemande">
           <div class="form-group form-groupe-sm">
             <div class="col-sm-5">
-            <a href="<?php echo $pathfiledemande?>" class="btn btn-success" target="_blank">Télécharger la demande de l'organisateur <span class="glyphicon glyphicon-download-alt"></span></a>
-            </div>
-            <div class="col-sm-7">
-            <button id="changedem" type="button" class="btn btn-danger">Envoyer une nouvelle demande <span class="glyphicon glyphicon-trash"></span></button>
+            	<a href="<?php echo $pathfiledemande?>" class="btn btn-sm btn-success" target="_blank">Télécharger la demande de l'organisateur <span class="glyphicon glyphicon-download-alt"></span></a>
+          	</div>
+            <div class="col-sm-4">
+            	<button id="changedem" type="button" class="btn btn-sm btn-danger">Envoyer une nouvelle demande <span class="glyphicon glyphicon-trash"></span></button>
             </div>
           </div>
         </div>

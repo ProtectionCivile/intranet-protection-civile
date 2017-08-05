@@ -10,7 +10,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li><a href="/role-view.php">Gestion des rôles</a></li>
 	<li class="active">Attributions de permissions</li>
 </ol>
@@ -30,7 +29,7 @@
 <!-- Common -->
 <?php include 'functions/controller/role-common.php'; ?>
 
-<?php 
+<?php
 if(empty($commonError)) {
 	?>
 
@@ -39,7 +38,7 @@ if(empty($commonError)) {
 
 	<!-- Page content container -->
 	<div class="container">
-		
+
 
 		<!-- Update role's permissions : Operation status indicator -->
 		<?php include 'components/operation-status-indicator.php'; ?>
@@ -56,14 +55,14 @@ if(empty($commonError)) {
 				<form id="permrole" class="form-horizontal" action='role-assign-permissions.php' method='post' accept-charset='utf-8'>
 					<input type="hidden" name="roleID" value="<?php echo $roleID;?>">
 					<input type="hidden" name="permissionID" id="permissionID" value="undefined">
-				
-					Les changements se font directement en cliquant sur les boutons. 
+
+					Les changements se font directement en cliquant sur les boutons.
 					<br /> <br />
 					<ul>
-					<?php 
+					<?php
 					$query = "SELECT ID, Title, Description FROM $tablename_permissions ORDER by Title ASC";
 					$permissions = mysqli_query($db_link, $query);
-					while($permission = mysqli_fetch_array($permissions)) { 
+					while($permission = mysqli_fetch_array($permissions)) {
 						$permissionID=$permission["ID"];
 						$permissionTitle=$permission["Title"];
 						$permissionDescription=$permission["Description"];

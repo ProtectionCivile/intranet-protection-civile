@@ -11,7 +11,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li><a href="/role-view.php">Gestion des permissions</a></li>
 	<li class="active">Audit des rôles</li>
 </ol>
@@ -89,14 +88,15 @@
 							 	while($role = mysqli_fetch_array($roles)) {
 									$roleID=$role["ID"];
 									$roleTitle=$role["Title"];
+									$roleDescription=$role["Description"];
 									?>
 									<td class='text-center'>
 										<?php
 										if ($rbac->Roles->hasPermission($roleID, $permissionID)) {
-											?> <span class="text-success glyphicon glyphicon-ok" title='<?php echo $roleTitle; ?>' aria-hidden="true"></span> <?php
+											?> <span class="text-success glyphicon glyphicon-ok" title="<?php echo $roleDescription; ?>" aria-hidden="true"></span> <?php
 										}
 										else {
-											?> <span class="text-danger glyphicon glyphicon-minus" title='<?php echo $roleTitle; ?>' aria-hidden="true"></span> <?php
+											?> <span class="text-danger glyphicon glyphicon-minus" title="<?php echo $roleDescription; ?>" aria-hidden="true"></span> <?php
 										}
 										?>
 									</td>

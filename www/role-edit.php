@@ -11,7 +11,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li><a href="/role-view.php">Gestion des rôles</a></li>
 	<li class="active">Modification</li>
 </ol>
@@ -23,7 +22,7 @@
 <!-- Common -->
 <?php include 'functions/controller/role-common.php'; ?>
 
-<?php 
+<?php
 	if(empty($commonError)) {
 ?>
 
@@ -50,7 +49,7 @@
 				<form class="form-horizontal" action='' id='auto-validation-form' method='post' accept-charset='utf-8'>
 					<input type="hidden" name="updateRole">
 					<input type="hidden" name="roleID" value="<?php echo $roleID;?>">
-				
+
 					<?php if (!empty($updateErrorTitle)){ ?>
 						<div class="form-group has-error has-feedback">
 							<label for="inputRoleTitle" class="col-sm-4 control-label">Nouveau titre</label>
@@ -137,7 +136,7 @@
 							<?php } ?>
 					    </div>
 					</div>
-				</form>	
+				</form>
 			</div>
 		</div>
 

@@ -11,7 +11,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li class="active">Gestion des utilisateurs</li>
 </ol>
 
@@ -58,7 +57,7 @@
 					<th>Section</th>
 					<th colspan='3'>Actions</th>
 				</tr>
-				<?php 
+				<?php
 				$users = mysqli_query($db_link, $sqlQuery);
 				while($user = mysqli_fetch_array($users)) { ?>
 					<tr>
@@ -96,8 +95,8 @@
 								</form>
 							<?php }?>
 						</td>
-						<td>	
-							<?php if ($rbac->check("admin-users-update", $currentUserID)) { ?>							
+						<td>
+							<?php if ($rbac->check("admin-users-update", $currentUserID)) { ?>
 								<form action='' method='post' accept-charset='utf-8'>
 									<input type='hidden' name='delUser' value=<?php echo "'".$user['ID']."'"; ?> >
 									<button type='submit' class='btn btn-danger glyphicon glyphicon-trash' title="Supprimer" onclick='return(confirm("Etes-vous sûr de vouloir supprimer cet utilisateur?"));'></button>

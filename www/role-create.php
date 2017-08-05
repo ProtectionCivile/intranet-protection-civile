@@ -11,7 +11,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li><a href="/role-view.php">Gestion des rôles</a></li>
 	<li class="active">Création</li>
 </ol>
@@ -40,7 +39,7 @@
 		<div class="panel-body">
 			<form class="form-horizontal" action='' id='auto-validation-form' method='post' accept-charset='utf-8'>
 				<input type="hidden" id="wish" name="addRole">
-			
+
 
 				<?php if (!empty($createErrorTitle)){ ?>
 					<div class="form-group has-error has-feedback">
@@ -63,7 +62,7 @@
 				<div class="form-group">
 					<label for="inputRoleDescription" class="col-sm-4 control-label">Description</label>
 					<div class="col-sm-8">
-						<input type="text" class="form-control" id="inputRoleDescription" name="inputRoleDescription" placeholder="Description ?" minlength='3' maxlength='120' required='true' 
+						<input type="text" class="form-control" id="inputRoleDescription" name="inputRoleDescription" placeholder="Description ?" minlength='3' maxlength='120' required='true'
 						<?php
 							if (isset($_POST['addRole']) && isset($_POST['genericError'])) {
 								echo "value='$description'";
@@ -97,4 +96,3 @@
 
 </body>
 </html>
-

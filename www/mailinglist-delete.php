@@ -10,7 +10,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li class="active">Gestion des listes de diffusion</li>
 </ol>
 
@@ -27,7 +26,7 @@
 
 	<!-- Update mailing list : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
-	
+
 
 	<!-- Remove subscriber from mailing lists : display form -->
 	<div class="panel panel-info">

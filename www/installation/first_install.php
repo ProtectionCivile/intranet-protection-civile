@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once('functions/session/db-connect.php');
 require_once('functions/session/security.php');
 require_once('PhpRbac/src/PhpRbac/Rbac.php');
@@ -15,7 +15,7 @@ $rbac = new Rbac();
 </head>
 <body>
 
-<?php 
+<?php
 
 
 if(!isset($_GET["confirm"])){
@@ -29,20 +29,20 @@ echo ("Démarrage : ".date("H:i:s"));
 /////////////////////////////////////////////////
 // SQL TABLES
 /////////////////////////////////////////////////
-mysqli_query($db_link, "CREATE TABLE `$tablename_settings_general` ( 
-	`ID` INT(12) NOT NULL AUTO_INCREMENT , 
-	`name` VARCHAR(128) NULL , 
-	`value` VARCHAR(400) NULL , 
+mysqli_query($db_link, "CREATE TABLE `$tablename_settings_general` (
+	`ID` INT(12) NOT NULL AUTO_INCREMENT ,
+	`name` VARCHAR(128) NULL ,
+	`value` VARCHAR(400) NULL ,
 	PRIMARY KEY (`ID`)
-	) ENGINE = InnoDB; 
+	) ENGINE = InnoDB;
 ");
 
-mysqli_query($db_link, "CREATE TABLE `$tablename_settings_mail` ( 
-	`ID` INT(12) NOT NULL AUTO_INCREMENT , 
-	`name` VARCHAR(128) NULL , 
-	`value` VARCHAR(400) NULL , 
+mysqli_query($db_link, "CREATE TABLE `$tablename_settings_mail` (
+	`ID` INT(12) NOT NULL AUTO_INCREMENT ,
+	`name` VARCHAR(128) NULL ,
+	`value` VARCHAR(400) NULL ,
 	PRIMARY KEY (`ID`)
-	) ENGINE = InnoDB; 
+	) ENGINE = InnoDB;
 ");
 
 mysqli_query($db_link, "CREATE TABLE `$tablename_users` (
@@ -59,7 +59,7 @@ mysqli_query($db_link, "CREATE TABLE `$tablename_users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 ");
 
-mysqli_query($db_link, "ALTER TABLE `ADPC`.`$tablename_roles` 
+mysqli_query($db_link, "ALTER TABLE `ADPC`.`$tablename_roles`
 	ADD `Phone` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Description`,
 	ADD `Mail` VARCHAR(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Phone`,
 	ADD `Affiliation` INT(10) NULL AFTER `Mail`,
@@ -68,7 +68,7 @@ mysqli_query($db_link, "ALTER TABLE `ADPC`.`$tablename_roles`
 	ADD `Assignable` INT(2) NULL AFTER `Directory`,
 	ADD `Hierarchy` INT(10) NULL AFTER `Assignable`,
 	ADD `Tags` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Hierarchy`
-"); 
+");
 
 
 
@@ -78,10 +78,30 @@ mysqli_query($db_link, "ALTER TABLE `ADPC`.`$tablename_roles`
 // TABLES SAMPLE DATA
 /////////////////////////////////////////////////
 mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
-	'application-header-name', 
-	'Extranet PC92'
+	'application-header-name',
+	'Extranet PC-92'
 	)
-"); 
+");
+mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
+	'dps-doc-suffix-convention', 
+	'CONV'
+	)
+");
+mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
+	'dps-doc-suffix-risk',
+	'RISK'
+	)
+");
+mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
+	'dps-doc-suffix-demande',
+	'DEM'
+	)
+");
+mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
+	'dps-doc-suffix-declaration',
+	'DECL'
+	)
+");
 
 
 
@@ -435,8 +455,8 @@ $rbac->Roles->add(utf8_decode('DLT-L Véhic Villeneuve'), utf8_decode('Directeur
 /////////////////////////////////////////////////
 // ADD ALL MISSING INFORMATION ABOUT ROLES
 /////////////////////////////////////////////////
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -445,15 +465,15 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Hierarchy`='1',
 	`Tags`=''
 	WHERE `Title`='Admin'
-"); 
+");
 
 
 ///////////////////////////////////////////////
 // ROLES DEPARTEMENTAUX
 ///////////////////////////////////////////////
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.74.95.31.72', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.74.95.31.72',
 	`Mail`='president@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Autorité 92',
@@ -462,10 +482,10 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président'
-"); 
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='vice-president-1@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Autorité 92 Alpha',
@@ -473,11 +493,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Vice-Président-1' 
-"); 
+	WHERE `Title`='Vice-Président-1'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='vice-president-2@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Autorité 92 Bravo',
@@ -485,11 +505,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Vice-Président-2' 
-"); 
+	WHERE `Title`='Vice-Président-2'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.76.45.79.81', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.76.45.79.81',
 	`Mail`='secretaire-general@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Autorité 92 Delta',
@@ -497,11 +517,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire' 
-"); 
+	WHERE `Title`='Secrétaire'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-general-adj@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -509,10 +529,10 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Adjoint' 
-"); 
+	WHERE `Title`='Secrétaire Adjoint'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Phone`='06.77.46.47.13',
 	`Mail`='tresorier@protectioncivile92.org',
 	`Affiliation`='0',
@@ -521,11 +541,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier' 
-"); 
+	WHERE `Title`='Trésorier'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-adj@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -533,11 +553,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Adjoint' 
-"); 
+	WHERE `Title`='Trésorier Adjoint'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.74.95.31.75', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.74.95.31.75',
 	`Mail`='directeur-operations@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Opé 92',
@@ -545,11 +565,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DDO' 
-"); 
+	WHERE `Title`='DDO'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.74.95.31.65', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.74.95.31.65',
 	`Mail`='directeur-adj-operations@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Opé 92 Alpha',
@@ -557,11 +577,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DDO-A' 
-"); 
+	WHERE `Title`='DDO-A'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.74.95.31.73', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.74.95.31.73',
 	`Mail`='directeur-adj-reseau-secours@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Opé 92 Bravo',
@@ -569,11 +589,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DDO-B' 
-"); 
+	WHERE `Title`='DDO-B'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='directeur-adj-dispositif@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Opé 92 Charlie',
@@ -581,11 +601,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DDO-C' 
-"); 
+	WHERE `Title`='DDO-C'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.32.98.91.06', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.32.98.91.06',
 	`Mail`='directeur-actions-sociales@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Acso 92',
@@ -593,11 +613,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DDASS' 
-"); 
+	WHERE `Title`='DDASS'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.89.17.80.43', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.89.17.80.43',
 	`Mail`='directeur-communication@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='COM 92',
@@ -605,11 +625,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DDC' 
-"); 
+	WHERE `Title`='DDC'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.74.95.31.59', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.74.95.31.59',
 	`Mail`='directeur-technique@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Tech 92',
@@ -617,11 +637,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DDT' 
-"); 
+	WHERE `Title`='DDT'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.74.95.31.62', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.74.95.31.62',
 	`Mail`='directeur-adj-transmissions@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Tech 92 Alpha',
@@ -629,11 +649,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DDT-T' 
-"); 
+	WHERE `Title`='DDT-T'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.74.95.31.57', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.74.95.31.57',
 	`Mail`='directeur-adj-logistique@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Tech 92 Bravo',
@@ -641,11 +661,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DDT-L' 
-"); 
+	WHERE `Title`='DDT-L'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='directeur-adj-informatique@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Tech 92 Charlie',
@@ -653,11 +673,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Technique'
-	WHERE `Title`='DDT-I' 
-"); 
+	WHERE `Title`='DDT-I'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.76.45.79.78', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.76.45.79.78',
 	`Mail`='directeur-formations@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='For 92',
@@ -665,11 +685,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DDF' 
-"); 
+	WHERE `Title`='DDF'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='medica92@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Medica 92',
@@ -677,11 +697,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Médical'
-	WHERE `Title`='MED' 
+	WHERE `Title`='MED'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretariat@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -689,15 +709,15 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Divers|Opérationnel'
-	WHERE `Title`='SECRETARIAT' 
-"); 
+	WHERE `Title`='SECRETARIAT'
+");
 
 ///////////////////////////////////////////////
 // CHARGÉS DE MISSION
 ///////////////////////////////////////////////
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.76.45.79.78', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.76.45.79.78',
 	`Mail`='formation-ars@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -705,11 +725,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='CM-FOR-ARS' 
-"); 
+	WHERE `Title`='CM-FOR-ARS'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.76.45.79.78', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.76.45.79.78',
 	`Mail`='',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -717,11 +737,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='CM-FOR-OPR' 
-"); 
+	WHERE `Title`='CM-FOR-OPR'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.76.45.79.78', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.76.45.79.78',
 	`Mail`='formation-ceps@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -729,11 +749,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='CM-FOR-CE' 
-"); 
+	WHERE `Title`='CM-FOR-CE'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.76.45.79.78', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.76.45.79.78',
 	`Mail`='formation-conducteur@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -741,11 +761,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='CM-FOR-CH' 
-"); 
+	WHERE `Title`='CM-FOR-CH'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='paramedical@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='Paramed 92',
@@ -753,11 +773,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Médical'
-	WHERE `Title`='CM-PARAMED' 
-"); 
+	WHERE `Title`='CM-PARAMED'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='directeur-adj-cadre-permanence@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -765,15 +785,15 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='5',
 	`Tags`='Opérationnel'
-	WHERE `Title`='CM-CODEP' 
-"); 
+	WHERE `Title`='CM-CODEP'
+");
 
 ///////////////////////////////////////////////
 // PÔLES / COMMISSIONS
 ///////////////////////////////////////////////
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='pole-logistique@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -781,11 +801,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='21',
 	`Tags`='Commission|Technique'
-	WHERE `Title`='C-LOG' 
-"); 
+	WHERE `Title`='C-LOG'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='pole-transmissions@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -793,11 +813,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='22',
 	`Tags`='Commission|Technique'
-	WHERE `Title`='C-TRANS' 
-"); 
+	WHERE `Title`='C-TRANS'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='pole-informatique@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -805,15 +825,15 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='23',
 	`Tags`='Commission|Technique'
-	WHERE `Title`='C-INFO' 
-"); 
+	WHERE `Title`='C-INFO'
+");
 
 ///////////////////////////////////////////////
 // DIVERS
 ///////////////////////////////////////////////
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='bureau@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -821,11 +841,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='11',
 	`Tags`='Divers|Bureau'
-	WHERE `Title`='V-BUREAU' 
-"); 
+	WHERE `Title`='V-BUREAU'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='conseil-departemental@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -833,11 +853,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='12',
 	`Tags`='Divers|Bureau'
-	WHERE `Title`='V-CD' 
-"); 
+	WHERE `Title`='V-CD'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='recrutement@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -845,11 +865,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='12',
 	`Tags`='Divers'
-	WHERE `Title`='V-RECRUTEMENT' 
-"); 
+	WHERE `Title`='V-RECRUTEMENT'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='demande-dps@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -857,11 +877,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='15',
 	`Tags`='Divers|Opérationnel'
-	WHERE `Title`='V-DEMANDE-DPS' 
-"); 
+	WHERE `Title`='V-DEMANDE-DPS'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -869,11 +889,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='2',
 	`Tags`='Communication'
-	WHERE `Title`='V-COM' 
+	WHERE `Title`='V-COM'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -881,11 +901,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='V-OPE' 
+	WHERE `Title`='V-OPE'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -893,11 +913,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='4',
 	`Tags`='Formation'
-	WHERE `Title`='V-FOR' 
-"); 
+	WHERE `Title`='V-FOR'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='technique@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -905,15 +925,15 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='5',
 	`Tags`='Technique'
-	WHERE `Title`='V-TECH' 
-"); 
+	WHERE `Title`='V-TECH'
+");
 
 ///////////////////////////////////////////////
 // PERMANENCES
 ///////////////////////////////////////////////
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='07 51 60 75 18', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='07 51 60 75 18',
 	`Mail`='permanence-bureau@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -921,11 +941,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='5',
 	`Tags`='Permanence|Opérationnel'
-	WHERE `Title`='P-TRANSF' 
-"); 
+	WHERE `Title`='P-TRANSF'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.74.95.31.70', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.74.95.31.70',
 	`Mail`='permanence-operationnel@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='VISU 92',
@@ -933,11 +953,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='6',
 	`Tags`='Permanence|Opérationnel'
-	WHERE `Title`='P-CODEP' 
-"); 
+	WHERE `Title`='P-CODEP'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.74.95.31.66', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.74.95.31.66',
 	`Mail`='permanence-transmissions@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='MICRO 92',
@@ -945,15 +965,15 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='7',
 	`Tags`='Permanence|Opérationnel'
-	WHERE `Title`='P-MICRO' 
-"); 
+	WHERE `Title`='P-MICRO'
+");
 
 ///////////////////////////////////////////////
 // LISTES DE DIFFUSION
 ///////////////////////////////////////////////
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='antennes-president@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -961,11 +981,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='30',
 	`Tags`='Diffusion|Président'
-	WHERE `Title`='D-PRES' 
-"); 
+	WHERE `Title`='D-PRES'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='antennes-secretaire@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -973,11 +993,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='30',
 	`Tags`='Diffusion|Secrétaire'
-	WHERE `Title`='D-SEC' 
-"); 
+	WHERE `Title`='D-SEC'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='antennes-tresorier@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -985,11 +1005,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='30',
 	`Tags`='Diffusion|Trésorier'
-	WHERE `Title`='D-TRESO' 
-"); 
+	WHERE `Title`='D-TRESO'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='antennes-operationnel@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -997,11 +1017,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='30',
 	`Tags`='Diffusion|Opérationnel'
-	WHERE `Title`='D-DLO' 
-"); 
+	WHERE `Title`='D-DLO'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='antennes-formation@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -1009,11 +1029,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='30',
 	`Tags`='Diffusion|Formation'
-	WHERE `Title`='D-DLF' 
-"); 
+	WHERE `Title`='D-DLF'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='antennes-actions-sociales@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -1021,11 +1041,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='30',
 	`Tags`='Diffusion|Acso'
-	WHERE `Title`='D-DLAS' 
-"); 
+	WHERE `Title`='D-DLAS'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='antennes-logistique@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -1033,11 +1053,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='30',
 	`Tags`='Diffusion|Technique'
-	WHERE `Title`='D-DLT' 
-"); 
+	WHERE `Title`='D-DLT'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='antennes-transmissions@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -1045,11 +1065,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='30',
 	`Tags`='Diffusion|Technique'
-	WHERE `Title`='D-DLT-T' 
-"); 
+	WHERE `Title`='D-DLT-T'
+");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='antennes-communication@protectioncivile92.org',
 	`Affiliation`='0',
 	`Callsign`='',
@@ -1057,15 +1077,15 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='0',
 	`Hierarchy`='30',
 	`Tags`='Diffusion|Communication'
-	WHERE `Title`='D-DLC' 
-"); 
+	WHERE `Title`='D-DLC'
+");
 
 ///////////////////////////////////////////////
 // ROLES DES ANTENNES
 ///////////////////////////////////////////////
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.50.84.22.89', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.50.84.22.89',
 	`Mail`='president-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='Autorité Asnières',
@@ -1073,11 +1093,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Asnières' 
+	WHERE `Title`='Président Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='Autorité Asnières Bravo',
@@ -1085,11 +1105,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Asnières' 
+	WHERE `Title`='Secrétaire Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='Autorité Asnières Alpha',
@@ -1097,11 +1117,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Asnières' 
+	WHERE `Title`='Trésorier Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.64.65.17.46', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.64.65.17.46',
 	`Mail`='operationnel-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='Opé Asnières',
@@ -1109,11 +1129,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Asnières' 
+	WHERE `Title`='DLO Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='Opé Asnières Alpha',
@@ -1121,11 +1141,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Asnières' 
+	WHERE `Title`='DLO-A Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='Opé Asnières Bravo',
@@ -1133,11 +1153,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Asnières' 
+	WHERE `Title`='DLO-B Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='Opé Asnières Charlie',
@@ -1145,11 +1165,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Asnières' 
+	WHERE `Title`='DLO-C Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='01.47.90.33.59', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='01.47.90.33.59',
 	`Mail`='formation-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='For Asnières',
@@ -1157,11 +1177,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Asnières' 
+	WHERE `Title`='DLF Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='For Asnières Alpha',
@@ -1169,11 +1189,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Asnières' 
+	WHERE `Title`='DLF-A Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='For Asnières Bravo',
@@ -1181,11 +1201,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Asnières' 
+	WHERE `Title`='DLF-B Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='Acso Asnières',
@@ -1193,11 +1213,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Asnières' 
+	WHERE `Title`='DLAS Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='Com Asnières',
@@ -1205,11 +1225,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Asnières' 
+	WHERE `Title`='DLC Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='Tech Asnières',
@@ -1217,11 +1237,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Asnières' 
+	WHERE `Title`='DLT Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='Tech Asnières Alpha',
@@ -1229,11 +1249,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Asnières' 
+	WHERE `Title`='DLT-L Matér Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
 	`Callsign`='Tech Asnières Bravo',
@@ -1241,12 +1261,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Asnières' 
+	WHERE `Title`='DLT-L Véhic Asnières'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='07.83.88.47.79', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='07.83.88.47.79',
 	`Mail`='president-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='Autorité Boulogne',
@@ -1254,11 +1274,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Boulogne' 
+	WHERE `Title`='Président Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='Autorité Boulogne Bravo',
@@ -1266,11 +1286,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Boulogne' 
+	WHERE `Title`='Secrétaire Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='Autorité Boulogne Alpha',
@@ -1278,11 +1298,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Boulogne' 
+	WHERE `Title`='Trésorier Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.52.36.88.55', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.52.36.88.55',
 	`Mail`='operationnel-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='Opé Boulogne',
@@ -1290,11 +1310,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Boulogne' 
+	WHERE `Title`='DLO Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='Opé Boulogne Alpha',
@@ -1302,11 +1322,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Boulogne' 
+	WHERE `Title`='DLO-A Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='Opé Boulogne Bravo',
@@ -1314,11 +1334,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Boulogne' 
+	WHERE `Title`='DLO-B Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='Opé Boulogne Charlie',
@@ -1326,11 +1346,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Boulogne' 
+	WHERE `Title`='DLO-C Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.52.22.12.05', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.52.22.12.05',
 	`Mail`='formation-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='For Boulogne',
@@ -1338,11 +1358,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Boulogne' 
+	WHERE `Title`='DLF Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='For Boulogne Alpha',
@@ -1350,11 +1370,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Boulogne' 
+	WHERE `Title`='DLF-A Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='For Boulogne Bravo',
@@ -1362,11 +1382,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Boulogne' 
+	WHERE `Title`='DLF-B Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='Acso Boulogne',
@@ -1374,11 +1394,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Boulogne' 
+	WHERE `Title`='DLAS Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='Com Boulogne',
@@ -1386,11 +1406,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Boulogne' 
+	WHERE `Title`='DLC Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='Tech Boulogne',
@@ -1398,11 +1418,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Boulogne' 
+	WHERE `Title`='DLT Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='Tech Boulogne Alpha',
@@ -1410,11 +1430,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Boulogne' 
+	WHERE `Title`='DLT-L Matér Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
 	`Callsign`='Tech Boulogne Bravo',
@@ -1422,12 +1442,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Boulogne' 
+	WHERE `Title`='DLT-L Véhic Boulogne'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.32.98.91.70', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.32.98.91.70',
 	`Mail`='president-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='Autorité Bourg-la-Reine',
@@ -1435,11 +1455,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Bourg-la-Reine' 
+	WHERE `Title`='Président Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='Autorité Bourg-la-Reine Bravo',
@@ -1447,11 +1467,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Bourg-la-Reine' 
+	WHERE `Title`='Secrétaire Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='Autorité Bourg-la-Reine Alpha',
@@ -1459,11 +1479,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Bourg-la-Reine' 
+	WHERE `Title`='Trésorier Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.07.10.27.26', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.07.10.27.26',
 	`Mail`='operationnel-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='Opé Bourg-la-Reine',
@@ -1471,11 +1491,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Bourg-la-Reine' 
+	WHERE `Title`='DLO Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='Opé Bourg-la-Reine Alpha',
@@ -1483,11 +1503,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Bourg-la-Reine' 
+	WHERE `Title`='DLO-A Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='Opé Bourg-la-Reine Bravo',
@@ -1495,11 +1515,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Bourg-la-Reine' 
+	WHERE `Title`='DLO-B Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='Opé Bourg-la-Reine Charlie',
@@ -1507,11 +1527,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Bourg-la-Reine' 
+	WHERE `Title`='DLO-C Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.95.04.99.78', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.95.04.99.78',
 	`Mail`='formation-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='For Bourg-la-Reine',
@@ -1519,11 +1539,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Bourg-la-Reine' 
+	WHERE `Title`='DLF Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='For Bourg-la-Reine Alpha',
@@ -1531,11 +1551,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Bourg-la-Reine' 
+	WHERE `Title`='DLF-A Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.79.56.00.98', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.79.56.00.98',
 	`Mail`='formation-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='For Bourg-la-Reine Bravo',
@@ -1543,11 +1563,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Bourg-la-Reine' 
+	WHERE `Title`='DLF-B Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='Acso Bourg-la-Reine',
@@ -1555,11 +1575,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Bourg-la-Reine' 
+	WHERE `Title`='DLAS Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='Com Bourg-la-Reine',
@@ -1567,11 +1587,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Bourg-la-Reine' 
+	WHERE `Title`='DLC Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='Tech Bourg-la-Reine',
@@ -1579,11 +1599,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Bourg-la-Reine' 
+	WHERE `Title`='DLT Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='Tech Bourg-la-Reine Alpha',
@@ -1591,11 +1611,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Bourg-la-Reine' 
+	WHERE `Title`='DLT-L Matér Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
 	`Callsign`='Tech Bourg-la-Reine Bravo',
@@ -1603,12 +1623,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Bourg-la-Reine' 
+	WHERE `Title`='DLT-L Véhic Bourg-la-Reine'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='president-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='Autorité Clamart',
@@ -1616,11 +1636,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Clamart' 
+	WHERE `Title`='Président Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='Autorité Clamart Bravo',
@@ -1628,11 +1648,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Clamart' 
+	WHERE `Title`='Secrétaire Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='Autorité Clamart Alpha',
@@ -1640,11 +1660,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Clamart' 
+	WHERE `Title`='Trésorier Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='Opé Clamart',
@@ -1652,11 +1672,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Clamart' 
+	WHERE `Title`='DLO Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='Opé Clamart Alpha',
@@ -1664,11 +1684,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Clamart' 
+	WHERE `Title`='DLO-A Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='Opé Clamart Bravo',
@@ -1676,11 +1696,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Clamart' 
+	WHERE `Title`='DLO-B Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='Opé Clamart Charlie',
@@ -1688,11 +1708,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Clamart' 
+	WHERE `Title`='DLO-C Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='For Clamart',
@@ -1700,11 +1720,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Clamart' 
+	WHERE `Title`='DLF Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='For Clamart Alpha',
@@ -1712,11 +1732,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Clamart' 
+	WHERE `Title`='DLF-A Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='For Clamart Bravo',
@@ -1724,11 +1744,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Clamart' 
+	WHERE `Title`='DLF-B Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='Acso Clamart',
@@ -1736,11 +1756,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Clamart' 
+	WHERE `Title`='DLAS Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='Com Clamart',
@@ -1748,11 +1768,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Clamart' 
+	WHERE `Title`='DLC Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='Tech Clamart',
@@ -1760,11 +1780,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Clamart' 
+	WHERE `Title`='DLT Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='Tech Clamart Alpha',
@@ -1772,11 +1792,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Clamart' 
+	WHERE `Title`='DLT-L Matér Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-clamart@protectioncivile92.org',
 	`Affiliation`='10',
 	`Callsign`='Tech Clamart Bravo',
@@ -1784,12 +1804,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Clamart' 
+	WHERE `Title`='DLT-L Véhic Clamart'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='president-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='Autorité Clichy',
@@ -1797,11 +1817,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Clichy' 
+	WHERE `Title`='Président Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='Autorité Clichy Bravo',
@@ -1809,11 +1829,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Clichy' 
+	WHERE `Title`='Secrétaire Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='Autorité Clichy Alpha',
@@ -1821,11 +1841,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Clichy' 
+	WHERE `Title`='Trésorier Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='Opé Clichy',
@@ -1833,11 +1853,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Clichy' 
+	WHERE `Title`='DLO Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='Opé Clichy Alpha',
@@ -1845,11 +1865,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Clichy' 
+	WHERE `Title`='DLO-A Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='Opé Clichy Bravo',
@@ -1857,11 +1877,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Clichy' 
+	WHERE `Title`='DLO-B Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='Opé Clichy Charlie',
@@ -1869,11 +1889,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Clichy' 
+	WHERE `Title`='DLO-C Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='For Clichy',
@@ -1881,11 +1901,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Clichy' 
+	WHERE `Title`='DLF Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='For Clichy Alpha',
@@ -1893,11 +1913,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Clichy' 
+	WHERE `Title`='DLF-A Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='For Clichy Bravo',
@@ -1905,11 +1925,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Clichy' 
+	WHERE `Title`='DLF-B Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='Acso Clichy',
@@ -1917,11 +1937,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Clichy' 
+	WHERE `Title`='DLAS Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='Com Clichy',
@@ -1929,11 +1949,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Clichy' 
+	WHERE `Title`='DLC Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='Tech Clichy',
@@ -1941,11 +1961,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Clichy' 
+	WHERE `Title`='DLT Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='Tech Clichy Alpha',
@@ -1953,11 +1973,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Clichy' 
+	WHERE `Title`='DLT-L Matér Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-clichy@protectioncivile92.org',
 	`Affiliation`='11',
 	`Callsign`='Tech Clichy Bravo',
@@ -1965,12 +1985,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Clichy' 
+	WHERE `Title`='DLT-L Véhic Clichy'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='president-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='Autorité Colombes',
@@ -1978,11 +1998,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Colombes' 
+	WHERE `Title`='Président Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='Autorité Colombes Bravo',
@@ -1990,11 +2010,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Colombes' 
+	WHERE `Title`='Secrétaire Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='Autorité Colombes Alpha',
@@ -2002,11 +2022,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Colombes' 
+	WHERE `Title`='Trésorier Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='Opé Colombes',
@@ -2014,11 +2034,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Colombes' 
+	WHERE `Title`='DLO Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='Opé Colombes Alpha',
@@ -2026,11 +2046,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Colombes' 
+	WHERE `Title`='DLO-A Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='Opé Colombes Bravo',
@@ -2038,11 +2058,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Colombes' 
+	WHERE `Title`='DLO-B Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='Opé Colombes Charlie',
@@ -2050,11 +2070,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Colombes' 
+	WHERE `Title`='DLO-C Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='For Colombes',
@@ -2062,11 +2082,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Colombes' 
+	WHERE `Title`='DLF Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='For Colombes Alpha',
@@ -2074,11 +2094,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Colombes' 
+	WHERE `Title`='DLF-A Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='For Colombes Bravo',
@@ -2086,11 +2106,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Colombes' 
+	WHERE `Title`='DLF-B Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='Acso Colombes',
@@ -2098,11 +2118,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Colombes' 
+	WHERE `Title`='DLAS Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='Com Colombes',
@@ -2110,11 +2130,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Colombes' 
+	WHERE `Title`='DLC Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='Tech Colombes',
@@ -2122,11 +2142,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Colombes' 
+	WHERE `Title`='DLT Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='Tech Colombes Alpha',
@@ -2134,11 +2154,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Colombes' 
+	WHERE `Title`='DLT-L Matér Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-colombes@protectioncivile92.org',
 	`Affiliation`='12',
 	`Callsign`='Tech Colombes Bravo',
@@ -2146,12 +2166,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Colombes' 
+	WHERE `Title`='DLT-L Véhic Colombes'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='president-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='Autorité Courbevoie',
@@ -2159,11 +2179,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Courbevoie' 
+	WHERE `Title`='Président Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='Autorité Courbevoie Bravo',
@@ -2171,11 +2191,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Courbevoie' 
+	WHERE `Title`='Secrétaire Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='Autorité Courbevoie Alpha',
@@ -2183,11 +2203,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Courbevoie' 
+	WHERE `Title`='Trésorier Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.74.72.89.80', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.74.72.89.80',
 	`Mail`='operationnel-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='Opé Courbevoie',
@@ -2195,11 +2215,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Courbevoie' 
+	WHERE `Title`='DLO Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.52.54.06.53', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.52.54.06.53',
 	`Mail`='operationnel-adj-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='Opé Courbevoie Alpha',
@@ -2207,11 +2227,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Courbevoie' 
+	WHERE `Title`='DLO-A Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='Opé Courbevoie Bravo',
@@ -2219,11 +2239,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Courbevoie' 
+	WHERE `Title`='DLO-B Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='Opé Courbevoie Charlie',
@@ -2231,11 +2251,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Courbevoie' 
+	WHERE `Title`='DLO-C Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='For Courbevoie',
@@ -2243,11 +2263,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Courbevoie' 
+	WHERE `Title`='DLF Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='For Courbevoie Alpha',
@@ -2255,11 +2275,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Courbevoie' 
+	WHERE `Title`='DLF-A Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.16.46.10.22', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.16.46.10.22',
 	`Mail`='formation-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='For Courbevoie Bravo',
@@ -2267,11 +2287,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Courbevoie' 
+	WHERE `Title`='DLF-B Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='For Courbevoie Charlie',
@@ -2279,11 +2299,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-C Courbevoie' 
+	WHERE `Title`='DLF-C Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='07.62.26.18.63', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='07.62.26.18.63',
 	`Mail`='actions-sociales-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='Acso Courbevoie',
@@ -2291,11 +2311,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Courbevoie' 
+	WHERE `Title`='DLAS Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='Com Courbevoie',
@@ -2303,11 +2323,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Courbevoie' 
+	WHERE `Title`='DLC Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='Tech Courbevoie',
@@ -2315,11 +2335,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Courbevoie' 
+	WHERE `Title`='DLT Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='Tech Courbevoie Alpha',
@@ -2327,11 +2347,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Courbevoie' 
+	WHERE `Title`='DLT-L Matér Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='Tech Courbevoie Bravo',
@@ -2339,12 +2359,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Courbevoie' 
+	WHERE `Title`='DLT-L Véhic Courbevoie'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.76.45.79.79', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.76.45.79.79',
 	`Mail`='president-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='Autorité Garches',
@@ -2352,11 +2372,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Garches' 
+	WHERE `Title`='Président Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='Autorité Garches Bravo',
@@ -2364,11 +2384,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Garches' 
+	WHERE `Title`='Secrétaire Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='Autorité Garches Alpha',
@@ -2376,11 +2396,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Garches' 
+	WHERE `Title`='Trésorier Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='07.50.93.92.11', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='07.50.93.92.11',
 	`Mail`='operationnel-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='Opé Garches',
@@ -2388,11 +2408,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Garches' 
+	WHERE `Title`='DLO Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='Opé Garches Alpha',
@@ -2400,11 +2420,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Garches' 
+	WHERE `Title`='DLO-A Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='Opé Garches Bravo',
@@ -2412,11 +2432,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Garches' 
+	WHERE `Title`='DLO-B Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='Opé Garches Charlie',
@@ -2424,11 +2444,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Garches' 
+	WHERE `Title`='DLO-C Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='07.50.85.73.00', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='07.50.85.73.00',
 	`Mail`='formation-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='For Garches',
@@ -2436,11 +2456,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Garches' 
+	WHERE `Title`='DLF Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='For Garches Alpha',
@@ -2448,11 +2468,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Garches' 
+	WHERE `Title`='DLF-A Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='For Garches Bravo',
@@ -2460,11 +2480,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Garches' 
+	WHERE `Title`='DLF-B Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='Acso Garches',
@@ -2472,11 +2492,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Garches' 
+	WHERE `Title`='DLAS Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='Com Garches',
@@ -2484,11 +2504,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Garches' 
+	WHERE `Title`='DLC Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='Tech Garches',
@@ -2496,11 +2516,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Garches' 
+	WHERE `Title`='DLT Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='Tech Garches Alpha',
@@ -2508,11 +2528,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Garches' 
+	WHERE `Title`='DLT-L Matér Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-garches@protectioncivile92.org',
 	`Affiliation`='15',
 	`Callsign`='Tech Garches Bravo',
@@ -2520,12 +2540,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Garches' 
+	WHERE `Title`='DLT-L Véhic Garches'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='president-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='Autorité Gennevilliers',
@@ -2533,11 +2553,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Gennevilliers' 
+	WHERE `Title`='Président Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='Autorité Gennevilliers Bravo',
@@ -2545,11 +2565,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Gennevilliers' 
+	WHERE `Title`='Secrétaire Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='Autorité Gennevilliers Alpha',
@@ -2557,11 +2577,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Gennevilliers' 
+	WHERE `Title`='Trésorier Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.60.26.44.51', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.60.26.44.51',
 	`Mail`='operationnel-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='Opé Gennevilliers',
@@ -2569,11 +2589,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Gennevilliers' 
+	WHERE `Title`='DLO Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='Opé Gennevilliers Alpha',
@@ -2581,11 +2601,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Gennevilliers' 
+	WHERE `Title`='DLO-A Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='Opé Gennevilliers Bravo',
@@ -2593,11 +2613,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Gennevilliers' 
+	WHERE `Title`='DLO-B Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='Opé Gennevilliers Charlie',
@@ -2605,11 +2625,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Gennevilliers' 
+	WHERE `Title`='DLO-C Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.73.49.32.44', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.73.49.32.44',
 	`Mail`='formation-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='For Gennevilliers',
@@ -2617,11 +2637,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Gennevilliers' 
+	WHERE `Title`='DLF Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='For Gennevilliers Alpha',
@@ -2629,11 +2649,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Gennevilliers' 
+	WHERE `Title`='DLF-A Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='For Gennevilliers Bravo',
@@ -2641,11 +2661,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Gennevilliers' 
+	WHERE `Title`='DLF-B Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='Acso Gennevilliers',
@@ -2653,11 +2673,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Gennevilliers' 
+	WHERE `Title`='DLAS Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='Com Gennevilliers',
@@ -2665,11 +2685,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Gennevilliers' 
+	WHERE `Title`='DLC Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='Tech Gennevilliers',
@@ -2677,11 +2697,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Gennevilliers' 
+	WHERE `Title`='DLT Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='Tech Gennevilliers Alpha',
@@ -2689,11 +2709,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Gennevilliers' 
+	WHERE `Title`='DLT-L Matér Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
 	`Callsign`='Tech Gennevilliers Bravo',
@@ -2701,12 +2721,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Gennevilliers' 
+	WHERE `Title`='DLT-L Véhic Gennevilliers'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='president-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='Autorité Levallois',
@@ -2714,11 +2734,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Levallois' 
+	WHERE `Title`='Président Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='Autorité Levallois Bravo',
@@ -2726,11 +2746,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Levallois' 
+	WHERE `Title`='Secrétaire Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='Autorité Levallois Alpha',
@@ -2738,11 +2758,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Levallois' 
+	WHERE `Title`='Trésorier Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.64.97.92.00', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.64.97.92.00',
 	`Mail`='operationnel-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='Opé Levallois',
@@ -2750,11 +2770,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Levallois' 
+	WHERE `Title`='DLO Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.65.64.00.20', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.65.64.00.20',
 	`Mail`='operationnel-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='Opé Levallois Alpha',
@@ -2762,11 +2782,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Levallois' 
+	WHERE `Title`='DLO-A Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='Opé Levallois Bravo',
@@ -2774,11 +2794,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Levallois' 
+	WHERE `Title`='DLO-B Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='Opé Levallois Charlie',
@@ -2786,11 +2806,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Levallois' 
+	WHERE `Title`='DLO-C Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.67.52.32.57', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.67.52.32.57',
 	`Mail`='formation-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='For Levallois',
@@ -2798,11 +2818,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Levallois' 
+	WHERE `Title`='DLF Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='For Levallois Alpha',
@@ -2810,11 +2830,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Levallois' 
+	WHERE `Title`='DLF-A Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='For Levallois Bravo',
@@ -2822,11 +2842,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Levallois' 
+	WHERE `Title`='DLF-B Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='Acso Levallois',
@@ -2834,11 +2854,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Levallois' 
+	WHERE `Title`='DLAS Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='Com Levallois',
@@ -2846,11 +2866,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Levallois' 
+	WHERE `Title`='DLC Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='Tech Levallois',
@@ -2858,11 +2878,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Levallois' 
+	WHERE `Title`='DLT Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='Tech Levallois Alpha',
@@ -2870,11 +2890,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Levallois' 
+	WHERE `Title`='DLT-L Matér Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-levallois@protectioncivile92.org',
 	`Affiliation`='20',
 	`Callsign`='Tech Levallois Bravo',
@@ -2882,12 +2902,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Levallois' 
+	WHERE `Title`='DLT-L Véhic Levallois'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='president-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='Autorité Montrouge',
@@ -2895,11 +2915,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Montrouge' 
+	WHERE `Title`='Président Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='Autorité Montrouge Bravo',
@@ -2907,11 +2927,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Montrouge' 
+	WHERE `Title`='Secrétaire Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='Autorité Montrouge Alpha',
@@ -2919,11 +2939,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Montrouge' 
+	WHERE `Title`='Trésorier Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='Opé Montrouge',
@@ -2931,11 +2951,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Montrouge' 
+	WHERE `Title`='DLO Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='Opé Montrouge Alpha',
@@ -2943,11 +2963,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Montrouge' 
+	WHERE `Title`='DLO-A Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='Opé Montrouge Bravo',
@@ -2955,11 +2975,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Montrouge' 
+	WHERE `Title`='DLO-B Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='Opé Montrouge Charlie',
@@ -2967,11 +2987,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Montrouge' 
+	WHERE `Title`='DLO-C Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='For Montrouge',
@@ -2979,11 +2999,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Montrouge' 
+	WHERE `Title`='DLF Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='For Montrouge Alpha',
@@ -2991,11 +3011,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Montrouge' 
+	WHERE `Title`='DLF-A Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='For Montrouge Bravo',
@@ -3003,11 +3023,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Montrouge' 
+	WHERE `Title`='DLF-B Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='Acso Montrouge',
@@ -3015,11 +3035,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Montrouge' 
+	WHERE `Title`='DLAS Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='Com Montrouge',
@@ -3027,11 +3047,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Montrouge' 
+	WHERE `Title`='DLC Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='Tech Montrouge',
@@ -3039,11 +3059,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Montrouge' 
+	WHERE `Title`='DLT Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='Tech Montrouge Alpha',
@@ -3051,11 +3071,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Montrouge' 
+	WHERE `Title`='DLT-L Matér Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
 	`Callsign`='Tech Montrouge Bravo',
@@ -3063,12 +3083,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Montrouge' 
+	WHERE `Title`='DLT-L Véhic Montrouge'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='president-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='Autorité Nanterre',
@@ -3076,11 +3096,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Nanterre' 
+	WHERE `Title`='Président Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='Autorité Nanterre Bravo',
@@ -3088,11 +3108,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Nanterre' 
+	WHERE `Title`='Secrétaire Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='Autorité Nanterre Alpha',
@@ -3100,11 +3120,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Nanterre' 
+	WHERE `Title`='Trésorier Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='Opé Nanterre',
@@ -3112,11 +3132,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Nanterre' 
+	WHERE `Title`='DLO Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='Opé Nanterre Alpha',
@@ -3124,11 +3144,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Nanterre' 
+	WHERE `Title`='DLO-A Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='Opé Nanterre Bravo',
@@ -3136,11 +3156,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Nanterre' 
+	WHERE `Title`='DLO-B Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='Opé Nanterre Charlie',
@@ -3148,11 +3168,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Nanterre' 
+	WHERE `Title`='DLO-C Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='For Nanterre',
@@ -3160,11 +3180,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Nanterre' 
+	WHERE `Title`='DLF Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='For Nanterre Alpha',
@@ -3172,11 +3192,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Nanterre' 
+	WHERE `Title`='DLF-A Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='For Nanterre Bravo',
@@ -3184,11 +3204,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Nanterre' 
+	WHERE `Title`='DLF-B Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='Acso Nanterre',
@@ -3196,11 +3216,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Nanterre' 
+	WHERE `Title`='DLAS Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='Com Nanterre',
@@ -3208,11 +3228,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Nanterre' 
+	WHERE `Title`='DLC Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='Tech Nanterre',
@@ -3220,11 +3240,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Nanterre' 
+	WHERE `Title`='DLT Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='Tech Nanterre Alpha',
@@ -3232,11 +3252,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Nanterre' 
+	WHERE `Title`='DLT-L Matér Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
 	`Callsign`='Tech Nanterre Bravo',
@@ -3244,12 +3264,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Nanterre' 
+	WHERE `Title`='DLT-L Véhic Nanterre'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.99.40.01.28', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.99.40.01.28',
 	`Mail`='president-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='Autorité Rueil',
@@ -3257,11 +3277,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Rueil' 
+	WHERE `Title`='Président Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='Autorité Rueil Bravo',
@@ -3269,11 +3289,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Rueil' 
+	WHERE `Title`='Secrétaire Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='Autorité Rueil Alpha',
@@ -3281,11 +3301,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Rueil' 
+	WHERE `Title`='Trésorier Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='06.99.42.02.28', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='06.99.42.02.28',
 	`Mail`='operationnel-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='Opé Rueil',
@@ -3293,11 +3313,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Rueil' 
+	WHERE `Title`='DLO Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='Opé Rueil Alpha',
@@ -3305,11 +3325,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Rueil' 
+	WHERE `Title`='DLO-A Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='Opé Rueil Bravo',
@@ -3317,11 +3337,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Rueil' 
+	WHERE `Title`='DLO-B Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='Opé Rueil Charlie',
@@ -3329,11 +3349,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Rueil' 
+	WHERE `Title`='DLO-C Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='For Rueil',
@@ -3341,11 +3361,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Rueil' 
+	WHERE `Title`='DLF Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='For Rueil Alpha',
@@ -3353,11 +3373,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Rueil' 
+	WHERE `Title`='DLF-A Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='For Rueil Bravo',
@@ -3365,11 +3385,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Rueil' 
+	WHERE `Title`='DLF-B Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='Acso Rueil',
@@ -3377,11 +3397,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Rueil' 
+	WHERE `Title`='DLAS Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='Com Rueil',
@@ -3389,11 +3409,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Rueil' 
+	WHERE `Title`='DLC Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='Tech Rueil',
@@ -3401,11 +3421,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Rueil' 
+	WHERE `Title`='DLT Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='Tech Rueil Alpha',
@@ -3413,11 +3433,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Rueil' 
+	WHERE `Title`='DLT-L Matér Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-rueil@protectioncivile92.org',
 	`Affiliation`='28',
 	`Callsign`='Tech Rueil Bravo',
@@ -3425,12 +3445,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Rueil' 
+	WHERE `Title`='DLT-L Véhic Rueil'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='president-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='Autorité Suresnes',
@@ -3438,11 +3458,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Suresnes' 
+	WHERE `Title`='Président Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='Autorité Suresnes Bravo',
@@ -3450,11 +3470,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Suresnes' 
+	WHERE `Title`='Secrétaire Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='Autorité Suresnes Alpha',
@@ -3462,11 +3482,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Suresnes' 
+	WHERE `Title`='Trésorier Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='Opé Suresnes',
@@ -3474,11 +3494,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Suresnes' 
+	WHERE `Title`='DLO Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='Opé Suresnes Alpha',
@@ -3486,11 +3506,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Suresnes' 
+	WHERE `Title`='DLO-A Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='Opé Suresnes Bravo',
@@ -3498,11 +3518,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Suresnes' 
+	WHERE `Title`='DLO-B Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='Opé Suresnes Charlie',
@@ -3510,11 +3530,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Suresnes' 
+	WHERE `Title`='DLO-C Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='For Suresnes',
@@ -3522,11 +3542,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Suresnes' 
+	WHERE `Title`='DLF Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='For Suresnes Alpha',
@@ -3534,11 +3554,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Suresnes' 
+	WHERE `Title`='DLF-A Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='For Suresnes Bravo',
@@ -3546,11 +3566,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Suresnes' 
+	WHERE `Title`='DLF-B Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='Acso Suresnes',
@@ -3558,11 +3578,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Suresnes' 
+	WHERE `Title`='DLAS Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='Com Suresnes',
@@ -3570,11 +3590,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Suresnes' 
+	WHERE `Title`='DLC Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='Tech Suresnes',
@@ -3582,11 +3602,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Suresnes' 
+	WHERE `Title`='DLT Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='Tech Suresnes Alpha',
@@ -3594,11 +3614,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Suresnes' 
+	WHERE `Title`='DLT-L Matér Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
 	`Callsign`='Tech Suresnes Bravo',
@@ -3606,12 +3626,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Suresnes' 
+	WHERE `Title`='DLT-L Véhic Suresnes'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='president-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='Autorité Vanves',
@@ -3619,11 +3639,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Vanves' 
+	WHERE `Title`='Président Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='Autorité Vanves Bravo',
@@ -3631,11 +3651,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Vanves' 
+	WHERE `Title`='Secrétaire Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='Autorité Vanves Alpha',
@@ -3643,11 +3663,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Vanves' 
+	WHERE `Title`='Trésorier Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='Opé Vanves',
@@ -3655,11 +3675,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Vanves' 
+	WHERE `Title`='DLO Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='Opé Vanves Alpha',
@@ -3667,11 +3687,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Vanves' 
+	WHERE `Title`='DLO-A Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='Opé Vanves Bravo',
@@ -3679,11 +3699,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Vanves' 
+	WHERE `Title`='DLO-B Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='Opé Vanves Charlie',
@@ -3691,11 +3711,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Vanves' 
+	WHERE `Title`='DLO-C Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='For Vanves',
@@ -3703,11 +3723,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Vanves' 
+	WHERE `Title`='DLF Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='For Vanves Alpha',
@@ -3715,11 +3735,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Vanves' 
+	WHERE `Title`='DLF-A Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='For Vanves Bravo',
@@ -3727,11 +3747,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Vanves' 
+	WHERE `Title`='DLF-B Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='Acso Vanves',
@@ -3739,11 +3759,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Vanves' 
+	WHERE `Title`='DLAS Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='Com Vanves',
@@ -3751,11 +3771,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Vanves' 
+	WHERE `Title`='DLC Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='Tech Vanves',
@@ -3763,11 +3783,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Vanves' 
+	WHERE `Title`='DLT Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='Tech Vanves Alpha',
@@ -3775,11 +3795,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Vanves' 
+	WHERE `Title`='DLT-L Matér Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-vanves@protectioncivile92.org',
 	`Affiliation`='33',
 	`Callsign`='Tech Vanves Bravo',
@@ -3787,12 +3807,12 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Vanves' 
+	WHERE `Title`='DLT-L Véhic Vanves'
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='07.68.97.86.37', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='07.68.97.86.37',
 	`Mail`='president-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='Autorité Villeneuve',
@@ -3800,11 +3820,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
-	WHERE `Title`='Président Villeneuve' 
+	WHERE `Title`='Président Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='secretaire-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='Autorité Villeneuve Bravo',
@@ -3812,11 +3832,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Secrétaire'
-	WHERE `Title`='Secrétaire Villeneuve' 
+	WHERE `Title`='Secrétaire Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='tresorier-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='Autorité Villeneuve Alpha',
@@ -3824,11 +3844,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Bureau|Trésorier'
-	WHERE `Title`='Trésorier Villeneuve' 
+	WHERE `Title`='Trésorier Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='07.68.66.48.29', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='07.68.66.48.29',
 	`Mail`='operationnel-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='Opé Villeneuve',
@@ -3836,11 +3856,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO Villeneuve' 
+	WHERE `Title`='DLO Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-adj-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='Opé Villeneuve Alpha',
@@ -3848,11 +3868,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-A Villeneuve' 
+	WHERE `Title`='DLO-A Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='Opé Villeneuve Bravo',
@@ -3860,11 +3880,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-B Villeneuve' 
+	WHERE `Title`='DLO-B Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='operationnel-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='Opé Villeneuve Charlie',
@@ -3872,11 +3892,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='4',
 	`Tags`='Opérationnel'
-	WHERE `Title`='DLO-C Villeneuve' 
+	WHERE `Title`='DLO-C Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='07.68.54.19.42', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='07.68.54.19.42',
 	`Mail`='formation-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='For Villeneuve',
@@ -3884,11 +3904,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Formation'
-	WHERE `Title`='DLF Villeneuve' 
+	WHERE `Title`='DLF Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='For Villeneuve Alpha',
@@ -3896,11 +3916,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-A Villeneuve' 
+	WHERE `Title`='DLF-A Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='formation-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='For Villeneuve Bravo',
@@ -3908,11 +3928,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Formation'
-	WHERE `Title`='DLF-B Villeneuve' 
+	WHERE `Title`='DLF-B Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='actions-sociales-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='Acso Villeneuve',
@@ -3920,11 +3940,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Acso'
-	WHERE `Title`='DLAS Villeneuve' 
+	WHERE `Title`='DLAS Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='communication-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='Com Villeneuve',
@@ -3932,11 +3952,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Communication'
-	WHERE `Title`='DLC Villeneuve' 
+	WHERE `Title`='DLC Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='Tech Villeneuve',
@@ -3944,11 +3964,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='1',
 	`Tags`='Technique'
-	WHERE `Title`='DLT Villeneuve' 
+	WHERE `Title`='DLT Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='Tech Villeneuve Alpha',
@@ -3956,11 +3976,11 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='2',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Matér Villeneuve' 
+	WHERE `Title`='DLT-L Matér Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET 
-	`Phone`='', 
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
 	`Mail`='logistique-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
 	`Callsign`='Tech Villeneuve Bravo',
@@ -3968,7 +3988,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Assignable`='1',
 	`Hierarchy`='3',
 	`Tags`='Technique'
-	WHERE `Title`='DLT-L Véhic Villeneuve' 
+	WHERE `Title`='DLT-L Véhic Villeneuve'
 ");
 
 

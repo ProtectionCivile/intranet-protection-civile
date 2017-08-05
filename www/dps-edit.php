@@ -11,7 +11,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Opérationnel</a></li>
 	<li><a href="dps-list-view.php">Dispositifs de secours</a></li>
 	<li class="active">Modification</li>
 </ol>
@@ -35,18 +34,26 @@
 <!-- Page content container -->
 <div class="container">
 
+	<h2 class='text-center'>DPS <?php echo $cu_full; ?></h2>
+
 	<!-- Update : Operation status indicator -->
 	<?php require_once('components/operation-status-indicator.php'); ?>
 
-	<h2><center>Modification d'un Dispositif Prévisionnel de Secours</center></h2>
-	<h3><center><?php echo $cu_full; ?></center></h3>
+	<?php if (empty($genericError)) { ?>
 
+		<!-- Affichage de statut de DPS -->
+		<?php require_once('components/dps/dps-workflow-display-status-module.php'); ?>
 
-	<!-- Form to upload files -->
-  <?php require_once('components/dps/dps-edit-form-upload-files-panel.php'); ?>
+		<!-- Formulaire de modification de statut du DPS -->
+		<?php require_once('components/dps/dps-workflow-update-status-module.php'); ?>
 
-	<!-- Formulaire de création de DPS -->
-	<?php require_once('components/dps/dps-edit-form.php'); ?>
+		<!-- Form to upload files -->
+	  <?php require_once('components/dps/dps-files-upload-panel.php'); ?>
+
+		<!-- Formulaire de création de DPS -->
+		<?php require_once('components/dps/dps-edit-form.php'); ?>
+
+	<?php } ?>
 
 </div>
 

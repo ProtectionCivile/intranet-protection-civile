@@ -2,7 +2,7 @@
   <input type='hidden' name='edit'/>
   <input type='hidden' name='cu_full' value='<?php echo $cu_full;?>' />
   <input type='hidden' name='section' value='<?php echo $city;?>'/>
-  <input type='hidden' name='dpsID' value='<?php echo $dpsID;?>'/>
+  <input type='hidden' name='id' value='<?php echo $id;?>'/>
 
 
 	<?php require_once('functions/dps/dps-select-parameters-computation.php'); ?>
@@ -24,7 +24,7 @@
 
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-8 ">
-      <button type="submit" class="btn btn-warning">Envoyer <span class="glyphicon glyphicon-send"></span></button>
+      <button type="submit" class="btn btn-warning">Mettre à jour <span class="glyphicon glyphicon-pencil"></span></button>
     </div>
   </div>
 </form>

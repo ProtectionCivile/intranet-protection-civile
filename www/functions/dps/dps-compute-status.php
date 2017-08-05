@@ -1,4 +1,5 @@
 <?php
+
 	if($dps["status"] == "4"){
 		$dps_display_status = "ANNULÉ";
 		$dps_status = "canceled";
@@ -8,7 +9,7 @@
 	}
 	elseif($dps["status"] == "0"){
 		$dps_display_status = "Non validé";
-		$dps_status = "not-validated";
+		$dps_status = "draft";
 		$urlform = "dps-edit.php";
 		$buttonclass = "btn btn-sm btn-warning glyphicon glyphicon-pencil";
 		$trClass = "";
@@ -48,4 +49,5 @@
 		$buttonclass = "btn btn-sm btn-info glyphicon glyphicon-fire";
 		$trClass = "danger";
 	}
+
 ?>

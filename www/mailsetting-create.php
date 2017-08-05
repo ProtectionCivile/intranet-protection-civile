@@ -11,7 +11,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li><a href="/setting-view.php">Paramètres mail</a></li>
 	<li class="active">Création</li>
 </ol>
@@ -48,7 +47,7 @@
 							<input type="text" class="form-control" id="name" name="name" aria-describedby="inputError2Status" placeholder="ex: mail-generique-adpc" minlength='3' maxlength='120' required='true' value="<?php if (!empty($genericError)) {echo $name;} ?>">
 							<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
 							<span id="inputError2Status" class="sr-only">(error)</span>
-						</div>	
+						</div>
 					</div>
 				<?php } else { ?>
 					<div class="form-group form-group-sm">
@@ -64,7 +63,7 @@
 					<div class="col-sm-8">
 						<input type="text" class="form-control" id="value" name="value" minlength='3' maxlength='400' required='false' placeholder="Valeur du paramètre">
 					</div>
-				</div>			
+				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<?php if (empty($genericSuccess)){ ?>
@@ -88,4 +87,3 @@
 
 </body>
 </html>
-

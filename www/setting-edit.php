@@ -11,7 +11,6 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
 	<li><a href="/setting-view.php">Paramètres généraux</a></li>
 	<li class="active">Modification</li>
 </ol>
@@ -56,7 +55,7 @@
 				<div class="col-sm-8">
 					<input type="text" class="form-control" id="value" name="value" value="<?php echo $value ?>" minlength='3' maxlength='400' required='false' placeholder="Valeur du paramètre">
 				</div>
-			</div>			
+			</div>
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-8">
 					<?php if (empty($genericSuccess)){ ?>
@@ -80,4 +79,3 @@
 
 </body>
 </html>
-
