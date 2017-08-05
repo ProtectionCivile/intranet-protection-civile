@@ -9,21 +9,23 @@
     <h3 class="panel-title">Fichiers attachés</h3>
   </div>
 
-  <div id='files-panel-filter' aria-expanded='true' class="panel-body in">
+	  <div id='files-panel-filter' aria-expanded='true' class="panel-body in">
+			<div class='container'>
 
-    <div class="row" >
-      <?php
-			$pdf = glob($pathfile.'*.{pdf}', GLOB_BRACE);
-			foreach($pdf as $otherfiles){
-				echo "<p><a href='$otherfiles' target='_blank'><span class='glyphicon glyphicon-file'></span> ".basename($otherfiles)."</a></p>";
-			}
+	    <div class="row" >
+	      <?php
+				$pdf = glob($pathfile.'*.{pdf}', GLOB_BRACE);
+				foreach($pdf as $otherfiles){
+					echo "<p><a href='$otherfiles' target='_blank'><span class='glyphicon glyphicon-file'></span> ".basename($otherfiles)."</a></p>";
+				}
 
-			$pdf = glob($pathfile.'autre/*.{pdf}', GLOB_BRACE);
-      foreach($pdf as $otherfiles){
-        echo "<p><a href='$otherfiles' target='_blank'><span class='glyphicon glyphicon-file'></span> ".basename($otherfiles)."</a></p>";
-			}
-      ?>
-    </div>
+				$pdf = glob($pathfile.'autre/*.{pdf}', GLOB_BRACE);
+	      foreach($pdf as $otherfiles){
+	        echo "<p><a href='$otherfiles' target='_blank'><span class='glyphicon glyphicon-file'></span> ".basename($otherfiles)."</a></p>";
+				}
+	      ?>
+	    </div>
 
-  </div>
+	  </div>
+	</div>
 </div>

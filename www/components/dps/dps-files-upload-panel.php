@@ -44,10 +44,10 @@
         <div class="row" id="changeconvention">
           <div class="form-group form-groupe-sm">
             <div class="col-sm-5">
-            <a href="<?php echo $pathfileconvention; ?>" class="btn btn-success" target="_blank">Télécharger la convention <span class="glyphicon glyphicon-download-alt"></span></a>
+            	<a href="<?php echo $pathfileconvention; ?>" class="btn btn-sm btn-success" target="_blank">Télécharger la convention <span class="glyphicon glyphicon-download-alt"></span></a>
             </div>
-            <div class="col-sm-7">
-            <button id="changeconv" type="button" class="btn btn-danger">Envoyer une nouvelle convention <span class="glyphicon glyphicon-trash"></span></button>
+            <div class="col-sm-4">
+            	<button id="changeconv" type="button" class="btn btn-sm btn-danger">Envoyer une nouvelle convention <span class="glyphicon glyphicon-trash"></span></button>
             </div>
           </div>
         </div>
@@ -86,10 +86,10 @@
         <div class="row" id="changerisque">
           <div class="form-group form-groupe-sm">
             <div class="col-sm-5">
-            <a href="<?php echo $pathfilerisk ;?>" class="btn btn-success" target="_blank">Télécharger la grille d'analyse des risques <span class="glyphicon glyphicon-download-alt"></span></a>
+            	<a href="<?php echo $pathfilerisk ;?>" class="btn btn-sm btn-success" target="_blank">Télécharger la grille d'analyse des risques <span class="glyphicon glyphicon-download-alt"></span></a>
             </div>
-            <div class="col-sm-7">
-            <button id="changerisk" type="button" class="btn btn-danger">Envoyer une nouvelle grille <span class="glyphicon glyphicon-trash"></span></button>
+            <div class="col-sm-4">
+            	<button id="changerisk" type="button" class="btn btn-sm btn-danger">Envoyer une nouvelle grille <span class="glyphicon glyphicon-trash"></span></button>
             </div>
           </div>
         </div>
@@ -128,10 +128,10 @@
         <div class="row" id="changedemande">
           <div class="form-group form-groupe-sm">
             <div class="col-sm-5">
-            <a href="<?php echo $pathfiledemande?>" class="btn btn-success" target="_blank">Télécharger la demande de l'organisateur <span class="glyphicon glyphicon-download-alt"></span></a>
-            </div>
-            <div class="col-sm-7">
-            <button id="changedem" type="button" class="btn btn-danger">Envoyer une nouvelle demande <span class="glyphicon glyphicon-trash"></span></button>
+            	<a href="<?php echo $pathfiledemande?>" class="btn btn-sm btn-success" target="_blank">Télécharger la demande de l'organisateur <span class="glyphicon glyphicon-download-alt"></span></a>
+          	</div>
+            <div class="col-sm-4">
+            	<button id="changedem" type="button" class="btn btn-sm btn-danger">Envoyer une nouvelle demande <span class="glyphicon glyphicon-trash"></span></button>
             </div>
           </div>
         </div>

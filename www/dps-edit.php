@@ -44,6 +44,9 @@
 		<!-- Affichage de statut de DPS -->
 		<?php require_once('components/dps/dps-workflow-display-status-module.php'); ?>
 
+		<!-- Formulaire de modification de statut du DPS -->
+		<?php require_once('components/dps/dps-workflow-update-status-module.php'); ?>
+
 		<!-- Form to upload files -->
 	  <?php require_once('components/dps/dps-files-upload-panel.php'); ?>
 

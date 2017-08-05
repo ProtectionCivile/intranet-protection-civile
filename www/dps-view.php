@@ -27,11 +27,11 @@
 
 <?php require_once('functions/dps/dps-compute-variables.php'); ?>
 
+<?php require_once('functions/controller/dps-workflow-controller.php'); ?>
+
 <?php require_once('functions/dps/dps-view-functions.php'); ?>
 
 <?php require_once('functions/dps/dps-select-parameters-computation.php'); ?>
-
-<?php require_once('functions/controller/dps-workflow-controller.php'); ?>
 
 <!-- Page content container -->
 <div class="container">
@@ -42,6 +42,7 @@
 	<?php require_once('components/operation-status-indicator.php'); ?>
 
 	<?php if (empty($genericError)) { ?>
+
 
 		<!-- Affichage de statut de DPS -->
 		<?php require_once('components/dps/dps-workflow-display-status-module.php'); ?>
@@ -54,7 +55,8 @@
 
 		<!-- Formulaire de création de DPS -->
 		<?php require_once('components/dps/dps-view-form.php'); ?>
-		<?php } ?>
+
+	<?php } ?>
 
 </div>
 

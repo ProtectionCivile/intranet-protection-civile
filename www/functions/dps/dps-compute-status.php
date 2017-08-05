@@ -1,4 +1,5 @@
 <?php
+
 	if($dps["status"] == "4"){
 		$dps_display_status = "ANNULÉ";
 		$dps_status = "canceled";
@@ -48,4 +49,5 @@
 		$buttonclass = "btn btn-sm btn-info glyphicon glyphicon-fire";
 		$trClass = "danger";
 	}
+
 ?>
