@@ -1,4 +1,4 @@
-<?php require_once('functions/modals.php'); ?>
+<?php require_once('components/dps/dps-workflow-modal-modules.php'); ?>
 <!-- Attention ici on veut recalculer donc pas de require_once -->
 <?php require('functions/dps/dps-workflow-authorization.php'); ?>
 
