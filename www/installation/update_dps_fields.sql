@@ -83,34 +83,6 @@ ALTER TABLE `dps` CHANGE `valid_demande_rt` `status_validation_dlo_date` DATE NU
 ALTER TABLE `dps` CHANGE `valid_demande_dps` `status_validation_ddo_date` DATE NULL DEFAULT NULL AFTER `status_validation_dlo_date`;
 
 
--- Changement des status de dps
--- 0 = Brouillon
--- 1 = Validé Antenne
--- 2 = Validé DDO / En attente Pref ou ADPC
--- 3 = Validé Préfecture
--- 4 = Annulé
--- 5 = Refusé (DDO ou Préf)
--- NULL = On ne sait pas
-UPDATE `dps` SET `status` = 0 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=0 AND `status_validation_dlo_date` IS NULL;
-UPDATE `dps` SET `status` = 1 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=0 AND `status_validation_dlo_date` IS NOT NULL AND `status_validation_ddo_date` IS NULL;
-UPDATE `dps` SET `status` = 2 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=3;
-UPDATE `dps` SET `status` = 3 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=1;
-UPDATE `dps` SET `status` = 4 WHERE `status_cancel_date` IS NOT NULL;
-UPDATE `dps` SET `status` = 5 WHERE `status_cancel_date` IS NULL AND (`etat_demande_dps`=2 OR `etat_demande_dps`=4);
-
-
--- SUPPRESSION DES CHAMPS INUTILISÉS
-ALTER TABLE `dps` DROP `date_ris`;
-ALTER TABLE `dps` DROP `envoi_ok_rt`;
-ALTER TABLE `dps` DROP `envoi_accord_demande`;
-ALTER TABLE `dps` DROP `soin_lsp`;
-ALTER TABLE `dps` DROP `soin_evac`;
-ALTER TABLE `dps` DROP `soin_ar`;
-ALTER TABLE `dps` DROP `soin_dcd`;
-ALTER TABLE `dps` DROP `etat_demande_dps`;
-ALTER TABLE `dps` DROP `edition_ris`;
-
-
 -- POSITIONNEMENT DE NOUVELLES VALEURS PAR DÉFAUT ET VALEURS NULLES
 UPDATE `dps` SET `client_name` = NULL WHERE `client_name` = '';
 UPDATE `dps` SET `client_represent` = NULL WHERE `client_represent` = '';
@@ -142,6 +114,34 @@ UPDATE `dps` SET `status_validation_ddo_date` = NULL WHERE `status_validation_dd
 UPDATE `dps` SET `status_cancel_date` = NULL WHERE `status_cancel_date` = '0000-00-00';
 UPDATE `dps` SET `status_justification` = NULL WHERE `status_justification` = '';
 UPDATE `dps` SET `status_cancel_reason` = NULL WHERE `status_cancel_reason` = '';
+
+-- Changement des status de dps
+-- 0 = Brouillon
+-- 1 = Validé Antenne
+-- 2 = En attente Pref ou ADPC
+-- 3 = Validé Préfecture
+-- 4 = Annulé
+-- 5 = Refusé (DDO ou Préf)
+-- NULL = On ne sait pas
+UPDATE `dps` SET `status` = 0 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=0 AND `status_validation_dlo_date` IS NULL;
+UPDATE `dps` SET `status` = 1 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=0 AND `status_validation_dlo_date` IS NOT NULL AND `status_validation_ddo_date` IS NULL;
+UPDATE `dps` SET `status` = 2 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=3;
+UPDATE `dps` SET `status` = 3 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=1;
+UPDATE `dps` SET `status` = 4 WHERE `status_cancel_date` IS NOT NULL;
+UPDATE `dps` SET `status` = 5 WHERE `status_cancel_date` IS NULL AND (`etat_demande_dps`=2 OR `etat_demande_dps`=4);
+
+
+-- SUPPRESSION DES CHAMPS INUTILISÉS
+ALTER TABLE `dps` DROP `date_ris`;
+ALTER TABLE `dps` DROP `envoi_ok_rt`;
+ALTER TABLE `dps` DROP `envoi_accord_demande`;
+ALTER TABLE `dps` DROP `soin_lsp`;
+ALTER TABLE `dps` DROP `soin_evac`;
+ALTER TABLE `dps` DROP `soin_ar`;
+ALTER TABLE `dps` DROP `soin_dcd`;
+ALTER TABLE `dps` DROP `etat_demande_dps`;
+ALTER TABLE `dps` DROP `edition_ris`;
+
 
 
 DROP TABLE `select_list_parameters`;
