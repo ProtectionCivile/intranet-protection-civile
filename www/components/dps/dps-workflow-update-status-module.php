@@ -42,7 +42,7 @@
 			<div class="col col-md-2 col-xs-4 text-center">
 				<form class="form-horizontal" role="form" action="dps-edit.php?id=<?php echo $dps['id'];?>" method="post">
 					<button type="submit" class="btn btn-info" <?php
-					if(! $canValidateDdo){
+					if(! ($canValidateDdo || $canView) ){
 						echo " disabled";
 					}
 					?>>Modification</button>
