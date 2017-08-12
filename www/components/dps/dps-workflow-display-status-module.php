@@ -44,10 +44,9 @@ elseif($dps_status == "refused"){ ?>
 elseif($dps_status == "accepted"){ ?>
 	<div class='alert alert-success'>
 		<span class="glyphicon glyphicon-ok" style="font-size:2em"></span>
-		<strong>DPS validé</strong> le <?php echo date("d-m-Y", strtotime($dps['status_validation_ddo_date']));?>(Justification: <?php echo $dps['status_justification'];?>)<br />
+		<strong>DPS validé</strong> le <?php echo date("d-m-Y", strtotime($dps['status_validation_ddo_date']));?> (Justification: <?php echo $dps['status_justification'];?>)<br />
 		<small>Création : <?php echo date("d-m-Y", strtotime($dps['status_creation_date']));?></small><br />
 		<small>Demande initiale : <?php echo date("d-m-Y", strtotime($dps['status_validation_dlo_date']));?></small>
 	</div> <?php
-echo 'findisplaystatusdps='.$dps['status'];
 }
 ?>
