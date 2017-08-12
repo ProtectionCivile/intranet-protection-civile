@@ -43,7 +43,6 @@
 
 	<?php if (empty($genericError)) { ?>
 
-
 		<!-- Affichage de statut de DPS -->
 		<?php require_once('components/dps/dps-workflow-display-status-module.php'); ?>
 

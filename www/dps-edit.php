@@ -19,14 +19,11 @@
 <!-- Compute city calculation according to POST & GET variables (before auth)-->
 <?php require_once('functions/dps/dps-compute-city.php'); ?>
 
-
-<!-- Authentication -->
-<?php require_once('functions/dps/dps-create-authentication.php'); ?>
-
-
 <!-- Common -->
 <?php include ('functions/controller/dps-common.php'); ?>
 
+<!-- Authentication -->
+<?php require_once('functions/dps/dps-create-authentication.php'); ?>
 
 <!-- Update a DPS : Controller -->
 <?php require_once('functions/controller/dps-update-controller.php'); ?>

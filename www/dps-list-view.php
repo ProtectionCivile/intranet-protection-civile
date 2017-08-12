@@ -72,6 +72,7 @@
 						<?php
 						while($dps = mysqli_fetch_assoc($sqlQuery_query)){
 							require('functions/dps/dps-compute-status.php');
+							require('functions/dps/dps-workflow-authorization.php');
 							?>
 							<tr class='<?php echo $trClass;?>' >
 								<td>
@@ -96,11 +97,18 @@
 									<?php echo $dps_display_status; ?>
 								</td>
 								<td class='text-center'>
-									<form role='form' action='<?php echo $urlform.'?id='.$dps["id"]; ?>' method='post'>
-										<input type='hidden' name='id' value='<?php echo $dps["id"]; ?>'>
-										<input type='hidden' name='name' value='<?php echo $dps["cu_full"]; ?>'>
-										<button type='submit' class='<?php echo $buttonclass; ?>'></button>
-									</form>
+									<?php
+									if ($canView) {
+										?>
+										<a href='dps-view.php?id=<?php echo $dps["id"]; ?>' class='btn btn-sm btn-success'><span class='glyphicon glyphicon-eye-open'></span></a>
+										<?php
+									}
+									if ($canEdit) {
+										?>
+										<a href='dps-edit.php?id=<?php echo $dps["id"]; ?>' class='btn btn-sm btn-warning'><span class='glyphicon glyphicon-pencil'></span></a>
+										<?php
+									}
+									?>
 								</td>
 							</tr>
 						<?php } ?>

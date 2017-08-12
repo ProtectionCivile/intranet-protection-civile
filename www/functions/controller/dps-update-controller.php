@@ -35,7 +35,6 @@
 				ris_p2='$ris_p2',
 				ris_e1='$ris_e1',
 				ris_e2='$ris_e2',
-				ris_override='$ris_override',
 				ris_comment='".mysqli_escape_string($db_link, $ris_comment)."',
 				dps_type='$dps_type',
 				dps_begin_date='".formatDateFrToUs($dps_begin_date)."',
