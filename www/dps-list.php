@@ -21,7 +21,7 @@
 <?php require_once('functions/dps/dps-compute-city.php'); ?>
 
 <!-- Authentication -->
-<?php require_once('functions/dps/dps-list-authentication.php'); ?>
+<?php require_once('functions/dps/dps-view-authentication.php'); ?>
 
 
 <!-- Page content container -->
