@@ -74,7 +74,7 @@ if (isset($_GET['notallowed'])){
 				$query = "SELECT name FROM sections WHERE number='".$role['Affiliation']."'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 				$cities = mysqli_query($db_link, $query);
 				$city = mysqli_fetch_array($cities);
-				echo "<li>".utf8_encode($role['Description'])." (".$city['name'].")</li>";
+				echo "<li>".$role['Description']." (".$city['name'].")</li>";
 				$permissions = $rbac->Roles->Permissions($role['ID']);
 				echo '<ul>';
 				foreach ($permissions as &$permission) {

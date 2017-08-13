@@ -55,7 +55,7 @@
 							<?php echo $permission["ID"]; ?>
 						</td>
 						<td>
-							<?php echo $permission["Title"]."<br />(".utf8_encode($rbac->Permissions->getPath($permission["ID"])).")";?>
+							<?php echo $permission["Title"]."<br />(".$rbac->Permissions->getPath($permission["ID"]).")";?>
 						</td>
 						<td>
 							<?php echo $permission["Description"]; ?>

@@ -1,7 +1,7 @@
 <!-- Create a new permission by title : Controller -->
 <?php
-	
-	//Authentication 
+
+	//Authentication
 	$rbac->enforce("admin-permissions-update", $currentUserID);
 
 	if (isset($_POST['addPermission'])){
@@ -16,21 +16,21 @@
 			$createErrorDesc = "La description de la permission est obligatoire";
 		}
 		else {
-			$check_query = "SELECT ID FROM $tablename_permissions WHERE Title='$title'" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+			$check_query = "SELECT ID FROM $tablename_permissions WHERE Title='$title'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 			$verif = mysqli_query($db_link, $check_query);
 			$row_verif = mysqli_fetch_assoc($verif);
-			$permission = mysqli_num_rows($verif);		
+			$permission = mysqli_num_rows($verif);
 			if ($permission){
 				$genericError = "Une permission du même titre existe déjà";
 				$createErrorTitle = "Une permission du même titre existe déjà";
 			}
 			else {
-				$perm_id = $rbac->Permissions->add(utf8_decode($title), utf8_decode($description);
+				$perm_id = $rbac->Permissions->add($title, $description);
 				if (!isset($perm_id) || $perm_id==-1){
 					$genericError = "Echec de la création (ID=".$perm_id.")";
 				}
 				else {
-					$genericSuccess = "Permission correctement ajoutée : ".$title." (ID=".$perm_id.")";	
+					$genericSuccess = "Permission correctement ajoutée : ".$title." (ID=".$perm_id.")";
 				}
 			}
 		}
@@ -41,8 +41,8 @@
 <!-- Create a new permission by path : Controller -->
 <?php
 	if (isset($_POST['addPermissionPath'])){
-		$path = str_replace("'","", utf8_decode($_POST['inputPermissionPath']));
-		$descriptions = str_replace("'","", utf8_decode($_POST['inputPermissionDescriptions']);
+		$path = str_replace("'","", $_POST['inputPermissionPath']);
+		$descriptions = str_replace("'","", $_POST['inputPermissionDescriptions']);
 		if($path == ""){
 			$genericError = "Le titre de la permission est obligatoire";
 			$createErrorTitle = "Le titre de la permission est obligatoire";
@@ -53,7 +53,7 @@
 				$genericError = "Echec de la création (ID=".$perm_id.")";
 			}
 			else {
-				$genericSuccess = "Permissions correctement ajoutées : ".$path." (ID=".$perm_id.")";	
+				$genericSuccess = "Permissions correctement ajoutées : ".$path." (ID=".$perm_id.")";
 			}
 		}
 	}

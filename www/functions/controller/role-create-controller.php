@@ -1,6 +1,6 @@
 <?php
-	
-	//Authentication 
+
+	//Authentication
 	$rbac->enforce("admin-roles-update", $currentUserID);
 
 	if (isset($_POST['addRole'])){
@@ -11,21 +11,21 @@
 			$createErrorTitle = "Le titre du rôle est obligatoire";
 		}
 		else{
-			$check_query = "SELECT ID FROM $tablename_roles WHERE Title='$title'" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+			$check_query = "SELECT ID FROM $tablename_roles WHERE Title='$title'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 			$verif = mysqli_query($db_link, $check_query);
 			$row_verif = mysqli_fetch_assoc($verif);
-			$role = mysqli_num_rows($verif);		
+			$role = mysqli_num_rows($verif);
 			if ($role){
 				$genericError = "Un rôle du même titre existe déjà";
 				$createErrorTitle = "Un rôle du même titre existe déjà";
 			}
 			else {
-				$perm_id = $rbac->Roles->add(utf8_decode($title), utf8_decode($description));
+				$perm_id = $rbac->Roles->add($title, $description);
 				if (!isset($perm_id) || $perm_id==-1){
 					$genericError = "Echec de la création (ID=".$perm_id.")";
 				}
 				else {
-					$genericSuccess = "Rôle correctement ajouté : ".$title." (ID=".$perm_id.")";	
+					$genericSuccess = "Rôle correctement ajouté : ".$title." (ID=".$perm_id.")";
 				}
 			}
 		}

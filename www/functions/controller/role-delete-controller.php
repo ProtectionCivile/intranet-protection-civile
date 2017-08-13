@@ -1,5 +1,5 @@
 <?php
-	
+
 
 	$undeletableRoles=array("Admin", "DDT-I", "Secrétaire");
 
@@ -9,16 +9,16 @@
 			$genericError = "Impossible de supprimer un rôle inconnu";
 		}
 		else{
-			$check_query = "SELECT ID, Title FROM $tablename_roles WHERE ID='$id'" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+			$check_query = "SELECT ID, Title FROM $tablename_roles WHERE ID='$id'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 			$verif = mysqli_query($db_link, $check_query);
 			$row_verif = mysqli_fetch_assoc($verif);
-			$role = mysqli_num_rows($verif);		
+			$role = mysqli_num_rows($verif);
 			if (!$role){
 				$genericError = "Le rôle en question n'existe pas";
 			}
 			else {
-				$roleTitle = utf8_encode($rbac->Roles->getTitle($id));
-				if (in_array($roleTitle, $undeletableRoles)) { 
+				$roleTitle = $rbac->Roles->getTitle($id);
+				if (in_array($roleTitle, $undeletableRoles)) {
 					$genericError = "Il est interdit de supprimer le rôle '".$roleTitle."'";
 				}
 				else {
@@ -27,7 +27,7 @@
 						$genericError = "Echec de la suppression (ID=".$id.")";
 					}
 					else {
-						$genericSuccess = "Rôle correctement supprimé (".$roleTitle.")";	
+						$genericSuccess = "Rôle correctement supprimé (".$roleTitle.")";
 					}
 				}
 			}
