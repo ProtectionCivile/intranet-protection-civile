@@ -59,18 +59,25 @@ if (
 	$canWaitDdo = true;
 }
 
+	if (isset($dps['section'])) {
+		$antenne = $dps['section'];
+	}
+	else {
+		$antenne = $city;
+	}
+
 if (
 	((	$dps_status == 'draft' ) ||	( $rbac->check("ope-dps-validate-ddo-to-pref", $currentUserID) ) ) ||
-	( $dps['section'] == $currentUserSection && $rbac->check("ope-dps-create-own", $currentUserID) ) ||
-	( $dps['section'] == '0' && $rbac->check("ope-dps-create-dept", $currentUserID) ) ||
+	( $antenne == $currentUserSection && $rbac->check("ope-dps-create-own", $currentUserID) ) ||
+	( $antenne == '0' && $rbac->check("ope-dps-create-dept", $currentUserID) ) ||
 	( $rbac->check("ope-dps-create-all", $currentUserID) )
 	) {
 	$canEdit = true;
 }
 
 if (
-	($dps['section'] == $currentUserSection && $rbac->check("ope-dps-view-own", $currentUserID)) ||
-	($dps['section'] == '0' && $rbac->check("ope-dps-view-dept", $currentUserID)) ||
+	($antenne == $currentUserSection && $rbac->check("ope-dps-view-own", $currentUserID)) ||
+	($antenne == '0' && $rbac->check("ope-dps-view-dept", $currentUserID)) ||
 	($rbac->check("ope-dps-view-all", $currentUserID))
 	) {
 	$canView = true;
