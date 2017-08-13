@@ -93,7 +93,7 @@ $settings_array = mysqli_fetch_array($query_result);
 							?> <li class="divider" /> <?php
 							?> <li class="dropdown-header">Paramètres</li> <?php
 							?> <li><a href="setting-view.php"><span class='glyphicon glyphicon-wrench'></span> Liste des paramètres</a></li> <?php
-							?> <li><a href="mailsetting-view.php"><span class='glyphicon glyphicon-envelope'></span> Liste des paramètres mail</a></li> <?php
+							?> <li><a href="mailsetting-list.php"><span class='glyphicon glyphicon-envelope'></span> Liste des paramètres mail</a></li> <?php
 						}
 
 						if ($rbac->check("admin-roles-view", $currentUserID) || $rbac->check("admin-permissions-view", $currentUserID)) {
