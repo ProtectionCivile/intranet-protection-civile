@@ -13,13 +13,13 @@ $pdf->Text(12,62,"Ouverture d'un Dispositif Prévisionnel de Secours de Moyenne E
 // Position du cadre COA : X = 168 --- Y = 41
 $pdf->SetFillColor(256,256,256);
 $pdf->SetFont('Poppins-SemiBold','',10); 
-$pdf->SetXY(170,62);
+$pdf->SetXY(171,62);
 $pdf->SetDrawColor(0,0,0);
 $pdf->SetTextColor(255,0,0);
 $pdf->Cell(32,5.3,"92-15-COU-080",1,1,"C");
 $pdf->SetFont('Arial','',7); 
 $pdf->SetTextColor(0,0,0);
-$pdf->Text(170, 61, "Certificat Original d'Affiliation");
+$pdf->Text(171, 61, "Certificat Original d'Affiliation");
 
 //Organisateur
 $pdf->SetLineWidth(0.3) ;
