@@ -34,14 +34,14 @@ $settings_array = mysqli_fetch_array($query_result);
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-check'></span> Operationnel <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li class="dropdown-header">Direction départementale</li>
-						<li><a href="dps-list-view.php?atraiter"><span class='glyphicon glyphicon-fire'></span> A traiter <span class="badge"><?php echo $row_cnt;?></span></a></li>
+						<li><a href="dps-list.php?atraiter"><span class='glyphicon glyphicon-fire'></span> A traiter <span class="badge"><?php echo $row_cnt;?></span></a></li>
 						<li class="divider"></li>
 						<li class="dropdown-header">Gestion des DPS</li>
 						<?php if ($rbac->check("ope-dps-view-own", $currentUserID)) {?>
-							<li><a href="dps-list-view.php?city"><span class='glyphicon glyphicon-search'></span> Liste des DPS de mon Antenne</a></li>
+							<li><a href="dps-list.php?city"><span class='glyphicon glyphicon-search'></span> Liste des DPS de mon Antenne</a></li>
 						<?php } ?>
 						<?php if ($rbac->check("ope-dps-view-all", $currentUserID)) {?>
-							<li><a href="dps-list-view.php"><span class='glyphicon glyphicon-search'></span> Liste de tous les DPS</a></li>
+							<li><a href="dps-list.php"><span class='glyphicon glyphicon-search'></span> Liste de tous les DPS</a></li>
 						<?php } ?>
 						<li class="divider"></li>
 						<?php if ($rbac->check("ope-dps-create-own", $currentUserID) || $rbac->check("ope-dps-create-all", $currentUserID)) {?>
