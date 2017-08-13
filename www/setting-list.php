@@ -29,7 +29,7 @@
 	<!-- Update setting : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
-	<?php $base_url="setting-view.php"; ?>
+	<?php $base_url="setting-list.php"; ?>
 
 	<!-- Beginning of the filter's parent module -->
 	<?php include_once('components/filter/filter-settings-module.php'); ?>
