@@ -20,7 +20,8 @@
             <div class='input-group date' id='dps_begin_date_picker' name="dps_begin_date_picker">
               <input type='text' class="form-control" id='dps_begin_date' name="dps_begin_date" aria-describedby="dps-begin-date-error" required='true' value="<?php echo $dps_begin_date; ?>" / >
               <span class="input-group-addon">
-              <span class="glyphicon glyphicon-calendar"></span>
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
             </div>
             <span id='dps-begin-date-error' class="help-block" aria-hidden="true"></span>
           </div>
@@ -41,7 +42,8 @@
             <div class='input-group date' id='dps_end_date_picker' name="dps_end_date_picker">
               <input type='text' class="form-control" id='dps_end_date' name="dps_end_date" required='true' aria-describedby="dps-end-date-error" value="<?php echo $dps_end_date; ?>" />
               <span class="input-group-addon">
-              <span class="glyphicon glyphicon-calendar"></span>
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
             </div>
             <span id='dps-end-date-error' class="help-block" aria-hidden="true"></span>
           </div>
