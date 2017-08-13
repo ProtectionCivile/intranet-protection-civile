@@ -217,6 +217,9 @@
 	if(isNullOrEmpty($dps_justification)){
 		// Nothing
 	}
+	if(isNullOrEmpty($eprotec_number)){
+		// Nothing
+	}
 
 
 	if ($missingValues != "0" ) {
