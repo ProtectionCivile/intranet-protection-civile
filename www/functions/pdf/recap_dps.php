@@ -12,14 +12,14 @@ $pdf->Text(12,62,"Ouverture d'un Dispositif Prévisionnel de Secours de Moyenne E
 // Début des cadres
 // Position du cadre COA : X = 168 --- Y = 41
 $pdf->SetFillColor(256,256,256);
-$pdf->SetFont('Arial','B',11); 
-$pdf->SetXY(173,62);
+$pdf->SetFont('Poppins-SemiBold','',10); 
+$pdf->SetXY(170,62);
 $pdf->SetDrawColor(0,0,0);
 $pdf->SetTextColor(255,0,0);
 $pdf->Cell(32,5.3,"92-15-COU-080",1,1,"C");
 $pdf->SetFont('Arial','',7); 
 $pdf->SetTextColor(0,0,0);
-$pdf->Text(173, 61, "Certificat Original d'Affiliation");
+$pdf->Text(170, 61, "Certificat Original d'Affiliation");
 
 //Organisateur
 $pdf->SetLineWidth(0.3) ;
@@ -38,7 +38,7 @@ $pdf->Text(14, 82, "Adresse :");
 $pdf->Text(14, 85, "Téléphone :"); 
 $pdf->Text(63, 85, "Fax :"); 
 $pdf->Text(14, 88, "E-mail :");
-$pdf->SetFont('Arial','',7);
+$pdf->SetTextColor(210,120,20);
 $pdf->Text(40, 73, "Association Passé Présent (A.P.P.)");
 $pdf->Text(40, 76, "Michèle TELLIER");  
 $pdf->Text(40, 79, "Organisatrice de la Révolution Française"); 
@@ -59,7 +59,7 @@ $pdf->SetTextColor(0,0,0);
 $pdf->Text(14, 100, "Nom / nature :");
 $pdf->Text(14, 103, "Activité / descriptif :");
 $pdf->Text(14, 106, "Lieux précis :");
-$pdf->SetFont('Arial','',7);
+$pdf->SetTextColor(210,120,20);
 $pdf->Text(40, 100, "Combats Kata et karaté : championnats départementaux 2015");
 $pdf->Text(40, 103, "Sport / Karaté");  
 $pdf->Text(40, 106, "13 Avenue du Chat blanc sur la grande branche en chêne clair - 92345 Cormeilles En Parisis Sur Marne de la Seine"); 
@@ -88,7 +88,8 @@ $pdf->Text(14, 136, "Indice total de risque :");
 $pdf->Text(14, 139, "Type de poste :");
 $pdf->Text(184, 139, "RIS :"); 
 $pdf->Text(14, 142, "Commentaire sur le RIS :"); 
-$pdf->SetFont('Arial','',7); 
+
+$pdf->SetTextColor(210,120,20);
 $pdf->Text(50, 124, "250000");
 $pdf->Text(115, 124, "250000"); 
 $pdf->Text(190, 124, "500000");
@@ -133,22 +134,22 @@ $pdf->Text(60, 175, "Médecins :");
 $pdf->Text(100, 175, "infirmiers :");
 $pdf->Text(140, 175, "Moyens sup. :");
 
-$pdf->SetTextColor(240,135,0);
-$pdf->Text(90, 166, "12");
+$pdf->SetTextColor(210,120,20);
+$pdf->Text(85, 166, "12");
 $pdf->Text(120, 166, "230");
-$pdf->Text(160, 166, "390");
+$pdf->Text(165, 166, "390");
 $pdf->Text(195, 166, "98");
-$pdf->Text(90, 169, "16");
+$pdf->Text(85, 169, "16");
 $pdf->Text(120, 169, "90");
-$pdf->Text(160, 169, "3");
+$pdf->Text(165, 169, "3");
 $pdf->Text(195, 169, "230");
-$pdf->Text(90, 172, "12");
+$pdf->Text(85, 172, "12");
 $pdf->Text(120, 172, "7");
-$pdf->Text(160, 172, "68");
+$pdf->Text(165, 172, "68");
 $pdf->Text(195, 172, "460");
-$pdf->Text(90, 175, "21");
+$pdf->Text(85, 175, "21");
 $pdf->Text(120, 175, "65");
-$pdf->Text(160, 175, "SMG + groupe + tout ça");
+$pdf->Text(165, 175, "SMG + groupe + tout ça");
 
 
 $pdf->SetTextColor(0,0,0);
@@ -157,10 +158,10 @@ $pdf->Text(60, 178, "Local infirmerie:");
 $pdf->Text(140, 178, "Tentes :");
 $pdf->Text(60, 181, "autres moyens :");
 
-$pdf->SetTextColor(240,135,0);
-$pdf->Text(95, 178, "Oui");
+$pdf->SetTextColor(220,120,20);
+$pdf->Text(85, 178, "Oui");
 $pdf->Text(165, 178, "12");
-$pdf->Text(95, 181, "Un gymnase");
+$pdf->Text(85, 181, "Un gymnase");
 
 $pdf->SetTextColor(0,0,0);
 $pdf->Text(14, 184, "Moyens medicaux :");
@@ -171,13 +172,13 @@ $pdf->Text(140, 187, "Appartenance :");
 $pdf->Text(14, 190, "S.A.M.U. :");
 $pdf->Text(100, 190, "B.S.P.P. :");
 
-$pdf->SetTextColor(240,135,0);
-$pdf->Text(95, 184, "1");
+$pdf->SetTextColor(220,120,20);
+$pdf->Text(85, 184, "1");
 $pdf->Text(165, 184, "Jean-Jacques Goldman");
-$pdf->Text(95, 187, "13");
+$pdf->Text(85, 187, "13");
 $pdf->Text(165, 187, "Infirm land");
-$pdf->Text(55, 190, "Informé, non présent");
-$pdf->Text(135, 190, "Ni informé, Ni présent");
+$pdf->Text(60, 190, "Informé, non présent");
+$pdf->Text(140, 190, "Ni informé, Ni présent");
 
 
 $pdf->SetFont('Poppins-Semibold','',8);
