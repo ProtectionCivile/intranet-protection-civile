@@ -73,7 +73,7 @@ ALTER TABLE `dps` CHANGE `pompier` `bspp` TINYINT(1) NULL DEFAULT NULL AFTER `sa
 ALTER TABLE `dps` CHANGE `prix` `price` VARCHAR(7) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `bspp`;
 ALTER TABLE `dps` CHANGE `justif_poste` `dps_justification` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `price`;
 
-ALTER TABLE `dps` ADD `eprotec_number` TINYINT(8) NULL DEFAULT NULL AFTER `dps_justification`;
+ALTER TABLE `dps` ADD `eprotec_number` INT(8) NULL DEFAULT NULL AFTER `dps_justification`;
 ALTER TABLE `dps` ADD `status` TINYINT(1) NULL DEFAULT NULL AFTER `eprotec_number`;
 ALTER TABLE `dps` CHANGE `administration` `status_justification` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `status`;
 ALTER TABLE `dps` CHANGE `date_creation` `status_creation_date` DATE NULL DEFAULT NULL AFTER `status_justification`;
