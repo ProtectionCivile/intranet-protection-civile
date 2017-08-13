@@ -11,7 +11,7 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="/setting-view.php">Paramètres mail</a></li>
+	<li><a href="/mailsetting-list.php">Paramètres mail</a></li>
 	<li class="active">Création</li>
 </ol>
 
