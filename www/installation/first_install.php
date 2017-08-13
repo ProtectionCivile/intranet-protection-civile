@@ -83,7 +83,7 @@ mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) 
 	)
 ");
 mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
-	'dps-doc-suffix-convention', 
+	'dps-doc-suffix-convention',
 	'CONV'
 	)
 ");
@@ -100,6 +100,12 @@ mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) 
 mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
 	'dps-doc-suffix-declaration',
 	'DECL'
+	)
+");
+
+mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
+	'eprotec-event-url',
+	'https://franceprotectioncivile.org/evenement_display.php?evenement=EVENTID'
 	)
 ");
 

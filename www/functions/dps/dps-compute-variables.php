@@ -275,6 +275,10 @@
 	elseif (isset($dps) && isset($dps['price'])) { $price = $dps['price']; }
   else { $price = ''; }
 
+	if (isset($_POST['eprotec_number'])) { $eprotec_number = $_POST['eprotec_number']; }
+	elseif (isset($dps) && isset($dps['eprotec_number'])) { $eprotec_number = $dps['eprotec_number']; }
+	else { $eprotec_number = ''; }
+
 	if (isset($duplicated_dps_array['dps_justification'])) { $dps_justification = $duplicated_dps_array['dps_justification']; }
 	elseif (isset($_POST['dps_justification'])) { $dps_justification = $_POST['dps_justification']; }
 	elseif (isset($dps) && isset($dps['dps_justification'])) { $dps_justification = $dps['dps_justification']; }

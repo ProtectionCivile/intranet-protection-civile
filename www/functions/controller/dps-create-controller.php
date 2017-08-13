@@ -27,7 +27,7 @@
 					dps_type, dps_begin_date, dps_begin_time, dps_end_date, dps_end_time, dps_nb_ce, dps_nb_pse2, dps_nb_pse1, dps_nb_psc1, dps_nb_lot_a, dps_nb_lot_b, dps_nb_lot_c, dps_nb_dae, dps_nb_vpsp_transp, dps_nb_vpsp_soin, dps_nb_vtu, dps_nb_tente, dps_nb_med_asso, dps_nb_inf_asso, dps_other_matos_asso,
 					clientmatos_infirmerie, clientmatos_tente, clientmatos_other,
 					medicalext_nb_med, medicalext_med_company, medicalext_nb_inf, medicalext_inf_company, samu, bspp,
-					price, dps_justification, status, status_justification, status_creation_date) VALUES
+					price, dps_justification, eprotec_number, status, status_justification, status_creation_date) VALUES
 				('$section', '$cu_full', '$cu_year', '$cu_yearly_index',
 					'".mysqli_escape_string($db_link, $client_name)."',
 					'".mysqli_escape_string($db_link, $client_represent)."',
@@ -43,7 +43,7 @@
 					'".formatDateFrToUs($event_begin_date)."', '".formatTimeRemoveDoubleDot($event_begin_time)."',
 					'".formatDateFrToUs($event_end_date)."', '".formatTimeRemoveDoubleDot($event_end_time)."',
 					'$event_pref_secu',
-					'$ris_p1_public', '$ris_p1_actors', '$ris_p2', '$ris_e1', '$ris_e2', 
+					'$ris_p1_public', '$ris_p1_actors', '$ris_p2', '$ris_e1', '$ris_e2',
 					'".mysqli_escape_string($db_link, $ris_comment)."',
 					'$dps_type',
 					'".formatDateFrToUs($dps_begin_date)."', '".formatTimeRemoveDoubleDot($dps_begin_time)."',
@@ -58,6 +58,7 @@
 					'$samu', '$bspp',
 					'$price',
 					'".mysqli_escape_string($db_link, $dps_justification)."',
+					'$eprotec_number',
 					'$status',
 					'".mysqli_escape_string($db_link, $status_justification)."',
 					'$today')" or die("Impossible d'ajouter le DPS dans la base de données" . mysqli_error($db_link));
