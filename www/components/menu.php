@@ -85,7 +85,7 @@ $settings_array = mysqli_fetch_array($query_result);
 						<?php
 						if ($rbac->check("admin-users-view", $currentUserID) || $rbac->check("admin-sections-view", $currentUserID)) {
 							?> <li class="dropdown-header">Réglages communs</li> <?php
-							if ($rbac->check("admin-users-view", $currentUserID)) {?> <li><a href="user-view.php"><span class='glyphicon glyphicon-user'></span> Gestion des utilisateurs</a></li> <?php }
+							if ($rbac->check("admin-users-view", $currentUserID)) {?> <li><a href="user-list.php"><span class='glyphicon glyphicon-user'></span> Gestion des utilisateurs</a></li> <?php }
 							if ($rbac->check("admin-sections-view", $currentUserID)) {?> <li><a href="section-list.php"><span class='glyphicon glyphicon-tent'></span> Liste des communes</a></li> <?php }
 						}
 
