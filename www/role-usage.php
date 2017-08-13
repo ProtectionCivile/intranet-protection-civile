@@ -11,7 +11,7 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="/role-view.php">Gestion des rôles</a></li>
+	<li><a href="/role-list.php">Gestion des rôles</a></li>
 	<li class="active">Utilisation</li>
 </ol>
 

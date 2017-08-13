@@ -27,7 +27,7 @@
 	<!-- Update role : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
-	<?php $base_url="role-view.php"; ?>
+	<?php $base_url="role-list.php"; ?>
 
 	<!-- Beginning of the filter's parent module -->
 	<?php include_once('components/filter/filter-roles-module.php'); ?>
