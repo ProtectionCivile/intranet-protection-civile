@@ -1,13 +1,13 @@
 <?php require_once('functions/session/security.php'); ?>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Accueil</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
-<?php require_once('components/header.php'); ?>
+<?php include('components/header.php'); ?>
+
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
@@ -81,7 +81,7 @@ if (isset($_GET['notallowed'])){
 					$query = "SELECT Description FROM $tablename_permissions WHERE ID='".$permission."'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 					$real_permissions = mysqli_query($db_link, $query);
 					$real_permission = mysqli_fetch_array($real_permissions);
-					echo "<li>".utf8_encode($real_permission['Description'])."</li>";
+					echo "<li>".$real_permission['Description']."</li>";
 				}
 				echo '</ul>';
 			}
