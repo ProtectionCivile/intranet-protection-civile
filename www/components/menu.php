@@ -15,7 +15,7 @@ $settings_array = mysqli_fetch_array($query_result);
 	<div class="container">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="#">
-				<!-- <img alt="Brand" class="img-responsive" src='img/logo.png'> -->
+				<!-- <img alt="Brand" class="img-responsive" src='img/logos/logo.png'> -->
 			</a>
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 				<span class="sr-only">Toggle navigation</span>
