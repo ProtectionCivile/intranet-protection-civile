@@ -40,6 +40,9 @@ $settings_array = mysqli_fetch_array($query_result);
 						<?php if ($rbac->check("ope-dps-view-own", $currentUserID)) {?>
 							<li><a href="dps-list.php?city"><span class='glyphicon glyphicon-search'></span> Liste des DPS de mon Antenne</a></li>
 						<?php } ?>
+						<?php if ($rbac->check("ope-dps-view-dept", $currentUserID) || $rbac->check("ope-dps-view-all", $currentUserID)) {?>
+							<li><a href="dps-list.php?dept"><span class='glyphicon glyphicon-search'></span> Liste des DPS départementaux</a></li>
+						<?php } ?>
 						<?php if ($rbac->check("ope-dps-view-all", $currentUserID)) {?>
 							<li><a href="dps-list.php"><span class='glyphicon glyphicon-search'></span> Liste de tous les DPS</a></li>
 						<?php } ?>
