@@ -29,35 +29,6 @@ echo ("Démarrage : ".date("H:i:s"));
 /////////////////////////////////////////////////
 // SQL TABLES
 /////////////////////////////////////////////////
-mysqli_query($db_link, "CREATE TABLE `$tablename_settings_general` (
-	`ID` INT(12) NOT NULL AUTO_INCREMENT ,
-	`name` VARCHAR(128) NULL ,
-	`value` VARCHAR(400) NULL ,
-	PRIMARY KEY (`ID`)
-	) ENGINE = InnoDB;
-");
-
-mysqli_query($db_link, "CREATE TABLE `$tablename_settings_mail` (
-	`ID` INT(12) NOT NULL AUTO_INCREMENT ,
-	`name` VARCHAR(128) NULL ,
-	`value` VARCHAR(400) NULL ,
-	PRIMARY KEY (`ID`)
-	) ENGINE = InnoDB;
-");
-
-mysqli_query($db_link, "CREATE TABLE `$tablename_users` (
-  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `login` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `pass` varchar(80) CHARACTER SET utf8 DEFAULT NULL,
-  `last_name` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `first_name` tinytext CHARACTER SET utf8,
-  `phone` tinytext CHARACTER SET utf8,
-  `mail` varchar(80) CHARACTER SET utf8 DEFAULT NULL,
-  `attached_section` tinyint(4) DEFAULT NULL,
-  `eprotec` varchar(10) COLLATE utf8_general_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-");
 
 mysqli_query($db_link, "ALTER TABLE `ADPC`.`$tablename_roles`
 	ADD `Phone` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Description`,
@@ -69,46 +40,6 @@ mysqli_query($db_link, "ALTER TABLE `ADPC`.`$tablename_roles`
 	ADD `Hierarchy` INT(10) NULL AFTER `Assignable`,
 	ADD `Tags` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Hierarchy`
 ");
-
-
-
-
-
-/////////////////////////////////////////////////
-// TABLES SAMPLE DATA
-/////////////////////////////////////////////////
-mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
-	'application-header-name',
-	'Extranet PC-92'
-	)
-");
-mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
-	'dps-doc-suffix-convention',
-	'CONV'
-	)
-");
-mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
-	'dps-doc-suffix-risk',
-	'RISK'
-	)
-");
-mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
-	'dps-doc-suffix-demande',
-	'DEM'
-	)
-");
-mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
-	'dps-doc-suffix-declaration',
-	'DECL'
-	)
-");
-
-mysqli_query($db_link, "INSERT INTO `$tablename_settings_general` (name, value) VALUES (
-	'eprotec-event-url',
-	'https://franceprotectioncivile.org/evenement_display.php?evenement=EVENTID'
-	)
-");
-
 
 
 /////////////////////////////////////////////////
