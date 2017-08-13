@@ -31,8 +31,8 @@ ALTER TABLE `dps` CHANGE `dossier_pref` `event_pref_secu` BOOLEAN NOT NULL DEFAU
 
 ALTER TABLE `dps` CHANGE `p1_spec` `ris_p1_public` VARCHAR(7) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `event_pref_secu`;
 ALTER TABLE `dps` CHANGE `p1_part` `ris_p1_actors` VARCHAR(7) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `ris_p1_public`;
-ALTER TABLE `dps` CHANGE `p2` `ris_p2` TINYINT(1) NULL DEFAULT '4' AFTER `ris_p1_actors`;
-ALTER TABLE `dps` CHANGE `e1` `ris_e1` TINYINT(1) NULL DEFAULT '4' AFTER `ris_p2`;
+ALTER TABLE `dps` ADD `ris_p2` TINYINT(1) NULL DEFAULT '4' AFTER `ris_p1_actors`;
+ALTER TABLE `dps` ADD `ris_e1` TINYINT(1) NULL DEFAULT '4' AFTER `ris_p2`;
 ALTER TABLE `dps` CHANGE `e2` `ris_e2` TINYINT(1) NULL DEFAULT '4' AFTER `ris_e1`;
 ALTER TABLE `dps` CHANGE `comment_ris` `ris_comment` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `ris_e2`;
 
@@ -130,6 +130,18 @@ UPDATE `dps` SET `status` = 3 WHERE `status_cancel_date` IS NULL AND `etat_deman
 UPDATE `dps` SET `status` = 4 WHERE `status_cancel_date` IS NOT NULL;
 UPDATE `dps` SET `status` = 5 WHERE `status_cancel_date` IS NULL AND (`etat_demande_dps`=2 OR `etat_demande_dps`=4);
 
+UPDATE `dps` SET `ris_p2` = 1 WHERE `p2` = 1;
+UPDATE `dps` SET `ris_p2` = 2 WHERE `p2` = 2;
+UPDATE `dps` SET `ris_p2` = 3 WHERE `p2` = 3;
+UPDATE `dps` SET `ris_p2` = 4 WHERE `p2` = 4;
+UPDATE `dps` SET `ris_p2` = 4 WHERE `p2` = 5;
+UPDATE `dps` SET `ris_p2` = 4 WHERE `p2` = 6;
+UPDATE `dps` SET `ris_e1` = 1 WHERE `e1` = 1;
+UPDATE `dps` SET `ris_e1` = 2 WHERE `e1` = 2;
+UPDATE `dps` SET `ris_e1` = 3 WHERE `e1` = 3;
+UPDATE `dps` SET `ris_e1` = 4 WHERE `e1` = 4;
+UPDATE `dps` SET `ris_e1` = 4 WHERE `e1` = 5;
+
 
 -- SUPPRESSION DES CHAMPS INUTILISÉS
 ALTER TABLE `dps` DROP `date_ris`;
@@ -141,7 +153,8 @@ ALTER TABLE `dps` DROP `soin_ar`;
 ALTER TABLE `dps` DROP `soin_dcd`;
 ALTER TABLE `dps` DROP `etat_demande_dps`;
 ALTER TABLE `dps` DROP `edition_ris`;
-
+ALTER TABLE `dps` DROP `p2`;
+ALTER TABLE `dps` DROP `e1`;
 
 
 DROP TABLE `select_list_parameters`;
