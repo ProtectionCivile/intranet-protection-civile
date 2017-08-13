@@ -20,7 +20,7 @@ if (isset($_GET['notallowed'])){
 
 <div class="container">
 
-	<center><img class="img-responsive" src='img/logo-baseline-right.png'/></center>
+	<center><img class="img-responsive" src='img/logos/logo-baseline-right.png'/></center>
 	<h2 class="text-center">Protection Civile des Hauts-de-Seine</h2>
 
 	<br />
