@@ -69,6 +69,7 @@
 				cu_yearly_index='$cu_yearly_index',
 				dps_justification='".mysqli_escape_string($db_link, $dps_justification)."',
 				status='$status',
+				eprotec_number='$eprotec_number',
 				status_justification='".mysqli_escape_string($db_link, $status_justification)."'
 				WHERE id=$id" or die("Impossible de modifier le DPS dans la base de données" . mysqli_error($db_link));
 
