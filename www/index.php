@@ -33,34 +33,36 @@ if (isset($_GET['notallowed'])){
 
 	<h3>En fonction de vos rôles, vous pourrez (ou non) :</h3>
 	<ul>
-		<li>Pour tout le monde</li>
+		<li><strong>Pour tout le monde</strong></li>
 		<ul>
 			<li>Accéder à l'annuaire en ligne</li>
 			<li>Estampiller des photos à l'effigie de la PC-92 (cartouche)</li>
 		</ul>
-		<li>Pour les DLOs</li>
+		<li><strong>Pour les DLOs</strong></li>
 		<ul>
 			<li>Créer ou visualiser les postes de secours sur votre section</li>
 			<li>Gérer vos clients favoris pour créer des DPS plus rapidement</li>
 			<li>Faire une recherche de secouristes facilement</li>
 		</ul>
-		<li>Pour la DDO</li>
+		<li><strong>Pour la DDO</strong></li>
 		<ul>
 			<li>Valider (ou non) les DPS des antennes et du département</li>
 			<li>Accéder rapidement à la liste "à traiter"</li>
 			<li>Envoyer des demandes de DPS à la Préfecture (ou aux autres ADPC) directement</li>
 		</ul>
-		<li>Pour les Trésoriers</li>
+		<li><strong>Pour les Trésoriers</strong></li>
 		<ul>
 			<li>Afficher l'état des recettes opérationnelles et des taxes FNPC et ADPC</li>
 		</ul>
-		<li>Administration</li>
+		<li><strong>Pour les Adminis</strong></li>
 		<ul>
 			<li>Modifier l'affectation des permissions et des rôles des utiilsateurs</li>
 			<li>Gérer manuellement les antennes et leur rattachement administratif</li>
 			<li>Accéder à des paramètres de configuration</li>
+			<li>Gérer les utilisateurs et leur affecter des rôles</li>
 			<li>Changer les numéros de contact des antennes</li>
 			<li>Ajouter ou supprimer des utilisateurs à des listes de diffusion</li>
+			<li>Modifier l'annuaire</li>
 		</ul>
 	</ul>
 
