@@ -11,7 +11,7 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="/permission-view.php">Gestion des permissions</a></li>
+	<li><a href="/permission-list.php">Gestion des permissions</a></li>
 	<li class="active">Modification</li>
 </ol>
 
@@ -77,11 +77,11 @@
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-8">
 							<?php if (empty($genericSuccess)){ ?>
-								<a class="btn btn-default" href="permission-view.php" role="button">Annuler - Retour à la liste</a>
+								<a class="btn btn-default" href="permission-list.php" role="button">Annuler - Retour à la liste</a>
 							<?php } ?>
 							<button type="submit" class="btn btn-warning">Mettre à jour</button>
 							<?php if (isset($_POST['updatePermission']) && !empty($genericSuccess)) { ?>
-								<a class="btn btn-success" href="permission-view.php" role="button">J'ai terminé ! Retour à la liste</a>
+								<a class="btn btn-success" href="permission-list.php" role="button">J'ai terminé ! Retour à la liste</a>
 							<?php } ?>
 					    </div>
 					</div>

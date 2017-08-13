@@ -61,7 +61,7 @@
 							<?php echo $permission["Description"]; ?>
 						</td>
 						<td>
-							<form action='permission-view-usage.php' method='post' accept-charset='utf-8'>
+							<form action='permission-list-usage.php' method='post' accept-charset='utf-8'>
 								<input type='hidden' name='permissionID' value=<?php echo "'".$permission['ID']."'"; ?> >
 								<button type='submit' class='btn btn-default glyphicon glyphicon-eye-open' title="Voir utilisation"></button>
 							</form>

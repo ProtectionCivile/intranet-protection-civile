@@ -100,7 +100,7 @@ $settings_array = mysqli_fetch_array($query_result);
 							?> <li class="divider" /> <?php
 							?> <li class="dropdown-header">Sécurité</li> <?php
 							if ($rbac->check("admin-roles-view", $currentUserID)) {?> <li><a href="role-view.php"><span class='glyphicon glyphicon-knight'></span> Gestion des rôles</a></li> <?php }
-							if ($rbac->check("admin-permissions-view", $currentUserID)) {?> <li><a href="permission-view.php"><span class='glyphicon glyphicon-ok'></span> Gestion des permissions</a></li> <?php }
+							if ($rbac->check("admin-permissions-view", $currentUserID)) {?> <li><a href="permission-list.php"><span class='glyphicon glyphicon-ok'></span> Gestion des permissions</a></li> <?php }
 							if ($rbac->check("admin-roles-view", $currentUserID)) {?> <li><a href="view-all-users-with-roles.php"><span class='glyphicon glyphicon-search'></span> Utilisateurs par rôle</a></li> <?php }
 							if ($rbac->check("admin-permissions-view", $currentUserID)) {?> <li><a href="view-all-permissions-with-roles.php"><span class='glyphicon glyphicon-search'></span> Habilitations par rôle</a></li> <?php }
 						} ?>
