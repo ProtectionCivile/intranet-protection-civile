@@ -55,7 +55,12 @@ $settings_array = mysqli_fetch_array($query_result);
 						<?php } ?>
 						<li class="divider"></li>
 						<li class="dropdown-header">Réglages opérationnels</li>
-						<li><a href="list-organisateur.php"><span class='glyphicon glyphicon-user'></span> Liste des organisateurs</a></li>
+						<?php if ($rbac->check("ope-clients-view-own", $currentUserID)) {?>
+							<li><a href="client-list.php?city"><span class='glyphicon glyphicon-search'></span> Liste des clients de mon Antenne</a></li>
+						<?php } ?>
+						<?php if ($rbac->check("ope-clients-view-all", $currentUserID)) {?>
+							<li><a href="client-list.php"><span class='glyphicon glyphicon-search'></span> Liste de tous les clients</a></li>
+						<?php } ?>
 						<li><a href="add-organisateur.php"><span class='glyphicon glyphicon-user'></span><span class='glyphicon glyphicon-plus'></span> Ajouter un organisateur</a></li>
 					</ul>
 				</li>
