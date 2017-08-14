@@ -1,7 +1,7 @@
 <?php
 $hostname_dbprotect = "localhost";
 $username_dbprotect = "root";
-$password_dbprotect = "";
+$password_dbprotect = "root";
 $database_dbprotect = "ADPC";
 
 
