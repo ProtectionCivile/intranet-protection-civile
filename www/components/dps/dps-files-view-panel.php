@@ -14,14 +14,14 @@
 
 	    <div class="row" >
 	      <?php
-				$pdf = glob($pathfile.'*.{pdf}', GLOB_BRACE);
-				foreach($pdf as $otherfiles){
-					echo "<p><a href='$otherfiles' target='_blank'><span class='glyphicon glyphicon-file'></span> ".basename($otherfiles)."</a></p>";
+				$files = glob($pathfile.'/*.{pdf}', GLOB_BRACE);
+				foreach($files as $pdf_file){
+					echo "<p><a href='$pdf_file' target='_blank'><span class='glyphicon glyphicon-file'></span> ".basename($pdf_file)."</a></p>";
 				}
 
-				$pdf = glob($pathfile.'autre/*.{pdf}', GLOB_BRACE);
-	      foreach($pdf as $otherfiles){
-	        echo "<p><a href='$otherfiles' target='_blank'><span class='glyphicon glyphicon-file'></span> ".basename($otherfiles)."</a></p>";
+				$files = glob($pathfile.'/autre/*.{pdf}', GLOB_BRACE);
+	      foreach($files as $pdf_file){
+	        echo "<p><a href='$pdf_file' target='_blank'><span class='glyphicon glyphicon-file'></span> ".basename($pdf_file)."</a></p>";
 				}
 	      ?>
 	    </div>
