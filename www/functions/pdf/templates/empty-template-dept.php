@@ -1,7 +1,7 @@
 <?php
 
-require_once('parts/header-dept.php');
+require_once('functions/pdf/parts/header-dept.php');
 
-require_once('parts/footer-dept.php');
+require_once('functions/pdf/parts/footer-dept.php');
 
 ?>
