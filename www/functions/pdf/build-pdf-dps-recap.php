@@ -1,11 +1,11 @@
 <?php
-require('../../lib/fpdf/fpdf.php');
+require_once('../../lib/fpdf/fpdf.php');
 
 $pdf=new FPDF();
 $pdf->AddPage();
 $pdf->AliasNbPages();
 
-require('templates/template-ddo-saynete.php');
+require_once('templates/template-ddo-saynete.php');
 
 $pdf->SetTextColor(0,64,128);
 $pdf->SetFont('Poppins-SemiBold','',10);
