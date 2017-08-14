@@ -136,7 +136,9 @@
 					$dps_status = "accepted";
 					$dps['status_justification'] = $_POST['status_justification'];
 					$dps['status_validation_ddo_date'] = $today;
-					// TODO Generate PDF
+					// Generate PDF
+					require_once('functions/pdf/build-pdf-dps-recap.php');
+					buildPdfForDps($pathfile.'/'.$cu_full.'-'.$dps_doc_suffix_declaration.'.pdf', $dps);
 
 					// TODO Send mail
 

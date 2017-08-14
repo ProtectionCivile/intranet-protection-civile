@@ -1,7 +1,7 @@
 <?php
 require_once('lib/fpdf/fpdf.php');
 
-function buildPdfForDps($dpsId) {
+function buildPdfForDps($pathfile, $dps_p) {
 
   $pdf=new FPDF();
   $pdf->AddPage();
@@ -11,7 +11,7 @@ function buildPdfForDps($dpsId) {
 
   $pdf->SetTextColor(0,64,128);
   $pdf->SetFont('Poppins-SemiBold','',10);
-  $pdf->Text(12,62,utf8_decode("Ouverture d'un Dispositif Prévisionnel de Secours de Moyenne Envergure (DPS-ME)"));
+  $pdf->Text(12,62,utf8_decode("Ouverture d'un Dispositif Prévisionnel de Secours de Moyenne Envergure (DPS-ME)". ' '.$dps_p['id'] ));
 
 
   // Début des cadres
@@ -215,8 +215,7 @@ function buildPdfForDps($dpsId) {
   $pdf->Image("img/signatures/rod92.png",170,259,30,15);
   $pdf->Image("img/signatures/tampon.png",110,259,50,15);
 
-  $pdf->Output();
+  $pdf->Output( $pathfile, "F");
 }
 
-buildPdfForDps(12);
 ?>
