@@ -92,7 +92,7 @@
 							<?php echo $client["attached_section"]; ?>
 						</td>
 						<td>
-							<?php if ($rbac->check("admin-clients-update-own", $currentUserID) || $rbac->check("admin-clients-update-all", $currentUserID)) { ?>
+							<?php if ($rbac->check("ope-clients-update-own", $currentUserID) || $rbac->check("ope-clients-update-all", $currentUserID)) { ?>
 								<form action='client-edit.php' method='post' accept-charset='utf-8'>
 									<input type='hidden' name='clientID' value=<?php echo "'".$client['ID']."'"; ?> >
 									<button type='submit' class='btn btn-warning glyphicon glyphicon-pencil' title="Modifier"></button>
@@ -100,7 +100,7 @@
 							<?php }?>
 						</td>
 						<td>
-							<?php if ($rbac->check("admin-clients-update-own", $currentUserID) || $rbac->check("admin-clients-update-all", $currentUserID)) { ?>
+							<?php if ($rbac->check("ope-clients-update-own", $currentUserID) || $rbac->check("ope-clients-update-all", $currentUserID)) { ?>
 								<form action='' method='post' accept-charset='utf-8'>
 									<input type='hidden' name='delclient' value=<?php echo "'".$client['ID']."'"; ?> >
 									<button type='submit' class='btn btn-danger glyphicon glyphicon-trash' title="Supprimer" onclick='return(confirm("Etes-vous sûr de vouloir supprimer ce client?"));'></button>
@@ -111,7 +111,7 @@
 				<?php } ?>
 			</table>
 		</div>
-		<?php if ($rbac->check("admin-clients-update-own", $currentUserID) || $rbac->check("admin-clients-update-all", $currentUserID)) { ?>
+		<?php if ($rbac->check("ope-clients-update-own", $currentUserID) || $rbac->check("ope-clients-update-all", $currentUserID)) { ?>
 			<div class="panel-footer"><a class="btn btn-default" role="button" href="client-create.php">Ajouter un client</a></div>
 		<?php }?>
 	</div>
