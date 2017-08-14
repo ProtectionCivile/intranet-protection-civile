@@ -11,7 +11,7 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="/user-view.php">Gestion des utilisateurs</a></li>
+	<li><a href="/user-list.php">Gestion des utilisateurs</a></li>
 	<li class="active">Création</li>
 </ol>
 
@@ -128,11 +128,11 @@
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-8">
 						<?php if (empty($genericSuccess)){ ?>
-							<a class="btn btn-default" href="user-view.php" role="button">Annuler - Retour à la liste</a>
+							<a class="btn btn-default" href="user-list.php" role="button">Annuler - Retour à la liste</a>
 						<?php } ?>
 						<button type="submit" class="btn btn-success" id='submitAddUserForm'>Créer</button>
 						<?php if (isset($_POST['addUser']) && !empty($genericSuccess)) { ?>
-							<a class="btn btn-default" href="user-view.php" role="button">J'ai terminé ! Retour à la liste</a>
+							<a class="btn btn-default" href="user-list.php" role="button">J'ai terminé ! Retour à la liste</a>
 						<?php } ?>
 				   </div>
 				</div>

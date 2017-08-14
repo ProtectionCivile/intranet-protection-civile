@@ -10,7 +10,7 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="/user-view.php">Gestion des utilisateurs</a></li>
+	<li><a href="/user-list.php">Gestion des utilisateurs</a></li>
 	<li class="active">Attributions de rôles</li>
 </ol>
 
@@ -98,7 +98,7 @@
 
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-8">
-							<a class="btn btn-info" href="user-view.php" role="button">Retour à la liste des utilisateurs</a>
+							<a class="btn btn-info" href="user-list.php" role="button">Retour à la liste des utilisateurs</a>
 					    </div>
 					</div>
 				</form>

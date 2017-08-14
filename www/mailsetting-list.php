@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Paramètres généraux</title>
+	<title>Paramètres mail</title>
 	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
@@ -11,7 +11,7 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li class="active">Paramètres généraux</li>
+	<li class="active">Paramètres mail</li>
 </ol>
 
 
@@ -20,7 +20,7 @@
 
 
 <!-- Delete a setting : Controller -->
-<?php include 'functions/controller/setting-delete-controller.php'; ?>
+<?php include 'functions/controller/mailsetting-delete-controller.php'; ?>
 
 
 <!-- Page content container -->
@@ -29,12 +29,12 @@
 	<!-- Update setting : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
-	<?php $base_url="setting-view.php"; ?>
+	<?php $base_url="mailsetting-list.php"; ?>
 
 	<!-- Beginning of the filter's parent module -->
 	<?php include_once('components/filter/filter-settings-module.php'); ?>
 
-	<?php require_once('components/filter/filter-settings-query-builder.php'); ?>
+	<?php require_once('components/filter/filter-mailsettings-query-builder.php'); ?>
 
 	<?php require_once('components/filter/parts/paging-query-modifier.php'); ?>
 
@@ -85,7 +85,7 @@
 			<?php } ?>
 		</div>
 		<?php if ($rbac->check("admin-settings-update", $currentUserID)) { ?>
-			<div class="panel-footer"><a class="btn btn-default" role="button" href="setting-create.php">Ajouter un paramètre</a></div>
+			<div class="panel-footer"><a class="btn btn-default" role="button" href="mailsetting-create.php">Ajouter un paramètre</a></div>
 		<?php }?>
 	</div>
 	<!-- Page's pagination module -->

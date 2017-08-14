@@ -12,7 +12,7 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="dps-list-view.php">Dispositifs de secours</a></li>
+	<li><a href="dps-list.php">Dispositifs de secours</a></li>
 	<li class="active">Listing</li>
 </ol>
 
@@ -21,7 +21,7 @@
 <?php require_once('functions/dps/dps-compute-city.php'); ?>
 
 <!-- Authentication -->
-<?php require_once('functions/dps/dps-list-authentication.php'); ?>
+<?php require_once('functions/dps/dps-view-authentication.php'); ?>
 
 
 <!-- Page content container -->
@@ -29,7 +29,7 @@
 
 
 
-	<?php $base_url="dps-list-view.php"; ?>
+	<?php $base_url="dps-list.php"; ?>
 
 	<!-- Beginning of the filter's parent module -->
 	<?php include_once('components/filter/filter-dps-list-module.php'); ?>

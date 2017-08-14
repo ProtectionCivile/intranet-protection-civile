@@ -379,7 +379,7 @@
 				</script>
 
         <?php $feedback = compute_server_feedback($bspp_error);?>
-        <label for="bspp" class="col-sm-2 control-label">SDIS / BSPP <?php echo $bspp;?></label>
+        <label for="bspp" class="col-sm-2 control-label">SDIS / BSPP</label>
         <div class="col-sm-2">
           <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
             <select class="form-control" id="bspp" name="bspp" aria-describedby="bspp-error">

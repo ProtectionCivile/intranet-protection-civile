@@ -6,7 +6,7 @@
 			$genericError = "Impossible de supprimer un utilisateur inconnu";
 		}
 		else{
-			$check_query = "SELECT ID, login FROM $tablename_users WHERE ID='$delID'" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+			$check_query = "SELECT ID, login FROM $tablename_users WHERE ID='$delID'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 			$verif = mysqli_query($db_link, $check_query);
 			$delUser = mysqli_fetch_assoc($verif);
 			if (!$delUser){
@@ -21,7 +21,7 @@
         		$allUserRoles="";
         		$roles = $rbac->Users->allRoles($delID);
 				foreach ($roles as &$role) {
-					$allUserRoles = $allUserRoles.utf8_encode($role['Description']).", ";
+					$allUserRoles = $allUserRoles.$role['Description'].", ";
 					$rbac->Users->unassign($role['ID'], $delID);
 				}
         		$perm_id = $rbac->Roles->remove($id, true);

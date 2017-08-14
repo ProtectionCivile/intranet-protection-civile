@@ -29,7 +29,7 @@
 	<!-- Update user : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
-	<?php $base_url="user-view.php"; ?>
+	<?php $base_url="user-list.php"; ?>
 
 	<!-- Beginning of the filter's parent module -->
 	<?php include_once('components/filter/filter-users-module.php'); ?>
