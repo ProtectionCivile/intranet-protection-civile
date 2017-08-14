@@ -180,6 +180,10 @@ CREATE TABLE `select_list_parameters` (
 	(NULL, 'ris_e2', '2', 'Modéré (Entre 10 et 20 minutes)'),
 	(NULL, 'ris_e2', '3', 'Moyen (Entre 20 et 30 minutes)'),
 	(NULL, 'ris_e2', '4', 'Elevé (Plus de 30 minutes)'),
+	(NULL, 'ris_value', '1', '0,25'),
+	(NULL, 'ris_value', '2', '0,30'),
+	(NULL, 'ris_value', '3', '0,35'),
+	(NULL, 'ris_value', '4', '0,40'),
 	(NULL, 'yesno', '0', 'Non'),
 	(NULL, 'yesno', '1', 'Oui');
 

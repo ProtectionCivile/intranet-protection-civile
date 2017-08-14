@@ -1,5 +1,6 @@
 <?php
 require_once('lib/fpdf/fpdf.php');
+require_once('functions/dps/dps-select-parameters-computation.php');
 
 function buildPdfForDps($pathfile, $dps_p) {
 
@@ -11,7 +12,14 @@ function buildPdfForDps($pathfile, $dps_p) {
 
   $pdf->SetTextColor(0,64,128);
   $pdf->SetFont('Poppins-SemiBold','',10);
-  $pdf->Text(12,62,utf8_decode("Ouverture d'un Dispositif Prévisionnel de Secours de Moyenne Envergure (DPS-ME)". ' '.$dps_p['id'] ));
+
+  require('functions/dps/dps-query-select-parameters.php');
+  $dps_type_detailed=get_select_unique_parameter($parameters_query_result, 'dps_type_detailed', $dps_p['dps_type']);
+
+  require('functions/dps/dps-query-select-parameters.php');
+  $dps_type_short=get_select_unique_parameter($parameters_query_result, 'dps_type_short', $dps_p['dps_type']);
+
+  $pdf->Text(12,62,utf8_decode("Ouverture d'un ".$dps_type_detailed." (".$dps_type_short.")"));
 
 
   // Début des cadres
@@ -21,7 +29,7 @@ function buildPdfForDps($pathfile, $dps_p) {
   $pdf->SetXY(171,62);
   $pdf->SetDrawColor(0,0,0);
   $pdf->SetTextColor(255,0,0);
-  $pdf->Cell(32,5.3,utf8_decode("92-15-COU-080"),1,1,"C");
+  $pdf->Cell(32,5.3,utf8_decode($dps_p['cu_full']),1,1,"C");
   $pdf->SetFont('Arial','',7);
   $pdf->SetTextColor(0,0,0);
   $pdf->Text(171, 61, utf8_decode("Certificat Original d'Affiliation"));
@@ -44,13 +52,13 @@ function buildPdfForDps($pathfile, $dps_p) {
   $pdf->Text(63, 85, utf8_decode("Fax :"));
   $pdf->Text(14, 88, utf8_decode("E-mail :"));
   $pdf->SetTextColor(210,120,20);
-  $pdf->Text(40, 73, utf8_decode("Association Passé Présent (A.P.P.)"));
-  $pdf->Text(40, 76, utf8_decode("Michèle TELLIER"));
-  $pdf->Text(40, 79, utf8_decode("Organisatrice de la Révolution Française"));
-  $pdf->Text(40, 82, utf8_decode("13 Avenue du Chat blanc sur la grande branche en chêne clair - 92345 Cormeilles En Parisis Sur Marne de la Seine"));
-  $pdf->Text(40, 85, utf8_decode("+1 783-780-1345"));
-  $pdf->Text(70, 85, utf8_decode("01 02 03 04 05"));
-  $pdf->Text(40, 88, utf8_decode("directeur-adj-informatique@protectioncivile92.org"));
+  $pdf->Text(40, 73, utf8_decode($dps_p['client_name']));
+  $pdf->Text(40, 76, utf8_decode($dps_p['client_represent']));
+  $pdf->Text(40, 79, utf8_decode($dps_p['client_title']));
+  $pdf->Text(40, 82, utf8_decode($dps_p['client_address']));
+  $pdf->Text(40, 85, utf8_decode($dps_p['client_phone']));
+  $pdf->Text(70, 85, utf8_decode($dps_p['client_fax']));
+  $pdf->Text(40, 88, utf8_decode($dps_p['client_email']));
 
   //Nature manifestation
   $pdf->SetTextColor(0,64,128);

@@ -1,3 +1,5 @@
+<?php require_once('components/header.php'); ?>
+
 <?php
 function get_select_parameters($parameters_query_result_p, $category) {
 	if($parameters_query_result_p == null || $category == null  || $category == '' ) {
