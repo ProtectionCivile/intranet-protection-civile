@@ -106,7 +106,7 @@
 						<td>
 							<?php if ($rbac->check("ope-clients-update-own", $currentUserID) || $rbac->check("ope-clients-update-all", $currentUserID)) { ?>
 								<form action='client-edit.php' method='post' accept-charset='utf-8'>
-									<input type='hidden' name='clientID' value=<?php echo "'".$client['id']."'"; ?> >
+									<input type='hidden' name='id' value=<?php echo "'".$client['id']."'"; ?> >
 									<button type='submit' class='btn btn-warning glyphicon glyphicon-pencil' title="Modifier"></button>
 								</form>
 							<?php }?>
