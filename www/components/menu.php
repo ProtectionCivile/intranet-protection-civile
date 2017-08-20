@@ -29,7 +29,6 @@ $settings_array = mysqli_fetch_array($query_result);
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="index.php"><span class='glyphicon glyphicon-home'></span> Accueil</a></li>
-				<li><a href="http://franceprotectioncivile.org" target="_blank">e-Protec</a></li>
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-check'></span> Operationnel <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
@@ -38,7 +37,7 @@ $settings_array = mysqli_fetch_array($query_result);
 						<li class="divider"></li>
 						<li class="dropdown-header">Gestion des DPS</li>
 						<?php if ($rbac->check("ope-dps-view-own", $currentUserID)) {?>
-							<li><a href="dps-list.php?city"><span class='glyphicon glyphicon-search'></span> Liste des DPS de mon Antenne</a></li>
+							<li><a href="dps-list.php?own"><span class='glyphicon glyphicon-search'></span> Liste des DPS de mon Antenne</a></li>
 						<?php } ?>
 						<?php if ($rbac->check("ope-dps-view-dept", $currentUserID) || $rbac->check("ope-dps-view-all", $currentUserID)) {?>
 							<li><a href="dps-list.php?dept"><span class='glyphicon glyphicon-search'></span> Liste des DPS départementaux</a></li>
@@ -47,30 +46,28 @@ $settings_array = mysqli_fetch_array($query_result);
 							<li><a href="dps-list.php"><span class='glyphicon glyphicon-search'></span> Liste de tous les DPS</a></li>
 						<?php } ?>
 						<li class="divider"></li>
-						<?php if ($rbac->check("ope-dps-create-own", $currentUserID) || $rbac->check("ope-dps-create-all", $currentUserID)) {?>
+						<?php if ($rbac->check("ope-dps-update-own", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID)) {?>
 							<li><a href="dps-create.php?city"><span class='glyphicon glyphicon-tasks'></span> Créer un DPS local</a></li>
 						<?php } ?>
-						<?php if ($rbac->check("ope-dps-create-dept", $currentUserID) || $rbac->check("ope-dps-create-all", $currentUserID)) {?>
+						<?php if ($rbac->check("ope-dps-update-dept", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID)) {?>
 							<li><a href="dps-create.php?dept"><span class='glyphicon glyphicon-tasks'></span> Créer un DPS départemental</a></li>
 						<?php } ?>
 						<li class="divider"></li>
 						<li class="dropdown-header">Réglages opérationnels</li>
-						<?php if ($rbac->check("ope-clients-view-own", $currentUserID)) {?>
-							<li><a href="client-list.php?city"><span class='glyphicon glyphicon-search'></span> Liste des clients de mon Antenne</a></li>
+						<?php if ($rbac->check("ope-clients-view-own", $currentUserID) || $rbac->check("ope-clients-view-all", $currentUserID)) {?>
+							<li><a href="client-list.php"><span class='glyphicon glyphicon-search'></span> Liste des clients</a></li>
 						<?php } ?>
-						<?php if ($rbac->check("ope-clients-view-all", $currentUserID)) {?>
-							<li><a href="client-list.php"><span class='glyphicon glyphicon-search'></span> Liste de tous les clients</a></li>
+						<?php if ($rbac->check("ope-clients-update-own", $currentUserID)) {?>
+							<li><a href="client-create.php"><span class='glyphicon glyphicon-user'></span><span class='glyphicon glyphicon-plus'></span> Ajouter un client</a></li>
 						<?php } ?>
-						<li><a href="add-organisateur.php"><span class='glyphicon glyphicon-user'></span><span class='glyphicon glyphicon-plus'></span> Ajouter un organisateur</a></li>
 					</ul>
 				</li>
 
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-folder-open'></span> Finances<span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-piggy-bank'></span> Finances<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li class="dropdown-header">Trésorerie</li>
-						<li><a href="tresorerie.php?filter=accepted"><span class='glyphicon glyphicon-piggy-bank'></span> Trésorerie</a></li>
-						<li><a href="devis.php"><span class='glyphicon glyphicon-usd'></span> Devis</a></li>
+						<li><a href="tresorerie.php?filter=accepted"><span class='glyphicon glyphicon-usd'></span> Trésorerie</a></li>
 						<li><a href="factures.php"><span class='glyphicon glyphicon-list-alt'></span> Factures</a></li>
 					</ul>
 				</li>

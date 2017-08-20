@@ -1,4 +1,4 @@
-<?php require_once('functions/dps/dps-find-documents.php'); ?>
+<?php require('functions/dps/dps-find-documents.php'); // Forcé à reload?> 
 
 
 <script src="js/fileinput.min.js" type="text/javascript"></script>

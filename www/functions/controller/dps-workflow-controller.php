@@ -1,5 +1,5 @@
 <?php require_once('functions/dps/dps-compute-status.php'); ?>
-<?php require_once('functions/dps/dps-workflow-authorization.php'); ?>
+<?php require('functions/dps/dps-workflow-authorization.php'); // Relaod forcé?>
 <?php
 
 

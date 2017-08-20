@@ -1,5 +1,5 @@
 <form role='form' id='formfilter' action='<?php echo $base_url; ?>' method='post'>
-	<input type='hidden' name='formcity' id='formcity' value='<?php echo $city; ?>'>
+	<input type='hidden' name='formfilteredsection' id='formfilteredsection' value='<?php echo $filtered_section; ?>'>
 	<input type='hidden' name='formstatus' id='formstatus' value='<?php echo $status; ?>'>
 	<input type='hidden' name='formdatebegin' id='formdatebegin' value='<?php echo $datebegin; ?>'>
 	<input type='hidden' name='formdateend' id='formdateend' value='<?php echo $dateend; ?>'>

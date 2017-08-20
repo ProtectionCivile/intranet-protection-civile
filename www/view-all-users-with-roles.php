@@ -16,6 +16,9 @@
 </ol>
 
 
+<!-- Compute city calculation according to POST & GET variables (before auth)-->
+<?php require_once('functions/user/user-compute-city.php'); ?>
+
 <!-- Authentication -->
 <?php $rbac->enforce("admin-users-view", $currentUserID); ?>
 
@@ -33,7 +36,7 @@
 
 
 	<?php
-	$query_cities = "SELECT name FROM sections WHERE number=".$city or die("Erreur lors de la consultation" . mysqli_error($db_link));
+	$query_cities = "SELECT name FROM sections WHERE number=".$filtered_section or die("Erreur lors de la consultation" . mysqli_error($db_link));
 	$cities = mysqli_query($db_link, $query_cities);
 	$city = mysqli_fetch_assoc($cities);
 	$cityName=$city['name'];

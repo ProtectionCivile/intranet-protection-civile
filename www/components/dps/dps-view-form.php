@@ -1,3 +1,5 @@
+<?php $city = $ordered_section; ?>
+
 <?php require_once('functions/dps/dps-select-parameters-computation.php'); ?>
 
 <!-- Form to view a DPS : client part -->

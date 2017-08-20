@@ -4,7 +4,7 @@
 			<label for='cities' >Section</label>
 		</div>
 		<div class='col-md-11' id='cities'>
-			<?php $activeOrNot = ($city == "*") ? "active" : ""; ?>
+			<?php $activeOrNot = ($filtered_section == "*") ? "active" : ""; ?>
 			<button class='btn btn-primary btn-sm city-filter <?php echo $activeOrNot;?>' data-filter='*' >TOUTES</button>
 
 			<?php
@@ -12,7 +12,7 @@
 			$villes = mysqli_query($db_link, $query);
 			while($ville = mysqli_fetch_array($villes)) {
 				$activeOrNot = "";
-				if ($city == $ville['number']) {
+				if ($filtered_section == $ville['number']) {
 					$activeOrNot = "active";
 				} ?>
 				<button class='btn btn-default btn-sm city-filter <?php echo $activeOrNot;?>' data-filter='<?php echo $ville['number']; ?>' ><?php echo $ville['shortname']; ?></button>
@@ -23,8 +23,8 @@
 </div>
 
 <?php
-if ($city == "*") {
-	$city="";
+if ($filtered_section == "*") {
+	$filtered_section="";
 }
 ?>
 
@@ -34,7 +34,7 @@ if ($city == "*") {
 	$(document).ready(function(){
 		$(".city-filter").click(function(){
 			var value = $(this).attr('data-filter');
-			$('#formcity').val(value);
+			$('#formfilteredsection').val(value);
 			$('#formfilter').submit();
 		});
 	});

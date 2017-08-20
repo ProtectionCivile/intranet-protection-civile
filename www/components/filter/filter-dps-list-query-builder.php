@@ -4,13 +4,13 @@
 	$addWhereClause = false;
 
 
-	if (!empty($city) || $city == "0" ) {
+	if (!empty($filtered_section) || $filtered_section == "0" ) {
 		$addWhereClause = true;
-		if ($city == "*") {
+		if ($filtered_section == "*") {
 			$whereCity = "section='".$currentUserSection."'";
 		}
 		else {
-			$whereCity = "section='".$city."'";
+			$whereCity = "section='".$filtered_section."'";
 		}
 	}
 

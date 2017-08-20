@@ -2,12 +2,12 @@
 	$sqlQuery = "SELECT * FROM $tablename_roles ";
 
 
-	if (!empty($city) || $city == "0") {
+	if (!empty($filtered_section) || $filtered_section == "0") {
 		$addWhereClause = true;
-		$whereCity = "Affiliation='".$city."'";
+		$whereCity = "Affiliation='".$filtered_section."'";
 	}
 
-	
+
 
 	if ($addWhereClause) {
 		$sqlQuery = $sqlQuery." WHERE ";

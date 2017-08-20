@@ -11,17 +11,19 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li class="active">Gestion des clients</li>
+	<li><a href="client-list.php">Clients</a></li>
+	<li class="active">Listing</li>
 </ol>
 
 
-<!-- Authentication -->
-<?php require_once('functions/dps/dps-view-authentication.php'); ?>
+<!-- Compute city calculation according to POST & GET variables (before auth)-->
+<?php require_once('functions/client/client-compute-city.php'); ?>
 
+<!-- Authentication -->
+<?php require_once('functions/client/client-view-authentication.php'); ?>
 
 <!-- Delete a client : Controller -->
 <?php include 'functions/controller/client-delete-controller.php'; ?>
-
 
 <!-- Page content container -->
 <div class="container">
@@ -89,12 +91,18 @@
 							<?php echo $client["mail"]; ?>
 						</td>
 						<td>
-							<?php echo $client["attached_section"]; ?>
+							<?php
+							$reqliste = "SELECT shortname FROM $tablename_sections WHERE number=".$client['attached_section'] or die("Erreur lors de la consultation" . mysqli_error($db_link));
+							$sections = mysqli_query($db_link, $reqliste);
+							while($section = mysqli_fetch_array($sections)) {
+								echo $section["shortname"];
+							}
+							?>
 						</td>
 						<td>
 							<?php if ($rbac->check("ope-clients-update-own", $currentUserID) || $rbac->check("ope-clients-update-all", $currentUserID)) { ?>
 								<form action='client-edit.php' method='post' accept-charset='utf-8'>
-									<input type='hidden' name='clientID' value=<?php echo "'".$client['ID']."'"; ?> >
+									<input type='hidden' name='clientID' value=<?php echo "'".$client['id']."'"; ?> >
 									<button type='submit' class='btn btn-warning glyphicon glyphicon-pencil' title="Modifier"></button>
 								</form>
 							<?php }?>
@@ -102,7 +110,7 @@
 						<td>
 							<?php if ($rbac->check("ope-clients-update-own", $currentUserID) || $rbac->check("ope-clients-update-all", $currentUserID)) { ?>
 								<form action='' method='post' accept-charset='utf-8'>
-									<input type='hidden' name='delclient' value=<?php echo "'".$client['ID']."'"; ?> >
+									<input type='hidden' name='delClient' value=<?php echo "'".$client['id']."'"; ?> >
 									<button type='submit' class='btn btn-danger glyphicon glyphicon-trash' title="Supprimer" onclick='return(confirm("Etes-vous sûr de vouloir supprimer ce client?"));'></button>
 								</form>
 							<?php }?>

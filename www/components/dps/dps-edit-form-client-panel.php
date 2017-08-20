@@ -53,7 +53,7 @@
         <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Adresse, code postal, ville."></span>
       </label>
       <div class="col-sm-8">
-        <input type="text" class="form-control" id="client_address" name="client_address" aria-describedby="client-address-error" placeholder="Adresse" minlength='20' required='true' value="<?php echo $client_address;?>" data-minlength="6" >
+        <input type="text" class="form-control" id="client_address" name="client_address" aria-describedby="client-address-error" placeholder="13 rue de la Poupée qui Tousse, 92230 Gennevilliers" minlength='20' required='true' value="<?php echo $client_address;?>" data-minlength="6" >
         <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
         <span id='client-adress-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
       </div>
