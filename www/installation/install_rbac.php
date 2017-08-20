@@ -4015,7 +4015,6 @@ $rbac->Roles->assign('DDO-A', 'treso-dps-view-all');
 $rbac->Roles->assign('DDO-A', 'ope-clients-update-all');
 $rbac->Roles->assign('DDO-A', 'admin-sections-view');
 $rbac->Roles->assign('DDO-A', 'directory-view');
-$rbac->Roles->assign('DDO-B', 'ope-dps-view-all');
 $rbac->Roles->assign('DDO-B', 'ope-dps-view-dept');
 $rbac->Roles->assign('DDO-B', 'admin-sections-view');
 $rbac->Roles->assign('DDO-B', 'directory-view');
