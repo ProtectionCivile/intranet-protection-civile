@@ -14,6 +14,8 @@
 	<li class="active">Gestion des utilisateurs</li>
 </ol>
 
+<!-- Compute city calculation according to POST & GET variables (before auth)-->
+<?php require_once('functions/user/user-compute-city.php'); ?>
 
 <!-- Authentication -->
 <?php $rbac->enforce("admin-users-view", $currentUserID); ?>
@@ -29,7 +31,7 @@
 	<!-- Update user : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
-	<?php $base_url="user-view.php"; ?>
+	<?php $base_url="user-list.php"; ?>
 
 	<!-- Beginning of the filter's parent module -->
 	<?php include_once('components/filter/filter-users-module.php'); ?>
@@ -44,7 +46,10 @@
 	<!-- List available users -->
 	<div class="panel panel-info">
 		<div class="panel-heading">
-			<h3 class="panel-title">Visualisation des utilisateurs</h3>
+			<h3 class="panel-title">Visualisation des utilisateurs
+				<?php if ($rbac->check("admin-users-update", $currentUserID)) { ?>
+					<div class="text-right"><a class="btn btn-warning" role="button" href="user-create.php">Ajouter un utilisateur</a></div>
+				<?php }?>
 		</div>
 		<div class="table-responsive">
 			<table class="table table-hover">
@@ -108,7 +113,7 @@
 			</table>
 		</div>
 		<?php if ($rbac->check("admin-users-update", $currentUserID)) { ?>
-			<div class="panel-footer"><a class="btn btn-default" role="button" href="user-create.php">Ajouter un utilisateur</a></div>
+			<div class="panel-footer"><a class="btn btn-warning" role="button" href="user-create.php">Ajouter un utilisateur</a></div>
 		<?php }?>
 	</div>
 

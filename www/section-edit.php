@@ -11,7 +11,7 @@
 
 <ol class='breadcrumb'>
 	<li><a href='/'>Home</a></li>
-	<li><a href='/section-view.php'>Gestion des sections</a></li>
+	<li><a href='/section-list.php'>Gestion des sections</a></li>
 	<li class='active'>Modification</li>
 </ol>
 
@@ -86,7 +86,7 @@
 				<div class='form-group form-group-sm'>
 					<label for='city' class='col-sm-4 control-label'>Ville</label>
 					<div class='col-sm-8'>
-						<input type='text' class='form-control' id='city' name='city' minlength='3' maxlength='40' value='<?php echo $city; ?>'>
+						<input type='text' class='form-control' id='city' name='city' minlength='3' maxlength='40' value='<?php echo $ordered_section; ?>'>
 					</div>
 				</div>
 
@@ -136,11 +136,11 @@
 				<div class='form-group'>
 					<div class='col-sm-offset-4 col-sm-8'>
 						<?php if (empty($genericSuccess)){ ?>
-							<a class='btn btn-default' href='section-view.php' role='button'>Annuler - Retour à la liste</a>
+							<a class='btn btn-default' href='section-list.php' role='button'>Annuler - Retour à la liste</a>
 						<?php } ?>
 						<button type='submit' class='btn btn-warning' id='submit'>Mettre à jour</button>
 						<?php if (isset($_POST['update']) && !empty($genericSuccess)) { ?>
-							<a class='btn btn-default' href='section-view.php' role='button'>J'ai terminé ! Retour à la liste</a>
+							<a class='btn btn-default' href='section-list.php' role='button'>J'ai terminé ! Retour à la liste</a>
 						<?php } ?>
 				   </div>
 				</div>

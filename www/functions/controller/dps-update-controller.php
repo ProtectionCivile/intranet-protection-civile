@@ -69,12 +69,13 @@
 				cu_yearly_index='$cu_yearly_index',
 				dps_justification='".mysqli_escape_string($db_link, $dps_justification)."',
 				status='$status',
+				eprotec_number='$eprotec_number',
 				status_justification='".mysqli_escape_string($db_link, $status_justification)."'
 				WHERE id=$id" or die("Impossible de modifier le DPS dans la base de données" . mysqli_error($db_link));
 
 			if ($db_link->query($sql) === TRUE) {
 				$genericSuccess = "Dispositif de Secours mis à jour.
-				<a href='dps-list-view.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
+				<a href='dps-list.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
 			}
 			else {
 				$genericError = "Erreur pendant la création du DPS ".$event_name." (".$cu_full.") " . $db_link->error;

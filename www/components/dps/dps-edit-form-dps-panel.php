@@ -20,7 +20,8 @@
             <div class='input-group date' id='dps_begin_date_picker' name="dps_begin_date_picker">
               <input type='text' class="form-control" id='dps_begin_date' name="dps_begin_date" aria-describedby="dps-begin-date-error" required='true' value="<?php echo $dps_begin_date; ?>" / >
               <span class="input-group-addon">
-              <span class="glyphicon glyphicon-calendar"></span>
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
             </div>
             <span id='dps-begin-date-error' class="help-block" aria-hidden="true"></span>
           </div>
@@ -41,7 +42,8 @@
             <div class='input-group date' id='dps_end_date_picker' name="dps_end_date_picker">
               <input type='text' class="form-control" id='dps_end_date' name="dps_end_date" required='true' aria-describedby="dps-end-date-error" value="<?php echo $dps_end_date; ?>" />
               <span class="input-group-addon">
-              <span class="glyphicon glyphicon-calendar"></span>
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
             </div>
             <span id='dps-end-date-error' class="help-block" aria-hidden="true"></span>
           </div>
@@ -377,7 +379,7 @@
 				</script>
 
         <?php $feedback = compute_server_feedback($bspp_error);?>
-        <label for="bspp" class="col-sm-2 control-label">SDIS / BSPP <?php echo $bspp;?></label>
+        <label for="bspp" class="col-sm-2 control-label">SDIS / BSPP</label>
         <div class="col-sm-2">
           <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
             <select class="form-control" id="bspp" name="bspp" aria-describedby="bspp-error">
@@ -442,6 +444,23 @@
                 <div class="input-group-addon glyphicon glyphicon-euro"></div>
               </div>
               <span id='price-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group form-group-sm">
+
+          <?php $feedback = compute_server_feedback($eprotec_number_error);?>
+          <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+            <label for="eprotec_number" class="col-sm-4 control-label">
+              Numéro d'évènement e-Protec
+              <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Sert à avoir un lien cliquable sur la visualisation, toujours pratique pour valider ses infos"></span>
+            </label>
+            <div class="col-sm-3">
+              <input type="number" class="form-control" id="eprotec_number" name="eprotec_number" aria-describedby="eprotec-number-error" minlength='4' maxlength='8' digits='true' placeholder="Exemple : 414320" value="<?php echo $eprotec_number; ?>" data-minlength="4" >
+              <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
+              <span id='eprotec-number-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
             </div>
           </div>
 

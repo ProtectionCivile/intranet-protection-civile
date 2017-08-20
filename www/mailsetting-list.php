@@ -29,7 +29,7 @@
 	<!-- Update setting : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
-	<?php $base_url="mailsetting-view.php"; ?>
+	<?php $base_url="mailsetting-list.php"; ?>
 
 	<!-- Beginning of the filter's parent module -->
 	<?php include_once('components/filter/filter-settings-module.php'); ?>
@@ -45,7 +45,11 @@
 	?>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3 class="panel-title">Liste des paramètres</h3>
+			<h3 class="panel-title">Liste des paramètres
+				<?php if ($rbac->check("admin-settings-update", $currentUserID)) { ?>
+					<div class="text-right"><a class="btn btn-warning" role="button" href="mailsetting-create.php">Ajouter un paramètre</a></div>
+				<?php }?>
+			</h3>
 		</div>
 		<div class="panel-body">
 			<?php if($nb_elements == 0) { ?>
@@ -85,7 +89,7 @@
 			<?php } ?>
 		</div>
 		<?php if ($rbac->check("admin-settings-update", $currentUserID)) { ?>
-			<div class="panel-footer"><a class="btn btn-default" role="button" href="mailsetting-create.php">Ajouter un paramètre</a></div>
+			<div class="panel-footer"><a class="btn btn-warning" role="button" href="mailsetting-create.php">Ajouter un paramètre</a></div>
 		<?php }?>
 	</div>
 	<!-- Page's pagination module -->

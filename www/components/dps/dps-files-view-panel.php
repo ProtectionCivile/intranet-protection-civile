@@ -1,5 +1,4 @@
-<?php require_once('functions/dps/dps-find-documents.php'); ?>
-
+<?php require('functions/dps/dps-find-documents.php'); //Reload forcé?>
 
 <div class="panel panel-info">
   <div class="panel-heading">

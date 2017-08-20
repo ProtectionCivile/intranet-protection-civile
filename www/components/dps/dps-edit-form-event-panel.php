@@ -72,7 +72,8 @@
             <div class='input-group date' id='event_begin_date_picker' name="event_begin_date_picker">
               <input type='text' class="form-control" id='event_begin_date' name="event_begin_date" aria-describedby="event-begin-date-error" required='true' value="<?php echo $event_begin_date; ?>" / >
               <span class="input-group-addon">
-              <span class="glyphicon glyphicon-calendar"></span>
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
             </div>
             <span id='event-begin-date-error' class="help-block" aria-hidden="true"></span>
           </div>
@@ -93,7 +94,8 @@
             <div class='input-group date' id='event_end_date_picker' name="event_end_date_picker">
               <input type='text' class="form-control" id='event_end_date' name="event_end_date" required='true' aria-describedby="event-end-date-error" value="<?php echo $event_end_date; ?>" />
               <span class="input-group-addon">
-              <span class="glyphicon glyphicon-calendar"></span>
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
             </div>
             <span id='event-end-date-error' class="help-block" aria-hidden="true"></span>
           </div>

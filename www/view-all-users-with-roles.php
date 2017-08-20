@@ -11,10 +11,13 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="/role-view.php">Gestion des rôles</a></li>
+	<li><a href="/role-list.php">Gestion des rôles</a></li>
 	<li class="active">Audit des rôles</li>
 </ol>
 
+
+<!-- Compute city calculation according to POST & GET variables (before auth)-->
+<?php require_once('functions/user/user-compute-city.php'); ?>
 
 <!-- Authentication -->
 <?php $rbac->enforce("admin-users-view", $currentUserID); ?>
@@ -33,7 +36,7 @@
 
 
 	<?php
-	$query_cities = "SELECT name FROM sections WHERE number=".$city or die("Erreur lors de la consultation" . mysqli_error($db_link));
+	$query_cities = "SELECT name FROM sections WHERE number=".$filtered_section or die("Erreur lors de la consultation" . mysqli_error($db_link));
 	$cities = mysqli_query($db_link, $query_cities);
 	$city = mysqli_fetch_assoc($cities);
 	$cityName=$city['name'];

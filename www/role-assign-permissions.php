@@ -10,7 +10,7 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="/role-view.php">Gestion des rôles</a></li>
+	<li><a href="/role-list.php">Gestion des rôles</a></li>
 	<li class="active">Attributions de permissions</li>
 </ol>
 
@@ -60,7 +60,7 @@ if(empty($commonError)) {
 					<br /> <br />
 					<ul>
 					<?php
-					$query = "SELECT ID, Title, Description FROM $tablename_permissions ORDER by Title ASC";
+					$query = "SELECT ID, Title, Description FROM $tablename_permissions ORDER by Title DESC";
 					$permissions = mysqli_query($db_link, $query);
 					while($permission = mysqli_fetch_array($permissions)) {
 						$permissionID=$permission["ID"];
@@ -89,7 +89,7 @@ if(empty($commonError)) {
 
 					<div class="form-group">
 						<div class="col-sm-offset-4 col-sm-8">
-							<a class="btn btn-info" href="role-view.php" role="button">Retour à la liste des rôles</a>
+							<a class="btn btn-info" href="role-list.php" role="button">Retour à la liste des rôles</a>
 					    </div>
 					</div>
 				</form>

@@ -36,7 +36,11 @@
 	<!-- List available permissions -->
 	<div class="panel panel-info">
 		<div class="panel-heading">
-			<h3 class="panel-title">Visualisation des permissions</h3>
+			<h3 class="panel-title">Visualisation des permissions
+				<?php if ($rbac->check("admin-permissions-update", $currentUserID)) { ?>
+					<div class="text-right"><a class="btn btn-warning" role="button" href="permission-create.php">Ajouter une permission</a></div>
+				<?php } ?>
+			</h3>
 		</div>
 		<div class="table-responsive">
 			<table class="table table-hover ">
@@ -55,13 +59,13 @@
 							<?php echo $permission["ID"]; ?>
 						</td>
 						<td>
-							<?php echo $permission["Title"]."<br />(".utf8_encode($rbac->Permissions->getPath($permission["ID"])).")";?>
+							<?php echo $permission["Title"]."<br />(".$rbac->Permissions->getPath($permission["ID"]).")";?>
 						</td>
 						<td>
 							<?php echo $permission["Description"]; ?>
 						</td>
 						<td>
-							<form action='permission-view-usage.php' method='post' accept-charset='utf-8'>
+							<form action='permission-list-usage.php' method='post' accept-charset='utf-8'>
 								<input type='hidden' name='permissionID' value=<?php echo "'".$permission['ID']."'"; ?> >
 								<button type='submit' class='btn btn-default glyphicon glyphicon-eye-open' title="Voir utilisation"></button>
 							</form>
@@ -91,7 +95,7 @@
 			</table>
 		</div>
 		<?php if ($rbac->check("admin-permissions-update", $currentUserID)) { ?>
-			<div class="panel-footer"><a class="btn btn-default" role="button" href="permission-create.php">Ajouter une permission</a></div>
+			<div class="panel-footer"><a class="btn btn-warning" role="button" href="permission-create.php">Ajouter une permission</a></div>
 		<?php } ?>
 	</div>
 

@@ -18,8 +18,8 @@ if (isset($_GET['notallowed'])){
 <div class="container">
 
 	<p class="bg-success">Bonjour <strong><?php echo $currentUserFirstName; ?></strong>, bienvenue dans votre espace sécurisé</p>
-	
-	<center><img class="img-responsive" src='img/logo.png'/></center>
+
+	<center><img class="img-responsive" src='img/logos/logo.png'/></center>
 	<h2 class="text-center">Protection Civile des Hauts-de-Seine</h2>
 	<center>
 		<?php
@@ -34,37 +34,37 @@ if (isset($_GET['notallowed'])){
 				<th class='active'>Téléphone</th>
 			</thead>
 			<tbody>
-				<?php while($city = mysqli_fetch_array($cities)) { 
+				<?php while($city = mysqli_fetch_array($cities)) {
 					$reset=0;
 					$queryR="SELECT Description, Phone FROM rbac_roles WHERE Affiliation='".$city['numero']."'" ;
 					$roles = mysqli_query($db_link, $queryR);
 					$count=mysqli_num_rows($roles);
-					while($role = mysqli_fetch_array($roles)) { 
+					while($role = mysqli_fetch_array($roles)) {
 						echo "<tr>";
 						if ($reset==0) {
 							echo "<td rowspan='".$count."'><strong>".$city['nom']."</strong></td>";
 							$reset=1;
 						}
-						if ($role["Phone"]) 
+						if ($role["Phone"])
 						{
 							echo "<td class='warning'>".$role["Description"]."</td>";
 							echo "<td class='warning'>".$role["Phone"]."</td>";
-						} 
+						}
 						else {
 							echo "<td>".$role["Description"]."</td>";
 							echo "<td>".$role["Phone"]."</td>";
 						}
 						echo "</tr>";
 					}
-					
+
 				}?>
 			</tbody>
-		</table> 
+		</table>
 	</center>
-	
+
 </div>
 
 <?php include('components/footer.php'); ?>
-  
+
 </body>
 </html>

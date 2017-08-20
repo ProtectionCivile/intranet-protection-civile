@@ -29,8 +29,7 @@
 		//C'est pas grave
 	}
 	if(isNullOrEmpty($client_email)){
-		$missingValues++;
-		$client_email_error = "L'adresse mail de l'organisateur est obligatoire";
+		// C'est pas grave
 	}
 
 
@@ -215,6 +214,9 @@
 		$price_error = "Le prix de la prestation est obligatoire";
 	}
 	if(isNullOrEmpty($dps_justification)){
+		// Nothing
+	}
+	if(isNullOrEmpty($eprotec_number)){
 		// Nothing
 	}
 

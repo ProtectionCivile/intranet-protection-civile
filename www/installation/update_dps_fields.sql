@@ -31,8 +31,8 @@ ALTER TABLE `dps` CHANGE `dossier_pref` `event_pref_secu` BOOLEAN NOT NULL DEFAU
 
 ALTER TABLE `dps` CHANGE `p1_spec` `ris_p1_public` VARCHAR(7) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `event_pref_secu`;
 ALTER TABLE `dps` CHANGE `p1_part` `ris_p1_actors` VARCHAR(7) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `ris_p1_public`;
-ALTER TABLE `dps` CHANGE `p2` `ris_p2` TINYINT(1) NULL DEFAULT '4' AFTER `ris_p1_actors`;
-ALTER TABLE `dps` CHANGE `e1` `ris_e1` TINYINT(1) NULL DEFAULT '4' AFTER `ris_p2`;
+ALTER TABLE `dps` ADD `ris_p2` TINYINT(1) NULL DEFAULT '4' AFTER `ris_p1_actors`;
+ALTER TABLE `dps` ADD `ris_e1` TINYINT(1) NULL DEFAULT '4' AFTER `ris_p2`;
 ALTER TABLE `dps` CHANGE `e2` `ris_e2` TINYINT(1) NULL DEFAULT '4' AFTER `ris_e1`;
 ALTER TABLE `dps` CHANGE `comment_ris` `ris_comment` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `ris_e2`;
 
@@ -73,8 +73,8 @@ ALTER TABLE `dps` CHANGE `pompier` `bspp` TINYINT(1) NULL DEFAULT NULL AFTER `sa
 ALTER TABLE `dps` CHANGE `prix` `price` VARCHAR(7) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `bspp`;
 ALTER TABLE `dps` CHANGE `justif_poste` `dps_justification` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `price`;
 
--- ALTER TABLE `dps` CHANGE `etat_demande_dps` `status` TINYINT(1) NULL DEFAULT NULL AFTER `dps_justification`;
-ALTER TABLE `dps` ADD `status` TINYINT(1) NULL DEFAULT NULL AFTER `dps_justification`;
+ALTER TABLE `dps` ADD `eprotec_number` INT(8) NULL DEFAULT NULL AFTER `dps_justification`;
+ALTER TABLE `dps` ADD `status` TINYINT(1) NULL DEFAULT NULL AFTER `eprotec_number`;
 ALTER TABLE `dps` CHANGE `administration` `status_justification` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `status`;
 ALTER TABLE `dps` CHANGE `date_creation` `status_creation_date` DATE NULL DEFAULT NULL AFTER `status_justification`;
 ALTER TABLE `dps` CHANGE `annul_poste` `status_cancel_date` DATE NULL DEFAULT NULL AFTER `status_creation_date`;
@@ -130,6 +130,18 @@ UPDATE `dps` SET `status` = 3 WHERE `status_cancel_date` IS NULL AND `etat_deman
 UPDATE `dps` SET `status` = 4 WHERE `status_cancel_date` IS NOT NULL;
 UPDATE `dps` SET `status` = 5 WHERE `status_cancel_date` IS NULL AND (`etat_demande_dps`=2 OR `etat_demande_dps`=4);
 
+UPDATE `dps` SET `ris_p2` = 1 WHERE `p2` = 1;
+UPDATE `dps` SET `ris_p2` = 2 WHERE `p2` = 2;
+UPDATE `dps` SET `ris_p2` = 3 WHERE `p2` = 3;
+UPDATE `dps` SET `ris_p2` = 4 WHERE `p2` = 4;
+UPDATE `dps` SET `ris_p2` = 4 WHERE `p2` = 5;
+UPDATE `dps` SET `ris_p2` = 4 WHERE `p2` = 6;
+UPDATE `dps` SET `ris_e1` = 1 WHERE `e1` = 1;
+UPDATE `dps` SET `ris_e1` = 2 WHERE `e1` = 2;
+UPDATE `dps` SET `ris_e1` = 3 WHERE `e1` = 3;
+UPDATE `dps` SET `ris_e1` = 4 WHERE `e1` = 4;
+UPDATE `dps` SET `ris_e1` = 4 WHERE `e1` = 5;
+
 
 -- SUPPRESSION DES CHAMPS INUTILISÉS
 ALTER TABLE `dps` DROP `date_ris`;
@@ -141,7 +153,8 @@ ALTER TABLE `dps` DROP `soin_ar`;
 ALTER TABLE `dps` DROP `soin_dcd`;
 ALTER TABLE `dps` DROP `etat_demande_dps`;
 ALTER TABLE `dps` DROP `edition_ris`;
-
+ALTER TABLE `dps` DROP `p2`;
+ALTER TABLE `dps` DROP `e1`;
 
 
 DROP TABLE `select_list_parameters`;
@@ -152,7 +165,7 @@ CREATE TABLE `select_list_parameters` (
 	`option_text` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT 'human readable text' ,
 	PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci COMMENT = 'options du select';
 
-	INSERT INTO `select_list_parameters`
+INSERT INTO `select_list_parameters`
 	(`id`, `category`, `option_value`, `option_text`) VALUES
 	(NULL, 'bspp', '0', 'Ni informé, ni présent'),
 	(NULL, 'bspp', '1', 'Informé, non présent'),
@@ -188,7 +201,54 @@ CREATE TABLE `select_list_parameters` (
 	(NULL, 'yesno', '1', 'Oui');
 
 
+CREATE TABLE `settings_general` (
+	`ID` INT(12) NOT NULL AUTO_INCREMENT ,
+	`name` VARCHAR(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
+	`value` VARCHAR(400) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
+	PRIMARY KEY (`ID`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci COMMENT = 'Paramètres généraux';
+
+
+CREATE TABLE `settings_mail` (
+	`ID` INT(12) NOT NULL AUTO_INCREMENT ,
+	`name` VARCHAR(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
+	`value` VARCHAR(400) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
+	PRIMARY KEY (`ID`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci COMMENT = 'Paramètres mail';
+
+
+CREATE TABLE `users` (
+	  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+	  `login` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+	  `pass` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+	  `last_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+	  `first_name` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci,
+	  `phone` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci,
+	  `mail` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+	  `attached_section` tinyint(4) NULL DEFAULT NULL,
+	  `eprotec` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+	  PRIMARY KEY (`ID`)) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+
+INSERT INTO `settings_general`
+(name, value) VALUES
+('application-header-name', 'Extranet PC-92'),
+('dps-doc-suffix-convention', 'CONV'),
+('dps-doc-suffix-risk', 'RISK'),
+('dps-doc-suffix-demande', 'DEM'),
+('dps-doc-suffix-declaration',	'DECL'),
+('eprotec-event-url', 'https://franceprotectioncivile.org/evenement_display.php?evenement=EVENTID');
+
+
+CREATE TABLE `clients` (
+	`id` INT(12) unsigned NOT NULL AUTO_INCREMENT,
+	`attached_section` TINYINT(4) NULL DEFAULT '0',
+  `ref` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `name` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `represent` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `title` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `address` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `phone` VARCHAR(12) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `fax` VARCHAR(12) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `mail` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL
+) PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+
 // section
-
-
-// Client

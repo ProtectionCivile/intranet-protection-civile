@@ -4,7 +4,7 @@
 		$datebeginNF=new DateTime($datebegin);
 	}
 	else {
-		$datebeginNF = new DateTime();
+		$datebeginNF = new DateTime("now -4 year");
 		$datebegin = $datebeginNF->format('d-m-Y');
 	}
 
@@ -33,4 +33,3 @@
     	<?php
     }
 ?>
-

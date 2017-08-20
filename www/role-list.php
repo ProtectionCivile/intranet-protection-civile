@@ -14,6 +14,9 @@
 	<li class="active">Gestion des rôles</li>
 </ol>
 
+<!-- Compute city calculation according to POST & GET variables (before auth)-->
+<?php require_once('functions/role/role-compute-city.php'); ?>
+
 
 <!-- Authentication -->
 <?php $rbac->enforce("admin-roles-view", $currentUserID); ?>
@@ -27,7 +30,7 @@
 	<!-- Update role : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
-	<?php $base_url="role-view.php"; ?>
+	<?php $base_url="role-list.php"; ?>
 
 	<!-- Beginning of the filter's parent module -->
 	<?php include_once('components/filter/filter-roles-module.php'); ?>
@@ -42,7 +45,10 @@
 	<!-- List available roles -->
 	<div class="panel panel-info">
 		<div class="panel-heading">
-			<h3 class="panel-title">Visualisation des rôles</h3>
+			<h3 class="panel-title">Visualisation des rôles
+				<?php if ($rbac->check("admin-roles-update", $currentUserID)) { ?>
+					<div class="text-right"><a class="btn btn-warning" role="button" href="role-create.php">Ajouter un rôle</a></div>
+				<?php }?>
 		</div>
 		<div class="table-responsive">
 			<table class="table table-hover ">
@@ -142,7 +148,7 @@
 			</table>
 		</div>
 		<?php if ($rbac->check("admin-roles-update", $currentUserID)) { ?>
-			<div class="panel-footer"><a class="btn btn-default" role="button" href="role-create.php">Ajouter un rôle</a></div>
+			<div class="panel-footer"><a class="btn btn-warning" role="button" href="role-create.php">Ajouter un rôle</a></div>
 		<?php }?>
 	</div>
 

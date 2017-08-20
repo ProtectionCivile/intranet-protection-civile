@@ -12,7 +12,7 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="dps-list-view.php">Dispositifs de secours</a></li>
+	<li><a href="dps-list.php">Dispositifs de secours</a></li>
 	<li class="active">Listing</li>
 </ol>
 
@@ -29,7 +29,7 @@
 
 
 
-	<?php $base_url="dps-list-view.php"; ?>
+	<?php $base_url="dps-list.php"; ?>
 
 	<!-- Beginning of the filter's parent module -->
 	<?php include_once('components/filter/filter-dps-list-module.php'); ?>
@@ -46,10 +46,10 @@
 			<h3 class="panel-title">
 				Liste des Dispositifs Prévisionnels de Secours (<?php echo $nb_elements; ?> DPS trouvés)
 				<div class='text-right'>
-						<?php if ($rbac->check("ope-dps-create-own", $currentUserID) || $rbac->check("ope-dps-create-all", $currentUserID)) {?>
+						<?php if ($rbac->check("ope-dps-update-own", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID)) {?>
 						<a href='dps-create.php?city' class='btn btn-default btn-sm'>Créer un DPS local</a>
 					<?php } ?>
-					<?php if ($rbac->check("ope-dps-create-dept", $currentUserID) || $rbac->check("ope-dps-create-all", $currentUserID)) {?>
+					<?php if ($rbac->check("ope-dps-update-dept", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID)) {?>
 						<a href='dps-create.php?dept' class='btn btn-default btn-sm'>Créer un DPS dép.</a>
 					<?php } ?>
 				</div>

@@ -1,3 +1,4 @@
+<?php $city = $ordered_section; ?>
 <form class="form-horizontal" id='auto-validation-form' name='auto-validation-form' data-toggle="validator" role="form" action="" method="post">
   <input type='hidden' name='edit'/>
   <input type='hidden' name='cu_full' value='<?php echo $cu_full;?>' />

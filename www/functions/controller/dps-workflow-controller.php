@@ -1,5 +1,5 @@
 <?php require_once('functions/dps/dps-compute-status.php'); ?>
-<?php require_once('functions/dps/dps-workflow-authorization.php'); ?>
+<?php require('functions/dps/dps-workflow-authorization.php'); // Relaod forcé?>
 <?php
 
 
@@ -21,7 +21,7 @@
 				WHERE id='$id'" or die("Impossible de modifier le DPS dans la base de données" . mysqli_error($db_link));
 				if ($db_link->query($sql) === TRUE) {
 					$genericSuccess = "Dispositif de Secours mis à jour.
-					<a href='dps-list-view.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
+					<a href='dps-list.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
 					// Update new status for the workflow display module to have the relevant value
 					$dps_status = "valid_antenne";
 					$dps['status_validation_dlo_date'] = $_POST['status_validation_dlo_date'];
@@ -47,7 +47,7 @@
 				WHERE id='$id'" or die("Impossible de modifier le DPS dans la base de données" . mysqli_error($db_link));
 				if ($db_link->query($sql) === TRUE) {
 					$genericSuccess = "Dispositif de Secours mis à jour.
-					<a href='dps-list-view.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
+					<a href='dps-list.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
 					// Update new status for the workflow display module to have the relevant value
 					$dps_status = "canceled";
 					$dps['status_cancel_reason'] = $_POST['status_cancel_reason'];
@@ -74,7 +74,7 @@
 				WHERE id='$id'" or die("Impossible de modifier le DPS dans la base de données" . mysqli_error($db_link));
 				if ($db_link->query($sql) === TRUE) {
 					$genericSuccess = "Dispositif de Secours mis à jour.
-					<a href='dps-list-view.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
+					<a href='dps-list.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
 					// Update new status for the workflow display module to have the relevant value
 					$dps_status = "refused";
 					$dps['status_justification'] = $_POST['status_justification'];
@@ -101,7 +101,7 @@
 				WHERE id='$id'" or die("Impossible de modifier le DPS dans la base de données" . mysqli_error($db_link));
 				if ($db_link->query($sql) === TRUE) {
 					$genericSuccess = "Dispositif de Secours mis à jour.
-					<a href='dps-list-view.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
+					<a href='dps-list.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
 					// Update new status for the workflow display module to have the relevant value
 					$dps_status = "valid_ddo_attente";
 					$dps['status_justification'] = $_POST['status_justification'];
@@ -131,7 +131,7 @@
 				WHERE id='$id'" or die("Impossible de modifier le DPS dans la base de données" . mysqli_error($db_link));
 				if ($db_link->query($sql) === TRUE) {
 					$genericSuccess = "Dispositif de Secours mis à jour.
-					<a href='dps-list-view.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
+					<a href='dps-list.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
 					// Update new status for the workflow display module to have the relevant value
 					$dps_status = "accepted";
 					$dps['status_justification'] = $_POST['status_justification'];

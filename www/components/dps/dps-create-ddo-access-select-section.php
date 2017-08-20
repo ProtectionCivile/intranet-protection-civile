@@ -1,5 +1,5 @@
 <?php
-	if ($rbac->check("ope-dps-create-all", $currentUserID)) {
+	if ($rbac->check("ope-dps-update-all", $currentUserID)) {
 		?>
 		<div class="panel panel-danger">
 			<div class="panel-heading">
@@ -18,7 +18,7 @@
 							$sql = "SELECT number, name FROM $tablename_sections WHERE number=attached_section";
 							$query = mysqli_query($db_link, $sql);
 							while($listecommune = mysqli_fetch_array($query)){
-								if($listecommune["number"] == $city){
+								if($listecommune["number"] == $ordered_section){
 									echo "<option value='".$listecommune["number"]."' selected>".$listecommune["name"]."</option>";
 								}
 								else{

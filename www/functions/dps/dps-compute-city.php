@@ -1,14 +1,25 @@
 <?php
-	if(isset($_POST['city'])){
-		$city = $_POST['city'];
-	}
-	elseif(isset($_GET['own']) ){
-		$city = $currentUserSection;
-	}
-	elseif(isset($_GET['dept']) ){
-		$city = "0";
-	}
-	else {
-		$city = $currentUserSection;
-	}
+$canViewAllSections = false;
+if ( $rbac->check("ope-dps-view-all", $currentUserID) || $rbac->check("ope-dps-view-dept", $currentUserID) ) {
+	$canViewAllSections = true;
+}
+
+if (! $canViewAllSections ) {
+	$ordered_section = $currentUserSection;
+}
+if(isset($_POST['city'])){
+	$ordered_section = $_POST['city'];
+	$forced_section = $_POST['city'];
+}
+elseif(isset($_GET['own']) ){
+	$ordered_section = $currentUserSection;
+	$forced_section = $currentUserSection;
+}
+elseif(isset($_GET['dept']) ){
+	$ordered_section = "0";
+	$forced_section = "0";
+}
+else {
+	$ordered_section = $currentUserSection;
+}
 ?>
