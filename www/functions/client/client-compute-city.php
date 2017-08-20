@@ -17,6 +17,4 @@
 		$ordered_section = $currentUserSection;
 	}
 
-	echo '<br /><small><strong>client compute city:</strong> ordered_section='.$ordered_section.'</small>';
-
 ?>

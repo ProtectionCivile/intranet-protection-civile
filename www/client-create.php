@@ -34,7 +34,7 @@
 	<h2>Gestion des clients</h2>
 
 
-	<!-- Create a user : display form -->
+	<!-- Create a client : display form -->
 	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">Création d'un client</h3>

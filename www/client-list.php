@@ -46,26 +46,39 @@
 	<!-- List available clients -->
 	<div class="panel panel-info">
 		<div class="panel-heading">
-			<h3 class="panel-title">Visualisation des clients</h3>
+			<h3 class="panel-title">Visualisation des clients
+				<?php if ($rbac->check("ope-clients-update-own", $currentUserID) || $rbac->check("ope-clients-update-all", $currentUserID)) { ?>
+					<div class="text-right"><a class="btn btn-warning" role="button" href="client-create.php">Ajouter un client</a></div>
+				<?php }?>
+			</h3>
 		</div>
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<tr>
+					<th>Section</th>
 					<th>Nom</th>
 					<th>Nom court</th>
 					<th>Représentant</th>
 					<th>Qualité</th>
-					<th>Addresse</th>
+					<th>Adresse</th>
 					<th>Téléphone</th>
 					<th>Fax</th>
 					<th>Mail</th>
-					<th>Section</th>
 					<th colspan='2'>Actions</th>
 				</tr>
 				<?php
 				$clients = mysqli_query($db_link, $sqlQuery);
 				while($client = mysqli_fetch_array($clients)) { ?>
 					<tr>
+						<td>
+							<?php
+							$reqliste = "SELECT shortname FROM $tablename_sections WHERE number=".$client['attached_section'] or die("Erreur lors de la consultation" . mysqli_error($db_link));
+							$sections = mysqli_query($db_link, $reqliste);
+							while($section = mysqli_fetch_array($sections)) {
+								echo $section["shortname"];
+							}
+							?>
+						</td>
 						<td>
 							<?php echo ucfirst($client["name"]); ?>
 						</td>
@@ -91,15 +104,6 @@
 							<?php echo $client["mail"]; ?>
 						</td>
 						<td>
-							<?php
-							$reqliste = "SELECT shortname FROM $tablename_sections WHERE number=".$client['attached_section'] or die("Erreur lors de la consultation" . mysqli_error($db_link));
-							$sections = mysqli_query($db_link, $reqliste);
-							while($section = mysqli_fetch_array($sections)) {
-								echo $section["shortname"];
-							}
-							?>
-						</td>
-						<td>
 							<?php if ($rbac->check("ope-clients-update-own", $currentUserID) || $rbac->check("ope-clients-update-all", $currentUserID)) { ?>
 								<form action='client-edit.php' method='post' accept-charset='utf-8'>
 									<input type='hidden' name='clientID' value=<?php echo "'".$client['id']."'"; ?> >
@@ -120,7 +124,7 @@
 			</table>
 		</div>
 		<?php if ($rbac->check("ope-clients-update-own", $currentUserID) || $rbac->check("ope-clients-update-all", $currentUserID)) { ?>
-			<div class="panel-footer"><a class="btn btn-default" role="button" href="client-create.php">Ajouter un client</a></div>
+			<div class="panel-footer"><a class="btn btn-warning" role="button" href="client-create.php">Ajouter un client</a></div>
 		<?php }?>
 	</div>
 
