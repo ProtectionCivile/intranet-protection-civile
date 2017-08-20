@@ -35,7 +35,7 @@ $settings_array = mysqli_fetch_array($query_result);
 						<li class="dropdown-header">Direction départementale</li>
 						<li><a href="dps-list.php?atraiter"><span class='glyphicon glyphicon-fire'></span> A traiter <span class="badge"><?php echo $row_cnt;?></span></a></li>
 						<li class="divider"></li>
-						<li class="dropdown-header">Gestion des DPS</li>
+						<li class="dropdown-header">Postes existants</li>
 						<?php if ($rbac->check("ope-dps-view-own", $currentUserID)) {?>
 							<li><a href="dps-list.php?own"><span class='glyphicon glyphicon-search'></span> Liste des DPS de mon Antenne</a></li>
 						<?php } ?>
@@ -46,19 +46,12 @@ $settings_array = mysqli_fetch_array($query_result);
 							<li><a href="dps-list.php"><span class='glyphicon glyphicon-search'></span> Liste de tous les DPS</a></li>
 						<?php } ?>
 						<li class="divider"></li>
+						<li class="dropdown-header">Création</li>
 						<?php if ($rbac->check("ope-dps-update-own", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID)) {?>
 							<li><a href="dps-create.php?city"><span class='glyphicon glyphicon-tasks'></span> Créer un DPS local</a></li>
 						<?php } ?>
 						<?php if ($rbac->check("ope-dps-update-dept", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID)) {?>
 							<li><a href="dps-create.php?dept"><span class='glyphicon glyphicon-tasks'></span> Créer un DPS départemental</a></li>
-						<?php } ?>
-						<li class="divider"></li>
-						<li class="dropdown-header">Réglages opérationnels</li>
-						<?php if ($rbac->check("ope-clients-view-own", $currentUserID) || $rbac->check("ope-clients-view-all", $currentUserID)) {?>
-							<li><a href="client-list.php"><span class='glyphicon glyphicon-search'></span> Liste des clients</a></li>
-						<?php } ?>
-						<?php if ($rbac->check("ope-clients-update-own", $currentUserID)) {?>
-							<li><a href="client-create.php"><span class='glyphicon glyphicon-user'></span><span class='glyphicon glyphicon-plus'></span> Ajouter un client</a></li>
 						<?php } ?>
 					</ul>
 				</li>
@@ -87,16 +80,24 @@ $settings_array = mysqli_fetch_array($query_result);
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-cog'></span> Paramètres<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
+						<li class="dropdown-header">Réglages opérationnels</li>
+						<?php if ($rbac->check("ope-clients-view-own", $currentUserID) || $rbac->check("ope-clients-view-all", $currentUserID)) {?>
+							<li><a href="client-list.php"><span class='glyphicon glyphicon-search'></span> Liste des clients</a></li>
+						<?php } ?>
+						<?php if ($rbac->check("ope-clients-update-own", $currentUserID)) {?>
+							<li><a href="client-create.php"><span class='glyphicon glyphicon-user'></span><span class='glyphicon glyphicon-plus'></span> Ajouter un client</a></li>
+						<?php } ?>
+						<li class="divider"></li>
 						<?php
 						if ($rbac->check("admin-users-view", $currentUserID) || $rbac->check("admin-sections-view", $currentUserID)) {
-							?> <li class="dropdown-header">Réglages communs</li> <?php
+							?> <li class="dropdown-header">Administration</li> <?php
 							if ($rbac->check("admin-users-view", $currentUserID)) {?> <li><a href="user-list.php"><span class='glyphicon glyphicon-user'></span> Gestion des utilisateurs</a></li> <?php }
 							if ($rbac->check("admin-sections-view", $currentUserID)) {?> <li><a href="section-list.php"><span class='glyphicon glyphicon-tent'></span> Liste des communes</a></li> <?php }
 						}
 
 						if ($rbac->check("admin-settings-view", $currentUserID)) {
 							?> <li class="divider" /> <?php
-							?> <li class="dropdown-header">Paramètres</li> <?php
+							?> <li class="dropdown-header">Paramètres du site</li> <?php
 							?> <li><a href="setting-list.php"><span class='glyphicon glyphicon-wrench'></span> Liste des paramètres</a></li> <?php
 							?> <li><a href="mailsetting-list.php"><span class='glyphicon glyphicon-envelope'></span> Liste des paramètres mail</a></li> <?php
 						}
