@@ -2,7 +2,7 @@
 <?php
 	$tmp_file = $_FILES['mainfile']['tmp_name'];
 	$filename = $_FILES['mainfile']['name'];
-	$num_cu = $_POST['yearly_index'];
+	$num_cu = intval($_POST['yearly_index'], 10);
 	if($num_cu < 10){
 		$num_cu = "00".$num_cu;
 	}
