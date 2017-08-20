@@ -29,8 +29,7 @@
 		//C'est pas grave
 	}
 	if(isNullOrEmpty($client_email)){
-		$missingValues++;
-		$client_email_error = "L'adresse mail de l'organisateur est obligatoire";
+		// C'est pas grave
 	}
 
 

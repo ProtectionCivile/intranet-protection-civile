@@ -2,9 +2,8 @@
 <?php require_once('functions/dps/dps-compute-city.php'); ?>
 
 <?php
-
 $pathyear = "20".$cu_year;
-$pathquery = "SELECT shortname, number FROM $tablename_sections WHERE number=$city";
+$pathquery = "SELECT shortname, number FROM $tablename_sections WHERE number=$ordered_section";
 $pathcommune_result = mysqli_query($db_link, $pathquery);
 $pathcommune_array = mysqli_fetch_array($pathcommune_result);
 $pathantenne = $pathcommune_array["shortname"];

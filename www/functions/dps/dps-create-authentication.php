@@ -5,17 +5,17 @@
 		$antenne = $dps['section'];
 	}
 	else {
-		$antenne = $city;
+		$antenne = $ordered_section;
 	}
-	
-	if ($antenne == $currentUserSection && !$rbac->check("ope-dps-create-all", $currentUserID)) {
-		$rbac->enforce("ope-dps-create-own", $currentUserID);
+
+	if ($antenne == $currentUserSection && !$rbac->check("ope-dps-update-all", $currentUserID)) {
+		$rbac->enforce("ope-dps-update-own", $currentUserID);
 	}
-	elseif ($antenne == '0' && !$rbac->check("ope-dps-create-all", $currentUserID)) {
-		$rbac->enforce("ope-dps-create-dept", $currentUserID);
+	elseif ($antenne == '0' && !$rbac->check("ope-dps-update-all", $currentUserID)) {
+		$rbac->enforce("ope-dps-update-dept", $currentUserID);
 	}
 	else {
-		$rbac->enforce("ope-dps-create-all", $currentUserID);
+		$rbac->enforce("ope-dps-update-all", $currentUserID);
 	}
 
 	if (!$canEdit) {

@@ -645,7 +645,7 @@ class RbacManager extends JModel
 
 		if (! $this->check($Permission, $UserID)) {
             header('HTTP/1.1 403 Forbidden');
-            die("<strong>Forbidden</strong>: You do not have permission to access this resource.");
+            die("<strong>Interdit</strong>: Vous n'avez pas les autorisations nécessaires pour accéder à cet élément.");
         }
 
         return true;

@@ -60,7 +60,7 @@ if(empty($commonError)) {
 					<br /> <br />
 					<ul>
 					<?php
-					$query = "SELECT ID, Title, Description FROM $tablename_permissions ORDER by Title ASC";
+					$query = "SELECT ID, Title, Description FROM $tablename_permissions ORDER by Title DESC";
 					$permissions = mysqli_query($db_link, $query);
 					while($permission = mysqli_fetch_array($permissions)) {
 						$permissionID=$permission["ID"];

@@ -1,13 +1,12 @@
 <?php
 	$sqlQuery = "SELECT U.ID, U.login, U.last_name, U.first_name, U.phone, U.mail, S.name AS section_name FROM `$tablename_users` AS U INNER JOIN sections AS S ON `U`.`attached_section` = `S`.`number`";
-				
 
-	if (!empty($city) || $city == "0") {
+
+	if (!empty($filtered_section) || $filtered_section == "0") {
 		$addWhereClause = true;
-		$whereCity = "U.attached_section='".$city."'";
+		$whereCity = "U.attached_section='".$filtered_section."'";
 	}
 
-	
 
 	if ($addWhereClause) {
 		$sqlQuery = $sqlQuery." WHERE ";

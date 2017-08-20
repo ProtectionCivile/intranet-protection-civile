@@ -36,7 +36,11 @@
 	<!-- List available permissions -->
 	<div class="panel panel-info">
 		<div class="panel-heading">
-			<h3 class="panel-title">Visualisation des permissions</h3>
+			<h3 class="panel-title">Visualisation des permissions
+				<?php if ($rbac->check("admin-permissions-update", $currentUserID)) { ?>
+					<div class="text-right"><a class="btn btn-warning" role="button" href="permission-create.php">Ajouter une permission</a></div>
+				<?php } ?>
+			</h3>
 		</div>
 		<div class="table-responsive">
 			<table class="table table-hover ">
@@ -91,7 +95,7 @@
 			</table>
 		</div>
 		<?php if ($rbac->check("admin-permissions-update", $currentUserID)) { ?>
-			<div class="panel-footer"><a class="btn btn-default" role="button" href="permission-create.php">Ajouter une permission</a></div>
+			<div class="panel-footer"><a class="btn btn-warning" role="button" href="permission-create.php">Ajouter une permission</a></div>
 		<?php } ?>
 	</div>
 

@@ -86,7 +86,7 @@
 				<div class='form-group form-group-sm'>
 					<label for='city' class='col-sm-4 control-label'>Ville</label>
 					<div class='col-sm-8'>
-						<input type='text' class='form-control' id='city' name='city' minlength='3' maxlength='40' value='<?php echo $city; ?>'>
+						<input type='text' class='form-control' id='city' name='city' minlength='3' maxlength='40' value='<?php echo $ordered_section; ?>'>
 					</div>
 				</div>
 

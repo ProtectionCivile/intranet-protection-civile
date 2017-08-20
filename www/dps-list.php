@@ -21,7 +21,7 @@
 <?php require_once('functions/dps/dps-compute-city.php'); ?>
 
 <!-- Authentication -->
-<?php require_once('functions/dps/dps-view-authentication.php'); ?>
+<?php require_once('functions/dps/dps-list-authentication.php'); ?>
 
 
 <!-- Page content container -->
@@ -46,10 +46,10 @@
 			<h3 class="panel-title">
 				Liste des Dispositifs Prévisionnels de Secours (<?php echo $nb_elements; ?> DPS trouvés)
 				<div class='text-right'>
-						<?php if ($rbac->check("ope-dps-create-own", $currentUserID) || $rbac->check("ope-dps-create-all", $currentUserID)) {?>
+						<?php if ($rbac->check("ope-dps-update-own", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID)) {?>
 						<a href='dps-create.php?city' class='btn btn-default btn-sm'>Créer un DPS local</a>
 					<?php } ?>
-					<?php if ($rbac->check("ope-dps-create-dept", $currentUserID) || $rbac->check("ope-dps-create-all", $currentUserID)) {?>
+					<?php if ($rbac->check("ope-dps-update-dept", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID)) {?>
 						<a href='dps-create.php?dept' class='btn btn-default btn-sm'>Créer un DPS dép.</a>
 					<?php } ?>
 				</div>

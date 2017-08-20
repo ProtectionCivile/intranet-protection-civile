@@ -1,21 +1,29 @@
 <?php
-	if(isset($_POST['formcity'])){
-		if (empty($_POST['formcity']) && $_POST['formcity'] != "0" ) {
-			$city=$currentUserSection; 
+	if (!$canViewAllSections ) {
+		$filtered_section = $currentUserSection;
+	}
+
+	elseif(isset($forced_section)){ // On vient de demander expréssément telle commune (suite à un clic ou un lien)
+		$filtered_section=$forced_section;
+	}
+
+	elseif(isset($_POST['formfilteredsection'])){
+		if (empty($_POST['formfilteredsection']) && $_POST['formfilteredsection'] != "0" ) {
+			$filtered_section=$currentUserSection;
 		}
 		else {
-			if ($currentUserSection == $_POST['formcity']){
-				$city=$currentUserSection;
+			if ($currentUserSection == $_POST['formfilteredsection']){
+				$filtered_section=$currentUserSection;
 			}
 			else {
-				$city=$_POST['formcity'];
+				$filtered_section=$_POST['formfilteredsection'];
 			}
 		}
 	}
-	elseif (isset($_GET['city']) && !empty($_GET['city'])) {
-		$city=$_GET['city'];
+	elseif (isset($_GET['formfilteredsection']) && !empty($_GET['formfilteredsection'])) {
+		$filtered_section=$_GET['formfilteredsection'];
 	}
 	else {
-		$city="*";
+		$filtered_section="*";
 	}
 ?>

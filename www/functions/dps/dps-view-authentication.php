@@ -6,7 +6,7 @@ if (isset($dps['section'])) {
 	$antenne = $dps['section'];
 }
 else {
-	$antenne = $city;
+	$antenne = $ordered_section;
 }
 
 if ($antenne == $currentUserSection && !$rbac->check("ope-dps-view-all", $currentUserID)) {
