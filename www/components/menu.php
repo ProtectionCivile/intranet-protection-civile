@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT status_validation_dlo_date, status_validation_ddo_date, cu_year FROM $tablename_dps WHERE status=1";
+$query = "SELECT id FROM $tablename_dps WHERE status=1 OR  status=2";
 $number_dps = mysqli_query($db_link, $query);
 $row_cnt = mysqli_num_rows($number_dps);
 
@@ -28,12 +28,13 @@ $settings_array = mysqli_fetch_array($query_result);
 
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="index.php"><span class='glyphicon glyphicon-home'></span> Accueil</a></li>
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-check'></span> Operationnel <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-home'></span> Operationnel <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li class="dropdown-header">Direction départementale</li>
-						<li><a href="dps-list.php?atraiter"><span class='glyphicon glyphicon-fire'></span> A traiter <span class="badge"><?php echo $row_cnt;?></span></a></li>
+						<?php if ($rbac->check("ope-dps-validate-ddo-to-pref", $currentUserID)) {?>
+							<li><a href="dps-list.php?atraiter"><span class='glyphicon glyphicon-fire'></span> En attente <span class="badge"><?php echo $row_cnt;?></span></a></li>
+						<?php } ?>
 						<li class="divider"></li>
 						<li class="dropdown-header">Postes existants</li>
 						<?php if ($rbac->check("ope-dps-view-own", $currentUserID)) {?>
