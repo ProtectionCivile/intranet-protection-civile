@@ -4,7 +4,8 @@
 	//Authentication
 	require_once('functions/client/client-update-authentication.php');
 
-	if (isset($_POST['addClient'])){
+	if (isset($_POST['updateClient'])){
+		$client_id = str_replace("'","", $_POST['id']);
 		$client_name = str_replace("'","", $_POST['client_name']);
 		$client_ref = str_replace("'","", $_POST['client_ref']);
 		$client_represent = str_replace("'","", $_POST['client_represent']);
@@ -61,9 +62,9 @@
 		}
 
 		if (empty($genericError)){
-			$add_client = "INSERT INTO $tablename_clients (ref, name, attached_section, represent, title, address, phone, fax, mail) VALUES ('$client_ref', '$client_name', '$attached_section', '$client_represent', '$client_title', '$client_address', '$client_phone', '$client_fax', '$client_email')" or die("Impossible d'ajouter le client dans la base de données" . mysqli_error($db_link));
-			mysqli_query($db_link, $add_client);
-			$genericSuccess = "Client créé avec succès (".$client_name.")";
+			$update_client = "UPDATE $tablename_clients SET ref='$client_ref', name='$client_name', attached_section='$attached_section', represent='$client_represent', title='$client_title', address='$client_address', phone='$client_phone', fax='$client_fax', mail='$client_email' WHERE ID='$id'" or die("Impossible d'ajouter le client dans la base de données" . mysqli_error($db_link));
+			mysqli_query($db_link, $update_client);
+			$genericSuccess = "Client modifié avec succès (".$client_name.")";
 		}
 	}
 ?>

@@ -12,7 +12,7 @@
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
 	<li><a href="/client-list.php">Clients</a></li>
-	<li class="active">Création</li>
+	<li class="active">Modification</li>
 </ol>
 
 
@@ -22,8 +22,11 @@
 <!-- Authentication -->
 <?php require_once('functions/client/client-update-authentication.php'); ?>
 
+<!-- Common -->
+<?php include ('functions/controller/client-common.php'); ?>
+
 <!-- Create a new client : Controller -->
-<?php include('functions/controller/client-create-controller.php'); ?>
+<?php include('functions/controller/client-update-controller.php'); ?>
 
 <!-- Page content container -->
 <div class="container">
@@ -34,13 +37,13 @@
 	<h2>Gestion des clients</h2>
 
 
-	<!-- Create a client : display form -->
+	<!-- Update a client : display form -->
 	<div class="panel panel-info">
 		<div class="panel-heading">
-			<h3 class="panel-title">Création d'un client</h3>
+			<h3 class="panel-title">Modification d'un client</h3>
 		</div>
 		<div class="panel-body">
-			<?php require_once('components/client/client-create-form.php'); ?>
+			<?php require_once('components/client/client-edit-form.php'); ?>
 		</div>
 	</div>
 

@@ -61,9 +61,9 @@ $rbac->Permissions->addPath('/admin-users-asssign-roles/admin-users-update/admin
 $rbac->Permissions->addPath('/ope-dps-validate-local/ope-dps-update-own/ope-dps-view-own', array('Valider une demande de DPS pour sa commune', 'Créer/Modifier un DPS sur sa commune', 'Voir les DPS de sa commune'));
 $rbac->Permissions->addPath('/ope-dps-validate-dept/ope-dps-update-dept/ope-dps-view-dept', array('Valider une demande de DPS pour le département', 'Créer/Modifier un DPS sur le département', 'Voir les DPS départementaux'));
 $rbac->Permissions->addPath('/ope-dps-validate-ddo-to-pref/ope-dps-update-all/ope-dps-view-all', array('Envoyer une demande de DPS à la Préfecture', 'Créer/Modifier un DPS sur toute commune', 'Voir les DPS de toutes les communes'));
-$rbac->Permissions->addPath('/ope-clients-update-own/ope-clients-view-own', array('Modifier ses clients', 'Voir ses clients'));
+$rbac->Permissions->addPath('/ope-clients-update-own/ope-clients-view-own', array('Modifier les clients de son antenne', 'Voir les clients de son antenne'));
 $rbac->Permissions->addPath('/ope-clients-update-all/ope-clients-view-all', array('Modifier tous les clients', 'Voir tous les clients'));
-$rbac->Permissions->addPath('/treso-dps-view-all/treso-dps-view-own', array('Voir toute la trésorerie', 'Voir sa trésorerie'));
+$rbac->Permissions->addPath('/treso-dps-view-all/treso-dps-view-own', array('Voir toute la trésorerie', 'Voir la trésorerie de son antenne'));
 $rbac->Permissions->addPath('/directory-update/directory-view', array('Modifier annuaire', 'Voir annuaire'));
 $rbac->Permissions->addPath('/admin-mailinglist-manage', array('Gestion des listes de diffusion'));
 $rbac->Permissions->addPath('/admin-sections-update/admin-sections-view', array('Modifier les sections', 'Voir les sections'));
