@@ -29,6 +29,8 @@
 
 <?php require_once('functions/controller/dps-workflow-controller.php'); ?>
 
+<?php include ('functions/mail/write-dps-mail.php'); ?>
+
 <?php require_once('functions/dps/dps-view-functions.php'); ?>
 
 <!-- Page content container -->
