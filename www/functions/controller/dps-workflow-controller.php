@@ -25,8 +25,9 @@
 					// Update new status for the workflow display module to have the relevant value
 					$dps_status = "valid_antenne";
 					$dps['status_validation_dlo_date'] = $_POST['status_validation_dlo_date'];
-					// TODO Send mail
 
+					// Send mail
+					$action = 'validate-local';
 				}
 				else {
 					$genericError = "Erreur pendant la mise à jour du DPS ".$event_name." (".$cu_full.") " . $db_link->error;
@@ -48,12 +49,19 @@
 				if ($db_link->query($sql) === TRUE) {
 					$genericSuccess = "Dispositif de Secours mis à jour.
 					<a href='dps-list.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
+
+					// Send mail
+					if ($dps_status == 'draft') {
+						$action = 'cancel-dlo';
+					}
+					else {
+						$action = 'cancel-ddo';
+					}
+
 					// Update new status for the workflow display module to have the relevant value
 					$dps_status = "canceled";
 					$dps['status_cancel_reason'] = $_POST['status_cancel_reason'];
 					$dps['status_cancel_date'] = $today;
-					// TODO Send mail
-
 				}
 				else {
 					$genericError = "Erreur pendant la mise à jour du DPS ".$event_name." (".$cu_full.") " . $db_link->error;
@@ -79,8 +87,9 @@
 					$dps_status = "refused";
 					$dps['status_justification'] = $_POST['status_justification'];
 					$dps['status_validation_ddo_date'] = $today;
-					// TODO Send mail
 
+					// Send mail
+					$action = 'reject-ddo';
 				}
 				else {
 					$genericError = "Erreur pendant la mise à jour du DPS ".$event_name." (".$cu_full.") " . $db_link->error;
@@ -106,8 +115,9 @@
 					$dps_status = "valid_ddo_attente";
 					$dps['status_justification'] = $_POST['status_justification'];
 					$dps['status_validation_ddo_date'] = $today;
-					// TODO Send mail
 
+					// Send mail
+					$action = 'wait';
 				}
 				else {
 					$genericError = "Erreur pendant la mise à jour du DPS ".$event_name." (".$cu_full.") " . $db_link->error;
@@ -138,8 +148,10 @@
 					$dps['status_validation_ddo_date'] = $today;
 					// TODO Generate PDF
 
-					// TODO Send mail
+					// TODO Donner une variable $declarationPath avec le chemin du fichier généré pour la Préf.
 
+					// Send mail
+					$action = 'accept-ddo';
 				}
 				else {
 					$genericError = "Erreur pendant la mise à jour du DPS ".$event_name." (".$cu_full.") " . $db_link->error;
