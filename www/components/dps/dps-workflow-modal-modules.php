@@ -95,11 +95,6 @@ while ($row = mysqli_fetch_assoc($email_result)) {
 				</div>
 				<div class="modal-body">
 					<div class="form-group">
-						<label for="email_to" class="control-label">E-mail(s) :</label>
-						<textarea type="text" class="form-control" id="email_to" name="email_to" rows="3"><?php echo $email;?></textarea>
-						<span id="helpBlock" class="help-block">Pour ajouter un destinataire, espacez chaque adresse par une virgule.</span>
-					</div>
-					<div class="form-group">
 						<label for="status_justification" class="control-label">Commentaire :</label>
 						<textarea class="form-control" id="status_justification" name="status_justification" rows="5"></textarea>
 					</div>
