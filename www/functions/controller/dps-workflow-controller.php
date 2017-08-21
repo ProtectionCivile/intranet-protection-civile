@@ -148,7 +148,7 @@
 					$dps['status_validation_ddo_date'] = $today;
 					// TODO Generate PDF
 
-					// TODO Donner une variable $declarationPath avec le chemin du fichier généré pour la Préf.
+					// TODO Donner une variable $declarationFilePath avec le chemin du fichier généré pour la Préf.
 
 					// Send mail
 					$action = 'accept-ddo';

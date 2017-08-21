@@ -1,10 +1,7 @@
 <?php
-require('functions/mail/Mail.php');
+require_once('functions/mail/Mail.php');
 require_once('functions/mail/mail-functions.php');
 
-
-// Paramètre d'entrée : l'action désrée (validation locale? refus DDO?)
-$action = 'accept-ddo'; // TODO retirer cet exemple
 
 // Find section owning the DPS
 $sql =  'SELECT DISTINCT name FROM '.$tablename_sections.' WHERE number = '.$section;
@@ -214,7 +211,7 @@ if ($action == 'accept-ddo') {
   foreach ($db_ccrecipients as $ccrecipient) {
     $mail->addCcRecipient($ccrecipient);
   }
-  // TODO Manque les attachements
+  $mail->addAttachement($declarationFilePath);
 
   // Stocker le mail en base de données
   $mail->store();
@@ -251,7 +248,7 @@ if ($action == 'accept-ddo') {
   foreach ($db_ccrecipients as $ccrecipient) {
     $mail->addCcRecipient($ccrecipient);
   }
-  // TODO Manque les attachements
+  $mail->addAttachement($declarationFilePath);
 
   // Stocker le mail en base de données
   $mail->store();
