@@ -118,7 +118,28 @@ if ($action == 'accept-ddo') {
 
 
 if ($action == 'reject-ddo') {
+  $sender = implode(",", getRealMailAddresses($db_link, $tablename_settings_mail, $section, $event_department, "#ddo"));
+  $db_recipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-reject-recipients');
+  $db_ccrecipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-reject-ccrecipients');
 
+  $mail_subject = "DPS refusé: ".$event_name;
+  include ('functions/dps/dps-query-select-parameters.php');
+  $mail_message = "Bonjour,<br /><br />Votre ".get_select_unique_parameter($parameters_query_result, 'dps_type_detailed', $dps_type)." <strong>".$event_name."</strong> initialement prévu du ".formatDateFrToReadable($dps_begin_date)." à ".formatTimeFrToReadable($dps_begin_time)." au ".formatDateFrToReadable($dps_end_date)." à ".formatTimeFrToReadable($dps_end_time)." vient d'être <strong>refusé</strong> pour la raison suivante : ".$dps['status_justification']."
+  <br />
+  <br />
+  Vous ne pouvez plus modifier le DPS. Au besoin, contactez le DDO pour régulariser la situation:<br />";
+
+  $mail = new Mail($db_link, $tablename_mail, $currentUserID, $sender, $mail_subject, $mail_message);
+
+  foreach ($db_recipients as $recipient) {
+    $mail->addRecipient($recipient);
+  }
+  foreach ($db_ccrecipients as $ccrecipient) {
+    $mail->addCcRecipient($ccrecipient);
+  }
+
+  // Stocker le mail en base de données
+  $mail->store();
 }
 
 ?>
