@@ -19,7 +19,7 @@ if ($action == 'validate-local') {
   $db_recipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'dlo-validate-recipients');
   $db_ccrecipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'dlo-validate-ccrecipients');
 
-  $mail_subject = "Création de DPS ".$cu_full;
+  $mail_subject = "Création de DPS: ".$event_name;
   include ('functions/dps/dps-query-select-parameters.php');
   $mail_message = "Bonjour,<br /><br />L'antenne de <strong>".$sectionName."</strong> vient de vous soumettre un DPS pour validation. Voici les informations :<br />
   <ul>
@@ -52,7 +52,7 @@ if ($action == 'cancel-local') {
   $db_recipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'dlo-cancel-recipients');
   $db_ccrecipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'dlo-cancel-ccrecipients');
 
-  $mail_subject = "Annulation de DPS ".$cu_full;
+  $mail_subject = "Annulation de DPS: ".$event_name;
   include ('functions/dps/dps-query-select-parameters.php');
   $mail_message = "Bonjour,<br /><br />L'antenne de <strong>".$sectionName."</strong> vient d'annuler prématurément un DPS pour la raison suivante : ".$dps['status_cancel_reason']."
   <br />
@@ -87,12 +87,33 @@ if ($action == 'cancel-ddo') {
 
 
 if ($action == 'wait') {
+  $sender = implode(",", getRealMailAddresses($db_link, $tablename_settings_mail, $section, $event_department, "#ddo"));
+  $db_recipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-wait-recipients');
+  $db_ccrecipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-wait-ccrecipients');
 
+  $mail_subject = "DPS mis en attente: ".$event_name;
+  include ('functions/dps/dps-query-select-parameters.php');
+  $mail_message = "Bonjour,<br /><br />Votre ".get_select_unique_parameter($parameters_query_result, 'dps_type_detailed', $dps_type)." <strong>".$event_name."</strong> initialement prévu du ".formatDateFrToReadable($dps_begin_date)." à ".formatTimeFrToReadable($dps_begin_time)." au ".formatDateFrToReadable($dps_end_date)." à ".formatTimeFrToReadable($dps_end_time)." vient d'être <strong>mis en attente</strong> pour la raison suivante : ".$dps['status_justification']."
+  <br />
+  <br />
+  Vous ne pouvez néanmoins plus modifier le DPS. Au besoin, contactez le DDO pour régulariser la situation:<br />";
+
+  $mail = new Mail($db_link, $tablename_mail, $currentUserID, $sender, $mail_subject, $mail_message);
+
+  foreach ($db_recipients as $recipient) {
+    $mail->addRecipient($recipient);
+  }
+  foreach ($db_ccrecipients as $ccrecipient) {
+    $mail->addCcRecipient($ccrecipient);
+  }
+
+  // Stocker le mail en base de données
+  $mail->store();
 }
 
 
 if ($action == 'accept-ddo') {
-
+  
 }
 
 
