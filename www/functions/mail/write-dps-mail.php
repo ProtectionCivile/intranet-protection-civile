@@ -7,8 +7,14 @@ require_once('functions/dps/dps-select-parameters-computation.php');
 // Paramètre d'entrée : l'action désrée (validation locale? refus DDO?)
 $action = 'validate-local'; // TODO retirer cet exemple
 
+// Find section owning the DPS
+$sql =  'SELECT DISTINCT name FROM '.$tablename_sections.' WHERE number = '.$section;
+ foreach  ($db_link->query($sql) as $row) {
+   $sectionName = $row['name'];
+ }
 
-if ($action = 'validate-local') {
+
+if ($action == 'validate-local') {
   $sender = implode(",", getRealMailAddresses($db_link, $tablename_settings_mail, $section, $event_department, "#dlo-".$section));
   $db_recipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'dlo-validate-recipients');
   $db_ccrecipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'dlo-validate-ccrecipients');
@@ -41,27 +47,56 @@ if ($action = 'validate-local') {
 }
 
 
-if ($action = 'cancel-local') {
+if ($action == 'cancel-local') {
+  $sender = implode(",", getRealMailAddresses($db_link, $tablename_settings_mail, $section, $event_department, "#dlo-".$section));
+  $db_recipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'dlo-cancel-recipients');
+  $db_ccrecipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'dlo-cancel-ccrecipients');
+
+  $mail_subject = "Annulation de DPS ".$cu_full;
+  include ('functions/dps/dps-query-select-parameters.php');
+  $mail_message = "Bonjour,<br /><br />L'antenne de <strong>".$sectionName."</strong> vient d'annuler prématurément un DPS pour la raison suivante : ".$dps['status_cancel_reason']."
+  <br />
+  <br />
+  Voici les informations :<br />
+  <ul>
+  <li><strong>Type de poste : </strong>".get_select_unique_parameter($parameters_query_result, 'dps_type_detailed', $dps_type)."</li>
+  <li><strong>Nom : </strong>".$event_name."</li>
+  <li><strong>Horaires de poste : </strong> Du ".formatDateFrToReadable($dps_begin_date)." à ".formatTimeFrToReadable($dps_begin_time)." au ".formatDateFrToReadable($dps_end_date)." à ".formatTimeFrToReadable($dps_end_time)."</li>
+  <li><strong>Certificat Original d'Affiliation : </strong>".$cu_full."</li>
+  </ul>
+  <br />
+  Ce poste attend votre validation sur l'intranet.";
+
+  $mail = new Mail($db_link, $tablename_mail, $currentUserID, $sender, $mail_subject, $mail_message);
+
+  foreach ($db_recipients as $recipient) {
+    $mail->addRecipient($recipient);
+  }
+  foreach ($db_ccrecipients as $ccrecipient) {
+    $mail->addCcRecipient($ccrecipient);
+  }
+
+  // Stocker le mail en base de données
+  $mail->store();
+}
+
+
+if ($action == 'cancel-ddo') {
 
 }
 
 
-if ($action = 'cancel-ddo') {
+if ($action == 'wait') {
 
 }
 
 
-if ($action = 'wait') {
+if ($action == 'accept-ddo') {
 
 }
 
 
-if ($action = 'accept-ddo') {
-
-}
-
-
-if ($action = 'reject-ddo') {
+if ($action == 'reject-ddo') {
 
 }
 
