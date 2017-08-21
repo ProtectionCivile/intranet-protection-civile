@@ -31,8 +31,6 @@
 
 <?php require_once('functions/dps/dps-view-functions.php'); ?>
 
-<?php require_once('functions/dps/dps-select-parameters-computation.php'); ?>
-
 <!-- Page content container -->
 <div class="container">
 
