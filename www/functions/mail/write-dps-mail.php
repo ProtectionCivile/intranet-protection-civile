@@ -5,7 +5,7 @@ require_once('functions/dps/dps-select-parameters-computation.php');
 
 
 // Paramètre d'entrée : l'action désrée (validation locale? refus DDO?)
-$action = 'validate-local'; // TODO retirer cet exemple
+$action = 'accept-ddo'; // TODO retirer cet exemple
 
 // Find section owning the DPS
 $sql =  'SELECT DISTINCT name FROM '.$tablename_sections.' WHERE number = '.$section;
@@ -113,7 +113,87 @@ if ($action == 'wait') {
 
 
 if ($action == 'accept-ddo') {
-  
+  // 1er mail : intl_error_name
+  $sender = implode(",", getRealMailAddresses($db_link, $tablename_settings_mail, $section, $event_department, "#ddo"));
+  $db_recipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-validate-internal-recipients');
+  $db_ccrecipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-validate-internal-ccrecipients');
+
+  $mail_subject = "Accord du ".get_select_unique_parameter($parameters_query_result, 'dps_type_short', $dps_type).": ".$event_name;
+  include ('functions/dps/dps-query-select-parameters.php');
+  $mail_message = "Bonjour,<br />
+  <br />
+  La Protection Civile des Hauts-de-Seine vous donne l'accord pour effectuer votre ".get_select_unique_parameter($parameters_query_result, 'dps_type_detailed', $dps_type)." <strong>".$event_name."</strong>.<br />
+  <br />
+  <ul>
+  <li><strong>Nom : </strong>".$event_name."</li>
+  <li><strong>Description : </strong>".$event_description."</li>
+  <li><strong>Adresse : </strong>".$event_address."</li>
+  <li><strong>Horaires de poste : </strong> Du ".formatDateFrToReadable($dps_begin_date)." à ".formatTimeFrToReadable($dps_begin_time)." au ".formatDateFrToReadable($dps_end_date)." à ".formatTimeFrToReadable($dps_end_time)."</li>
+  <li><strong>Certificat Original d'Affiliation : </strong>".$cu_full."</li>
+  <br />
+  </ul>
+  Ce dispositif a fait l'objet d'un accord favorable avec la mention suivante: ".$dps['status_justification']."<br />
+  <br />
+  <br />
+  Bien cordialement,<br />
+  <br />
+  Le Directeur Départemental des Opérations  <br />
+  operationnel@protectioncivile92.org  <br />
+  07.74.95.31.75";
+
+  $mail = new Mail($db_link, $tablename_mail, $currentUserID, $sender, $mail_subject, $mail_message);
+
+  foreach ($db_recipients as $recipient) {
+    $mail->addRecipient($recipient);
+  }
+  foreach ($db_ccrecipients as $ccrecipient) {
+    $mail->addCcRecipient($ccrecipient);
+  }
+  // TODO Manque les attachements
+
+  // Stocker le mail en base de données
+  $mail->store();
+
+  // 2nd mail : EXTERNE
+  $sender = implode(",", getRealMailAddresses($db_link, $tablename_settings_mail, $section, $event_department, "#ddo"));
+  $db_recipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-validate-internal-recipients');
+  $db_ccrecipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-validate-internal-ccrecipients');
+
+  $mail_subject = "Déclaration de ".get_select_unique_parameter($parameters_query_result, 'dps_type_short', $dps_type).": ".$cu_full;
+  include ('functions/dps/dps-query-select-parameters.php');
+  $mail_message = "Bonjour,<br />
+  <br />
+  La Protection Civile des Hauts-de-Seine vous informe de la mise en place d'un <strong>".get_select_unique_parameter($parameters_query_result, 'dps_type_detailed', $dps_type)."</strong>.<br />
+  <br />
+  <ul>
+  <li><strong>Nom : </strong>".$event_name."</li>
+  <li><strong>Description : </strong>".$event_description."</li>
+  <li><strong>Adresse : </strong>".$event_address."</li>
+  <li><strong>Horaires de poste : </strong> Du ".formatDateFrToReadable($dps_begin_date)." à ".formatTimeFrToReadable($dps_begin_time)." au ".formatDateFrToReadable($dps_end_date)." à ".formatTimeFrToReadable($dps_end_time)."</li>
+  <li><strong>Certificat Original d'Affiliation : </strong>".$cu_full."</li>
+  <br />
+  </ul>
+  Ce dispositif a fait l'objet d'un accord favorable avec la mention suivante: ".$dps['status_justification']."<br />
+  <br />
+  <br />
+  Bien cordialement,<br />
+  <br />
+  Le Directeur Départemental des Opérations  <br />
+  operationnel@protectioncivile92.org  <br />
+  07.74.95.31.75";
+
+  $mail = new Mail($db_link, $tablename_mail, $currentUserID, $sender, $mail_subject, $mail_message);
+
+  foreach ($db_recipients as $recipient) {
+    $mail->addRecipient($recipient);
+  }
+  foreach ($db_ccrecipients as $ccrecipient) {
+    $mail->addCcRecipient($ccrecipient);
+  }
+  // TODO Manque les attachements
+
+  // Stocker le mail en base de données
+  $mail->store();
 }
 
 
