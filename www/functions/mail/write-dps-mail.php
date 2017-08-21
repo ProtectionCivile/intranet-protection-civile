@@ -4,7 +4,7 @@ require_once('functions/mail/mail-functions.php');
 
 
 // Paramètre d'entrée : l'action désrée (validation locale? refus DDO?)
-$action = 'validate-local'; // TODO retirer cet exemple
+$action = 'accept-ddo'; // TODO retirer cet exemple
 
 // Find section owning the DPS
 $sql =  'SELECT DISTINCT name FROM '.$tablename_sections.' WHERE number = '.$section;
@@ -18,8 +18,10 @@ if ($action == 'validate-local') {
   $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-validate-recipients');
   $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-validate-ccrecipients');
 
-  $mail_subject = "Création de DPS: ".$event_name;
-  $mail_message = "Bonjour,<br /><br />L'antenne de <strong>".$sectionName."</strong> vient de vous soumettre un DPS pour validation. Voici les informations :<br />
+  $mail_subject = "Création de ".$select_list_parameter_service->getTranslation('dps_type_short', $dps_type).": ".$event_name;
+  $mail_message = "Bonjour,<br />
+  <br />
+  L'antenne de <strong>".$sectionName."</strong> vient de vous soumettre un DPS pour validation. Voici les informations :<br />
   <ul>
   <li><strong>Type de poste : </strong>".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type)."</li>
   <li><strong>Nom : </strong>".$event_name."</li>
@@ -29,7 +31,11 @@ if ($action == 'validate-local') {
   <li><strong>Certificat Original d'Affiliation : </strong>".$cu_full."</li>
   </ul>
   <br />
-  Ce poste attend votre validation sur l'intranet.";
+  Ce poste attend votre validation sur l'intranet.<br />
+  <br />
+  Bien cordialement,<br />
+  <br />".$setting_service->getGeneralSetting('mail-signature-dlo')."<br />
+  Antenne de ".$sectionName;
 
   $mail = new Mail($db_link, $tablename_mail, $currentUserID, $sender, $mail_subject, $mail_message);
 
@@ -50,8 +56,10 @@ if ($action == 'cancel-local') {
   $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-cancel-recipients');
   $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-cancel-ccrecipients');
 
-  $mail_subject = "Annulation de DPS: ".$event_name;
-  $mail_message = "Bonjour,<br /><br />L'antenne de <strong>".$sectionName."</strong> vient d'annuler prématurément un DPS pour la raison suivante : ".$dps['status_cancel_reason']."
+  $mail_subject = "Annulation de ".$select_list_parameter_service->getTranslation('dps_type_short', $dps_type).": ".$event_name;
+  $mail_message = "Bonjour,<br />
+  <br />
+  L'antenne de <strong>".$sectionName."</strong> vient d'annuler prématurément un DPS pour la raison suivante : ".$dps['status_cancel_reason']."
   <br />
   <br />
   Voici les informations :<br />
@@ -61,8 +69,10 @@ if ($action == 'cancel-local') {
   <li><strong>Horaires de poste : </strong> Du ".formatDateFrToReadable($dps_begin_date)." à ".formatTimeFrToReadable($dps_begin_time)." au ".formatDateFrToReadable($dps_end_date)." à ".formatTimeFrToReadable($dps_end_time)."</li>
   <li><strong>Certificat Original d'Affiliation : </strong>".$cu_full."</li>
   </ul>
-  <br />
-  Ce poste attend votre validation sur l'intranet.";
+  <br/>
+  Bien cordialement,<br />
+  <br />".$setting_service->getGeneralSetting('mail-signature-dlo')."<br />
+  Antenne de ".$sectionName;
 
   $mail = new Mail($db_link, $tablename_mail, $currentUserID, $sender, $mail_subject, $mail_message);
 
@@ -79,7 +89,67 @@ if ($action == 'cancel-local') {
 
 
 if ($action == 'cancel-ddo') {
+  // 1er mail : INTERNAL
+  $sender = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#ddo"));
+  $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-cancel-internal-recipients');
+  $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-cancel-internal-ccrecipients');
 
+  $mail_subject = "Annulation du ".$select_list_parameter_service->getTranslation('dps_type_short', $dps_type).": ".$event_name;
+  $mail_message = "Bonjour,<br />
+  <br />
+  La Direction Départementale des Opérations annule votre ".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type)." <strong>".$event_name."</strong> pour la raison suivante : ".$dps['status_cancel_reason']."<br />
+  <br />
+  <br />
+  Bien cordialement,<br />
+  <br />".$setting_service->getGeneralSetting('mail-signature-ddo');
+
+  $mail = new Mail($db_link, $tablename_mail, $currentUserID, $sender, $mail_subject, $mail_message);
+
+  foreach ($db_recipients as $recipient) {
+    $mail->addRecipient($recipient);
+  }
+  foreach ($db_ccrecipients as $ccrecipient) {
+    $mail->addCcRecipient($ccrecipient);
+  }
+
+  // Stocker le mail en base de données
+  $mail->store();
+
+  // 2nd mail : EXTERNE
+  $sender = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#ddo"));
+  $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-cancel-external-recipients');
+  $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-cancel-external-ccrecipients');
+
+  $mail_subject = "Déclaration de ".$select_list_parameter_service->getTranslation('dps_type_short', $dps_type).": ".$cu_full;
+  $mail_message = "Bonjour,<br />
+  <br />
+  La Protection Civile des Hauts-de-Seine vous informe de l'annulation du <strong>".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type)."</strong> numéro ".$cu_full." pour la raison suivante : ".$dps['status_cancel_reason'].".<br />
+  <br />
+  Rappels :
+  <ul>
+  <li><strong>Nom : </strong>".$event_name."</li>
+  <li><strong>Description : </strong>".$event_description."</li>
+  <li><strong>Adresse : </strong>".$event_address."</li>
+  <li><strong>Horaires de poste : </strong> Du ".formatDateFrToReadable($dps_begin_date)." à ".formatTimeFrToReadable($dps_begin_time)." au ".formatDateFrToReadable($dps_end_date)." à ".formatTimeFrToReadable($dps_end_time)."</li>
+  <li><strong>Certificat Original d'Affiliation : </strong>".$cu_full."</li>
+  <br />
+  </ul>
+  <br />
+  <br />
+  Bien cordialement,<br />
+  <br />".$setting_service->getGeneralSetting('mail-signature-ddo');
+
+  $mail = new Mail($db_link, $tablename_mail, $currentUserID, $sender, $mail_subject, $mail_message);
+
+  foreach ($db_recipients as $recipient) {
+    $mail->addRecipient($recipient);
+  }
+  foreach ($db_ccrecipients as $ccrecipient) {
+    $mail->addCcRecipient($ccrecipient);
+  }
+
+  // Stocker le mail en base de données
+  $mail->store();
 }
 
 
@@ -88,11 +158,14 @@ if ($action == 'wait') {
   $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-wait-recipients');
   $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-wait-ccrecipients');
 
-  $mail_subject = "DPS mis en attente: ".$event_name;
+  $mail_subject = $select_list_parameter_service->getTranslation('dps_type_short', $dps_type)." mis en attente: ".$event_name;
   $mail_message = "Bonjour,<br /><br />Votre ".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type)." <strong>".$event_name."</strong> initialement prévu du ".formatDateFrToReadable($dps_begin_date)." à ".formatTimeFrToReadable($dps_begin_time)." au ".formatDateFrToReadable($dps_end_date)." à ".formatTimeFrToReadable($dps_end_time)." vient d'être <strong>mis en attente</strong> pour la raison suivante : ".$dps['status_justification']."
   <br />
   <br />
-  Vous ne pouvez néanmoins plus modifier le DPS. Au besoin, contactez le DDO pour régulariser la situation:<br />";
+  Vous ne pouvez néanmoins plus modifier le DPS. Au besoin, contactez le DDO pour régulariser la situation:<br />
+  <br />
+  Bien cordialement,<br />
+  <br />".$setting_service->getGeneralSetting('mail-signature-ddo');
 
   $mail = new Mail($db_link, $tablename_mail, $currentUserID, $sender, $mail_subject, $mail_message);
 
@@ -109,12 +182,12 @@ if ($action == 'wait') {
 
 
 if ($action == 'accept-ddo') {
-  // 1er mail : intl_error_name
+  // 1er mail : INTERNAL
   $sender = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#ddo"));
   $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-validate-internal-recipients');
   $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-validate-internal-ccrecipients');
 
-  $mail_subject = "Accord du ".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type).": ".$event_name;
+  $mail_subject = "Accord du ".$select_list_parameter_service->getTranslation('dps_type_short', $dps_type).": ".$event_name;
   $mail_message = "Bonjour,<br />
   <br />
   La Protection Civile des Hauts-de-Seine vous donne l'accord pour effectuer votre ".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type)." <strong>".$event_name."</strong>.<br />
@@ -131,10 +204,7 @@ if ($action == 'accept-ddo') {
   <br />
   <br />
   Bien cordialement,<br />
-  <br />
-  Le Directeur Départemental des Opérations  <br />
-  operationnel@protectioncivile92.org  <br />
-  07.74.95.31.75";
+  <br />".$setting_service->getGeneralSetting('mail-signature-ddo');
 
   $mail = new Mail($db_link, $tablename_mail, $currentUserID, $sender, $mail_subject, $mail_message);
 
@@ -151,10 +221,10 @@ if ($action == 'accept-ddo') {
 
   // 2nd mail : EXTERNE
   $sender = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#ddo"));
-  $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-validate-internal-recipients');
-  $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-validate-internal-ccrecipients');
+  $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-validate-external-recipients');
+  $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-validate-external-ccrecipients');
 
-  $mail_subject = "Déclaration de ".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type).": ".$cu_full;
+  $mail_subject = "Déclaration de ".$select_list_parameter_service->getTranslation('dps_type_short', $dps_type).": ".$cu_full;
   $mail_message = "Bonjour,<br />
   <br />
   La Protection Civile des Hauts-de-Seine vous informe de la mise en place d'un <strong>".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type)."</strong>.<br />
@@ -171,10 +241,7 @@ if ($action == 'accept-ddo') {
   <br />
   <br />
   Bien cordialement,<br />
-  <br />
-  Le Directeur Départemental des Opérations  <br />
-  operationnel@protectioncivile92.org  <br />
-  07.74.95.31.75";
+  <br />".$setting_service->getGeneralSetting('mail-signature-ddo');
 
   $mail = new Mail($db_link, $tablename_mail, $currentUserID, $sender, $mail_subject, $mail_message);
 
@@ -196,11 +263,13 @@ if ($action == 'reject-ddo') {
   $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-reject-recipients');
   $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-reject-ccrecipients');
 
-  $mail_subject = "DPS refusé: ".$event_name;
+  $mail_subject = $select_list_parameter_service->getTranslation('dps_type_short', $dps_type)." refusé: ".$event_name;
   $mail_message = "Bonjour,<br /><br />Votre ".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type)." <strong>".$event_name."</strong> initialement prévu du ".formatDateFrToReadable($dps_begin_date)." à ".formatTimeFrToReadable($dps_begin_time)." au ".formatDateFrToReadable($dps_end_date)." à ".formatTimeFrToReadable($dps_end_time)." vient d'être <strong>refusé</strong> pour la raison suivante : ".$dps['status_justification']."
   <br />
   <br />
-  Vous ne pouvez plus modifier le DPS. Au besoin, contactez le DDO pour régulariser la situation:<br />";
+  Vous ne pouvez plus modifier le DPS. Au besoin, contactez le DDO pour régulariser la situation:<br />
+  Bien cordialement,<br />
+  <br />".$setting_service->getGeneralSetting('mail-signature-ddo');
 
   $mail = new Mail($db_link, $tablename_mail, $currentUserID, $sender, $mail_subject, $mail_message);
 

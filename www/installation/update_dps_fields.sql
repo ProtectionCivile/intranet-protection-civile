@@ -231,7 +231,9 @@ INSERT INTO `settings_general`
 ('dps-doc-suffix-risk', 'RISK'),
 ('dps-doc-suffix-demande', 'DEM'),
 ('dps-doc-suffix-declaration',	'DECL'),
-('eprotec-event-url', 'https://franceprotectioncivile.org/evenement_display.php?evenement=EVENTID');
+('eprotec-event-url', 'https://franceprotectioncivile.org/evenement_display.php?evenement=EVENTID'),
+('mail-signature-dlo',	'<strong>Le Directeur Local des Opérations</strong>'),
+('mail-signature-ddo',	'<strong>Le Directeur Départemental des Opérations</strong><br />operationnel@protectioncivile92.org<br />06.74.95.31.75');
 
 INSERT INTO `settings_mail`
 (name, value) VALUES
@@ -266,7 +268,7 @@ INSERT INTO `settings_mail`
 ('dlo-cancel-ccrecipients',	'#dlo-ANTENNE, #ddo'),
 ('ddo-cancel-internal-recipients',	'#dlo-ANTENNE'),
 ('ddo-cancel-internal-ccrecipients',	'#ddo'),
-('ddo-cancel-external-recipients',	'changeme@protectioncivile92.org'),
+('ddo-cancel-external-recipients',	'#prefadpc'),
 ('ddo-cancel-external-ccrecipients',	'#ddo'),
 ('ddo-wait-recipients',	'#dlo-ANTENNE'),
 ('ddo-wait-ccrecipients',	'#ddo'),
