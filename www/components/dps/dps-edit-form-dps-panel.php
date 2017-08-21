@@ -249,8 +249,7 @@
             <div class="col-sm-2">
               <select class="form-control" id="clientmatos_infirmerie" name="clientmatos_infirmerie" aria-describedby="clientmatos-infirmerie-error">
 								<?php
-								include ('functions/dps/dps-query-select-parameters.php');
-								$parameters = get_select_parameters($parameters_query_result, 'yesno');
+								$parameters = $select_list_parameter_service->getParametersForCategory('yesno');
 								 foreach ($parameters as $key => $value) {
 									?>
 									<option value="<?php echo $value['option_value']; ?>" <?php if ($clientmatos_infirmerie == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
@@ -269,8 +268,7 @@
             <div class="col-sm-2">
               <select class="form-control" id="clientmatos_tente" name="clientmatos_tente" aria-describedby="clientmatos-tente-error">
 								<?php
-								include ('functions/dps/dps-query-select-parameters.php');
-								$parameters = get_select_parameters($parameters_query_result, 'yesno');
+								$parameters = $select_list_parameter_service->getParametersForCategory('yesno');
 								 foreach ($parameters as $key => $value) {
 									?>
 									<option value="<?php echo $value['option_value']; ?>" <?php if ($clientmatos_tente == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
@@ -357,8 +355,7 @@
           <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
             <select class="form-control" id="samu" name="samu" aria-describedby="samu-error">
 							<?php
-							include ('functions/dps/dps-query-select-parameters.php');
-							$parameters = get_select_parameters($parameters_query_result, 'samu');
+							$parameters = $select_list_parameter_service->getParametersForCategory('samu');
 							 foreach ($parameters as $key => $value) {
 								?>
 								<option value="<?php echo $value['option_value']; ?>" <?php if ($samu == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
@@ -384,8 +381,7 @@
           <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
             <select class="form-control" id="bspp" name="bspp" aria-describedby="bspp-error">
 							<?php
-							include ('functions/dps/dps-query-select-parameters.php');
-							$parameters = get_select_parameters($parameters_query_result, 'bspp');
+							$parameters = $select_list_parameter_service->getParametersForCategory('bspp');
 							 foreach ($parameters as $key => $value) {
 								?>
 								<option value="<?php echo $value['option_value']; ?>" <?php if ($bspp == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
@@ -418,8 +414,7 @@
             <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
               <select class="form-control" id="dps_type" name="dps_type" aria-describedby="dps-type-error">
 								<?php
-								include ('functions/dps/dps-query-select-parameters.php');
-								$parameters = get_select_parameters($parameters_query_result, 'dps_type_short');
+								$parameters = $select_list_parameter_service->getParametersForCategory('dps_type_short');
 								 foreach ($parameters as $key => $value) {
 									?>
 									<option value="<?php echo $value['option_value']; ?>" <?php if ($dps_type == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>

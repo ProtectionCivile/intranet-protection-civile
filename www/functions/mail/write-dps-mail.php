@@ -1,11 +1,10 @@
 <?php
 require('functions/mail/Mail.php');
 require_once('functions/mail/mail-functions.php');
-require_once('functions/dps/dps-select-parameters-computation.php');
 
 
 // Paramètre d'entrée : l'action désrée (validation locale? refus DDO?)
-$action = 'accept-ddo'; // TODO retirer cet exemple
+$action = 'validate-local'; // TODO retirer cet exemple
 
 // Find section owning the DPS
 $sql =  'SELECT DISTINCT name FROM '.$tablename_sections.' WHERE number = '.$section;
@@ -20,10 +19,9 @@ if ($action == 'validate-local') {
   $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-validate-ccrecipients');
 
   $mail_subject = "Création de DPS: ".$event_name;
-  include ('functions/dps/dps-query-select-parameters.php');
   $mail_message = "Bonjour,<br /><br />L'antenne de <strong>".$sectionName."</strong> vient de vous soumettre un DPS pour validation. Voici les informations :<br />
   <ul>
-  <li><strong>Type de poste : </strong>".get_select_unique_parameter($parameters_query_result, 'dps_type_detailed', $dps_type)."</li>
+  <li><strong>Type de poste : </strong>".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type)."</li>
   <li><strong>Nom : </strong>".$event_name."</li>
   <li><strong>Description : </strong>".$event_description."</li>
   <li><strong>Adresse : </strong>".$event_address."</li>
@@ -53,13 +51,12 @@ if ($action == 'cancel-local') {
   $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-cancel-ccrecipients');
 
   $mail_subject = "Annulation de DPS: ".$event_name;
-  include ('functions/dps/dps-query-select-parameters.php');
   $mail_message = "Bonjour,<br /><br />L'antenne de <strong>".$sectionName."</strong> vient d'annuler prématurément un DPS pour la raison suivante : ".$dps['status_cancel_reason']."
   <br />
   <br />
   Voici les informations :<br />
   <ul>
-  <li><strong>Type de poste : </strong>".get_select_unique_parameter($parameters_query_result, 'dps_type_detailed', $dps_type)."</li>
+  <li><strong>Type de poste : </strong>".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type)."</li>
   <li><strong>Nom : </strong>".$event_name."</li>
   <li><strong>Horaires de poste : </strong> Du ".formatDateFrToReadable($dps_begin_date)." à ".formatTimeFrToReadable($dps_begin_time)." au ".formatDateFrToReadable($dps_end_date)." à ".formatTimeFrToReadable($dps_end_time)."</li>
   <li><strong>Certificat Original d'Affiliation : </strong>".$cu_full."</li>
@@ -92,8 +89,7 @@ if ($action == 'wait') {
   $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-wait-ccrecipients');
 
   $mail_subject = "DPS mis en attente: ".$event_name;
-  include ('functions/dps/dps-query-select-parameters.php');
-  $mail_message = "Bonjour,<br /><br />Votre ".get_select_unique_parameter($parameters_query_result, 'dps_type_detailed', $dps_type)." <strong>".$event_name."</strong> initialement prévu du ".formatDateFrToReadable($dps_begin_date)." à ".formatTimeFrToReadable($dps_begin_time)." au ".formatDateFrToReadable($dps_end_date)." à ".formatTimeFrToReadable($dps_end_time)." vient d'être <strong>mis en attente</strong> pour la raison suivante : ".$dps['status_justification']."
+  $mail_message = "Bonjour,<br /><br />Votre ".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type)." <strong>".$event_name."</strong> initialement prévu du ".formatDateFrToReadable($dps_begin_date)." à ".formatTimeFrToReadable($dps_begin_time)." au ".formatDateFrToReadable($dps_end_date)." à ".formatTimeFrToReadable($dps_end_time)." vient d'être <strong>mis en attente</strong> pour la raison suivante : ".$dps['status_justification']."
   <br />
   <br />
   Vous ne pouvez néanmoins plus modifier le DPS. Au besoin, contactez le DDO pour régulariser la situation:<br />";
@@ -118,11 +114,10 @@ if ($action == 'accept-ddo') {
   $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-validate-internal-recipients');
   $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-validate-internal-ccrecipients');
 
-  $mail_subject = "Accord du ".get_select_unique_parameter($parameters_query_result, 'dps_type_short', $dps_type).": ".$event_name;
-  include ('functions/dps/dps-query-select-parameters.php');
+  $mail_subject = "Accord du ".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type).": ".$event_name;
   $mail_message = "Bonjour,<br />
   <br />
-  La Protection Civile des Hauts-de-Seine vous donne l'accord pour effectuer votre ".get_select_unique_parameter($parameters_query_result, 'dps_type_detailed', $dps_type)." <strong>".$event_name."</strong>.<br />
+  La Protection Civile des Hauts-de-Seine vous donne l'accord pour effectuer votre ".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type)." <strong>".$event_name."</strong>.<br />
   <br />
   <ul>
   <li><strong>Nom : </strong>".$event_name."</li>
@@ -159,11 +154,10 @@ if ($action == 'accept-ddo') {
   $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-validate-internal-recipients');
   $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-validate-internal-ccrecipients');
 
-  $mail_subject = "Déclaration de ".get_select_unique_parameter($parameters_query_result, 'dps_type_short', $dps_type).": ".$cu_full;
-  include ('functions/dps/dps-query-select-parameters.php');
+  $mail_subject = "Déclaration de ".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type).": ".$cu_full;
   $mail_message = "Bonjour,<br />
   <br />
-  La Protection Civile des Hauts-de-Seine vous informe de la mise en place d'un <strong>".get_select_unique_parameter($parameters_query_result, 'dps_type_detailed', $dps_type)."</strong>.<br />
+  La Protection Civile des Hauts-de-Seine vous informe de la mise en place d'un <strong>".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type)."</strong>.<br />
   <br />
   <ul>
   <li><strong>Nom : </strong>".$event_name."</li>
@@ -203,8 +197,7 @@ if ($action == 'reject-ddo') {
   $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-reject-ccrecipients');
 
   $mail_subject = "DPS refusé: ".$event_name;
-  include ('functions/dps/dps-query-select-parameters.php');
-  $mail_message = "Bonjour,<br /><br />Votre ".get_select_unique_parameter($parameters_query_result, 'dps_type_detailed', $dps_type)." <strong>".$event_name."</strong> initialement prévu du ".formatDateFrToReadable($dps_begin_date)." à ".formatTimeFrToReadable($dps_begin_time)." au ".formatDateFrToReadable($dps_end_date)." à ".formatTimeFrToReadable($dps_end_time)." vient d'être <strong>refusé</strong> pour la raison suivante : ".$dps['status_justification']."
+  $mail_message = "Bonjour,<br /><br />Votre ".$select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type)." <strong>".$event_name."</strong> initialement prévu du ".formatDateFrToReadable($dps_begin_date)." à ".formatTimeFrToReadable($dps_begin_time)." au ".formatDateFrToReadable($dps_end_date)." à ".formatTimeFrToReadable($dps_end_time)." vient d'être <strong>refusé</strong> pour la raison suivante : ".$dps['status_justification']."
   <br />
   <br />
   Vous ne pouvez plus modifier le DPS. Au besoin, contactez le DDO pour régulariser la situation:<br />";
