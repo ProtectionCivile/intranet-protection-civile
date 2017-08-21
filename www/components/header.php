@@ -21,6 +21,7 @@ setlocale(LC_ALL, 'fr_FR');
 
 <?php require_once('functions/compute-server-feedback.php'); ?>
 <?php require_once('functions/str.php'); ?>
+<?php require_once('functions/SettingService.php'); ?>
 
 
 <?php require_once('functions/session/currentuser-parameters.php'); ?>

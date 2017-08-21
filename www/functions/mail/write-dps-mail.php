@@ -15,9 +15,9 @@ $sql =  'SELECT DISTINCT name FROM '.$tablename_sections.' WHERE number = '.$sec
 
 
 if ($action == 'validate-local') {
-  $sender = implode(",", getRealMailAddresses($db_link, $tablename_settings_mail, $section, $event_department, "#dlo-".$section));
-  $db_recipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'dlo-validate-recipients');
-  $db_ccrecipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'dlo-validate-ccrecipients');
+  $sender = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#dlo-".$section));
+  $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-validate-recipients');
+  $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-validate-ccrecipients');
 
   $mail_subject = "Création de DPS: ".$event_name;
   include ('functions/dps/dps-query-select-parameters.php');
@@ -48,9 +48,9 @@ if ($action == 'validate-local') {
 
 
 if ($action == 'cancel-local') {
-  $sender = implode(",", getRealMailAddresses($db_link, $tablename_settings_mail, $section, $event_department, "#dlo-".$section));
-  $db_recipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'dlo-cancel-recipients');
-  $db_ccrecipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'dlo-cancel-ccrecipients');
+  $sender = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#dlo-".$section));
+  $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-cancel-recipients');
+  $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-cancel-ccrecipients');
 
   $mail_subject = "Annulation de DPS: ".$event_name;
   include ('functions/dps/dps-query-select-parameters.php');
@@ -87,9 +87,9 @@ if ($action == 'cancel-ddo') {
 
 
 if ($action == 'wait') {
-  $sender = implode(",", getRealMailAddresses($db_link, $tablename_settings_mail, $section, $event_department, "#ddo"));
-  $db_recipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-wait-recipients');
-  $db_ccrecipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-wait-ccrecipients');
+  $sender = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#ddo"));
+  $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-wait-recipients');
+  $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-wait-ccrecipients');
 
   $mail_subject = "DPS mis en attente: ".$event_name;
   include ('functions/dps/dps-query-select-parameters.php');
@@ -114,9 +114,9 @@ if ($action == 'wait') {
 
 if ($action == 'accept-ddo') {
   // 1er mail : intl_error_name
-  $sender = implode(",", getRealMailAddresses($db_link, $tablename_settings_mail, $section, $event_department, "#ddo"));
-  $db_recipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-validate-internal-recipients');
-  $db_ccrecipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-validate-internal-ccrecipients');
+  $sender = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#ddo"));
+  $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-validate-internal-recipients');
+  $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-validate-internal-ccrecipients');
 
   $mail_subject = "Accord du ".get_select_unique_parameter($parameters_query_result, 'dps_type_short', $dps_type).": ".$event_name;
   include ('functions/dps/dps-query-select-parameters.php');
@@ -155,9 +155,9 @@ if ($action == 'accept-ddo') {
   $mail->store();
 
   // 2nd mail : EXTERNE
-  $sender = implode(",", getRealMailAddresses($db_link, $tablename_settings_mail, $section, $event_department, "#ddo"));
-  $db_recipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-validate-internal-recipients');
-  $db_ccrecipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-validate-internal-ccrecipients');
+  $sender = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#ddo"));
+  $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-validate-internal-recipients');
+  $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-validate-internal-ccrecipients');
 
   $mail_subject = "Déclaration de ".get_select_unique_parameter($parameters_query_result, 'dps_type_short', $dps_type).": ".$cu_full;
   include ('functions/dps/dps-query-select-parameters.php');
@@ -198,9 +198,9 @@ if ($action == 'accept-ddo') {
 
 
 if ($action == 'reject-ddo') {
-  $sender = implode(",", getRealMailAddresses($db_link, $tablename_settings_mail, $section, $event_department, "#ddo"));
-  $db_recipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-reject-recipients');
-  $db_ccrecipients = getMailRecipients($db_link, $tablename_settings_mail, $section, $event_department, 'ddo-reject-ccrecipients');
+  $sender = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#ddo"));
+  $db_recipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-reject-recipients');
+  $db_ccrecipients = getMailRecipients($db_link, $setting_service, $section, $event_department, 'ddo-reject-ccrecipients');
 
   $mail_subject = "DPS refusé: ".$event_name;
   include ('functions/dps/dps-query-select-parameters.php');

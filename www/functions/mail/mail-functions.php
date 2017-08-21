@@ -1,5 +1,5 @@
 <?php
-function getRealMailAddresses($db_link, $tablename, $section, $department, $mail_strip ) {
+function getRealMailAddresses($db_link, $setting_service_p, $section, $department, $mail_strip ) {
 
   if ( strpos($mail_strip, '@') == TRUE) { // This is a real mail addr
     return explode(',', $mail_strip);
@@ -12,39 +12,29 @@ function getRealMailAddresses($db_link, $tablename, $section, $department, $mail
       $lookup = 'adpc-'.$department;
     }
 
-    $query = "SELECT * FROM $tablename WHERE name LIKE '".str_replace('#', '', $lookup)."'";
-    $query_result = mysqli_query($db_link, $query);
-    $db_record = mysqli_fetch_assoc($query_result);
-    return explode(',', str_replace(' ', '', $db_record['value']));
+    return explode(',', str_replace(' ', '', $setting_service_p->getMailSetting(str_replace('#', '', $lookup))));
   }
   else if ( strpos($mail_strip, '#') !== FALSE) { // This must be interpreted
     $mail_strip = str_replace('ANTENNE', $section, $mail_strip);
-
-    $query = "SELECT * FROM $tablename WHERE name LIKE '".str_replace('#', '', $mail_strip)."'";
-  	$query_result = mysqli_query($db_link, $query);
-  	$db_record = mysqli_fetch_assoc($query_result);
-    return explode(',', str_replace(' ', '', $db_record['value']));
+    return explode(',', str_replace(' ', '', $setting_service_p->getMailSetting(str_replace('#', '', $mail_strip))));
   }
 
 }
 
 
-function getMailRecipients($db_link, $tablename, $section, $department, $recipients_to_find_p) {
+function getMailRecipients($db_link, $setting_service_p, $section, $department, $recipients_to_find_p) {
   // $oneLineRecipients = '';
   $db_recipients = array();
 
   // Récupère la liste des destinataires
-  $sql = "SELECT * FROM `".$tablename."` WHERE `name` LIKE '".$recipients_to_find_p."'" or die("Impossible de récupérer le paramètre" . mysqli_error($db_link));
-  $query_result = mysqli_query($db_link, $sql);
-  $db_record = mysqli_fetch_assoc($query_result);
-  $oneLineRecipients = $db_record['value'];
+  $oneLineRecipients = $setting_service_p->getMailSetting($recipients_to_find_p);
 
   // Aligne les sur une ligne en les mettant sous forme de tableau
 	$oneLineCommaSeparatedRecipients = explode(',', str_replace(' ', '', $oneLineRecipients));
 
   // Résoud les adresses particulières
   foreach ($oneLineCommaSeparatedRecipients as $dbr) {
-    $realMailAdressses = getRealMailAddresses($db_link, $tablename, $section, $department, $dbr);
+    $realMailAdressses = getRealMailAddresses($db_link, $setting_service_p, $section, $department, $dbr);
     foreach ($realMailAdressses as $realMail) {
       array_push($db_recipients, $realMail);
     }

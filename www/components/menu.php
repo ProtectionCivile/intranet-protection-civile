@@ -3,10 +3,6 @@ $query = "SELECT id FROM $tablename_dps WHERE status=1 OR  status=2";
 $number_dps = mysqli_query($db_link, $query);
 $row_cnt = mysqli_num_rows($number_dps);
 
-$query = "SELECT * FROM $tablename_settings_general WHERE name='application-header-name'";
-$query_result = mysqli_query($db_link, $query);
-$settings_array = mysqli_fetch_array($query_result);
-
 ?>
 
 <div class="navbar navbar-default navbar-static-top " role="navigation">
@@ -23,7 +19,7 @@ $settings_array = mysqli_fetch_array($query_result);
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.php"><?php echo $settings_array['value'];?></a>
+			<a class="navbar-brand" href="index.php"><?php echo $setting_service->getGeneralSetting('application-header-name');?></a>
 		</div>
 
 		<div class="navbar-collapse collapse">
