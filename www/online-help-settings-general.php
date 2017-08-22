@@ -22,13 +22,13 @@
 	</div>
 
 	<p class='lead'>Ils servent à assurer la flexibilité de l'intranet, sans avoir à toucher au coeur du système pour changer un réglage.</p>
-	<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span> Attention, la modification de ces paramètres peut entraîner une coupure de service</div>
 
 	<h3 class='text-primary'>Droits d'accès</h3>
 	<p>Il existe une permission pour les consulter, une autre pour les modifier.</p>
 
 	<h3 class='text-primary'>Paramètres par défaut, indispensables à l'application</h3>
-	<p>Il existe une permission pour les consulter, une autre pour les modifier.</p>
+	<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span> Sans ces paramètres, l'application ne peut pas fonctionner correctement. À manipuler avec précaution.</div>
+	<p>Les valeurs des paramètres peuvent néanmoins être modifiées.</p>
 
 	<div class='table-responsive'>
 		<table class='table table-condensed'>
@@ -48,7 +48,7 @@
 				<tr>
 					<td>dps-doc-suffix-convention</td>
 					<td>CONV</td>
-					<td>Suffixe des noms fichier de convention de DPS, pour l'upload et la recherche. Par exemple: 92-COU-17-CONV.pdf</td>
+					<td>Suffixe des noms fichier de convention de DPS, pour l'upload et la recherche. Par exemple: 92-17-COU-021-CONV.pdf</td>
 				</tr>
 				<tr>
 					<td>dps-doc-suffix-risk</td>

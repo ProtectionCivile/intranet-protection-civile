@@ -35,7 +35,7 @@
 		<div class="col-sm-4">
 			<h4 class='text-warning'>Administration</h4>
 			<ul>
-				<li><a href='online-help-settings-general.php'>Paramètres de l'application (et défaults)</a></li>
+				<li><a href='online-help-settings-general.php'>Paramètres de l'application</a></li>
 				<li><a href=''>Paramètres mail</a></li>
 				<li><a href=''>Utilisateurs, rôles, permissions</a></li>
 				<li><a href=''>Antennes et rattachement</a></li>
