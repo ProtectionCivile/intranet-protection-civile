@@ -1,7 +1,11 @@
 <?php
 $query = "SELECT id FROM $tablename_dps WHERE status=1 OR  status=2";
 $number_dps = mysqli_query($db_link, $query);
-$row_cnt = mysqli_num_rows($number_dps);
+$dps_needs_attention = mysqli_num_rows($number_dps);
+
+$sql = "SELECT `id`, `from_addr`, `to_addr`, `cc_addr`, `subject`, `message`, `attachments` FROM $tablename_mail WHERE `date_sent` IS NULL";
+$mails = mysqli_query($db_link, $sql);
+$number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 
 ?>
 
@@ -29,7 +33,7 @@ $row_cnt = mysqli_num_rows($number_dps);
 					<ul class="dropdown-menu" role="menu">
 						<li class="dropdown-header">Direction départementale</li>
 						<?php if ($rbac->check("ope-dps-validate-ddo-to-pref", $currentUserID)) {?>
-							<li><a href="dps-list.php?atraiter"><span class='glyphicon glyphicon-fire'></span> En attente <span class="badge"><?php echo $row_cnt;?></span></a></li>
+							<li><a href="dps-list.php?atraiter"><span class='glyphicon glyphicon-fire'></span> En attente <span class="badge"><?php echo $dps_needs_attention;?></span></a></li>
 						<?php } ?>
 						<li class="divider"></li>
 						<li class="dropdown-header">Postes existants</li>
@@ -93,14 +97,14 @@ $row_cnt = mysqli_num_rows($number_dps);
 						}
 
 						if ($rbac->check("admin-settings-view", $currentUserID)) {
-							?> <li class="divider" /> <?php
+							?> <li class="divider"></li> <?php
 							?> <li class="dropdown-header">Paramètres du site</li> <?php
 							?> <li><a href="setting-list.php"><span class='glyphicon glyphicon-wrench'></span> Liste des paramètres</a></li> <?php
 							?> <li><a href="mailsetting-list.php"><span class='glyphicon glyphicon-envelope'></span> Liste des paramètres mail</a></li> <?php
 						}
 
 						if ($rbac->check("admin-roles-view", $currentUserID) || $rbac->check("admin-permissions-view", $currentUserID)) {
-							?> <li class="divider" /> <?php
+							?> <li class="divider" ></li> <?php
 							?> <li class="dropdown-header">Sécurité</li> <?php
 							if ($rbac->check("admin-roles-view", $currentUserID)) {?> <li><a href="role-list.php"><span class='glyphicon glyphicon-knight'></span> Gestion des rôles</a></li> <?php }
 							if ($rbac->check("admin-permissions-view", $currentUserID)) {?> <li><a href="permission-list.php"><span class='glyphicon glyphicon-ok'></span> Gestion des permissions</a></li> <?php }
@@ -109,9 +113,15 @@ $row_cnt = mysqli_num_rows($number_dps);
 						} ?>
 					</ul>
 				</li>
+
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
+
+				<?php if ($rbac->check("admin-settings-view", $currentUserID)) { ?>
+					<p class="navbar-text"><span class="badge" title='Nombre de mails en attente d&alt;envoi'><?php echo $number_mails;?></span></p>
+				<?php } ?>
+
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo ucwords($currentUserFirstName);?> <?php echo strtoupper($currentUserLastName);?> <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
