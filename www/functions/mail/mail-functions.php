@@ -26,7 +26,6 @@ function getMailRecipients($db_link, $setting_service_p, $section, $department, 
 
   // Récupère la liste des destinataires
   $oneLineRecipients = $setting_service_p->getMailSetting($recipients_to_find_p);
-  echo "recipients_to_find_p=".$recipients_to_find_p." --> oneLineRecipients=".$oneLineRecipients."<br />";
 
   // Aligne les sur une ligne en les mettant sous forme de tableau
 	$oneLineCommaSeparatedRecipients = explode(',', trim($oneLineRecipients));

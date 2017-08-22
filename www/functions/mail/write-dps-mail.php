@@ -9,6 +9,7 @@ $sql =  'SELECT DISTINCT name FROM '.$tablename_sections.' WHERE number = '.$sec
    $sectionName = $row['name'];
  }
 
+$action = 'accept-ddo';
 
 if ($action == 'validate-local') {
   $from = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#dlo-".$section));
@@ -206,7 +207,9 @@ if ($action == 'accept-ddo') {
   foreach ($db_cc as $mailaddr) {
     $mail->addCc($mailaddr);
   }
-  $mail->addAttachment($declarationFilePath);
+  if (!empty($declarationFilePath)) {
+    $mail->addAttachment($declarationFilePath);
+  }
 
   $mail->store();
 
@@ -242,7 +245,15 @@ if ($action == 'accept-ddo') {
   foreach ($db_cc as $mailaddr) {
     $mail->addCc($mailaddr);
   }
-  $mail->addAttachment($declarationFilePath);
+  if (!empty($declarationFilePath)) {
+    $mail->addAttachment($declarationFilePath);
+  }
+
+  // Si extérieur au département, mail à la fNPC
+  if (!($event_department == '92')) {
+    $fnpcMail = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#fnpc"));
+    $mail->addTo($fnpcMail);
+  }
 
   $mail->store();
 }
