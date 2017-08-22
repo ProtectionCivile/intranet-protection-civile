@@ -38,8 +38,6 @@
 
 	<?php require_once('components/filter/parts/paging-query-modifier.php'); ?>
 
-	<?php require_once('functions/dps/dps-select-parameters-computation.php'); ?>
-
 
 	<div class="panel panel-default">
 		<div class="panel-heading">

@@ -12,7 +12,7 @@
 			<div class="col col-md-2 col-xs-4 text-center">
 				<form class="form-horizontal" role="form" action="dps-view.php" method="post">
 					<?php
-					if ($canValidateLocal && $hasAllAttachements) {
+					if ($canValidateLocal && $hasAllAttachments) {
 						?>
 						<input type='hidden' name='workflow_action' value='validation_antenne'>
 						<input type='hidden' name='id' value='<?php echo $dps['id'];?>'>
@@ -21,7 +21,7 @@
 					?>
 						<button type="submit" class="btn btn-success"
 						<?php
-						if(! $canValidateLocal || ! $hasAllAttachements){
+						if(! $canValidateLocal || ! $hasAllAttachments){
 							echo " disabled";
 						}
 						?>

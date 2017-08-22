@@ -231,7 +231,53 @@ INSERT INTO `settings_general`
 ('dps-doc-suffix-risk', 'RISK'),
 ('dps-doc-suffix-demande', 'DEM'),
 ('dps-doc-suffix-declaration',	'DECL'),
-('eprotec-event-url', 'https://franceprotectioncivile.org/evenement_display.php?evenement=EVENTID');
+('eprotec-event-url', 'https://franceprotectioncivile.org/evenement_display.php?evenement=EVENTID'),
+('mail-signature-dlo',	'<strong>Le Directeur Local des Opérations</strong>'),
+('mail-signature-ddo',	'<strong>Le Directeur Départemental des Opérations</strong><br />operationnel@protectioncivile92.org<br />06.74.95.31.75');
+
+INSERT INTO `settings_mail`
+(name, value) VALUES
+('ddo', '"DDO" <directeur-operations@protectioncivile92.org>'),
+('fnpc', 'changeme@protectioncivile92.org'),
+('prefecture', 'changeme@protectioncivile92.org'),
+('adpc-75', 'changeme@protectioncivile92.org, changeme@protectioncivile92.org'),
+('adpc-78',	'changeme@protectioncivile92.org'),
+('adpc-93',	'changeme@protectioncivile92.org'),
+('adpc-94',	'changeme@protectioncivile92.org'),
+('adpc-95',	'changeme@protectioncivile92.org'),
+('dlo-0',	'operationnel@protectioncivile92.org'),
+('dlo-1',	'"DLO Antony" <operationnel-antony@protectioncivile92.org>'),
+('dlo-2',	'"DLO Asnieres" <operationnel-asnieres@protectioncivile92.org>'),
+('dlo-5',	'"DLO Boulogne-Issy" <operationnel-boulogne-issy@protectioncivile92.org>'),
+('dlo-6',	'"DLO Bourg-la-Reine" <operationnel-bourg-la-reine@protectioncivile92.org>'),
+('dlo-10',	'"DLO Clamart" <operationnel-clamart@protectioncivile92.org>'),
+('dlo-11',	'"DLO Clichy" <operationnel-clichy@protectioncivile92.org>'),
+('dlo-12',	'"DLO Colombes" <operationnel-colombes@protectioncivile92.org>'),
+('dlo-13',	'"DLO Courbevoie" <operationnel-courbevoie@protectioncivile92.org>'),
+('dlo-15',	'"DLO Garches" <operationnel-garches@protectioncivile92.org>'),
+('dlo-17',	'"DLO Gennevilliers" <operationnel-gennevilliers@protectioncivile92.org>'),
+('dlo-20',	'"DLO Levallois" <operationnel-levallois@protectioncivile92.org>'),
+('dlo-24',	'"DLO Nanterre" <operationnel-nanterre@protectioncivile92.org>'),
+('dlo-28',	'"DLO Rueil" <operationnel-rueil@protectioncivile92.org>'),
+('dlo-32',	'"DLO Suresnes-Puteaux" <operationnel-suresnes-puteaux@protectioncivile92.org>'),
+('dlo-33',	'"DLO Vanves" <operationnel-vanves@protectioncivile92.org>'),
+('dlo-36',	'"DLO Villeneuve" <operationnel-villeneuve@protectioncivile92.org>'),
+('dlo-validate-recipients',	'demande-dps@protectioncivile92.org'),
+('dlo-validate-ccrecipients',	'#dlo-ANTENNE, #ddo'),
+('dlo-cancel-recipients',	'demande-dps@protectioncivile92.org'),
+('dlo-cancel-ccrecipients',	'#dlo-ANTENNE, #ddo'),
+('ddo-cancel-internal-recipients',	'#dlo-ANTENNE'),
+('ddo-cancel-internal-ccrecipients',	'#ddo'),
+('ddo-cancel-external-recipients',	'#prefadpc'),
+('ddo-cancel-external-ccrecipients',	'#ddo'),
+('ddo-wait-recipients',	'#dlo-ANTENNE'),
+('ddo-wait-ccrecipients',	'#ddo'),
+('ddo-reject-recipients',	'#dlo-ANTENNE'),
+('ddo-validate-ccrecipients',	'#ddo'),
+('ddo-validate-internal-recipients',	'#dlo-ANTENNE'),
+('ddo-validate-internal-ccrecipients',	'#ddo'),
+('ddo-validate-external-recipients',	'#prefadpc'),
+('ddo-validate-external-ccrecipients',	'#ddo');
 
 
 CREATE TABLE `clients` (
@@ -244,7 +290,23 @@ CREATE TABLE `clients` (
   `address` VARCHAR(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `phone` VARCHAR(12) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `fax` VARCHAR(12) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `mail` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL
-) PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+  `mail` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+
+
+CREATE TABLE `mail` (
+	`id` INT(12) unsigned NOT NULL AUTO_INCREMENT,
+	`user` TINYINT(7) NOT NULL DEFAULT '0',
+  `from_addr` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`to_addr` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `cc_addr` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `subject` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `message` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`attachments` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `date_created` DATETIME NULL DEFAULT NULL,
+	`date_sent` DATETIME NULL DEFAULT NULL,
+	 PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
+
+
 
 // section

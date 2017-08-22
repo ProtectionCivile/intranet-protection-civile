@@ -140,8 +140,7 @@
 						<div class="col col-sm-2 text-center">
 							<p class='bg-info' >
 								<?php
-								include ('functions/dps/dps-query-select-parameters.php');
-								echo get_select_unique_parameter($parameters_query_result, 'yesno', $clientmatos_infirmerie);
+								echo $select_list_parameter_service->getTranslation('yesno', $clientmatos_infirmerie);
 								?>
 							</p>
 						</div>
@@ -150,8 +149,7 @@
 						<div class="col col-sm-2 text-center">
 							<p class='bg-info' >
 								<?php
-								include ('functions/dps/dps-query-select-parameters.php');
-								echo get_select_unique_parameter($parameters_query_result, 'yesno', $clientmatos_tente);
+								echo $select_list_parameter_service->getTranslation('yesno', $clientmatos_tente);
 								?>
 							</p>
 						</div>
@@ -204,8 +202,7 @@
 						<div class="col col-sm-3">
 							<p class='bg-info' >
 								<?php
-								include ('functions/dps/dps-query-select-parameters.php');
-								echo get_select_unique_parameter($parameters_query_result, 'samu', $samu);
+								echo $select_list_parameter_service->getTranslation('samu', $samu);
 								?>
 							</p>
 						</div>
@@ -214,8 +211,7 @@
 						<div class="col col-sm-3">
 							<p class='bg-info' >
 								<?php
-								include ('functions/dps/dps-query-select-parameters.php');
-								echo get_select_unique_parameter($parameters_query_result, 'bspp', $bspp);
+								echo $select_list_parameter_service->getTranslation('bspp', $bspp);
 								?>
 							</p>
 						</div>
@@ -238,8 +234,7 @@
 	          <div class="col col-sm-3">
 							<p class='bg-info' >
 								<?php
-								include ('functions/dps/dps-query-select-parameters.php');
-								echo get_select_unique_parameter($parameters_query_result, 'dps_type_detailed', $dps_type);
+								echo $select_list_parameter_service->getTranslation('dps_type_detailed', $dps_type);
 								?>
 							</p>
 	          </div>

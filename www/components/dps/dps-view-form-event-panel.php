@@ -61,8 +61,7 @@
             <div class="col col-sm-2 text-center">
 							<p class='bg-info' >
 								<?php
-								include ('functions/dps/dps-query-select-parameters.php');
-								echo get_select_unique_parameter($parameters_query_result, 'yesno', $event_pref_secu);
+								echo $select_list_parameter_service->getTranslation('yesno', $event_pref_secu);
 								?>
 						</p>
             </div>
@@ -102,8 +101,7 @@
 	          <div class="col col-sm-9">
 							<p class='bg-info' >
 								<?php
-								include ('functions/dps/dps-query-select-parameters.php');
-								echo get_select_unique_parameter($parameters_query_result, 'ris_p2', $ris_p2);
+								echo $select_list_parameter_service->getTranslation('ris_p2', $ris_p2);
 								?>
 							</p>
 	          </div>
@@ -115,8 +113,7 @@
 	          <div class="col col-sm-9">
 							<p class='bg-info' >
 								<?php
-								include ('functions/dps/dps-query-select-parameters.php');
-								echo get_select_unique_parameter($parameters_query_result, 'ris_e1', $ris_e1);
+								echo $select_list_parameter_service->getTranslation('ris_e1', $ris_e1);
 								?>
 							</p>
 	          </div>
@@ -128,8 +125,7 @@
 	          <div class="col col-sm-9">
 							<p class='bg-info' >
 								<?php
-								include ('functions/dps/dps-query-select-parameters.php');
-								echo get_select_unique_parameter($parameters_query_result, 'ris_e2', $ris_e2);
+								echo $select_list_parameter_service->getTranslation('ris_e2', $ris_e2);
 								?>
 							</p>
 	          </div>

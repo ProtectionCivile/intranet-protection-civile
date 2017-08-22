@@ -47,13 +47,13 @@
 			<div class="form-group form-group-sm">
 				<label for="name" class="col-sm-4 control-label">Nom du paramètre</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="name" name="name" value="<?php echo $name ?>" minlength='3' maxlength='120' required='true' placeholder="Nom du paramètre">
+					<input type="text" class="form-control" id="name" name="name" value="<?php echo htmlentities($name) ?>" minlength='3' maxlength='120' required='true' placeholder="Nom du paramètre">
 				</div>
 			</div>
 			<div class="form-group form-group-sm">
 				<label for="value" class="col-sm-4 control-label">Valeur du paramètre</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="value" name="value" value="<?php echo $value ?>" minlength='3' maxlength='400' required='false' placeholder="Valeur du paramètre">
+					<input type="text" class="form-control" id="value" name="value" value="<?php echo htmlentities($value) ?>" minlength='3' maxlength='400' required='false' placeholder="Valeur du paramètre">
 				</div>
 			</div>
 			<div class="form-group">

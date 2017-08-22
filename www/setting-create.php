@@ -44,7 +44,7 @@
 					<div class="form-group form-group-sm has-error has-feedback">
 						<label for="name" class="col-sm-4 control-label">Nom du paramètre</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="name" name="name" aria-describedby="inputError2Status" placeholder="ex: mail-generique-adpc" minlength='3' maxlength='120' required='true' value="<?php if (!empty($genericError)) {echo $name;} ?>">
+							<input type="text" class="form-control" id="name" name="name" aria-describedby="inputError2Status" placeholder="ex: mail-generique-adpc" minlength='3' maxlength='120' required='true' value="<?php if (!empty($genericError)) {echo htmlentities($name);} ?>">
 							<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
 							<span id="inputError2Status" class="sr-only">(error)</span>
 						</div>
@@ -53,7 +53,7 @@
 					<div class="form-group form-group-sm">
 						<label for="name" class="col-sm-4 control-label">Nom du paramètre</label>
 						<div class="col-sm-8">
-							<input type="text" class="form-control" id="name" name="name" placeholder="ex: mail-generique-adpc" minlength='3' maxlength='120' required='true' value="<?php if (!empty($genericError)) {echo $name;} ?>">
+							<input type="text" class="form-control" id="name" name="name" placeholder="ex: mail-generique-adpc" minlength='3' maxlength='120' required='true' value="<?php if (!empty($genericError)) {echo htmlentities($name);} ?>">
 						</div>
 					</div>
 				<?php } ?>
