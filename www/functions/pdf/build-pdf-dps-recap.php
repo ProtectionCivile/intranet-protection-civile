@@ -1,6 +1,5 @@
 <?php
 require_once('lib/fpdf/fpdf.php');
-require_once('functions/dps/dps-select-parameters-computation.php');
 
 function buildPdfForDps($pathfile, $dps_p) {
 
@@ -13,11 +12,8 @@ function buildPdfForDps($pathfile, $dps_p) {
   $pdf->SetTextColor(0,64,128);
   $pdf->SetFont('Poppins-SemiBold','',10);
 
-  require('functions/dps/dps-query-select-parameters.php');
-  $dps_type_detailed=get_select_unique_parameter($parameters_query_result, 'dps_type_detailed', $dps_p['dps_type']);
-
-  require('functions/dps/dps-query-select-parameters.php');
-  $dps_type_short=get_select_unique_parameter($parameters_query_result, 'dps_type_short', $dps_p['dps_type']);
+  $dps_type_detailed = $select_list_parameter_service->getTranslation('dps_type_detailed', $dps_p['dps_type']);
+  $dps_type_short = $select_list_parameter_service->getTranslation('dps_type_short', $dps_p['dps_type']);
 
   $pdf->Text(12,62,utf8_decode("Ouverture d'un ".$dps_type_detailed." (".$dps_type_short.")"));
 

@@ -120,8 +120,7 @@
             <div class="col-sm-2">
               <select class="form-control" name="event_pref_secu" id="event_pref_secu" aria-describedby="event-pref-secu-error" >
 								<?php
-								include ('functions/dps/dps-query-select-parameters.php');
-								$parameters = get_select_parameters($parameters_query_result, 'yesno');
+								$parameters = $select_list_parameter_service->getParametersForCategory('yesno');
 								 foreach ($parameters as $key => $value) {
 									?>
 									<option value="<?php echo $value['option_value']; ?>" <?php if ($event_pref_secu == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
@@ -178,8 +177,7 @@
           <div class="col-sm-8">
             <select class="form-control risi" id="ris_p2" name="ris_p2" aria-describedby="ris-p2-error" >
 							<?php
-							include ('functions/dps/dps-query-select-parameters.php');
-							$parameters = get_select_parameters($parameters_query_result, 'ris_p2');
+							$parameters = $select_list_parameter_service->getParametersForCategory('ris_p2');
 							 foreach ($parameters as $key => $value) {
 								?>
 								<option value="<?php echo $value['option_value']; ?>" <?php if ($ris_p2 == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
@@ -198,8 +196,7 @@
           <div class="col-sm-8">
             <select class="form-control risi" id="ris_e1" name="ris_e1" aria-describedby="ris-e1-error" >
 							<?php
-							include ('functions/dps/dps-query-select-parameters.php');
-							$parameters = get_select_parameters($parameters_query_result, 'ris_e1');
+							$parameters = $select_list_parameter_service->getParametersForCategory('ris_e1');
 							 foreach ($parameters as $key => $value) {
 								?>
 								<option value="<?php echo $value['option_value']; ?>" <?php if ($ris_e1 == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>
@@ -219,8 +216,7 @@
           <div class="col-sm-8">
             <select class="form-control risi" id="ris_e2" name="ris_e2" aria-describedby="ris-e2-error" >
 							<?php
-							include ('functions/dps/dps-query-select-parameters.php');
-							$parameters = get_select_parameters($parameters_query_result, 'ris_e2');
+							$parameters = $select_list_parameter_service->getParametersForCategory('ris_e2');
 							 foreach ($parameters as $key => $value) {
 								?>
 								<option value="<?php echo $value['option_value']; ?>" <?php if ($ris_e2 == $value['option_value']) {echo 'selected';} ?> ><?php echo $value['option_text']; ?> </option>

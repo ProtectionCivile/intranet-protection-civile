@@ -3,10 +3,7 @@
 <?php require_once('functions/dps/dps-workflow-authorization.php'); ?>
 
 <?php
-	$query = "SELECT * FROM $tablename_settings_general WHERE name LIKE 'eprotec-event-url'";
-	$query_result = mysqli_query($db_link, $query);
-	$eprotec_url = mysqli_fetch_assoc($query_result);
-	$eprotec_event_base_url = $eprotec_url['value'];
+	$eprotec_event_base_url = $setting_service->getGeneralSetting('eprotec-event-url');
 	if (!empty($eprotec_number) && !empty($eprotec_event_base_url)) {
 		$eprotec_event_full_url = ($eprotec_event_base_url && (strstr($eprotec_event_base_url, 'EVENTID')) ) ? str_replace('EVENTID', $eprotec_number, $eprotec_event_base_url) : '';
 		$eprotec_link = "&nbsp;<a href='".$eprotec_event_full_url."' target='_blank'>-> Voir l'évènement sur e-Protec</a>";

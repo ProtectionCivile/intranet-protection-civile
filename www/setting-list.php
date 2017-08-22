@@ -65,8 +65,8 @@
 						</tr>
 						<?php foreach ($settings as $setting):?>
 						<tr class='info'>
-							<td><?php echo $setting['name'] ?></td>
-							<td><?php echo $setting['value'] ?></td>
+							<td><?php echo htmlentities($setting['name']) ?></td>
+							<td><?php echo htmlentities($setting['value']) ?></td>
 							<td>
 								<?php if ($rbac->check("admin-settings-update", $currentUserID)) { ?>
 									<form action="setting-edit.php" method="post" accept-charset="utf-8">

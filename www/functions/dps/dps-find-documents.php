@@ -9,6 +9,7 @@ $pathcommune_result = mysqli_query($db_link, $pathquery);
 $pathcommune_array = mysqli_fetch_array($pathcommune_result);
 $pathantenne = $pathcommune_array["shortname"];
 $cu_yearly_index = intval($cu_yearly_index, 10);
+$sectionName = $pathcommune_array["name"]; // Used by the mailer only
 
 if($cu_yearly_index < 10){
   $cu_yearly_index = "00".$cu_yearly_index;
