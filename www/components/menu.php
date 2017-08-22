@@ -114,6 +114,8 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 					</ul>
 				</li>
 
+				<li><a href="online-help.php"><span class='glyphicon glyphicon-question-sign'></span> Aide</a></li>
+
 			</ul>
 
 			<ul class="nav navbar-nav navbar-right">
