@@ -6,20 +6,20 @@ class Mail {
   private $tablename;
   private $userId = '';
 
-  private $sender = '';
+  private $from = '';
   private $subject = '';
   private $message = '';
-  private $recipients= array();
-  private $ccrecipients = array();
+  private $to= array();
+  private $cc = array();
   private $attachements = array();
 
 
-  public function __construct($db_link_p, $tablename_p, $userId_p, $sender_p, $subject_p, $message_p) {
+  public function __construct($db_link_p, $tablename_p, $userId_p, $from_p, $subject_p, $message_p) {
     $this->db_link = $db_link_p;
     $this->tablename = $tablename_p;
     $this->subject = $subject_p;
     $this->userId = $userId_p;
-    $this->sender = $sender_p;
+    $this->from = $from_p;
     $this->message = $message_p;
   }
 
@@ -27,23 +27,23 @@ class Mail {
     array_push($this->$attachements, $filepath_p);
   }
 
-  public function addRecipient($recipient_p) {
-    array_push($this->recipients, $recipient_p);
+  public function addTo($to_p) {
+    array_push($this->to, $to_p);
   }
 
-  public function addCcRecipient($ccrecipient_p) {
-    array_push($this->ccrecipients, $ccrecipient_p);
+  public function addCc($cc_p) {
+    array_push($this->cc, $cc_p);
   }
 
   public function displayInfos() {
     echo "<br />Envoi d'un mail avec les paramètres suivants : <br /><br />";
     echo "UserID : ".$this->userId."<br />";
-    echo "Sender : ".$this->sender."<br />";
+    echo "from : ".$this->from."<br />";
     echo "Sujet : ".$this->subject."<br />";
-    foreach ($this->recipients as $item) {
+    foreach ($this->to as $item) {
       echo "Destinataire : ".$item."<br />";
     }
-    foreach ($this->ccrecipients as $item) {
+    foreach ($this->cc as $item) {
       echo "CC : ".$item."<br />";
     }
     echo "Message : ".$this->message."<br />";
@@ -52,14 +52,14 @@ class Mail {
 
 
   public function store() {
-    $recipientsList = (!empty($this->recipients)) ? implode(',', $this->recipients) : '';
-    $ccrecipientsList = (!empty($this->ccrecipients)) ? implode(',', $this->ccrecipients) : '';
+    $toList = (!empty($this->to)) ? implode(',', $this->to) : '';
+    $ccList = (!empty($this->cc)) ? implode(',', $this->cc) : '';
     $attachementsList = (!empty($this->attachements)) ? implode(',', $this->attachements) : '';
     $encodedMessage = mysqli_real_escape_string($this->db_link, $this->message);
     $today = date("Y-m-d H:i:s");
 
-    $sql = "INSERT INTO $this->tablename (`user`, `sender`, `recipients`, `cc_recipients`, `subject`, `message`, `attachements`, `date_created`) VALUES
-    ('$this->userId', '$this->sender', '$recipientsList', '$ccrecipientsList', '$this->subject', '$encodedMessage', '$attachementsList', '$today')"
+    $sql = "INSERT INTO $this->tablename (`user`, `from_addr`, `to_addr`, `cc_addr`, `subject`, `message`, `attachements`, `date_created`) VALUES
+    ('$this->userId', '$this->from', '$toList', '$ccList', '$this->subject', '$encodedMessage', '$attachementsList', '$today')"
     or die("Impossible de stocker le mail dans la base de données" . mysqli_error($db_link));
     if ($this->db_link->query($sql) === TRUE) {
       // echo "c réussi";

@@ -1,17 +1,17 @@
-<?php
+to<?php
 // Appelé régulièrement par le CRON, dépile et envoie les mails en attente de la base de données.
 // Dès qu'ils sont traités, il positionne la date d'envoi à la date du jour
 
 require_once('functions/session/db-connect.php');
 
 
-$sql = "SELECT `id`, `sender`, `recipients`, `cc_recipients`, `subject`, `message`, `attachements` FROM $tablename_mail WHERE `date_sent` IS NULL ORDER BY id ASC";
+$sql = "SELECT `id`, `from_addr`, `to_addr`, `cc_addr`, `subject`, `message`, `attachements` FROM $tablename_mail WHERE `date_sent` IS NULL ORDER BY id ASC";
 foreach  ($db_link->query($sql) as $row) {
   // Récupération des informations du Mail
   $id = $row['id'];
-  $sender = $row['sender'];
-  $recipients = $row['recipients'];
-  $cc_recipients = $row['cc_recipients'];
+  $from = $row['from_addr'];
+  $to = $row['to_addr'];
+  $cc = $row['cc_addr'];
   $subject = $row['subject'];
   $message = $row['message'];
   $attachementFilePaths = explode(',', $row['attachements']);
