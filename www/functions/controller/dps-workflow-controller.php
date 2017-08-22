@@ -11,7 +11,7 @@
 			if (!$canValidateLocal) {
 				$genericError = "Opération non permise, vous n'avez pas les droits suffisants pour modifier l'état actuel du DPS";
 			}
-			elseif (!$hasAllAttachements) {
+			elseif (!$hasAllAttachments) {
 				$genericError = "Opération non permise, il manque la convention ou la grille de risques";
 			}
 			else {
@@ -130,7 +130,7 @@
 			if (!$canValidateDdo) {
 				$genericError = "Opération non permise, vous n'avez pas les droits suffisants pour modifier l'état actuel du DPS";
 			}
-			elseif (!$hasAllAttachements) {
+			elseif (!$hasAllAttachments) {
 				$genericError = "Opération non permise, il manque la convention ou la grille de risques";
 			}
 			else {

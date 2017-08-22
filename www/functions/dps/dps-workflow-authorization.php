@@ -5,7 +5,7 @@
 <?php
 $canValidateLocal = false;
 $canRejectLocal = false;
-$hasAllAttachements = false;
+$hasAllAttachments = false;
 $canRejectDdo = false;
 $canValidateDdo = false;
 $canWaitDdo = false;
@@ -84,7 +84,7 @@ if (
 }
 
 if ($fileconvention && $filerisk) {
-	$hasAllAttachements = true;
+	$hasAllAttachments = true;
 }
 
 ?>
