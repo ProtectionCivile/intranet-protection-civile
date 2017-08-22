@@ -38,7 +38,7 @@
 
 	<?php require_once('components/filter/parts/paging-query-modifier.php'); ?>
 
-	<h2>Gestion des paramètres</h2>
+	<h2>Gestion des paramètres mail</h2>
 
 	<?php
 		$settings = mysqli_query($db_link, $sqlQuery);
