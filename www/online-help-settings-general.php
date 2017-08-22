@@ -27,7 +27,7 @@
 	<p>Il existe une permission pour les consulter, une autre pour les modifier.</p>
 
 	<h3 class='text-primary'>Paramètres par défaut, indispensables à l'application</h3>
-	<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span> Sans ces paramètres, l'application ne peut pas fonctionner correctement. À manipuler avec précaution.</div>
+	<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span> Sans ces paramètres, l'application ne peut pas fonctionner correctement. À manipuler avec précaution, parce qu'une modification non-réfléchie peut entraîner des coupures de service.</div>
 	<p>Les valeurs des paramètres peuvent néanmoins être modifiées.</p>
 
 	<div class='table-responsive'>
