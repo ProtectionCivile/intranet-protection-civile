@@ -206,7 +206,7 @@ if ($action == 'accept-ddo') {
   foreach ($db_cc as $mailaddr) {
     $mail->addCc($mailaddr);
   }
-  $mail->addAttachement($declarationFilePath);
+  $mail->addAttachment($declarationFilePath);
 
   $mail->store();
 
@@ -242,7 +242,7 @@ if ($action == 'accept-ddo') {
   foreach ($db_cc as $mailaddr) {
     $mail->addCc($mailaddr);
   }
-  $mail->addAttachement($declarationFilePath);
+  $mail->addAttachment($declarationFilePath);
 
   $mail->store();
 }

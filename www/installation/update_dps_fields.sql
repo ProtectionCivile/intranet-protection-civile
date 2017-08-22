@@ -237,7 +237,7 @@ INSERT INTO `settings_general`
 
 INSERT INTO `settings_mail`
 (name, value) VALUES
-('ddo', 'directeur-operations@protectioncivile92.org'),
+('ddo', '"DDO" <directeur-operations@protectioncivile92.org>'),
 ('fnpc', 'changeme@protectioncivile92.org'),
 ('prefecture', 'changeme@protectioncivile92.org'),
 ('adpc-75', 'changeme@protectioncivile92.org, changeme@protectioncivile92.org'),
@@ -302,7 +302,7 @@ CREATE TABLE `mail` (
   `cc_addr` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `subject` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `message` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-	`attachements` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+	`attachments` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `date_created` DATETIME NULL DEFAULT NULL,
 	`date_sent` DATETIME NULL DEFAULT NULL,
 	 PRIMARY KEY (`id`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci;
