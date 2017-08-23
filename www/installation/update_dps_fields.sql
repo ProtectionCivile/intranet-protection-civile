@@ -237,7 +237,7 @@ INSERT INTO `settings_general`
 
 INSERT INTO `settings_mail`
 (name, value) VALUES
-('ddo', '"DDO" <directeur-operations@protectioncivile92.org>'),
+('ddo', '"Protection Civile - Direction des Opérations" <directeur-operations@protectioncivile92.org>'),
 ('fnpc', 'changeme@protectioncivile92.org'),
 ('prefecture', 'changeme@protectioncivile92.org'),
 ('adpc-75', 'changeme@protectioncivile92.org, changeme@protectioncivile92.org'),
@@ -273,7 +273,7 @@ INSERT INTO `settings_mail`
 ('ddo-wait-recipients',	'#dlo-ANTENNE'),
 ('ddo-wait-ccrecipients',	'#ddo'),
 ('ddo-reject-recipients',	'#dlo-ANTENNE'),
-('ddo-validate-ccrecipients',	'#ddo'),
+('ddo-reject-ccrecipients',	'#ddo'),
 ('ddo-validate-internal-recipients',	'#dlo-ANTENNE'),
 ('ddo-validate-internal-ccrecipients',	'#ddo'),
 ('ddo-validate-external-recipients',	'#prefadpc'),
