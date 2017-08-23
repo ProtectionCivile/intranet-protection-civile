@@ -12,13 +12,13 @@
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
 	<li><a href="online-help.php">Aide en ligne</a></li>
-	<li class="active">Paramètres mail</li>
+	<li class="active">Paramètres des e-mails</li>
 </ol>
 
 <div class="container">
 
 	<div class="page-header">
-		<h1>Aide en ligne <small>Paramètres mail</small></h1>
+		<h1>Aide en ligne <small>Paramètres des e-mails</small></h1>
 	</div>
 
 	<p class='lead'>Ils servent à maintenir à jour les adresses mail utilisées par le système pour envoyer des mail .</p>

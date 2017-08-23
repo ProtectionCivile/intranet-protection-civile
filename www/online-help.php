@@ -36,7 +36,7 @@
 			<h4 class='text-warning'>Administration</h4>
 			<ul>
 				<li><a href='online-help-settings-general.php'>Paramètres de l'application</a></li>
-				<li><a href='online-help-settings-mail.php'>Paramètres mail</a></li>
+				<li><a href='online-help-settings-mail.php'>Paramètres des e-mails</a></li>
 				<li><a href=''>Utilisateurs, rôles, permissions</a>certaines persmissions indispensables (et roles?) ne peuvent pas etre supprimées</li>
 				<li><a href=''>Antennes et rattachement</a></li>
 				<li><a href=''>Listes de diffusion</a></li>

@@ -18,7 +18,7 @@
 <div class="container">
 
 	<div class="page-header">
-		<h1>Aide en ligne <small>Paramètres généraux</small></h1>
+		<h1>Aide en ligne <small>Paramètres généraux de l'application</small></h1>
 	</div>
 
 	<p class='lead'>Ils servent à assurer la flexibilité de l'intranet, sans avoir à toucher au coeur du système pour changer un réglage.</p>
