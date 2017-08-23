@@ -32,7 +32,7 @@ if (isset($_GET['notallowed'])){
 		<h2 class='text-success'>Bonjour <?php echo ucfirst($currentUserFirstName); ?> ! <small>bienvenue dans votre espace sécurisé</small></h2>
 	</div>
 
-	<div class=' bg-info'>
+	<div class=' alert alert-info' role='alert'>
 		<p class='text-muted'>Seules les opérations accessibles à votre niveau d'accréditation sont visibles; Si vous constatez une erreur, merci de nous en informer par mail : <a href='mailto:directeur-adj-informatique@protectioncivile92.org'>directeur-adj-informatique@protectioncivile92.org</a> pour faire évoluer cet intranet.</p>
 	</div>
 
@@ -99,8 +99,6 @@ if (isset($_GET['notallowed'])){
 		</div>
 	</div>
 
-
-	<p align="left"><a href="logout.php"><strong>Déconnexion</strong></a></p>
 </div>
 
 <?php include('components/footer.php'); ?>
