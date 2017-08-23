@@ -3,7 +3,7 @@
 
 <?php require_once('components/filter/parts/filter-common-display.php'); ?>
 
-<div class="panel panel-default">
+<div class="panel panel-warning">
 	<div class="panel-heading">
 		<button type="button" class="close" aria-label='Close' data-toggle="collapse" data-target=".panel-filters" aria-expanded='true' aria-controls="panel-filters">
 			<span aria-hidden="true" >Montrer/Cacher</span>
