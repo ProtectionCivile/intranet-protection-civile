@@ -28,11 +28,12 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Gestion des clients</h2>
+	</div>
+
 	<!-- Update client : Operation status indicator -->
 	<?php include('components/operation-status-indicator.php'); ?>
-
-	<h2>Gestion des clients</h2>
-
 
 	<!-- Create a client : display form -->
 	<div class="panel panel-info">

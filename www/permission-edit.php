@@ -33,11 +33,12 @@
 	<!-- Page content container -->
 	<div class="container">
 
+		<div class="page-header">
+			<h2>Gestion des permissions <small>Modification de '<?php echo $permissionTitle ?>'</small></h2>
+		</div>
 
 		<!-- Update permission : Operation status indicator -->
 		<?php include 'components/operation-status-indicator.php'; ?>
-
-		<h2>Modifier la permission '<?php echo $permissionTitle ?>'</h2>
 
 
 		<!-- Update permission : display form -->

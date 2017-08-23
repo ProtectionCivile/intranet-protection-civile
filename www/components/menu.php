@@ -49,10 +49,10 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 						<li class="divider"></li>
 						<li class="dropdown-header">Création</li>
 						<?php if ($rbac->check("ope-dps-update-own", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID)) {?>
-							<li><a href="dps-create.php?city"><span class='glyphicon glyphicon-tasks'></span> Créer un DPS local</a></li>
+							<li><a href="dps-create.php?city"><span class='glyphicon glyphicon-plus'></span> Créer un DPS local</a></li>
 						<?php } ?>
 						<?php if ($rbac->check("ope-dps-update-dept", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID)) {?>
-							<li><a href="dps-create.php?dept"><span class='glyphicon glyphicon-tasks'></span> Créer un DPS départemental</a></li>
+							<li><a href="dps-create.php?dept"><span class='glyphicon glyphicon-plus'></span> Créer un DPS départemental</a></li>
 						<?php } ?>
 					</ul>
 				</li>
@@ -72,8 +72,8 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 					<ul class="dropdown-menu" role="menu">
 						<?php if ($rbac->check("admin-mailinglist-manage", $currentUserID)) {?>
 							<li class="dropdown-header">Listes de diffusion</li>
-							<li><a href="mailinglist-add.php"><span class='glyphicon glyphicon-align-justify'></span><span class='glyphicon glyphicon-plus'></span> Abonnement</a></li>
-							<li><a href="mailinglist-delete.php"><span class='glyphicon glyphicon-align-justify'></span><span class='glyphicon glyphicon-minus'></span> Désabonnement</a></li>
+							<li><a href="mailinglist-add.php"></span><span class='glyphicon glyphicon-plus'></span> Abonnement</a></li>
+							<li><a href="mailinglist-delete.php"></span><span class='glyphicon glyphicon-minus'></span> Désabonnement</a></li>
 						<?php } ?>
 					</ul>
 				</li>
@@ -92,8 +92,9 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 						<?php
 						if ($rbac->check("admin-users-view", $currentUserID) || $rbac->check("admin-sections-view", $currentUserID)) {
 							?> <li class="dropdown-header">Administration</li> <?php
-							if ($rbac->check("admin-users-view", $currentUserID)) {?> <li><a href="user-list.php"><span class='glyphicon glyphicon-user'></span> Gestion des utilisateurs</a></li> <?php }
-							if ($rbac->check("admin-sections-view", $currentUserID)) {?> <li><a href="section-list.php"><span class='glyphicon glyphicon-tent'></span> Liste des communes</a></li> <?php }
+							if ($rbac->check("admin-users-view", $currentUserID)) {?> <li><a href="user-list.php"><span class='glyphicon glyphicon-user'></span> Liste des utilisateurs</a></li> <?php }
+							if ($rbac->check("admin-users-update", $currentUserID)) {?> <li><a href="user-create.php"><span class='glyphicon glyphicon-user'></span><span class='glyphicon glyphicon-plus'></span> Créer un utilisateur</a></li> <?php }
+							if ($rbac->check("admin-sections-view", $currentUserID)) {?> <li><a href="section-list.php"><span class='glyphicon glyphicon-tent'></span> Sections</a></li> <?php }
 						}
 
 						if ($rbac->check("admin-settings-view", $currentUserID)) {

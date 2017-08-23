@@ -36,8 +36,9 @@
 	<!-- Update : Operation status indicator -->
 	<?php require_once('components/operation-status-indicator.php'); ?>
 
-	<h2><center>Création d'un Dispositif Prévisionnel de Secours</center></h2>
-	<h3><center><?php echo $cu_full; ?></center></h3>
+	<div class="page-header">
+		<h2>Nouveau Dispositif Prévisionnel de Secours <small><?php echo $cu_full; ?></small></h2>
+	</div>
 
 
 	<!-- Notice after DPS duplication -->

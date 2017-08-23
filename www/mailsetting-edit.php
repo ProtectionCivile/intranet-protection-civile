@@ -11,7 +11,7 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="/mailsetting-list.php">Paramètres mail</a></li>
+	<li><a href="/mailsetting-list.php">Réglages des e-mails</a></li>
 	<li class="active">Modification</li>
 </ol>
 
@@ -29,10 +29,12 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Réglages des e-mails <small>Modicication d'un paramètre</small></h2>
+	</div>
+
 	<!-- Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
-
-	<h2>Modification d'un paramètre</h2>
 
 
 	<!-- Update a setting : display form -->

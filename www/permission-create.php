@@ -25,12 +25,12 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Gestion des permissions <small>Création</small></h2>
+	</div>
+
 	<!-- Update permission : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
-
-
-
-	<h2>Gestion des permissions</h2>
 
 
 	<!-- Create a permission : Container -->

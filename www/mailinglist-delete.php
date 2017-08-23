@@ -24,6 +24,10 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Listes de diffusion <small>Désabonnement d'un utilisateur</small></h2>
+	</div>
+
 	<!-- Update mailing list : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
@@ -33,8 +37,9 @@
 		<div class="panel-heading">
 			<h3 class="panel-title">Désabonner un compte mail de toutes les listes</h3>
 		</div>
-		<p>Attention l'utilisateur sera retiré de <strong>toutes</strong> les listes de diffusion. A utiliser avec précaution</p>
 		<div class="panel-body">
+			<p class='text-danger'>Attention l'utilisateur sera retiré de <strong>toutes</strong> les listes de diffusion. A utiliser avec précaution</p>
+			<br />
 			<form class="form-horizontal" id="updatemailinglistForm" action='' role="form" method='post' accept-charset='utf-8'>
 				<input type="hidden" name="delUser">
 				<label for="mailAccount" class="col-sm-4 control-label">Nom du compte mail</label>

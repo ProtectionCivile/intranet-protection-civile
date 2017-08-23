@@ -28,7 +28,10 @@ if (isset($_GET['notallowed'])){
 	<h3 class="text-center">Protection Civile des Hauts-de-Seine</h3>
 
 	<br />
-	<p class='text-success'>Bonjour <strong><?php echo ucfirst($currentUserFirstName); ?></strong>, bienvenue dans votre espace sécurisé</p>
+	<div class="page-header">
+		<h2 class='text-success'>Bonjour <?php echo ucfirst($currentUserFirstName); ?> ! <small>bienvenue dans votre espace sécurisé</small></h2>
+	</div>
+
 	<div class=' bg-info'>
 		<p class='text-muted'>Seules les opérations accessibles à votre niveau d'accréditation sont visibles; Si vous constatez une erreur, merci de nous en informer par mail : <a href='mailto:directeur-adj-informatique@protectioncivile92.org'>directeur-adj-informatique@protectioncivile92.org</a> pour faire évoluer cet intranet.</p>
 	</div>

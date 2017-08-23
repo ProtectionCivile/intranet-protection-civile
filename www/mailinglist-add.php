@@ -24,6 +24,10 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Listes de diffusion <small>Abonnement d'un utilisateur</small></h2>
+	</div>
+
 	<!-- Update mailing list : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 

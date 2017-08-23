@@ -11,7 +11,8 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li class="active">Gestion des rôles</li>
+	<li><a href="/role-list.php">Gestion des rôles</a></li>
+	<li class="active">Listing</li>
 </ol>
 
 <!-- Compute city calculation according to POST & GET variables (before auth)-->
@@ -27,6 +28,10 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Gestion des rôles</h2>
+	</div>
+
 	<!-- Update role : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
@@ -38,8 +43,6 @@
 	<?php require_once('components/filter/filter-roles-query-builder.php'); ?>
 
 	<?php require_once('components/filter/parts/paging-query-modifier.php'); ?>
-
-	<h2>Gestion des roles</h2>
 
 
 	<!-- List available roles -->

@@ -11,8 +11,8 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="/role-list.php">Gestion des permissions</a></li>
-	<li class="active">Audit des rôles</li>
+	<li><a href="/role-list.php">Gestion des rôles</a></li>
+	<li class="active">Audit des permissions</li>
 </ol>
 
 
@@ -24,6 +24,10 @@
 
 <!-- Page content container -->
 <div class="container">
+
+	<div class="page-header">
+		<h2>Gestion des rôles <small>Audit des permissions</small></h2>
+	</div>
 
 	<?php $base_url="view-all-permissions-with-roles.php"; ?>
 
@@ -48,10 +52,6 @@
 		<?php
 	}
 	else {
-		?>
-		<h2>Audit des permissions pour <?php echo $cityName ?></h2>
-		<?php
-
 		$query = "SELECT ID, Title, Description FROM $tablename_permissions ORDER BY Title ASC" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 		$permissions = mysqli_query($db_link, $query);
 		?>

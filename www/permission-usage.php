@@ -11,7 +11,7 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li><a href="#">Administration</a></li>
+	<li><a href="/permission-list.php">Gestion des permissions</a></li>
 	<li class="active">Utilisation</li>
 </ol>
 
@@ -22,32 +22,19 @@
 
 
 <!-- Common -->
+<?php include('functions/controller/permission-common.php'); ?>
+
 <?php
-	$permissionID = str_replace("'","", $_POST['permissionID']);
-	if($permissionID == ""){
-		$rpermissionpdateError = "Aucune permission définie";
-	}
-	else {
-		$check_query = "SELECT ID FROM $tablename_permissions WHERE ID='$permissionID'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
-		$verif = mysqli_query($db_link, $check_query);
-		$row_verif = mysqli_fetch_assoc($verif);
-		$permission = mysqli_num_rows($verif);
-		if (!$permission){
-			$permissionUpdateError = "La permission en question n'existe pas";
-		}
-	}
-	if(!empty($permissionUpdateError)) {
-		echo "<div class='alert alert-danger'><strong>Erreur</strong> : ".$rpermissionUpdateError."</div>";
-	}
-	else {
-		$permissionTitle=$rbac->Permissions->getTitle($permissionID);
+	if(empty($commonError)) {
 ?>
 
 
 	<!-- Page content container -->
 	<div class="container">
 
-		<h2>Utilisation de la permission '<?php echo $permissionTitle ?>'</h2>
+		<div class="page-header">
+			<h2>Gestion des permissions <small>Utilisations de '<?php echo $permissionTitle ?>'</small></h2>
+		</div>
 
 
 		<!-- Permission usage : Container -->
@@ -59,7 +46,7 @@
 
 				<!-- Permission usage : See roles with permission -->
 				<div class="panel panel-default">
-					<div class="panel-heading">Rôles</div>
+					<div class="panel-heading">Rôles ayant cette permission</div>
 					<div class="panel-body">
 						<?php
 							$query = "SELECT R.ID, R.Title FROM $tablename_rolepermissions AS RP INNER JOIN rbac_roles AS R ON RP.RoleId=R.ID WHERE RP.PermissionId='$permissionID' ORDER BY R.Title" or die("Erreur lors de la consultation" . mysqli_error($db_link));
@@ -75,9 +62,9 @@
 
 				<!-- Permission usage : See users with permission -->
 				<div class="panel panel-default">
-					<div class="panel-heading">Utilisateurs</div>
+					<div class="panel-heading">Utilisateurs ayant cette permission</div>
 					<div class="panel-body">
-						NE FONCTIONNE PAS POUR LE MOMENT (FONCTIONNALITE PAS DEVELOPPEE)
+						<div class='alert alert-warning' role='alert'>NE FONCTIONNE PAS POUR LE MOMENT (FONCTIONNALITÉ PAS DÉVELOPPÉE)</div>
 						<?php
 							$query = "SELECT U.ID, U.last_name, U.first_name FROM $tablename_rolepermissions AS RP INNER JOIN users AS U ON RP.RoleId=R.ID WHERE RP.PermissionId='$permissionID' ORDER BY U.nom" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 							$users = mysqli_query($db_link, $query);

@@ -11,7 +11,8 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li class="active">Gestion des permissions</li>
+	<li><a href="/permission-list.php">Gestion des permissions</a></li>
+	<li class="active">Listing</li>
 </ol>
 
 
@@ -26,11 +27,12 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Gestion des permissions</h2>
+	</div>
+
 	<!-- Update permission : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
-
-
-	<h2>Gestion des permissions</h2>
 
 
 	<!-- List available permissions -->
@@ -65,7 +67,7 @@
 							<?php echo $permission["Description"]; ?>
 						</td>
 						<td>
-							<form action='permission-list-usage.php' method='post' accept-charset='utf-8'>
+							<form action='permission-usage.php' method='post' accept-charset='utf-8'>
 								<input type='hidden' name='permissionID' value=<?php echo "'".$permission['ID']."'"; ?> >
 								<button type='submit' class='btn btn-default glyphicon glyphicon-eye-open' title="Voir utilisation"></button>
 							</form>

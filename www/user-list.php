@@ -11,8 +11,10 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li class="active">Gestion des utilisateurs</li>
+	<li><a href='/user-list.php'>Gestion des utilisateurs</a></li>
+	<li class='active'>Listing</li>
 </ol>
+
 
 <!-- Compute city calculation according to POST & GET variables (before auth)-->
 <?php require_once('functions/user/user-compute-city.php'); ?>
@@ -28,6 +30,10 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Gestion des utilisateurs</h2>
+	</div>
+
 	<!-- Update user : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
@@ -39,8 +45,6 @@
 	<?php require_once('components/filter/filter-users-query-builder.php'); ?>
 
 	<?php require_once('components/filter/parts/paging-query-modifier.php'); ?>
-
-	<h2>Gestion des utilisateurs</h2>
 
 
 	<!-- List available users -->

@@ -27,7 +27,9 @@
 <!-- Page content container -->
 <div class="container">
 
-
+	<div class="page-header">
+		<h2>Dispositifs Prévisionnels de Secours</h2>
+	</div>
 
 	<?php $base_url="dps-list.php"; ?>
 
@@ -39,7 +41,7 @@
 	<?php require_once('components/filter/parts/paging-query-modifier.php'); ?>
 
 
-	<div class="panel panel-default">
+	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">
 				Liste des Dispositifs Prévisionnels de Secours (<?php echo $nb_elements; ?> DPS trouvés)

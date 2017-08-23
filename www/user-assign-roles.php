@@ -8,6 +8,7 @@
 <body>
 <?php include('components/header.php'); ?>
 
+
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
 	<li><a href="/user-list.php">Gestion des utilisateurs</a></li>
@@ -39,11 +40,13 @@
 	<!-- Page content container -->
 	<div class="container">
 
+		<div class="page-header">
+			<h2>Gestion des utilisateurs <small>Modification des rôles de '<?php echo $userFirstName." ".$userLastName ?>'</small></h2>
+		</div>
+
 
 		<!-- Update user's roles : Operation status indicator -->
 		<?php include 'components/operation-status-indicator.php'; ?>
-
-		<h2>Modifier les rôles de '<?php echo $userFirstName." ".$userLastName ?>'</h2>
 
 
 		<!-- Update a user's roles : display form -->

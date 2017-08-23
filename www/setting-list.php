@@ -11,7 +11,8 @@
 
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
-	<li class="active">Paramètres généraux</li>
+	<li><a href="/setting-list.php">Réglages de l'application</a></li>
+	<li class="active">Listing</li>
 </ol>
 
 
@@ -26,6 +27,10 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Réglages de l'application</h2>
+	</div>
+
 	<!-- Update setting : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
@@ -38,12 +43,10 @@
 
 	<?php require_once('components/filter/parts/paging-query-modifier.php'); ?>
 
-	<h2>Gestion des paramètres</h2>
-
 	<?php
 		$settings = mysqli_query($db_link, $sqlQuery);
 	?>
-	<div class="panel panel-default">
+	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">Liste des paramètres
 				<?php if ($rbac->check("admin-settings-update", $currentUserID)) { ?>
@@ -64,8 +67,8 @@
 							<th colspan='2'>Opérations</th>
 						</tr>
 						<?php foreach ($settings as $setting):?>
-						<tr class='info'>
-							<td><?php echo htmlentities($setting['name']) ?></td>
+						<tr>
+							<td><samp><?php echo htmlentities($setting['name']) ?></samp></td>
 							<td><?php echo htmlentities($setting['value']) ?></td>
 							<td>
 								<?php if ($rbac->check("admin-settings-update", $currentUserID)) { ?>
@@ -74,6 +77,7 @@
 										<button type="submit" class="btn btn-warning glyphicon glyphicon-pencil" title="Modifier"></button>
 									</form>
 								<?php }?>
+							</td>
 							<td>
 								<?php if ($rbac->check("admin-settings-update", $currentUserID)) { ?>
 									<form action="" method="post" accept-charset="utf-8">

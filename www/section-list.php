@@ -3,18 +3,16 @@
 <html>
 <head>
 	<title>Gestion des sections</title>
-	<meta http-equiv="Content-Type" content="text/html">
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all" title="no title" charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<?php require_once('components/common-html-head-parameters.php'); ?>
 </head>
 <body>
 <?php include('components/header.php'); ?>
 
 
-<ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
-	<li class="active">Gestion des sections</li>
+<ol class='breadcrumb'>
+	<li><a href='/'>Home</a></li>
+	<li><a href='/section-list.php'>Gestion des sections</a></li>
+	<li class='active'>Listing</li>
 </ol>
 
 
@@ -27,7 +25,12 @@
 
 
 <div class="container">
-	<div class="panel panel-default">
+
+	<div class="page-header">
+		<h2>Gestion des sections</h2>
+	</div>
+
+	<div class="panel panel-info">
 		<div class="panel-heading">
 			<h3 class="panel-title">Liste des communes</h3>
 		</div>

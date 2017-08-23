@@ -8,6 +8,7 @@
 <body>
 <?php include('components/header.php'); ?>
 
+
 <ol class="breadcrumb">
 	<li><a href="/">Home</a></li>
 	<li><a href="/role-list.php">Gestion des rôles</a></li>
@@ -39,11 +40,13 @@ if(empty($commonError)) {
 	<!-- Page content container -->
 	<div class="container">
 
+		<div class="page-header">
+			<h2>Gestion des rôles <small>Modifier les permissions de '<?php echo $roleTitle ?>'</small></h2>
+		</div>
+
 
 		<!-- Update role's permissions : Operation status indicator -->
 		<?php include 'components/operation-status-indicator.php'; ?>
-
-		<h2>Modifier les permissions du rôle '<?php echo $roleDescription ?>'</h2>
 
 
 		<!-- Update a role's permissions : display form -->
