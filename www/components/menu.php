@@ -94,7 +94,7 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 							?> <li class="dropdown-header">Administration</li> <?php
 							if ($rbac->check("admin-users-view", $currentUserID)) {?> <li><a href="user-list.php"><span class='glyphicon glyphicon-user'></span> Liste des utilisateurs</a></li> <?php }
 							if ($rbac->check("admin-users-update", $currentUserID)) {?> <li><a href="user-create.php"><span class='glyphicon glyphicon-user'></span><span class='glyphicon glyphicon-plus'></span> Créer un utilisateur</a></li> <?php }
-							if ($rbac->check("admin-sections-view", $currentUserID)) {?> <li><a href="section-list.php"><span class='glyphicon glyphicon-tent'></span> Sections</a></li> <?php }
+							if ($rbac->check("admin-sections-view", $currentUserID)) {?> <li><a href="section-list.php"><span class='glyphicon glyphicon-tent'></span> Antennes</a></li> <?php }
 						}
 
 						if ($rbac->check("admin-settings-view", $currentUserID)) {
