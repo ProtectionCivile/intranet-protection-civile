@@ -51,11 +51,11 @@
 					<a href='dps-list.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
 
 					// Send mail
-					if ($dps_status == 'draft') {
-						$action = 'cancel-dlo';
+					if ($dps_status == 'accepted') { // Si il a déjà été validé, on communique l'annulation en extérieur
+						$action = 'cancel-ddo';
 					}
 					else {
-						$action = 'cancel-ddo';
+						$action = 'cancel-dlo';
 					}
 
 					// Update new status for the workflow display module to have the relevant value
