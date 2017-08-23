@@ -56,7 +56,8 @@
 		Lorsqu'il y a plusieurs valeurs, il faut les séparer par une virgule.
 	</p>
 
-	<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span> De mauvais paramètres peuvent empêcher le bon fonctionnement de l'application.</div>
+	<p class='text-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span> De mauvais paramètres peuvent empêcher le bon fonctionnement de l'application.</p>
+
 	<h3 class='text-primary'>Paramètres par défaut, indispensables à l'application</h3>
 
 	<div class='table-responsive'>

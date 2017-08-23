@@ -28,8 +28,9 @@
 
 	<h3 class='text-primary'>Utilisation</h3>
 	<p>Les paramètres et les valeurs sont directement éditables par le site.</p>
-	<div class='alert alert-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span> Sans ces paramètres, l'application ne peut pas fonctionner correctement. À manipuler avec précaution, parce qu'une modification non-réfléchie peut entraîner des coupures de service.</div>
-	<p>Les valeurs des paramètres peuvent néanmoins être modifiées.</p>
+	<p>
+		<span class='text-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span> Sans ces paramètres, l'application ne peut pas fonctionner correctement. À manipuler avec précaution, parce qu'une modification non-réfléchie peut entraîner des coupures de service.</span>. Les valeurs des paramètres peuvent néanmoins être modifiées.
+	</p>
 
 	<h3 class='text-primary'>Paramètres par défaut, indispensables à l'application</h3>
 
