@@ -30,10 +30,11 @@
 	<p>Il existe une permission pour les consulter, une autre pour les modifier.</p>
 
 	<h3 class='text-primary'>Utilisateurs</h3>
-	<p>Les rôles sont entièrement modifiables. Leur photo de profil est extraite à partir de leur matricule e-Protec.</p>
+	<p>Les rôles sont entièrement modifiables. L'utilisateur se connecte à l'aide de son matricule e-Protec. Leur photo de profil est extraite à partir de leur matricule e-Protec.</p>
 
 	<h3 class='text-primary'>Rôles</h3>
 	<p>Les rôles peuvent être modifiés dans les pages de gestion associées. Leur modification entraîne systématiquement une mise à jour de l'annuaire.</p>
+	<p>Le rôle <samp>Administrateur</samp> ne peut pas être supprimé.</p>
 	<p>Pour affecter un rôle à un utilisateur, il faut se rendre dans le paramétrage de l'utilisateur et cliquer sur <span class='glyphicon glyphicon-check'></span></p>
 
 	<h3 class='text-primary'>Rôles</h3>
