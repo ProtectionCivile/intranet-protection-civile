@@ -58,7 +58,7 @@
 
 	<p class='text-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span> De mauvais paramètres peuvent empêcher le bon fonctionnement de l'application.</p>
 
-	<h3 class='text-primary'>Paramètres par défaut, indispensables à l'application</h3>
+	<h3 class='text-primary'>Paramètres indispensables</h3>
 
 	<div class='table-responsive'>
 		<table class='table table-hover'>
