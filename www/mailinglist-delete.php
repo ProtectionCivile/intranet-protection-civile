@@ -9,7 +9,7 @@
 <?php require_once('components/header.php'); ?>
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
+	<li><a href="/">Accueil</a></li>
 	<li class="active">Gestion des listes de diffusion</li>
 </ol>
 

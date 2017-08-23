@@ -10,7 +10,7 @@
 
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
+	<li><a href="/">Accueil</a></li>
 	<li><a href="/mailsetting-list.php">Réglages des e-mails</a></li>
 	<li class="active">Création</li>
 </ol>

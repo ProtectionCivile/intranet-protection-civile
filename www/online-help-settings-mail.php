@@ -10,7 +10,7 @@
 
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
+	<li><a href="/">Accueil</a></li>
 	<li><a href="online-help.php">Aide en ligne</a></li>
 	<li class="active">Paramètres des e-mails</li>
 </ol>

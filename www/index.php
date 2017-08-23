@@ -10,7 +10,7 @@
 
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
+	<li><a href="/">Accueil</a></li>
 </ol>
 
 <!-- Redirect user if unauthorized (bad request) => shoot him -->
@@ -29,7 +29,7 @@ if (isset($_GET['notallowed'])){
 
 	<br />
 	<div class="page-header">
-		<h2 class='text-success'>Bonjour <?php echo ucfirst($currentUserFirstName); ?> ! <small>bienvenue dans votre espace sécurisé</small></h2>
+		<h2 class='text-success'>Bonjour <?php echo ucfirst($currentUserFirstName); ?> ! <small>bienvenue dans votre espace intranet</small></h2>
 	</div>
 
 	<div class=' alert alert-info' role='alert'>

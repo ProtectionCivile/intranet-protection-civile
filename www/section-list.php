@@ -10,7 +10,7 @@
 
 
 <ol class='breadcrumb'>
-	<li><a href='/'>Home</a></li>
+	<li><a href='/'>Accueil</a></li>
 	<li><a href='/section-list.php'>Gestion des sections</a></li>
 	<li class='active'>Listing</li>
 </ol>

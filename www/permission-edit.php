@@ -10,7 +10,7 @@
 
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
+	<li><a href="/">Accueil</a></li>
 	<li><a href="/permission-list.php">Gestion des permissions</a></li>
 	<li class="active">Modification</li>
 </ol>
