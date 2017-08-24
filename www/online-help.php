@@ -43,7 +43,7 @@
 				<li><a href='online-help-settings-mail.php'>Paramètres des e-mails</a></li>
 				<li><a href='online-help-users-roles-permissions.php'>Utilisateurs, rôles, permissions</a></li>
 				<li><a href='online-help-sections.php'>Antennes et rattachement</a></li>
-				<li><a href=''>Listes de diffusion</a></li>
+				<li><a href='online-help-mailinglists.php'>Listes de diffusion</a></li>
 			</ul>
 		</div>
 		<div class='col-sm-4'>
