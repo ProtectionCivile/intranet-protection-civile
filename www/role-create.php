@@ -10,7 +10,7 @@
 
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
+	<li><a href="/">Accueil</a></li>
 	<li><a href="/role-list.php">Gestion des rôles</a></li>
 	<li class="active">Création</li>
 </ol>
@@ -25,10 +25,12 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Gestion des rôles <small>Création</small></h2>
+	</div>
+
 	<!-- Update role : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
-
-	<h2>Gestion des roles</h2>
 
 
 	<!-- Create a role : display form -->

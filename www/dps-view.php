@@ -10,7 +10,7 @@
 
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
+	<li><a href="/">Accueil</a></li>
 	<li><a href="dps-list.php">Dispositifs de secours</a></li>
 	<li class="active">Visualisation</li>
 </ol>
@@ -36,7 +36,9 @@
 <!-- Page content container -->
 <div class="container">
 
-	<h2 class='text-center'>DPS <?php echo $cu_full; ?></h2>
+	<div class="page-header">
+		<h2>DPS <small><?php echo $cu_full; ?></small></h2>
+	</div>
 
 	<!-- Update : Operation status indicator -->
 	<?php require_once('components/operation-status-indicator.php'); ?>

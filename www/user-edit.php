@@ -10,7 +10,7 @@
 
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
+	<li><a href="/">Accueil</a></li>
 	<li><a href="/user-list.php">Gestion des utilisateurs</a></li>
 	<li class="active">Modification</li>
 </ol>
@@ -31,10 +31,12 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Gestion des utilisateurs <small>Modification de '<?php echo $firstName." ".$lastName ?>'</small></h2>
+	</div>
+
 	<!-- Update user : Operation status indicator -->
 	<?php include ('components/operation-status-indicator.php'); ?>
-
-	<h2>Modifier l'utilisateur '<?php echo $firstName." ".$lastName ?>'</h2>
 
 
 	<!-- Update user : display form -->

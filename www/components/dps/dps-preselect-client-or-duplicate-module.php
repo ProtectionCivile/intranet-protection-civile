@@ -1,4 +1,4 @@
-<div class="panel panel-warning">
+<div class="panel panel-success">
 	<div class="panel-heading">
 		<button type="button" class="close" aria-label='Close' data-toggle="collapse" data-target="#preselect-panel-filter" aria-expanded='true' aria-controls="select-city-panel-filter">
 			<span aria-hidden="true">Montrer/Cacher</span>

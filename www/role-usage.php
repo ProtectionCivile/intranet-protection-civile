@@ -10,7 +10,7 @@
 
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
+	<li><a href="/">Accueil</a></li>
 	<li><a href="/role-list.php">Gestion des rôles</a></li>
 	<li class="active">Utilisation</li>
 </ol>
@@ -46,7 +46,9 @@
 	<!-- Page content container -->
 	<div class="container">
 
-		<h2>Utilisation du rôle '<?php echo $roleTitle ?>'</h2>
+		<div class="page-header">
+			<h2>Gestion des rôles <small>Utilisations de '<?php echo $roleTitle ?>'</small></h2>
+		</div>
 
 
 		<!-- Role usage : Container -->
@@ -58,7 +60,7 @@
 
 				<!-- Role usage : See permissions with role -->
 				<div class="panel panel-default">
-					<div class="panel-heading">Permissions</div>
+					<div class="panel-heading">Permissions de ce rôle</div>
 					<div class="panel-body">
 						<?php
 							$query = "SELECT P.ID, P.Title, P.Description FROM rbac_rolepermissions AS RP INNER JOIN rbac_permissions AS P ON RP.PermissionId=P.ID WHERE RP.RoleId='$roleID' ORDER BY P.Title" or die("Erreur lors de la consultation" . mysqli_error($db_link));
@@ -75,7 +77,7 @@
 
 				<!-- Role usage : See users with role -->
 				<div class="panel panel-default">
-					<div class="panel-heading">Utilisateurs</div>
+					<div class="panel-heading">Utilisateurs ayant ce rôle</div>
 					<div class="panel-body">
 						<?php
 							$sql = "SELECT U.ID, U.last_name, U.first_name FROM rbac_userroles AS UR INNER JOIN users AS U ON UR.UserId=U.ID WHERE UR.RoleID='$roleID' ORDER BY U.last_name" or die("Erreur lors de la consultation" . mysqli_error($db_link));

@@ -10,7 +10,7 @@
 
 
 <ol class='breadcrumb'>
-	<li><a href='/'>Home</a></li>
+	<li><a href='/'>Accueil</a></li>
 	<li><a href='/section-list.php'>Gestion des sections</a></li>
 	<li class='active'>Modification</li>
 </ol>
@@ -32,10 +32,12 @@
 <!-- Page content container -->
 <div class='container'>
 
+	<div class="page-header">
+		<h2>Gestion des sections <small>Modification de '<?php echo $name ?>'</small></h2>
+	</div>
+
 	<!-- Update user : Operation status indicator -->
 	<?php include ('components/operation-status-indicator.php'); ?>
-
-	<h2>Modifier la section '<?php echo $name ?>'</h2>
 
 
 	<!-- Update user : display form -->

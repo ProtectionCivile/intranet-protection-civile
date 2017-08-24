@@ -10,9 +10,9 @@
 
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
+	<li><a href="/">Accueil</a></li>
 	<li><a href="/role-list.php">Gestion des rôles</a></li>
-	<li class="active">Audit des rôles</li>
+	<li class="active">Audit des utilisateurs</li>
 </ol>
 
 
@@ -24,6 +24,10 @@
 
 <!-- Page content container -->
 <div class="container">
+
+	<div class="page-header">
+		<h2>Gestion des rôles <small>Audit des utilisateurs</small></h2>
+	</div>
 
 	<?php $base_url="view-all-users-with-roles.php"; ?>
 
@@ -50,7 +54,6 @@
 		<?php
 	}
 	else {
-		?><h2>Audit des rôles pour <?php echo $cityName ?></h2><?php
 		$roles = mysqli_query($db_link, $sqlQuery);
 		while($role = mysqli_fetch_array($roles)) {
 			$roleID=$role["ID"];

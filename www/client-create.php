@@ -10,7 +10,7 @@
 
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
+	<li><a href="/">Accueil</a></li>
 	<li><a href="/client-list.php">Clients</a></li>
 	<li class="active">Création</li>
 </ol>
@@ -28,11 +28,12 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Gestion des clients</h2>
+	</div>
+
 	<!-- Update client : Operation status indicator -->
 	<?php include('components/operation-status-indicator.php'); ?>
-
-	<h2>Gestion des clients</h2>
-
 
 	<!-- Create a client : display form -->
 	<div class="panel panel-info">
