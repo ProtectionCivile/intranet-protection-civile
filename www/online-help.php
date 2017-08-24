@@ -30,7 +30,7 @@
 			<h4 class='text-warning'>Opérationnel</h4>
 			<ul>
 				<li><a href='online-help-clients.php'>Base contacts (clients)</a></li>
-				<li><a href='online-help-dps.php'>Dispositifs de secours</a></li> préciser workflow de validation
+				<li><a href='online-help-dps.php'>Dispositifs de secours</a></li>
 				<li><a href='online-help-mailer.php'>Envoi de mails pour les DPS</a></li>
 				<li><a href=''>Demandes de renfort</a> <span class='label label-default'>Bientôt</span></li>
 				<li><a href=''>Gestion de la trésorerie</a> <span class='label label-default'>Bientôt</span></li>
