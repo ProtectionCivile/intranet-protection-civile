@@ -30,8 +30,8 @@
 			<h4 class='text-warning'>Opérationnel</h4>
 			<ul>
 				<li><a href='online-help-clients.php'>Base contacts (clients)</a></li>
-				<li><a href=''>Dispositifs de secours</a></li> préciser workflow de validation
-				<li><a href=''>Envoi de mails pour les DPS</a></li>
+				<li><a href='online-help-dps.php'>Dispositifs de secours</a></li> préciser workflow de validation
+				<li><a href='online-help-mailer.php'>Envoi de mails pour les DPS</a></li>
 				<li><a href=''>Demandes de renfort</a> <span class='label label-default'>Bientôt</span></li>
 				<li><a href=''>Gestion de la trésorerie</a> <span class='label label-default'>Bientôt</span></li>
 			</ul>
@@ -73,8 +73,8 @@
 			<p>
 				Pour contribuer au développement de cet intranet, ou proposer des corrections ou des évolutions, vous pouvez le faire :
 				<ul>
-					<li>En écrivant au Pôle (<a href='mailto:pole-informatique@protectioncivile92.org'>pole-informatique@protectioncivile92.org)</a></li>
-					<li>En soumettant directement vos demandes <a href='https://github.com/ProtectionCivile/intranet-protection-civile/issues'>sur la plate-gorme GitHub</a></li>
+					<li>En écrivant au Pôle (<a href='mailto:pole-informatique@protectioncivile92.org'>pole-informatique@protectioncivile92.org</a>)</li>
+					<li>En soumettant directement vos demandes <a href='https://github.com/ProtectionCivile/intranet-protection-civile/issues'>sur la plate-forme GitHub</a></li>
 				</ul>
 			</p>
 			<p>L'effectif de l'équipe du pôle informatique étant très mince, vous pouvez également proposer votre aide ou celle d'un de vos membres pour le développement.</p>
