@@ -16,24 +16,3 @@ body {
   height: 20px; /* EDIT by Nico. Was 60px */
   /*background-color: #f5f5f5;*/ /* EDIT by Nico. Was not commented out */
 }
-
-
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
-
-body > .container {
-  padding: 60px 15px 0;
-}
-.container .text-muted {
-  margin: 20px 0;
-}
-
-.footer > .container {
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-code {
-  font-size: 80%;
-}
