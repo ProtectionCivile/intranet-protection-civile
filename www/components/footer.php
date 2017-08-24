@@ -1,6 +1,6 @@
 <footer class='footer'>
   <div classs='container'>
-    <p class='text-center text-muted'><small>Protection Civile des Hauts-de-Seine. Tous droits réservés.</small></p>
+    <p class='text-center text-muted'><small>&copy; Protection Civile des Hauts-de-Seine <?php echo date("Y") ?>. Tous droits réservés.</small></p>
   </div>
 </footer>
 
