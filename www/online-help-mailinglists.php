@@ -23,9 +23,11 @@
 
 	<p class='lead'>Ajouter ou retirer des utilisateurs à des listes de diffusion mail prédéfinies.</p>
 
+	<br />
 	<h3 class='text-primary'>Droits d'accès</h3>
 	<p>Il existe une permission pour les consulter et une autre pour les modifier.</p>
 
+	<br />
 	<h3 class='text-primary'>Utilisation</h3>
 	<p>Deux pages sont proposées pour mettre à jour une liste. A ce jour, l'intranet ne permet pas d'afficher la liste des abonnés à une liste donnée.</p>
 

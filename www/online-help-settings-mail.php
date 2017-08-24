@@ -23,9 +23,11 @@
 
 	<p class='lead'>Ils servent à maintenir à jour les adresses mail utilisées par le système pour envoyer des mail.</p>
 
+	<br />
 	<h3 class='text-primary'>Droits d'accès</h3>
 	<p>Il existe une permission pour les consulter, une autre pour les modifier.</p>
 
+	<br />
 	<h3 class='text-primary'>Utilisation</h3>
 	<p>Les <span class='bg-info'>items en bleu</span> dans le tableau sont utilisés pour définir le ou les destinataires à utiliser lorsque l'on parle d'un item donné. Par exemple, lorsque le système doit envoyer un mail à l'opérationnel d'Asnières et que l'antenne souhaite que ses DLO Adjoints reçoivent également les notificaitons pour les DPS, on peut renseigner ici la liste des destinataires. Ainsi, pour ces items, il est possible de saisir :</p>
 	<ul>
@@ -57,6 +59,7 @@
 
 	<p class='text-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span> De mauvais paramètres peuvent empêcher le bon fonctionnement de l'application.</p>
 
+	<br />
 	<h3 class='text-primary'>Paramètres indispensables</h3>
 
 	<div class='table-responsive'>

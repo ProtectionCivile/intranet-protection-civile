@@ -23,15 +23,18 @@
 
 	<p class='lead'>Ils servent à assurer la flexibilité de l'intranet, sans avoir à toucher au coeur du système pour changer un réglage.</p>
 
+	<br />
 	<h3 class='text-primary'>Droits d'accès</h3>
 	<p>Il existe une permission pour les consulter, une autre pour les modifier.</p>
 
+	<br />
 	<h3 class='text-primary'>Utilisation</h3>
 	<p>Les paramètres et les valeurs sont directement éditables par le site.</p>
 	<p>
 		<span class='text-danger' role='alert'><span class='glyphicon glyphicon-warning-sign'></span> Sans ces paramètres, l'application ne peut pas fonctionner correctement. À manipuler avec précaution, parce qu'une modification non-réfléchie peut entraîner des coupures de service.</span> Les valeurs des paramètres peuvent néanmoins être modifiées.
 	</p>
 
+	<br />
 	<h3 class='text-primary'>Paramètres indispensables</h3>
 
 	<div class='table-responsive'>
