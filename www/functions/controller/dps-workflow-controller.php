@@ -130,9 +130,10 @@
 			if (!$canValidateDdo) {
 				$genericError = "Opération non permise, vous n'avez pas les droits suffisants pour modifier l'état actuel du DPS";
 			}
-			elseif (!$hasAllAttachments) {
-				$genericError = "Opération non permise, il manque la convention ou la grille de risques";
-			}
+			// On donne quand même le droit au DDO de valider un poste même s'il n'a pas tous les documents. C'est sa responsabilité.
+			// elseif (!$hasAllAttachments) {
+			// 	$genericError = "Opération non permise, il manque la convention ou la grille de risques";
+			// }
 			else {
 				$sql = "UPDATE $tablename_dps SET
 				status_validation_ddo_date='$today',
