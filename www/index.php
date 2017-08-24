@@ -29,7 +29,7 @@ if (isset($_GET['notallowed'])){
 
 	<br />
 	<div class="page-header">
-		<h2 class='text-success'>Bonjour <?php echo ucfirst($currentUserFirstName); ?> ! <small>bienvenue dans votre espace intranet</small></h2>
+		<h2>Bonjour <?php echo ucfirst($currentUserFirstName); ?> ! <small>bienvenue dans votre espace intranet</small></h2>
 	</div>
 
 	<div class=' alert alert-info' role='alert'>
