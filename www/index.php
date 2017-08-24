@@ -22,15 +22,17 @@ if (isset($_GET['notallowed'])){
 
 ?>
 
+<center><img class="img-responsive" src='img/logos/logo-baseline-right.png'/></center>
+<h2 class="text-center text-primary">Protection Civile des Hauts-de-Seine</h2>
+
+
 <div class="container">
 
-	<center><img class="img-responsive" src='img/logos/logo-baseline-right.png'/></center>
-	<h3 class="text-center">Protection Civile des Hauts-de-Seine</h3>
-
-	<br />
 	<div class="page-header">
 		<h2>Bonjour <?php echo ucfirst($currentUserFirstName); ?> ! <small>bienvenue dans votre espace intranet</small></h2>
 	</div>
+
+	<p class='lead'>Cet intranet est conçu pour les mobiles. Il est entièrement compatible avec tous les ordinateurs, les smartphones et les tablettes. Ne vous privez pas !</p>
 
 	<div class=' alert alert-info' role='alert'>
 		<p class='text-muted'>Seules les opérations accessibles à votre niveau d'accréditation sont visibles; Si vous constatez une erreur, merci de nous en informer par mail : <a href='mailto:directeur-adj-informatique@protectioncivile92.org'>directeur-adj-informatique@protectioncivile92.org</a> pour faire évoluer cet intranet.</p>
