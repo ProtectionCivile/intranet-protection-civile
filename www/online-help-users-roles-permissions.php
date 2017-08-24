@@ -23,11 +23,11 @@
 
 	<p class='lead'>Un utilisateur possède des rôles, et les rôles ont certaines permissions.</p>
 
-	<p>Les pages du site et les actions sont protégées par des permissions. Au travers de ses rôles un utilisateur donné pourra ou non accéder aux resources. Un utilisateur accède uniquement à ce qu'il a le droit de voir.</p>
 
 
 	<h3 class='text-primary'>Droits d'accès</h3>
 	<p>Il existe une permission pour les consulter, une autre pour les modifier.</p>
+	<p>Les pages du site et les actions sont protégées par des permissions. Au travers de ses rôles un utilisateur donné pourra ou non accéder aux resources. Un utilisateur accède uniquement à ce qu'il a le droit de voir.</p>
 
 	<h3 class='text-primary'>Utilisateurs</h3>
 	<p>Les rôles sont entièrement modifiables. L'utilisateur se connecte à l'aide de son matricule e-Protec. Leur photo de profil est extraite à partir de leur matricule e-Protec.</p>

@@ -27,13 +27,12 @@
 	<p>Il existe une permission pour les consulter, une autre pour les modifier.</p>
 
 	<h3 class='text-primary'>Utilisation</h3>
-	<p>Les <span class='bg-info'>items en bleu</span> dans le tableau sont utilisés pour définir le ou les destinataires à utiliser lorsque l'on parle d'un item donné. Par exemple, lorsque le système doit envoyer un mail à l'opérationnel d'Asnières et que l'antenne souhaite que ses DLO Adjoints reçoivent également les notificaitons pour les DPS, on peut renseigner ici la liste des destinataires. Ainsi, pour ces items, il est possible de saisir :
-		<ul>
-			<li>une adresse mail au format <samp>machin.chose@trucmuche.com</samp></li>
-			<li>une adresse mail au format <samp>"Nom Prénom" &lt;machin.chose@trucmuche.com&gt;</samp></li>
-			<li>une liste d'adresses mail séparées par des virgules</li>
-		</ul>
-	</p>
+	<p>Les <span class='bg-info'>items en bleu</span> dans le tableau sont utilisés pour définir le ou les destinataires à utiliser lorsque l'on parle d'un item donné. Par exemple, lorsque le système doit envoyer un mail à l'opérationnel d'Asnières et que l'antenne souhaite que ses DLO Adjoints reçoivent également les notificaitons pour les DPS, on peut renseigner ici la liste des destinataires. Ainsi, pour ces items, il est possible de saisir :</p>
+	<ul>
+		<li>une adresse mail au format <samp>machin.chose@trucmuche.com</samp></li>
+		<li>une adresse mail au format <samp>"Nom Prénom" &lt;machin.chose@trucmuche.com&gt;</samp></li>
+		<li>une liste d'adresses mail séparées par des virgules</li>
+	</ul>
 
 	<p>
 		Les <span class='bg-warning'>items en jaune</span> dans le tableau sont utilisés pour définir des destinataires paramétrés, qui peuvent faire référence à des <span class='bg-info'>paramètres bleus</span>. Ainsi, pour ces items, il est possible de saisir :
