@@ -21,7 +21,7 @@
 		<h1>Aide en ligne <small>Paramètres des e-mails</small></h1>
 	</div>
 
-	<p class='lead'>Ils servent à maintenir à jour les adresses mail utilisées par le système pour envoyer des mail .</p>
+	<p class='lead'>Ils servent à maintenir à jour les adresses mail utilisées par le système pour envoyer des mail.</p>
 
 	<h3 class='text-primary'>Droits d'accès</h3>
 	<p>Il existe une permission pour les consulter, une autre pour les modifier.</p>
