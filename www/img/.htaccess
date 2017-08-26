@@ -1,0 +1,9 @@
+<Filesmatch "rod92\.png$">
+Deny from all
+</Filesmatch>
+<Filesmatch "autorite92\.png$">
+Deny from all
+</Filesmatch>
+<Filesmatch "tampon\.png$">
+Deny from all
+</Filesmatch>
