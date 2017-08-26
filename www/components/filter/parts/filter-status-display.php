@@ -18,8 +18,8 @@
 			<button class='btn btn-success btn-sm status-filter <?php echo $activeOrNot; ?>' data-filter='valid_pref'>Validé DDO et Préfecture</button>
 			<?php $activeOrNot = ($status == "refused") ? "active" : ""; ?>
 			<button class='btn btn-danger btn-sm status-filter <?php echo $activeOrNot; ?>' data-filter='refused'>Refusé</button>
-			<?php $activeOrNot = ($status == "fuzzy") ? "active" : ""; ?>
-			<button class='btn btn-danger btn-sm status-filter glyphicon glyphicon-fire <?php echo $activeOrNot; ?>' data-filter='fuzzy'></button>
+			<?php $activeOrNot = ($status == "atraiter") ? "active" : ""; ?>
+			<button class='btn btn-danger btn-sm status-filter glyphicon glyphicon-fire <?php echo $activeOrNot; ?>' data-filter='atraiter'></button>
 		</div>
 	</div>
 </div>
@@ -31,7 +31,7 @@
 ?>
 
 
- 
+
 <script type='text/javascript'>
 	$(document).ready(function(){
 		$(".status-filter").click(function(){
