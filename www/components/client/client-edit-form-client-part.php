@@ -14,7 +14,7 @@
 <?php $feedback = compute_server_feedback($client_ref_error);?>
 <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
   <label for="client_ref" class="col-sm-4 control-label">
-    Nom de l'organisation
+    Nom interne (référence)
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Un nom court qui vous permettra de sélectionner ce client lors de la création d'un DPS." />
   </label>
   <div class="col-sm-8">
