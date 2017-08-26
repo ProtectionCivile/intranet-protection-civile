@@ -1,5 +1,5 @@
 <?php
-$query = "SELECT id FROM $tablename_dps WHERE status=1 OR  status=2";
+$query = "SELECT id FROM $tablename_dps WHERE status=1 OR status=2";
 $number_dps = mysqli_query($db_link, $query);
 $dps_needs_attention = mysqli_num_rows($number_dps);
 
@@ -31,8 +31,8 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-home'></span> Operationnel <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
-						<li class="dropdown-header">Direction départementale</li>
 						<?php if ($rbac->check("ope-dps-validate-ddo-to-pref", $currentUserID)) {?>
+							<li class="dropdown-header">Direction départementale</li>
 							<li><a href="dps-list.php?atraiter"><span class='glyphicon glyphicon-fire'></span> En attente <span class="badge"><?php echo $dps_needs_attention;?></span></a></li>
 						<?php } ?>
 						<li class="divider"></li>

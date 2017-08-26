@@ -3,7 +3,7 @@
 		$status=$_POST['formstatus'];
 	}
 	elseif (isset($_GET['atraiter'])) {
-		$status="fuzzy";
+		$status="atraiter";
 	}
 	else {
 		$status="*";

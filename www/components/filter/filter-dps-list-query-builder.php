@@ -35,6 +35,9 @@
 		elseif ($status == "refused") {
 			$whereStatus = "status=5 ";
 		}
+		elseif ($status == "atraiter") {
+			$whereStatus = "(status=1 OR status=2) ";
+		}
 		else {
 			$whereStatus = "status IS NULL";
 		}
@@ -42,7 +45,7 @@
 
 	if (!empty($datebegin) && !empty($dateend)) {
 		$addWhereClause = true;
-		$wherePeriod = "dps_begin_date > '".$datebeginNF->format('Y-m-d')."' AND dps_end_date < '".$dateendNF->format('Y-m-d')."'";
+		$wherePeriod = "dps_begin_date BETWEEN '".$datebeginNF->format('Y-m-d')."' AND '".$dateendNF->format('Y-m-d')."'";
 	}
 
 

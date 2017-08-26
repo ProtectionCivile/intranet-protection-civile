@@ -16,7 +16,7 @@ function compute_dps_type($type) {
 
 function compute_dps_department($dpt) {
 	if($dpt != "92") {
-		return "<strong>".$dpt." (hors département)</strong>";
+		return "<span class=' text-danger glyphicon glyphicon-warning-sign' aria-hidden='true'></span> <strong>".$dpt."</strong>";
 	}
 	else {
 		return $dpt;
