@@ -10,8 +10,8 @@
 
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
-	<li><a href="/mailsetting-list.php">Paramètres mail</a></li>
+	<li><a href="/">Accueil</a></li>
+	<li><a href="/mailsetting-list.php">Réglages des e-mails</a></li>
 	<li class="active">Création</li>
 </ol>
 
@@ -25,10 +25,12 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Réglages des e-mails <small>Ajout d'un paramètre</small></h2>
+	</div>
+
 	<!-- Update setting : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
-
-	<h2>Ajout d'un paramètre</h2>
 
 
 	<!-- Create a setting : display form -->

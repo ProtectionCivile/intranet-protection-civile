@@ -9,7 +9,7 @@
 <?php require_once('components/header.php'); ?>
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
+	<li><a href="/">Accueil</a></li>
 	<li class="active">Gestion des listes de diffusion</li>
 </ol>
 
@@ -23,6 +23,10 @@
 
 <!-- Page content container -->
 <div class="container">
+
+	<div class="page-header">
+		<h2>Listes de diffusion <small>Abonnement d'un utilisateur</small></h2>
+	</div>
 
 	<!-- Update mailing list : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>

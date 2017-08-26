@@ -1,4 +1,4 @@
-<?php require('functions/dps/dps-find-documents.php'); // Forcé à reload?> 
+<?php require('functions/dps/dps-find-documents.php'); // Forcé à reload?>
 
 
 <script src="js/fileinput.min.js" type="text/javascript"></script>
@@ -25,7 +25,7 @@
           <input type='hidden' name='yearly_index' value='<?php echo $cu_yearly_index; ?>' />
           <div class="form-group form-group-sm">
             <div class="col-sm-5">
-              <input id="file_convention" name='mainfile' type='file' data-filename-placement="inside" data-show-upload='true' data-show-caption='true' data-allowed-file-extensions='["pdf"]' accept='application/pdf' title='Ajouter la convention <span class="glyphicon glyphicon-folder-open"></span>' />
+              <input id="file_convention" name='mainfile' type='file' data-filename-placement="inside" data-show-upload='true' data-show-caption='true' data-allowed-file-extensions='["pdf"]' accept='application/pdf' title='Ajouter la convention (signée) <span class="glyphicon glyphicon-folder-open"></span>' />
             </div>
             <div class="col-sm-4">
               <button class="btn btn-sm btn-info upload" id="submit_convention" type="submit">Envoyer <span class="glyphicon glyphicon-upload"></span></button>
@@ -67,7 +67,7 @@
           <input type='hidden' name='yearly_index' value='<?php echo $cu_yearly_index; ?>' />
           <div class="form-group form-group-sm">
             <div class="col-sm-5">
-              <input id="file_risk" name='mainfile' type='file' data-filename-placement="inside" data-show-upload='true' data-show-caption='true' data-allowed-file-extensions='["pdf"]' accept='application/pdf' title='Ajouter la grille de risques <span class="glyphicon glyphicon-folder-open"></span>' />
+              <input id="file_risk" name='mainfile' type='file' data-filename-placement="inside" data-show-upload='true' data-show-caption='true' data-allowed-file-extensions='["pdf"]' accept='application/pdf' title='Ajouter la grille de risques (signée) <span class="glyphicon glyphicon-folder-open"></span>' />
             </div>
             <div class="col-sm-4">
               <button class="btn btn-sm btn-info upload" id="submit_risk" type="submit">Envoyer <span class="glyphicon glyphicon-upload"></span></button>

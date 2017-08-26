@@ -10,7 +10,7 @@
 
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
+	<li><a href="/">Accueil</a></li>
 	<li><a href="/permission-list.php">Gestion des permissions</a></li>
 	<li class="active">Création</li>
 </ol>
@@ -25,12 +25,12 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Gestion des permissions <small>Création</small></h2>
+	</div>
+
 	<!-- Update permission : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
-
-
-
-	<h2>Gestion des permissions</h2>
 
 
 	<!-- Create a permission : Container -->

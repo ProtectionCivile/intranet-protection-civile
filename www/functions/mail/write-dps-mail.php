@@ -9,8 +9,6 @@ $sql =  'SELECT DISTINCT name FROM '.$tablename_sections.' WHERE number = '.$sec
    $sectionName = $row['name'];
  }
 
-$action = 'accept-ddo';
-
 if ($action == 'validate-local') {
   $from = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#dlo-".$section));
   $db_to = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-validate-recipients');

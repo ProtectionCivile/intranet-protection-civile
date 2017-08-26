@@ -10,7 +10,7 @@
 
 
 <ol class="breadcrumb">
-	<li><a href="/">Home</a></li>
+	<li><a href="/">Accueil</a></li>
 	<li><a href="client-list.php">Clients</a></li>
 	<li class="active">Listing</li>
 </ol>
@@ -28,6 +28,10 @@
 <!-- Page content container -->
 <div class="container">
 
+	<div class="page-header">
+		<h2>Gestion des clients</h2>
+	</div>
+
 	<!-- Update client : Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
@@ -39,9 +43,6 @@
 	<?php require_once('components/filter/filter-clients-query-builder.php'); ?>
 
 	<?php require_once('components/filter/parts/paging-query-modifier.php'); ?>
-
-	<h2>Gestion des clients</h2>
-
 
 	<!-- List available clients -->
 	<div class="panel panel-info">
