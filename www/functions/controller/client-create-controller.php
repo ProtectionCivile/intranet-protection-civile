@@ -5,7 +5,7 @@
 	require_once('functions/client/client-update-authentication.php');
 
 	if (isset($_POST['addClient'])){
-		$client_name = str_replace("'","", $_POST['client_name']);
+		$client_name = str_replace("'","", $_POST['client_name']); // TODO retirer les replace
 		$client_ref = str_replace("'","", $_POST['client_ref']);
 		$client_represent = str_replace("'","", $_POST['client_represent']);
 		$client_title = str_replace("'","", $_POST['client_title']);
@@ -49,8 +49,7 @@
 		}
 		if(isNullOrEmpty($attached_section)){
 			$missingValues++;
-			$client_phone_error = "Le téléphone du client est obligatoire";
-			$genericError = "Le téléphone du client est obligatoire";
+			$genericError = "L'antenne de rattachement est obligatoire";
 		}
 
 		if ($missingValues != "0" ) {
@@ -61,9 +60,22 @@
 		}
 
 		if (empty($genericError)){
-			$add_client = "INSERT INTO $tablename_clients (ref, name, attached_section, represent, title, address, phone, fax, mail) VALUES ('$client_ref', '$client_name', '$attached_section', '$client_represent', '$client_title', '$client_address', '$client_phone', '$client_fax', '$client_email')" or die("Impossible d'ajouter le client dans la base de données" . mysqli_error($db_link));
-			mysqli_query($db_link, $add_client);
-			$genericSuccess = "Client créé avec succès (".$client_name.")";
+			$sql = "INSERT INTO $tablename_clients (ref, name, attached_section, represent, title, address, phone, fax, mail) VALUES (
+				'".mysqli_real_escape_string($db_link, $client_ref)."',
+				'".mysqli_real_escape_string($db_link, $client_name)."',
+				'$attached_section',
+				'".mysqli_real_escape_string($db_link, $client_represent)."',
+				'".mysqli_real_escape_string($db_link, $client_title)."',
+				'".mysqli_real_escape_string($db_link, $client_address)."',
+				'".mysqli_real_escape_string($db_link, $client_phone)."',
+				'".mysqli_real_escape_string($db_link, $client_fax)."',
+				'".mysqli_real_escape_string($db_link, $client_email)."'
+				)" or die("Impossible d'ajouter le client dans la base de données" . mysqli_error($db_link));
+			if ( $db_link->query($sql) === TRUE) {
+					$genericSuccess = "Client créé avec succès (".$client_name.")";
+			} else {
+					$genericError = "Client non créé: " . $db_link->error;
+			}
 		}
 	}
 ?>
