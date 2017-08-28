@@ -8,7 +8,7 @@
 							<span aria-hidden="true">&laquo;</span>
 						</a>
 					</li>
-			    	<?php 
+			    	<?php
 					for($i=1; $i<=$nb_pages; $i++){
 						$liClass = ($i==$current_page) ? "active" : "";
 						$liSpan = ($i==$current_page) ? "<span class='sr-only'>(current)</span>" : "";
@@ -35,6 +35,7 @@
 			<option <?php if ($nb_elements_per_page == 100) echo "selected"; ?>>100</option>
 			<option <?php if ($nb_elements_per_page == 500) echo "selected"; ?>>500</option>
 		</select>
+	</div>
 </div>
 
 <script type='text/javascript'>
