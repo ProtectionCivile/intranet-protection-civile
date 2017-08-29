@@ -47,7 +47,6 @@
 				</div>
 
 				<br />
-				<br />
 
 				<table class='table table-bordered table-hover table-condensed'>
 					<thead>
@@ -236,12 +235,9 @@
 					</tbody>
 				</table>
 
-				<br />
-				<div class="form-group">
-					<div class="col-sm-offset-4 col-sm-8">
-						<button type="submit" class="btn btn-warning" id='submitAddUserForm'>Abonner</button>
-				   </div>
-				</div>
+				<div class="col-sm-offset-4 col-sm-8">
+					<button type="submit" class="btn btn-warning" id='submitAddUserForm'>Abonner</button>
+			   </div>
 			</form>
 		</div>
 	</div>

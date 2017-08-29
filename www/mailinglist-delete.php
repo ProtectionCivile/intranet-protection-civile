@@ -41,18 +41,225 @@
 			<p class='text-danger'>Attention l'utilisateur sera retiré de <strong>toutes</strong> les listes de diffusion. A utiliser avec précaution</p>
 			<br />
 			<form class="form-horizontal" id="updatemailinglistForm" action='' role="form" method='post' accept-charset='utf-8'>
-				<input type="hidden" name="delUser">
+				<input type="hidden" name="delUserEverywhere">
 				<label for="mailAccount" class="col-sm-4 control-label">Nom du compte mail</label>
 				<div class="input-group col-sm-4">
 					<input type="text" class="form-control" id="mailAccount" name="mailAccount" placeholder="ex: martin.smith">
 					<div class="input-group-addon">@protectioncivile92.org</div>
 				</div>
 				<br />
-				<div class="form-group">
-					<div class="col-sm-offset-4 col-sm-8">
-						<button type="submit" class="btn btn-danger" id='submitAddUserForm' onclick='return(confirm("Etes-vous sûr de vouloir le retirer de TOUTES les listes de diffusion?"));'>Retirer de toutes les listes !</button>
-				   </div>
+				<div class="col-sm-offset-4 col-sm-8">
+					<button type="submit" class="btn btn-danger" id='submitAddUserForm' onclick='return(confirm("Etes-vous sûr de vouloir le retirer de TOUTES les listes de diffusion?"));'>Retirer de toutes les listes !</button>
+			   </div>
+			</form>
+		</div>
+	</div>
+
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">Désabonner un compte mail d'une liste de diffusion</h3>
+		</div>
+		<div class="panel-body">
+			<form class="form-horizontal" id="updatemailinglistForm" action='' role="form" method='post' accept-charset='utf-8'>
+				<input type="hidden" name="delUser">
+				<label for="mailAccount" class="col-sm-4 control-label">Nom du compte mail</label>
+				<div class="input-group col-sm-4">
+					<input type="text" class="form-control" id="mailAccount" name="mailAccount" placeholder="ex: martin.smith">
+					<div class="input-group-addon">@protectioncivile92.org</div>
 				</div>
+
+				<br />
+
+				<table class='table table-bordered table-hover table-condensed'>
+					<thead>
+						<th><center>Type</center></th>
+						<th><center>Retirer des liste de diffusion (plusieurs choix possibles)</center></th>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="active">
+								Liste des adhérents
+							</td>
+							<td>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents">
+										Adhérents 92
+									</label>
+								</div>
+								<div class="checkbox checkbox-inline">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-asnieres">
+										Asnières
+									</label>
+								</div>
+								<div class="checkbox checkbox-inline">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-boulogne-issy">
+										Boulogne-Issy
+									</label>
+								</div>
+								<div class="checkbox checkbox-inline">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-bourg-la-reine">
+										Bourg-la-Reine
+									</label>
+								</div>
+								<div class="checkbox checkbox-inline">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-clamart">
+										Clamart
+									</label>
+								</div>
+								<div class="checkbox checkbox-inline">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-clichy">
+										Clichy
+									</label>
+								</div>
+								<div class="checkbox checkbox-inline">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-colombes">
+										Colombes
+									</label>
+								</div>
+								<div class="checkbox checkbox-inline">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-courbevoie">
+										Courbevoie
+									</label>
+								</div>
+								<div class="checkbox checkbox-inline">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-garches">
+										Garches
+									</label>
+								</div>
+								<div class="checkbox checkbox-inline">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-gennevilliers">
+										Gennevilliers
+									</label>
+								</div>
+								<div class="checkbox checkbox-inline">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-nanterre">
+										Nanterre
+									</label>
+								</div>
+								<div class="checkbox checkbox-inline">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-rueil">
+										Rueil
+									</label>
+								</div>
+								<div class="checkbox checkbox-inline">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-suresnes-puteaux">
+										Suresnes-Puteaux
+									</label>
+								</div>
+								<div class="checkbox checkbox-inline">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-vanves">
+										Vanves
+									</label>
+								</div>
+								<div class="checkbox checkbox-inline">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="adherents-villeneuve">
+										Villeneuve
+									</label>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="active">
+								Opérationnel
+							</td>
+							<td>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="ce">
+										Chefs d'équipe (ce@protectioncivile92.org)
+									</label>
+								</div>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="cp">
+										Chefs de poste (cp@protectioncivile92.org)
+									</label>
+								</div>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="ceps">
+										Chefs d'équipe de Prompt Secours (ceps@protectioncivile92.org)
+									</label>
+								</div>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="ars">
+										Aide-Régulateur Secouriste (ars@protectioncivile92.org)
+									</label>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="active">
+								Cadres de Permanence
+							</td>
+							<td>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="permanence-logistique">
+										Logistique (permanence-logistique@protectioncivile92.org)
+									</label>
+								</div>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="permanence-operationnel">
+										Opérationnel / CODEP (permanence-operationnel@protectioncivile92.org)
+									</label>
+								</div>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="permanence-transmissions">
+										Transmissions (permanence-transmissions@protectioncivile92.org)
+									</label>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td class="active">
+								Pôles / Commissions
+							</td>
+							<td>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="pole-informatique">
+										Informatique (pole-informatique@protectioncivile92.org)
+									</label>
+								</div>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="pole-logistique">
+										Logistique (pole-logistique@protectioncivile92.org)
+									</label>
+								</div>
+								<div class="checkbox">
+									<label>
+										<input type="checkbox" name="lists[]" id="lists[]" value="pole-transmissions">
+										Transmissions (pole-transmissions@protectioncivile92.org)
+									</label>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<div class="col-sm-offset-4 col-sm-8">
+					<button type="submit" class="btn btn-warning" id='submitDelUserForm'>Désabonner</button>
+			   </div>
 			</form>
 		</div>
 	</div>
