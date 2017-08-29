@@ -51,7 +51,7 @@
 				<table class='table table-bordered table-hover table-condensed'>
 					<thead>
 						<th><center>Type</center></th>
-						<th><center>Ajouter aux liste de diffusion (plusieurs choix possibles)</center></th>
+						<th><center>Abonner aux liste de diffusion (plusieurs choix possibles)</center></th>
 					</thead>
 					<tbody>
 						<tr>
@@ -236,7 +236,7 @@
 				</table>
 
 				<div class="col-sm-offset-4 col-sm-8">
-					<button type="submit" class="btn btn-warning" id='submitAddUserForm'>Abonner</button>
+					<button type="submit" class="btn btn-warning" id='submitAddUserForm'>Abonner aux listes sélectionnées</button>
 			   </div>
 			</form>
 		</div>

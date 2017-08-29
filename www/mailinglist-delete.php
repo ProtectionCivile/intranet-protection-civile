@@ -38,7 +38,9 @@
 			<h3 class="panel-title">Désabonner un compte mail de toutes les listes</h3>
 		</div>
 		<div class="panel-body">
-			<p class='text-danger'>Attention l'utilisateur sera retiré de <strong>toutes</strong> les listes de diffusion. A utiliser avec précaution</p>
+			<div class='alert alert-danger' role='alert>'>
+				Attention l'utilisateur sera retiré de <strong>toutes</strong> les listes de diffusion. A utiliser avec précaution
+			</div>
 			<br />
 			<form class="form-horizontal" id="updatemailinglistForm" action='' role="form" method='post' accept-charset='utf-8'>
 				<input type="hidden" name="delUserEverywhere">
@@ -57,7 +59,7 @@
 
 	<div class="panel panel-info">
 		<div class="panel-heading">
-			<h3 class="panel-title">Désabonner un compte mail d'une liste de diffusion</h3>
+			<h3 class="panel-title">Désabonner un compte mail de certaines listes de diffusion</h3>
 		</div>
 		<div class="panel-body">
 			<form class="form-horizontal" id="updatemailinglistForm" action='' role="form" method='post' accept-charset='utf-8'>
@@ -73,7 +75,7 @@
 				<table class='table table-bordered table-hover table-condensed'>
 					<thead>
 						<th><center>Type</center></th>
-						<th><center>Retirer des liste de diffusion (plusieurs choix possibles)</center></th>
+						<th><center>Retirer des listes de diffusion (plusieurs choix possibles)</center></th>
 					</thead>
 					<tbody>
 						<tr>
@@ -258,7 +260,7 @@
 				</table>
 
 				<div class="col-sm-offset-4 col-sm-8">
-					<button type="submit" class="btn btn-warning" id='submitDelUserForm'>Désabonner</button>
+					<button type="submit" class="btn btn-warning" id='submitDelUserForm'>Désabonner des listes sélectionnées</button>
 			   </div>
 			</form>
 		</div>
