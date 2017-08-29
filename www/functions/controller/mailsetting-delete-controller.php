@@ -1,6 +1,5 @@
 <?php
 	if (isset($_POST['id'])){
-		echo "ouais ";
 		$delID = str_replace("'","", $_POST['id']);
 		if($delID == ""){
 			$genericError = "Impossible de supprimer un réglage inconnu";

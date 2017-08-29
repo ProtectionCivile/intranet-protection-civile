@@ -1,6 +1,6 @@
 <?php
 	if (isset($_POST['id'])) {
-		$id = str_replace("'","", $_POST['id']);
+		$id = $_POST['id'];
 	}
 	// else if (isset($_GET['id'])) {
 	// 	$id = str_replace("'","", $_GET['id']);

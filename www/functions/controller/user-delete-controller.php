@@ -1,7 +1,7 @@
 <?php
 
 	if (isset($_POST['delUser'])){
-		$delID = str_replace("'","", $_POST['delUser']);
+		$delID = $_POST['delUser'];
 		if($delID == ""){
 			$genericError = "Impossible de supprimer un utilisateur inconnu";
 		}
