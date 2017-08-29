@@ -30,7 +30,6 @@ require_once('functions/mail/mail-functions.php');
 					$mail = new Mail($db_link, $tablename_mail, $currentUserID, $from, $subject, $message);
 				  $mail->addTo($to);
 				  $mail->addCc($cc);
-					$mail->displayInfos();
 					$mail->store();
 				}
   			$genericSuccess = "La demande d'abonnement du compte mail '".$mailAccount."' a été demandée pour ".$nb." liste(s) de diffusion, et sera traitée dans l'heure";
