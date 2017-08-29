@@ -22,7 +22,7 @@
 
 <!-- Common -->
 <?php
-	$id = str_replace("'","", $_POST['id']);
+	$id = $_POST['id'];
 	if($id == ""){
 		$roleUpdateError = "Aucun rôle défini";
 	}
