@@ -2,39 +2,51 @@
 	//Authentication
 	$rbac->enforce("admin-permissions-update", $currentUserID);
 
-	if (isset($_POST['inputPermissionTitle'])) {
-		$title=$_POST['inputPermissionTitle'];
-	}
-	else {
-		$title=$rbac->Permissions->getTitle($permissionID);
-	}
-	if (isset($_POST['inputPermissionDescription'])) {
-		$description=$_POST['inputPermissionDescription'];
-	}
-	else {
-		$description=$rbac->Permissions->getDescription($permissionID);
-	}
 	if (isset($_POST['updatePermission'])) {
-		$check_query = "SELECT ID FROM $tablename_permissions WHERE Title='$title'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
-		$verif = mysqli_query($db_link, $check_query);
-		$row_verif = mysqli_fetch_assoc($verif);
-		$permission = mysqli_num_rows($verif);
-		if ($permission){
-			$genericError = "Une permission du même titre existe déjà (".$title.")";
-			$updateErrorTitle = "Une permission du même titre existe déjà (".$title.")";
+
+		$permission_title = str_replace("'","", $_POST['permission_title']);
+		$permission_description = str_replace("'","", $_POST['permission_description']);
+
+		$missingValues = 0;
+
+		if(isNullOrEmpty($permission_title)){
+			$missingValues++;
+			$permission_title_error = "Le nom de la permission est obligatoire";
+		}
+		if(isNullOrEmpty($permission_description)){
+			$missingValues++;
+			$permission_description_error = "La description de la permission est obligatoire";
 		}
 
-		else if (in_array($title, $undeletablePermissions)) {
-			$genericError = "Il est interdit de mettre à jour la permission '".$title."'";
-			$updateErrorTitle = "Il est interdit de mettre à jour la permission '".$title."'";
+		if ($missingValues != "0" ) {
+			if (!isNullOrEmpty($genericError)){
+				$genericError = $genericError.'<br />';
+			}
+				$genericError = $genericError.'Il y a '.$missingValues.' champs non-renseignés';
 		}
-		else {
-			$perm_id = $rbac->Permissions->edit($permissionID, $title, $description);
-			if (!$perm_id){
-				$genericError = "Echec de la mise à jour (ID=".$permissionID.")";
+
+		if (empty($genericError)){
+			$check_query = "SELECT ID FROM $tablename_permissions WHERE Title='$permission_title'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
+			$verif = mysqli_query($db_link, $check_query);
+			$row_verif = mysqli_fetch_assoc($verif);
+			$permission = mysqli_num_rows($verif);
+			if ($permission){
+				$genericError = "Une permission du même titre existe déjà (".$permission_title.")";
+				$permission_title_error = "Une permission du même titre existe déjà (".$permission_title.")";
+			}
+
+			else if (in_array($permission_title, $undeletablePermissions)) {
+				$genericError = "Il est interdit de mettre à jour la permission '".$permission_title."'";
+				$permission_title_error = "Il est interdit de mettre à jour la permission '".$permission_title."'";
 			}
 			else {
-				$genericSuccess = "Permission mise à jour (".$title.")";
+				$perm_id = $rbac->Permissions->edit($id, $permission_title, $permission_description);
+				if (!$perm_id){
+					$genericError = "Echec de la mise à jour (ID=".$id.")";
+				}
+				else {
+					$genericSuccess = "Permission mise à jour (".$permission_title.")";
+				}
 			}
 		}
 	}

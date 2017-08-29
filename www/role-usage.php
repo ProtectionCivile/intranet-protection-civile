@@ -67,9 +67,9 @@
 							$permissions = mysqli_query($db_link, $query);
 							while($permission = mysqli_fetch_array($permissions)) {
 								$permissionID=$permission["ID"];
-								$permissionTitle=$permission["Title"];
+								$permission_title=$permission["Title"];
 								$permissionDesc=$permission["Description"];
-								echo $permissionDesc." (".$permissionTitle.")<br />";
+								echo $permissionDesc." (".$permission_title.")<br />";
 							}
 						?>
 					</div>

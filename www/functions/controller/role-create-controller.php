@@ -32,7 +32,7 @@
 			$role = mysqli_num_rows($verif);
 			if ($role){
 				$genericError = "Un rôle du même titre existe déjà";
-				$createErrorTitle = "Un rôle du même titre existe déjà";
+				$role_title_error = "Un rôle du même titre existe déjà";
 			}
 			else {
 				$id = $rbac->Roles->add($role_title, $role_description);

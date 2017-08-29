@@ -81,11 +81,11 @@
 						<?php
 						while($permission = mysqli_fetch_array($permissions)) {
 							$permissionID=$permission["ID"];
-							$permissionTitle=$permission["Title"];
-							$permissionDescription=$permission["Description"];
+							$permission_title=$permission["Title"];
+							$permission_description=$permission["Description"];
 							?>
 							<tr>
-								<td class='text-nowrap'><?php echo $permissionDescription; ?></td>
+								<td class='text-nowrap'><?php echo $permission_description; ?></td>
 								<?php
 								$roles = mysqli_query($db_link, $sqlQuery);
 							 	while($role = mysqli_fetch_array($roles)) {

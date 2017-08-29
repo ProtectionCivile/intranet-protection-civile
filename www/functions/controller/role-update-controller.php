@@ -37,18 +37,18 @@
 				$genericError = $genericError.'Il y a '.$missingValues.' champs non-renseignés';
 		}
 
-		$check_query = "SELECT ID FROM $tablename_roles WHERE Title='$title'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
+		$check_query = "SELECT ID FROM $tablename_roles WHERE Title='$role_title'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 		$verif = mysqli_query($db_link, $check_query);
 		$row_verif = mysqli_fetch_assoc($verif);
 		$role = mysqli_num_rows($verif);
 		if ($role){
-			$genericError = "Un rôle du même titre existe déjà (".$title.")";
-			$updateErrorTitle = "Un rôle du même titre existe déjà (".$title.")";
+			$genericError = "Un rôle du même titre existe déjà (".$role_title.")";
+			$role_title_error = "Un rôle du même titre existe déjà (".$role_title.")";
 		}
 
-		else if (in_array($title, $undeletableRoles)) {
-			$genericError = "Il est interdit de mettre à jour le rôle '".$title."'";
-			$updateErrorTitle = "Il est interdit de mettre à jour le rôle '".$title."'";
+		else if (in_array($role_title, $undeletableRoles)) {
+			$genericError = "Il est interdit de mettre à jour le rôle '".$role_title."'";
+			$role_title_error = "Il est interdit de mettre à jour le rôle '".$role_title."'";
 		}
 
 		if (empty($genericError)){
