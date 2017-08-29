@@ -106,7 +106,7 @@
 if ($rbac->check("ope-clients-update-all", $currentUserID)) {
   ?>
   <div class="form-group form-group-sm">
-    <label for="attached_section" class="col-sm-4 control-label">Section</label>
+    <label for="attached_section" class="col-sm-4 control-label">Antenne de rattachement</label>
     <div class="col-sm-8">
       <select class="form-control" id="attached_section" name="attached_section">
         <?php
