@@ -33,7 +33,7 @@
 			}
 			else {
 				$query = mysqli_prepare($db_link, "INSERT INTO $tablename_settings_mail (name, value) VALUES (?, ?)");
-				mysqli_stmt_bind_param($query, "ss", $name, $value);
+				mysqli_stmt_bind_param($query, "ss", mysqli_real_escape_string($db_link, $name), mysqli_real_escape_string($db_link, $value));
 				if(!mysqli_stmt_execute($query)){
 					$genericError = "Impossible d'ajouter le paramètre '".$name."'";
 					trigger_error($genericError . mysqli_error($db_link));

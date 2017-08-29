@@ -42,14 +42,14 @@
 			name='".mysqli_real_escape_string($db_link, $section_name)."',
 			address='".mysqli_real_escape_string($db_link, $section_address)."',
 			phone='".mysqli_real_escape_string($db_link, $section_phone)."',
-			zip_code='$section_zipcode',
+			zip_code='".mysqli_real_escape_string($db_link, $section_zipcode)."',
 			website='".mysqli_real_escape_string($db_link, $section_website)."',
 			mail='".mysqli_real_escape_string($db_link, $section_email)."',
 			attached_section='".mysqli_real_escape_string($db_link, $attached_section)."',
-			`number`='$section_number',
+			`number`='".mysqli_real_escape_string($db_link, $section_number)."',
 			city='".mysqli_real_escape_string($db_link, $section_city)."',
 			shortname='".mysqli_real_escape_string($db_link, $section_shortname)."'
-			WHERE number='$id'";
+			WHERE number='".mysqli_real_escape_string($db_link, $id)."'";
 			if ($db_link->query($sql) === TRUE) {
 			    $genericSuccess = "Antenne mise à jour ($section_name)";
 			} else {

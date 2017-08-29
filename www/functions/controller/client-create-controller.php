@@ -63,7 +63,7 @@
 			$sql = "INSERT INTO $tablename_clients (ref, name, attached_section, represent, title, address, phone, fax, mail) VALUES (
 				'".mysqli_real_escape_string($db_link, $client_ref)."',
 				'".mysqli_real_escape_string($db_link, $client_name)."',
-				'$attached_section',
+				'".mysqli_real_escape_string($db_link, $attached_section)."',
 				'".mysqli_real_escape_string($db_link, $client_represent)."',
 				'".mysqli_real_escape_string($db_link, $client_title)."',
 				'".mysqli_real_escape_string($db_link, $client_address)."',

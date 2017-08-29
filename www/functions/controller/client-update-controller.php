@@ -65,7 +65,7 @@
 			$sql = "UPDATE $tablename_clients SET
 			ref='".mysqli_real_escape_string($db_link, $client_ref)."',
 			name='".mysqli_real_escape_string($db_link, $client_name)."',
-			attached_section='$attached_section',
+			attached_section='".mysqli_real_escape_string($db_link, $attached_section)."',
 			represent='".mysqli_real_escape_string($db_link, $client_represent)."',
 			title='".mysqli_real_escape_string($db_link, $client_title)."',
 			address='".mysqli_real_escape_string($db_link, $client_address)."',
