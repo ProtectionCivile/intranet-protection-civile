@@ -1,76 +1,58 @@
 <?php
 	//Authentication
-	$rbac->enforce("admin-sections-update", $currentUserID);
+	require_once('functions/section/section-update-authentication.php');
 
-	if (empty($genericError)){
+	if (isset($_POST['updateSection'])){
+		$section_name = $_POST['section_name'];
+		$section_shortname = $_POST['section_shortname'];
+		$section_number = $_POST['section_number'];
+		$section_address = $_POST['section_address'];
+		$section_zipcode = $_POST['section_zipcode'];
+		$section_city = $_POST['section_city'];
+		$section_phone = $_POST['section_phone'];
+		$section_email = $_POST['section_email'];
+		$section_website = $_POST['section_website'];
+		$attached_section = $_POST['attached_section'];
 
-		if (isset($_POST['name'])) {
-			$name=str_replace("'","", $_POST['name']);
+		$missingValues = 0;
+
+		if(isNullOrEmpty($section_name)){
+			$missingValues++;
+			$section_name_error = "Le nom de l'antenne est obligatoire";
 		}
-		else {
-			$name=$section["name"];
+		if(isNullOrEmpty($section_number)){
+			$missingValues++;
+			$section_number_error = "Le numéro de l'antenne est obligatoire";
 		}
-		if (isset($_POST['address'])) {
-			$address=str_replace("'","", $_POST['address']);
-		}
-		else {
-			$address=$section["address"];
-		}
-		if (isset($_POST['zipcode'])) {
-			$zipcode=str_replace("'","", $_POST['zipcode']);
-		}
-		else {
-			$zipcode=$section["zip_code"];
-		}
-		if (isset($_POST['city'])) {
-			$city=str_replace("'","", $_POST['city']);
-		}
-		else {
-			$city=$section["city"];
-		}
-		if (isset($_POST['number'])) {
-			$number=str_replace("'","", $_POST['number']);
-		}
-		else {
-			$number=$section["number"];
-		}
-		if (isset($_POST['shortname'])) {
-			$shortname=str_replace("'","", $_POST['shortname']);
-		}
-		else {
-			$shortname=$section["shortname"];
-		}
-		if (isset($_POST['phone'])) {
-			$phone=str_replace("'","", $_POST['phone']);
-		}
-		else {
-			$phone=$section["phone"];
-		}
-		if (isset($_POST['website'])) {
-			$website=str_replace("'","", $_POST['website']);
-		}
-		else {
-			$website=$section["website"];
-		}
-		if (isset($_POST['mail'])) {
-			$mail=str_replace("'","", $_POST['mail']);
-		}
-		else {
-			$mail=$section["mail"];
-		}
-		if (isset($_POST['attached_section'])) {
-			$attached_section=str_replace("'","", $_POST['attached_section']);
-		}
-		else {
-			$attached_section=$section["attached_section"];
+		if(isNullOrEmpty($section_shortname)){
+			$missingValues++;
+			$section_shortname_error = "Le nom court de l'antenne est obligatoire";
 		}
 
-		if (isset($_POST['update'])) {		
-			$sql = "UPDATE $tablename_sections SET name='$name', address='$address', phone='$phone', zip_code='$zipcode', website='$website', mail='$mail', attached_section='$attached_section', `number`='$number', city='$city', shortname='$shortname' WHERE number='$id'";
+		if ($missingValues != "0" ) {
+			if (!isNullOrEmpty($genericError)){
+				$genericError = $genericError.'<br />';
+			}
+				$genericError = $genericError.'Il y a '.$missingValues.' champs non-renseignés';
+		}
+
+		if (empty($genericError)){
+			$sql = "UPDATE $tablename_sections SET
+			name='".mysqli_real_escape_string($db_link, $section_name)."',
+			address='".mysqli_real_escape_string($db_link, $section_address)."',
+			phone='".mysqli_real_escape_string($db_link, $section_phone)."',
+			zip_code='$section_zipcode',
+			website='".mysqli_real_escape_string($db_link, $section_website)."',
+			mail='".mysqli_real_escape_string($db_link, $section_email)."',
+			attached_section='".mysqli_real_escape_string($db_link, $attached_section)."',
+			`number`='$section_number',
+			city='".mysqli_real_escape_string($db_link, $section_city)."',
+			shortname='".mysqli_real_escape_string($db_link, $section_shortname)."'
+			WHERE number='$id'";
 			if ($db_link->query($sql) === TRUE) {
-			    $genericSuccess = "Section mis à jour ($name)";
+			    $genericSuccess = "Antenne mise à jour ($section_name)";
 			} else {
-			    $genericError = "Erreur pendant la mise à jour de la section '$name' : " . $db_link->error;
+			    $genericError = "Erreur pendant la mise à jour de l'antenne '$section_name' : " . $db_link->error;
 			}
 		}
 	}

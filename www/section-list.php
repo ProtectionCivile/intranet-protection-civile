@@ -112,14 +112,14 @@
 								<td>
 									<?php
 									if (!empty($section["mail"])) {
-										echo $section["mail"]."@protectioncivile92.org";
+										echo $section["mail"];
 									}
 									?>
 								</td>
 								<td>
 									<?php if ($rbac->check("admin-sections-update", $currentUserID)) {?>
 										<form role="form" action="section-edit.php" method="post">
-											<input type='hidden' name='ID' value='<?php echo $section["number"]; ?>'/>
+											<input type='hidden' name='id' value='<?php echo $section["number"]; ?>'/>
 											<button type='submit' class='btn btn-warning glyphicon glyphicon-pencil' title='Modifier'></button>
 										</form>
 									<?php } ?>
@@ -127,7 +127,7 @@
 								<td>
 									<?php if ($rbac->check("admin-sections-update", $currentUserID)) { ?>
 										<form action='' method='post' accept-charset='utf-8'>
-											<input type='hidden' name='ID' value='<?php echo $section["number"]; ?>'/>
+											<input type='hidden' name='id' value='<?php echo $section["number"]; ?>'/>
 											<button type='submit' class='btn btn-danger glyphicon glyphicon-trash' title="Supprimer" onclick='return(confirm("Etes-vous sûr de vouloir supprimer la section?"));'></button>
 										</form>
 									<?php }?>
