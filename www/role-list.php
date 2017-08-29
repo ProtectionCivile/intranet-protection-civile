@@ -20,7 +20,7 @@
 
 
 <!-- Authentication -->
-<?php $rbac->enforce("admin-roles-view", $currentUserID); ?>
+<?php require_once('functions/role/role-update-authentication.php'); ?>
 
 <!-- Delete a role : Controller -->
 <?php include 'functions/controller/role-delete-controller.php'; ?>
@@ -61,16 +61,18 @@
 					<th>Description</th>
 					<th>Tél</th>
 					<th>Mail</th>
-					<th>Affiliation</th>
-					<th>Ind. Radio</th>
+					<th>Rattachement</th>
+					<th>Indicatif radio</th>
 					<th>Assignable</th>
 					<th>Annuaire</th>
+					<th>Tags</th>
+					<th>Hiérarchie</th>
 					<th colspan='4'>Opérations</th>
 				</tr>
 				<?php
 				$roles = mysqli_query($db_link, $sqlQuery);
 				while($role = mysqli_fetch_array($roles)) { ?>
-					<tr>
+					<tr <?php echo (isset($role["Affiliation"])) ? "" : "class='danger'" ?> >
 						<td>
 							<?php echo $role["ID"]; ?>
 						</td>
@@ -88,17 +90,21 @@
 						</td>
 						<td>
 							<?php
-							$qc = "SELECT name FROM $tablename_sections WHERE number='".$role["Affiliation"]."'";
-							$qcr = mysqli_query($db_link, $qc);
-							$c = mysqli_fetch_assoc($qcr);
-							echo $c['name'];
+							if (! isset($role["Affiliation"])) {
+								echo '---';
+							}
+							else {
+								$qc = "SELECT shortname FROM $tablename_sections WHERE number='".$role["Affiliation"]."'";
+								$qcr = mysqli_query($db_link, $qc);
+								$c = mysqli_fetch_assoc($qcr);
+								echo $c['shortname'];
+							}
 							?>
 						</td>
 						<td>
 							<?php echo $role["Callsign"]; ?>
 						</td>
 						<td align="center">
-
 							<?php if($role["Assignable"]) { ?>
 								<span class='glyphicon glyphicon-ok' />
 							<?php } else { ?>
@@ -113,15 +119,21 @@
 							<?php } ?>
 						</td>
 						<td>
+							<?php echo $role["Tags"]; ?>
+						</td>
+						<td>
+							<?php echo $role["Hierarchy"]; ?>
+						</td>
+						<td>
 							<form action='role-usage.php' method='post' accept-charset='utf-8'>
-								<input type='hidden' name='roleID' value=<?php echo "'".$role['ID']."'"; ?> >
-								<button type='submit' class='btn btn-default glyphicon glyphicon-eye-open' title="Voir utilisation"></button>
+								<input type='hidden' name='id' value=<?php echo "'".$role['ID']."'"; ?> >
+								<button type='submit' class='btn btn-success glyphicon glyphicon-eye-open' title="Voir utilisation"></button>
 							</form>
 						</td>
 						<td>
 							<?php if ($rbac->check("admin-roles-update", $currentUserID)) { ?>
 								<form action='role-edit.php' method='post' accept-charset='utf-8'>
-									<input type='hidden' name='roleID' value=<?php echo "'".$role['ID']."'"; ?> >
+									<input type='hidden' name='id' value=<?php echo "'".$role['ID']."'"; ?> >
 									<button type='submit' class='btn btn-warning glyphicon glyphicon-pencil' title="Modifier"></button>
 								</form>
 							<?php } ?>
@@ -129,7 +141,7 @@
 						<td>
 							<?php if ($rbac->check("admin-roles-asssign-permissions", $currentUserID)) { ?>
 								<form action='role-assign-permissions.php' method='post' accept-charset='utf-8'>
-									<input type='hidden' name='roleID' value=<?php echo "'".$role['ID']."'"; ?> >
+									<input type='hidden' name='id' value=<?php echo "'".$role['ID']."'"; ?> >
 									<button type='submit' class='btn btn-warning glyphicon glyphicon-check' title="Voir / Affecter des permissions"></button>
 								</form>
 							<?php } ?>

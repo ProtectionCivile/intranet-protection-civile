@@ -68,10 +68,10 @@
 							$roles = mysqli_query($db_link, $sqlQuery);
 							while($role = mysqli_fetch_array($roles)) {
 								$roleID=$role["ID"];
-								$roleTitle=$role["Title"];
-								$roleDescription=$role["Description"];
+								$role_title=$role["Title"];
+								$role_description=$role["Description"];
 								?>
-									<th class='text-center' title='<?php echo $roleDescription; ?>'><?php echo $roleTitle; ?></th>
+									<th class='text-center' title='<?php echo $role_description; ?>'><?php echo $role_title; ?></th>
 								<?php
 							}
 							?>
@@ -90,16 +90,16 @@
 								$roles = mysqli_query($db_link, $sqlQuery);
 							 	while($role = mysqli_fetch_array($roles)) {
 									$roleID=$role["ID"];
-									$roleTitle=$role["Title"];
-									$roleDescription=$role["Description"];
+									$role_title=$role["Title"];
+									$role_description=$role["Description"];
 									?>
 									<td class='text-center'>
 										<?php
 										if ($rbac->Roles->hasPermission($roleID, $permissionID)) {
-											?> <span class="text-success glyphicon glyphicon-ok" title="<?php echo $roleDescription; ?>" aria-hidden="true"></span> <?php
+											?> <span class="text-success glyphicon glyphicon-ok" title="<?php echo $role_description; ?>" aria-hidden="true"></span> <?php
 										}
 										else {
-											?> <span class="text-danger glyphicon glyphicon-minus" title="<?php echo $roleDescription; ?>" aria-hidden="true"></span> <?php
+											?> <span class="text-danger glyphicon glyphicon-minus" title="<?php echo $role_description; ?>" aria-hidden="true"></span> <?php
 										}
 										?>
 									</td>

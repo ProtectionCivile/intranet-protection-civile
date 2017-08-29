@@ -53,8 +53,8 @@
 							$roles = mysqli_query($db_link, $query);
 							while($role = mysqli_fetch_array($roles)) {
 								$roleID=$role["ID"];
-								$roleTitle=$role["Title"];
-								echo $roleTitle.", ";
+								$role_title=$role["Title"];
+								echo $role_title.", ";
 							}
 						?>
 					</div>

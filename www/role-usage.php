@@ -39,7 +39,7 @@
 		echo "<div class='alert alert-danger'><strong>Erreur</strong> : ".$roleUpdateError."</div>";
 	}
 	else {
-		$roleTitle=$rbac->Roles->getTitle($roleID);
+		$role_title=$rbac->Roles->getTitle($roleID);
 ?>
 
 
@@ -47,7 +47,7 @@
 	<div class="container">
 
 		<div class="page-header">
-			<h2>Gestion des rôles <small>Utilisations de '<?php echo $roleTitle ?>'</small></h2>
+			<h2>Gestion des rôles <small>Utilisations de '<?php echo $role_title ?>'</small></h2>
 		</div>
 
 

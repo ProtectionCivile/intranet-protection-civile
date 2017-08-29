@@ -57,12 +57,12 @@
 		$roles = mysqli_query($db_link, $sqlQuery);
 		while($role = mysqli_fetch_array($roles)) {
 			$roleID=$role["ID"];
-			$roleTitle=$role["Description"];
+			$role_title=$role["Description"];
 			?>
 			<!-- Role usage : Container -->
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<h3 class="panel-title"><?php echo $roleTitle ?></h3>
+					<h3 class="panel-title"><?php echo $role_title ?></h3>
 				</div>
 				<div class="panel-body">
 

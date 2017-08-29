@@ -83,13 +83,13 @@
 										<?php
 										while($role = mysqli_fetch_array($roles)) {
 											$roleID=$role["ID"];
-											$roleTitle=$role["Title"];
-											$roleDescription=$role["Description"];
+											$role_title=$role["Title"];
+											$role_description=$role["Description"];
 											if ($rbac->Users->hasRole($roleID, $userID)) {
-												?><button type="button" class="btn btn-default btn-xs active" title="<?php echo $roleTitle;?>" onClick="send(<?php echo $roleID;?>)"><?php echo $roleDescription;?></button><?php
+												?><button type="button" class="btn btn-default btn-xs active" title="<?php echo $role_title;?>" onClick="send(<?php echo $roleID;?>)"><?php echo $role_description;?></button><?php
 											}
 											else {
-												?><button type="button" class="btn btn-default btn-xs" title="<?php echo $roleTitle;?>" onClick="send(<?php echo $roleID;?>)"><?php echo $roleDescription;?></button><?php
+												?><button type="button" class="btn btn-default btn-xs" title="<?php echo $role_title;?>" onClick="send(<?php echo $roleID;?>)"><?php echo $role_description;?></button><?php
 											}
 										}
 										?>

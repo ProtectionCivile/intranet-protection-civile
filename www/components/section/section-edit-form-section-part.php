@@ -44,7 +44,7 @@
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Adresse, code postal, ville."></span>
   </label>
   <div class="col-sm-8">
-    <input type="text" class="form-control" id="section_address" name="section_address" aria-describedby="section-address-error" placeholder="13 rue de la Poupée qui Tousse, 92230 Gennevilliers" minlength='20' value="<?php echo $section_address;?>" data-minlength="20" >
+    <input type="text" class="form-control" id="section_address" name="section_address" aria-describedby="section-address-error" placeholder="13 rue de la Poupée qui Tousse, 92230 Gennevilliers" minlength='5' value="<?php echo $section_address;?>" data-minlength="5" >
     <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
     <span id='section-adress-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
   </div>
@@ -109,7 +109,7 @@
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Ne pas oublier le http devant"></span>
   </label>
   <div class="col-sm-8">
-    <input type="text" class="form-control" id="section_website" name="section_website" aria-describedby="section-website-error" placeholder="http://antenne.protectioncivile92.org" minlength='1' maxlength='40' url='true' value="<?php echo $section_website;?>" data-minlength="1" >
+    <input type="text" class="form-control" id="section_website" name="section_website" aria-describedby="section-website-error" placeholder="http://antenne.protectioncivile92.org" minlength='1' maxlength='80' url='true' value="<?php echo $section_website;?>" data-minlength="1" >
     <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
     <span id='section-website-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
   </div>
