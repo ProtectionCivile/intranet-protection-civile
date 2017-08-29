@@ -9,7 +9,7 @@
       <?php if (empty($genericSuccess)){ ?>
         <a class="btn btn-default" href="client-list.php" role="button">Annuler - Retour à la liste</a>
       <?php } ?>
-      <button type="submit" class="btn btn-success" id='submitAddClientForm'>Metttre à jour</button>
+      <button type="submit" class="btn btn-success" id='submitAddClientForm'>Mettre à jour</button>
       <?php if (isset($_POST['updateClient']) && !empty($genericSuccess)) { ?>
         <a class="btn btn-default" href="client-list.php" role="button">J'ai terminé ! Retour à la liste</a>
       <?php } ?>

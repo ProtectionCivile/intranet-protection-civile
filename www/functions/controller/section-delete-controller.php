@@ -1,12 +1,12 @@
 <?php
 
 	if (isset($_POST['del'])){
-		$delID = str_replace("'","", $_POST['del']);
+		$delID = $_POST['del'];
 		if($delID == ""){
 			$genericError = "Impossible de supprimer une section inconnue";
 		}
 		else{
-			$check_query = "SELECT name FROM $tablename_sections WHERE number='$delID'" or die("Erreur lors de la consultation" . mysqli_error($db_link)); 
+			$check_query = "SELECT name FROM $tablename_sections WHERE number='$delID'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 			$verif = mysqli_query($db_link, $check_query);
 			$delSection = mysqli_fetch_assoc($verif);
 			if (!$delSection){

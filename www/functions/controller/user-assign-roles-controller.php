@@ -13,19 +13,19 @@
 				$genericError = "Le rôle en question n'existe pas";
 			}
 			else {
-				$roleTitle=$rbac->Roles->getTitle($roleID);
-				$roleDescription=$rbac->Roles->getDescription($roleID);
-				if ($rbac->Users->hasRole($roleTitle, $userID)) {
-					$isDone = $rbac->Users->unassign($roleTitle, $userID);
+				$role_title=$rbac->Roles->getTitle($roleID);
+				$role_description=$rbac->Roles->getDescription($roleID);
+				if ($rbac->Users->hasRole($role_title, $userID)) {
+					$isDone = $rbac->Users->unassign($role_title, $userID);
 				}
 				else {
-					$isDone = $rbac->Users->assign($roleTitle, $userID);
+					$isDone = $rbac->Users->assign($role_title, $userID);
 				}
 				if (!$isDone){
-					$genericError = "Echec de la mise à jour ('".$roleDescription."')";
+					$genericError = "Echec de la mise à jour ('".$role_description."')";
 				}
 				else {
-					$genericSuccess = "L'utilisateur a été mis à jour avec le rôle '".$roleDescription."'";
+					$genericSuccess = "L'utilisateur a été mis à jour avec le rôle '".$role_description."'";
 				}
 			}
 		}

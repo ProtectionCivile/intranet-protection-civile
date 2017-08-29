@@ -41,7 +41,7 @@ if(empty($commonError)) {
 	<div class="container">
 
 		<div class="page-header">
-			<h2>Gestion des rôles <small>Modifier les permissions de '<?php echo $roleTitle ?>'</small></h2>
+			<h2>Gestion des rôles <small>Modifier les permissions de '<?php echo $role_title ?>'</small></h2>
 		</div>
 
 
@@ -56,7 +56,7 @@ if(empty($commonError)) {
 			</div>
 			<div class="panel-body">
 				<form id="permrole" class="form-horizontal" action='role-assign-permissions.php' method='post' accept-charset='utf-8'>
-					<input type="hidden" name="roleID" value="<?php echo $roleID;?>">
+					<input type="hidden" name="id" value="<?php echo $id;?>">
 					<input type="hidden" name="permissionID" id="permissionID" value="undefined">
 
 					Les changements se font directement en cliquant sur les boutons.
@@ -67,19 +67,19 @@ if(empty($commonError)) {
 					$permissions = mysqli_query($db_link, $query);
 					while($permission = mysqli_fetch_array($permissions)) {
 						$permissionID=$permission["ID"];
-						$permissionTitle=$permission["Title"];
-						$permissionDescription=$permission["Description"];
+						$permission_title=$permission["Title"];
+						$permission_description=$permission["Description"];
 						?>
 						<li>
 						<?php
-						if ($rbac->Roles->hasPermission($roleID, $permissionID)) {
+						if ($rbac->Roles->hasPermission($id, $permissionID)) {
 							?>
-							<button type="button" class="btn btn-default btn-xs active" title="<?php echo $permissionTitle;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionDescription;?></button>
+							<button type="button" class="btn btn-default btn-xs active" title="<?php echo $permission_title;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permission_description;?></button>
 							<?php
 						}
 						else {
 							?>
-							<button type="button" class="btn btn-default btn-xs" title="<?php echo $permissionTitle;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permissionDescription;?></button>
+							<button type="button" class="btn btn-default btn-xs" title="<?php echo $permission_title;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permission_description;?></button>
 							<?php
 						}
 						?>

@@ -22,12 +22,12 @@
 
 <!-- Common -->
 <?php
-	$roleID = str_replace("'","", $_POST['roleID']);
-	if($roleID == ""){
+	$id = $_POST['id'];
+	if($id == ""){
 		$roleUpdateError = "Aucun rôle défini";
 	}
 	else {
-		$check_query = "SELECT ID FROM $tablename_roles WHERE ID='$roleID'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
+		$check_query = "SELECT ID FROM $tablename_roles WHERE ID='$id'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 		$verif = mysqli_query($db_link, $check_query);
 		$row_verif = mysqli_fetch_assoc($verif);
 		$role = mysqli_num_rows($verif);
@@ -39,7 +39,7 @@
 		echo "<div class='alert alert-danger'><strong>Erreur</strong> : ".$roleUpdateError."</div>";
 	}
 	else {
-		$roleTitle=$rbac->Roles->getTitle($roleID);
+		$role_title=$rbac->Roles->getTitle($id);
 ?>
 
 
@@ -47,7 +47,7 @@
 	<div class="container">
 
 		<div class="page-header">
-			<h2>Gestion des rôles <small>Utilisations de '<?php echo $roleTitle ?>'</small></h2>
+			<h2>Gestion des rôles <small>Utilisations de '<?php echo $role_title ?>'</small></h2>
 		</div>
 
 
@@ -63,13 +63,13 @@
 					<div class="panel-heading">Permissions de ce rôle</div>
 					<div class="panel-body">
 						<?php
-							$query = "SELECT P.ID, P.Title, P.Description FROM rbac_rolepermissions AS RP INNER JOIN rbac_permissions AS P ON RP.PermissionId=P.ID WHERE RP.RoleId='$roleID' ORDER BY P.Title" or die("Erreur lors de la consultation" . mysqli_error($db_link));
+							$query = "SELECT P.ID, P.Title, P.Description FROM rbac_rolepermissions AS RP INNER JOIN rbac_permissions AS P ON RP.PermissionId=P.ID WHERE RP.RoleId='$id' ORDER BY P.Title" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 							$permissions = mysqli_query($db_link, $query);
 							while($permission = mysqli_fetch_array($permissions)) {
 								$permissionID=$permission["ID"];
-								$permissionTitle=$permission["Title"];
+								$permission_title=$permission["Title"];
 								$permissionDesc=$permission["Description"];
-								echo $permissionDesc." (".$permissionTitle.")<br />";
+								echo $permissionDesc." (".$permission_title.")<br />";
 							}
 						?>
 					</div>
@@ -80,7 +80,7 @@
 					<div class="panel-heading">Utilisateurs ayant ce rôle</div>
 					<div class="panel-body">
 						<?php
-							$sql = "SELECT U.ID, U.last_name, U.first_name FROM rbac_userroles AS UR INNER JOIN users AS U ON UR.UserId=U.ID WHERE UR.RoleID='$roleID' ORDER BY U.last_name" or die("Erreur lors de la consultation" . mysqli_error($db_link));
+							$sql = "SELECT U.ID, U.last_name, U.first_name FROM rbac_userroles AS UR INNER JOIN users AS U ON UR.UserId=U.ID WHERE UR.RoleID='$id' ORDER BY U.last_name" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 							$result = $db_link->query($sql);
 							while($row = $result->fetch_assoc()) {
 								$userID=$row["ID"];

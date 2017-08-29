@@ -5,16 +5,16 @@
 	require_once('functions/client/client-update-authentication.php');
 
 	if (isset($_POST['updateClient'])){
-		$client_id = str_replace("'","", $_POST['id']);
-		$client_name = str_replace("'","", $_POST['client_name']);
-		$client_ref = str_replace("'","", $_POST['client_ref']);
-		$client_represent = str_replace("'","", $_POST['client_represent']);
-		$client_title = str_replace("'","", $_POST['client_title']);
-		$client_address = str_replace("'","", $_POST['client_address']);
-		$client_phone = str_replace("'","", $_POST['client_phone']);
-		$client_fax = str_replace("'","", $_POST['client_fax']);
-		$client_email = str_replace("'","", $_POST['client_email']);
-		$attached_section = str_replace("'","", $_POST['attached_section']);
+		$client_id = $_POST['id'];
+		$client_name = $_POST['client_name'];
+		$client_ref = $_POST['client_ref'];
+		$client_represent = $_POST['client_represent'];
+		$client_title = $_POST['client_title'];
+		$client_address = $_POST['client_address'];
+		$client_phone = $_POST['client_phone'];
+		$client_fax = $_POST['client_fax'];
+		$client_email = $_POST['client_email'];
+		$attached_section = $_POST['attached_section'];
 
 		$missingValues = 0;
 
@@ -62,9 +62,21 @@
 		}
 
 		if (empty($genericError)){
-			$update_client = "UPDATE $tablename_clients SET ref='$client_ref', name='$client_name', attached_section='$attached_section', represent='$client_represent', title='$client_title', address='$client_address', phone='$client_phone', fax='$client_fax', mail='$client_email' WHERE ID='$id'" or die("Impossible d'ajouter le client dans la base de données" . mysqli_error($db_link));
-			mysqli_query($db_link, $update_client);
-			$genericSuccess = "Client modifié avec succès (".$client_name.")";
+			$sql = "UPDATE $tablename_clients SET
+			ref='".mysqli_real_escape_string($db_link, $client_ref)."',
+			name='".mysqli_real_escape_string($db_link, $client_name)."',
+			attached_section='$attached_section',
+			represent='".mysqli_real_escape_string($db_link, $client_represent)."',
+			title='".mysqli_real_escape_string($db_link, $client_title)."',
+			address='".mysqli_real_escape_string($db_link, $client_address)."',
+			phone='".mysqli_real_escape_string($db_link, $client_phone)."',
+			fax='".mysqli_real_escape_string($db_link, $client_fax)."',
+			mail='".mysqli_real_escape_string($db_link, $client_email)."' WHERE ID='$id'" or die("Impossible d'ajouter le client dans la base de données" . mysqli_error($db_link));
+			if ($db_link->query($sql) === TRUE) {
+				$genericSuccess = "Client mis à jour (".$client_name.")";
+			} else {
+				$genericError = "Client non mis à jour: " . $db_link->error;
+			}
 		}
 	}
 ?>

@@ -17,7 +17,7 @@
 
 
 <!-- Authentication -->
-<?php $rbac->enforce("admin-settings-update", $currentUserID); ?>
+<?php require_once('functions/setting/setting-update-authentication.php'); ?>
 
 <!-- Common -->
 <?php include 'functions/controller/setting-common.php'; ?>
@@ -30,47 +30,21 @@
 <div class="container">
 
 	<div class="page-header">
-		<h2>Réglages de l'application <small>Modification d'un paramètre</small></h2>
+		<h2>Réglages de l'application <small>Modification du paramètre <?php echo $name; ?></small></h2>
 	</div>
 
 	<!-- Operation status indicator -->
 	<?php include 'components/operation-status-indicator.php'; ?>
 
-
 	<!-- Update a setting : display form -->
-	<form class="form-horizontal" id="auto-validation-form" role="form" action="" name="add" method="post" autocomplete="off">
-		<input type="hidden" id="wish" name='update'/>
-		<input type="hidden" name="ID" value="<?php echo $id;?>">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title">Informations</h3>
-			</div>
-		<div class="panel-body">
-			<div class="form-group form-group-sm">
-				<label for="name" class="col-sm-4 control-label">Nom du paramètre</label>
-				<div class="col-sm-8">
-					<input type="text" class="form-control" id="name" name="name" value="<?php echo htmlentities($name) ?>" minlength='3' maxlength='120' required='true' placeholder="Nom du paramètre">
-				</div>
-			</div>
-			<div class="form-group form-group-sm">
-				<label for="value" class="col-sm-4 control-label">Valeur du paramètre</label>
-				<div class="col-sm-8">
-					<input type="text" class="form-control" id="value" name="value" value="<?php echo htmlentities($value) ?>" minlength='3' maxlength='400' required='false' placeholder="Valeur du paramètre">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-offset-4 col-sm-8">
-					<?php if (empty($genericSuccess)){ ?>
-							<a class="btn btn-default" href="setting-list.php" role="button">Annuler - Retour à la liste</a>
-						<?php } ?>
-						<button type="submit" class="btn btn-warning">Mettre à jour</button>
-						<?php if (isset($_POST['update']) && !empty($genericSuccess)) { ?>
-							<a class="btn btn-default" href="setting-list.php" role="button">J'ai terminé ! Retour à la liste</a>
-						<?php } ?>
-			    </div>
-			</div>
+	<div class="panel panel-info">
+		<div class="panel-heading">
+			<h3 class="panel-title">Modification d'un paramètre</h3>
 		</div>
-	</form>
+		<div class="panel-body">
+			<?php require_once('components/setting/setting-edit-form.php'); ?>
+		</div>
+	</div>
 </div>
 
 <?php include('components/footer.php'); ?>

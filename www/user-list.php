@@ -20,7 +20,7 @@
 <?php require_once('functions/user/user-compute-city.php'); ?>
 
 <!-- Authentication -->
-<?php $rbac->enforce("admin-users-view", $currentUserID); ?>
+<?php require_once('functions/user/user-view-authentication.php'); ?>
 
 
 <!-- Delete a user : Controller -->
@@ -99,7 +99,7 @@
 						<td>
 							<?php if ($rbac->check("admin-users-update", $currentUserID)) { ?>
 								<form action='user-edit.php' method='post' accept-charset='utf-8'>
-									<input type='hidden' name='userID' value=<?php echo "'".$user['ID']."'"; ?> >
+									<input type='hidden' name='id' value=<?php echo "'".$user['ID']."'"; ?> >
 									<button type='submit' class='btn btn-warning glyphicon glyphicon-pencil' title="Modifier"></button>
 								</form>
 							<?php }?>
