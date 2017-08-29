@@ -1,19 +1,28 @@
 <?php
-	
-	//Authentication 
+
+	//Authentication
 	$rbac->enforce("admin-settings-update", $currentUserID);
 
 	if (isset($_POST['addSetting'])){
-		$name = str_replace("'","", $_POST['name']);
-		$value = str_replace("'","", $_POST['value']);
+		$name = $_POST['name'];
+		$value = $_POST['value'];
 
-		if($name == ""){
-			$genericError = "Le nom est obligatoire";
-			$createErrorName = "Le nom est obligatoire";
+		$missingValues = 0;
+
+		if(isNullOrEmpty($name)){
+			$missingValues++;
+			$name_error = "Le nom est obligatoire";
 		}
-		
+
+		if ($missingValues != "0" ) {
+			if (!isNullOrEmpty($genericError)){
+				$genericError = $genericError.'<br />';
+			}
+				$genericError = $genericError.'Il y a '.$missingValues.' champs non-renseignés';
+		}
+
 		if (empty($genericError)){
-			$verif_query = "SELECT * FROM $tablename_settings_mail WHERE name='$name'"; 
+			$verif_query = "SELECT * FROM $tablename_settings_mail WHERE name='$name'";
 			$verif = mysqli_query($db_link, $verif_query);
 			if(!$verif){
 				trigger_error("Erreur lors de la consultation" . mysqli_error($db_link));
