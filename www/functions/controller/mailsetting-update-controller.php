@@ -44,7 +44,7 @@
 		// }
 		// else {
 		$query = mysqli_prepare($db_link, "UPDATE $tablename_settings_mail SET name=?, value=? WHERE ID=?");
-		mysqli_stmt_bind_param($query, "ssi", $name, $value, $id);
+		mysqli_stmt_bind_param($query, "ssi", mysqli_real_escape_string($db_link, $name), mysqli_real_escape_string($db_link, $value), $id);
 		if(!mysqli_stmt_execute($query)){
 			$genericError = "Impossible de mettre à jour le paramètre '".$name."'";
 			trigger_error($genericError . mysqli_error($db_link));

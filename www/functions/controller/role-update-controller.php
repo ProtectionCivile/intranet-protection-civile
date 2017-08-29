@@ -10,8 +10,8 @@
 		$role_email = $_POST['role_email'];
 		$attached_section = $_POST['attached_section'];
 		$role_callsign = $_POST['role_callsign'];
-		$role_directory = $_POST['role_directory'];
-		$role_assignable = $_POST['role_assignable'];
+		$role_directory = ($_POST['role_directory'] == 'on') ? 1 : 0;
+		$role_assignable = ($_POST['role_assignable'] == 'on') ? 1 : 0;
 		$role_tags = $_POST['role_tags'];
 		$role_hierarchy = $_POST['role_hierarchy'];
 
@@ -50,12 +50,11 @@
 			$genericError = "Il est interdit de mettre à jour le rôle '".$role_title."'";
 			$role_title_error = "Il est interdit de mettre à jour le rôle '".$role_title."'";
 		}
-
 		if (empty($genericError)){
 			$sql = "UPDATE $tablename_roles SET
 			Title='".mysqli_real_escape_string($db_link, $role_title)."',
 			Description='".mysqli_real_escape_string($db_link, $role_description)."',
-			Affiliation='$attached_section',
+			Affiliation='".mysqli_real_escape_string($db_link, $attached_section)."',
 			Directory='".mysqli_real_escape_string($db_link, $role_directory)."',
 			Callsign='".mysqli_real_escape_string($db_link, $role_callsign)."',
 			Assignable='".mysqli_real_escape_string($db_link, $role_assignable)."',
