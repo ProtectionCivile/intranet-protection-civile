@@ -15,11 +15,11 @@
 			else {
 				$role_title=$rbac->Roles->getTitle($roleID);
 				$role_description=$rbac->Roles->getDescription($roleID);
-				if ($rbac->Users->hasRole($role_title, $userID)) {
-					$isDone = $rbac->Users->unassign($role_title, $userID);
+				if ($rbac->Users->hasRole($role_title, $id)) {
+					$isDone = $rbac->Users->unassign($role_title, $id);
 				}
 				else {
-					$isDone = $rbac->Users->assign($role_title, $userID);
+					$isDone = $rbac->Users->assign($role_title, $id);
 				}
 				if (!$isDone){
 					$genericError = "Echec de la mise à jour ('".htmlentities($role_description)."')";

@@ -71,7 +71,7 @@
 				while($user = mysqli_fetch_array($users)) { ?>
 					<tr>
 						<td>
-							<?php echo ucfirst(htmlentities($user["last_name"])); ?>
+							<?php echo mb_strtoupper($user["last_name"]); ?>
 						</td>
 						<td>
 							<?php echo ucfirst(htmlentities($user["first_name"])); ?>
@@ -91,7 +91,7 @@
 						<td>
 							<?php if ($rbac->check("admin-users-asssign-roles", $currentUserID)) { ?>
 								<form action='user-assign-roles.php' method='post' accept-charset='utf-8'>
-									<input type='hidden' name='userID' value=<?php echo "'".$user['ID']."'"; ?> >
+									<input type='hidden' name='id' value=<?php echo "'".$user['ID']."'"; ?> >
 									<button type='submit' class='btn btn-warning glyphicon glyphicon-check' title='Voir / Affecter des rôles'></button>
 								</form>
 							<?php }?>
