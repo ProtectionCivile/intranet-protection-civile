@@ -31,13 +31,13 @@
 			$row_verif = mysqli_fetch_assoc($verif);
 			$permission = mysqli_num_rows($verif);
 			if ($permission){
-				$genericError = "Une permission du même titre existe déjà (".$permission_title.")";
-				$permission_title_error = "Une permission du même titre existe déjà (".$permission_title.")";
+				$genericError = "Une permission du même titre existe déjà (".htmlentities($permission_title).")";
+				$permission_title_error = "Une permission du même titre existe déjà (".htmlentities($permission_title).")";
 			}
 
 			else if (in_array($permission_title, $undeletablePermissions)) {
-				$genericError = "Il est interdit de mettre à jour la permission '".$permission_title."'";
-				$permission_title_error = "Il est interdit de mettre à jour la permission '".$permission_title."'";
+				$genericError = "Il est interdit de mettre à jour la permission '".htmlentities($permission_title)."'";
+				$permission_title_error = "Il est interdit de mettre à jour la permission '".htmlentities($permission_title)."'";
 			}
 			else {
 				$perm_id = $rbac->Permissions->edit($id, $permission_title, $permission_description);
@@ -45,7 +45,7 @@
 					$genericError = "Echec de la mise à jour (ID=".$id.")";
 				}
 				else {
-					$genericSuccess = "Permission mise à jour (".$permission_title.")";
+					$genericSuccess = "Permission mise à jour (".htmlentities($permission_title).")";
 				}
 			}
 		}

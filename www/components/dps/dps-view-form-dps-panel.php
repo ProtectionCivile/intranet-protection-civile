@@ -120,7 +120,7 @@
 
 						<div class="col col-sm-2 text-right">Moyens supp.</div>
 						<div class="col col-sm-4">
-							<p class='bg-info' ><?php echo ($dps_other_matos_asso) ? $dps_other_matos_asso : '&nbsp;';?></p>
+							<p class='bg-info' ><?php echo ($dps_other_matos_asso) ? htmlentities($dps_other_matos_asso) : '&nbsp;';?></p>
 						</div>
 					</div>
 
@@ -158,7 +158,7 @@
 					<div class='row'>
 						<div class="col col-sm-3 text-right">Autres moyens</div>
 						<div class="col col-sm-9">
-							<p class='bg-info' ><?php echo ($clientmatos_other) ? $clientmatos_other : '&nbsp;';?></p>
+							<p class='bg-info' ><?php echo ($clientmatos_other) ? htmlentities($clientmatos_other) : '&nbsp;';?></p>
 						</div>
 					</div>
 
@@ -181,7 +181,7 @@
 
 						<div class="col col-sm-2 text-right">Appartenance</div>
 						<div class="col col-sm-4">
-							<p class='bg-info' ><?php echo ($medicalext_med_company) ? $medicalext_med_company : '&nbsp;';?></p>
+							<p class='bg-info' ><?php echo ($medicalext_med_company) ? htmlentities($medicalext_med_company) : '&nbsp;';?></p>
 						</div>
 					</div>
 
@@ -193,7 +193,7 @@
 
 						<div class="col col-sm-2 text-right">Appartenance</div>
 						<div class="col col-sm-4">
-							<p class='bg-info' ><?php echo ($medicalext_inf_company) ? $medicalext_inf_company : '&nbsp;';?></p>
+							<p class='bg-info' ><?php echo ($medicalext_inf_company) ? htmlentities($medicalext_inf_company) : '&nbsp;';?></p>
 						</div>
 					</div>
 
@@ -248,7 +248,7 @@
 					<div class='row'>
 						<div class="col col-sm-3 text-right">Justificatif du dispositif</div>
 						<div class="col col-sm-9">
-							<p class='bg-info' ><?php echo ($dps_justification) ? $dps_justification : '&nbsp;';?></p>
+							<p class='bg-info' ><?php echo ($dps_justification) ? htmlentities($dps_justification) : '&nbsp;';?></p>
 						</div>
 					</div>
 

@@ -70,10 +70,10 @@
 							?>
 							<tr class='<?php echo $trclass; ?>'>
 								<td>
-									<?php echo $section["shortname"];?>
+									<?php echo htmlentities($section["shortname"]);?>
 								</td>
 								<td>
-									<?php echo $section["number"];?>
+									<?php echo htmlentities($section["number"]);?>
 								</td>
 								<?php
 								$colspan = "";
@@ -82,7 +82,7 @@
 								}
 								?>
 								<td colspan='<?php echo $colspan;?>'>
-									<?php echo $section["name"];?>
+									<?php echo htmlentities($section["name"]);?>
 								</td>
 
 								<?php
@@ -93,33 +93,33 @@
 									$rattach = mysqli_fetch_array($query);
 
 									echo "<td>";
-									echo $rattach['shortname'];
+									echo htmlentities($rattach['shortname']);
 									echo "</td>";
 								}
 								?>
 								<td>
-									<?php echo $section["address"]; ?>
+									<?php echo htmlentities($section["address"]); ?>
 								</td>
 								<td>
-									<?php echo $section["zip_code"]; ?>
+									<?php echo htmlentities($section["zip_code"]); ?>
 								</td>
 								<td>
-									<?php echo $section["city"]; ?>
+									<?php echo htmlentities($section["city"]); ?>
 								</td>
 								<td>
-									<?php echo $section["phone"]; ?>
+									<?php echo htmlentities($section["phone"]); ?>
 								</td>
 								<td>
 									<?php
 									if (!empty($section["mail"])) {
-										echo $section["mail"];
+										echo htmlentities($section["mail"]);
 									}
 									?>
 								</td>
 								<td>
 									<?php if ($rbac->check("admin-sections-update", $currentUserID)) {?>
 										<form role="form" action="section-edit.php" method="post">
-											<input type='hidden' name='id' value='<?php echo $section["number"]; ?>'/>
+											<input type='hidden' name='id' value='<?php echo htmlentities($section["number"]); ?>'/>
 											<button type='submit' class='btn btn-warning glyphicon glyphicon-pencil' title='Modifier'></button>
 										</form>
 									<?php } ?>
@@ -127,7 +127,7 @@
 								<td>
 									<?php if ($rbac->check("admin-sections-update", $currentUserID)) { ?>
 										<form action='' method='post' accept-charset='utf-8'>
-											<input type='hidden' name='id' value='<?php echo $section["number"]; ?>'/>
+											<input type='hidden' name='id' value='<?php echo htmlentities($section["number"]); ?>'/>
 											<button type='submit' class='btn btn-danger glyphicon glyphicon-trash' title="Supprimer" onclick='return(confirm("Etes-vous sûr de vouloir supprimer la section?"));'></button>
 										</form>
 									<?php }?>

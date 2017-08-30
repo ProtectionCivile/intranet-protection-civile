@@ -8,7 +8,7 @@
       <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Nom court"></span>
     </label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="role_title" name="role_title" aria-describedby="role-title-error" placeholder="DLO Asnières" minlength='3' maxlength='120' required='true' value="<?php echo $role_title;?>" >
+      <input type="text" class="form-control" id="role_title" name="role_title" aria-describedby="role-title-error" placeholder="DLO Asnières" minlength='3' maxlength='120' required='true' value="<?php echo htmlentities($role_title);?>" >
       <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
       <span id='role-title-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
     </div>
@@ -21,7 +21,7 @@
       <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom long" />
     </label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="role_description" name="role_description" aria-describedby="role-description-error" placeholder="Directeur Local des Opérations d'Asnières" minlength='3' maxlength='120' required='true' value="<?php echo $role_description;?>" />
+      <input type="text" class="form-control" id="role_description" name="role_description" aria-describedby="role-description-error" placeholder="Directeur Local des Opérations d'Asnières" minlength='3' maxlength='120' required='true' value="<?php echo htmlentities($role_description);?>" />
       <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
       <span id='role-description-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
     </div>

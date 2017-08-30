@@ -19,7 +19,7 @@
 			else {
 				$role_title = $rbac->Roles->getTitle($id);
 				if (in_array($role_title, $undeletableRoles)) {
-					$genericError = "Il est interdit de supprimer le rôle '".$role_title."'";
+					$genericError = "Il est interdit de supprimer le rôle '".htmlentities($role_title)."'";
 				}
 				else {
 					$perm_id = $rbac->Roles->remove($id, true);
@@ -27,7 +27,7 @@
 						$genericError = "Echec de la suppression (ID=".$id.")";
 					}
 					else {
-						$genericSuccess = "Rôle correctement supprimé (".$role_title.")";
+						$genericSuccess = "Rôle correctement supprimé (".htmlentities($role_title).")";
 					}
 				}
 			}

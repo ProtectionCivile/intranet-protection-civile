@@ -71,7 +71,7 @@
 				$db_pass = mysqli_real_escape_string($db_link, $user_password);
 				$sql = "INSERT INTO $tablename_users (pass, last_name, first_name, phone, mail, attached_section, login) VALUES ('$db_pass', '$db_lastname', '$db_firstname', '$db_phone', '$db_email', '$db_section', '$db_login')" or die("Impossible d'ajouter l'utilisateur dans la base de données" . mysqli_error($db_link));
 				if ( $db_link->query($sql) === TRUE) {
-						$genericSuccess = "Utilisateur créé avec succès (".$user_lastName." ".$user_firstName.")";
+						$genericSuccess = "Utilisateur créé avec succès (".htmlentities($user_lastName)." ".htmlentities($user_firstName).")";
 				} else {
 						$genericError = "Utilisateur non créé: " . $db_link->error;
 				}

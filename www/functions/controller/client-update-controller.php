@@ -73,7 +73,7 @@
 			fax='".mysqli_real_escape_string($db_link, $client_fax)."',
 			mail='".mysqli_real_escape_string($db_link, $client_email)."' WHERE ID='$id'" or die("Impossible d'ajouter le client dans la base de données" . mysqli_error($db_link));
 			if ($db_link->query($sql) === TRUE) {
-				$genericSuccess = "Client mis à jour (".$client_name.")";
+				$genericSuccess = "Client mis à jour (".htmlentities($client_name).")";
 			} else {
 				$genericError = "Client non mis à jour: " . $db_link->error;
 			}

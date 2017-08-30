@@ -26,10 +26,10 @@
 				}
         		$perm_id = $rbac->Roles->remove($id, true);
         		if ($result) {
-        			$genericSuccess = "Utilisateur correctement supprimé (".$delLogin.") et ses rôles aussi (".$allUserRoles.")";
+        			$genericSuccess = "Utilisateur correctement supprimé (".htmlentities($delLogin).") et ses rôles aussi (".$allUserRoles.")";
         		}
         		else {
-					$genericError = "Echec de la suppression (".$delLogin.")";
+					$genericError = "Echec de la suppression (".htmlentities($delLogin).")";
 				}
 			}
 		}

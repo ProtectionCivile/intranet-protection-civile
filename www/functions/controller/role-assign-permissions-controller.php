@@ -30,10 +30,10 @@
 						$isDone = $rbac->Roles->assign($role_title, $permission_title);
 					}
 					if (!$isDone){
-						$genericError = "Echec de la mise à jour ('".$permission_title."')";
+						$genericError = "Echec de la mise à jour ('".htmlentities($permission_title)."')";
 					}
 					else {
-						$genericSuccess = "Rôle '".$roleParams['Title']."' mis à jour avec la permission '".$permission_title."'";
+						$genericSuccess = "Rôle '".$roleParams['Title']."' mis à jour avec la permission '".htmlentities($permission_title)."'";
 					}
 				}
 			}

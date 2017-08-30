@@ -5,7 +5,7 @@
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom de l'antenne au complet" />
   </label>
   <div class="col-sm-8">
-    <input type="text" class="form-control" id='section_name' name='section_name' minlength='3' maxlength='50' required='true' aria-describedby="section-name-error" value='<?php echo $section_name; ?>'>
+    <input type="text" class="form-control" id='section_name' name='section_name' minlength='3' maxlength='50' required='true' aria-describedby="section-name-error" value='<?php echo htmlentities($section_name); ?>'>
     <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
     <span id='section-name-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
   </div>
@@ -18,7 +18,7 @@
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Un nom court qui vous permettra de sélectionner ce section lors de la création d'un DPS." />
   </label>
   <div class="col-sm-8">
-    <input type="text" class="form-control" id="section_shortname" name="section_shortname" aria-describedby="section-shortname-error" placeholder="Un nom court qui vous permettra de sélectionner cette antenne dans les filtres" minlength='3' maxlength='3' required='true' value="<?php echo $section_shortname;?>" />
+    <input type="text" class="form-control" id="section_shortname" name="section_shortname" aria-describedby="section-shortname-error" placeholder="Un nom court qui vous permettra de sélectionner cette antenne dans les filtres" minlength='3' maxlength='3' required='true' value="<?php echo htmlentities($section_shortname);?>" />
     <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
     <span id='section-shortname-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
   </div>
@@ -31,7 +31,7 @@
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Numéro INSEE."></span>
   </label>
   <div class="col-sm-8">
-    <input type="text" class="form-control" id="section_number" name="section_number" aria-describedby="section-number-error" placeholder="12" minlength='1' maxlength='2' digits='true' required='true' value="<?php echo $section_number;?>" />
+    <input type="text" class="form-control" id="section_number" name="section_number" aria-describedby="section-number-error" placeholder="12" minlength='1' maxlength='2' digits='true' required='true' value="<?php echo htmlentities($section_number);?>" />
     <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
     <span id='section-number-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
   </div>
@@ -44,7 +44,7 @@
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Adresse, code postal, ville."></span>
   </label>
   <div class="col-sm-8">
-    <input type="text" class="form-control" id="section_address" name="section_address" aria-describedby="section-address-error" placeholder="13 rue de la Poupée qui Tousse, 92230 Gennevilliers" minlength='5' value="<?php echo $section_address;?>" data-minlength="5" >
+    <input type="text" class="form-control" id="section_address" name="section_address" aria-describedby="section-address-error" placeholder="13 rue de la Poupée qui Tousse, 92230 Gennevilliers" minlength='5' value="<?php echo htmlentities($section_address);?>" data-minlength="5" >
     <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
     <span id='section-adress-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
   </div>
@@ -57,7 +57,7 @@
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Format 92400"></span>
   </label>
   <div class="col-sm-8">
-    <input type="text" class="form-control" id="section_zipcode" name="section_zipcode" aria-describedby="section-zipcode-error" minlength='5' maxlength='5' digits='true' placeholder="92400" minlength='10' value="<?php echo $section_zipcode;?>" data-minlength="5">
+    <input type="text" class="form-control" id="section_zipcode" name="section_zipcode" aria-describedby="section-zipcode-error" minlength='5' maxlength='5' digits='true' placeholder="92400" minlength='10' value="<?php echo htmlentities($section_zipcode);?>" data-minlength="5">
     <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
     <span id='section-zipcode-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
   </div>
@@ -70,7 +70,7 @@
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Ville"></span>
   </label>
   <div class="col-sm-8">
-    <input type="text" class="form-control" id="section_city" name="section_city" aria-describedby="section-city-error" placeholder="Clamart-Plage" minlength='3' maxlength='40' value="<?php echo $section_city;?>" >
+    <input type="text" class="form-control" id="section_city" name="section_city" aria-describedby="section-city-error" placeholder="Clamart-Plage" minlength='3' maxlength='40' value="<?php echo htmlentities($section_city);?>" >
     <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
     <span id='section-city-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
   </div>
@@ -83,7 +83,7 @@
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Format 0XXXXXXXXX"></span>
   </label>
   <div class="col-sm-8">
-    <input type="tel" class="form-control" id="section_phone" name="section_phone" aria-describedby="section-phone-error" placeholder="telephone" minlength='10' maxlength='10' digits='true' value="<?php echo $section_phone;?>" data-minlength="10" >
+    <input type="tel" class="form-control" id="section_phone" name="section_phone" aria-describedby="section-phone-error" placeholder="telephone" minlength='10' maxlength='10' digits='true' value="<?php echo htmlentities($section_phone);?>" data-minlength="10" >
     <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
     <span id='section-phone-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
   </div>
@@ -96,7 +96,7 @@
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Adresse e-mail"></span>
   </label>
   <div class="col-sm-8">
-    <input type="email" class="form-control" id="section_email" name="section_email" aria-describedby="section-email-error" placeholder="E-mail" minlength='4' email='true' value="<?php echo $section_email;?>" data-minlength="10" />
+    <input type="email" class="form-control" id="section_email" name="section_email" aria-describedby="section-email-error" placeholder="E-mail" minlength='4' email='true' value="<?php echo htmlentities($section_email);?>" data-minlength="10" />
     <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
     <span id='section-email-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
   </div>
@@ -109,7 +109,7 @@
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Ne pas oublier le http devant"></span>
   </label>
   <div class="col-sm-8">
-    <input type="text" class="form-control" id="section_website" name="section_website" aria-describedby="section-website-error" placeholder="http://antenne.protectioncivile92.org" minlength='1' maxlength='80' url='true' value="<?php echo $section_website;?>" data-minlength="1" >
+    <input type="text" class="form-control" id="section_website" name="section_website" aria-describedby="section-website-error" placeholder="http://antenne.protectioncivile92.org" minlength='1' maxlength='80' url='true' value="<?php echo htmlentities($section_website);?>" data-minlength="1" >
     <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
     <span id='section-website-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
   </div>
@@ -124,10 +124,10 @@
         $sections = mysqli_query($db_link, $reqliste);
         while($sectionX = mysqli_fetch_array($sections)) {
           if ($sectionX['number'] == $attached_section){
-            echo "<option value='".$sectionX['number']."' selected>".$sectionX['name']."</option>";
+            echo "<option value='".$sectionX['number']."' selected>".htmlentities($sectionX['name'])."</option>";
           }
           else {
-            echo "<option value='".$sectionX['number']."'>".$sectionX['name']."</option>";
+            echo "<option value='".$sectionX['number']."'>".htmlentities($sectionX['name'])."</option>";
           }
         }
       ?>

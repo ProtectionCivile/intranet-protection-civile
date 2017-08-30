@@ -78,7 +78,7 @@
 				<a href='dps-list.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
 			}
 			else {
-				$genericError = "Erreur pendant la création du DPS ".$event_name." (".$cu_full.") " . $db_link->error;
+				$genericError = "Erreur pendant la création du DPS ".htmlentities($event_name)." (".htmlentities($cu_full).") " . $db_link->error;
 			}
 		}
 		else {

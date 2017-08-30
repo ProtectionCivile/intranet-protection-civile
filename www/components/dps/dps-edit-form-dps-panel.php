@@ -226,7 +226,7 @@
           <label for="dps_other_matos_asso" class="col-sm-4 control-label">Moyens humains / logistiques supplémentaires</label>
           <div class="col-sm-7">
             <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-              <input type="text" class="form-control" id="dps_other_matos_asso" name="dps_other_matos_asso" aria-describedby="dps-other-matos-asso_error" placeholder="entrer ici tout moyen supplémentaire" value="<?php echo $dps_other_matos_asso; ?>" />
+              <input type="text" class="form-control" id="dps_other_matos_asso" name="dps_other_matos_asso" aria-describedby="dps-other-matos-asso_error" placeholder="entrer ici tout moyen supplémentaire" value="<?php echo htmlentities($dps_other_matos_asso); ?>" />
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='dps-other-matos-asso-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
             </div>
@@ -289,7 +289,7 @@
           <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
             <label for="clientmatos_other" class="col-sm-4 control-label">Autre</label>
             <div class="col-sm-7">
-              <input type="text" class="form-control" id="clientmatos_other" name="clientmatos_other" aria-describedby="clientmatos-other-error" placeholder="entrer ici tout moyen supplémentaire fourni par l'organisateur" value="<?php echo $clientmatos_other; ?>" >
+              <input type="text" class="form-control" id="clientmatos_other" name="clientmatos_other" aria-describedby="clientmatos-other-error" placeholder="entrer ici tout moyen supplémentaire fourni par l'organisateur" value="<?php echo htmlentities($clientmatos_other); ?>" >
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='clientmatos-other-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
             </div>
@@ -320,7 +320,7 @@
           <label for="medicalext_med_company" class="col-sm-2 control-label">Appartenance</label>
           <div class="col-sm-3">
             <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-              <input type="text" class="form-control" id="medicalext_med_company" name="medicalext_med_company" aria-describedby="medicalext-med-company-error" placeholder="Appartenance" value="<?php echo $medicalext_med_company; ?>" >
+              <input type="text" class="form-control" id="medicalext_med_company" name="medicalext_med_company" aria-describedby="medicalext-med-company-error" placeholder="Appartenance" value="<?php echo htmlentities($medicalext_med_company-; ?>" >
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='medicalext-med-company-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
             </div>
@@ -340,7 +340,7 @@
           <label for="medicalext_inf_company" class="col-sm-2 control-label">Appartenance</label>
           <div class="col-sm-3">
             <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-              <input type="text" class="form-control" id="medicalext_inf_company" name="medicalext_inf_company" aria-describedby="medicalext-inf-company-error" placeholder="Appartenance" value="<?php echo $medicalext_inf_company; ?>" >
+              <input type="text" class="form-control" id="medicalext_inf_company" name="medicalext_inf_company" aria-describedby="medicalext-inf-company-error" placeholder="Appartenance" value="<?php echo htmlentities($medicalext_inf_company); ?>" >
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='medicalext-inf-company-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
             </div>
@@ -461,7 +461,7 @@
 
         </div>
 
-        <textarea class="form-control" rows="5" id="dps_justification" name="dps_justification" placeholder="Indiquer tout justificatif sur les moyens, structures, etc. ou toute information utile pour la bonne gestion administrative du poste." ><?php echo $dps_justification; ?></textarea>
+        <textarea class="form-control" rows="5" id="dps_justification" name="dps_justification" placeholder="Indiquer tout justificatif sur les moyens, structures, etc. ou toute information utile pour la bonne gestion administrative du poste." ><?php echo htmlentities($dps_justification); ?></textarea>
       </div>
     </div>
 

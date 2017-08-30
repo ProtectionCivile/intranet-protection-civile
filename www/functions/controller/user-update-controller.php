@@ -64,7 +64,7 @@ if (isset($_POST['updateUser'])) {
 		$db_pass = mysqli_real_escape_string($db_link, $user_password);
 		$sql = "UPDATE $tablename_users SET login='$db_login', last_name='$db_lastname', first_name='$db_firstname', phone='$db_phone', pass='$db_pass', mail='$db_email', attached_section='$db_section' WHERE ID='$id'";
 		if ($db_link->query($sql) === TRUE) {
-				$genericSuccess = "Utilisateur mis à jour (".$user_lastName." ".$user_firstName.")";
+				$genericSuccess = "Utilisateur mis à jour (".htmlentities($user_lastName)." ".htmlentities($user_firstName).")";
 		} else {
 				$genericError = "Utilisateur non mis à jour: " . $db_link->error;
 		}

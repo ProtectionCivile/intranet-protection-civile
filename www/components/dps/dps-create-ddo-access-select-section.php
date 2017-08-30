@@ -19,10 +19,10 @@
 							$query = mysqli_query($db_link, $sql);
 							while($listecommune = mysqli_fetch_array($query)){
 								if($listecommune["number"] == $ordered_section){
-									echo "<option value='".$listecommune["number"]."' selected>".$listecommune["name"]."</option>";
+									echo "<option value='".$listecommune["number"]."' selected>".htmlentities($listecommune["name"])."</option>";
 								}
 								else{
-									echo "<option value='".$listecommune["number"]."'>".$listecommune["name"]."</option>";
+									echo "<option value='".$listecommune["number"]."'>".htmlentities($listecommune["name"])."</option>";
 								}
 							}
 							?>

@@ -8,7 +8,7 @@
       <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chemin pour créer des permissions enchaînées"></span>
     </label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="permission_title_path" name="permission_title_path" aria-describedby="permission-title-path-error" placeholder="ex: edit-dps/view-dps" minlength='3' maxlength='120' required='true' value="<?php echo $permission_title_path;?>" >
+      <input type="text" class="form-control" id="permission_title_path" name="permission_title_path" aria-describedby="permission-title-path-error" placeholder="ex: edit-dps/view-dps" minlength='3' maxlength='120' required='true' value="<?php echo htmlentities($permission_title_path);?>" >
       <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
       <span id='permission-title-path-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
     </div>
@@ -21,7 +21,7 @@
       <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Noms d'affichage des permissions" />
     </label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="permission_description_path" name="permission_description_path" aria-describedby="permission-description-path-error" placeholder="Description 1/Description 2/ Description 3..." minlength='3' maxlength='255' required='true' value="<?php echo $permission_description_path;?>" />
+      <input type="text" class="form-control" id="permission_description_path" name="permission_description_path" aria-describedby="permission-description-path-error" placeholder="Description 1/Description 2/ Description 3..." minlength='3' maxlength='255' required='true' value="<?php echo htmlentities($permission_description_path);?>" />
       <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
       <span id='permission-description-path-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
     </div>

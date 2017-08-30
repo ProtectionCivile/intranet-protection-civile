@@ -41,7 +41,7 @@ if(empty($commonError)) {
 	<div class="container">
 
 		<div class="page-header">
-			<h2>Gestion des rôles <small>Modifier les permissions de '<?php echo $role_title ?>'</small></h2>
+			<h2>Gestion des rôles <small>Modifier les permissions de '<?php echo htmlentities($role_title) ?>'</small></h2>
 		</div>
 
 
@@ -74,12 +74,12 @@ if(empty($commonError)) {
 						<?php
 						if ($rbac->Roles->hasPermission($id, $permissionID)) {
 							?>
-							<button type="button" class="btn btn-default btn-xs active" title="<?php echo $permission_title;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permission_description;?></button>
+							<button type="button" class="btn btn-default btn-xs active" title="<?php echo htmlentities($permission_title);?>" onClick="send(<?php echo htmlentities($permissionID);?>)"><?php echo $permission_description;?></button>
 							<?php
 						}
 						else {
 							?>
-							<button type="button" class="btn btn-default btn-xs" title="<?php echo $permission_title;?>" onClick="send(<?php echo $permissionID;?>)"><?php echo $permission_description;?></button>
+							<button type="button" class="btn btn-default btn-xs" title="<?php echo htmlentities($permission_title);?>" onClick="send(<?php echo htmlentities($permissionID);?>)"><?php echo htmlentities($permission_description);?></button>
 							<?php
 						}
 						?>

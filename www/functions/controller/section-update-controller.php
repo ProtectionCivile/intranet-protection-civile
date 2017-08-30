@@ -51,9 +51,9 @@
 			shortname='".mysqli_real_escape_string($db_link, $section_shortname)."'
 			WHERE number='".mysqli_real_escape_string($db_link, $id)."'";
 			if ($db_link->query($sql) === TRUE) {
-			    $genericSuccess = "Antenne mise à jour ($section_name)";
+			    $genericSuccess = "Antenne mise à jour (".htmlentities($section_name).")";
 			} else {
-			    $genericError = "Erreur pendant la mise à jour de l'antenne '$section_name' : " . $db_link->error;
+			    $genericError = "Erreur pendant la mise à jour de l'antenne '".htmlentities($section_name)."' : " . $db_link->error;
 			}
 		}
 	}

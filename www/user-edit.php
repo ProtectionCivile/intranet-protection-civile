@@ -30,7 +30,7 @@
 <div class="container">
 
 	<div class="page-header">
-		<h2>Gestion des utilisateurs <small>Modification de '<?php echo $user_firstName." ".$user_lastName ?>'</small></h2>
+		<h2>Gestion des utilisateurs <small>Modification de '<?php echo htmlentities($user_firstName)." ".htmlentities($user_lastName) ?>'</small></h2>
 	</div>
 
 	<!-- Update user : Operation status indicator -->

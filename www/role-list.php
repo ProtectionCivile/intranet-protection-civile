@@ -74,19 +74,19 @@
 				while($role = mysqli_fetch_array($roles)) { ?>
 					<tr <?php echo (isset($role["Affiliation"])) ? "" : "class='danger'" ?> >
 						<td>
-							<?php echo $role["ID"]; ?>
+							<?php echo htmlentities($role["ID"]); ?>
 						</td>
 						<td>
-							<span title='.<?php echo $rbac->Roles->getPath($role["ID"]); ?>.'><?php echo $role["Title"];?></span>
+							<span title='.<?php echo $rbac->Roles->getPath($role["ID"]); ?>.'><?php echo htmlentities($role["Title"]);?></span>
 						</td>
 						<td>
-							<?php echo $role["Description"]; ?>
+							<?php echo htmlentities($role["Description"]); ?>
 						</td>
 						<td>
-							<?php echo $role["Phone"]; ?>
+							<?php echo htmlentities($role["Phone"]); ?>
 						</td>
 						<td>
-							<?php echo $role["Mail"]; ?>
+							<?php echo htmlentities($role["Mail"]); ?>
 						</td>
 						<td>
 							<?php
@@ -97,12 +97,12 @@
 								$qc = "SELECT shortname FROM $tablename_sections WHERE number='".$role["Affiliation"]."'";
 								$qcr = mysqli_query($db_link, $qc);
 								$c = mysqli_fetch_assoc($qcr);
-								echo $c['shortname'];
+								echo htmlentities($c['shortname']);
 							}
 							?>
 						</td>
 						<td>
-							<?php echo $role["Callsign"]; ?>
+							<?php echo htmlentities($role["Callsign"]); ?>
 						</td>
 						<td align="center">
 							<?php if($role["Assignable"]) { ?>
@@ -119,10 +119,10 @@
 							<?php } ?>
 						</td>
 						<td>
-							<?php echo $role["Tags"]; ?>
+							<?php echo htmlentities($role["Tags"]); ?>
 						</td>
 						<td>
-							<?php echo $role["Hierarchy"]; ?>
+							<?php echo htmlentities($role["Hierarchy"]); ?>
 						</td>
 						<td>
 							<form action='role-usage.php' method='post' accept-charset='utf-8'>
