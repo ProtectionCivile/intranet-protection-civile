@@ -1,26 +1,21 @@
 <?php
 	if(isset($_SESSION['datebegin']) && !empty($_SESSION['datebegin']) ){
-		echo 'g une date debut='.$_SESSION['datebegin'];
 		$datebeginNF=new DateTime($_SESSION['datebegin']);
 	}
 	else {
-		echo 'g pas de date debut';
 		$datebeginNF = new DateTime("now -4 year");
 		$_SESSION['datebegin'] = $datebeginNF->format('d-m-Y');
 	}
 
 	if(isset($_SESSION['dateend']) && !empty($_SESSION['dateend']) ){
 		$dateendNF=new DateTime($_SESSION['dateend']);
-		echo 'g une date fin';
 	}
 	else {
-		echo 'g pas de date fin';
 		$dateendNF = new DateTime("now +3 month");
 		$_SESSION['dateend'] = $dateendNF->format('d-m-Y');
 	}
 
 	if( $dateendNF < $datebeginNF ){
-		echo 'c mon cas';
 		$previous = $_SESSION['dateend'];
     	$dateendNF = (new DateTime($_SESSION['datebegin']." +3 month"));
     	$_SESSION['dateend'] = $dateendNF->format('d-m-Y');

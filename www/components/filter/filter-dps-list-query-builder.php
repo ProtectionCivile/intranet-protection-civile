@@ -4,13 +4,13 @@
 	$addWhereClause = false;
 
 
-	if (!empty($filtered_section) || $filtered_section == "0" ) {
+	if (!empty($_SESSION['filtered_section']) || $_SESSION['filtered_section'] == "0" ) {
 		$addWhereClause = true;
-		if ($filtered_section == "*") {
+		if ($_SESSION['filtered_section'] == "*") {
 			$whereCity = "section='".$currentUserSection."'";
 		}
 		else {
-			$whereCity = "section='".$filtered_section."'";
+			$whereCity = "section='".$_SESSION['filtered_section']."'";
 		}
 	}
 
@@ -46,7 +46,6 @@
 	if (!empty($_SESSION['datebegin']) && !empty($_SESSION['dateend'])) {
 		$addWhereClause = true;
 		$wherePeriod = "dps_begin_date BETWEEN '".$datebeginNF->format('Y-m-d')."' AND '".$dateendNF->format('Y-m-d')."'";
-		echo 'je fais ma requete sql avec session begin='.$_SESSION['datebegin'].' et beginNF='.$datebeginNF->format('Y-m-d');
 	}
 
 
