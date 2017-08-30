@@ -2,9 +2,9 @@
 	$sqlQuery = "SELECT * FROM $tablename_roles ";
 
 
-	if (!empty($filtered_section) || $filtered_section == "0") {
+	if (!empty($_SESSION['filtered_section']) || $_SESSION['filtered_section'] == "0") {
 		$addWhereClause = true;
-		$whereCity = "Affiliation='".$filtered_section."'";
+		$whereCity = "Affiliation='".$_SESSION['filtered_section']."'";
 	}
 
 

@@ -10,8 +10,8 @@
 					</li>
 			    	<?php
 					for($i=1; $i<=$nb_pages; $i++){
-						$liClass = ($i==$current_page) ? "active" : "";
-						$liSpan = ($i==$current_page) ? "<span class='sr-only'>(current)</span>" : "";
+						$liClass = ($i==$_SESSION['current_page']) ? "active" : "";
+						$liSpan = ($i==$_SESSION['current_page']) ? "<span class='sr-only'>(current)</span>" : "";
 						?>
 						<li class='paging-filter <?php echo $liClass; ?>' data-filter='<?php echo $i; ?>' >
 							<a href="#"><?php echo $i.$liSpan; ?></a>
@@ -29,11 +29,11 @@
 	<div class='col-md-2'>
 		<label for='nbelements-filter'>Éléments par page</label>
 		<select class="form-control nbelements-filter">
-			<option <?php if ($nb_elements_per_page == 10) echo "selected"; ?>>10</option>
-			<option <?php if ($nb_elements_per_page == 25) echo "selected"; ?>>25</option>
-			<option <?php if ($nb_elements_per_page == 50) echo "selected"; ?>>50</option>
-			<option <?php if ($nb_elements_per_page == 100) echo "selected"; ?>>100</option>
-			<option <?php if ($nb_elements_per_page == 500) echo "selected"; ?>>500</option>
+			<option <?php if ($_SESSION['nb_elements_per_page'] == 10) echo "selected"; ?>>10</option>
+			<option <?php if ($_SESSION['nb_elements_per_page'] == 25) echo "selected"; ?>>25</option>
+			<option <?php if ($_SESSION['nb_elements_per_page'] == 50) echo "selected"; ?>>50</option>
+			<option <?php if ($_SESSION['nb_elements_per_page'] == 100) echo "selected"; ?>>100</option>
+			<option <?php if ($_SESSION['nb_elements_per_page'] == 500) echo "selected"; ?>>500</option>
 		</select>
 	</div>
 </div>
