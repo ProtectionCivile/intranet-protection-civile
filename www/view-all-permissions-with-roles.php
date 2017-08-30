@@ -38,7 +38,7 @@
 
 
 	<?php
-	$query_cities = "SELECT name FROM sections WHERE number=".$filtered_section or die("Erreur lors de la consultation" . mysqli_error($db_link));
+	$query_cities = "SELECT name FROM sections WHERE number=".$_SESSION['filtered_section'] or die("Erreur lors de la consultation" . mysqli_error($db_link));
 	$cities = mysqli_query($db_link, $query_cities);
 	$city = mysqli_fetch_assoc($cities);
 	$cityName=$city['name'];

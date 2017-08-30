@@ -1,7 +1,7 @@
+<?php require_once('components/filter/parts/filter-common-display.php'); ?>
 <?php require_once('components/filter/parts/filter-city-computation.php'); ?>
 <?php require_once('components/filter/parts/filter-paging-computation.php'); ?>
 
-<?php require_once('components/filter/parts/filter-common-display.php'); ?>
 
 <?php if ($rbac->check("ope-clients-view-all", $currentUserID)) {?>
 	<div class="panel panel-warning">
