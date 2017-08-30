@@ -47,6 +47,7 @@ if (isset($_GET['notallowed'])){
 					<li class='text-muted'>Accéder à l'annuaire en ligne</li>
 					<li class='text-muted'>Estampiller des photos à l'effigie de la PC-92 (cartouche)</li>
 					<li class='text-muted'>Générer une signature pour vos mails</li>
+					<li class='text-muted'>Soumettre des dossiers de recrutement</li>
 				</ul>
 				<li>Pour les DLOs</li>
 				<ul>
@@ -63,6 +64,7 @@ if (isset($_GET['notallowed'])){
 				<li>Pour les Trésoriers</li>
 				<ul>
 					<li class='text-muted'>Afficher l'état des recettes opérationnelles et des taxes FNPC et ADPC</li>
+					<li class='text-muted'>Calculer l'impôt FNPC au niveau départemental</li>
 				</ul>
 				<li>Pour les Admins</li>
 				<ul>
