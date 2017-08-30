@@ -200,7 +200,7 @@
           <label for="dps_nb_med_asso" class="col-sm-4 control-label">Nombre de médecins Protec</label>
           <div class="col-sm-2">
             <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-              <input type="number" class="form-control" id="dps_nb_med_asso" name="dps_nb_med_asso" aria-describedby="dps-nb-med-asso-error" min='0' digits='true' placeholder="00" value="<?php echo $dps_nb_med_asso; ?>" >
+              <input type="number" class="form-control" id="dps_nb_med_asso" name="dps_nb_med_asso" aria-describedby="dps-nb-med-asso-error" min='0' digits='true' placeholder="00" disabled='true' value="<?php echo $dps_nb_med_asso; ?>" >
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='dps-nb-med-asso-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
             </div>
@@ -210,7 +210,7 @@
           <label for="dps_nb_inf_asso" class="col-sm-3 control-label">Nombre d'infirmiers Protec</label>
           <div class="col-sm-2">
             <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-              <input type="number" class="form-control" id="dps_nb_inf_asso" name="dps_nb_inf_asso" aria-describedby="dps-nb-inf-asso-error" min='0' digits='true' placeholder="00" value="<?php echo $dps_nb_inf_asso; ?>" >
+              <input type="number" class="form-control" id="dps_nb_inf_asso" name="dps_nb_inf_asso" aria-describedby="dps-nb-inf-asso-error" min='0' digits='true' placeholder="00" disabled='true' value="<?php echo $dps_nb_inf_asso; ?>" >
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='dps-nb-inf-asso-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
             </div>
@@ -320,7 +320,7 @@
           <label for="medicalext_med_company" class="col-sm-2 control-label">Appartenance</label>
           <div class="col-sm-3">
             <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
-              <input type="text" class="form-control" id="medicalext_med_company" name="medicalext_med_company" aria-describedby="medicalext-med-company-error" placeholder="Appartenance" value="<?php echo htmlentities($medicalext_med_company-; ?>" >
+              <input type="text" class="form-control" id="medicalext_med_company" name="medicalext_med_company" aria-describedby="medicalext-med-company-error" placeholder="Appartenance" value="<?php echo htmlentities($medicalext_med_company); ?>" >
               <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
               <span id='medicalext-med-company-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
             </div>
