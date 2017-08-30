@@ -5,7 +5,7 @@
 		</div>
 		<div class=" col-md-3 col-sm-3">
 			<div class='input-group date' id='begin_date_picker' name="begin_date_picker">
-				<input type='text' class='form-control form-inline' id='inputdatebegin'  onKeyPress='if (event.keyCode == 13) {save_dates();}' name='inputdatebegin' placeholder="01-01-2015" value='<?php echo $datebegin;?>' />
+				<input type='text' class='form-control form-inline' id='inputdatebegin'  onKeyPress='if (event.keyCode == 13) {save_dates();}' name='inputdatebegin' placeholder="01-01-2015" value='<?php echo $_SESSION['datebegin'];?>' />
 				<span class="input-group-addon">
 					<span class="glyphicon glyphicon-calendar"></span>
 				</span>
@@ -14,7 +14,7 @@
 		</div>
 		<div class="col-md-3 col-sm-3">
 			<div class='input-group date' id='end_date_picker' name="end_date_picker">
-				<input type='text' class='form-control form-inline' id='inputdateend' onKeyPress='if (event.keyCode == 13) {save_dates();}' name='inputdateend' placeholder="12-11-2016" value='<?php echo $dateend;?>' />
+				<input type='text' class='form-control form-inline' id='inputdateend' onKeyPress='if (event.keyCode == 13) {save_dates();}' name='inputdateend' placeholder="12-11-2016" value='<?php echo $_SESSION['dateend'];?>' />
 				<span class="input-group-addon">
 					<span class="glyphicon glyphicon-calendar"></span>
 				</span>

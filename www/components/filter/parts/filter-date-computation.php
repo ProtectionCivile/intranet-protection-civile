@@ -1,26 +1,29 @@
 <?php
-	if(isset($_POST['formdatebegin']) && !empty($_POST['formdatebegin']) ){
-		$datebegin=$_POST['formdatebegin'];
-		$datebeginNF=new DateTime($datebegin);
+	if(isset($_SESSION['datebegin']) && !empty($_SESSION['datebegin']) ){
+		echo 'g une date debut='.$_SESSION['datebegin'];
+		$datebeginNF=new DateTime($_SESSION['datebegin']);
 	}
 	else {
+		echo 'g pas de date debut';
 		$datebeginNF = new DateTime("now -4 year");
-		$datebegin = $datebeginNF->format('d-m-Y');
+		$_SESSION['datebegin'] = $datebeginNF->format('d-m-Y');
 	}
 
-	if(isset($_POST['formdateend']) && !empty($_POST['formdateend']) ){
-		$dateend = $_POST['formdateend'];
-		$dateendNF=new DateTime($dateend);
+	if(isset($_SESSION['dateend']) && !empty($_SESSION['dateend']) ){
+		$dateendNF=new DateTime($_SESSION['dateend']);
+		echo 'g une date fin';
 	}
 	else {
+		echo 'g pas de date fin';
 		$dateendNF = new DateTime("now +3 month");
-		$dateend = $dateendNF->format('d-m-Y');
+		$_SESSION['dateend'] = $dateendNF->format('d-m-Y');
 	}
 
 	if( $dateendNF < $datebeginNF ){
-		$previous = $dateend;
-    	$dateendNF = (new DateTime($datebegin." +3 month"));
-    	$dateend = $dateendNF->format('d-m-Y');
+		echo 'c mon cas';
+		$previous = $_SESSION['dateend'];
+    	$dateendNF = (new DateTime($_SESSION['datebegin']." +3 month"));
+    	$_SESSION['dateend'] = $dateendNF->format('d-m-Y');
     	?>
     	<div class='alert alert-danger' role='alert'>
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -28,7 +31,7 @@
 			</button>
 			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
  			<span class="sr-only">Error:</span>
- 			Merci de saisir une date de fin qui ne se trouve pas avant la date de début ! Vous avez saisi comme date de fin <?php echo $previous; ?> ce qui est avant la date de début saisie <?php echo $datebegin; ?>. La date de fin donc a été repositionnée à <?php echo $dateend; ?>
+ 			Merci de saisir une date de fin qui ne se trouve pas avant la date de début ! Vous avez saisi comme date de fin <?php echo $previous; ?> ce qui est avant la date de début saisie <?php echo $_SESSION['datebegin']; ?>. La date de fin donc a été repositionnée à <?php echo $_SESSION['dateend']; ?>
 		</div>
     	<?php
     }

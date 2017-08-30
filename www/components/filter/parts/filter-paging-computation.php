@@ -1,15 +1,15 @@
 <?php
-	if(isset($_POST['formnbelementsperpage']) && !empty($_POST['formnbelementsperpage']) ){
-		$nb_elements_per_page=intval($_POST['formnbelementsperpage']);
+	if(isset($_SESSION['nb_elements_per_page']) && !empty($_SESSION['nb_elements_per_page']) ){
+		$_SESSION['nb_elements_per_page']=intval($_SESSION['nb_elements_per_page']);
 	}
 	else {
-		$nb_elements_per_page="25";
+		$_SESSION['nb_elements_per_page']="25";
 	}
 
-	if(isset($_POST['formcurrentpage'])){
-		$current_page=intval($_POST['formcurrentpage']);
+	if(isset($_SESSION['current_page'])){
+		$_SESSION['current_page']=intval($_SESSION['current_page']);
 	}
 	else{
-		$current_page=1;
+		$_SESSION['current_page']=1;
 	}
 ?>

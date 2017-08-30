@@ -43,9 +43,10 @@
 		}
 	}
 
-	if (!empty($datebegin) && !empty($dateend)) {
+	if (!empty($_SESSION['datebegin']) && !empty($_SESSION['dateend'])) {
 		$addWhereClause = true;
 		$wherePeriod = "dps_begin_date BETWEEN '".$datebeginNF->format('Y-m-d')."' AND '".$dateendNF->format('Y-m-d')."'";
+		echo 'je fais ma requete sql avec session begin='.$_SESSION['datebegin'].' et beginNF='.$datebeginNF->format('Y-m-d');
 	}
 
 
