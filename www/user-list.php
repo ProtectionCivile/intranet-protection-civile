@@ -71,22 +71,22 @@
 				while($user = mysqli_fetch_array($users)) { ?>
 					<tr>
 						<td>
-							<?php echo ucfirst($user["last_name"]); ?>
+							<?php echo ucfirst(htmlentities($user["last_name"])); ?>
 						</td>
 						<td>
-							<?php echo ucfirst($user["first_name"]); ?>
+							<?php echo ucfirst(htmlentities($user["first_name"])); ?>
 						</td>
 						<td>
-							<?php echo $user["login"]; ?>
+							<?php echo htmlentities($user["login"]); ?>
 						</td>
 						<td>
-							<?php echo $user["phone"]; ?>
+							<?php echo htmlentities($user["phone"]); ?>
 						</td>
 						<td>
-							<?php echo $user["mail"]; ?>
+							<?php echo htmlentities($user["mail"]); ?>
 						</td>
 						<td>
-							<?php echo $user["section_name"]; ?>
+							<?php echo htmlentities($user["section_name"]); ?>
 						</td>
 						<td>
 							<?php if ($rbac->check("admin-users-asssign-roles", $currentUserID)) { ?>

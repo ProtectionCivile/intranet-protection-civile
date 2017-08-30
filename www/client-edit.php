@@ -32,7 +32,7 @@
 <div class="container">
 
 	<div class="page-header">
-		<h2>Modification de client <small><?php echo $client_name; ?></small></h2>
+		<h2>Modification de client <small><?php echo htmlentities($client_name); ?></small></h2>
 	</div>
 
 	<!-- Update client : Operation status indicator -->

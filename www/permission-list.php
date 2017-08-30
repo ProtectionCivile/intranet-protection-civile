@@ -58,13 +58,13 @@
 				while($permission = mysqli_fetch_array($permissions)) { ?>
 					<tr>
 						<td>
-							<?php echo $permission["ID"]; ?>
+							<?php echo htmlentities($permission["ID"]); ?>
 						</td>
 						<td>
-							<?php echo $permission["Title"]."<br />(".$rbac->Permissions->getPath($permission["ID"]).")";?>
+							<?php echo htmlentities($permission["Title"])."<br />(".$rbac->Permissions->getPath($permission["ID"]).")";?>
 						</td>
 						<td>
-							<?php echo $permission["Description"]; ?>
+							<?php echo htmlentities($permission["Description"]); ?>
 						</td>
 						<td>
 							<form action='permission-usage.php' method='post' accept-charset='utf-8'>

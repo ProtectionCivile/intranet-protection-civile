@@ -40,7 +40,7 @@
 					$genericError = "Echec de la création (ID=".$id.")";
 				}
 				else {
-					$genericSuccess = "Rôle correctement ajouté : ".$role_title." (ID=".$id.")";
+					$genericSuccess = "Rôle correctement ajouté : ".htmlentities($role_title)." (ID=".$id.")";
 				}
 			}
 		}

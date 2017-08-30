@@ -30,7 +30,7 @@
 <div class="container">
 
 	<div class="page-header">
-		<h2>Réglages de l'application <small>Modification du paramètre <?php echo $name; ?></small></h2>
+		<h2>Réglages de l'application <small>Modification du paramètre <?php echo htmlentities($name); ?></small></h2>
 	</div>
 
 	<!-- Operation status indicator -->

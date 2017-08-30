@@ -32,7 +32,7 @@ require_once('functions/mail/mail-functions.php');
 				  $mail->addCc($cc);
 					$mail->store();
 				}
-  			$genericSuccess = "La demande d'abonnement du compte mail '".$mailAccount."' a été demandée pour ".$nb." liste(s) de diffusion, et sera traitée dans l'heure";
+  			$genericSuccess = "La demande d'abonnement du compte mail '".htmlentities($mailAccount)."' a été demandée pour ".$nb." liste(s) de diffusion, et sera traitée dans l'heure";
 			}
 		}
 
@@ -51,7 +51,7 @@ require_once('functions/mail/mail-functions.php');
 				  $mail->addCc($cc);
 					$mail->store();
 				}
-  			$genericSuccess = "La demande de désabonnement du compte mail '".$mailAccount."' a été demandée pour ".$nb." liste(s) de diffusion, et sera traitée dans l'heure";
+  			$genericSuccess = "La demande de désabonnement du compte mail '".htmlentities($mailAccount)."' a été demandée pour ".$nb." liste(s) de diffusion, et sera traitée dans l'heure";
 			}
 		}
 
@@ -63,7 +63,7 @@ require_once('functions/mail/mail-functions.php');
 			$mail->addTo($to);
 			$mail->addCc($cc);
 			$mail->store();
-			$genericSuccess = "La demande de désabonnement du compte mail '".$mailAccount."' a été demandée pour toutes les listes de diffusion, et sera traitée dans l'heure";
+			$genericSuccess = "La demande de désabonnement du compte mail '".htmlentities($mailAccount)."' a été demandée pour toutes les listes de diffusion, et sera traitée dans l'heure";
 		}
 	}
 ?>

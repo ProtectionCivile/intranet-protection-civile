@@ -47,7 +47,7 @@
 	<div class="container">
 
 		<div class="page-header">
-			<h2>Gestion des rôles <small>Utilisations de '<?php echo $role_title ?>'</small></h2>
+			<h2>Gestion des rôles <small>Utilisations de '<?php echo htmlentities($role_title) ?>'</small></h2>
 		</div>
 
 
@@ -69,7 +69,7 @@
 								$permissionID=$permission["ID"];
 								$permission_title=$permission["Title"];
 								$permissionDesc=$permission["Description"];
-								echo $permissionDesc." (".$permission_title.")<br />";
+								echo htmlentities($permissionDesc)." (".htmlentities($permission_title).")<br />";
 							}
 						?>
 					</div>
@@ -86,7 +86,7 @@
 								$userID=$row["ID"];
 								$userFirstName=$row["first_name"];
 								$userLastName=$row["last_name"];
-								echo $userFirstName." ".$userLastName."<br />";
+								echo htmlentities($userFirstName)." ".htmlentities($userLastName)."<br />";
 							}
 						?>
 					</div>

@@ -29,7 +29,7 @@ if (isset($_GET['notallowed'])){
 <div class="container">
 
 	<div class="page-header">
-		<h2>Bonjour <?php echo ucfirst($currentUserFirstName); ?> ! <small>bienvenue dans votre espace intranet</small></h2>
+		<h2>Bonjour <?php echo ucfirst(htmlentities($currentUserFirstName)); ?> ! <small>bienvenue dans votre espace intranet</small></h2>
 	</div>
 
 	<p class='lead'>Cet intranet est conçu pour les mobiles. Il est entièrement compatible avec tous les ordinateurs, les smartphones et les tablettes. Ne vous privez pas !</p>
@@ -85,14 +85,14 @@ if (isset($_GET['notallowed'])){
 						$query = "SELECT name FROM sections WHERE number='".$role['Affiliation']."'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 						$cities = mysqli_query($db_link, $query);
 						$city = mysqli_fetch_array($cities);
-						echo "<li>".$role['Description']." (".$city['name'].")</li>";
+						echo "<li>".htmlentities($role['Description'])." (".htmlentities($city['name']).")</li>";
 						$permissions = $rbac->Roles->Permissions($role['ID']);
 						echo '<ul>';
 						foreach ($permissions as &$permission) {
 							$query = "SELECT Description FROM $tablename_permissions WHERE ID='".$permission."'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 							$real_permissions = mysqli_query($db_link, $query);
 							$real_permission = mysqli_fetch_array($real_permissions);
-							echo "<li class='text-muted'>".$real_permission['Description']."</li>";
+							echo "<li class='text-muted'>".htmlentities($real_permission['Description'])."</li>";
 						}
 						echo '</ul>';
 					}

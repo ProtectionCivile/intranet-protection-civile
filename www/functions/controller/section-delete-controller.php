@@ -18,10 +18,10 @@
         		$query = mysqli_query($db_link, $sql) or die(mysqli_error());
 
         		if ($result) {
-        			$genericSuccess = "Section correctement supprimée (".$delName.")";
+        			$genericSuccess = "Section correctement supprimée (".htmlentities($delName).")";
         		}
         		else {
-					$genericError = "Echec de la suppression (".$delName.")";
+					$genericError = "Echec de la suppression (".htmlentities($delName).")";
 				}
 			}
 		}

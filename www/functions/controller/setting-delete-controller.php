@@ -24,7 +24,7 @@
 					trigger_error($genericError . mysqli_error($db_link));
 				}
         		else {
-					$genericSuccess = "Paramètre correctement supprimé ($settingName)";
+					$genericSuccess = "Paramètre correctement supprimé (".htmlentities($settingName).")";
 				}
 			}
 		}

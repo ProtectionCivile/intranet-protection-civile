@@ -19,21 +19,21 @@
 	        <div class='row'>
 	          <div class="col col-sm-3 text-right">Nom / Nature</div>
 	          <div class="col col-sm-9">
-	            <p class='bg-info' ><?php echo ($event_name) ? $event_name : '&nbsp;';?></p>
+	            <p class='bg-info' ><?php echo ($event_name) ? htmlentities($event_name) : '&nbsp;';?></p>
 	          </div>
 	        </div>
 
 	        <div class='row'>
 	          <div class="col col-sm-3 text-right">Activité / Descriptif</div>
 	          <div class="col col-sm-9">
-	            <p class='bg-info' ><?php echo ($event_description) ? $event_description : '&nbsp;';?></p>
+	            <p class='bg-info' ><?php echo ($event_description) ? htmlentities($event_description) : '&nbsp;';?></p>
 	          </div>
 	        </div>
 
 	        <div class='row'>
 	          <div class="col col-sm-3 text-right">Adresse exacte</div>
 	          <div class="col col-sm-9">
-	            <p class='bg-info' ><?php echo ($event_address) ? $event_address : '&nbsp;';?></p>
+	            <p class='bg-info' ><?php echo ($event_address) ? htmlentities($event_address) : '&nbsp;';?></p>
 	          </div>
 	        </div>
 
@@ -134,7 +134,7 @@
 					<div class='row'>
 	          <div class="col col-sm-3 text-right">Commentaires concernant le RIS</div>
 	          <div class="col col-sm-9">
-							<p class='bg-info' ><?php echo ($ris_comment) ? $ris_comment : '&nbsp;';?></p>
+							<p class='bg-info' ><?php echo ($ris_comment) ? htmlentities($ris_comment) : '&nbsp;';?></p>
 	          </div>
 	        </div>
 

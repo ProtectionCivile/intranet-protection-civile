@@ -9,7 +9,7 @@
       <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Nom court"></span>
     </label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="permission_title" name="permission_title" aria-describedby="permission-title-error" placeholder="ex: dps-view" minlength='3' maxlength='120' required='true' value="<?php echo $permission_title;?>" >
+      <input type="text" class="form-control" id="permission_title" name="permission_title" aria-describedby="permission-title-error" placeholder="ex: dps-view" minlength='3' maxlength='120' required='true' value="<?php echo htmlentities($permission_title);?>" >
       <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
       <span id='permission-title-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
     </div>
@@ -22,7 +22,7 @@
       <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom d'affichage des permissions" />
     </label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="permission_description" name="permission_description" aria-describedby="permission-description-error" placeholder="ex: Visualiser DPS" minlength='3' maxlength='120' required='true' value="<?php echo $permission_description;?>" />
+      <input type="text" class="form-control" id="permission_description" name="permission_description" aria-describedby="permission-description-error" placeholder="ex: Visualiser DPS" minlength='3' maxlength='120' required='true' value="<?php echo htmlentities($permission_description);?>" />
       <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
       <span id='permission-description-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
     </div>

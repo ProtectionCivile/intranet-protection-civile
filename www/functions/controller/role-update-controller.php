@@ -42,13 +42,13 @@
 		$row_verif = mysqli_fetch_assoc($verif);
 		$role = mysqli_num_rows($verif);
 		if ($role){
-			$genericError = "Un rôle du même titre existe déjà (".$role_title.")";
-			$role_title_error = "Un rôle du même titre existe déjà (".$role_title.")";
+			$genericError = "Un rôle du même titre existe déjà (".htmlentities($role_title).")";
+			$role_title_error = "Un rôle du même titre existe déjà (".htmlentities($role_title).")";
 		}
 
 		else if (in_array($role_title, $undeletableRoles)) {
-			$genericError = "Il est interdit de mettre à jour le rôle '".$role_title."'";
-			$role_title_error = "Il est interdit de mettre à jour le rôle '".$role_title."'";
+			$genericError = "Il est interdit de mettre à jour le rôle '".htmlentities($role_title)."'";
+			$role_title_error = "Il est interdit de mettre à jour le rôle '".htmlentities($role_title)."'";
 		}
 		if (empty($genericError)){
 			$sql = "UPDATE $tablename_roles SET
@@ -64,7 +64,7 @@
 			Mail='".mysqli_real_escape_string($db_link, $role_email)."'
 			WHERE ID='$id'" or die("Impossible d'ajouter le rôle dans la base de données" . mysqli_error($db_link));
 			if ($db_link->query($sql) === TRUE) {
-				$genericSuccess = "Rôle mis à jour (".$role_title.")";
+				$genericSuccess = "Rôle mis à jour (".htmlentities($role_title).")";
 			} else {
 				$genericError = "Rôle non mis à jour: " . $db_link->error;
 			}

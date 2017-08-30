@@ -76,33 +76,33 @@
 							$reqliste = "SELECT shortname FROM $tablename_sections WHERE number=".$client['attached_section'] or die("Erreur lors de la consultation" . mysqli_error($db_link));
 							$sections = mysqli_query($db_link, $reqliste);
 							while($section = mysqli_fetch_array($sections)) {
-								echo $section["shortname"];
+								echo htmlentities($section["shortname"]);
 							}
 							?>
 						</td>
 						<td>
-							<?php echo ucfirst($client["name"]); ?>
+							<?php echo ucfirst(htmlentities($client["name"])); ?>
 						</td>
 						<td>
-							<?php echo ucfirst($client["ref"]); ?>
+							<?php echo ucfirst(htmlentities($client["ref"])); ?>
 						</td>
 						<td>
-							<?php echo ucfirst($client["represent"]); ?>
+							<?php echo ucfirst(htmlentities($client["represent"])); ?>
 						</td>
 						<td>
-							<?php echo ucfirst($client["title"]); ?>
+							<?php echo ucfirst(htmlentities($client["title"])); ?>
 						</td>
 						<td>
-							<?php echo $client["address"]; ?>
+							<?php echo htmlentities($client["address"]); ?>
 						</td>
 						<td>
-							<?php echo $client["phone"]; ?>
+							<?php echo htmlentities($client["phone"]); ?>
 						</td>
 						<td>
-							<?php echo ucfirst($client["fax"]); ?>
+							<?php echo ucfirst(htmlentities($client["fax"])); ?>
 						</td>
 						<td>
-							<?php echo $client["mail"]; ?>
+							<?php echo htmlentities($client["mail"]); ?>
 						</td>
 						<td>
 							<?php if ($rbac->check("ope-clients-update-own", $currentUserID) || $rbac->check("ope-clients-update-all", $currentUserID)) { ?>

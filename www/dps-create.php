@@ -37,7 +37,7 @@
 	<?php require_once('components/operation-status-indicator.php'); ?>
 
 	<div class="page-header">
-		<h2>Nouveau Dispositif Prévisionnel de Secours <small><?php echo $cu_full; ?></small></h2>
+		<h2>Nouveau Dispositif Prévisionnel de Secours <small><?php echo htmlentities($cu_full); ?></small></h2>
 	</div>
 
 

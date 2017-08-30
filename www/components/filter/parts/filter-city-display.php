@@ -15,7 +15,7 @@
 				if ($filtered_section == $ville['number']) {
 					$activeOrNot = "active";
 				} ?>
-				<button class='btn btn-default btn-sm city-filter <?php echo $activeOrNot;?>' data-filter='<?php echo $ville['number']; ?>' ><?php echo $ville['shortname']; ?></button>
+				<button class='btn btn-default btn-sm city-filter <?php echo $activeOrNot;?>' data-filter='<?php echo $ville['number']; ?>' ><?php echo htmlentities($ville['shortname']); ?></button>
 			<?php } ?>
 
 		</div>

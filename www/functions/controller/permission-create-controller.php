@@ -41,7 +41,7 @@
 					$genericError = "Echec de la création (ID=".$perm_id.")";
 				}
 				else {
-					$genericSuccess = "Permission correctement ajoutée : ".$permission_title." (ID=".$perm_id.")";
+					$genericSuccess = "Permission correctement ajoutée : ".htmlentities($permission_title)." (ID=".$perm_id.")";
 				}
 			}
 		}

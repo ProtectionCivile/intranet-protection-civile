@@ -72,7 +72,7 @@
 				'".mysqli_real_escape_string($db_link, $client_email)."'
 				)" or die("Impossible d'ajouter le client dans la base de données" . mysqli_error($db_link));
 			if ( $db_link->query($sql) === TRUE) {
-					$genericSuccess = "Client créé avec succès (".$client_name.")";
+					$genericSuccess = "Client créé avec succès (".htmlentities($client_name).")";
 			} else {
 					$genericError = "Client non créé: " . $db_link->error;
 			}

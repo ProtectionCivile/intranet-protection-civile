@@ -31,7 +31,7 @@
 	<div class="container">
 
 		<div class="page-header">
-			<h2>Gestion des permissions <small>Modification de '<?php echo $permission_title ?>'</small></h2>
+			<h2>Gestion des permissions <small>Modification de '<?php echo htmlentities($permission_title) ?>'</small></h2>
 		</div>
 
 		<!-- Update permission : Operation status indicator -->

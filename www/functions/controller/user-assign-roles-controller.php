@@ -22,10 +22,10 @@
 					$isDone = $rbac->Users->assign($role_title, $userID);
 				}
 				if (!$isDone){
-					$genericError = "Echec de la mise à jour ('".$role_description."')";
+					$genericError = "Echec de la mise à jour ('".htmlentities($role_description)."')";
 				}
 				else {
-					$genericSuccess = "L'utilisateur a été mis à jour avec le rôle '".$role_description."'";
+					$genericSuccess = "L'utilisateur a été mis à jour avec le rôle '".htmlentities($role_description)."'";
 				}
 			}
 		}

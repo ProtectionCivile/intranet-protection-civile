@@ -18,7 +18,7 @@
 			else {
 				$permission_title = $rbac->Permissions->getTitle($id);
 				if (in_array($permission_title, $undeletablePermissions)) {
-					$genericError = "Il est interdit de supprimer la permission '".$permission_title."'";
+					$genericError = "Il est interdit de supprimer la permission '".htmlentities($permission_title)."'";
 				}
 				else {
 					$perm_id = $rbac->Permissions->remove($id, true);
@@ -26,7 +26,7 @@
 						$genericError = "Echec de la suppression (ID=".$id.")";
 					}
 					else {
-						$genericSuccess = "Permission correctement supprimée (".$permission_title.")";
+						$genericSuccess = "Permission correctement supprimée (".htmlentities($permission_title).")";
 					}
 				}
 			}

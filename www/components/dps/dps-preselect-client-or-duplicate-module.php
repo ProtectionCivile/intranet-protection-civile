@@ -18,10 +18,10 @@
 						$query = mysqli_query($db_link, $sql);
 						while($org = mysqli_fetch_array($query)){
 							if($org_id == $org['id']){
-								echo "<option value='".$org["id"]."' selected>".$org["ref"]."</option>";
+								echo "<option value='".$org["id"]."' selected>".htmlentities($org["ref"])."</option>";
 							}
 							else{
-								echo "<option value='".$org["id"]."'>".$org["ref"]."</option>";
+								echo "<option value='".$org["id"]."'>".htmlentities($org["ref"])."</option>";
 							}
 						}
 						?>
@@ -42,7 +42,7 @@
 						$sql = "SELECT id, cu_full, event_name FROM $tablename_dps WHERE section=$ordered_section ORDER BY id DESC LIMIT 100";
 						$query = mysqli_query($db_link, $sql);
 						while($listecu = mysqli_fetch_array($query)){
-							echo "<option value='".$listecu["id"]."'>".$listecu["cu_full"]." - ".$listecu["event_name"]."</option>";
+							echo "<option value='".$listecu["id"]."'>".htmlentities($listecu["cu_full"])." - ".htmlentities($listecu["event_name"])."</option>";
 						}
 						?>
 					</select>

@@ -30,7 +30,7 @@
 <div class="container">
 
 	<div class="page-header">
-		<h2>Réglages des e-mails <small>Modicication du paramètre <?php echo $name; ?></small></h2>
+		<h2>Réglages des e-mails <small>Modicication du paramètre <?php echo htmlentities($name); ?></small></h2>
 	</div>
 
 	<!-- Operation status indicator -->

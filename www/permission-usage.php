@@ -29,7 +29,7 @@
 <div class="container">
 
 	<div class="page-header">
-		<h2>Gestion des permissions <small>Utilisations de '<?php echo $permission_title ?>'</small></h2>
+		<h2>Gestion des permissions <small>Utilisations de '<?php echo htmlentities($permission_title) ?>'</small></h2>
 	</div>
 
 
@@ -50,7 +50,7 @@
 						while($role = mysqli_fetch_array($roles)) {
 							$roleID=$role["ID"];
 							$role_title=$role["Title"];
-							echo $role_title.", ";
+							echo htmlentities($role_title).", ";
 						}
 					?>
 				</div>
@@ -68,7 +68,7 @@
 							$userID=$user["ID"];
 							$userFirstName=$user["first_name"];
 							$userLastName=$user["last_name"];
-							echo $userFirstName." ".$userLastName.", ";
+							echo htmlentities($userFirstName)." ".htmlentities($userLastName).", ";
 						}
 					?>
 				</div>

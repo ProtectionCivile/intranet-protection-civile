@@ -32,7 +32,7 @@
 <div class="container">
 
 	<div class="page-header">
-		<h2>DPS <small><?php echo $cu_full; ?></small></h2>
+		<h2>DPS <small><?php echo htmlentities($cu_full); ?></small></h2>
 	</div>
 
 	<!-- Update : Operation status indicator -->

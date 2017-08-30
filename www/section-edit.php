@@ -33,7 +33,7 @@
 <div class='container'>
 
 	<div class="page-header">
-		<h2>Gestion des sections <small>Modification de '<?php echo $section_name ?>'</small></h2>
+		<h2>Gestion des sections <small>Modification de '<?php echo htmlentities($section_name) ?>'</small></h2>
 	</div>
 
 	<!-- Update user : Operation status indicator -->
@@ -43,7 +43,7 @@
 	<!-- Update user : display form -->
 	<div class="panel panel-info">
 		<div class="panel-heading">
-			<h3 class="panel-title">Modifier l'antenne de <strong><?php echo $section_name; ?> - N°<?php echo $section_number;?></strong></h3>
+			<h3 class="panel-title">Modifier l'antenne de <strong><?php echo htmlentities($section_name); ?> - N°<?php echo htmlentities($section_number);?></strong></h3>
 		</div>
 		<div class="panel-body">
 			<?php require_once('components/section/section-edit-form.php'); ?>

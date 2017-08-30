@@ -71,7 +71,7 @@
 								$role_title=$role["Title"];
 								$role_description=$role["Description"];
 								?>
-									<th class='text-center' title='<?php echo $role_description; ?>'><?php echo $role_title; ?></th>
+									<th class='text-center' title='<?php echo htmlentities($role_description); ?>'><?php echo htmlentities($role_title); ?></th>
 								<?php
 							}
 							?>
@@ -96,10 +96,10 @@
 									<td class='text-center'>
 										<?php
 										if ($rbac->Roles->hasPermission($roleID, $permissionID)) {
-											?> <span class="text-success glyphicon glyphicon-ok" title="<?php echo $role_description; ?>" aria-hidden="true"></span> <?php
+											?> <span class="text-success glyphicon glyphicon-ok" title="<?php echo htmlentities($role_description); ?>" aria-hidden="true"></span> <?php
 										}
 										else {
-											?> <span class="text-danger glyphicon glyphicon-minus" title="<?php echo $role_description; ?>" aria-hidden="true"></span> <?php
+											?> <span class="text-danger glyphicon glyphicon-minus" title="<?php echo htmlentities($role_description); ?>" aria-hidden="true"></span> <?php
 										}
 										?>
 									</td>

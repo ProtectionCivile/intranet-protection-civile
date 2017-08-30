@@ -34,7 +34,7 @@
 	<div class="container">
 
 		<div class="page-header">
-			<h2>Gestion des rôles <small>Modification de '<?php echo $role_title ?>'</small></h2>
+			<h2>Gestion des rôles <small>Modification de '<?php echo htmlentities($role_title) ?>'</small></h2>
 		</div>
 
 		<!-- Update role : Operation status indicator -->

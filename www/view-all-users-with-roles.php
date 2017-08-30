@@ -62,7 +62,7 @@
 			<!-- Role usage : Container -->
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<h3 class="panel-title"><?php echo $role_title ?></h3>
+					<h3 class="panel-title"><?php echo htmlentities($role_title) ?></h3>
 				</div>
 				<div class="panel-body">
 
@@ -74,7 +74,7 @@
 					while($user = mysqli_fetch_array($users)) {
 						$userFirstName=$user["first_name"];
 						$userLastName=$user["last_name"];
-						echo $userFirstName." ".$userLastName.", ";
+						echo htmlentities($userFirstName)." ".htmlentities($userLastName).", ";
 					}
 					?>
 				</div>
