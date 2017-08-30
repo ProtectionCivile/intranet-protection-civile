@@ -435,7 +435,7 @@
             <div class="col-sm-2">
               <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
               <div class="input-group">
-                <input type="number" class="form-control" id="price" name="price" aria-describedby="price-error" minlength='1' required='true' number='true' placeholder="Prix" value="<?php echo $price; ?>" data-minlength="1" >
+                <input type="number" step="0.01" class="form-control" id="price" name="price" aria-describedby="price-error" minlength='1' required='true' number='true' placeholder="Prix" value="<?php echo $price; ?>" data-minlength="1" >
                 <div class="input-group-addon glyphicon glyphicon-euro"></div>
               </div>
               <span id='price-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
