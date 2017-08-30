@@ -86,7 +86,7 @@
 								$userID=$row["ID"];
 								$userFirstName=$row["first_name"];
 								$userLastName=$row["last_name"];
-								echo htmlentities($userFirstName)." ".htmlentities($userLastName)."<br />";
+								echo ucfirst(htmlentities($userFirstName))." ".mb_strtoupper($userLastName)."<br />";
 							}
 						?>
 					</div>

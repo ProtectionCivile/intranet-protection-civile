@@ -30,7 +30,6 @@
 <!-- Common -->
 <?php include 'functions/controller/user-common.php'; ?>
 
-
 <!-- Update a user's roles : Controller -->
 <?php include 'functions/controller/user-assign-roles-controller.php'; ?>
 
@@ -38,7 +37,7 @@
 <div class="container">
 
 	<div class="page-header">
-		<h2>Gestion des utilisateurs <small>Modification des rôles de '<?php echo htmlentities($userFirstName)." ".htmlentities($userLastName) ?>'</small></h2>
+		<h2>Gestion des utilisateurs <small>Modification des rôles de '<?php echo ucfirst($user_firstName)." ".mb_strtoupper($user_lastName, 'UTF-8') ?>'</small></h2>
 	</div>
 
 
@@ -53,7 +52,7 @@
 		</div>
 		<div class="panel-body">
 			<form id="roleuser" class="form-horizontal" action='user-assign-roles.php' method='post' accept-charset='utf-8'>
-				<input type="hidden" name="userID" value="<?php echo $userID;?>">
+				<input type="hidden" name="id" value="<?php echo $id;?>">
 				<input type="hidden" name="roleID" id="roleID" value="undefined">
 
 				Les changements se font directement en cliquant sur les boutons.
@@ -82,7 +81,7 @@
 										$roleID=$role["ID"];
 										$role_title=$role["Title"];
 										$role_description=$role["Description"];
-										if ($rbac->Users->hasRole($roleID, $userID)) {
+										if ($rbac->Users->hasRole($roleID, $id)) {
 											?><button type="button" class="btn btn-default btn-xs active" title="<?php echo htmlentities($role_title);?>" onClick="send(<?php echo htmlentities($roleID);?>)"><?php echo $role_description;?></button><?php
 										}
 										else {

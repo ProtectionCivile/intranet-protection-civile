@@ -125,7 +125,7 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 				<?php } ?>
 
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo ucwords(htmlentities($currentUserFirstName));?> <?php echo strtoupper(htmlentities($currentUserLastName));?> <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo ucfirst(htmlentities($currentUserFirstName));?> <?php echo mb_strtoupper($currentUserLastName);?> <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li class="disabled"><a href="modifier-mdp.php">Modifier son mot de passe</a></li>
 						<li><a href="logout.php">><span class='glyphicon glyphicon-off'> Déconnexion</a></li>
