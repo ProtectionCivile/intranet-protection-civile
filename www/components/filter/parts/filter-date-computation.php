@@ -3,7 +3,7 @@
 		$datebeginNF=new DateTime($_SESSION['datebegin']);
 	}
 	else {
-		$datebeginNF = new DateTime("now -4 year");
+		$datebeginNF = new DateTime("now");
 		$_SESSION['datebegin'] = $datebeginNF->format('d-m-Y');
 	}
 
