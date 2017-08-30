@@ -30,7 +30,7 @@
 					$action = 'validate-local';
 				}
 				else {
-					$genericError = "Erreur pendant la mise à jour du DPS ".$event_name." (".$cu_full.") " . $db_link->error;
+					$genericError = "Erreur pendant la mise à jour du DPS ".htmlentities($event_name)." (".htmlentities($cu_full).") " . $db_link->error;
 				}
 			}
 		}
@@ -64,7 +64,7 @@
 					$dps['status_cancel_date'] = $today;
 				}
 				else {
-					$genericError = "Erreur pendant la mise à jour du DPS ".$event_name." (".$cu_full.") " . $db_link->error;
+					$genericError = "Erreur pendant la mise à jour du DPS ".htmlentities($event_name)." (".htmlentities($cu_full).") " . $db_link->error;
 				}
 			}
 		}
@@ -92,7 +92,7 @@
 					$action = 'reject-ddo';
 				}
 				else {
-					$genericError = "Erreur pendant la mise à jour du DPS ".$event_name." (".$cu_full.") " . $db_link->error;
+					$genericError = "Erreur pendant la mise à jour du DPS ".htmlentities($event_name)." (".htmlentities($cu_full).") " . $db_link->error;
 				}
 			}
 		}
@@ -120,7 +120,7 @@
 					$action = 'wait';
 				}
 				else {
-					$genericError = "Erreur pendant la mise à jour du DPS ".$event_name." (".$cu_full.") " . $db_link->error;
+					$genericError = "Erreur pendant la mise à jour du DPS ".htmlentities($event_name)." (".htmlentities($cu_full).") " . $db_link->error;
 				}
 			}
 		}
@@ -157,7 +157,7 @@
 					$action = 'accept-ddo';
 				}
 				else {
-					$genericError = "Erreur pendant la mise à jour du DPS ".$event_name." (".$cu_full.") " . $db_link->error;
+					$genericError = "Erreur pendant la mise à jour du DPS ".htmlentities($event_name)." (".htmlentities($cu_full).") " . $db_link->error;
 				}
 			}
 		}

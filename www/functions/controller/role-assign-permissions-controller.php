@@ -13,9 +13,9 @@
 				$genericError = "La permission en question n'existe pas";
 			}
 			else {
-				$permissionTitle=$rbac->Permissions->getTitle($permissionID);
-				$permissionDescription=$rbac->Permissions->getDescription($permissionID);
-				$check_query = "SELECT ID, Title FROM $tablename_roles WHERE ID='$roleID'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
+				$permission_title=$rbac->Permissions->getTitle($permissionID);
+				$permission_description=$rbac->Permissions->getDescription($permissionID);
+				$check_query = "SELECT ID, Title FROM $tablename_roles WHERE ID='$id'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 				$verif = mysqli_query($db_link, $check_query);
 				$roleParams = mysqli_fetch_assoc($verif);
 				$role = mysqli_num_rows($verif);
@@ -23,17 +23,17 @@
 					$genericError = "Le rôle en question n'existe pas";
 				}
 				else {
-					if ($rbac->Roles->hasPermission($roleID, $permissionID)) {
-						$isDone = $rbac->Roles->unassign($roleTitle, $permissionTitle);
+					if ($rbac->Roles->hasPermission($id, $permissionID)) {
+						$isDone = $rbac->Roles->unassign($role_title, $permission_title);
 					}
 					else {
-						$isDone = $rbac->Roles->assign($roleTitle, $permissionTitle);
+						$isDone = $rbac->Roles->assign($role_title, $permission_title);
 					}
 					if (!$isDone){
-						$genericError = "Echec de la mise à jour ('".$permissionTitle."')";
+						$genericError = "Echec de la mise à jour ('".htmlentities($permission_title)."')";
 					}
 					else {
-						$genericSuccess = "Rôle '".$roleParams['Title']."' mis à jour avec la permission '".$permissionTitle."'";
+						$genericSuccess = "Rôle '".$roleParams['Title']."' mis à jour avec la permission '".htmlentities($permission_title)."'";
 					}
 				}
 			}

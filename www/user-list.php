@@ -20,7 +20,7 @@
 <?php require_once('functions/user/user-compute-city.php'); ?>
 
 <!-- Authentication -->
-<?php $rbac->enforce("admin-users-view", $currentUserID); ?>
+<?php require_once('functions/user/user-view-authentication.php'); ?>
 
 
 <!-- Delete a user : Controller -->
@@ -71,27 +71,27 @@
 				while($user = mysqli_fetch_array($users)) { ?>
 					<tr>
 						<td>
-							<?php echo ucfirst($user["last_name"]); ?>
+							<?php echo mb_strtoupper($user["last_name"]); ?>
 						</td>
 						<td>
-							<?php echo ucfirst($user["first_name"]); ?>
+							<?php echo ucfirst(htmlentities($user["first_name"])); ?>
 						</td>
 						<td>
-							<?php echo $user["login"]; ?>
+							<?php echo htmlentities($user["login"]); ?>
 						</td>
 						<td>
-							<?php echo $user["phone"]; ?>
+							<?php echo htmlentities($user["phone"]); ?>
 						</td>
 						<td>
-							<?php echo $user["mail"]; ?>
+							<?php echo htmlentities($user["mail"]); ?>
 						</td>
 						<td>
-							<?php echo $user["section_name"]; ?>
+							<?php echo htmlentities($user["section_name"]); ?>
 						</td>
 						<td>
 							<?php if ($rbac->check("admin-users-asssign-roles", $currentUserID)) { ?>
 								<form action='user-assign-roles.php' method='post' accept-charset='utf-8'>
-									<input type='hidden' name='userID' value=<?php echo "'".$user['ID']."'"; ?> >
+									<input type='hidden' name='id' value=<?php echo "'".$user['ID']."'"; ?> >
 									<button type='submit' class='btn btn-warning glyphicon glyphicon-check' title='Voir / Affecter des rôles'></button>
 								</form>
 							<?php }?>
@@ -99,7 +99,7 @@
 						<td>
 							<?php if ($rbac->check("admin-users-update", $currentUserID)) { ?>
 								<form action='user-edit.php' method='post' accept-charset='utf-8'>
-									<input type='hidden' name='userID' value=<?php echo "'".$user['ID']."'"; ?> >
+									<input type='hidden' name='id' value=<?php echo "'".$user['ID']."'"; ?> >
 									<button type='submit' class='btn btn-warning glyphicon glyphicon-pencil' title="Modifier"></button>
 								</form>
 							<?php }?>

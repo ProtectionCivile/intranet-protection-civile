@@ -33,36 +33,37 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 					<ul class="dropdown-menu" role="menu">
 						<?php if ($rbac->check("ope-dps-validate-ddo-to-pref", $currentUserID)) {?>
 							<li class="dropdown-header">Direction départementale</li>
-							<li><a href="dps-list.php?atraiter"><span class='glyphicon glyphicon-fire'></span> En attente <span class="badge"><?php echo $dps_needs_attention;?></span></a></li>
+							<li><a href="dps-list.php?atraiter"><span class='glyphicon glyphicon-fire'></span> En attente de validation <span class="badge"><?php echo $dps_needs_attention;?></span></a></li>
 						<?php } ?>
-						<li class="divider"></li>
-						<li class="dropdown-header">Postes existants</li>
-						<?php if ($rbac->check("ope-dps-view-own", $currentUserID)) {?>
-							<li><a href="dps-list.php?own"><span class='glyphicon glyphicon-search'></span> Liste des DPS de mon Antenne</a></li>
+						<?php if ($rbac->check("ope-dps-view-own", $currentUserID) || $rbac->check("ope-dps-view-all", $currentUserID) || $rbac->check("ope-dps-view-dept", $currentUserID)) { ?>
+							<li class="divider"></li>
+							<li class="dropdown-header">Postes existants</li>
+							<?php if ($rbac->check("ope-dps-view-own", $currentUserID)) {?>
+								<li><a href="dps-list.php?own"><span class='glyphicon glyphicon-search'></span> Liste des DPS de mon Antenne</a></li>
+							<?php } ?>
+							<?php if ($rbac->check("ope-dps-view-dept", $currentUserID) || $rbac->check("ope-dps-view-all", $currentUserID)) {?>
+								<li><a href="dps-list.php?dept"><span class='glyphicon glyphicon-search'></span> Liste des DPS départementaux</a></li>
+							<?php } ?>
+							<?php if ($rbac->check("ope-dps-view-all", $currentUserID)) {?>
+								<li><a href="dps-list.php"><span class='glyphicon glyphicon-search'></span> Liste de tous les DPS</a></li>
+							<?php } ?>
 						<?php } ?>
-						<?php if ($rbac->check("ope-dps-view-dept", $currentUserID) || $rbac->check("ope-dps-view-all", $currentUserID)) {?>
-							<li><a href="dps-list.php?dept"><span class='glyphicon glyphicon-search'></span> Liste des DPS départementaux</a></li>
+						<?php if ( $rbac->check("ope-dps-update-own", $currentUserID) || $rbac->check("ope-dps-update-dept", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID) ) { ?>
+							<li class="divider"></li>
+							<li class="dropdown-header">Création</li>
+							<?php if ($rbac->check("ope-dps-update-own", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID)) {?>
+								<li><a href="dps-create.php?city"><span class='glyphicon glyphicon-plus'></span> Créer un DPS local</a></li>
+							<?php } ?>
+							<?php if ($rbac->check("ope-dps-update-dept", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID)) {?>
+								<li><a href="dps-create.php?dept"><span class='glyphicon glyphicon-plus'></span> Créer un DPS départemental</a></li>
+							<?php } ?>
 						<?php } ?>
-						<?php if ($rbac->check("ope-dps-view-all", $currentUserID)) {?>
-							<li><a href="dps-list.php"><span class='glyphicon glyphicon-search'></span> Liste de tous les DPS</a></li>
-						<?php } ?>
-						<li class="divider"></li>
-						<li class="dropdown-header">Création</li>
-						<?php if ($rbac->check("ope-dps-update-own", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID)) {?>
-							<li><a href="dps-create.php?city"><span class='glyphicon glyphicon-plus'></span> Créer un DPS local</a></li>
-						<?php } ?>
-						<?php if ($rbac->check("ope-dps-update-dept", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID)) {?>
-							<li><a href="dps-create.php?dept"><span class='glyphicon glyphicon-plus'></span> Créer un DPS départemental</a></li>
-						<?php } ?>
-					</ul>
-				</li>
-
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='glyphicon glyphicon-piggy-bank'></span> Finances<span class="caret"></span></a>
-					<ul class="dropdown-menu" role="menu">
-						<li class="dropdown-header">Trésorerie</li>
-						<li><a href="tresorerie.php?filter=accepted"><span class='glyphicon glyphicon-usd'></span> Trésorerie</a></li>
-						<li><a href="factures.php"><span class='glyphicon glyphicon-list-alt'></span> Factures</a></li>
+						<?php if ($rbac->check("treso-dps-view-own", $currentUserID) || $rbac->check("treso-dps-view-all", $currentUserID)) {
+							?> <li class="divider"></li> <?php
+							?> <li class="dropdown-header">Trésorerie</li> <?php
+							if ($rbac->check("treso-dps-view-own", $currentUserID)) {?> <li><a href="tresorerie.php?filter=accepted"><span class='glyphicon glyphicon-piggy-bank'></span> Taxes ADPC et FNPC</a></li> <?php }
+							if ($rbac->check("treso-dps-view-all", $currentUserID)) {?> <li><a href="#"><span class='glyphicon glyphicon-usd'></span> Taxe opérationnelle départementale</a></li> <?php }
+						} ?>
 					</ul>
 				</li>
 
@@ -83,38 +84,36 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 					<ul class="dropdown-menu" role="menu">
 						<li class="dropdown-header">Réglages opérationnels</li>
 						<?php if ($rbac->check("ope-clients-view-own", $currentUserID) || $rbac->check("ope-clients-view-all", $currentUserID)) {?>
-							<li><a href="client-list.php"><span class='glyphicon glyphicon-search'></span> Liste des clients</a></li>
-						<?php } ?>
-						<?php if ($rbac->check("ope-clients-update-own", $currentUserID)) {?>
-							<li><a href="client-create.php"><span class='glyphicon glyphicon-user'></span><span class='glyphicon glyphicon-plus'></span> Ajouter un client</a></li>
+							<li><a href="client-list.php"><span class='glyphicon glyphicon-search'></span> Clients</a></li>
 						<?php } ?>
 						<li class="divider"></li>
 						<?php
 						if ($rbac->check("admin-users-view", $currentUserID) || $rbac->check("admin-sections-view", $currentUserID)) {
 							?> <li class="dropdown-header">Administration</li> <?php
-							if ($rbac->check("admin-users-view", $currentUserID)) {?> <li><a href="user-list.php"><span class='glyphicon glyphicon-user'></span> Liste des utilisateurs</a></li> <?php }
-							if ($rbac->check("admin-users-update", $currentUserID)) {?> <li><a href="user-create.php"><span class='glyphicon glyphicon-user'></span><span class='glyphicon glyphicon-plus'></span> Créer un utilisateur</a></li> <?php }
+							if ($rbac->check("admin-users-view", $currentUserID)) {?> <li><a href="user-list.php"><span class='glyphicon glyphicon-user'></span> Utilisateurs</a></li> <?php }
 							if ($rbac->check("admin-sections-view", $currentUserID)) {?> <li><a href="section-list.php"><span class='glyphicon glyphicon-tent'></span> Antennes</a></li> <?php }
 						}
 
 						if ($rbac->check("admin-settings-view", $currentUserID)) {
 							?> <li class="divider"></li> <?php
 							?> <li class="dropdown-header">Paramètres du site</li> <?php
-							?> <li><a href="setting-list.php"><span class='glyphicon glyphicon-wrench'></span> Liste des paramètres</a></li> <?php
-							?> <li><a href="mailsetting-list.php"><span class='glyphicon glyphicon-envelope'></span> Liste des paramètres mail</a></li> <?php
+							?> <li><a href="setting-list.php"><span class='glyphicon glyphicon-wrench'></span> Paramètres</a></li> <?php
+							?> <li><a href="mailsetting-list.php"><span class='glyphicon glyphicon-envelope'></span> Paramètres mail</a></li> <?php
 						}
 
 						if ($rbac->check("admin-roles-view", $currentUserID) || $rbac->check("admin-permissions-view", $currentUserID)) {
 							?> <li class="divider" ></li> <?php
 							?> <li class="dropdown-header">Sécurité</li> <?php
-							if ($rbac->check("admin-roles-view", $currentUserID)) {?> <li><a href="role-list.php"><span class='glyphicon glyphicon-knight'></span> Gestion des rôles</a></li> <?php }
-							if ($rbac->check("admin-permissions-view", $currentUserID)) {?> <li><a href="permission-list.php"><span class='glyphicon glyphicon-ok'></span> Gestion des permissions</a></li> <?php }
+							if ($rbac->check("admin-roles-view", $currentUserID)) {?> <li><a href="role-list.php"><span class='glyphicon glyphicon-knight'></span> Rôles (fonctions)</a></li> <?php }
+							if ($rbac->check("admin-permissions-view", $currentUserID)) {?> <li><a href="permission-list.php"><span class='glyphicon glyphicon-ok'></span> Permissions</a></li> <?php }
 							if ($rbac->check("admin-roles-view", $currentUserID)) {?> <li><a href="view-all-users-with-roles.php"><span class='glyphicon glyphicon-search'></span> Utilisateurs par rôle</a></li> <?php }
 							if ($rbac->check("admin-permissions-view", $currentUserID)) {?> <li><a href="view-all-permissions-with-roles.php"><span class='glyphicon glyphicon-search'></span> Habilitations par rôle</a></li> <?php }
 						} ?>
 					</ul>
 				</li>
-
+				<?php if ($rbac->check("directory-view", $currentUserID)) { ?>
+					<li><a href="#"><span class='glyphicon glyphicon-phone-alt'></span> Annuaire</a></li>
+				<?php } ?>
 				<li><a href="online-help.php"><span class='glyphicon glyphicon-question-sign'></span> Aide</a></li>
 
 			</ul>
@@ -126,10 +125,10 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 				<?php } ?>
 
 				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo ucwords($currentUserFirstName);?> <?php echo strtoupper($currentUserLastName);?> <span class="caret"></span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo ucfirst(htmlentities($currentUserFirstName));?> <?php echo mb_strtoupper($currentUserLastName);?> <span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li class="disabled"><a href="modifier-mdp.php">Modifier son mot de passe</a></li>
-						<li><a href="logout.php">Déconnexion</a></li>
+						<li><a href="logout.php">><span class='glyphicon glyphicon-off'> Déconnexion</a></li>
 					</ul>
 				</li>
 			</ul>

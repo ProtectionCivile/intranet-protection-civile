@@ -1,7 +1,7 @@
 <?php
 
 	if (isset($_POST['delUser'])){
-		$delID = str_replace("'","", $_POST['delUser']);
+		$delID = $_POST['delUser'];
 		if($delID == ""){
 			$genericError = "Impossible de supprimer un utilisateur inconnu";
 		}
@@ -26,10 +26,10 @@
 				}
         		$perm_id = $rbac->Roles->remove($id, true);
         		if ($result) {
-        			$genericSuccess = "Utilisateur correctement supprimé (".$delLogin.") et ses rôles aussi (".$allUserRoles.")";
+        			$genericSuccess = "Utilisateur correctement supprimé (".htmlentities($delLogin).") et ses rôles aussi (".$allUserRoles.")";
         		}
         		else {
-					$genericError = "Echec de la suppression (".$delLogin.")";
+					$genericError = "Echec de la suppression (".htmlentities($delLogin).")";
 				}
 			}
 		}

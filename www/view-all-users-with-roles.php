@@ -57,12 +57,12 @@
 		$roles = mysqli_query($db_link, $sqlQuery);
 		while($role = mysqli_fetch_array($roles)) {
 			$roleID=$role["ID"];
-			$roleTitle=$role["Description"];
+			$role_title=$role["Description"];
 			?>
 			<!-- Role usage : Container -->
 			<div class="panel panel-info">
 				<div class="panel-heading">
-					<h3 class="panel-title"><?php echo $roleTitle ?></h3>
+					<h3 class="panel-title"><?php echo htmlentities($role_title) ?></h3>
 				</div>
 				<div class="panel-body">
 
@@ -74,7 +74,7 @@
 					while($user = mysqli_fetch_array($users)) {
 						$userFirstName=$user["first_name"];
 						$userLastName=$user["last_name"];
-						echo $userFirstName." ".$userLastName.", ";
+						echo ucfirst(htmlentities($userFirstName))." ".mb_strtoupper($userLastName).", ";
 					}
 					?>
 				</div>
