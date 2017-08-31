@@ -4,8 +4,8 @@ from shutil import copyfile
 print 'DEBUT'
 print ''
 
-root_src_directory = "./old"
-root_dst_directory = "./new"
+root_src_directory = "../dps"
+root_dst_directory = "../documents_dps"
 
 def get_immediate_subdirectories(a_dir):
     return [name for name in os.listdir(a_dir)
@@ -25,7 +25,7 @@ for commune_directory_name in commune_directory_names:
 	old_commune_directory_path = root_src_directory + '/' + commune_directory_name
 	dps_directory_names = get_immediate_subdirectories(old_commune_directory_path)
 	print '>', commune_directory_name + ': Found', len(dps_directory_names), 'DPS'
-	
+
 	for old_dps_directory_name in dps_directory_names:
 		# Get DPS number and year
 		year = old_dps_directory_name[:4]
