@@ -75,12 +75,17 @@
 				<tr>
 					<td><samp>eprotec-event-url</samp></td>
 					<td><samp>https://franceprotectioncivile.org/evenement_display.php?evenement=EVENTID</samp></td>
-					<td class='text-muted'>Lien par défaut pour un évènement eProtec, utilisé pour les déclarations de DPS. &lt;EVENTID&gt; sera remplacé par le numéro d'évènement</td>
+					<td class='text-muted'>Lien vers un évènement eProtec, utilisé pour les déclarations de DPS. &lt;EVENTID&gt; sera remplacé par le numéro d'évènement</td>
 				</tr>
 				<tr>
 					<td><samp>eprotec-user-picture-url</samp></td>
 					<td><samp>https://franceprotectioncivile.org/images/user-specific/trombi/MATRICULE.jpg</samp></td>
-					<td class='text-muted'>Lien par défaut pour une photo d'un utilisateur eProtec, utilisé pour l'annuaire. &lt;MATRICULE&gt; sera remplacé par l'identifiant eProtec de l'utilisateur</td>
+					<td class='text-muted'>Lien vers une photo d'un utilisateur eProtec, utilisé pour l'annuaire. &lt;MATRICULE&gt; sera remplacé par l'identifiant eProtec de l'utilisateur</td>
+				</tr>
+				<tr>
+					<td><samp>eprotec-user-picture-url</samp></td>
+					<td><samp>https://franceprotectioncivile.org/images/boy.png</samp></td>
+					<td class='text-muted'>Lien vers une image par défaut lorsqu'un utilisateur n'en a pas, utilisé pour l'annuaire.</td>
 				</tr>
 				<tr>
 					<td><samp>mail-signature-ddo</samp></td>
