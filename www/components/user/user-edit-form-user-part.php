@@ -97,7 +97,7 @@
         $reqliste = "SELECT number, name FROM $tablename_sections" or die("Erreur lors de la consultation" . mysqli_error($db_link));
         $sections = mysqli_query($db_link, $reqliste);
         while($section = mysqli_fetch_array($sections)) {
-          echo "<option value='".$section["number"]."'>".htmlentities($section["name"])."</option>";
+          echo "<option value='".$section["number"]."'".(($section["number"] == $user_section) ? "selected='true'" : "").">".htmlentities($section["name"])."</option>";
         }
       ?>
     </select>
