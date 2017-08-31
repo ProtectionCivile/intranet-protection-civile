@@ -36,6 +36,9 @@
 	<!-- Update user : Operation status indicator -->
 	<?php include ('components/operation-status-indicator.php'); ?>
 
+	<!-- Display user picture -->
+	<?php require_once('functions/user/user-picture-retriever.php'); ?>
+	<center><img src='<?php echo getUserPicturePath($setting_service, $user_login) ?>' alt='user picture' class='img-circle'/></center>
 
 	<!-- Update user : display form -->
 	<div class="panel panel-info">
