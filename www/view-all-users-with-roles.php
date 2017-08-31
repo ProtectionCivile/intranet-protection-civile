@@ -47,13 +47,14 @@
 	if (!$cityName) {
 		?>
 		<br />
-		<br />
 		<div class='alert alert-info' role='alert'>
 			Trop de résultats pour tout afficher. Sélectionner une commune dans la liste
 		</div>
 		<?php
 	}
 	else {
+
+		echo "<h2>".$cityName."</h2>";
 		$roles = mysqli_query($db_link, $sqlQuery);
 		while($role = mysqli_fetch_array($roles)) {
 			$roleID=$role["ID"];
@@ -69,7 +70,7 @@
 					<!-- Role usage : See users with role -->
 					<strong>Utilisateurs : </strong>
 					<?php
-					$query = "SELECT U.first_name, U.last_name FROM users AS U JOIN rbac_userroles AS UR on U.ID=UR.UserID WHERE UR.RoleID=".$roleID." ORDER BY U.last_name" or die("Erreur lors de la consultation" . mysqli_error($db_link));
+					$query = "SELECT U.first_name, U.last_name FROM users AS U JOIN $tablename_userroles AS UR on U.ID=UR.UserID WHERE UR.RoleID=".$roleID." ORDER BY U.last_name" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 					$users = mysqli_query($db_link, $query);
 					while($user = mysqli_fetch_array($users)) {
 						$userFirstName=$user["first_name"];
