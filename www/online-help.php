@@ -49,9 +49,10 @@
 		<div class='col-sm-4'>
 			<h4 class='text-warning'>Divers</h4>
 			<ul>
-				<li><a href=''>Annuaire</a> <span class='label label-default'>Bientôt</span></li>
+				<li><a href=''>Annuaire en ligne</a> <span class='label label-default'>Bientôt</span></li>
 				<li><a href=''>Cartoucheur de photos</a> <span class='label label-default'>Bientôt</span></li>
 				<li><a href=''>Générateur de signature mail</a> <span class='label label-default'>Bientôt</span></li>
+				<li><a href=''>Dossiers d'engagement</a> <span class='label label-default'>Bientôt</span></li>
 			</ul>
 		</div>
 	</div>

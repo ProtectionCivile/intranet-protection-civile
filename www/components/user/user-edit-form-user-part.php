@@ -44,7 +44,7 @@
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Mot de passe"></span>
   </label>
   <div class="col-sm-8">
-    <input type="password" class="form-control" id="user_password1" name="user_password1" aria-describedby="user-password1-error" minlength='6' maxlength='20' required='true'>
+    <input type="password" class="form-control" id="user_password1" name="user_password1" aria-describedby="user-password1-error" minlength='6' maxlength='20' >
     <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
     <span id='user-password1-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
   </div>
@@ -56,7 +56,7 @@
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Mot de passe (confirmer)"></span>
   </label>
   <div class="col-sm-8">
-    <input type="password" class="form-control" id="user_password2" name="user_password2" aria-describedby="user-password2-error" minlength='6' maxlength='20' required='true' equalTo='#user_password1'>
+    <input type="password" class="form-control" id="user_password2" name="user_password2" aria-describedby="user-password2-error" minlength='6' maxlength='20' equalTo='#user_password1'>
     <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
     <span id='user-password2-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
   </div>
@@ -97,7 +97,7 @@
         $reqliste = "SELECT number, name FROM $tablename_sections" or die("Erreur lors de la consultation" . mysqli_error($db_link));
         $sections = mysqli_query($db_link, $reqliste);
         while($section = mysqli_fetch_array($sections)) {
-          echo "<option value='".$section["number"]."'>".htmlentities($section["name"])."</option>";
+          echo "<option value='".$section["number"]."'".(($section["number"] == $user_section) ? "selected='true'" : "").">".htmlentities($section["name"])."</option>";
         }
       ?>
     </select>
