@@ -78,6 +78,11 @@
 					<td class='text-muted'>Lien par défaut pour un évènement eProtec, utilisé pour les déclarations de DPS. &lt;EVENTID&gt; sera remplacé par le numéro d'évènement</td>
 				</tr>
 				<tr>
+					<td><samp>eprotec-user-picture-url</samp></td>
+					<td><samp>https://franceprotectioncivile.org/images/user-specific/trombi/MATRICULE.jpg</samp></td>
+					<td class='text-muted'>Lien par défaut pour une photo d'un utilisateur eProtec, utilisé pour l'annuaire. &lt;MATRICULE&gt; sera remplacé par l'identifiant eProtec de l'utilisateur</td>
+				</tr>
+				<tr>
 					<td><samp>mail-signature-ddo</samp></td>
 					<td><samp>&lt;strong&gt;Le Directeur Départemental des Opérations&lt;/strong&gt;&lt;br /&gt;operationnel@protectioncivile92.org&lt;br /&gt;06.74.95.31.75</samp></td>
 					<td class='text-muted'>Signature par défaut du DDO pour les mails envoyés</td>
