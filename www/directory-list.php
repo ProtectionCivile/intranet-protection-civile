@@ -52,7 +52,7 @@
 		?>
 		<br />
 		<div class='alert alert-info' role='alert'>
-			Trop de résultats pour tout afficher. Sélectionner une commune dans la liste
+			Trop de résultats pour tout afficher. Sélectionnez une antenne ou un tag dans la liste pour filtrer un peu les résultats
 		</div>
 		<?php
 	}
