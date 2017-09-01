@@ -2110,7 +2110,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 
 
 mysqli_query($db_link, "UPDATE `rbac_roles` SET
-	`Phone`='',
+	`Phone`='07.62.26.36.88',
 	`Mail`='president-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
 	`Callsign`='Autorité Courbevoie',
