@@ -77,11 +77,17 @@
 				$query = "SELECT U.first_name, U.last_name, U.login, U.phone FROM $tablename_users AS U JOIN $tablename_userroles AS UR on U.ID=UR.UserID WHERE UR.RoleID=".$role['ID']." ORDER BY U.last_name" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 				$users = mysqli_query($db_link, $query);
 				$user = null;
+				$user_login = null;
+				$user_first_name = null;
+				$user_last_name = null;
+				$user_phone = null;
+				$user_picture_path = null;
 				while($user = mysqli_fetch_array($users)) {
 					$user_login = $user["login"];
 					$user_first_name = $user["first_name"];
 					$user_last_name = $user["last_name"];
 					$user_phone = $user["phone"];
+					$user_picture_path = getUserPicturePath($setting_service, $user_login);
 				}
 				if ($next_alignment == 'left') {
 					$prefix_1 = "<div class='row'><div class='col-sm-2'>";
@@ -97,14 +103,18 @@
 					$suffix_2 = "</div></div>";
 					$next_alignment = 'left';
 				}
-				?>
-				<?php echo $prefix_1 ?>
-				<img src='<?php echo getUserPicturePath($setting_service, $user_login) ?>' alt='user picture' class='img-circle'/>
-				<?php echo $suffix_1 ?>
-				<?php echo $prefix_2 ?>
-				<h4 class='text-primary'><?php echo htmlentities($role["Description"]) ?> </h4>
-				<?php
-				if (!empty($user)) {
+
+				echo $prefix_1;
+				if (!empty($user_picture_path)) {
+					?> <center><img src='<?php echo $user_picture_path ?>' alt='user picture' class='img-circle'/> </center><?php
+				}
+				else {
+					?> <center><img src='img/unknown_user.jpeg' alt='user picture' class='img-circle'/> </center><?php
+				}
+				echo $suffix_1;
+				echo $prefix_2;
+				?> <h4 class='text-primary'><?php echo htmlentities($role["Description"]) ?> </h4> <?php
+				if (!empty($user_first_name)) {
 					?> <strong><?php echo ucfirst(htmlentities($user_first_name))." ".mb_strtoupper($user_last_name) ?> </strong> <br /> <?php
 				}
 				if (!empty($role["Mail"])) {
