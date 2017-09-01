@@ -1,5 +1,6 @@
 <?php require_once('components/filter/parts/filter-common-display.php'); ?>
 <?php require_once('components/filter/parts/filter-city-computation.php'); ?>
+<?php require_once('components/filter/parts/filter-tag-computation.php'); ?>
 <?php //require_once('components/filter/parts/filter-paging-computation.php'); ?>
 
 
@@ -14,9 +15,15 @@
 
 		<div class='panel-filters in' aria-expanded='true'>
 			<p>
-				<!-- Filter on the city holding the DPS -->
+				<!-- Filter on the city -->
 				<?php include_once('components/filter/parts/filter-city-display.php'); ?>
+			</p>
+		</div>
 
+		<div class='panel-filters in' aria-expanded='true'>
+			<p>
+				<!-- Filter on the city -->
+				<?php include_once('components/filter/parts/filter-tag-display.php'); ?>
 			</p>
 		</div>
 

@@ -648,7 +648,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Directory`='1',
 	`Assignable`='1',
 	`Hierarchy`='1',
-	`Tags`='Médical'
+	`Tags`='Divers'
 	WHERE `Title`='MED'
 ");
 
@@ -724,7 +724,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Directory`='1',
 	`Assignable`='1',
 	`Hierarchy`='2',
-	`Tags`='Médical'
+	`Tags`='Divers'
 	WHERE `Title`='CM-PARAMED'
 ");
 

@@ -43,10 +43,12 @@
 	<!-- List available roles -->
 
 	<?php
+	$user_has_chosen_a_section = ($_SESSION['filtered_section'] || $_SESSION['filtered_section'] == '0');
+	$user_has_chosen_a_tag = !(empty($_SESSION['tags']));
 	$query_cities = "SELECT name, address, zip_code, city, phone, mail, website FROM sections WHERE number=".$_SESSION['filtered_section'] or die("Erreur lors de la consultation" . mysqli_error($db_link));
 	$cities = mysqli_query($db_link, $query_cities);
 	$city = mysqli_fetch_assoc($cities);
-	if ( !$_SESSION['filtered_section'] && $_SESSION['filtered_section'] != '0' ) {
+	if ( !$user_has_chosen_a_section && !$user_has_chosen_a_tag ) {
 		?>
 		<br />
 		<div class='alert alert-info' role='alert'>
@@ -55,18 +57,22 @@
 		<?php
 	}
 	else {
-		?>
-		<div class="panel panel-success">
-			<div class='panel-heading'>
-				<h1 class="panel-title">Antenne : <?php echo $city['name'] ?></h1>
+		if ($user_has_chosen_a_section) {
+			?>
+			<div class="panel panel-success">
+				<div class='panel-heading'>
+					<h1 class="panel-title">Antenne : <?php echo $city['name'] ?></h1>
+				</div>
+				<div class='panel-body'>
+					<span class='glyphicon glyphicon-pushpin'></span><span class='text-muted'> <?php echo htmlentities($city['address']).", ".htmlentities($city['zip_code'])." ".mb_strtoupper($city['city']); ?></span> <br />
+					<span class='glyphicon glyphicon-earphone'></span><span class='text-muted'> <?php echo formatPhoneToReadable(htmlentities($city['phone'])) ?></span> <br />
+					<span class='glyphicon glyphicon-envelope'></span><span class='text-muted'> <?php echo htmlentities($city['mail']) ?></span> <br />
+					<span class='glyphicon glyphicon-globe'></span><span class='text-muted'> <?php echo htmlentities($city['website']) ?></span> <br />
+				</div>
 			</div>
-			<div class='panel-body'>
-				<span class='glyphicon glyphicon-pushpin'></span><span class='text-muted'> <?php echo htmlentities($city['address']).", ".htmlentities($city['zip_code'])." ".mb_strtoupper($city['city']); ?></span> <br />
-				<span class='glyphicon glyphicon-earphone'></span><span class='text-muted'> <?php echo formatPhoneToReadable(htmlentities($city['phone'])) ?></span> <br />
-				<span class='glyphicon glyphicon-envelope'></span><span class='text-muted'> <?php echo htmlentities($city['mail']) ?></span> <br />
-				<span class='glyphicon glyphicon-globe'></span><span class='text-muted'> <?php echo htmlentities($city['website']) ?></span> <br />
-		</div>
-	</div>
+			<?php
+		}
+		?>
 
 		<div class="panel panel-info">
 			<div class='panel-body'>
@@ -88,6 +94,12 @@
 					$user_last_name = $user["last_name"];
 					$user_phone = $user["phone"];
 					$user_picture_path = getUserPicturePath($setting_service, $user_login);
+				}
+				$query = "SELECT name FROM $tablename_sections WHERE `number`=".$role['Affiliation'] or die("Erreur lors de la consultation" . mysqli_error($db_link));
+				$cities = mysqli_query($db_link, $query);
+				$attached_section = null;
+				while($section = mysqli_fetch_array($cities)) {
+					$section_name = $section["name"];
 				}
 				if ($next_alignment == 'left') {
 					$prefix_1 = "<div class='row'><div class='col-sm-2'>";
@@ -113,7 +125,9 @@
 				}
 				echo $suffix_1;
 				echo $prefix_2;
-				?> <h4 class='text-primary'><?php echo htmlentities($role["Description"]) ?> </h4> <?php
+				?>
+				<h4 class='text-primary'><?php echo htmlentities($role["Description"]) ?> <small> <?php echo (!$user_has_chosen_a_section) ? '<br />'.htmlentities($section_name) : ''?> </small><br /></h4>
+				<?php
 				if (!empty($user_first_name)) {
 					?> <strong><?php echo ucfirst(htmlentities($user_first_name))." ".mb_strtoupper($user_last_name) ?> </strong> <br /> <?php
 				}
