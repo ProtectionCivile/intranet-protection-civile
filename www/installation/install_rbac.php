@@ -75,6 +75,7 @@ $rbac->Permissions->addPath('/admin-sections-update/admin-sections-view', array(
 // INITIALIZING ROLES SYSTEM
 /////////////////////////////////////////////////
 $rbac->Roles->add('Admin', 'Administrateur');
+$rbac->Roles->add('Public', 'Public');
 
 $rbac->Roles->add('Président', 'Président départemental');
 $rbac->Roles->add('Vice-Président-1', '1er Vice-Président départemental');
@@ -404,6 +405,18 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Hierarchy`='1',
 	`Tags`=''
 	WHERE `Title`='Admin'
+");
+
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='',
+	`Mail`='',
+	`Affiliation`='0',
+	`Callsign`='',
+	`Directory`='0',
+	`Assignable`='1',
+	`Hierarchy`='1',
+	`Tags`=''
+	WHERE `Title`='Public'
 ");
 
 
@@ -3947,6 +3960,7 @@ $rbac->Roles->assign('Admin', 'ope-clients-update-all');
 $rbac->Roles->assign('Admin', 'admin-sections-update');
 $rbac->Roles->assign('Admin', 'directory-update');
 $rbac->Roles->assign('Admin', 'admin-mailinglist-manage');
+$rbac->Roles->assign('Public', 'directory-view');
 $rbac->Roles->assign('Président', 'admin-settings-view');
 $rbac->Roles->assign('Président', 'admin-roles-view');
 $rbac->Roles->assign('Président', 'admin-permissions-view');
@@ -4908,6 +4922,7 @@ $rbac->Roles->assign('DLT-L Véhic Villeneuve', 'directory-view');
 // GOD MODE FOR THE USER INSTALLING THIS SCRIPT
 /////////////////////////////////////////////////
 $rbac->Users->assign('Admin', $_SESSION["ID"]);
+$rbac->Users->assign('Public', 2); // Hopu it is the 'public' user
 
 
 
