@@ -251,8 +251,8 @@ function buildPdfForDps($select_list_parameter_service_p, $pathfile, $dps_p) {
   $pdf->Text(140, 184, utf8_decode("Appartenance :"));
   $pdf->Text(60, 187, utf8_decode("Infirmiers ext. :"));
   $pdf->Text(140, 187, utf8_decode("Appartenance :"));
-  $pdf->Text(14, 190, utf8_decode("S.A.M.U. :"));
-  $pdf->Text(100, 190, utf8_decode("B.S.P.P. :"));
+  $pdf->Text(60, 190, utf8_decode("S.A.M.U. :"));
+  $pdf->Text(140, 190, utf8_decode("B.S.P.P. :"));
 
   $pdf->SetTextColor(220,120,20);
   $pdf->Text(85, 184, utf8_decode($dps_p['medicalext_nb_med']));
@@ -261,8 +261,8 @@ function buildPdfForDps($select_list_parameter_service_p, $pathfile, $dps_p) {
   $pdf->Text(165, 187, utf8_decode($dps_p['medicalext_inf_company']));
 	
 	
-  $pdf->Text(60, 190, utf8_decode($samu = $select_list_parameter_service_p->getTranslation('samu', $dps_p['samu'])));
-  $pdf->Text(140, 190, utf8_decode($bspp = $select_list_parameter_service_p->getTranslation('bspp', $dps_p['bspp'])));
+  $pdf->Text(85, 190, utf8_decode($samu = $select_list_parameter_service_p->getTranslation('samu', $dps_p['samu'])));
+  $pdf->Text(165, 190, utf8_decode($bspp = $select_list_parameter_service_p->getTranslation('bspp', $dps_p['bspp'])));
 
 
   $pdf->SetFont('Poppins-Semibold','',8);
