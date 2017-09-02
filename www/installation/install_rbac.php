@@ -752,7 +752,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Directory`='1',
 	`Assignable`='0',
 	`Hierarchy`='55',
-	`Tags`='Commission|Technique'
+	`Tags`='Pôle|Technique'
 	WHERE `Title`='C-LOG'
 ");
 
@@ -764,7 +764,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Directory`='1',
 	`Assignable`='0',
 	`Hierarchy`='56',
-	`Tags`='Commission|Technique'
+	`Tags`='Pôle|Technique'
 	WHERE `Title`='C-TRANS'
 ");
 
@@ -776,7 +776,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Directory`='1',
 	`Assignable`='0',
 	`Hierarchy`='57',
-	`Tags`='Commission|Technique'
+	`Tags`='Pôle|Technique'
 	WHERE `Title`='C-INFO'
 ");
 
@@ -792,7 +792,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Directory`='1',
 	`Assignable`='0',
 	`Hierarchy`='21',
-	`Tags`='Divers|Bureau'
+	`Tags`='Bureau'
 	WHERE `Title`='V-BUREAU'
 ");
 
