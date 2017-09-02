@@ -147,9 +147,10 @@
 					$dps_status = "accepted";
 					$dps['status_justification'] = $_POST['status_justification'];
 					$dps['status_validation_ddo_date'] = $today;
-					// TODO Generate PDF
-
-					// TODO Donner une variable $declarationFilePath avec le chemin du fichier généré pour la Préf.
+					// Generate PDF
+					require_once('functions/pdf/build-pdf-dps-recap.php');
+					$declarationFilePath = $pathfile.'/'.$cu_full.'-'.$dps_doc_suffix_declaration.'.pdf';
+					buildPdfForDps($declarationFilePath, $dps);
 
 					// Send mail
 					$action = 'accept-ddo';

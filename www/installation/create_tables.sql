@@ -26,16 +26,16 @@ CREATE TABLE `settings_mail` (
 
 CREATE TABLE `users` (
 	`ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`login` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-	`pass` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-	`last_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+	`login` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+	`pass` VARCHAR(80) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+	`last_name` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
 	`first_name` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci,
 	`phone` tinytext CHARACTER SET utf8 COLLATE utf8_general_ci,
-	`mail` varchar(80) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-	`attached_section` tinyint(4) NULL DEFAULT NULL,
-	`eprotec` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+	`mail` VARCHAR(80) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+	`attached_section` TINYINT(4) NULL DEFAULT NULL,
+	`eprotec` VARCHAR(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
 	PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 
 CREATE TABLE `clients` (
