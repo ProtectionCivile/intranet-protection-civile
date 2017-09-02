@@ -53,6 +53,7 @@
 				<li><a href=''>Cartoucheur de photos</a> <span class='label label-default'>Bientôt</span></li>
 				<li><a href=''>Générateur de signature mail</a> <span class='label label-default'>Bientôt</span></li>
 				<li><a href=''>Dossiers d'engagement</a> <span class='label label-default'>Bientôt</span></li>
+				<li><a href='online-help-cnil.php'>Informatique et libertés</a></li>
 			</ul>
 		</div>
 	</div>
