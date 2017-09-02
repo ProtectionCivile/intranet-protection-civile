@@ -1,7 +1,7 @@
 <div class='container'>
 	<div class="form-group form-group-md">
 		<div class='col-md-1 row'>
-			<label for='cities' >Section</label>
+			<label for='cities' >Antenne</label>
 		</div>
 		<div class='col-md-11' id='cities'>
 			<?php $activeOrNot = ($_SESSION['filtered_section'] == "*") ? "active" : ""; ?>

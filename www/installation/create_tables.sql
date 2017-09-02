@@ -124,6 +124,8 @@ INSERT INTO `settings_general`
 	('dps-doc-suffix-demande', 'DEM'),
 	('dps-doc-suffix-declaration',	'DECL'),
 	('eprotec-event-url', 'https://franceprotectioncivile.org/evenement_display.php?evenement=EVENTID'),
+	('eprotec-user-picture-url', 'https://franceprotectioncivile.org/images/user-specific/trombi/MATRICULE.jpg'),
+	('eprotec-default-user-picture-url', 'https://franceprotectioncivile.org/images/boy.png'),
 	('mail-signature-dlo',	'<strong>Le Directeur Local des Opérations</strong>'),
 	('mail-signature-ddo',	'<strong>Le Directeur Départemental des Opérations</strong><br />operationnel@protectioncivile92.org<br />06.74.95.31.75');
 
@@ -175,7 +177,8 @@ INSERT INTO `settings_mail`
 
 INSERT INTO `users`
 	(login, pass, last_name, first_name, phone, mail, attached_section, eprotec) VALUES
-	('Admin', '', 'Administrator', 'Général', '', 'directeur-adj-informatique@protectioncivile92.org', '0', ''),
+	('admin', '', 'Administrator', 'Général', '', 'directeur-adj-informatique@protectioncivile92.org', '0', ''),
+	('public', '', 'TOULEMONDE', 'Monsieur', '', 'directeur-adj-informatique@protectioncivile92.org', '0', ''),
 
 
 INSERT INTO `sections`

@@ -116,7 +116,7 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 					</ul>
 				</li>
 				<?php if ($rbac->check("directory-view", $currentUserID)) { ?>
-					<li class='disabled'><a href="#"><span class='glyphicon glyphicon-phone-alt'></span> Annuaire</a></li>
+					<li><a href="directory-list.php"><span class='glyphicon glyphicon-phone-alt'></span> Annuaire</a></li>
 				<?php } ?>
 				<li><a href="online-help.php"><span class='glyphicon glyphicon-question-sign'></span> Aide</a></li>
 

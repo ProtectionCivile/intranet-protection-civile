@@ -67,4 +67,9 @@ function formatTimeFrToReadable($str)
   }
   return DateTime::createFromFormat('Hi', $str)->format('H\hi');
 }
+
+function formatPhoneToReadable($str)
+{
+  return substr($str, 0, 2).' '.substr($str, 2, 2).' '.substr($str, 4, 2).' '.substr($str, 6, 2).' '.substr($str, 8, 2);
+}
 ?>
