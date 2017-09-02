@@ -1,7 +1,7 @@
 <?php
 require_once('lib/fpdf/fpdf.php');
 
-function buildPdfForDps($pathfile, $dps_p) {
+function buildPdfForDps($select_list_parameter_service_p, $pathfile, $dps_p) {
 
   $pdf=new FPDF();
   $pdf->AddPage();
@@ -12,8 +12,8 @@ function buildPdfForDps($pathfile, $dps_p) {
   $pdf->SetTextColor(0,64,128);
   $pdf->SetFont('Poppins-SemiBold','',10);
 
-  $dps_type_detailed = $select_list_parameter_service->getTranslation('dps_type_detailed', $dps_p['dps_type']);
-  $dps_type_short = $select_list_parameter_service->getTranslation('dps_type_short', $dps_p['dps_type']);
+  $dps_type_detailed = $select_list_parameter_service_p->getTranslation('dps_type_detailed', $dps_p['dps_type']);
+  $dps_type_short = $select_list_parameter_service_p->getTranslation('dps_type_short', $dps_p['dps_type']);
 
   $pdf->Text(12,62,utf8_decode("Ouverture d'un ".$dps_type_detailed." (".$dps_type_short.")"));
 

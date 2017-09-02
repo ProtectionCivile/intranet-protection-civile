@@ -54,6 +54,16 @@
 		<!-- Form to view files -->
 	  <?php require_once('components/dps/dps-files-view-panel.php'); ?>
 
+
+
+		<!-- A SUPPRIMER, FAIT POUR BRICE -->
+		<?php require_once('functions/pdf/build-pdf-dps-recap.php'); ?>
+		<?php buildPdfForDps($select_list_parameter_service, $pathfile.'/'.$cu_full.'-'.$dps_doc_suffix_declaration.'.pdf', $dps); ?>
+		<!-- A SUPPRIMER, FAIT POUR BRICE -->
+
+
+		
+
 		<!-- Formulaire de création de DPS -->
 		<?php require_once('components/dps/dps-view-form.php'); ?>
 
