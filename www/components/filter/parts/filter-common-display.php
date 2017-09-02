@@ -8,6 +8,7 @@ if (isset($_POST['hasSubmittedFilterParameters'])) {
 	$_SESSION['dateend'] = $_POST['formdateend'];
 	$_SESSION['filtered_section'] = $_POST['formfilteredsection'];
 	$_SESSION['dps_status'] = $_POST['formstatus'];
+	$_SESSION['tags'] = $_POST['formtags'];
 }
 ?>
 
@@ -20,4 +21,5 @@ if (isset($_POST['hasSubmittedFilterParameters'])) {
 	<input type='hidden' name='formdateend' id='formdateend' value='<?php echo $_SESSION['dateend']; ?>'>
 	<input type='hidden' name='formcurrentpage' id='formcurrentpage' value='<?php echo $_SESSION['current_page']; ?>'>
 	<input type='hidden' name='formnbelementsperpage' id='formnbelementsperpage' value='<?php echo $_SESSION['nb_elements_per_page']; ?>'>
+	<input type='hidden' name='formtags' id='formtags' value='<?php echo $_SESSION['tags']; ?>'>
 </form>

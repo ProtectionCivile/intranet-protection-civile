@@ -177,7 +177,8 @@ INSERT INTO `settings_mail`
 
 INSERT INTO `users`
 	(login, pass, last_name, first_name, phone, mail, attached_section, eprotec) VALUES
-	('Admin', '', 'Administrator', 'Général', '', 'directeur-adj-informatique@protectioncivile92.org', '0', ''),
+	('admin', '', 'Administrator', 'Général', '', 'directeur-adj-informatique@protectioncivile92.org', '0', ''),
+	('public', '', 'TOULEMONDE', 'Monsieur', '', 'directeur-adj-informatique@protectioncivile92.org', '0', ''),
 
 
 INSERT INTO `sections`
