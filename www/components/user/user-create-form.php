@@ -1,7 +1,9 @@
 <form class="form-horizontal" id="auto-validation-form" action='' role="form" method='post' accept-charset='utf-8'>
   <input type="hidden" id="wish" name="addUser" />
 
-  <?php require_once('user-edit-form-user-part.php'); ?>
+  <?php require_once('user-edit-form-generic-part.php'); ?>
+
+  <?php require_once('user-edit-form-password-part.php'); ?>
 
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-8">

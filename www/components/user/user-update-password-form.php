@@ -1,9 +1,6 @@
 <form class="form-horizontal" id="auto-validation-form" action='' role="form" method='post' accept-charset='utf-8'>
-  <input type="hidden" id="updateUser" name="updateUser" />
-  <input type="hidden" id="updatePassword" name="updatePassword" />
+  <input type="hidden" id="wish" name="updatePassword" />
   <input type="hidden" id="id" name="id" value="<?php echo $id; ?>" />
-
-  <?php require_once('user-edit-form-generic-part.php'); ?>
 
   <?php require_once('user-edit-form-password-part.php'); ?>
 
