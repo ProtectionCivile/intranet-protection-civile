@@ -431,7 +431,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité 92',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président'
 ");
@@ -443,7 +443,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité 92 Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='1',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Vice-Président-1'
 ");
@@ -467,7 +467,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité 92 Delta',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire'
 ");
@@ -479,7 +479,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='11',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Adjoint'
 ");
@@ -491,7 +491,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier'
 ");
@@ -503,7 +503,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='21',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Adjoint'
 ");
@@ -515,7 +515,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé 92',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DDO'
 ");
@@ -527,7 +527,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé 92 Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DDO-A'
 ");
@@ -539,7 +539,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé 92 Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DDO-B'
 ");
@@ -551,7 +551,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé 92 Charlie',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DDO-C'
 ");
@@ -563,7 +563,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso 92',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DDASS'
 ");
@@ -575,7 +575,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='COM 92',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DDC'
 ");
@@ -587,21 +587,9 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech 92',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DDT'
-");
-
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
-	`Phone`='0674953162',
-	`Mail`='directeur-adj-transmissions@protectioncivile92.org',
-	`Affiliation`='0',
-	`Callsign`='Tech 92 Alpha',
-	`Directory`='1',
-	`Assignable`='1',
-	`Hierarchy`='2',
-	`Tags`='Technique'
-	WHERE `Title`='DDT-T'
 ");
 
 mysqli_query($db_link, "UPDATE `rbac_roles` SET
@@ -611,7 +599,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech 92 Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DDT-L'
 ");
@@ -623,10 +611,22 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech 92 Charlie',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DDT-I'
 ");
+
+mysqli_query($db_link, "UPDATE `rbac_roles` SET
+	`Phone`='0674953162',
+	`Mail`='directeur-adj-transmissions@protectioncivile92.org',
+	`Affiliation`='0',
+	`Callsign`='Tech 92 Alpha',
+	`Directory`='1',
+	`Assignable`='1',
+	`Hierarchy`='53',
+	`Tags`='Technique'
+	WHERE `Title`='DDT-T'
+	");
 
 mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Phone`='0676457978',
@@ -635,7 +635,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For 92',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DDF'
 ");
@@ -647,7 +647,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Medica 92',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='81',
 	`Tags`='Divers'
 	WHERE `Title`='MED'
 ");
@@ -659,8 +659,8 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
-	`Tags`='Divers|Opérationnel'
+	`Hierarchy`='80',
+	`Tags`='Divers'
 	WHERE `Title`='SECRETARIAT'
 ");
 
@@ -675,7 +675,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='CM-FOR-ARS'
 ");
@@ -687,7 +687,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='43',
 	`Tags`='Formation'
 	WHERE `Title`='CM-FOR-OPR'
 ");
@@ -699,7 +699,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='44',
 	`Tags`='Formation'
 	WHERE `Title`='CM-FOR-CE'
 ");
@@ -711,7 +711,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='45',
 	`Tags`='Formation'
 	WHERE `Title`='CM-FOR-CH'
 ");
@@ -723,7 +723,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Paramed 92',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='82',
 	`Tags`='Divers'
 	WHERE `Title`='CM-PARAMED'
 ");
@@ -735,7 +735,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='5',
+	`Hierarchy`='35',
 	`Tags`='Opérationnel'
 	WHERE `Title`='CM-CODEP'
 ");
@@ -751,7 +751,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='21',
+	`Hierarchy`='55',
 	`Tags`='Commission|Technique'
 	WHERE `Title`='C-LOG'
 ");
@@ -763,7 +763,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='22',
+	`Hierarchy`='56',
 	`Tags`='Commission|Technique'
 	WHERE `Title`='C-TRANS'
 ");
@@ -775,7 +775,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='23',
+	`Hierarchy`='57',
 	`Tags`='Commission|Technique'
 	WHERE `Title`='C-INFO'
 ");
@@ -791,7 +791,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='11',
+	`Hierarchy`='21',
 	`Tags`='Divers|Bureau'
 	WHERE `Title`='V-BUREAU'
 ");
@@ -803,7 +803,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='12',
+	`Hierarchy`='22',
 	`Tags`='Divers|Bureau'
 	WHERE `Title`='V-CD'
 ");
@@ -815,7 +815,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='12',
+	`Hierarchy`='83',
 	`Tags`='Divers'
 	WHERE `Title`='V-RECRUTEMENT'
 ");
@@ -827,7 +827,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='15',
+	`Hierarchy`='84',
 	`Tags`='Divers|Opérationnel'
 	WHERE `Title`='V-DEMANDE-DPS'
 ");
@@ -839,7 +839,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='2',
+	`Hierarchy`='61',
 	`Tags`='Communication'
 	WHERE `Title`='V-COM'
 ");
@@ -851,7 +851,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='3',
+	`Hierarchy`='34',
 	`Tags`='Opérationnel'
 	WHERE `Title`='V-OPE'
 ");
@@ -863,7 +863,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='4',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='V-FOR'
 ");
@@ -875,7 +875,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='5',
+	`Hierarchy`='55',
 	`Tags`='Technique'
 	WHERE `Title`='V-TECH'
 ");
@@ -891,8 +891,8 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='5',
-	`Tags`='Permanence|Opérationnel'
+	`Hierarchy`='38',
+	`Tags`='Permanence|Opérationnel|Bureau'
 	WHERE `Title`='P-TRANSF'
 ");
 
@@ -903,7 +903,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='VISU 92',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='6',
+	`Hierarchy`='36',
 	`Tags`='Permanence|Opérationnel'
 	WHERE `Title`='P-CODEP'
 ");
@@ -915,7 +915,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='MICRO 92',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='7',
+	`Hierarchy`='37',
 	`Tags`='Permanence|Opérationnel'
 	WHERE `Title`='P-MICRO'
 ");
@@ -931,7 +931,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='30',
+	`Hierarchy`='3',
 	`Tags`='Diffusion|Président'
 	WHERE `Title`='D-PRES'
 ");
@@ -943,7 +943,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='30',
+	`Hierarchy`='12',
 	`Tags`='Diffusion|Secrétaire'
 	WHERE `Title`='D-SEC'
 ");
@@ -955,7 +955,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='30',
+	`Hierarchy`='22',
 	`Tags`='Diffusion|Trésorier'
 	WHERE `Title`='D-TRESO'
 ");
@@ -967,7 +967,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='30',
+	`Hierarchy`='39',
 	`Tags`='Diffusion|Opérationnel'
 	WHERE `Title`='D-DLO'
 ");
@@ -979,7 +979,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='30',
+	`Hierarchy`='46',
 	`Tags`='Diffusion|Formation'
 	WHERE `Title`='D-DLF'
 ");
@@ -991,7 +991,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='30',
+	`Hierarchy`='71',
 	`Tags`='Diffusion|Acso'
 	WHERE `Title`='D-DLAS'
 ");
@@ -1003,7 +1003,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='30',
+	`Hierarchy`='58',
 	`Tags`='Diffusion|Technique'
 	WHERE `Title`='D-DLT'
 ");
@@ -1015,7 +1015,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='30',
+	`Hierarchy`='59',
 	`Tags`='Diffusion|Technique'
 	WHERE `Title`='D-DLT-T'
 ");
@@ -1027,7 +1027,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='',
 	`Directory`='1',
 	`Assignable`='0',
-	`Hierarchy`='30',
+	`Hierarchy`='62',
 	`Tags`='Diffusion|Communication'
 	WHERE `Title`='D-DLC'
 ");
@@ -1043,7 +1043,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Asnières',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Asnières'
 ");
@@ -1055,7 +1055,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Asnières Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Asnières'
 ");
@@ -1067,7 +1067,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Asnières Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Asnières'
 ");
@@ -1079,7 +1079,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Asnières',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Asnières'
 ");
@@ -1091,7 +1091,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Asnières Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Asnières'
 ");
@@ -1103,7 +1103,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Asnières Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Asnières'
 ");
@@ -1115,7 +1115,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Asnières Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Asnières'
 ");
@@ -1127,7 +1127,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Asnières',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Asnières'
 ");
@@ -1139,7 +1139,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Asnières Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Asnières'
 ");
@@ -1151,7 +1151,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Asnières Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Asnières'
 ");
@@ -1163,7 +1163,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Asnières',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Asnières'
 ");
@@ -1175,7 +1175,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Asnières',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Asnières'
 ");
@@ -1187,7 +1187,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Asnières',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Asnières'
 ");
@@ -1199,7 +1199,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Asnières Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Asnières'
 ");
@@ -1211,7 +1211,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Asnières Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Asnières'
 ");
@@ -1224,7 +1224,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Boulogne',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Boulogne'
 ");
@@ -1236,7 +1236,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Boulogne Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Boulogne'
 ");
@@ -1248,7 +1248,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Boulogne Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Boulogne'
 ");
@@ -1260,7 +1260,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Boulogne',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Boulogne'
 ");
@@ -1272,7 +1272,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Boulogne Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Boulogne'
 ");
@@ -1284,7 +1284,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Boulogne Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Boulogne'
 ");
@@ -1296,7 +1296,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Boulogne Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Boulogne'
 ");
@@ -1308,7 +1308,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Boulogne',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Boulogne'
 ");
@@ -1320,7 +1320,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Boulogne Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Boulogne'
 ");
@@ -1332,7 +1332,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Boulogne Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Boulogne'
 ");
@@ -1344,7 +1344,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Boulogne',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Boulogne'
 ");
@@ -1356,7 +1356,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Boulogne',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Boulogne'
 ");
@@ -1368,7 +1368,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Boulogne',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Boulogne'
 ");
@@ -1380,7 +1380,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Boulogne Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Boulogne'
 ");
@@ -1392,7 +1392,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Boulogne Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Boulogne'
 ");
@@ -1405,7 +1405,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Bourg-la-Reine',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Bourg-la-Reine'
 ");
@@ -1417,7 +1417,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Bourg-la-Reine Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Bourg-la-Reine'
 ");
@@ -1429,7 +1429,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Bourg-la-Reine Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Bourg-la-Reine'
 ");
@@ -1441,7 +1441,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Bourg-la-Reine',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Bourg-la-Reine'
 ");
@@ -1453,7 +1453,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Bourg-la-Reine Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Bourg-la-Reine'
 ");
@@ -1465,7 +1465,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Bourg-la-Reine Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Bourg-la-Reine'
 ");
@@ -1477,7 +1477,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Bourg-la-Reine Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Bourg-la-Reine'
 ");
@@ -1489,7 +1489,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Bourg-la-Reine',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Bourg-la-Reine'
 ");
@@ -1501,7 +1501,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Bourg-la-Reine Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Bourg-la-Reine'
 ");
@@ -1513,7 +1513,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Bourg-la-Reine Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Bourg-la-Reine'
 ");
@@ -1525,7 +1525,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Bourg-la-Reine',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Bourg-la-Reine'
 ");
@@ -1537,7 +1537,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Bourg-la-Reine',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Bourg-la-Reine'
 ");
@@ -1549,7 +1549,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Bourg-la-Reine',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Bourg-la-Reine'
 ");
@@ -1561,7 +1561,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Bourg-la-Reine Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Bourg-la-Reine'
 ");
@@ -1573,7 +1573,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Bourg-la-Reine Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Bourg-la-Reine'
 ");
@@ -1586,7 +1586,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Clamart',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Clamart'
 ");
@@ -1598,7 +1598,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Clamart Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Clamart'
 ");
@@ -1610,7 +1610,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Clamart Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Clamart'
 ");
@@ -1622,7 +1622,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Clamart',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Clamart'
 ");
@@ -1634,7 +1634,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Clamart Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Clamart'
 ");
@@ -1646,7 +1646,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Clamart Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Clamart'
 ");
@@ -1658,7 +1658,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Clamart Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Clamart'
 ");
@@ -1670,7 +1670,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Clamart',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Clamart'
 ");
@@ -1682,7 +1682,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Clamart Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Clamart'
 ");
@@ -1694,7 +1694,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Clamart Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Clamart'
 ");
@@ -1706,7 +1706,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Clamart',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Clamart'
 ");
@@ -1718,7 +1718,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Clamart',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Clamart'
 ");
@@ -1730,7 +1730,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Clamart',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Clamart'
 ");
@@ -1742,7 +1742,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Clamart Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Clamart'
 ");
@@ -1754,7 +1754,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Clamart Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Clamart'
 ");
@@ -1767,7 +1767,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Clichy',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Clichy'
 ");
@@ -1779,7 +1779,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Clichy Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Clichy'
 ");
@@ -1791,7 +1791,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Clichy Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Clichy'
 ");
@@ -1803,7 +1803,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Clichy',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Clichy'
 ");
@@ -1815,7 +1815,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Clichy Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Clichy'
 ");
@@ -1827,7 +1827,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Clichy Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Clichy'
 ");
@@ -1839,7 +1839,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Clichy Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Clichy'
 ");
@@ -1851,7 +1851,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Clichy',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Clichy'
 ");
@@ -1863,7 +1863,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Clichy Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Clichy'
 ");
@@ -1875,7 +1875,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Clichy Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Clichy'
 ");
@@ -1887,7 +1887,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Clichy',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Clichy'
 ");
@@ -1899,7 +1899,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Clichy',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Clichy'
 ");
@@ -1911,7 +1911,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Clichy',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Clichy'
 ");
@@ -1923,7 +1923,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Clichy Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Clichy'
 ");
@@ -1935,7 +1935,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Clichy Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Clichy'
 ");
@@ -1948,7 +1948,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Colombes',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Colombes'
 ");
@@ -1960,7 +1960,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Colombes Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Colombes'
 ");
@@ -1972,7 +1972,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Colombes Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Colombes'
 ");
@@ -1984,7 +1984,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Colombes',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Colombes'
 ");
@@ -1996,7 +1996,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Colombes Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Colombes'
 ");
@@ -2008,7 +2008,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Colombes Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Colombes'
 ");
@@ -2020,7 +2020,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Colombes Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Colombes'
 ");
@@ -2032,7 +2032,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Colombes',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Colombes'
 ");
@@ -2044,7 +2044,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Colombes Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Colombes'
 ");
@@ -2056,7 +2056,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Colombes Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Colombes'
 ");
@@ -2068,7 +2068,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Colombes',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Colombes'
 ");
@@ -2080,7 +2080,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Colombes',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Colombes'
 ");
@@ -2092,7 +2092,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Colombes',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Colombes'
 ");
@@ -2104,7 +2104,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Colombes Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Colombes'
 ");
@@ -2116,7 +2116,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Colombes Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Colombes'
 ");
@@ -2129,7 +2129,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Courbevoie',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Courbevoie'
 ");
@@ -2141,7 +2141,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Courbevoie Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Courbevoie'
 ");
@@ -2153,7 +2153,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Courbevoie Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Courbevoie'
 ");
@@ -2165,7 +2165,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Courbevoie',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Courbevoie'
 ");
@@ -2177,7 +2177,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Courbevoie Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Courbevoie'
 ");
@@ -2189,7 +2189,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Courbevoie Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Courbevoie'
 ");
@@ -2201,7 +2201,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Courbevoie Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Courbevoie'
 ");
@@ -2213,7 +2213,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Courbevoie',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Courbevoie'
 ");
@@ -2225,7 +2225,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Courbevoie Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Courbevoie'
 ");
@@ -2237,7 +2237,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Courbevoie Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Courbevoie'
 ");
@@ -2261,7 +2261,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Courbevoie',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Courbevoie'
 ");
@@ -2273,7 +2273,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Courbevoie',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Courbevoie'
 ");
@@ -2285,7 +2285,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Courbevoie',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Courbevoie'
 ");
@@ -2297,7 +2297,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Courbevoie Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Courbevoie'
 ");
@@ -2309,7 +2309,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Courbevoie Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Courbevoie'
 ");
@@ -2322,7 +2322,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Garches',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Garches'
 ");
@@ -2334,7 +2334,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Garches Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Garches'
 ");
@@ -2346,7 +2346,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Garches Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Garches'
 ");
@@ -2358,7 +2358,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Garches',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Garches'
 ");
@@ -2370,7 +2370,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Garches Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Garches'
 ");
@@ -2382,7 +2382,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Garches Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Garches'
 ");
@@ -2394,7 +2394,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Garches Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Garches'
 ");
@@ -2406,7 +2406,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Garches',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Garches'
 ");
@@ -2418,7 +2418,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Garches Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Garches'
 ");
@@ -2430,7 +2430,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Garches Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Garches'
 ");
@@ -2442,7 +2442,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Garches',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Garches'
 ");
@@ -2454,7 +2454,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Garches',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Garches'
 ");
@@ -2466,7 +2466,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Garches',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Garches'
 ");
@@ -2478,7 +2478,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Garches Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Garches'
 ");
@@ -2490,7 +2490,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Garches Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Garches'
 ");
@@ -2503,7 +2503,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Gennevilliers',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Gennevilliers'
 ");
@@ -2515,7 +2515,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Gennevilliers Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Gennevilliers'
 ");
@@ -2527,7 +2527,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Gennevilliers Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Gennevilliers'
 ");
@@ -2539,7 +2539,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Gennevilliers',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Gennevilliers'
 ");
@@ -2551,7 +2551,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Gennevilliers Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Gennevilliers'
 ");
@@ -2563,7 +2563,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Gennevilliers Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Gennevilliers'
 ");
@@ -2575,7 +2575,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Gennevilliers Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Gennevilliers'
 ");
@@ -2587,7 +2587,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Gennevilliers',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Gennevilliers'
 ");
@@ -2599,7 +2599,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Gennevilliers Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Gennevilliers'
 ");
@@ -2611,7 +2611,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Gennevilliers Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Gennevilliers'
 ");
@@ -2623,7 +2623,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Gennevilliers',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Gennevilliers'
 ");
@@ -2635,7 +2635,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Gennevilliers',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Gennevilliers'
 ");
@@ -2647,7 +2647,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Gennevilliers',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Gennevilliers'
 ");
@@ -2659,7 +2659,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Gennevilliers Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Gennevilliers'
 ");
@@ -2671,7 +2671,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Gennevilliers Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Gennevilliers'
 ");
@@ -2684,7 +2684,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Levallois',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Levallois'
 ");
@@ -2696,7 +2696,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Levallois Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Levallois'
 ");
@@ -2708,7 +2708,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Levallois Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Levallois'
 ");
@@ -2720,7 +2720,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Levallois',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Levallois'
 ");
@@ -2732,7 +2732,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Levallois Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Levallois'
 ");
@@ -2744,7 +2744,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Levallois Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Levallois'
 ");
@@ -2756,7 +2756,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Levallois Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Levallois'
 ");
@@ -2768,7 +2768,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Levallois',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Levallois'
 ");
@@ -2780,7 +2780,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Levallois Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Levallois'
 ");
@@ -2792,7 +2792,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Levallois Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Levallois'
 ");
@@ -2804,7 +2804,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Levallois',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Levallois'
 ");
@@ -2816,7 +2816,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Levallois',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Levallois'
 ");
@@ -2828,7 +2828,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Levallois',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Levallois'
 ");
@@ -2840,7 +2840,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Levallois Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Levallois'
 ");
@@ -2852,7 +2852,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Levallois Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Levallois'
 ");
@@ -2865,7 +2865,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Montrouge',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Montrouge'
 ");
@@ -2877,7 +2877,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Montrouge Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Montrouge'
 ");
@@ -2889,7 +2889,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Montrouge Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Montrouge'
 ");
@@ -2901,7 +2901,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Montrouge',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Montrouge'
 ");
@@ -2913,7 +2913,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Montrouge Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Montrouge'
 ");
@@ -2925,7 +2925,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Montrouge Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Montrouge'
 ");
@@ -2937,7 +2937,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Montrouge Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Montrouge'
 ");
@@ -2949,7 +2949,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Montrouge',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Montrouge'
 ");
@@ -2961,7 +2961,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Montrouge Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Montrouge'
 ");
@@ -2973,7 +2973,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Montrouge Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Montrouge'
 ");
@@ -2985,7 +2985,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Montrouge',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Montrouge'
 ");
@@ -2997,7 +2997,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Montrouge',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Montrouge'
 ");
@@ -3009,7 +3009,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Montrouge',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Montrouge'
 ");
@@ -3021,7 +3021,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Montrouge Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Montrouge'
 ");
@@ -3033,7 +3033,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Montrouge Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Montrouge'
 ");
@@ -3046,7 +3046,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Nanterre',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Nanterre'
 ");
@@ -3058,7 +3058,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Nanterre Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Nanterre'
 ");
@@ -3070,7 +3070,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Nanterre Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Nanterre'
 ");
@@ -3082,7 +3082,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Nanterre',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Nanterre'
 ");
@@ -3094,7 +3094,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Nanterre Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Nanterre'
 ");
@@ -3106,7 +3106,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Nanterre Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Nanterre'
 ");
@@ -3118,7 +3118,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Nanterre Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Nanterre'
 ");
@@ -3130,7 +3130,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Nanterre',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Nanterre'
 ");
@@ -3142,7 +3142,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Nanterre Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Nanterre'
 ");
@@ -3154,7 +3154,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Nanterre Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Nanterre'
 ");
@@ -3166,7 +3166,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Nanterre',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Nanterre'
 ");
@@ -3178,7 +3178,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Nanterre',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Nanterre'
 ");
@@ -3190,7 +3190,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Nanterre',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Nanterre'
 ");
@@ -3202,7 +3202,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Nanterre Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Nanterre'
 ");
@@ -3214,7 +3214,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Nanterre Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Nanterre'
 ");
@@ -3227,7 +3227,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Rueil',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Rueil'
 ");
@@ -3239,7 +3239,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Rueil Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Rueil'
 ");
@@ -3251,7 +3251,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Rueil Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Rueil'
 ");
@@ -3263,7 +3263,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Rueil',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Rueil'
 ");
@@ -3275,7 +3275,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Rueil Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Rueil'
 ");
@@ -3287,7 +3287,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Rueil Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Rueil'
 ");
@@ -3299,7 +3299,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Rueil Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Rueil'
 ");
@@ -3311,7 +3311,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Rueil',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Rueil'
 ");
@@ -3323,7 +3323,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Rueil Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Rueil'
 ");
@@ -3335,7 +3335,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Rueil Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Rueil'
 ");
@@ -3347,7 +3347,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Rueil',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Rueil'
 ");
@@ -3359,7 +3359,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Rueil',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Rueil'
 ");
@@ -3371,7 +3371,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Rueil',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Rueil'
 ");
@@ -3383,7 +3383,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Rueil Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Rueil'
 ");
@@ -3395,7 +3395,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Rueil Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Rueil'
 ");
@@ -3408,7 +3408,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Suresnes',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Suresnes'
 ");
@@ -3420,7 +3420,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Suresnes Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Suresnes'
 ");
@@ -3432,7 +3432,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Suresnes Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Suresnes'
 ");
@@ -3444,7 +3444,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Suresnes',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Suresnes'
 ");
@@ -3456,7 +3456,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Suresnes Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Suresnes'
 ");
@@ -3468,7 +3468,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Suresnes Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Suresnes'
 ");
@@ -3480,7 +3480,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Suresnes Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Suresnes'
 ");
@@ -3492,7 +3492,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Suresnes',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Suresnes'
 ");
@@ -3504,7 +3504,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Suresnes Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Suresnes'
 ");
@@ -3516,7 +3516,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Suresnes Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Suresnes'
 ");
@@ -3528,7 +3528,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Suresnes',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Suresnes'
 ");
@@ -3540,7 +3540,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Suresnes',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Suresnes'
 ");
@@ -3552,7 +3552,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Suresnes',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Suresnes'
 ");
@@ -3564,7 +3564,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Suresnes Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Suresnes'
 ");
@@ -3576,7 +3576,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Suresnes Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Suresnes'
 ");
@@ -3589,7 +3589,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Vanves',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Vanves'
 ");
@@ -3601,7 +3601,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Vanves Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Vanves'
 ");
@@ -3613,7 +3613,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Vanves Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Vanves'
 ");
@@ -3625,7 +3625,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Vanves',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Vanves'
 ");
@@ -3637,7 +3637,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Vanves Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Vanves'
 ");
@@ -3649,7 +3649,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Vanves Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Vanves'
 ");
@@ -3661,7 +3661,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Vanves Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Vanves'
 ");
@@ -3673,7 +3673,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Vanves',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Vanves'
 ");
@@ -3685,7 +3685,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Vanves Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Vanves'
 ");
@@ -3697,7 +3697,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Vanves Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Vanves'
 ");
@@ -3709,7 +3709,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Vanves',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Vanves'
 ");
@@ -3721,7 +3721,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Vanves',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Vanves'
 ");
@@ -3733,7 +3733,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Vanves',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Vanves'
 ");
@@ -3745,7 +3745,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Vanves Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Vanves'
 ");
@@ -3757,7 +3757,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Vanves Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Vanves'
 ");
@@ -3770,7 +3770,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Villeneuve',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='0',
 	`Tags`='Bureau|Président'
 	WHERE `Title`='Président Villeneuve'
 ");
@@ -3782,7 +3782,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Villeneuve Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='10',
 	`Tags`='Bureau|Secrétaire'
 	WHERE `Title`='Secrétaire Villeneuve'
 ");
@@ -3794,7 +3794,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Autorité Villeneuve Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='20',
 	`Tags`='Bureau|Trésorier'
 	WHERE `Title`='Trésorier Villeneuve'
 ");
@@ -3806,7 +3806,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Villeneuve',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='30',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO Villeneuve'
 ");
@@ -3818,7 +3818,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Villeneuve Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='31',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-A Villeneuve'
 ");
@@ -3830,7 +3830,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Villeneuve Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='32',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-B Villeneuve'
 ");
@@ -3842,7 +3842,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Opé Villeneuve Charlie',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='4',
+	`Hierarchy`='33',
 	`Tags`='Opérationnel'
 	WHERE `Title`='DLO-C Villeneuve'
 ");
@@ -3854,7 +3854,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Villeneuve',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='40',
 	`Tags`='Formation'
 	WHERE `Title`='DLF Villeneuve'
 ");
@@ -3866,7 +3866,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Villeneuve Alpha',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='41',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-A Villeneuve'
 ");
@@ -3878,7 +3878,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='For Villeneuve Bravo',
 	`Directory`='0',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='42',
 	`Tags`='Formation'
 	WHERE `Title`='DLF-B Villeneuve'
 ");
@@ -3890,7 +3890,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Acso Villeneuve',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='70',
 	`Tags`='Acso'
 	WHERE `Title`='DLAS Villeneuve'
 ");
@@ -3902,7 +3902,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Com Villeneuve',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='60',
 	`Tags`='Communication'
 	WHERE `Title`='DLC Villeneuve'
 ");
@@ -3914,7 +3914,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Villeneuve',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='1',
+	`Hierarchy`='50',
 	`Tags`='Technique'
 	WHERE `Title`='DLT Villeneuve'
 ");
@@ -3926,7 +3926,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Villeneuve Alpha',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='2',
+	`Hierarchy`='51',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Matér Villeneuve'
 ");
@@ -3938,7 +3938,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	`Callsign`='Tech Villeneuve Bravo',
 	`Directory`='1',
 	`Assignable`='1',
-	`Hierarchy`='3',
+	`Hierarchy`='52',
 	`Tags`='Technique'
 	WHERE `Title`='DLT-L Véhic Villeneuve'
 ");

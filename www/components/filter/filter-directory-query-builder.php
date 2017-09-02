@@ -36,5 +36,5 @@
 	}
 
 
-	$sqlQuery = $sqlQuery." ORDER by Hierarchy ASC ";
+	$sqlQuery = $sqlQuery." ORDER by Affiliation ASC, Hierarchy ASC ";
 ?>
