@@ -69,7 +69,7 @@ function buildPdfForDps($select_list_parameter_service_p, $pathfile, $dps_p) {
   $pdf->Text(14, 103, utf8_decode("Activité / descriptif :"));
   $pdf->Text(14, 106, utf8_decode("Lieux précis :"));
   $pdf->SetTextColor(210,120,20);
-  $pdf->Text(40, 100, utf8_decode("Combats Kata et karaté : championnats départementaux 2015"));
+  $pdf->Text(40, 100, utf8_decode($dps_p['event_name']));
   $pdf->Text(40, 103, utf8_decode("Sport / Karaté"));
   $pdf->Text(40, 106, utf8_decode("13 Avenue du Chat blanc sur la grande branche en chêne clair - 92345 Cormeilles En Parisis Sur Marne de la Seine"));
   $pdf->Text(14, 109, utf8_decode("La manifestation se déroule le 04-10-2015 de 08H00 à 19H00"));
