@@ -291,14 +291,14 @@ function buildPdfForDps($select_list_parameter_service_p, $pathfile, $dps_p) {
   $pdf->SetFont('Arial','',7);
   $pdf->SetTextColor(0,0,0);
   $pdf->Text(12, 247, utf8_decode("Le Directeur Local des Opérations"));
-  $pdf->Text(12, 250, utf8_decode("Antenne de Courbevoie, Neuilly, La garenne colombes"));
-  $pdf->Text(12, 253, utf8_decode("Nicolas Lethellier"));
+  $pdf->Text(12, 250, utf8_decode(""));
+  $pdf->Text(12, 253, utf8_decode(""));
   $pdf->Text(12, 256, utf8_decode("Le 13-10-2015"));
 
 
   $pdf->Text(120, 247, utf8_decode("Le Directeur Départemental des Opérations"));
   $pdf->Text(120, 250, utf8_decode("Protection Civile des Hauts-de-Seine"));
-  $pdf->Text(120, 253, utf8_decode("Par intérim : Pascal Mallet"));
+  $pdf->Text(120, 253, utf8_decode(""));
   $pdf->Text(120, 256, utf8_decode("Le 18-10-2015"));
   $pdf->Image("img/signatures/rod92.png",170,259,30,15);
   $pdf->Image("img/signatures/tampon.png",110,259,50,15);
