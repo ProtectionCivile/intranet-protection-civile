@@ -70,10 +70,18 @@ function buildPdfForDps($select_list_parameter_service_p, $pathfile, $dps_p) {
   $pdf->Text(14, 106, utf8_decode("Lieux précis :"));
   $pdf->SetTextColor(210,120,20);
   $pdf->Text(40, 100, utf8_decode($dps_p['event_name']));
-  $pdf->Text(40, 103, utf8_decode("Sport / Karaté"));
-  $pdf->Text(40, 106, utf8_decode("13 Avenue du Chat blanc sur la grande branche en chêne clair - 92345 Cormeilles En Parisis Sur Marne de la Seine"));
-  $pdf->Text(14, 109, utf8_decode("La manifestation se déroule le 04-10-2015 de 08H00 à 19H00"));
-  $pdf->Text(14, 112, utf8_decode("Aucun dossier n'a été déposé en préfecture."));
+  $pdf->Text(40, 103, utf8_decode($dps_p['event_description']));
+  $pdf->Text(40, 106, utf8_decode($dps_p['event_address']));
+	if($dps_p['event_begin_date'] == $dps_p['event_end_date']){
+		$pdf->Text(14, 109, utf8_decode("La manifestation se déroule le ".formatDateFrToReadable($dps_p['event_begin_date'])." de ".formatTimeFrToReadable($dps_p['event_begin_time'])." à ".formatTimeFrToReadable($dps_p['event_end_time'])));
+	}else{
+			$pdf->Text(14, 109, utf8_decode("La manifestation se déroule du ".formatDateFrToReadable($dps_p['event_begin_date'])." à ".formatTimeFrToReadable($dps_p['event_begin_time'])." au ".formatDateFrToReadable($dps_p['event_end_date'])." à ".formatTimeFrToReadable($dps_p['event_end_time'])));
+		}
+	if($dps_p['event_pref_secu'] == "0"){
+		$pdf->Text(14, 112, utf8_decode("Aucun dossier n'a été déposé en préfecture."));
+	}else{
+		$pdf->Text(14, 112, utf8_decode("Un dossier a été déposé en préfecture."));
+	}
 
   //RIS
   $pdf->SetTextColor(0,64,128);
@@ -98,22 +106,79 @@ function buildPdfForDps($select_list_parameter_service_p, $pathfile, $dps_p) {
   $pdf->Text(184, 139, utf8_decode("RIS :"));
   $pdf->Text(14, 142, utf8_decode("Commentaire sur le RIS :"));
 
+	if($dps_p['ris_p2'] == "1"){
+		$p2_value = "25";
+		$p2_text = "Public assis (spectacle, réunion, restauration, etc.)";
+	}elseif($dps_p['ris_p2'] == "2"){
+		$p2_value = "30";
+		$p2_text = "Public debout (Exposition, foire, salon, exposition, etc.)";
+	}elseif($dps_p['ris_p2'] == "3"){
+		$p2_value = "35";
+		$p2_text = "Public debout actif (Spectacle avec public statique, fête foraine, etc.) ";
+	}elseif($dps_p['ris_p2'] == "4"){
+		$p2_value = "40";
+		$p2_text = "Public debout à risque (public dynamique, danse, féria, carnaval, etc.)";
+	}
+	
+	if($dps_p['ris_e1'] == "1"){
+		$e1_value = "25";
+		$e1_text = "Faible (Structure permanente, voies publiques, etc.)";
+	}elseif($dps_p['ris_e1'] == "2"){
+		$e1_value = "30";
+		$e1_text = "Modéré (Gradins, tribunes, mois de 2 hectares, etc.)";
+	}elseif($dps_p['ris_e1'] == "3"){
+		$e1_value = "35";
+		$e1_text = "Moyen (Entre 2 et 5 hectares, autres conditions, etc.)";
+	}elseif($dps_p['ris_e1'] == "4"){
+		$e1_value = "40";
+		$e1_text = "Elevé (Brancardage > 600m, pas d'accès VPSP, etc.)";
+	}
+	
+	if($dps_p['ris_e2'] == "1"){
+		$e2_value = "25";
+		$e2_text = "Faible (Moins de 10 minutes)";
+	}elseif($dps_p['ris_e2'] == "2"){
+		$e2_value = "30";
+		$e2_text = "Modéré (Entre 10 et 20 minutes)";
+	}elseif($dps_p['ris_e2'] == "3"){
+		$e2_value = "35";
+		$e2_text = "Moyen (Entre 20 et 30 minutes)";
+	}elseif($dps_p['ris_e2'] == "4"){
+		$e2_value = "40";
+		$e2_text = "Elevé (Plus de 30 minutes)";
+	}
+	
   $pdf->SetTextColor(210,120,20);
-  $pdf->Text(50, 124, utf8_decode("250000"));
-  $pdf->Text(115, 124, utf8_decode("250000"));
-  $pdf->Text(190, 124, utf8_decode("500000"));
-  $pdf->Text(191, 127, utf8_decode("0,40"));
-  $pdf->Text(191, 130, utf8_decode("0,40"));
-  $pdf->Text(191, 133, utf8_decode("0,40"));
-  $pdf->Text(50, 136, utf8_decode("0,80"));
-  $pdf->Text(191, 139, utf8_decode("124"));
-  $pdf->Text(75, 127, utf8_decode("Public debout (spectacle avec public dynamique, danse féria, spectacle de rue, etc.)"));
-  $pdf->Text(75, 130, utf8_decode("Espace naturels : surfaces Supérieur ou égal à 5 ha."));
-  $pdf->Text(75, 133, utf8_decode("Entre 20 minutes et 30 minutes"));
-  $pdf->Text(50, 139, utf8_decode("Point d'Alerte et de Premiers secours (PAPS)"));
-  $pdf->MultiCell(160,24);
+  $pdf->Text(50, 124, utf8_decode($dps_p['ris_p1_actors']));
+  $pdf->Text(115, 124, utf8_decode($dps_p['ris_p1_public']));
+  $pdf->Text(191, 124, utf8_decode($dps_p['ris_p1_actors'] + $dps_p['ris_p1_public']));
+  $pdf->Text(191, 127, utf8_decode($p2_value/100));
+  $pdf->Text(191, 130, utf8_decode($e1_value/100));
+  $pdf->Text(191, 133, utf8_decode($e2_value/100));
+	
+	$i = ($p2_value+$e1_value+$e2_value)/100;
+	
+  $pdf->Text(50, 136, utf8_decode($i));
+	
+	$p1 = $dps_p['ris_p1_actors'] + $dps_p['ris_p1_public'];
+	if($p1>100000){
+		$p = 100000 + (($p1 - 100000)/2);
+	}else{$p = $p1;
+		 }
+	
+	$ris = $i*($p / 1000);
+	
+  $pdf->Text(191, 139, utf8_decode($ris));
+	
+	
+	
+  $pdf->Text(75, 127, utf8_decode($p2_text));
+  $pdf->Text(75, 130, utf8_decode($e1_text));
+  $pdf->Text(75, 133, utf8_decode($e2_text));
+  $pdf->Text(50, 139, utf8_decode($dps_type_detailed));
+  $pdf->MultiCell(160,24,'');
   $pdf->Cell(39);
-  $pdf->MultiCell(150,3,utf8_decode("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"));
+  $pdf->MultiCell(150,3,utf8_decode($dps_p['ris_comment']));
 
   //Configuration du DPS
   $pdf->SetTextColor(0,64,128);
@@ -124,7 +189,15 @@ function buildPdfForDps($select_list_parameter_service_p, $pathfile, $dps_p) {
 
   $pdf->SetFont('Arial','',7);
   $pdf->SetTextColor(0,0,0);
-  $pdf->Text(14, 163, utf8_decode("Le Dispositif Prévisionnel de Secours sera activé du 04-10-2015 à 07H30 au 05-10-2015 à 18H00."));
+	
+	if($dps_p['dps_begin_date'] == $dps_p['dps_end_date']){
+		$pdf->Text(14, 163, utf8_decode("Le Dispositif Prévisionnel de Secours sera activé le ".formatDateFrToReadable($dps_p['dps_begin_date'])." de ".formatTimeFrToReadable($dps_p['dps_begin_time'])." à ".formatTimeFrToReadable($dps_p['dps_end_time'])));
+	}else{
+			$pdf->Text(14, 163, utf8_decode("Le Dispositif Prévisionnel de Secours sera activé du ".formatDateFrToReadable($dps_p['dps_begin_date'])." à ".formatTimeFrToReadable($dps_p['dps_begin_time'])." au ".formatDateFrToReadable($dps_p['dps_end_date'])." à ".formatTimeFrToReadable($dps_p['dps_end_time'])));
+		}
+	
+	
+	
   $pdf->SetFont('Arial','B',7);
   $pdf->Text(14, 166, utf8_decode("Moyens fournis par l'AASC :"));
   $pdf->Text(60, 166, utf8_decode("CE / CP :"));
@@ -144,21 +217,21 @@ function buildPdfForDps($select_list_parameter_service_p, $pathfile, $dps_p) {
   $pdf->Text(140, 175, utf8_decode("Moyens sup. :"));
 
   $pdf->SetTextColor(210,120,20);
-  $pdf->Text(85, 166, utf8_decode("12"));
-  $pdf->Text(120, 166, utf8_decode("230"));
-  $pdf->Text(165, 166, utf8_decode("390"));
-  $pdf->Text(195, 166, utf8_decode("98"));
-  $pdf->Text(85, 169, utf8_decode("16"));
-  $pdf->Text(120, 169, utf8_decode("90"));
-  $pdf->Text(165, 169, utf8_decode("3"));
-  $pdf->Text(195, 169, utf8_decode("230"));
-  $pdf->Text(85, 172, utf8_decode("12"));
-  $pdf->Text(120, 172, utf8_decode("7"));
-  $pdf->Text(165, 172, utf8_decode("68"));
-  $pdf->Text(195, 172, utf8_decode("460"));
-  $pdf->Text(85, 175, utf8_decode("21"));
-  $pdf->Text(120, 175, utf8_decode("65"));
-  $pdf->Text(165, 175, utf8_decode("SMG + groupe + tout ça"));
+  $pdf->Text(85, 166, utf8_decode($dps_p['dps_nb_ce']));
+  $pdf->Text(120, 166, utf8_decode($dps_p['dps_nb_pse2']));
+  $pdf->Text(165, 166, utf8_decode($dps_p['dps_nb_pse1']));
+  $pdf->Text(195, 166, utf8_decode($dps_p['dps_nb_psc1']));
+  $pdf->Text(85, 169, utf8_decode($dps_p['dps_nb_lot_a']));
+  $pdf->Text(120, 169, utf8_decode($dps_p['dps_nb_lot_b']));
+  $pdf->Text(165, 169, utf8_decode($dps_p['dps_nb_lot_c']));
+  $pdf->Text(195, 169, utf8_decode($dps_p['dps_nb_dae']));
+  $pdf->Text(85, 172, utf8_decode($dps_p['dps_nb_vpsp_transp']));
+  $pdf->Text(120, 172, utf8_decode($dps_p['dps_nb_vpsp_soin']));
+  $pdf->Text(165, 172, utf8_decode($dps_p['dps_nb_vtu']));
+  $pdf->Text(195, 172, utf8_decode($dps_p['dps_nb_tente']));
+  $pdf->Text(85, 175, utf8_decode($dps_p['dps_nb_med_asso']));
+  $pdf->Text(120, 175, utf8_decode($dps_p['dps_nb_inf_asso']));
+  $pdf->Text(165, 175, utf8_decode($dps_p['dps_other_matos_asso']));
 
 
   $pdf->SetTextColor(0,0,0);
@@ -168,9 +241,9 @@ function buildPdfForDps($select_list_parameter_service_p, $pathfile, $dps_p) {
   $pdf->Text(60, 181, utf8_decode("autres moyens :"));
 
   $pdf->SetTextColor(220,120,20);
-  $pdf->Text(85, 178, utf8_decode("Oui"));
-  $pdf->Text(165, 178, utf8_decode("12"));
-  $pdf->Text(85, 181, utf8_decode("Un gymnase"));
+  $pdf->Text(85, 178, utf8_decode($dps_p['clientmatos_infirmerie']));
+  $pdf->Text(165, 178, utf8_decode($dps_p['clientmatos_tente']));
+  $pdf->Text(85, 181, utf8_decode($dps_p['clientmatos_other']));
 
   $pdf->SetTextColor(0,0,0);
   $pdf->Text(14, 184, utf8_decode("Moyens medicaux :"));
@@ -182,12 +255,14 @@ function buildPdfForDps($select_list_parameter_service_p, $pathfile, $dps_p) {
   $pdf->Text(100, 190, utf8_decode("B.S.P.P. :"));
 
   $pdf->SetTextColor(220,120,20);
-  $pdf->Text(85, 184, utf8_decode("1"));
-  $pdf->Text(165, 184, utf8_decode("Jean-Jacques Goldman"));
-  $pdf->Text(85, 187, utf8_decode("13"));
-  $pdf->Text(165, 187, utf8_decode("Infirm land"));
-  $pdf->Text(60, 190, utf8_decode("Informé, non présent"));
-  $pdf->Text(140, 190, utf8_decode("Ni informé, Ni présent"));
+  $pdf->Text(85, 184, utf8_decode($dps_p['medicalext_nb_med']));
+  $pdf->Text(165, 184, utf8_decode($dps_p['medicalext_med_company']));
+  $pdf->Text(85, 187, utf8_decode($dps_p['medicalext_nb_inf']));
+  $pdf->Text(165, 187, utf8_decode($dps_p['medicalext_inf_company']));
+	
+	
+  $pdf->Text(60, 190, utf8_decode($samu = $select_list_parameter_service_p->getTranslation('samu', $dps_p['samu'])));
+  $pdf->Text(140, 190, utf8_decode($bspp = $select_list_parameter_service_p->getTranslation('bspp', $dps_p['bspp'])));
 
 
   $pdf->SetFont('Poppins-Semibold','',8);
@@ -197,12 +272,21 @@ function buildPdfForDps($select_list_parameter_service_p, $pathfile, $dps_p) {
   $pdf->Rect(12, 200, 191, 15) ;
   $pdf->SetTextColor(0,0,0);
 
+	$pdf->MultiCell(160,5,'');
+	$pdf->SetFont('Arial','',7);
+	$pdf->Cell(3,3,'');
+	$pdf->MultiCell(180,3,utf8_decode($dps_p['dps_justification']));
 
   $pdf->SetFont('Poppins-Semibold','',8);
   $pdf->SetTextColor(0,64,128);
   $pdf->SetXY(12,217);
   $pdf->Cell(50,5,utf8_decode("Cadre réservé à l'administration"),1,0,"","true");
   $pdf->Rect(12, 222, 191, 20) ;
+	
+	$pdf->MultiCell(160,5,'');
+	$pdf->SetFont('Arial','',7);
+	$pdf->Cell(3,3,'');
+	$pdf->MultiCell(180,3,utf8_decode($dps_p['status_justification']));
 
   $pdf->SetFont('Arial','',7);
   $pdf->SetTextColor(0,0,0);
