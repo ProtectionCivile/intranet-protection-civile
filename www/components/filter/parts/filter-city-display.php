@@ -1,10 +1,10 @@
 <div class='container'>
 	<div class="form-group form-group-md">
 		<div class='col-md-1 row'>
-			<label for='cities' >Section</label>
+			<label for='cities' >Antenne</label>
 		</div>
 		<div class='col-md-11' id='cities'>
-			<?php $activeOrNot = ($filtered_section == "*") ? "active" : ""; ?>
+			<?php $activeOrNot = ($_SESSION['filtered_section'] == "*") ? "active" : ""; ?>
 			<button class='btn btn-primary btn-sm city-filter <?php echo $activeOrNot;?>' data-filter='*' >TOUTES</button>
 
 			<?php
@@ -12,10 +12,10 @@
 			$villes = mysqli_query($db_link, $query);
 			while($ville = mysqli_fetch_array($villes)) {
 				$activeOrNot = "";
-				if ($filtered_section == $ville['number']) {
+				if ($_SESSION['filtered_section'] == $ville['number']) {
 					$activeOrNot = "active";
 				} ?>
-				<button class='btn btn-default btn-sm city-filter <?php echo $activeOrNot;?>' data-filter='<?php echo $ville['number']; ?>' ><?php echo $ville['shortname']; ?></button>
+				<button class='btn btn-default btn-sm city-filter <?php echo $activeOrNot;?>' data-filter='<?php echo $ville['number']; ?>' ><?php echo htmlentities($ville['shortname']); ?></button>
 			<?php } ?>
 
 		</div>
@@ -23,8 +23,8 @@
 </div>
 
 <?php
-if ($filtered_section == "*") {
-	$filtered_section="";
+if ($_SESSION['filtered_section'] == "*") {
+	$_SESSION['filtered_section']="";
 }
 ?>
 

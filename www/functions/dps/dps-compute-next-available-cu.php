@@ -11,7 +11,7 @@
 	$query_cu = "SELECT cu_yearly_index FROM $tablename_dps WHERE cu_year=$cu_year AND section=$ordered_section ORDER BY cu_yearly_index DESC LIMIT 1";
 	$cu_result = mysqli_query($db_link, $query_cu);
 	$cu_array = mysqli_fetch_array($cu_result);
-	$cu_yearly_index = $cu_array['cu_yearly_index'];
+	$cu_yearly_index = intval($cu_array['cu_yearly_index'], 10);
 	$cu_yearly_index = $cu_yearly_index + 1;
 	if($cu_yearly_index < 10){
 		$cu_yearly_index = "00".$cu_yearly_index;

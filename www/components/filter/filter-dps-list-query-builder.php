@@ -4,13 +4,13 @@
 	$addWhereClause = false;
 
 
-	if (!empty($filtered_section) || $filtered_section == "0" ) {
+	if (!empty($_SESSION['filtered_section']) || $_SESSION['filtered_section'] == "0" ) {
 		$addWhereClause = true;
-		if ($filtered_section == "*") {
+		if ($_SESSION['filtered_section'] == "*") {
 			$whereCity = "section='".$currentUserSection."'";
 		}
 		else {
-			$whereCity = "section='".$filtered_section."'";
+			$whereCity = "section='".$_SESSION['filtered_section']."'";
 		}
 	}
 
@@ -35,14 +35,17 @@
 		elseif ($status == "refused") {
 			$whereStatus = "status=5 ";
 		}
+		elseif ($status == "atraiter") {
+			$whereStatus = "(status=1 OR status=2) ";
+		}
 		else {
 			$whereStatus = "status IS NULL";
 		}
 	}
 
-	if (!empty($datebegin) && !empty($dateend)) {
+	if (!empty($_SESSION['datebegin']) && !empty($_SESSION['dateend'])) {
 		$addWhereClause = true;
-		$wherePeriod = "dps_begin_date > '".$datebeginNF->format('Y-m-d')."' AND dps_end_date < '".$dateendNF->format('Y-m-d')."'";
+		$wherePeriod = "dps_begin_date BETWEEN '".$datebeginNF->format('Y-m-d')."' AND '".$dateendNF->format('Y-m-d')."'";
 	}
 
 

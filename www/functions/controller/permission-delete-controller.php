@@ -3,7 +3,7 @@
 	$undeletablePermissions=array("admin-permissions-view", "admin-permissions-update", "admin-roles-view", "admin-roles-update");
 
 	if (isset($_POST['delPermission'])){
-		$id = str_replace("'","", $_POST['delPermission']);
+		$id = $_POST['delPermission'];
 		if($id == ""){
 			$genericError = "Impossible de supprimer une permission inconnue";
 		}
@@ -16,9 +16,9 @@
 				$genericError = "La permission en question n'existe pas";
 			}
 			else {
-				$permissionTitle = $rbac->Permissions->getTitle($id);
-				if (in_array($permissionTitle, $undeletablePermissions)) {
-					$genericError = "Il est interdit de supprimer la permission '".$permissionTitle."'";
+				$permission_title = $rbac->Permissions->getTitle($id);
+				if (in_array($permission_title, $undeletablePermissions)) {
+					$genericError = "Il est interdit de supprimer la permission '".htmlentities($permission_title)."'";
 				}
 				else {
 					$perm_id = $rbac->Permissions->remove($id, true);
@@ -26,7 +26,7 @@
 						$genericError = "Echec de la suppression (ID=".$id.")";
 					}
 					else {
-						$genericSuccess = "Permission correctement supprimée (".$permissionTitle.")";
+						$genericSuccess = "Permission correctement supprimée (".htmlentities($permission_title).")";
 					}
 				}
 			}

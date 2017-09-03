@@ -76,10 +76,10 @@
 							?>
 							<tr class='<?php echo $trClass;?>' >
 								<td>
-									<?php echo $dps["dps_begin_date"]; ?>
+									<?php echo htmlentities($dps["dps_begin_date"]); ?>
 								</td>
 								<td>
-									<?php echo $dps["cu_full"]; ?>
+									<?php echo htmlentities($dps["cu_full"]); ?>
 								</td>
 								<td>
 									<?php echo compute_dps_department($dps["event_department"]); ?>
@@ -88,10 +88,10 @@
 									<?php echo compute_dps_type($dps["dps_type"]); ?>
 								</td>
 								<td>
-									<?php echo $dps["event_name"]; ?>
+									<?php echo htmlentities($dps["event_name"]); ?>
 								</td>
 								<td>
-									<?php echo $dps["price"]; ?> €
+									<?php echo htmlentities($dps["price"]); ?> €
 								</td>
 								<td>
 									<?php echo $dps_display_status; ?>

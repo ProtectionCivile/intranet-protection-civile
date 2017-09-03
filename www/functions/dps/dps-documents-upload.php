@@ -1,7 +1,14 @@
+
 <?php
 	$tmp_file = $_FILES['mainfile']['tmp_name'];
 	$filename = $_FILES['mainfile']['name'];
-	$num_cu = $_POST['yearly_index'];
+	$num_cu = intval($_POST['yearly_index'], 10);
+	if($num_cu < 10){
+		$num_cu = "00".$num_cu;
+	}
+	elseif($num_cu < 100){
+		$num_cu = "0".$num_cu;
+	}
 	$cu = $_POST['unique_certificate_full'];
 	$type = $_POST['type'];
 	$antenne = $_POST['section'];
@@ -29,8 +36,8 @@
 		$pathtocu = $pathuntilcity.'/'.$num_cu;
 		$pathtocreate = $pathtocu.'/autre';
 		$filepath = $pathtocreate.'/'.$filename;
-		//$path = dirname(__DIR__)."/documents_dps/".$year."/".$antenne."/".$num_cu."/autre/";
-		//$pathtocreate = "../documents_dps/$year/$antenne/$num_cu/autre/";
+		$path = dirname(__DIR__)."/documents_dps/".$year."/".$antenne."/".$num_cu."/autre/";
+		$pathtocreate = "../documents_dps/$year/$antenne/$num_cu/autre/";
 		$security = fopen("../../documents_dps/$year/index.html","w");
 		fclose($security);
 		$security = fopen("../../documents_dps/$year/$antenne/index.html","w");

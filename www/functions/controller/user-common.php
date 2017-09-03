@@ -1,24 +1,31 @@
 <?php
-	$userID = str_replace("'","", $_POST['userID']);
+	if (isset($_POST['id'])) {
+		$id = $_POST['id'];
+	}
+	else if (isset($_GET['self'])) {
+		$id = $currentUserID;
+	}
 
-	if($userID == ""){
+	if($id == ""){
 		$genericError = "Aucun utilisateur défini";
 	}
 	else {
-		$check_query = "SELECT ID, login, last_name, first_name, mail, phone, attached_section, pass FROM $tablename_users WHERE ID='$userID'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
-		$verif = mysqli_query($db_link, $check_query);
-		$user = mysqli_fetch_assoc($verif);
-	 	$userCount = mysqli_num_rows($verif);
+		$sql = "SELECT ID, login, last_name, first_name, mail, phone, attached_section, pass FROM $tablename_users WHERE ID='$id'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
+		$query = mysqli_query($db_link, $sql);
+		$user = mysqli_fetch_assoc($query);
+	 	$userCount = mysqli_num_rows($query);
 		if (!$userCount){
 			$genericError = "L'utilisateur en question n'existe pas";
 		}
 	}
 
 	if(empty($genericError)) {
-		$userFirstName=$user["first_name"];
-		$login=$user["login"];
-		$userLastName=$user["last_name"];
-		$usersection=$user["attached_section"];
+		$user_firstName=$user["first_name"];
+		$user_lastName=$user["last_name"];
+		$user_login=$user["login"];
+		$user_phone=$user["phone"];
+		$user_email=$user["mail"];
+		$user_section=$user["attached_section"];
 	}
 
 ?>

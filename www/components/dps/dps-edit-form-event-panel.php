@@ -21,7 +21,7 @@
             <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom/Nature de la manifestation"></span>
           </label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="event_name" name="event_name" aria-describedby="event-name-error" minlength='5' required='true' placeholder="Nom / Nature" value="<?php echo $event_name; ?>" data-minlength="10" >
+            <input type="text" class="form-control" id="event_name" name="event_name" aria-describedby="event-name-error" minlength='5' required='true' placeholder="Nom / Nature" value="<?php echo htmlentities($event_name); ?>" data-minlength="10" >
             <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
             <span id='event-name-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
           </div>
@@ -34,7 +34,7 @@
             <span class="glyphicon glyphicon-info-sign" data-trigger="hover" rel="popover" data-toggle="popover" data-content="Descriptif court."></span>
           </label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="event_description" name="event_description" aria-describedby="event-description-error" minlength='5' required='true' placeholder="Activité / Descriptif" value="<?php echo $event_description; ?>" data-minlength="10" >
+            <input type="text" class="form-control" id="event_description" name="event_description" aria-describedby="event-description-error" minlength='5' required='true' placeholder="Activité / Descriptif" value="<?php echo htmlentities($event_description); ?>" data-minlength="10" >
             <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
             <span id='event-description-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
           </div>
@@ -47,7 +47,7 @@
             <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Adresse la plus précise possible du lieu de l'événement."></span>
           </label>
           <div class="col-sm-8">
-            <input type="text" class="form-control" id="event_address" name="event_address" aria-describedby="event-address-error" minlength='10' required='true' placeholder="Adresse précise du lien de l'évenement" value="<?php echo $event_address; ?>" data-minlength="10" >
+            <input type="text" class="form-control" id="event_address" name="event_address" aria-describedby="event-address-error" minlength='10' required='true' placeholder="Adresse précise du lien de l'évenement" value="<?php echo htmlentities($event_address); ?>" data-minlength="10" >
             <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
             <span id='event-address-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
           </div>
@@ -60,7 +60,7 @@
             <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Exemple : 92"></span>
           </label>
           <div class="col-sm-2">
-            <input type="number" class="form-control" id="event_department" name="event_department" aria-describedby="event-department-error" minlength='2' maxlength='3' required='true' digits='true' placeholder="92" value="<?php echo $event_department; ?>" data-minlength="10" >
+            <input type="number" class="form-control" id="event_department" name="event_department" aria-describedby="event-department-error" minlength='2' maxlength='3' required='true' digits='true' placeholder="92" value="<?php echo htmlentities($event_department); ?>" data-minlength="10" >
             <span class="form-control-feedback glyphicon <?php echo $feedback[1];?>" aria-hidden="true"></span>
             <span id='event-department-error' class="help-block" aria-hidden="true"><?php echo $feedback[2];?></span>
           </div>
@@ -242,7 +242,7 @@
 
         <?php $feedback = compute_server_feedback($ris_comment_error);?>
         <label for="ris_comment">Commentaires concernant le RIS</label>
-        <textarea class="form-control" rows="4" id="ris_comment" name="ris_comment" placeholder="Indiquer ici tout commentaire(s) concernant le RIS" ><?php echo $ris_comment; ?></textarea>
+        <textarea class="form-control" rows="4" id="ris_comment" name="ris_comment" placeholder="Indiquer ici tout commentaire(s) concernant le RIS" ><?php echo htmlentities($ris_comment); ?></textarea>
         <span class="help-block"></span>
 
       </div>

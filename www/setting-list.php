@@ -17,7 +17,7 @@
 
 
 <!-- Authentication -->
-<?php $rbac->enforce("admin-settings-view", $currentUserID); ?>
+<?php require_once('functions/setting/setting-view-authentication.php'); ?>
 
 
 <!-- Delete a setting : Controller -->
@@ -73,7 +73,7 @@
 							<td>
 								<?php if ($rbac->check("admin-settings-update", $currentUserID)) { ?>
 									<form action="setting-edit.php" method="post" accept-charset="utf-8">
-										<input name="ID" value="<?php echo $setting['ID'] ?>" type="hidden">
+										<input name="id" value="<?php echo $setting['ID'] ?>" type="hidden">
 										<button type="submit" class="btn btn-warning glyphicon glyphicon-pencil" title="Modifier"></button>
 									</form>
 								<?php }?>
@@ -81,7 +81,7 @@
 							<td>
 								<?php if ($rbac->check("admin-settings-update", $currentUserID)) { ?>
 									<form action="" method="post" accept-charset="utf-8">
-										<input name="ID" value="<?php echo $setting['ID'] ?>" type="hidden">
+										<input name="id" value="<?php echo $setting['ID'] ?>" type="hidden">
 										<button type="submit" class="btn btn-danger glyphicon glyphicon-trash" title="Supprimer" onclick='return(confirm("Etes-vous sûr de vouloir supprimer ce paramètre?"));'></button>
 									</form>
 								<?php }?>

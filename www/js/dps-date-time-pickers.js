@@ -93,7 +93,6 @@ $(function () {
 		// Delta 15mn x 60s/mn x 1000ms/s
 		var deltams = 15*60*1000;
 		var dpsdate = evdate - deltams;
-		$('#event_end_time_picker').data("DateTimePicker").minDate(evdate);
 		$('#dps_begin_time_picker').data("DateTimePicker").maxDate(evdate);
 		$('#dps_begin_time_picker').data("DateTimePicker").date(new Date(dpsdate));
 	})
@@ -103,7 +102,6 @@ $(function () {
 		// Delta 15mn x 60s/mn x 1000ms/s
 		var deltams = 15*60*1000;
 		var dpsdate = evdate + deltams;
-		$('#event_begin_time_picker').data("DateTimePicker").maxDate(evdate);
 		$('#dps_end_time_picker').data("DateTimePicker").minDate(evdate);
 		$('#dps_end_time_picker').data("DateTimePicker").date(new Date(dpsdate));
 	})

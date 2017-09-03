@@ -1,9 +1,10 @@
+<?php require_once('components/filter/parts/filter-common-display.php'); ?>
+
 <?php require_once('components/filter/parts/filter-city-computation.php'); ?>
 <?php require_once('components/filter/parts/filter-status-computation.php'); ?>
 <?php require_once('components/filter/parts/filter-date-computation.php'); ?>
 <?php require_once('components/filter/parts/filter-paging-computation.php'); ?>
 
-<?php require_once('components/filter/parts/filter-common-display.php'); ?>
 
 
 

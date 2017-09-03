@@ -1,9 +1,9 @@
 <?php
-	if(isset($_POST['formstatus']) && !empty($_POST['formstatus']) ){
-		$status=$_POST['formstatus'];
+	if(isset($_SESSION['dps_status']) && !empty($_SESSION['dps_status']) ){
+		$status=$_SESSION['dps_status'];
 	}
 	elseif (isset($_GET['atraiter'])) {
-		$status="fuzzy";
+		$status="atraiter";
 	}
 	else {
 		$status="*";

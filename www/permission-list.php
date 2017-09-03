@@ -58,24 +58,24 @@
 				while($permission = mysqli_fetch_array($permissions)) { ?>
 					<tr>
 						<td>
-							<?php echo $permission["ID"]; ?>
+							<?php echo htmlentities($permission["ID"]); ?>
 						</td>
 						<td>
-							<?php echo $permission["Title"]."<br />(".$rbac->Permissions->getPath($permission["ID"]).")";?>
+							<?php echo htmlentities($permission["Title"])."<br />(".$rbac->Permissions->getPath($permission["ID"]).")";?>
 						</td>
 						<td>
-							<?php echo $permission["Description"]; ?>
+							<?php echo htmlentities($permission["Description"]); ?>
 						</td>
 						<td>
 							<form action='permission-usage.php' method='post' accept-charset='utf-8'>
-								<input type='hidden' name='permissionID' value=<?php echo "'".$permission['ID']."'"; ?> >
+								<input type='hidden' name='id' value=<?php echo "'".$permission['ID']."'"; ?> >
 								<button type='submit' class='btn btn-default glyphicon glyphicon-eye-open' title="Voir utilisation"></button>
 							</form>
 						</td>
 						<td>
 							<?php if ($rbac->check("admin-permissions-update", $currentUserID)) { ?>
 									<form action='permission-edit.php' method='post' accept-charset='utf-8'>
-									<input type='hidden' name='permissionID' value=<?php echo "'".$permission['ID']."'"; ?> >
+									<input type='hidden' name='id' value=<?php echo "'".$permission['ID']."'"; ?> >
 									<button type='submit' class='btn btn-warning glyphicon glyphicon-pencil' title="Modifier"></button>
 								</form>
 							<?php } ?>
