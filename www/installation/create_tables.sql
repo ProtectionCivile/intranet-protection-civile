@@ -192,9 +192,9 @@ INSERT INTO `sections`
 	(6, 6, 'Bourg la Reine', 'BLR', '5 allée Françoise Dolto, 116 av Général Leclerc', '92340', 'Bourg la Reine', '0632989270', 'http://protectioncivile92.org/bourg-la-reine', 'bourg-la-reine@protectioncivile92.org'),
 	(7, 0, 'Chatenay Malabry', 'CHM', '', '', '', '', '', ''),
 	(8, 0, 'Chatillon', 'CHT', '', '', '', '', '', ''),
-	(9, 0, 'Chaville', 'CHV', '', '', '', '', '', '');
+	(9, 0, 'Chaville', 'CHV', '', '', '', '', '', ''),
 	(10, 10, 'Clamart', 'CLA', '76 bis rue du parc', '92140', 'Clamart', '0140959222', 'http://protectioncivile92.org/clamart', 'clamart@protectioncivile92.org'),
-	(11, 'Clichy sur Seine', 'CLI', '92 rue Martre, Bureau 101', '92110', 'Clichy Sur Seine', '0142704150', '', 'clichy@protectioncivile92.org'),
+	(11, 20, 'Clichy sur Seine', 'CLI', '92 rue Martre, Bureau 101', '92110', 'Clichy Sur Seine', '0142704150', '', 'clichy@protectioncivile92.org'),
 	(12, 12, 'Colombes', 'COL', '32 boulevard des oiseaux', '92700', 'Colombes', '0142427404', 'http://protectioncivile92.org/colombes', 'colombes@protectioncivile92.org'),
 	(13, 13, 'Courbevoie, Neuilly, La Garenne Colombes', 'COU', '48 rue de Colombes', '92400', 'Courbevoie', '0762263688', 'http://protectioncivile92.org/courbevoie', 'courbevoie@protectioncivile92.org'),
 	(14, 0, 'Fontenay aux Roses', 'FON', '', '', '', '', '', ''),
@@ -219,4 +219,4 @@ INSERT INTO `sections`
 	(33, 33, 'Vanves, Malakoff', 'VAN', '20 avenue Verdun', '92170', 'Vanves', '0629713430', 'http://protectioncivile92.org/vanves', 'vanves@protectioncivile92.org'),
 	(34, 0, 'Vaucresson', 'VAU', '', '', '', '', '', ''),
 	(35, 15, 'Ville d\'Avray', 'VLA', '', '', '', '', '', ''),
-	(36, 36, 'Villeneuve La Garenne', 'VLG', 'BP 28, 1 rue Gaston Appert', '92390', 'Villeneuve la Garenne', '0140851192', 'http://protectioncivile92.org/villeneuve', 'villeneuve@protectioncivile92.org'),
+	(36, 36, 'Villeneuve La Garenne', 'VLG', 'BP 28, 1 rue Gaston Appert', '92390', 'Villeneuve la Garenne', '0140851192', 'http://protectioncivile92.org/villeneuve', 'villeneuve@protectioncivile92.org');
