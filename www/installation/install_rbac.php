@@ -1,4 +1,3 @@
-<?php require_once('../functions/session/security.php'); ?>
 <?php require_once('../PhpRbac/src/PhpRbac/Rbac.php'); ?>
 <?php require_once('../functions/session/db-connect.php'); ?>
 <!DOCTYPE html>
@@ -8,7 +7,6 @@
 	<?php require_once('../components/common-html-head-parameters.php'); ?>
 </head>
 <body>
-<?php include('components/header.php'); ?>
 
 <?php
 use PhpRbac\Rbac;
@@ -29,10 +27,16 @@ echo ("Démarrage : ".date("H:i:s"));
 
 
 /////////////////////////////////////////////////
+// RESET THE PHPRBAC SYSTEM
+/////////////////////////////////////////////////
+$rbac->reset(true);
+
+
+/////////////////////////////////////////////////
 // SQL TABLES
 /////////////////////////////////////////////////
 
-mysqli_query($db_link, "ALTER TABLE `ADPC`.`$tablename_roles`
+mysqli_query($db_link, "ALTER TABLE `$tablename_roles`
 	ADD `Phone` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Description`,
 	ADD `Mail` VARCHAR(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Phone`,
 	ADD `Affiliation` INT(10) NULL AFTER `Mail`,
@@ -41,32 +45,26 @@ mysqli_query($db_link, "ALTER TABLE `ADPC`.`$tablename_roles`
 	ADD `Assignable` INT(2) NULL AFTER `Directory`,
 	ADD `Hierarchy` INT(10) NULL AFTER `Assignable`,
 	ADD `Tags` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL AFTER `Hierarchy`
-");
-
-
-/////////////////////////////////////////////////
-// RESET THE PHPRBAC SYSTEM
-/////////////////////////////////////////////////
-$rbac->reset(true);
+	");
 
 
 
 /////////////////////////////////////////////////
 // INITIALIZING PERMISSIONS SYSTEM
 /////////////////////////////////////////////////
-$rbac->Permissions->addPath('/admin-settings-update/admin-settings-view', array('Modifier les réglages', 'Voir les réglages'));
-$rbac->Permissions->addPath('/admin-permissions-update/admin-permissions-view', array('Modifier les permissions', 'Voir les permissions'));
-$rbac->Permissions->addPath('/admin-roles-asssign-permissions/admin-roles-update/admin-roles-view', array('Assigner des permissions aux rôles', 'Modifier les rôles', 'Voir les rôles'));
-$rbac->Permissions->addPath('/admin-users-asssign-roles/admin-users-update/admin-users-view', array('Assigner des rôles aux utilisateurs', 'Modifier les utilisateurs', 'Voir les utilisateurs'));
-$rbac->Permissions->addPath('/ope-dps-validate-local/ope-dps-update-own/ope-dps-view-own', array('Valider une demande de DPS pour sa commune', 'Créer/Modifier un DPS sur sa commune', 'Voir les DPS de sa commune'));
-$rbac->Permissions->addPath('/ope-dps-validate-dept/ope-dps-update-dept/ope-dps-view-dept', array('Valider une demande de DPS pour le département', 'Créer/Modifier un DPS sur le département', 'Voir les DPS départementaux'));
-$rbac->Permissions->addPath('/ope-dps-validate-ddo-to-pref/ope-dps-update-all/ope-dps-view-all', array('Envoyer une demande de DPS à la Préfecture', 'Créer/Modifier un DPS sur toute commune', 'Voir les DPS de toutes les communes'));
-$rbac->Permissions->addPath('/ope-clients-update-own/ope-clients-view-own', array('Modifier les clients de son antenne', 'Voir les clients de son antenne'));
-$rbac->Permissions->addPath('/ope-clients-update-all/ope-clients-view-all', array('Modifier tous les clients', 'Voir tous les clients'));
-$rbac->Permissions->addPath('/treso-dps-view-all/treso-dps-view-own', array('Voir toute la trésorerie', 'Voir la trésorerie de son antenne'));
-$rbac->Permissions->addPath('/directory-update/directory-view', array('Modifier annuaire', 'Voir annuaire'));
-$rbac->Permissions->addPath('/admin-mailinglist-manage', array('Gestion des listes de diffusion'));
-$rbac->Permissions->addPath('/admin-sections-update/admin-sections-view', array('Modifier les sections', 'Voir les sections'));
+$rbac->Permissions->addPath('/admin-settings-update/admin-settings-view', array(utf8_decode('Modifier les réglages'), utf8_decode('Voir les réglages')));
+$rbac->Permissions->addPath('/admin-permissions-update/admin-permissions-view', array(utf8_decode('Modifier les permissions'), utf8_decode('Voir les permissions')));
+$rbac->Permissions->addPath('/admin-roles-asssign-permissions/admin-roles-update/admin-roles-view', array(utf8_decode('Assigner des permissions aux rôles'), utf8_decode('Modifier les rôles'), utf8_decode('Voir les rôles')));
+$rbac->Permissions->addPath('/admin-users-asssign-roles/admin-users-update/admin-users-view', array(utf8_decode('Assigner des rôles aux utilisateurs'), utf8_decode('Modifier les utilisateurs'), utf8_decode('Voir les utilisateurs')));
+$rbac->Permissions->addPath('/ope-dps-validate-local/ope-dps-update-own/ope-dps-view-own', array(utf8_decode('Valider une demande de DPS pour sa commune'), utf8_decode('Créer/Modifier un DPS sur sa commune'), utf8_decode('Voir les DPS de sa commune')));
+$rbac->Permissions->addPath('/ope-dps-validate-dept/ope-dps-update-dept/ope-dps-view-dept', array(utf8_decode('Valider une demande de DPS pour le département'), utf8_decode('Créer/Modifier un DPS sur le département'), utf8_decode('Voir les DPS départementaux')));
+$rbac->Permissions->addPath('/ope-dps-validate-ddo-to-pref/ope-dps-update-all/ope-dps-view-all', array(utf8_decode('Envoyer une demande de DPS à la Préfecture'), utf8_decode('Créer/Modifier un DPS sur toute commune'), utf8_decode('Voir les DPS de toutes les communes')));
+$rbac->Permissions->addPath('/ope-clients-update-own/ope-clients-view-own', array(utf8_decode('Modifier les clients de son antenne'), utf8_decode('Voir les clients de son antenne')));
+$rbac->Permissions->addPath('/ope-clients-update-all/ope-clients-view-all', array(utf8_decode('Modifier tous les clients'), utf8_decode('Voir tous les clients')));
+$rbac->Permissions->addPath('/treso-dps-view-all/treso-dps-view-own', array(utf8_decode('Voir toute la trésorerie'), utf8_decode('Voir la trésorerie de son antenne')));
+$rbac->Permissions->addPath('/directory-update/directory-view', array(utf8_decode('Modifier annuaire'), utf8_decode('Voir annuaire')));
+$rbac->Permissions->addPath('/admin-mailinglist-manage', array(utf8_decode('Gestion des listes de diffusion')));
+$rbac->Permissions->addPath('/admin-sections-update/admin-sections-view', array(utf8_decode('Modifier les sections'), utf8_decode('Voir les sections')));
 // Trésorerie ?
 // Factures ?
 
@@ -74,320 +72,320 @@ $rbac->Permissions->addPath('/admin-sections-update/admin-sections-view', array(
 /////////////////////////////////////////////////
 // INITIALIZING ROLES SYSTEM
 /////////////////////////////////////////////////
-$rbac->Roles->add('Admin', 'Administrateur');
-$rbac->Roles->add('Public', 'Public');
+$rbac->Roles->add(utf8_decode('Admin'), utf8_decode('Administrateur'));
+$rbac->Roles->add(utf8_decode('Public'), utf8_decode('Public'));
 
-$rbac->Roles->add('Président', 'Président départemental');
-$rbac->Roles->add('Vice-Président-1', '1er Vice-Président départemental');
-$rbac->Roles->add('Vice-Président-2', '2nd Vice-Président départemental');
-$rbac->Roles->add('Secrétaire', 'Secrétaire général');
-$rbac->Roles->add('Secrétaire Adjoint', 'Secrétaire général adjoint');
-$rbac->Roles->add('Trésorier', 'Trésorier départemental');
-$rbac->Roles->add('Trésorier Adjoint', 'Trésorier départemental adjoint');
-$rbac->Roles->add('DDO', 'Directeur Départemental des Opérations');
-$rbac->Roles->add('DDO-A', 'Directrice Départementale des Opérations adjointe');
-$rbac->Roles->add('DDO-B', 'Directrice Départementale des Opérations adjointe aux réseau de secours');
-$rbac->Roles->add('DDO-C', 'Directeur Départemental des Opérations adjoint aux missions départementales et nationales');
-$rbac->Roles->add('DDASS', 'Directrice Départementale des Actions Solidaires et Sociales');
-$rbac->Roles->add('DDC', 'Directeur Départemental de la Communication');
-$rbac->Roles->add('DDT', 'Directeur Départemental Technique');
-$rbac->Roles->add('DDT-T', 'Directeur Départemental Technique adjoint aux moyens de trasnmission');
-$rbac->Roles->add('DDT-L', 'Directeur Départemental Technique adjoint aux moyens logistiques');
-$rbac->Roles->add('DDT-I', 'Directeur Départemental Technique adjoint aux moyens informatiques');
-$rbac->Roles->add('DDF', 'Directeur Départemental des Formations');
-$rbac->Roles->add('MED', 'Médecin Référent');
-$rbac->Roles->add('SECRETARIAT', 'Secrétariat Administratif');
+$rbac->Roles->add(utf8_decode('Président'), utf8_decode('Président départemental'));
+$rbac->Roles->add(utf8_decode('Vice-Président-1'), utf8_decode('1er Vice-Président départemental'));
+$rbac->Roles->add(utf8_decode('Vice-Président-2'), utf8_decode('2nd Vice-Président départemental'));
+$rbac->Roles->add(utf8_decode('Secrétaire'), utf8_decode('Secrétaire général'));
+$rbac->Roles->add(utf8_decode('Secrétaire Adjoint'), utf8_decode('Secrétaire général adjoint'));
+$rbac->Roles->add(utf8_decode('Trésorier'), utf8_decode('Trésorier départemental'));
+$rbac->Roles->add(utf8_decode('Trésorier Adjoint'), utf8_decode('Trésorier départemental adjoint'));
+$rbac->Roles->add(utf8_decode('DDO'), utf8_decode('Directeur Départemental des Opérations'));
+$rbac->Roles->add(utf8_decode('DDO-A'), utf8_decode('Directrice Départementale des Opérations adjointe'));
+$rbac->Roles->add(utf8_decode('DDO-B'), utf8_decode('Directrice Départementale des Opérations adjointe aux réseau de secours'));
+$rbac->Roles->add(utf8_decode('DDO-C'), utf8_decode('Directeur Départemental des Opérations adjoint aux missions départementales et nationales'));
+$rbac->Roles->add(utf8_decode('DDASS'), utf8_decode('Directrice Départementale des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DDC'), utf8_decode('Directeur Départemental de la Communication'));
+$rbac->Roles->add(utf8_decode('DDT'), utf8_decode('Directeur Départemental Technique'));
+$rbac->Roles->add(utf8_decode('DDT-T'), utf8_decode('Directeur Départemental Technique adjoint aux moyens de trasnmission'));
+$rbac->Roles->add(utf8_decode('DDT-L'), utf8_decode('Directeur Départemental Technique adjoint aux moyens logistiques'));
+$rbac->Roles->add(utf8_decode('DDT-I'), utf8_decode('Directeur Départemental Technique adjoint aux moyens informatiques'));
+$rbac->Roles->add(utf8_decode('DDF'), utf8_decode('Directeur Départemental des Formations'));
+$rbac->Roles->add(utf8_decode('MED'), utf8_decode('Médecin Référent'));
+$rbac->Roles->add(utf8_decode('SECRETARIAT'), utf8_decode('Secrétariat Administratif'));
 
-$rbac->Roles->add('CM-FOR-ARS', 'Chargé de Mission responsable des formations ARS');
-$rbac->Roles->add('CM-FOR-OPR', 'Chargé de Mission responsable des formations OPR');
-$rbac->Roles->add('CM-FOR-CH', 'Chargé de Mission responsable des formations Conducteur');
-$rbac->Roles->add('CM-FOR-CE', 'Chargé de Mission responsable des formations CE / CP / CEPS');
-$rbac->Roles->add('CM-PARAMED', 'Chargé de Mission responsable de l\'équipe paramédicale');
-$rbac->Roles->add('CM-CODEP', 'Chargé de Mission responsable des CODEP et Exercices');
+$rbac->Roles->add(utf8_decode('CM-FOR-ARS'), utf8_decode('Chargé de Mission responsable des formations ARS'));
+$rbac->Roles->add(utf8_decode('CM-FOR-OPR'), utf8_decode('Chargé de Mission responsable des formations OPR'));
+$rbac->Roles->add(utf8_decode('CM-FOR-CH'), utf8_decode('Chargé de Mission responsable des formations Conducteur'));
+$rbac->Roles->add(utf8_decode('CM-FOR-CE'), utf8_decode('Chargé de Mission responsable des formations CE / CP / CEPS'));
+$rbac->Roles->add(utf8_decode('CM-PARAMED'), utf8_decode('Chargé de Mission responsable de l\'équipe paramédicale'));
+$rbac->Roles->add(utf8_decode('CM-CODEP'), utf8_decode('Chargé de Mission responsable des CODEP et Exercices'));
 
-$rbac->Roles->add('V-COM', 'Communication');
-$rbac->Roles->add('V-OPE', 'Opérationnel');
-$rbac->Roles->add('V-FOR', 'Formation');
-$rbac->Roles->add('V-TECH', 'Technique');
-$rbac->Roles->add('V-BUREAU', 'Bureau Départemental');
-$rbac->Roles->add('V-CD', 'Conseil Départemental');
-$rbac->Roles->add('V-RECRUTEMENT', 'Recrutement');
-$rbac->Roles->add('V-DEMANDE-DPS', 'Demande de poste de secours');
+$rbac->Roles->add(utf8_decode('V-COM'), utf8_decode('Communication'));
+$rbac->Roles->add(utf8_decode('V-OPE'), utf8_decode('Opérationnel'));
+$rbac->Roles->add(utf8_decode('V-FOR'), utf8_decode('Formation'));
+$rbac->Roles->add(utf8_decode('V-TECH'), utf8_decode('Technique'));
+$rbac->Roles->add(utf8_decode('V-BUREAU'), utf8_decode('Bureau Départemental'));
+$rbac->Roles->add(utf8_decode('V-CD'), utf8_decode('Conseil Départemental'));
+$rbac->Roles->add(utf8_decode('V-RECRUTEMENT'), utf8_decode('Recrutement'));
+$rbac->Roles->add(utf8_decode('V-DEMANDE-DPS'), utf8_decode('Demande de poste de secours'));
 
-$rbac->Roles->add('P-CODEP', 'Cadre Opérationnel Départemental de Permanence');
-$rbac->Roles->add('P-MICRO', 'Permanence Transmissions');
-$rbac->Roles->add('P-TRANSF', 'Permanence de transfert opérationnel');
+$rbac->Roles->add(utf8_decode('P-CODEP'), utf8_decode('Cadre Opérationnel Départemental de Permanence'));
+$rbac->Roles->add(utf8_decode('P-MICRO'), utf8_decode('Permanence Transmissions'));
+$rbac->Roles->add(utf8_decode('P-TRANSF'), utf8_decode('Permanence de transfert opérationnel'));
 
-$rbac->Roles->add('C-LOG', 'Pôle Logistique');
-$rbac->Roles->add('C-TRANS', 'Pôle Transmissions');
-$rbac->Roles->add('C-INFO', 'Pôle Informatique');
+$rbac->Roles->add(utf8_decode('C-LOG'), utf8_decode('Pôle Logistique'));
+$rbac->Roles->add(utf8_decode('C-TRANS'), utf8_decode('Pôle Transmissions'));
+$rbac->Roles->add(utf8_decode('C-INFO'), utf8_decode('Pôle Informatique'));
 
-$rbac->Roles->add('D-PRES', 'Liste de diffusion Président');
-$rbac->Roles->add('D-SEC', 'Liste de diffusion Secrétaire');
-$rbac->Roles->add('D-TRESO', 'Liste de diffusion Trésorier');
-$rbac->Roles->add('D-DLO', 'Liste de diffusion Opérationnel');
-$rbac->Roles->add('D-DLF', 'Liste de diffusion Formation');
-$rbac->Roles->add('D-DLAS', 'Liste de diffusion Actions Sociales');
-$rbac->Roles->add('D-DLT', 'Liste de diffusion Technique Logistique');
-$rbac->Roles->add('D-DLT-T', 'Liste de diffusion Technique Transmissions');
-$rbac->Roles->add('D-DLC', 'Liste de diffusion Communication');
+$rbac->Roles->add(utf8_decode('D-PRES'), utf8_decode('Liste de diffusion Président'));
+$rbac->Roles->add(utf8_decode('D-SEC'), utf8_decode('Liste de diffusion Secrétaire'));
+$rbac->Roles->add(utf8_decode('D-TRESO'), utf8_decode('Liste de diffusion Trésorier'));
+$rbac->Roles->add(utf8_decode('D-DLO'), utf8_decode('Liste de diffusion Opérationnel'));
+$rbac->Roles->add(utf8_decode('D-DLF'), utf8_decode('Liste de diffusion Formation'));
+$rbac->Roles->add(utf8_decode('D-DLAS'), utf8_decode('Liste de diffusion Actions Sociales'));
+$rbac->Roles->add(utf8_decode('D-DLT'), utf8_decode('Liste de diffusion Technique Logistique'));
+$rbac->Roles->add(utf8_decode('D-DLT-T'), utf8_decode('Liste de diffusion Technique Transmissions'));
+$rbac->Roles->add(utf8_decode('D-DLC'), utf8_decode('Liste de diffusion Communication'));
 
-$rbac->Roles->add('Président Asnières', 'Président délégué');
-$rbac->Roles->add('Secrétaire Asnières', 'Secrétaire');
-$rbac->Roles->add('Trésorier Asnières', 'Trésorier');
-$rbac->Roles->add('DLO Asnières', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Asnières', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Asnières', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Asnières', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Asnières', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Asnières', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Asnières', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Asnières', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Asnières', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Asnières', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Asnières', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Asnières', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Asnières'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Asnières'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Asnières'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Asnières'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Asnières'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Asnières'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Asnières'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Asnières'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Asnières'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Asnières'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Asnières'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Asnières'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Asnières'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Asnières'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Asnières'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Boulogne', 'Président délégué');
-$rbac->Roles->add('Secrétaire Boulogne', 'Secrétaire');
-$rbac->Roles->add('Trésorier Boulogne', 'Trésorier');
-$rbac->Roles->add('DLO Boulogne', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Boulogne', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Boulogne', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Boulogne', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Boulogne', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Boulogne', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Boulogne', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Boulogne', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Boulogne', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Boulogne', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Boulogne', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Boulogne', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Boulogne'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Boulogne'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Boulogne'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Boulogne'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Boulogne'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Boulogne'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Boulogne'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Boulogne'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Boulogne'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Boulogne'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Boulogne'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Boulogne'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Boulogne'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Boulogne'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Boulogne'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Bourg-la-Reine', 'Président délégué');
-$rbac->Roles->add('Secrétaire Bourg-la-Reine', 'Secrétaire');
-$rbac->Roles->add('Trésorier Bourg-la-Reine', 'Trésorier');
-$rbac->Roles->add('DLO Bourg-la-Reine', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Bourg-la-Reine', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Bourg-la-Reine', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Bourg-la-Reine', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Bourg-la-Reine', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Bourg-la-Reine', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Bourg-la-Reine', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Bourg-la-Reine', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Bourg-la-Reine', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Bourg-la-Reine', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Bourg-la-Reine', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Bourg-la-Reine', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Bourg-la-Reine'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Bourg-la-Reine'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Bourg-la-Reine'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Bourg-la-Reine'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Bourg-la-Reine'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Bourg-la-Reine'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Bourg-la-Reine'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Bourg-la-Reine'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Bourg-la-Reine'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Bourg-la-Reine'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Bourg-la-Reine'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Bourg-la-Reine'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Bourg-la-Reine'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Bourg-la-Reine'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Bourg-la-Reine'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Clamart', 'Président délégué');
-$rbac->Roles->add('Secrétaire Clamart', 'Secrétaire');
-$rbac->Roles->add('Trésorier Clamart', 'Trésorier');
-$rbac->Roles->add('DLO Clamart', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Clamart', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Clamart', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Clamart', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Clamart', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Clamart', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Clamart', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Clamart', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Clamart', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Clamart', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Clamart', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Clamart', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Clamart'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Clamart'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Clamart'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Clamart'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Clamart'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Clamart'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Clamart'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Clamart'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Clamart'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Clamart'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Clamart'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Clamart'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Clamart'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Clamart'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Clamart'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Clichy', 'Président délégué');
-$rbac->Roles->add('Secrétaire Clichy', 'Secrétaire');
-$rbac->Roles->add('Trésorier Clichy', 'Trésorier');
-$rbac->Roles->add('DLO Clichy', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Clichy', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Clichy', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Clichy', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Clichy', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Clichy', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Clichy', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Clichy', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Clichy', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Clichy', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Clichy', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Clichy', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Clichy'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Clichy'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Clichy'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Clichy'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Clichy'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Clichy'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Clichy'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Clichy'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Clichy'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Clichy'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Clichy'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Clichy'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Clichy'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Clichy'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Clichy'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Colombes', 'Président délégué');
-$rbac->Roles->add('Secrétaire Colombes', 'Secrétaire');
-$rbac->Roles->add('Trésorier Colombes', 'Trésorier');
-$rbac->Roles->add('DLO Colombes', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Colombes', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Colombes', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Colombes', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Colombes', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Colombes', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Colombes', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Colombes', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Colombes', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Colombes', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Colombes', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Colombes', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Colombes'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Colombes'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Colombes'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Colombes'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Colombes'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Colombes'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Colombes'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Colombes'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Colombes'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Colombes'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Colombes'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Colombes'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Colombes'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Colombes'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Colombes'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Courbevoie', 'Président délégué');
-$rbac->Roles->add('Secrétaire Courbevoie', 'Secrétaire');
-$rbac->Roles->add('Trésorier Courbevoie', 'Trésorier');
-$rbac->Roles->add('DLO Courbevoie', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Courbevoie', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Courbevoie', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Courbevoie', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Courbevoie', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Courbevoie', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Courbevoie', 'Directeur Local des Formations adjoint à la formation externe Grand Public');
-$rbac->Roles->add('DLF-C Courbevoie', 'Directeur Local des Formations adjoint à la formation externe Grands Comptes');
-$rbac->Roles->add('DLAS Courbevoie', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Courbevoie', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Courbevoie', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Courbevoie', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Courbevoie', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Courbevoie'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Courbevoie'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Courbevoie'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Courbevoie'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Courbevoie'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Courbevoie'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Courbevoie'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Courbevoie'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Courbevoie'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Courbevoie'), utf8_decode('Directeur Local des Formations adjoint à la formation externe Grand Public'));
+$rbac->Roles->add(utf8_decode('DLF-C Courbevoie'), utf8_decode('Directeur Local des Formations adjoint à la formation externe Grands Comptes'));
+$rbac->Roles->add(utf8_decode('DLAS Courbevoie'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Courbevoie'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Courbevoie'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Courbevoie'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Courbevoie'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Garches', 'Président délégué');
-$rbac->Roles->add('Secrétaire Garches', 'Secrétaire');
-$rbac->Roles->add('Trésorier Garches', 'Trésorier');
-$rbac->Roles->add('DLO Garches', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Garches', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Garches', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Garches', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Garches', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Garches', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Garches', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Garches', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Garches', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Garches', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Garches', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Garches', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Garches'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Garches'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Garches'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Garches'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Garches'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Garches'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Garches'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Garches'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Garches'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Garches'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Garches'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Garches'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Garches'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Garches'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Garches'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Gennevilliers', 'Président délégué');
-$rbac->Roles->add('Secrétaire Gennevilliers', 'Secrétaire');
-$rbac->Roles->add('Trésorier Gennevilliers', 'Trésorier');
-$rbac->Roles->add('DLO Gennevilliers', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Gennevilliers', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Gennevilliers', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Gennevilliers', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Gennevilliers', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Gennevilliers', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Gennevilliers', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Gennevilliers', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Gennevilliers', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Gennevilliers', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Gennevilliers', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Gennevilliers', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Gennevilliers'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Gennevilliers'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Gennevilliers'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Gennevilliers'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Gennevilliers'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Gennevilliers'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Gennevilliers'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Gennevilliers'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Gennevilliers'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Gennevilliers'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Gennevilliers'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Gennevilliers'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Gennevilliers'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Gennevilliers'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Gennevilliers'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Levallois', 'Président délégué');
-$rbac->Roles->add('Secrétaire Levallois', 'Secrétaire');
-$rbac->Roles->add('Trésorier Levallois', 'Trésorier');
-$rbac->Roles->add('DLO Levallois', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Levallois', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Levallois', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Levallois', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Levallois', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Levallois', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Levallois', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Levallois', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Levallois', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Levallois', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Levallois', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Levallois', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Levallois'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Levallois'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Levallois'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Levallois'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Levallois'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Levallois'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Levallois'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Levallois'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Levallois'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Levallois'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Levallois'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Levallois'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Levallois'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Levallois'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Levallois'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Montrouge', 'Président délégué');
-$rbac->Roles->add('Secrétaire Montrouge', 'Secrétaire');
-$rbac->Roles->add('Trésorier Montrouge', 'Trésorier');
-$rbac->Roles->add('DLO Montrouge', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Montrouge', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Montrouge', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Montrouge', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Montrouge', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Montrouge', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Montrouge', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Montrouge', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Montrouge', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Montrouge', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Montrouge', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Montrouge', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Montrouge'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Montrouge'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Montrouge'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Montrouge'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Montrouge'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Montrouge'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Montrouge'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Montrouge'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Montrouge'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Montrouge'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Montrouge'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Montrouge'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Montrouge'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Montrouge'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Montrouge'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Nanterre', 'Président délégué');
-$rbac->Roles->add('Secrétaire Nanterre', 'Secrétaire');
-$rbac->Roles->add('Trésorier Nanterre', 'Trésorier');
-$rbac->Roles->add('DLO Nanterre', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Nanterre', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Nanterre', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Nanterre', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Nanterre', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Nanterre', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Nanterre', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Nanterre', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Nanterre', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Nanterre', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Nanterre', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Nanterre', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Nanterre'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Nanterre'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Nanterre'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Nanterre'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Nanterre'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Nanterre'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Nanterre'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Nanterre'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Nanterre'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Nanterre'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Nanterre'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Nanterre'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Nanterre'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Nanterre'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Nanterre'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Rueil', 'Président délégué');
-$rbac->Roles->add('Secrétaire Rueil', 'Secrétaire');
-$rbac->Roles->add('Trésorier Rueil', 'Trésorier');
-$rbac->Roles->add('DLO Rueil', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Rueil', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Rueil', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Rueil', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Rueil', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Rueil', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Rueil', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Rueil', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Rueil', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Rueil', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Rueil', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Rueil', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Rueil'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Rueil'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Rueil'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Rueil'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Rueil'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Rueil'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Rueil'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Rueil'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Rueil'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Rueil'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Rueil'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Rueil'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Rueil'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Rueil'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Rueil'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Suresnes', 'Président délégué');
-$rbac->Roles->add('Secrétaire Suresnes', 'Secrétaire');
-$rbac->Roles->add('Trésorier Suresnes', 'Trésorier');
-$rbac->Roles->add('DLO Suresnes', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Suresnes', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Suresnes', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Suresnes', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Suresnes', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Suresnes', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Suresnes', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Suresnes', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Suresnes', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Suresnes', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Suresnes', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Suresnes', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Suresnes'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Suresnes'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Suresnes'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Suresnes'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Suresnes'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Suresnes'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Suresnes'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Suresnes'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Suresnes'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Suresnes'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Suresnes'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Suresnes'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Suresnes'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Suresnes'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Suresnes'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Vanves', 'Président délégué');
-$rbac->Roles->add('Secrétaire Vanves', 'Secrétaire');
-$rbac->Roles->add('Trésorier Vanves', 'Trésorier');
-$rbac->Roles->add('DLO Vanves', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Vanves', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Vanves', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Vanves', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Vanves', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Vanves', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Vanves', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Vanves', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Vanves', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Vanves', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Vanves', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Vanves', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Vanves'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Vanves'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Vanves'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Vanves'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Vanves'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Vanves'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Vanves'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Vanves'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Vanves'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Vanves'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Vanves'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Vanves'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Vanves'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Vanves'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Vanves'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
-$rbac->Roles->add('Président Villeneuve', 'Président délégué');
-$rbac->Roles->add('Secrétaire Villeneuve', 'Secrétaire');
-$rbac->Roles->add('Trésorier Villeneuve', 'Trésorier');
-$rbac->Roles->add('DLO Villeneuve', 'Directeur Local des Opérations');
-$rbac->Roles->add('DLO-A Villeneuve', 'Directeur Local des Opérations adjoint aux missions extérieures');
-$rbac->Roles->add('DLO-B Villeneuve', 'Directeur Local des Opérations adjoint au réseau de secours');
-$rbac->Roles->add('DLO-C Villeneuve', 'Directeur Local des Opérations adjoint en charge de l\'administratif');
-$rbac->Roles->add('DLF Villeneuve', 'Directeur Local des Formations');
-$rbac->Roles->add('DLF-A Villeneuve', 'Directeur Local des Formations adjoint à la formation interne');
-$rbac->Roles->add('DLF-B Villeneuve', 'Directeur Local des Formations adjoint à la formation externe');
-$rbac->Roles->add('DLAS Villeneuve', 'Directeur Local des Actions Solidaires et Sociales');
-$rbac->Roles->add('DLC Villeneuve', 'Directeur Local de la Communication');
-$rbac->Roles->add('DLT Villeneuve', 'Directeur Local Technique');
-$rbac->Roles->add('DLT-L Matér Villeneuve', 'Directeur Local Technique adjoint à la logistique');
-$rbac->Roles->add('DLT-L Véhic Villeneuve', 'Directeur Local Technique adjoint aux véhicules');
+$rbac->Roles->add(utf8_decode('Président Villeneuve'), utf8_decode('Président délégué'));
+$rbac->Roles->add(utf8_decode('Secrétaire Villeneuve'), utf8_decode('Secrétaire'));
+$rbac->Roles->add(utf8_decode('Trésorier Villeneuve'), utf8_decode('Trésorier'));
+$rbac->Roles->add(utf8_decode('DLO Villeneuve'), utf8_decode('Directeur Local des Opérations'));
+$rbac->Roles->add(utf8_decode('DLO-A Villeneuve'), utf8_decode('Directeur Local des Opérations adjoint aux missions extérieures'));
+$rbac->Roles->add(utf8_decode('DLO-B Villeneuve'), utf8_decode('Directeur Local des Opérations adjoint au réseau de secours'));
+$rbac->Roles->add(utf8_decode('DLO-C Villeneuve'), utf8_decode('Directeur Local des Opérations adjoint en charge de l\'administratif'));
+$rbac->Roles->add(utf8_decode('DLF Villeneuve'), utf8_decode('Directeur Local des Formations'));
+$rbac->Roles->add(utf8_decode('DLF-A Villeneuve'), utf8_decode('Directeur Local des Formations adjoint à la formation interne'));
+$rbac->Roles->add(utf8_decode('DLF-B Villeneuve'), utf8_decode('Directeur Local des Formations adjoint à la formation externe'));
+$rbac->Roles->add(utf8_decode('DLAS Villeneuve'), utf8_decode('Directeur Local des Actions Solidaires et Sociales'));
+$rbac->Roles->add(utf8_decode('DLC Villeneuve'), utf8_decode('Directeur Local de la Communication'));
+$rbac->Roles->add(utf8_decode('DLT Villeneuve'), utf8_decode('Directeur Local Technique'));
+$rbac->Roles->add(utf8_decode('DLT-L Matér Villeneuve'), utf8_decode('Directeur Local Technique adjoint à la logistique'));
+$rbac->Roles->add(utf8_decode('DLT-L Véhic Villeneuve'), utf8_decode('Directeur Local Technique adjoint aux véhicules'));
 
 
 
@@ -395,7 +393,7 @@ $rbac->Roles->add('DLT-L Véhic Villeneuve', 'Directeur Local Technique adjoint 
 /////////////////////////////////////////////////
 // ADD ALL MISSING INFORMATION ABOUT ROLES
 /////////////////////////////////////////////////
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='',
 	`Affiliation`='0',
@@ -407,7 +405,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Admin'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='',
 	`Affiliation`='0',
@@ -424,7 +422,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 // ROLES DEPARTEMENTAUX
 ///////////////////////////////////////////////
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0674953172',
 	`Mail`='president@protectioncivile92.org',
 	`Affiliation`='0',
@@ -436,7 +434,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='vice-president-1@protectioncivile92.org',
 	`Affiliation`='0',
@@ -448,7 +446,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Vice-Président-1'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='vice-president-2@protectioncivile92.org',
 	`Affiliation`='0',
@@ -460,7 +458,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Vice-Président-2'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0676457981',
 	`Mail`='secretaire-general@protectioncivile92.org',
 	`Affiliation`='0',
@@ -472,7 +470,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-general-adj@protectioncivile92.org',
 	`Affiliation`='0',
@@ -484,7 +482,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Adjoint'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0677464713',
 	`Mail`='tresorier@protectioncivile92.org',
 	`Affiliation`='0',
@@ -496,7 +494,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-adj@protectioncivile92.org',
 	`Affiliation`='0',
@@ -508,7 +506,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Adjoint'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0674953175',
 	`Mail`='directeur-operations@protectioncivile92.org',
 	`Affiliation`='0',
@@ -520,7 +518,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DDO'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0674953165',
 	`Mail`='directeur-adj-operations@protectioncivile92.org',
 	`Affiliation`='0',
@@ -532,7 +530,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DDO-A'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0674953173',
 	`Mail`='directeur-adj-reseau-secours@protectioncivile92.org',
 	`Affiliation`='0',
@@ -544,7 +542,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DDO-B'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='directeur-adj-dispositif@protectioncivile92.org',
 	`Affiliation`='0',
@@ -556,7 +554,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DDO-C'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0632989106',
 	`Mail`='directeur-actions-sociales@protectioncivile92.org',
 	`Affiliation`='0',
@@ -568,7 +566,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DDASS'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0689178043',
 	`Mail`='directeur-communication@protectioncivile92.org',
 	`Affiliation`='0',
@@ -580,7 +578,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DDC'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0674953159',
 	`Mail`='directeur-technique@protectioncivile92.org',
 	`Affiliation`='0',
@@ -592,7 +590,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DDT'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0674953157',
 	`Mail`='directeur-adj-logistique@protectioncivile92.org',
 	`Affiliation`='0',
@@ -604,7 +602,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DDT-L'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='directeur-adj-informatique@protectioncivile92.org',
 	`Affiliation`='0',
@@ -616,7 +614,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DDT-I'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0674953162',
 	`Mail`='directeur-adj-transmissions@protectioncivile92.org',
 	`Affiliation`='0',
@@ -628,7 +626,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DDT-T'
 	");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0676457978',
 	`Mail`='directeur-formations@protectioncivile92.org',
 	`Affiliation`='0',
@@ -640,7 +638,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DDF'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='medica92@protectioncivile92.org',
 	`Affiliation`='0',
@@ -652,7 +650,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='MED'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretariat@protectioncivile92.org',
 	`Affiliation`='0',
@@ -668,7 +666,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 // CHARGÉS DE MISSION
 ///////////////////////////////////////////////
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0676457978',
 	`Mail`='formation-ars@protectioncivile92.org',
 	`Affiliation`='0',
@@ -680,7 +678,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='CM-FOR-ARS'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0676457978',
 	`Mail`='',
 	`Affiliation`='0',
@@ -692,7 +690,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='CM-FOR-OPR'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0676457978',
 	`Mail`='formation-ceps@protectioncivile92.org',
 	`Affiliation`='0',
@@ -704,7 +702,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='CM-FOR-CE'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0676457978',
 	`Mail`='formation-conducteur@protectioncivile92.org',
 	`Affiliation`='0',
@@ -716,7 +714,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='CM-FOR-CH'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='paramedical@protectioncivile92.org',
 	`Affiliation`='0',
@@ -728,7 +726,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='CM-PARAMED'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='directeur-adj-cadre-permanence@protectioncivile92.org',
 	`Affiliation`='0',
@@ -744,7 +742,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 // PÔLES / COMMISSIONS
 ///////////////////////////////////////////////
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='pole-logistique@protectioncivile92.org',
 	`Affiliation`='0',
@@ -756,7 +754,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='C-LOG'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='pole-transmissions@protectioncivile92.org',
 	`Affiliation`='0',
@@ -768,7 +766,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='C-TRANS'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='pole-informatique@protectioncivile92.org',
 	`Affiliation`='0',
@@ -784,7 +782,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 // DIVERS
 ///////////////////////////////////////////////
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='bureau@protectioncivile92.org',
 	`Affiliation`='0',
@@ -796,7 +794,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='V-BUREAU'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='conseil-departemental@protectioncivile92.org',
 	`Affiliation`='0',
@@ -808,7 +806,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='V-CD'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='recrutement@protectioncivile92.org',
 	`Affiliation`='0',
@@ -820,7 +818,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='V-RECRUTEMENT'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='demande-dps@protectioncivile92.org',
 	`Affiliation`='0',
@@ -832,7 +830,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='V-DEMANDE-DPS'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication@protectioncivile92.org',
 	`Affiliation`='0',
@@ -844,7 +842,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='V-COM'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel@protectioncivile92.org',
 	`Affiliation`='0',
@@ -856,7 +854,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='V-OPE'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation@protectioncivile92.org',
 	`Affiliation`='0',
@@ -868,7 +866,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='V-FOR'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='technique@protectioncivile92.org',
 	`Affiliation`='0',
@@ -884,7 +882,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 // PERMANENCES
 ///////////////////////////////////////////////
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='07 51 60 75 18',
 	`Mail`='permanence-bureau@protectioncivile92.org',
 	`Affiliation`='0',
@@ -896,7 +894,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='P-TRANSF'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0674953170',
 	`Mail`='permanence-operationnel@protectioncivile92.org',
 	`Affiliation`='0',
@@ -908,7 +906,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='P-CODEP'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0674953166',
 	`Mail`='permanence-transmissions@protectioncivile92.org',
 	`Affiliation`='0',
@@ -924,7 +922,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 // LISTES DE DIFFUSION
 ///////////////////////////////////////////////
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='antennes-president@protectioncivile92.org',
 	`Affiliation`='0',
@@ -936,7 +934,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='D-PRES'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='antennes-secretaire@protectioncivile92.org',
 	`Affiliation`='0',
@@ -948,7 +946,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='D-SEC'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='antennes-tresorier@protectioncivile92.org',
 	`Affiliation`='0',
@@ -960,7 +958,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='D-TRESO'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='antennes-operationnel@protectioncivile92.org',
 	`Affiliation`='0',
@@ -972,7 +970,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='D-DLO'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='antennes-formation@protectioncivile92.org',
 	`Affiliation`='0',
@@ -984,7 +982,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='D-DLF'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='antennes-actions-sociales@protectioncivile92.org',
 	`Affiliation`='0',
@@ -996,7 +994,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='D-DLAS'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='antennes-logistique@protectioncivile92.org',
 	`Affiliation`='0',
@@ -1008,7 +1006,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='D-DLT'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='antennes-transmissions@protectioncivile92.org',
 	`Affiliation`='0',
@@ -1020,7 +1018,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='D-DLT-T'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='antennes-communication@protectioncivile92.org',
 	`Affiliation`='0',
@@ -1036,7 +1034,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 // ROLES DES ANTENNES
 ///////////////////////////////////////////////
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0650842289',
 	`Mail`='president-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1048,7 +1046,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1060,7 +1058,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1072,7 +1070,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0664651746',
 	`Mail`='operationnel-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1084,7 +1082,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1096,7 +1094,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1108,7 +1106,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1120,7 +1118,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0147903359',
 	`Mail`='formation-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1132,7 +1130,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1144,7 +1142,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1156,7 +1154,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1168,7 +1166,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1180,7 +1178,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1192,7 +1190,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1204,7 +1202,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Asnières'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-asnieres@protectioncivile92.org',
 	`Affiliation`='2',
@@ -1217,7 +1215,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0783884779',
 	`Mail`='president-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1229,7 +1227,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1241,7 +1239,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1253,7 +1251,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0652368855',
 	`Mail`='operationnel-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1265,7 +1263,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1277,7 +1275,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1289,7 +1287,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1301,7 +1299,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0652221205',
 	`Mail`='formation-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1313,7 +1311,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1325,7 +1323,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1337,7 +1335,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1349,7 +1347,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1361,7 +1359,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1373,7 +1371,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1385,7 +1383,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Boulogne'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-boulogne-issy@protectioncivile92.org',
 	`Affiliation`='5',
@@ -1398,7 +1396,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0632989170',
 	`Mail`='president-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1410,7 +1408,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1422,7 +1420,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1434,7 +1432,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0607102726',
 	`Mail`='operationnel-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1446,7 +1444,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1458,7 +1456,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1470,7 +1468,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1482,7 +1480,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0695049978',
 	`Mail`='formation-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1494,7 +1492,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1506,7 +1504,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0679560098',
 	`Mail`='formation-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1518,7 +1516,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1530,7 +1528,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1542,7 +1540,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1554,7 +1552,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1566,7 +1564,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Bourg-la-Reine'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-bourg-la-reine@protectioncivile92.org',
 	`Affiliation`='6',
@@ -1579,7 +1577,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='president-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1591,7 +1589,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1603,7 +1601,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1615,7 +1613,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1627,7 +1625,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1639,7 +1637,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1651,7 +1649,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1663,7 +1661,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1675,7 +1673,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1687,7 +1685,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1699,7 +1697,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1711,7 +1709,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1723,7 +1721,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1735,7 +1733,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1747,7 +1745,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Clamart'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-clamart@protectioncivile92.org',
 	`Affiliation`='10',
@@ -1760,7 +1758,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='president-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1772,7 +1770,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1784,7 +1782,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1796,7 +1794,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1808,7 +1806,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1820,7 +1818,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1832,7 +1830,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1844,7 +1842,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1856,7 +1854,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1868,7 +1866,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1880,7 +1878,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1892,7 +1890,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1904,7 +1902,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1916,7 +1914,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1928,7 +1926,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Clichy'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-clichy@protectioncivile92.org',
 	`Affiliation`='11',
@@ -1941,7 +1939,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='president-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -1953,7 +1951,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -1965,7 +1963,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -1977,7 +1975,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -1989,7 +1987,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -2001,7 +1999,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -2013,7 +2011,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -2025,7 +2023,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -2037,7 +2035,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -2049,7 +2047,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -2061,7 +2059,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -2073,7 +2071,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -2085,7 +2083,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -2097,7 +2095,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -2109,7 +2107,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Colombes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-colombes@protectioncivile92.org',
 	`Affiliation`='12',
@@ -2122,7 +2120,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0762263688',
 	`Mail`='president-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2134,7 +2132,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2146,7 +2144,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2158,7 +2156,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0674728980',
 	`Mail`='operationnel-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2170,7 +2168,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0652540653',
 	`Mail`='operationnel-adj-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2182,7 +2180,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2194,7 +2192,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2206,7 +2204,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2218,7 +2216,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2230,7 +2228,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0616461022',
 	`Mail`='formation-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2242,7 +2240,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2254,7 +2252,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-C Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0762261863',
 	`Mail`='actions-sociales-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2266,7 +2264,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2278,7 +2276,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2290,7 +2288,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2302,7 +2300,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Courbevoie'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-courbevoie@protectioncivile92.org',
 	`Affiliation`='13',
@@ -2315,7 +2313,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0676457979',
 	`Mail`='president-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2327,7 +2325,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2339,7 +2337,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2351,7 +2349,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0750939211',
 	`Mail`='operationnel-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2363,7 +2361,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2375,7 +2373,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2387,7 +2385,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2399,7 +2397,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0750857300',
 	`Mail`='formation-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2411,7 +2409,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2423,7 +2421,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2435,7 +2433,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2447,7 +2445,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2459,7 +2457,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2471,7 +2469,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2483,7 +2481,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Garches'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-garches@protectioncivile92.org',
 	`Affiliation`='15',
@@ -2496,7 +2494,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='president-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2508,7 +2506,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2520,7 +2518,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2532,7 +2530,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0660264451',
 	`Mail`='operationnel-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2544,7 +2542,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2556,7 +2554,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2568,7 +2566,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2580,7 +2578,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0673493244',
 	`Mail`='formation-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2592,7 +2590,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2604,7 +2602,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2616,7 +2614,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2628,7 +2626,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2640,7 +2638,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2652,7 +2650,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2664,7 +2662,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Gennevilliers'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-gennevilliers@protectioncivile92.org',
 	`Affiliation`='17',
@@ -2677,7 +2675,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='president-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2689,7 +2687,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2701,7 +2699,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2713,7 +2711,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0664979200',
 	`Mail`='operationnel-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2725,7 +2723,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0665640020',
 	`Mail`='operationnel-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2737,7 +2735,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2749,7 +2747,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2761,7 +2759,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0667523257',
 	`Mail`='formation-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2773,7 +2771,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2785,7 +2783,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2797,7 +2795,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2809,7 +2807,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2821,7 +2819,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2833,7 +2831,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2845,7 +2843,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Levallois'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-levallois@protectioncivile92.org',
 	`Affiliation`='20',
@@ -2858,7 +2856,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='president-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -2870,7 +2868,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -2882,7 +2880,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -2894,7 +2892,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -2906,7 +2904,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -2918,7 +2916,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -2930,7 +2928,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -2942,7 +2940,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -2954,7 +2952,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -2966,7 +2964,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -2978,7 +2976,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -2990,7 +2988,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -3002,7 +3000,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -3014,7 +3012,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -3026,7 +3024,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Montrouge'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-montrouge@protectioncivile92.org',
 	`Affiliation`='23',
@@ -3039,7 +3037,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='president-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3051,7 +3049,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3063,7 +3061,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3075,7 +3073,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3087,7 +3085,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3099,7 +3097,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3111,7 +3109,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3123,7 +3121,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3135,7 +3133,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3147,7 +3145,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3159,7 +3157,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3171,7 +3169,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3183,7 +3181,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3195,7 +3193,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3207,7 +3205,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Nanterre'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-nanterre@protectioncivile92.org',
 	`Affiliation`='24',
@@ -3220,7 +3218,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0699400128',
 	`Mail`='president-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3232,7 +3230,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3244,7 +3242,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3256,7 +3254,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0699420228',
 	`Mail`='operationnel-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3268,7 +3266,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3280,7 +3278,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3292,7 +3290,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3304,7 +3302,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3316,7 +3314,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3328,7 +3326,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3340,7 +3338,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3352,7 +3350,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3364,7 +3362,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3376,7 +3374,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3388,7 +3386,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Rueil'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-rueil@protectioncivile92.org',
 	`Affiliation`='28',
@@ -3401,7 +3399,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='president-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3413,7 +3411,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3425,7 +3423,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3437,7 +3435,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3449,7 +3447,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3461,7 +3459,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3473,7 +3471,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3485,7 +3483,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3497,7 +3495,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3509,7 +3507,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3521,7 +3519,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3533,7 +3531,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3545,7 +3543,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3557,7 +3555,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3569,7 +3567,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Suresnes'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-suresnes-puteaux@protectioncivile92.org',
 	`Affiliation`='32',
@@ -3582,7 +3580,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='president-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3594,7 +3592,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3606,7 +3604,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3618,7 +3616,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3630,7 +3628,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3642,7 +3640,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3654,7 +3652,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3666,7 +3664,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3678,7 +3676,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3690,7 +3688,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3702,7 +3700,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3714,7 +3712,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3726,7 +3724,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3738,7 +3736,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3750,7 +3748,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Vanves'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-vanves@protectioncivile92.org',
 	`Affiliation`='33',
@@ -3763,7 +3761,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 ");
 
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0768978637',
 	`Mail`='president-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -3775,7 +3773,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Président Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='secretaire-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -3787,7 +3785,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Secrétaire Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='tresorier-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -3799,7 +3797,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='Trésorier Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0768664829',
 	`Mail`='operationnel-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -3811,7 +3809,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-adj-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -3823,7 +3821,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-A Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -3835,7 +3833,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-B Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='operationnel-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -3847,7 +3845,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLO-C Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='0768541942',
 	`Mail`='formation-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -3859,7 +3857,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -3871,7 +3869,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-A Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='formation-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -3883,7 +3881,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLF-B Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='actions-sociales-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -3895,7 +3893,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLAS Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='communication-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -3907,7 +3905,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLC Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -3919,7 +3917,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -3931,7 +3929,7 @@ mysqli_query($db_link, "UPDATE `rbac_roles` SET
 	WHERE `Title`='DLT-L Matér Villeneuve'
 ");
 
-mysqli_query($db_link, "UPDATE `rbac_roles` SET
+mysqli_query($db_link, "UPDATE `$tablename_roles` SET
 	`Phone`='',
 	`Mail`='logistique-villeneuve@protectioncivile92.org',
 	`Affiliation`='36',
@@ -4921,8 +4919,8 @@ $rbac->Roles->assign('DLT-L Véhic Villeneuve', 'directory-view');
 /////////////////////////////////////////////////
 // GOD MODE FOR THE USER INSTALLING THIS SCRIPT
 /////////////////////////////////////////////////
-$rbac->Users->assign('Admin', $_SESSION["ID"]);
-$rbac->Users->assign('Public', 2); // Hopu it is the 'public' user
+$rbac->Users->assign('Admin', 1); // Hope it is the 'admin' user
+$rbac->Users->assign('Public', 2); // Hope it is the 'public' user
 
 
 
