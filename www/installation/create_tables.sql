@@ -24,6 +24,14 @@ CREATE TABLE `settings_mail` (
 ) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci COMMENT = 'Paramètres mail';
 
 
+CREATE TABLE `settings_radiodirectory` (
+	`ID` INT(12) NOT NULL AUTO_INCREMENT ,
+	`name` VARCHAR(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
+	`value` VARCHAR(400) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL ,
+	PRIMARY KEY (`ID`)
+) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_general_ci COMMENT = 'Paramètres annuaire radio';
+
+
 CREATE TABLE `users` (
 	`ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
 	`login` VARCHAR(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
@@ -174,6 +182,19 @@ INSERT INTO `settings_mail`
 	('ddo-validate-external-recipients',	'#prefadpc'),
 	('ddo-validate-external-ccrecipients',	'#ddo');
 
+
+INSERT INTO `settings_radiodirectory`
+	(name, value) VALUES
+	('type_equipement_1_text',	'Encadrement'),
+	('type_equipement_1_value',	'0'),
+	('type_equipement_2_text',	'Portatif'),
+	('type_equipement_2_value',	'1'),
+	('type_equipement_3_text',	'VPSP'),
+	('type_equipement_3_value',	'5'),
+	('type_equipement_4_text',	'Autre véhicule'),
+	('type_equipement_4_value',	'7'),
+	('type_equipement_5_text',	'Base / Relais'),
+	('type_equipement_5_value',	'8');
 
 INSERT INTO `users`
 	(login, pass, last_name, first_name, phone, mail, attached_section, eprotec) VALUES
