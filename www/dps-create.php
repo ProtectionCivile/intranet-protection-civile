@@ -27,6 +27,9 @@
 <!-- DPS duplication or client insertion : interpretor -->
 <?php require_once('components/dps/dps-preselect-client-or-duplicate-computation.php'); ?>
 
+<!-- Recompute city calculation after possible duplication -->
+<?php require('functions/dps/dps-compute-city.php'); ?>
+
 <!-- Create a new DPS : Controller -->
 <?php require_once('functions/controller/dps-create-controller.php'); ?>
 
