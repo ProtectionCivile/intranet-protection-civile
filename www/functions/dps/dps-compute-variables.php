@@ -301,7 +301,8 @@
 	elseif (isset($dps) && isset($dps['cu_full'])) { $cu_full = $dps['cu_full']; }
 	else { $cu_full = ''; }
 
-	if (isset($_POST['section'])) { $section = $_POST['section'];}
+	if (isset($duplicated_dps_array['section'])) { $section = $duplicated_dps_array['section']; }
+	elseif (isset($_POST['section'])) { $section = $_POST['section'];}
 	elseif (isset($dps) && isset($dps['section'])) { $section = $dps['section'];}
 	else { $section = ''; }
 
