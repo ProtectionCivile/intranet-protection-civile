@@ -1,8 +1,6 @@
 <?php
 
 	$missingValues = 0;
-
-	$cu_full = $_POST['cu_full'];
 	$today = date("Y-m-d");
 
 	if(isNullOrEmpty($client_name)){
