@@ -1,5 +1,6 @@
 <?php
-	$cu_year = date("y");
+
+	$cu_year = (new DateTime($event_begin_date))->format('y');
 	$dept = "92";
 
 	$query_code = "SELECT shortname FROM $tablename_sections WHERE number=$ordered_section";
