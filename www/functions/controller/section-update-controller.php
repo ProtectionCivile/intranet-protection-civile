@@ -3,7 +3,6 @@
 	require_once('functions/section/section-update-authentication.php');
 
 	if (isset($_POST['updateSection'])){
-		echo (isset($_POST['section_email']) ? "OUI" : "NON") ;
 		$section_name = $_POST['section_name'];
 		$section_shortname = $_POST['section_shortname'];
 		$section_number = $_POST['section_number'];
