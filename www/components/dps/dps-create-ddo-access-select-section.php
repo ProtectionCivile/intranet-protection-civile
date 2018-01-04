@@ -29,7 +29,7 @@
 						</select>
 					</div>
 					<div class="btn-group col-sm-4" role="group">
-						<button type="submit" class="btn btn-warning">Selectionner</button>
+						<button type="submit" class="btn btn-warning">Sélectionner</button>
 					</div>
 				</div>
 				</form>

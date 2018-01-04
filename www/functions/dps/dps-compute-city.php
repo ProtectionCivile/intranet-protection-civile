@@ -19,6 +19,14 @@ elseif(isset($_GET['dept']) ){
 	$ordered_section = "0";
 	$forced_section = "0";
 }
+elseif(isset($duplicated_dps_array['section']) ){
+	$ordered_section = $duplicated_dps_array['section'];
+	$forced_section = $duplicated_dps_array['section'];
+}
+elseif(isset($_POST['section']) ){
+	$ordered_section = $_POST['section'];
+	$forced_section = $_POST['section'];
+}
 else {
 	$ordered_section = $currentUserSection;
 }

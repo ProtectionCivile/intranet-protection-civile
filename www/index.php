@@ -8,11 +8,6 @@
 <body>
 <?php include('components/header.php'); ?>
 
-
-<ol class="breadcrumb">
-	<li><a href="/">Accueil</a></li>
-</ol>
-
 <!-- Redirect user if unauthorized (bad request) => shoot him -->
 <?php
 if (isset($_GET['notallowed'])){
