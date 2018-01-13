@@ -150,7 +150,7 @@
 					// Generate PDF
 					require_once('functions/pdf/build-pdf-dps-recap.php');
 					$declarationFilePath = $pathfile.'/'.$cu_full.'-'.$dps_doc_suffix_declaration.'.pdf';
-					buildPdfForDps($declarationFilePath, $dps);
+					buildPdfForDps($select_list_parameter_service, $declarationFilePath, $dps);
 
 					// Send mail
 					$action = 'accept-ddo';
