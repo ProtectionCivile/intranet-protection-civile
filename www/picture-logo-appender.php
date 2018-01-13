@@ -17,7 +17,7 @@
 
 
 <!-- Authentication -->
-<?php //$rbac->enforce("picture-editor-use", $currentUserID); ?>
+<?php $rbac->enforce("picture-editor-use", $currentUserID); ?>
 
 <!-- Add logo to picture : Controller -->
 <?php include 'functions/controller/picture-add-logo-controller.php'; ?>

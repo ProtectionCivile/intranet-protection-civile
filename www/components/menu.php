@@ -81,10 +81,10 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 							<li><a href="mailinglist-delete.php"></span><span class='glyphicon glyphicon-minus'></span> Désabonnement</a></li>
 						<?php } ?>
 						<li class="divider"></li>
-						<?php //if ($rbac->check("picture-editor-use", $currentUserID)) {?>
+						<?php if ($rbac->check("picture-editor-use", $currentUserID)) {?>
 							<li class="dropdown-header">Outils photo</li>
 							<li><a href="picture-logo-appender.php"></span><span class='glyphicon glyphicon-picture'></span> Ajout de logo sur photo</a></li>
-						<?php //} ?>
+						<?php } ?>
 					</ul>
 				</li>
 
