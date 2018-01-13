@@ -21,7 +21,13 @@
 
   <div class="form-group">
     <div class="col-sm-offset-4 col-sm-8 ">
-      <button type="submit" class="btn btn-warning">Envoyer <span class="glyphicon glyphicon-send"></span></button>
+      <button type="submit" class="btn btn-warning"
+      <?php
+      if($genericSuccess){
+        echo " disabled> Poste déjà créé";
+      }
+      ?>
+      >Envoyer <span class="glyphicon glyphicon-send"></span></button>
     </div>
   </div>
 </form>
