@@ -65,7 +65,7 @@ $rbac->Permissions->addPath('/treso-dps-view-all/treso-dps-view-own', array('Voi
 $rbac->Permissions->addPath('/directory-update/directory-view', array('Modifier annuaire', 'Voir annuaire'));
 $rbac->Permissions->addPath('/admin-mailinglist-manage', array('Gestion des listes de diffusion'));
 $rbac->Permissions->addPath('/admin-sections-update/admin-sections-view', array('Modifier les sections', 'Voir les sections'));
-$rbac->Permissions->addPath('/picture-editor-update-settings/picture-editor-use', array('Modifier les réglages du cartoucheur de photos', 'Utiliser le cartoucheur de photos'));
+$rbac->Permissions->addPath('/picture-editor-use', array('Utiliser le cartoucheur de photos'));
 // Trésorerie ?
 // Factures ?
 
@@ -3959,7 +3959,7 @@ $rbac->Roles->assign('Admin', 'ope-clients-update-all');
 $rbac->Roles->assign('Admin', 'admin-sections-update');
 $rbac->Roles->assign('Admin', 'directory-update');
 $rbac->Roles->assign('Admin', 'admin-mailinglist-manage');
-$rbac->Roles->assign('Admin', 'picture-editor-update-settings');
+$rbac->Roles->assign('Admin', 'picture-editor-use');
 $rbac->Roles->assign('Public', 'directory-view');
 $rbac->Roles->assign('Public', 'picture-editor-use');
 $rbac->Roles->assign('Président', 'admin-settings-view');
@@ -4056,7 +4056,7 @@ $rbac->Roles->assign('DDASS', 'picture-editor-use');
 $rbac->Roles->assign('DDC', 'ope-dps-view-all');
 $rbac->Roles->assign('DDC', 'admin-sections-view');
 $rbac->Roles->assign('DDC', 'directory-view');
-$rbac->Roles->assign('DDC', 'picture-editor-update-settings');
+$rbac->Roles->assign('DDC', 'picture-editor-use');
 $rbac->Roles->assign('DDT', 'admin-settings-view');
 $rbac->Roles->assign('DDT', 'admin-roles-view');
 $rbac->Roles->assign('DDT', 'admin-permissions-view');
@@ -4078,7 +4078,7 @@ $rbac->Roles->assign('DDT-I', 'treso-dps-view-all');
 $rbac->Roles->assign('DDT-I', 'ope-clients-update-all');
 $rbac->Roles->assign('DDT-I', 'admin-sections-update');
 $rbac->Roles->assign('DDT-I', 'directory-update');
-$rbac->Roles->assign('DDT-I', 'picture-editor-update-settings');
+$rbac->Roles->assign('DDT-I', 'picture-editor-use');
 $rbac->Roles->assign('DDT-I', 'admin-mailinglist-manage');
 $rbac->Roles->assign('DDF', 'admin-roles-view');
 $rbac->Roles->assign('DDF', 'admin-permissions-view');

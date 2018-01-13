@@ -81,10 +81,10 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 							<li><a href="mailinglist-delete.php"></span><span class='glyphicon glyphicon-minus'></span> Désabonnement</a></li>
 						<?php } ?>
 						<li class="divider"></li>
-						<?php if ($rbac->check("picture-editor-use", $currentUserID)) {?>
+						<?php //if ($rbac->check("picture-editor-use", $currentUserID)) {?>
 							<li class="dropdown-header">Outils photo</li>
 							<li><a href="picture-logo-appender.php"></span><span class='glyphicon glyphicon-picture'></span> Ajout de logo sur photo</a></li>
-						<?php } ?>
+						<?php //} ?>
 					</ul>
 				</li>
 
@@ -95,12 +95,6 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 						<?php if ($rbac->check("ope-clients-view-own", $currentUserID) || $rbac->check("ope-clients-view-all", $currentUserID)) {?>
 							<li><a href="client-list.php"><span class='glyphicon glyphicon-search'></span> Clients</a></li>
 						<?php } ?>
-						<li class="divider"></li>
-						<?php
-						if ($rbac->check("picture-editor-update-settings", $currentUserID)) {
-							?> <li class="dropdown-header">Outils photo</li> <?php
-							?> <li><a href="picture-logo-settings.php"></span><span class='glyphicon glyphicon-picture'></span> Cartoucheur de photos</a></li> <?php
-						} ?>
 						<li class="divider"></li>
 						<?php
 						if ($rbac->check("admin-users-view", $currentUserID) || $rbac->check("admin-sections-view", $currentUserID)) {
