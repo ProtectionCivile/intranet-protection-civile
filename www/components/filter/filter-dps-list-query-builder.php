@@ -6,7 +6,7 @@
 
 	if (!empty($_SESSION['filtered_section']) || $_SESSION['filtered_section'] == "0" ) {
 		$addWhereClause = true;
-		if ($_SESSION['filtered_section'] == "*") {
+		if ($_SESSION['filtered_section'] == "") {
 			$whereCity = "section='".$currentUserSection."'";
 		}
 		else {
