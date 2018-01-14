@@ -1,5 +1,11 @@
 <?php $city = $ordered_section; ?>
-<form class="form-horizontal" id='auto-validation-form' name='auto-validation-form' data-toggle="validator" role="form" action="" method="post">
+<form class="form-horizontal" id='auto-validation-form' name='auto-validation-form' data-toggle="validator" role="form" action="" method="post"
+<?php
+if($genericSuccess) {
+  echo " onSubmit='return(false);'";
+}
+?>
+>
   <input type='hidden' name='create'/>
   <input type='hidden' name='cu_full' value='<?php echo $cu_full;?>' />
   <input type='hidden' name='section' value='<?php echo $city;?>'/>
@@ -23,11 +29,20 @@
     <div class="col-sm-offset-4 col-sm-8 ">
       <button type="submit" class="btn btn-warning"
       <?php
-      if($genericSuccess){
-        echo " disabled> Poste déjà créé";
+      if($genericSuccess) {
+        echo " disabled";
       }
       ?>
-      >Envoyer <span class="glyphicon glyphicon-send"></span></button>
+      >
+      <?php
+      if($genericSuccess) {
+        echo "Poste déjà créé <span class='glyphicon glyphicon-thumbs-up'></span>";
+      }
+      else {
+        echo "Envoyer <span class='glyphicon glyphicon-send'></span>";
+      }
+      ?>
+      </button>
     </div>
   </div>
 </form>
