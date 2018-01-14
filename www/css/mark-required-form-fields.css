@@ -1,0 +1,12 @@
+/* Solution 1 : Colorize all text */
+
+/* .form-group.required .control-label {
+  color:red;
+} */
+
+/* Solution 2 : add a red asterix after */
+
+.form-group.required .control-label:before {
+  content:"> ";
+  color:red;
+}

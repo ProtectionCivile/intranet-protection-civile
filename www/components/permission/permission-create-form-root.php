@@ -2,7 +2,7 @@
   <input type="hidden" id="wish" name="addPermission" />
 
   <?php $feedback = compute_server_feedback($permission_title_error);?>
-  <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+  <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
     <label for="permission_title" class="col-sm-4 control-label">
       Titre
       <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Nom court"></span>

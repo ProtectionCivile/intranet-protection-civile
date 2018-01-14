@@ -2,7 +2,7 @@
   <input type="hidden" id="wish" name="addPermissionPath" />
 
   <?php $feedback = compute_server_feedback($permission_title_path_error);?>
-  <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+  <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
     <label for="permission_title_path" class="col-sm-4 control-label">
       Chemin
       <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chemin pour créer des permissions enchaînées"></span>
@@ -15,7 +15,7 @@
   </div>
 
   <?php $feedback = compute_server_feedback($permission_description_path_error);?>
-  <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+  <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
     <label for="permission_description_path" class="col-sm-4 control-label">
       Description
       <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Noms d'affichage des permissions" />

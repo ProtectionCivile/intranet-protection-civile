@@ -15,7 +15,7 @@
       <div class="panel-body">
 
         <?php $feedback = compute_server_feedback($event_name_error);?>
-        <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+        <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
           <label for="event_name" class="col-sm-4 control-label">
             Nom / Nature
             <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom/Nature de la manifestation"></span>
@@ -28,7 +28,7 @@
         </div>
 
         <?php $feedback = compute_server_feedback($event_description_error);?>
-        <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+        <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
           <label for="event_description" class="col-sm-4 control-label">
             Activité / Descriptif
             <span class="glyphicon glyphicon-info-sign" data-trigger="hover" rel="popover" data-toggle="popover" data-content="Descriptif court."></span>
@@ -41,7 +41,7 @@
         </div>
 
         <?php $feedback = compute_server_feedback($event_address_error);?>
-        <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+        <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
           <label for="event_address" class="col-sm-4 control-label">
             Lieu précis avec adresse exacte
             <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Adresse la plus précise possible du lieu de l'événement."></span>
@@ -54,7 +54,7 @@
         </div>
 
         <?php $feedback = compute_server_feedback($event_department_error);?>
-        <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+        <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
           <label for="event_department" class="col-sm-4 control-label">
             Département où se situe la manifestation
             <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Exemple : 92"></span>
@@ -66,7 +66,7 @@
           </div>
         </div>
 
-        <div class="form-group form-group-sm form-inline row datetimestart">
+        <div class="form-group form-group-sm required form-inline row datetimestart">
           <label for="event_begin_date_picker" class="col-sm-4 control-label">Date et heure du début de l'évènement</label>
           <div class="col-sm-3">
             <div class='input-group date' id='event_begin_date_picker' name="event_begin_date_picker">
@@ -88,7 +88,7 @@
           </div>
         </div>
 
-        <div class="form-group form-group-sm form-inline row">
+        <div class="form-group form-group-sm required form-inline row">
           <label for="event_end_date_picker" class="col-sm-4 control-label">Date et heure de fin de l'évènement</label>
           <div class="col-sm-3">
             <div class='input-group date' id='event_end_date_picker' name="event_end_date_picker">
@@ -146,7 +146,7 @@
       <div class="panel-body">
 
         <?php $feedback = compute_server_feedback($ris_p1_public_error);?>
-        <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+        <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
           <label for="ris_p1_public" class="col-sm-4 control-label">
             Nombre de spectateurs
             <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chiffres uniquement"></span>
@@ -159,7 +159,7 @@
         </div>
 
         <?php $feedback = compute_server_feedback($ris_p1_actors_error);?>
-        <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+        <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
           <label for="ris_p1_actors" class="col-sm-4 control-label">
             Nombre de participants
             <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Chiffres uniquement."></span>

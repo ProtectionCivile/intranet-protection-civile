@@ -2,7 +2,7 @@
   <input type="hidden" id="wish" name="addRole" />
 
   <?php $feedback = compute_server_feedback($role_title_error);?>
-  <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+  <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
     <label for="role_title" class="col-sm-4 control-label">
       Titre
       <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Nom court"></span>
@@ -15,7 +15,7 @@
   </div>
 
   <?php $feedback = compute_server_feedback($role_description_error);?>
-  <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+  <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
     <label for="role_description" class="col-sm-4 control-label">
       Desription
       <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom long" />

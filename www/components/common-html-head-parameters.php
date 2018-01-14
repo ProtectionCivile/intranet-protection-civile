@@ -5,6 +5,7 @@
 <link href="css/bootstrap-datetimepicker.min.css" media="all" rel="stylesheet" type="text/css" />
 <link href="css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
 <link href="css/sticky-footer-navbar.css" media="all" rel="stylesheet" type="text/css" />
+<link href="css/mark-required-form-fields.css" media="all" rel="stylesheet" type="text/css" />
 
 <script type="text/javascript" src="js/moment.js"></script>
 <script src="js/moment-with-locales.min.js" type="text/javascript" charset="utf-8"></script>
