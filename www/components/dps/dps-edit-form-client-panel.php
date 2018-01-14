@@ -8,7 +8,7 @@
 
   <div id='orga-panel-filter' aria-expanded='true' class="panel-body in">
     <?php $feedback = compute_server_feedback($client_name_error);?>
-    <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+    <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
       <label for="client_name" class="col-sm-4 control-label">
         Nom de l'organisation
         <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom de la société, association, collectivité, etc." />
@@ -21,7 +21,7 @@
     </div>
 
     <?php $feedback = compute_server_feedback($client_represent_error);?>
-    <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+    <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
       <label for="client_represent" class="col-sm-4 control-label">
         Représenté par
         <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Personne qui représente l'organisation."></span>
@@ -34,7 +34,7 @@
     </div>
 
     <?php $feedback = compute_server_feedback($client_title_error);?>
-    <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+    <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
       <label for="client_title" class="col-sm-4 control-label">
         Qualité
         <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Statut du représentant."></span>
@@ -47,7 +47,7 @@
     </div>
 
     <?php $feedback = compute_server_feedback($client_address_error);?>
-    <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+    <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
       <label for="client_address" class="col-sm-4 control-label">
         Adresse postale
         <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Adresse, code postal, ville."></span>
@@ -60,7 +60,7 @@
     </div>
 
     <?php $feedback = compute_server_feedback($client_phone_error);?>
-    <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+    <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
       <label for="client_phone" class="col-sm-4 control-label">
         Téléphone
         <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Format 0XXXXXXXXX"></span>

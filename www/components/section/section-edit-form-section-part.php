@@ -1,5 +1,5 @@
 <?php $feedback = compute_server_feedback($section_name_error);?>
-<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+<div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
   <label for="section_name" class="col-sm-4 control-label">
     Nom de l'antenne
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom de l'antenne au complet" />
@@ -12,7 +12,7 @@
 </div>
 
 <?php $feedback = compute_server_feedback($section_shortname_error);?>
-<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+<div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
   <label for="section_shortname" class="col-sm-4 control-label">
     Nom court
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Un nom court qui vous permettra de sélectionner ce section lors de la création d'un DPS." />
@@ -25,7 +25,7 @@
 </div>
 
 <?php $feedback = compute_server_feedback($section_number_error);?>
-<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+<div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
   <label for="section_number" class="col-sm-4 control-label">
     Numéro interne
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Numéro INSEE."></span>
