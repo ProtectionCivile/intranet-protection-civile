@@ -61,7 +61,7 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 						<?php if ($rbac->check("treso-dps-view-own", $currentUserID) || $rbac->check("treso-dps-view-all", $currentUserID)) {
 							?> <li class="divider"></li> <?php
 							?> <li class="dropdown-header">Trésorerie</li> <?php
-							if ($rbac->check("treso-dps-view-own", $currentUserID)) {?> <li class='disabled'><a href="tresorerie.php?filter=accepted"><span class='glyphicon glyphicon-piggy-bank'></span> Taxes ADPC et FNPC</a></li> <?php }
+							if ($rbac->check("treso-dps-view-own", $currentUserID)) {?> <li class='disabled'><a href="#"><span class='glyphicon glyphicon-piggy-bank'></span> Taxes ADPC et FNPC</a></li> <?php }
 							if ($rbac->check("treso-dps-view-all", $currentUserID)) {?> <li class='disabled'><a href="#"><span class='glyphicon glyphicon-usd'></span> Taxe opérationnelle départementale</a></li> <?php }
 						} ?>
 						<li class="divider"></li>
