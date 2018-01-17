@@ -30,6 +30,7 @@ function convert_utf8_if_prod($string) {
 		return (utf8_encode($string));
 	}
 	else {
+		echo "non";
 		return ($string);
 	}
 }
