@@ -27,10 +27,9 @@ echo ("Démarrage : ".date("H:i:s"));
 
 function convert_utf8_if_prod($string) {
 	if(isset($_GET["prod"])){
-		return (utf8_encode($string));
+		return (utf8_decode($string));
 	}
 	else {
-		echo "non";
 		return ($string);
 	}
 }
