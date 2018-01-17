@@ -1,5 +1,5 @@
 <?php $feedback = compute_server_feedback($name_error);?>
-<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+<div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
   <label for="name" class="col-sm-4 control-label">
     Nom du paramètre
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom du paramètre" />
@@ -12,7 +12,7 @@
 </div>
 
 <?php $feedback = compute_server_feedback($value_error);?>
-<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+<div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
   <label for="value" class="col-sm-4 control-label">
     Valeur du paramètre
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Valeur textuelle du paramètre" />

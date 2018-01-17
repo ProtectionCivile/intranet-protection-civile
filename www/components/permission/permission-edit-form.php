@@ -3,7 +3,7 @@
   <input type="hidden" id="id" name="id" value="<?php echo $id; ?>" />
 
   <?php $feedback = compute_server_feedback($permission_title_error);?>
-  <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+  <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
     <label for="permission_title" class="col-sm-4 control-label">
       Titre
       <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Nom court"></span>
@@ -16,7 +16,7 @@
   </div>
 
   <?php $feedback = compute_server_feedback($permission_description_error);?>
-  <div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+  <div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
     <label for="permission_description" class="col-sm-4 control-label">
       Description
       <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom d'affichage des permissions" />

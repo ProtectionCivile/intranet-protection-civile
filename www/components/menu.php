@@ -33,7 +33,7 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 					<ul class="dropdown-menu" role="menu">
 						<?php if ($rbac->check("ope-dps-validate-ddo-to-pref", $currentUserID)) {?>
 							<li class="dropdown-header">Direction départementale</li>
-							<li><a href="dps-list.php?atraiter"><span class='glyphicon glyphicon-fire'></span> En attente de validation <span class="badge"><?php echo $dps_needs_attention;?></span></a></li>
+							<li><a href="dps-list.php?atraiter&all"><span class='glyphicon glyphicon-fire'></span> En attente de validation <span class="badge"><?php echo $dps_needs_attention;?></span></a></li>
 						<?php } ?>
 						<?php if ($rbac->check("ope-dps-view-own", $currentUserID) || $rbac->check("ope-dps-view-all", $currentUserID) || $rbac->check("ope-dps-view-dept", $currentUserID)) { ?>
 							<li class="divider"></li>
@@ -45,7 +45,7 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 								<li><a href="dps-list.php?dept"><span class='glyphicon glyphicon-search'></span> Liste des DPS départementaux</a></li>
 							<?php } ?>
 							<?php if ($rbac->check("ope-dps-view-all", $currentUserID)) {?>
-								<li><a href="dps-list.php"><span class='glyphicon glyphicon-search'></span> Liste de tous les DPS</a></li>
+								<li><a href="dps-list.php?all"><span class='glyphicon glyphicon-search'></span> Liste de tous les DPS</a></li>
 							<?php } ?>
 						<?php } ?>
 						<?php if ( $rbac->check("ope-dps-update-own", $currentUserID) || $rbac->check("ope-dps-update-dept", $currentUserID) || $rbac->check("ope-dps-update-all", $currentUserID) ) { ?>
@@ -61,7 +61,7 @@ $number_mails = (mysqli_num_rows($mails) > 0) ? mysqli_num_rows($mails) : null ;
 						<?php if ($rbac->check("treso-dps-view-own", $currentUserID) || $rbac->check("treso-dps-view-all", $currentUserID)) {
 							?> <li class="divider"></li> <?php
 							?> <li class="dropdown-header">Trésorerie</li> <?php
-							if ($rbac->check("treso-dps-view-own", $currentUserID)) {?> <li class='disabled'><a href="tresorerie.php?filter=accepted"><span class='glyphicon glyphicon-piggy-bank'></span> Taxes ADPC et FNPC</a></li> <?php }
+							if ($rbac->check("treso-dps-view-own", $currentUserID)) {?> <li class='disabled'><a href="#"><span class='glyphicon glyphicon-piggy-bank'></span> Taxes ADPC et FNPC</a></li> <?php }
 							if ($rbac->check("treso-dps-view-all", $currentUserID)) {?> <li class='disabled'><a href="#"><span class='glyphicon glyphicon-usd'></span> Taxe opérationnelle départementale</a></li> <?php }
 						} ?>
 						<li class="divider"></li>

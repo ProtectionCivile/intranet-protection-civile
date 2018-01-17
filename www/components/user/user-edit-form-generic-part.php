@@ -1,5 +1,5 @@
 <?php $feedback = compute_server_feedback($user_lastName_error);?>
-<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+<div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
   <label for="user_lastName" class="col-sm-4 control-label">
     Nom
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Nom de famille" />
@@ -12,7 +12,7 @@
 </div>
 
 <?php $feedback = compute_server_feedback($user_firstName_error);?>
-<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+<div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
   <label for="user_firstName" class="col-sm-4 control-label">
     Prénom
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Prénom" />
@@ -25,7 +25,7 @@
 </div>
 
 <?php $feedback = compute_server_feedback($user_login_error);?>
-<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+<div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
   <label for="user_login" class="col-sm-4 control-label">
     Matricule e-Protec
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-trigger="hover" data-toggle="popover" data-content="Matricule e-Protec qui servira d'identifiant pour se connecter"></span>
@@ -38,7 +38,7 @@
 </div>
 
 <?php $feedback = compute_server_feedback($user_phone_error);?>
-<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+<div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
   <label for="user_phone" class="col-sm-4 control-label">
     Téléphone
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Format 0XXXXXXXXX"></span>
@@ -51,7 +51,7 @@
 </div>
 
 <?php $feedback = compute_server_feedback($user_email_error);?>
-<div class="form-group form-group-sm has-feedback <?php echo $feedback[0];?>">
+<div class="form-group form-group-sm required has-feedback <?php echo $feedback[0];?>">
   <label for="user_email" class="col-sm-4 control-label">
     E-mail
     <span class="glyphicon glyphicon-info-sign" rel="popover" data-toggle="popover" data-trigger="hover" data-content="Adresse e-mail"></span>

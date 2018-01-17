@@ -14,7 +14,7 @@
       </div>
       <div class="panel-body">
 
-        <div class="form-group form-group-sm form-inline row datetimestart">
+        <div class="form-group form-group-sm required form-inline row datetimestart">
           <label for="dps_begin_date_picker" class="col-sm-4 control-label">Date et heure de début de poste</label>
           <div class="col-sm-3">
             <div class='input-group date' id='dps_begin_date_picker' name="dps_begin_date_picker">
@@ -36,7 +36,7 @@
           </div>
         </div>
 
-        <div class="form-group form-group-sm form-inline row">
+        <div class="form-group form-group-sm required form-inline row">
           <label for="dps_end_date_picker" class="col-sm-4 control-label">Date et heure de fin de poste</label>
           <div class="col-sm-3">
             <div class='input-group date' id='dps_end_date_picker' name="dps_end_date_picker">

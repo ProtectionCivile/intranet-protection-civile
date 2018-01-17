@@ -7,6 +7,10 @@ if ( $rbac->check("ope-dps-view-all", $currentUserID) || $rbac->check("ope-dps-v
 if (! $canViewAllSections ) {
 	$ordered_section = $currentUserSection;
 }
+if ($canViewAllSections && isset($_GET['all'] )) {
+	$ordered_section = "*";
+	$forced_section = "*";
+}
 if(isset($_POST['city'])){
 	$ordered_section = $_POST['city'];
 	$forced_section = $_POST['city'];

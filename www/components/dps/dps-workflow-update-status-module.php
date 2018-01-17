@@ -72,7 +72,7 @@
 			<div class="col col-md-2 col-xs-4 text-center">
 				<button type="submit" class="btn btn-success" data-toggle="modal" data-target="#ModalAccept"
 				<?php
-				if( ! $canValidateDdo ){
+				if( ! $canValidateDdo || ! $hasAllAttachments){
 					echo "disabled";
 				}
 				?>
