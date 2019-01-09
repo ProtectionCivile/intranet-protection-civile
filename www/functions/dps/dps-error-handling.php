@@ -215,7 +215,7 @@
 		// Nothing
 	}
 	if(isNullOrEmpty($eprotec_number)){
-		// Nothing
+		$eprotec_number = 0;
 	}
 
 
