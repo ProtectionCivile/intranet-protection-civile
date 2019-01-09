@@ -79,8 +79,8 @@ ALTER TABLE `dps` CHANGE `administration` `status_justification` TEXT CHARACTER 
 ALTER TABLE `dps` CHANGE `date_creation` `status_creation_date` DATE NULL DEFAULT NULL AFTER `status_justification`;
 ALTER TABLE `dps` CHANGE `annul_poste` `status_cancel_date` DATE NULL DEFAULT NULL AFTER `status_creation_date`;
 ALTER TABLE `dps` CHANGE `motif_annul` `status_cancel_reason` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL AFTER `status_cancel_date`;
-ALTER TABLE `dps` CHANGE `valid_demande_rt` `status_validation_dlo_date` DATE NULL DEFAULT NULL AFTER `status_cancel_reason`;
-ALTER TABLE `dps` CHANGE `valid_demande_dps` `status_validation_ddo_date` DATE NULL DEFAULT NULL AFTER `status_validation_dlo_date`;
+ALTER TABLE `dps` CHANGE `valid_demande_rt` `status_validation_co_date` DATE NULL DEFAULT NULL AFTER `status_cancel_reason`;
+ALTER TABLE `dps` CHANGE `valid_demande_dps` `status_validation_ddo_date` DATE NULL DEFAULT NULL AFTER `status_validation_co_date`;
 
 
 -- POSITIONNEMENT DE NOUVELLES VALEURS PAR DÉFAUT ET VALEURS NULLES
@@ -109,7 +109,7 @@ UPDATE `dps` SET `dps_begin_time` = NULL WHERE `dps_begin_time` = '';
 UPDATE `dps` SET `dps_end_date` = NULL WHERE `dps_end_date` = '0000-00-00';
 UPDATE `dps` SET `dps_end_time` = NULL WHERE `dps_end_time` = '';
 UPDATE `dps` SET `status_creation_date` = NULL WHERE `status_creation_date` = '0000-00-00';
-UPDATE `dps` SET `status_validation_dlo_date` = NULL WHERE `status_validation_dlo_date` = '0000-00-00';
+UPDATE `dps` SET `status_validation_co_date` = NULL WHERE `status_validation_co_date` = '0000-00-00';
 UPDATE `dps` SET `status_validation_ddo_date` = NULL WHERE `status_validation_ddo_date` = '0000-00-00';
 UPDATE `dps` SET `status_cancel_date` = NULL WHERE `status_cancel_date` = '0000-00-00';
 UPDATE `dps` SET `status_justification` = NULL WHERE `status_justification` = '';
@@ -123,8 +123,8 @@ UPDATE `dps` SET `status_cancel_reason` = NULL WHERE `status_cancel_reason` = ''
 -- 4 = Annulé
 -- 5 = Refusé (DDO ou Préf)
 -- NULL = On ne sait pas
-UPDATE `dps` SET `status` = 0 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=0 AND `status_validation_dlo_date` IS NULL;
-UPDATE `dps` SET `status` = 1 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=0 AND `status_validation_dlo_date` IS NOT NULL AND `status_validation_ddo_date` IS NULL;
+UPDATE `dps` SET `status` = 0 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=0 AND `status_validation_co_date` IS NULL;
+UPDATE `dps` SET `status` = 1 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=0 AND `status_validation_co_date` IS NOT NULL AND `status_validation_ddo_date` IS NULL;
 UPDATE `dps` SET `status` = 2 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=3;
 UPDATE `dps` SET `status` = 3 WHERE `status_cancel_date` IS NULL AND `etat_demande_dps`=1;
 UPDATE `dps` SET `status` = 4 WHERE `status_cancel_date` IS NOT NULL;

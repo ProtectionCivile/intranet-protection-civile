@@ -290,7 +290,7 @@ function buildPdfForDps($select_list_parameter_service_p, $pathfile, $dps_p) {
 
   $pdf->SetFont('Arial','',7);
   $pdf->SetTextColor(0,0,0);
-  $pdf->Text(12, 247, utf8_decode("Le Directeur Local des Opérations"));
+  $pdf->Text(12, 247, utf8_decode("Le Coordinateur des Opérations"));
   $pdf->Text(12, 250, utf8_decode(""));
   $pdf->Text(12, 253, utf8_decode(""));
   $pdf->Text(12, 256, utf8_decode("Le 13-10-2015"));

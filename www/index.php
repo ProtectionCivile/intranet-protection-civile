@@ -44,7 +44,7 @@ if (isset($_GET['notallowed'])){
 					<li class='text-muted'>Générer une signature pour vos mails</li>
 					<li class='text-muted'>Soumettre des dossiers de recrutement</li>
 				</ul>
-				<li>Pour les DLOs</li>
+				<li>Pour les COs</li>
 				<ul>
 					<li class='text-muted'>Créer ou visualiser les postes de secours sur votre antenne</li>
 					<li class='text-muted'>Gérer vos clients favoris pour créer des DPS plus rapidement</li>
