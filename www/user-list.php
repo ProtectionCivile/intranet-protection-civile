@@ -23,8 +23,11 @@
 <?php require_once('functions/user/user-view-authentication.php'); ?>
 
 
-<!-- Delete a user : Controller -->
+<!-- Delete user : Controller -->
 <?php include 'functions/controller/user-delete-controller.php'; ?>
+
+<!-- Create a new password for user : Controller -->
+<?php include 'functions/controller/user-newpass-controller.php'; ?>
 
 
 <!-- Page content container -->
@@ -64,7 +67,7 @@
 					<th>Téléphone</th>
 					<th>Mail</th>
 					<th>Section</th>
-					<th colspan='3'>Actions</th>
+					<th colspan='4'>Actions</th>
 				</tr>
 				<?php
 				$users = mysqli_query($db_link, $sqlQuery);
@@ -109,6 +112,14 @@
 								<form action='' method='post' accept-charset='utf-8'>
 									<input type='hidden' name='delUser' value=<?php echo "'".$user['ID']."'"; ?> >
 									<button type='submit' class='btn btn-danger glyphicon glyphicon-trash' title="Supprimer" onclick='return(confirm("Etes-vous sûr de vouloir supprimer cet utilisateur?"));'></button>
+								</form>
+							<?php }?>
+						</td>
+						<td>
+							<?php if ($rbac->check("admin-users-update", $currentUserID)) { ?>
+								<form action='' method='post' accept-charset='utf-8'>
+									<input type='hidden' name='PassUser' value=<?php echo "'".$user['ID']."'"; ?> >
+									<button type='submit' class='btn btn-danger glyphicon glyphicon-envelope' title="Générer et envoyer un nouveau mot de passe" onclick='return(confirm("Etes-vous sûr de vouloir réinitialiser le mot de passe de cet utilisateur ? Celui-ci recevra un message contenant son nouveau mot de passe. cette action est irreversible."));'></button>
 								</form>
 							<?php }?>
 						</td>
