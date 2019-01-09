@@ -25,15 +25,15 @@ require_once('functions/mail/Mail.php');
 				$db_pass = mysqli_real_escape_string($db_link, $pass_encrypted);
 				$sql = "UPDATE $tablename_users SET pass='$db_pass' WHERE ID='$id'";
 				if ($db_link->query($sql) === TRUE) {
-					$genericSuccess .= ". Mot de passe mis à jour";
+					$genericSuccess .= "Mot de passe mis à jour";
 				} else {
 					$genericError .= " Erreur pendant la mise à jour du mot de passe: " . $db_link->error;
 				}
 				
-				$sql2 = "SELECT * FROM $tablename_users WHERE id='$id'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
+				$sql2 = "SELECT * FROM $tablename_users WHERE id='$newpassID'" or die("Erreur lors de la consultation" . mysqli_error($db_link));
 				$query = mysqli_query($db_link, $sql2);
 				$users = mysqli_fetch_assoc($query);
-				$usermail= users['mail'];
+				$usermail= $users['mail'];
 				
 				$from="noreply@protectioncivile92.org";
 				$subject="[EXTRANET] Nouveau de passe";
@@ -43,7 +43,7 @@ require_once('functions/mail/Mail.php');
 				Celui-ci a pu être généré par un administrateur à la suite de la création de votre compte, ou à sa demande expresse. <br />
 				Ce mot de passe est généré automatiquement et n'est connu que de vous. <br />
 				Pour rappel, votre identifiant est votre numéro de membre (carte e-protec).<br />
-				Votre mot de passe est :".$newautopass." <br />
+				Votre mot de passe est : ".$newautopass." <br />
 				Le stockage du mot de passe a été sécurisé, rendant impossible sa lecture par d'autre biais que cet e-mail. <br />
 				Pour autant nous vous conseillons vivement de changer votre mot de passe dès que possible. <br />
 				<br />Nous vous remercions, <br />
