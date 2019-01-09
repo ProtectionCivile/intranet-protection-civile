@@ -48,17 +48,17 @@
 			<tbody>
 				<tr>
 					<td>Validation locale</td>
-					<td>À: demande-dps<br />Cc: DLO, DDO</td>
+					<td>À: demande-dps<br />Cc: CO, DDO</td>
 					<td class='text-muted'>Informe qu'un poste de secours a été soumis à validation</td>
 				</tr>
 				<tr>
 					<td>Annulation <strong>avant</strong> validation DDO</td>
-					<td>À: demande-dps<br />Cc: DLO, DDO</td>
+					<td>À: demande-dps<br />Cc: CO, DDO</td>
 					<td class='text-muted'>Informe de l'annulation du poste au DDO</td>
 				</tr>
 				<tr>
 					<td rowspan='2'>Annulation <strong>après</strong> validation DDO</td>
-					<td>À: DLO<br />Cc: DDO</td>
+					<td>À: CO<br />Cc: DDO</td>
 					<td class='text-muted'>Pour informer en <strong>interne</strong> de l'annulation</td>
 				</tr>
 				<tr>
@@ -67,12 +67,12 @@
 				</tr>
 				<tr>
 					<td>Mise en attente</td>
-					<td>À: DLO<br />Cc: DDO</td>
+					<td>À: CO<br />Cc: DDO</td>
 					<td class='text-muted'>Donne le motif de mise en attente</td>
 				</tr>
 				<tr>
 					<td rowspan='2'>Acceptation DDO</td>
-					<td>À: DLO<br />Cc: DDO</td>
+					<td>À: CO<br />Cc: DDO</td>
 					<td class='text-muted'>Pour donner l'autorisation de la tenue du poste (<strong>interne</strong>)</td>
 				</tr>
 				<tr>
@@ -81,7 +81,7 @@
 				</tr>
 				<tr>
 					<td>Refus DDO</td>
-					<td>À: DLO<br />Cc: DDO</td>
+					<td>À: CO<br />Cc: DDO</td>
 					<td class='text-muted'>Informe que la DDO a refusé la tenue du poste (avec le motif)</td>
 				</tr>
 

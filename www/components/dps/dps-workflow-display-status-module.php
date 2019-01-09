@@ -21,7 +21,7 @@ if($dps_status == "draft"){ ?>
 elseif($dps_status == "valid_antenne"){ ?>
 	<div class='alert alert-info'>
 		<span class="glyphicon glyphicon-ok" style="font-size:2em"></span>
-		<strong>DPS envoyé pour validation à la DDO</strong> le <?php echo date("d-m-Y", strtotime($dps['status_validation_dlo_date']));?> <?php if (!empty($eprotec_number)) { echo $eprotec_link; }	?> <?php if (!empty($eprotec_number)) { echo $eprotec_link; }	?><br />
+		<strong>DPS envoyé pour validation à la DDO</strong> le <?php echo date("d-m-Y", strtotime($dps['status_validation_co_date']));?> <?php if (!empty($eprotec_number)) { echo $eprotec_link; }	?> <?php if (!empty($eprotec_number)) { echo $eprotec_link; }	?><br />
 		<small>Création : <?php echo date("d-m-Y", strtotime($dps['status_creation_date']));?></small>
 	</div> <?php
 }
@@ -37,7 +37,7 @@ elseif($dps_status == "valid_ddo_attente"){ ?>
 		<span class="glyphicon glyphicon-time" style="font-size:2em"></span>
 		<strong>Validation antenne le Validation DDO effectuée, attente validation Préfecture ou département concerné</strong> (Motif: <?php echo $dps['status_justification'];?>) <?php if (!empty($eprotec_number)) { echo $eprotec_link; }	?><br />
 		<small>Création : <?php echo date("d-m-Y", strtotime($dps['status_creation_date']));?></small><br />
-		<small>Validation antenne : <?php echo date("d-m-Y", strtotime($dps['status_validation_dlo_date']));?></small>
+		<small>Validation antenne : <?php echo date("d-m-Y", strtotime($dps['status_validation_co_date']));?></small>
 	</div>
 <?php
 }
@@ -46,7 +46,7 @@ elseif($dps_status == "refused"){ ?>
 		<span class="glyphicon glyphicon-remove" style="font-size:2em"></span>
 		<strong>DPS refusé</strong> le <?php echo date("d-m-Y", strtotime($dps['status_validation_ddo_date']));?> (Motif: <?php echo $dps['status_justification'];?>) <?php if (!empty($eprotec_number)) { echo $eprotec_link; }	?><br />
 		<small>Création : <?php echo date("d-m-Y", strtotime($dps['status_creation_date']));?></small><br />
-		<small>Validation antenne : <?php echo date("d-m-Y", strtotime($dps['status_validation_dlo_date']));?></small>
+		<small>Validation antenne : <?php echo date("d-m-Y", strtotime($dps['status_validation_co_date']));?></small>
 	</div> <?php
 }
 elseif($dps_status == "accepted"){ ?>
@@ -54,7 +54,7 @@ elseif($dps_status == "accepted"){ ?>
 		<span class="glyphicon glyphicon-ok" style="font-size:2em"></span>
 		<strong>DPS validé et accepté</strong> le <?php echo date("d-m-Y", strtotime($dps['status_validation_ddo_date']));?> (Justification: <?php echo $dps['status_justification'];?>) <?php if (!empty($eprotec_number)) { echo $eprotec_link; }	?><br />
 		<small>Création : <?php echo date("d-m-Y", strtotime($dps['status_creation_date']));?></small><br />
-		<small>Demande initiale : <?php echo date("d-m-Y", strtotime($dps['status_validation_dlo_date']));?></small>
+		<small>Demande initiale : <?php echo date("d-m-Y", strtotime($dps['status_validation_co_date']));?></small>
 	</div> <?php
 }
 ?>

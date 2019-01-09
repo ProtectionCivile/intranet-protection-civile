@@ -66,18 +66,18 @@
 
 	<br />
 	<h3 class='text-primary'>Validation d'un DPS par l'antenne</h3>
-	<p>Une fois le DPS rempli, 2 choix s'offrent au DLO :</p>
+	<p>Une fois le DPS rempli, 2 choix s'offrent au CO :</p>
 	<ul>
 		<li><strong>Annuler le poste</strong> : Il ne sera pas supprimé, mais ne sera plus modifiable. C'est ce qu'il faut faire lorsqu'un client ne souhaite plus faire appel à nos services (météo incertaine, a trouvé moins cher ailleurs...)</li>
 		<li><strong>Valider le poste</strong> : Il donnera ainsi la main à la DDO, qui sera prévenue par mail. Pour cela, il est impératif que la Convention et la Grille d'analyse des risques soient tous les deux renseignés, et pas dans un même fichier.</li>
 	</ul>
 	<div class='alert alert-warning' role='alert'>
-		<p><span class='glyphicon glyphicon-hand-right'></span> La convention et la grille de risques sont obligatoires pour valider le DPS, ils doivent bien évidemment être signés par le client pour être valides. Sans ces 2 documents, le DLO ne pourra pas valider le poste.</p>
+		<p><span class='glyphicon glyphicon-hand-right'></span> La convention et la grille de risques sont obligatoires pour valider le DPS, ils doivent bien évidemment être signés par le client pour être valides. Sans ces 2 documents, le CO ne pourra pas valider le poste.</p>
 	</div>
 
 	<br />
 	<h3 class='text-primary'>Validation par la DDO</h3>
-	<p>La DDO peut valider localement un poste à la place d'un DLO. Mais une fois qu'elle a un poste validé par une antenne, 4 choix s'offrent à elle :</p>
+	<p>La DDO peut valider localement un poste à la place d'un CO. Mais une fois qu'elle a un poste validé par une antenne, 4 choix s'offrent à elle :</p>
 	<ul>
 		<li><strong>Mettre le poste en attente</strong> si la DDO valide le poste en interne mais a besoin d'autres autorisations (Préfecture, autres ADPC, ...)</li>
 		<li><strong>Refuser le poste</strong> : Une justification sera demandée</li>

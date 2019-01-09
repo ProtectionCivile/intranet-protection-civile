@@ -10,9 +10,9 @@ $sql =  'SELECT DISTINCT name FROM '.$tablename_sections.' WHERE number = '.$sec
  }
 
 if ($action == 'validate-local') {
-  $from = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#dlo-".$section));
-  $db_to = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-validate-recipients');
-  $db_cc = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-validate-ccrecipients');
+  $from = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#co-".$section));
+  $db_to = getMailRecipients($db_link, $setting_service, $section, $event_department, 'co-validate-recipients');
+  $db_cc = getMailRecipients($db_link, $setting_service, $section, $event_department, 'co-validate-ccrecipients');
 
   $subject = "Création de ".$select_list_parameter_service->getTranslation('dps_type_short', $dps_type).": ".$event_name;
   $message = "Bonjour,<br />
@@ -30,7 +30,7 @@ if ($action == 'validate-local') {
   Ce poste attend votre validation sur l'intranet.<br />
   <br />
   Bien cordialement,<br />
-  <br />".$setting_service->getGeneralSetting('mail-signature-dlo')."<br />
+  <br />".$setting_service->getGeneralSetting('mail-signature-co')."<br />
   Antenne de ".$sectionName;
 
   $mail = new Mail($db_link, $tablename_mail, $currentUserID, $from, $subject, $message);
@@ -47,9 +47,9 @@ if ($action == 'validate-local') {
 
 
 if ($action == 'cancel-local') {
-  $from = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#dlo-".$section));
-  $db_to = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-cancel-recipients');
-  $db_cc = getMailRecipients($db_link, $setting_service, $section, $event_department, 'dlo-cancel-ccrecipients');
+  $from = implode(",", getRealMailAddresses($db_link, $setting_service, $section, $event_department, "#co-".$section));
+  $db_to = getMailRecipients($db_link, $setting_service, $section, $event_department, 'co-cancel-recipients');
+  $db_cc = getMailRecipients($db_link, $setting_service, $section, $event_department, 'co-cancel-ccrecipients');
 
   $subject = "Annulation de ".$select_list_parameter_service->getTranslation('dps_type_short', $dps_type).": ".$event_name;
   $message = "Bonjour,<br />
@@ -66,7 +66,7 @@ if ($action == 'cancel-local') {
   </ul>
   <br/>
   Bien cordialement,<br />
-  <br />".$setting_service->getGeneralSetting('mail-signature-dlo')."<br />
+  <br />".$setting_service->getGeneralSetting('mail-signature-co')."<br />
   Antenne de ".$sectionName;
 
   $mail = new Mail($db_link, $tablename_mail, $currentUserID, $from, $subject, $message);

@@ -6,7 +6,7 @@
 	if (isset($_POST['workflow_action']) && isset($_POST['id']) ) {
 		$today = date("Y-m-d");
 
-		// Validation par un DLO
+		// Validation par un CO
 		if ($_POST['workflow_action'] == 'validation_antenne' ) {
 			if (!$canValidateLocal) {
 				$genericError = "Opération non permise, vous n'avez pas les droits suffisants pour modifier l'état actuel du DPS";
@@ -16,7 +16,7 @@
 			}
 			else {
 				$sql = "UPDATE $tablename_dps SET
-				status_validation_dlo_date='$today',
+				status_validation_co_date='$today',
 				status='1'
 				WHERE id='$id'" or die("Impossible de modifier le DPS dans la base de données" . mysqli_error($db_link));
 				if ($db_link->query($sql) === TRUE) {
@@ -24,7 +24,7 @@
 					<a href='dps-list.php' class='btn btn-primary btn-sm' title='Retour à la liste'>Retour à la liste</a>";
 					// Update new status for the workflow display module to have the relevant value
 					$dps_status = "valid_antenne";
-					$dps['status_validation_dlo_date'] = $_POST['status_validation_dlo_date'];
+					$dps['status_validation_co_date'] = $_POST['status_validation_co_date'];
 
 					// Send mail
 					$action = 'validate-local';
@@ -55,7 +55,7 @@
 						$action = 'cancel-ddo';
 					}
 					else {
-						$action = 'cancel-dlo';
+						$action = 'cancel-co';
 					}
 
 					// Update new status for the workflow display module to have the relevant value

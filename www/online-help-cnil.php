@@ -31,7 +31,7 @@
 	<br />
 	<h3 class='text-primary'>Utilisation</h3>
 	<p>Ces données restent la propriété stricte de la Protection Civile des Hauts-de-Seine, et ne snot en aucun cas communiquées à des tiers.</p>
-	<p>Elles sont utilisées par le système pour communiquer (envoi de mails aux DLOs par exemple) mais aussi pour afficher les informations concernant l'annuaire.</p>
+	<p>Elles sont utilisées par le système pour communiquer (envoi de mails aux COs par exemple) mais aussi pour afficher les informations concernant l'annuaire.</p>
 
 	<br />
 	<h3 class='text-primary'>Durée de conservation et droits de l'utilisateur</h3>

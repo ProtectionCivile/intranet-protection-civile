@@ -93,9 +93,9 @@
 					<td class='text-muted'>Signature par défaut du DDO pour les mails envoyés</td>
 				</tr>
 				<tr>
-					<td><samp>mail-signature-dlo</samp></td>
-					<td><samp>&lt;strong&gt;Le Directeur Local des Opérations&lt;/strong&gt;</samp></td>
-					<td class='text-muted'>Signature par défaut du DLO pour les mails envoyés</td>
+					<td><samp>mail-signature-co</samp></td>
+					<td><samp>&lt;strong&gt;Le Coordinateur des Opérations&lt;/strong&gt;</samp></td>
+					<td class='text-muted'>Signature par défaut du CO pour les mails envoyés</td>
 				</tr>
 			</tbody>
 		</table>

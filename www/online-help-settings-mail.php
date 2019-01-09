@@ -29,7 +29,7 @@
 
 	<br />
 	<h3 class='text-primary'>Utilisation</h3>
-	<p>Les <span class='bg-info'>items en bleu</span> dans le tableau sont utilisés pour définir le ou les destinataires à utiliser lorsque l'on parle d'un item donné. Par exemple, lorsque le système doit envoyer un mail à l'opérationnel d'Asnières et que l'antenne souhaite que ses DLO Adjoints reçoivent également les notificaitons pour les DPS, on peut renseigner ici la liste des destinataires. Ainsi, pour ces items, il est possible de saisir :</p>
+	<p>Les <span class='bg-info'>items en bleu</span> dans le tableau sont utilisés pour définir le ou les destinataires à utiliser lorsque l'on parle d'un item donné. Par exemple, lorsque le système doit envoyer un mail à l'opérationnel d'Asnières et que l'antenne souhaite que ses CO Adjoints reçoivent également les notificaitons pour les DPS, on peut renseigner ici la liste des destinataires. Ainsi, pour ces items, il est possible de saisir :</p>
 	<ul>
 		<li>une adresse mail au format <samp>machin.chose@trucmuche.com</samp></li>
 		<li>une adresse mail au format <samp>"Nom Prénom" &lt;machin.chose@trucmuche.com&gt;</samp></li>
@@ -43,7 +43,7 @@
 			<li>
 				un <span class='bg-info'>paramètre bleu </span>. Pour cela, le faire précéder du caractère <samp>#</samp>. Cet item peut être <strong>paramétré</strong> avec une variable. Ainsi :
 				<ul>
-					<li>La variable <samp>ANTENNE</samp> sera remplacée par le numéro de la section courante. Par exemple, <samp>#dlo-ANTENNE</samp> fera rérérence à <samp>#dlo-13</samp> lors de la consultation d'un DPS sur l'antenne de Courbevoie (n°13)</li>
+					<li>La variable <samp>ANTENNE</samp> sera remplacée par le numéro de la section courante. Par exemple, <samp>#co-ANTENNE</samp> fera rérérence à <samp>#co-13</samp> lors de la consultation d'un DPS sur l'antenne de Courbevoie (n°13)</li>
 				</ul>
 			</li>
 			<li>
@@ -83,28 +83,28 @@
 					<td class='text-muted'>Adresse(s) mail des DPS de la Préfcture 92 pour la validation des DPS sur le 92</td>
 				</tr>
 				<tr class='warning'>
-					<td><samp>dlo-validate-recipients</samp></td>
+					<td><samp>co-validate-recipients</samp></td>
 					<td><samp>demande-dps@protectioncivile92.org</samp></td>
-					<td class='text-muted'>Destinataire(s) pour la validation d'un DPS par un DLO</td>
+					<td class='text-muted'>Destinataire(s) pour la validation d'un DPS par un CO</td>
 				</tr>
 				<tr class='warning'>
-					<td><samp>dlo-validate-ccrecipients</samp></td>
-					<td><samp>#dlo-ANTENNE, #ddo</samp></td>
-					<td class='text-muted'>Destinataire(s) en copie pour la validation d'un DPS par un DLO</td>
+					<td><samp>co-validate-ccrecipients</samp></td>
+					<td><samp>#co-ANTENNE, #ddo</samp></td>
+					<td class='text-muted'>Destinataire(s) en copie pour la validation d'un DPS par un CO</td>
 				</tr>
 				<tr class='warning'>
-					<td><samp>dlo-cancel-recipients</samp></td>
+					<td><samp>co-cancel-recipients</samp></td>
 					<td><samp>demande-dps@protectioncivile92.org</samp></td>
-					<td class='text-muted'>Destinataire(s) pour l'annulation d'un DPS par un DLO</td>
+					<td class='text-muted'>Destinataire(s) pour l'annulation d'un DPS par un CO</td>
 				</tr>
 				<tr class='warning'>
-					<td><samp>dlo-cancel-ccrecipients</samp></td>
-					<td><samp>#dlo-ANTENNE, #ddo</samp></td>
-					<td class='text-muted'>Destinataire(s) en copie pour l'annulation d'un DPS par un DLO</td>
+					<td><samp>co-cancel-ccrecipients</samp></td>
+					<td><samp>#co-ANTENNE, #ddo</samp></td>
+					<td class='text-muted'>Destinataire(s) en copie pour l'annulation d'un DPS par un CO</td>
 				</tr>
 				<tr class='warning'>
 					<td><samp>ddo-cancel-internal-recipients</samp></td>
-					<td><samp>#dlo-ANTENNE</samp></td>
+					<td><samp>#co-ANTENNE</samp></td>
 					<td class='text-muted'>Destinataire(s) pour le mail interne d'annulation d'un DPS qui avait déjà été validé par le DDO</td>
 				</tr>
 				<tr class='warning'>
@@ -124,17 +124,17 @@
 				</tr>
 				<tr class='warning'>
 					<td><samp>ddo-wait-recipients</samp></td>
-					<td><samp>#dlo-ANTENNE</samp></td>
+					<td><samp>#co-ANTENNE</samp></td>
 					<td class='text-muted'>Destinataire(s) pour la mise en attente d'un DPS</td>
 				</tr>
 				<tr class='warning'>
 					<td><samp>ddo-wait-ccrecipients</samp></td>
 					<td><samp>#ddo</samp></td>
-					<td class='text-muted'>Destinataire(s) en copie pour la mise en attente d'un DPS par un DLO</td>
+					<td class='text-muted'>Destinataire(s) en copie pour la mise en attente d'un DPS par un CO</td>
 				</tr>
 				<tr class='warning'>
 					<td><samp>ddo-reject-recipients</samp></td>
-					<td><samp>#dlo-ANTENNE</samp></td>
+					<td><samp>#co-ANTENNE</samp></td>
 					<td class='text-muted'>Destinataire(s) pour le refus d'un DPS</td>
 				</tr>
 				<tr class='warning'>
@@ -144,7 +144,7 @@
 				</tr>
 				<tr class='warning'>
 					<td><samp>ddo-validate-internal-recipients</samp></td>
-					<td><samp>#dlo-ANTENNE</samp></td>
+					<td><samp>#co-ANTENNE</samp></td>
 					<td class='text-muted'>Destinataire(s) pour le mail interne d'acceptation d'un DPS</td>
 				</tr>
 				<tr class='warning'>
@@ -168,88 +168,88 @@
 					<td class='text-muted'>Adresse mail du DDO</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-0</samp></td>
+					<td><samp>co-0</samp></td>
 					<td><samp>operationnel@protectioncivile92.org</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS départementaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-1</samp></td>
-					<td><samp>"DLO Antony" &lt;operationnel-antony@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-1</samp></td>
+					<td><samp>"CO Antony" &lt;operationnel-antony@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-2</samp></td>
-					<td><samp>"DLO Asnieres" &lt;operationnel-asnieres@protectioncivile92.org&gt;, "Président Asnieres" &lt;president-asnieres@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-2</samp></td>
+					<td><samp>"CO Asnieres" &lt;operationnel-asnieres@protectioncivile92.org&gt;, "Président Asnieres" &lt;president-asnieres@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-5</samp></td>
-					<td><samp>"DLO Boulogne-Issy" &lt;operationnel-boulogne-issy@protectioncivile92.org"&gt;</samp></td>
+					<td><samp>co-5</samp></td>
+					<td><samp>"CO Boulogne-Issy" &lt;operationnel-boulogne-issy@protectioncivile92.org"&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-6</samp></td>
-					<td><samp>"DLO Bourg-la-Reine" &lt;operationnel-bourg-la-reine@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-6</samp></td>
+					<td><samp>"CO Bourg-la-Reine" &lt;operationnel-bourg-la-reine@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-10</samp></td>
-					<td><samp>"DLO Clamart" &lt;operationnel-clamart@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-10</samp></td>
+					<td><samp>"CO Clamart" &lt;operationnel-clamart@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-11</samp></td>
-					<td><samp>"DLO Clichy" &lt;operationnel-clichy@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-11</samp></td>
+					<td><samp>"CO Clichy" &lt;operationnel-clichy@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-12</samp></td>
-					<td><samp>"DLO Colombes" &lt;operationnel-colombes@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-12</samp></td>
+					<td><samp>"CO Colombes" &lt;operationnel-colombes@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-13</samp></td>
-					<td><samp>"DLO Courbevoie" &lt;operationnel-courbevoie@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-13</samp></td>
+					<td><samp>"CO Courbevoie" &lt;operationnel-courbevoie@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-15</samp></td>
-					<td><samp>"DLO Garches" &lt;operationnel-garches@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-15</samp></td>
+					<td><samp>"CO Garches" &lt;operationnel-garches@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-17</samp></td>
-					<td><samp>"DLO Gennevilliers" &lt;operationnel-gennevilliers@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-17</samp></td>
+					<td><samp>"CO Gennevilliers" &lt;operationnel-gennevilliers@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-20</samp></td>
-					<td><samp>"DLO Levallois" &lt;operationnel-levallois@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-20</samp></td>
+					<td><samp>"CO Levallois" &lt;operationnel-levallois@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-24</samp></td>
-					<td><samp>"DLO Nanterre" &lt;operationnel-nanterre@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-24</samp></td>
+					<td><samp>"CO Nanterre" &lt;operationnel-nanterre@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-28</samp></td>
-					<td><samp>"DLO Rueil" &lt;operationnel-rueil@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-28</samp></td>
+					<td><samp>"CO Rueil" &lt;operationnel-rueil@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-32</samp></td>
-					<td><samp>"DLO Suresnes-Puteaux" &lt;operationnel-suresnes-puteaux@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-32</samp></td>
+					<td><samp>"CO Suresnes-Puteaux" &lt;operationnel-suresnes-puteaux@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-33</samp></td>
-					<td><samp>"DLO Vanves" &lt;operationnel-vanves@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-33</samp></td>
+					<td><samp>"CO Vanves" &lt;operationnel-vanves@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
-					<td><samp>dlo-36</samp></td>
-					<td>"DLO Villeneuve" &lt;operationnel-villeneuve@protectioncivile92.org&gt;</samp></td>
+					<td><samp>co-36</samp></td>
+					<td>"CO Villeneuve" &lt;operationnel-villeneuve@protectioncivile92.org&gt;</samp></td>
 					<td class='text-muted'>Destinataire(s) pour les DPS locaux</td>
 				</tr>
 				<tr class='info'>
