@@ -17,7 +17,7 @@ if (isset($_GET['notallowed'])){
 
 ?>
 
-<center><img class="img-responsive" src='img/logos/logo-baseline-right.png'/></center>
+<center><img class="img-responsive" width="40%" height="40%" src='img/logos/logo-baseline-right.png'/></center>
 <h2 class="text-center text-primary">Protection Civile des Hauts-de-Seine</h2>
 
 
