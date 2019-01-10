@@ -2,9 +2,9 @@
 // Appelé régulièrement par le CRON, dépile et envoie les mails en attente de la base de données.
 // Dès qu'ils sont traités, il positionne la date d'envoi à la date du jour
 
-require_once('../../functions/session/db-connect.php');
-require_once('../../functions/mail/mail-functions.php');
-require_once('../../lib/PhpMailer/class.phpmailer.php');
+require_once(__DIR__ .'/../../functions/session/db-connect.php');
+require_once(__DIR__ .'/../../functions/mail/mail-functions.php');
+require_once(__DIR__ .'/../../lib/PhpMailer/class.phpmailer.php');
 
 
 $sql = "SELECT `id`, `from_addr`, `to_addr`, `cc_addr`, `subject`, `message`, `attachments` FROM $tablename_mail WHERE `date_sent` IS NULL ORDER BY id ASC";
